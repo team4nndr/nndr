@@ -1,0 +1,216 @@
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+html,
+body,
+main {
+    height: 100%;
+}
+
+.content {
+    height: 100%;
+}
+
+.friendNav {
+    background-color: white;
+    border-right: 1px solid black;
+    width: 360px;
+    height: 100%;
+    min-width: 360px;
+    position: fixed;
+}
+
+
+.back {
+    height: 35px;
+    width: 35px;
+    margin-left: 12px;
+    margin-top: 8px;
+    border-radius: 50%;
+}
+
+.back:hover {
+    background-color: #F2F3F5;
+}
+
+.backfriend {
+    text-decoration: none;
+    color: #65676b;
+}
+
+.friendpuls {
+    width: 288px;
+    height: 28px;
+    font-size: 24px;
+}
+
+.frtopbox {
+    width: 100%;
+    height: 50px;
+    display: flex;
+    padding-top: 10px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.frmidbox {
+    display: flex;
+    flex-direction: column;
+    margin-left: 16px;
+}
+
+.hr2 {
+    width: 328px;
+    text-align: center;
+    margin-left: 11px;
+    border: 0.5px solid #e3e4e6;
+}
+
+#friendRQ {
+    color: #050505;
+    font-weight: bold;
+    font-size: 17px;
+
+}
+
+#friendRQBox {
+    margin-left: 11px;
+    padding-top: 14px;
+    margin-bottom: 20px;
+}
+
+
+
+#viewRQ {
+    font-size: 13px;
+}
+
+
+/* 요청 프사,확인,삭제 박스 */
+.frtopdiv {
+    width: 340px;
+    height: 83px;
+    display: flex;
+    margin-left: 15px;
+}
+
+/* 프사 */
+.proimg {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+}
+
+/* 프사외. */
+.frbox {
+    width: 280px;
+    height: 72px;
+}
+
+/* 이름 */
+.freindName {
+    font-size: 17px;
+    font-weight: bold;
+    color: #050505;
+}
+
+/* 함께아는 친구 */
+.pulsfrcount {
+    font-size: 13px;
+    color: #65676b;
+}
+
+.pulsfrcountBox {
+    width: 134px;
+    height: 19px;
+    margin-top: 2px;
+}
+
+/* 이름, 함께 아는 친구 */
+.namecount {
+    width: 134px;
+    height: 45px;
+    margin-left: 10px;
+}
+.boxbtn{
+    display: flex;
+    width: 280px;
+}
+.yesbtn {
+    width: 124px;
+    height: 36px;
+    border-radius: 8px;
+    background-color: #1B74E4;
+    border: 0px;
+    margin-top: 10px;
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    margin-right: 10px;
+}
+
+.nobtn {
+    width: 124px;
+    height: 36px;
+    border: 0px;
+    margin-top: 10px;
+    border-radius: 5px;
+    font-weight: bold;
+    font-size: 16px;
+    background-color: #E4E6EB;
+}
+
+.yesbtn:hover {
+    background-color: #0e62d7;
+}
+
+.yesbtn:active {
+    transform: scale(0.95);
+}
+
+.nobtn:hover {
+    background-color: #c4c4c4;
+}
+
+.nobtn:active {
+    transform: scale(0.95);
+}
+
+
+
+/* 매인 */
+#mainfrbox {
+    width: 1560px;
+    margin-left: 360px;
+    background-color: #EBEDF0;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#mainbox {
+    width: 441px;
+    height: 194px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#imgmain {
+    width: 112px;
+    height: 112px;
+}
+
+#maintext {
+    font-size: 20px;
+}
+
+.frtopdiv:hover {
+    background-color: #EBEDF0;
+}
