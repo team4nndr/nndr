@@ -47,27 +47,30 @@ function infoCan(){
     intro.style.display = "block";
 }
 
-document.getElementById("intro-save").addEventListener("click", ()=>{
-    if(strLength.value.length<100){
-        intro.innerText=document.getElementById("intro-text").value;
-        introArea.style.display = "none";
-        intro.style.display = "block";
-    }else{
-        alert("글자 수를 초과했습니다.")
-    }
-})
+if(document.getElementById("intro-save")!=null){
+    document.getElementById("intro-save").addEventListener("click", ()=>{
+        if(strLength.value.length<100){
+            intro.innerText=document.getElementById("intro-text").value;
+            introArea.style.display = "none";
+            intro.style.display = "block";
+        }else{
+            alert("글자 수를 초과했습니다.")
+        }
+    })
+}
 
-document.getElementById("intro-text").addEventListener("input", ()=>{
-    const strLength = document.getElementById("intro-text").value.length
-    texta.innerText = 100 - strLength + "자 남음";
-    texta.style.color = "black";
+if (document.getElementById("info-modal") != null) {
+    document.getElementById("intro-text").addEventListener("input", () => {
+        const strLength = document.getElementById("intro-text").value.length
+        texta.innerText = 100 - strLength + "자 남음";
+        texta.style.color = "black";
 
-    if(100-strLength <0 ){
-        texta.style.color = "red";
-        texta.innerText = 100 - strLength + "자 초과 ";
-    }
-})
-
+        if (100 - strLength < 0) {
+            texta.style.color = "red";
+            texta.innerText = 100 - strLength + "자 초과 ";
+        }
+    })
+}
 
 const infom = document.getElementsByClassName("info-2-1");
 const hobbyl = document.getElementById("what-hobby")
@@ -83,32 +86,26 @@ function jsSearch(str, target){
 
     hobbyl.innerText=(target.innerText).substring(4);
     hobbyl.style.fontSize="19px";
-
-
-    // alert((target.innerText).substring(4));
 };    
+if(document.getElementById("info-modal")!=null){
+    document.getElementById("info-modal").addEventListener("click", () => {
+    document.getElementById("info-modal").style.display="none";
+    document.getElementById("info-modali").style.display="none";
+    })
+}
+if (document.getElementById("info-cancel") != null) {
+    document.getElementById("info-cancel").addEventListener("click", () => {
+        document.getElementById("info-modal").style.display = "none";
+        document.getElementById("info-modali").style.display = "none";
+    })
+}
+if (document.getElementById("info-confirm") != null) {
+    document.getElementById("info-confirm").addEventListener("click", () => {
+        document.getElementById("info-modal").style.display = "none";
+        document.getElementById("info-modali").style.display = "none";
+    })
+}
 
-// document.getElementById("info-modal").addEventListener("click", () => {
-//     document.getElementById("info-modal").style.display="none";
-//     document.getElementById("info-modali").style.display="none";
-// })
-// document.getElementById("info-cancel").addEventListener("click", () => {
-//     document.getElementById("info-modal").style.display="none";
-//     document.getElementById("info-modali").style.display="none";
-// })
-// document.getElementById("info-confirm").addEventListener("click", () => {
-//     document.getElementById("info-modal").style.display="none";
-//     document.getElementById("info-modali").style.display="none";
-// })
-
-
-// function info(){
-    //     document.getElementById("info-job").innerText = "red";
-// }
-// const imset = document.getElementById("imgset")
-// document.getElementById("imBtn").addEventListener("click" () => {
-    
-    
 
     document.getElementById("hobby-checked").addEventListener("click", () => {
         document.getElementById("add-hobby").removeAttribute('checked');
@@ -134,33 +131,34 @@ function moveSlide(num) {
     slides.style.left = slideNum+ 'px';
     currentIdx = num;
 }
-
-prev.addEventListener('click', function () {
-  /*첫 번째 슬라이드로 표시 됐을때는 
-  이전 버튼 눌러도 아무런 반응 없게 하기 위해 
-  currentIdx !==0일때만 moveSlide 함수 불러옴 */
-
-  if (currentIdx !== 0) moveSlide(currentIdx - 1);
-})
+if(prev !=null){
+    prev.addEventListener('click', function () {
+    /*첫 번째 슬라이드로 표시 됐을때는 
+    이전 버튼 눌러도 아무런 반응 없게 하기 위해 
+      currentIdx !==0일때만 moveSlide 함수 불러옴 */
+    if (currentIdx !== 0) moveSlide(currentIdx - 1);
+    })
+}
 
 ;
+if (next != null) {
+    next.addEventListener('click', function () {
+        /* 마지막 슬라이드로 표시 됐을때는 
+        다음 버튼 눌러도 아무런 반응 없게 하기 위해
+        currentIdx !==slideCount - 1 일때만 
+        moveSlide 함수 불러옴 */
+        if (currentIdx !== slideCount - 1) {
+            moveSlide(currentIdx + 1);
+        }
+    });
+}
+if (document.querySelector('.info-cancel') != null) {
+    document.getElementById("info-cancel").addEventListener("click", () => {
+        document.getElementById("info-modali").style.display = none;
 
-next.addEventListener('click', function () {
-    /* 마지막 슬라이드로 표시 됐을때는 
-    다음 버튼 눌러도 아무런 반응 없게 하기 위해
-    currentIdx !==slideCount - 1 일때만 
-    moveSlide 함수 불러옴 */
-    if (currentIdx !== slideCount - 1) {
-        moveSlide(currentIdx + 1);
-    }
-});
 
-document.getElementById("info-cancel").addEventListener("click", () => {
-    document.getElementById("info-modali").style.display = none;
-
-
-})
-
+    })
+}
 
 
 

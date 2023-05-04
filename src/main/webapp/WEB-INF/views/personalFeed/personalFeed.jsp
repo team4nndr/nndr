@@ -11,8 +11,8 @@
     <link rel="shortcut icon" href="#" />
 </head>
 <body>
-
-	<jsp:include page="/WEB-INF/views/topMenu/header.jsp" />
+<%-- 
+	<jsp:include page="/WEB-INF/views/topMenu/header.jsp" /> --%>
 
     <header>
     <div class="flex-container">
@@ -27,7 +27,7 @@
                 <div class="main1-1">
                     <a href="#"><img src="../images/cats/cat2.jpg" alt="로고"id="homeLogo"></a>
                 </div>
-                <h2 class="name">이름</h2>
+                <h2 class="name">${testMember.memberName}</h2>
                 
                 
                 <div class="main1-2">
@@ -41,10 +41,10 @@
             </div>
             
             <nav class="item5">
-                <li class="main-li pick"><a class="main-li" href="Main.html"> 게시물</a></ㅣ>
-                    <li class="main-li"><a class="main-li " href="Main_info.html">정보</a></ㅣ>
-                        <li class="main-li"><a class="main-li" href="Main_fr.html">친구</a></ㅣ>
-                            <li class="main-li"><a class="main-li" href="Main_im.html">사진</a></ㅣ>
+                <li class="main-li pick"><a class="main-li" href="personalFeed"> 게시물</a></ㅣ>
+                    <li class="main-li"><a class="main-li " href="personalFeedInfo">정보</a></ㅣ>
+                        <li class="main-li"><a class="main-li" href="personalFeedFriend">친구</a></ㅣ>
+                            <li class="main-li"><a class="main-li" href="personalFeedPic">사진</a></ㅣ>
                                 <div></div>
                                 </nav>
                                 </div>
