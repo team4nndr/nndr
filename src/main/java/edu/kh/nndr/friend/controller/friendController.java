@@ -24,4 +24,6 @@ public class friendController {
 	public String friendall() {
 		return "friend/friendAll"; //파일경로
 	}
+	
+	
 }
