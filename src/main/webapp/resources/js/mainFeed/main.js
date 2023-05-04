@@ -15,7 +15,11 @@ think.addEventListener("click",()=>{
 document.getElementById("myContent").addEventListener("click", () => {
     document.getElementById("myContent").style.display="none";
     document.getElementById("myContent-modal").style.display="none";
-})
+});
+
+
+
+
 document.getElementById("info-cancel").addEventListener("click", () => {
     document.getElementById("info-modal").style.display="none";
     document.getElementById("info-modali").style.display="none";

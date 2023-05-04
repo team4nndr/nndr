@@ -50,8 +50,48 @@
                                 <!-- <input type="text" name="query" id="query" 
                                 placeholder="무슨 생각을 하고 계신가요?" autocomplete="off">  -->
                                 <button id="think">고객님은 무슨생각을 하고 계신가요?</button>    
-                                <div id="myContent"></div>
-                                <div id="myContent-modal"><button id="btn1"> </button></div>
+                                <%-- 모달 --%>
+                                <div id="myContent"></div> 
+                                <div id="myContent-modal">
+                                <div>
+                                <div>게시물 만들기</div>
+                                <div id="close" role="button">X</div>
+                                </div>
+
+
+                                <div>
+                                <section id="modal-my1">
+                                    <a href="#">
+                                    <img src="/resources/images/mainFeed/mainMy.png" alt="로고" id="myLogo">
+                                    </a>
+                                </section>
+
+
+
+                                <section id="modal-my2"> 
+
+                                <section>
+                                <span><a href="#" class="change">송혜교</a></span>
+                                </section>
+
+
+                                <section>
+                                <li>
+                                    <a href="#" class="change">현재 시간</a>
+                                </li> 
+                                </section>
+
+
+                                </section>
+                                </div>
+
+
+
+
+                                <div></div>
+                                
+                                
+                                </div>
                                     
                                 
     
@@ -75,7 +115,7 @@
                     
                 </div>
                 <div class="centerArea-2">
-                    <section> <!-- 나의 게시물 상단  -->
+                    <section > <!-- 나의 게시물 상단  -->
                         <section id="cTopArea1"> <a href="#">
                             <img src="/resources/images/mainFeed/mainMy.png" alt="로고" id="myLogo">
                         </a>
@@ -84,7 +124,7 @@
 
                         <section id="cTopArea2">
                             <section >
-                                <span><a href="#" class="change">송혜교</a></ㄴ>
+                                <span><a href="#" class="change">송혜교</a></span>
                             </section>
 
                             <section >
