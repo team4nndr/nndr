@@ -1,0 +1,207 @@
+@font-face {
+    font-family: 'NotoSansKR';
+    src: url('../../fonts/NotoSansKR-Regular.otf');
+    font-weight: normal;
+    font-style: normal;
+}
+
+* {
+    font-family: 'NotoSansKR';
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+body {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    width: 100vw;
+}
+header {
+    height: 56px;
+    background-color: #eee;
+    z-index: 100;
+    box-shadow: 0px 0px 3.5px #bdbebd;
+    text-align: center;
+}
+main {
+    flex-grow: 1;
+    display: flex;
+    overflow: auto;
+}
+
+h3 {
+    padding-bottom: 27px;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+#content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    min-width: 950px;
+}
+
+#backBtn {
+    align-self: flex-start;
+}
+
+button {
+    width: 130px;
+    height: 36px;
+    border-radius: 6px;
+    border: none;
+    font-weight: bold;
+    background: #eee;
+    color: black;
+    cursor: pointer;
+    margin: 10px;
+}
+button:not(:disabled):hover {
+    background: #4A6EA9;
+    color: white;
+}
+button:disabled {
+    color: #C4C4C4;
+    background-color: #F0F2F5;
+    cursor: unset;
+}
+
+button[type='submit']:not(:disabled) {
+    color: white;
+    background-color: #4A6EA9;
+}
+button[type='submit']:not(:disabled):hover {
+    color: white;
+    background-color: #3d5c8d;
+}
+
+button.back {
+    width: 99px;
+    height: 36px;
+    /* background: #4A6EA9; */
+    border-radius: 6px;
+    margin-top: 24px;
+    margin-left: 30px;
+    border: none;
+    font-weight: bold;
+    cursor: pointer;
+    /* color: white; */
+}
+button.back:hover {
+    background: #4A6EA9;
+    color: white;
+    transition-duration: 0.1s;
+}
+
+button.reverse {
+    width: 99px;
+    height: 36px;
+    background: #4A6EA9;
+    border-radius: 6px;
+    margin-top: 24px;
+    margin-left: 30px;
+    border: none;
+    font-weight: bold;
+    cursor: pointer;
+    color: white;
+}
+button.reverse:hover {
+    background: #35507a;
+    transition-duration: 0.1s;
+}
+
+.row {
+    position: relative;
+}
+.row > .title {
+    font-weight: bold;
+}
+.row > .data {
+    position: absolute;
+    left: 143px;
+}
+
+/* 게시판 목록 + 페이징 */
+.board-list-wrap {
+    width: 1200px;
+    height: 650px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    background-color: #F7F8FA;
+    border-bottom: 1px solid #ccc;
+}
+/* 게시판 헤더 */
+.board-list > .top {
+    display: flex;
+    align-items: center;
+    justify-items: center;
+    background-color: #4A6EA9;
+    color: white;
+    height: 51px;
+    border-radius: 6px 6px 0 0;
+}
+.board-list > .top > div {
+    font-weight: bold;
+    display: inline-block;
+    text-align: center;
+}
+
+/* 게시판 목록 */
+.board-list > a.row {
+    display: flex;
+    align-items: center;
+    justify-items: center;
+    height: 51px;
+    text-align: center;
+    border-bottom: 1px solid #ccc;
+    text-decoration: none;
+    color: black;
+}
+.board-list > a.row * {
+    pointer-events: none;
+}
+.board-list > a:hover {
+    background-color: #F0F2F5;
+}
+
+/* 게시판 페이징 */
+.board-page {
+    margin-top: 20px;
+    display: flex;
+    align-items: center;
+}
+.board-page > a {
+    text-decoration: none;
+    color: black;
+    height: 40px;
+    width: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid #ccc;
+    border-left: none;
+}
+.board-page > a:hover {
+    color: white;
+    background-color:#4A6EA9;
+    transition-duration: 0.1s;
+}
+.board-page > a.prev-page, .board-page > a.next-page {
+    width: 60px;
+    padding: 0 10px;
+}
+.board-page > a.prev-page {
+    border-left: 1px solid #ccc;
+    border-radius: 5px 0 0 5px;
+}
+.board-page > a.next-page {
+    border-right: 1px solid #ccc;
+    border-radius: 0 5px 5px 0;
+}
+.board-page > a.current-page {
+    color: white;
+    background-color:#4A6EA9;
+}

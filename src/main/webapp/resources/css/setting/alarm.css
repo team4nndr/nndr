@@ -1,0 +1,3 @@
+body { background-color: #F0F2F5; }
+#sidebar > ul > li:nth-child(3) > a { background-color: #eee; }
+#sidebar { background-color: white; }

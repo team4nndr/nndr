@@ -1,0 +1,161 @@
+#sidebar > ul > li:nth-child(1) > a {
+    background-color: #eee;
+}
+
+#content {
+    min-width: 950px;
+}
+
+#details {
+    width: 920px;
+    height: 504px;
+    margin-top: 34px;
+}
+
+.row {
+    border-bottom: 1px solid #E5E5E5;
+    padding: 17px 10px;
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+
+.account-condition {
+    font-weight: bold;
+    width: 100px;
+    height: 25px;
+    border-radius: 50px;
+    color: white;
+    text-align: center;
+    padding: 2px;
+}
+
+/* 계정 상태 */
+.account-condition.normal { background-color: #4A6EA9; display: inline-block; }
+.account-condition.disabled { background-color: #8C8D8F; display: none;}
+.account-condition.dropped { background-color: black; display: none; }
+
+.info-input {
+    display: none;
+}
+
+/* 설정 - 일반 - 수정 */
+/* .row > .mod {
+    position: absolute;
+    right: 20px;
+    color: #4A6EA9;
+    font-size: 13px;
+} */
+
+.row > .mod > span:hover {
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.row > .mod > img {
+    height: 12px;
+    width: 12px;
+}
+
+.row:last-child {
+    border-bottom: 0;
+}
+
+.info-input {
+    height: 20px;
+    width: 600px;
+    font-size: 16px;
+}
+input.info-input { border: 1px solid #ccc; }
+.info-input > label { margin-right: 20px; }
+
+
+.mod-button {
+    position: absolute;
+    right: 10px;
+    height: 24px;
+    width: 42px;
+    background-color: #f5f6f7;
+    border: 1px solid #ccd0d5;
+    color: #4b4f56;
+    padding-top: 1px;
+    text-align: center;
+    border-radius: 2px;
+    font-size: 12px;
+    cursor: pointer;
+}
+
+.mod-button:hover { background-color: #d8d8d8; }
+
+.mod-button.submit {
+    position: absolute;
+    right: 55px;
+    background-color: #4A6EA9;
+    color: white;
+    width: 90px;
+}
+.mod-button.submit:hover { background-color: #35507a;}
+
+
+.row.mod {
+    background-color: #eee;
+    align-items: center;
+    /* padding-top: 10px;
+    padding-bottom: 10px; */
+    padding: 0;
+    min-height: 59px;
+}
+
+.mod-wrapper {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+/* inputWrapper */
+.input-wrapper {
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 2px;
+    height: 30px;
+    background-color: white;
+    /* position: absolute; */
+    /* padding: 0 10px; */
+}
+/* .input-wrapper {  } */
+.input-wrapper > input { border: none; }
+.input-wrapper > input:focus { outline: none; }
+
+/* 비밀번호 수정 */
+.row.mod.passwd {
+    padding: 17px 10px;
+    align-items: flex-start;
+}
+.mod-wrapper.passwd { margin-left: 39px; padding-bottom: 5px; }
+.mod-wrapper.passwd > div:not(.submit) { margin: 7px 0; }
+.mod-wrapper.passwd > div:first-child { margin-top: 0; }
+.mod-wrapper.passwd > div:last-child { margin-bottom: 0; }
+.input-wrapper.passwd > input { width: 230px; }
+.input-wrapper.passwd { 
+    position: absolute;
+    left: 150px;
+}
+
+/* 성별 수정 */
+.mod-wrapper.gender {
+    margin-left: 79px;
+    flex-direction: row;
+}
+.mod-wrapper.gender input { margin-right: 5px; }
+.mod-wrapper.gender label { margin-right: 20px; }
+
+/* 주소 수정 */
+/* .mod-wrapper.address { left: 68px; } */
+.input-wrapper.address { margin-left: 75px; }
+.input-wrapper.address > input { width: 570px; }
+
+/* 연락처 수정 */
+/* .mod-wrapper.tel {left: 52px; } */
+.input-wrapper.tel { margin-left: 60px; }
+.input-wrapper.tel > input { width: 230px; }
+.hidden { display: none; }
