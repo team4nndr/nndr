@@ -1,0 +1,189 @@
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+html,body, main{
+    height: 937px;
+}
+.content{
+    height: 937px;
+}
+
+.friendNav {
+    background-color: white;
+    border-right: 1px solid black;
+    width: 360px;
+    height: 937px;
+    min-width: 360px;
+    position: fixed;
+}
+
+.friendNav>ul {
+    background-color: white;
+    width: 360px;
+    flex-direction: column;
+    align-items: flex-start;
+    padding-top: 20px;
+    list-style: none;
+    border-right: 1px solid black;
+}
+
+.friendNav ul>li {
+    margin: 25px;
+    text-align: left;
+}
+
+.friendNav ul>li>a {
+
+    font-size: 23px;
+    color: black;
+    text-decoration: none;
+
+
+}
+
+
+.friendContent {
+    width: 1560px;   /*1309*/
+    display: flex;
+    height: 877px;
+    
+    flex-wrap: wrap;
+
+}
+
+ul li a img {
+    width: 30px;
+    height: 30px;
+    margin-right: 10px;
+    background-color: #EBEDF0;
+    border-radius: 50%;
+}
+ul li a img:hover{
+    width: 30px;
+    height: 30px;
+    margin-right: 10px;
+    background-color: #EBEDF0;
+    border-radius: 50%;
+}
+
+#friend {
+    font-size: 30px;
+    margin-left: 20px;
+
+}
+
+.friendNav ul>li:hover {
+    background-color: #F2F3F5;
+}
+
+.friendbax {
+    width: 196.67px;
+    height: 348.67px;
+    margin: 10px;
+    margin-left: 20px;
+}
+
+
+.tbox {
+    width: 194.67px;
+    height: 194.67px;
+}
+
+.pick {
+    width: 194.67px;
+    height: 194.67px;
+    border-radius: 10px 10px 0 0;
+}
+
+.boxname {
+    width: 194.67px;
+    height: 152px;
+    background-color: white;
+    border-radius: 0 0 10px 10px;
+
+}
+
+.namebar {
+    width: 170.67px;
+    height: 21px;
+    padding-top: 2px;
+    padding-left: 10px;
+}
+
+.frName {
+    font-size: 18px;
+}
+
+.plusfr {
+    width: 170.67;
+    height: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.btnbox {
+    justify-content: center;
+    display: flex;
+    padding-left: 12px;
+    padding-right: 12px;
+}
+
+.checkYes {
+    width: 185px;
+    height: 36px;
+    border-radius: 8px;
+    background-color: #1B74E4;
+    border: 0px;
+    margin-top: 10px;
+    color: white;
+}
+
+.checkYes:hover {
+    background-color: #0e62d7;
+}
+
+.checkYes:active {
+    transform: scale(0.95);
+}
+
+.checkNo {
+    width: 185px;
+    height: 36px;
+    border: 0px;
+    margin-top: 10px;
+    border-radius: 5px;
+    background-color: #E4E6EB;
+}
+
+.checkNo:hover {
+    background-color: #c4c4c4;
+}
+
+.checkNo:active {
+    transform: scale(0.95);
+}
+
+.together {
+    padding-top: 8px;
+    padding-left: 10px;
+    color: #65676b;
+    font-size: 15px;
+}
+
+.topfr {
+    width: 1920px;
+    height: 26px;
+    padding: 30px;
+    font-size: 23px;
+    color: #050505;
+}
+
+.topdiv {
+    width: 1920px;
+    margin-left: 360px;
+    background-color: #EBEDF0;
+    height: 100%;
+}
