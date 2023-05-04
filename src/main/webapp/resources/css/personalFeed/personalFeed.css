@@ -219,10 +219,6 @@ button{
     height: 341px;
     width: 1186px;
     position: absolute;
-    user-select:none;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select:none;
 }
 .who{
     display: flex;
