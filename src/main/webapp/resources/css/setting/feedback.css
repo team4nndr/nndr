@@ -1,0 +1,118 @@
+body { background-color: #F0F2F5; }
+#sidebar > ul > li:nth-child(4) > a { background-color: #eee; }
+#sidebar { background-color: white; }
+
+.modalTop {
+    position: relative;
+    height: 61px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.modalTop > button {
+    position: absolute;
+    right: 10px;
+}
+
+.modalContent {
+    margin: 12px 16px;
+}
+div.title {
+    margin-top: 8px;
+    margin-left: 28px;
+    text-align: left;
+}
+textarea {
+    margin-top: 9px;
+    width: 492px;
+    height: 223px;
+    resize: none;
+    background-color: #F0F2F5;
+    border: 1px solid #CDCDCD;
+    border-radius: 6px;
+    padding: 5px 12px;
+    font-size: 1rem;
+}
+textarea:focus {
+    outline: none;
+}
+textarea + div {
+    display: inline-block;
+    width: 492px;
+    height: 80px;
+    background-color: #D9D9D9;
+    border: 1px solid #CDCDCD;
+    text-align: left;
+    padding: 6px 12px;
+    border-radius: 6px;
+    margin-top: 5px;
+    font-size: 0.9rem;
+}
+
+.modal {
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4);
+    z-index: 999;
+}
+
+.modal-body {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 548px;
+    height: 495px;
+    text-align: center;
+    background-color: rgb(255, 255, 255);
+    border-radius: 8px;
+    box-shadow: 0 2px 3px 0 rgba(34, 36, 38, 0.15);
+    transform: translateX(-50%) translateY(-50%);
+    margin: 0;
+}
+
+#modalContent2, #modalBottom2{
+    display: none;
+}
+
+#submitBtn, #cancelBtn2 {
+    width: 130px;
+}
+
+#modalContent2 {
+    position:flex;
+    align-items: center;
+    justify-content: center;
+    height: 294px;
+}
+#modalContent2 > div {
+    padding: 0;
+    margin: 0;
+}
+.modalBottom > button {
+    margin: 0;
+}
+.modalBottom {
+    position: absolute;
+    bottom: 27px;
+    right: 0px;
+    margin-top: 27px;
+    margin-right: 28px;
+    text-align: right;
+}
+
+.show { display: block; } 
+
+/* 취소cancel 버튼 */
+#cancelBtn {
+    width: 54px;
+    background-color: white;
+    color: #4A6EA9;
+}
+#cancelBtn:hover {
+    background-color:#F4F4F4;
+}

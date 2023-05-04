@@ -1,0 +1,79 @@
+#content {
+    min-width: 1250px;
+}
+
+#details {
+    width: 1200px;
+    height: 650px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    /* border: 1px solid #ccc; */
+    background-color: #F0F2F5;
+    border-radius: 6px;
+    padding: 25px;
+}
+
+#feedbackUserSection {}
+
+#feedbackUserSection > div {
+    margin: 25px 0;
+}
+#feedbackUserSection > div:first-child {
+    margin-top: 0;
+}
+
+.row > .data {
+    left: 166px;
+}
+
+#feedbackAdminSection {}
+#feedbackAdminSection > span {
+    display: block;
+}
+
+#feedbackContent {
+    resize: none;
+    width: 100%;
+    height: 243px;
+    /* background-color: #eee; */
+    background-color: white;
+    padding: 20px 25px;
+    overflow-y: scroll;
+}
+
+textarea {
+    width: 100%;
+    height: 100px;
+    resize: none;
+    border: none;
+    padding: 20px 25px;
+    margin-top: 20px;
+    font-size: 1rem;
+    overflow-y: scroll;
+    /* background-color: #eee; */
+    background-color: white;
+}
+textarea:focus {
+    outline: none;
+}
+
+.feedback-condition {
+    font-weight: bold;
+    width: 100px;
+    height: 25px;
+    border-radius: 50px;
+    color: white;
+    text-align: center;
+    padding: 2px;
+}
+.feedback-condition.in-porgress { background-color: #4A6EA9; display: none; }
+.feedback-condition.complete { background-color: #8C8D8F; display: inline-block; }
+.complete-date { 
+    position: relative;
+    display: inline-block;
+    margin-left: 120px;
+}
+
+#bottom > button {
+    width: 130px;
+}

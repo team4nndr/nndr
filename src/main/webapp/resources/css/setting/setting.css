@@ -1,0 +1,82 @@
+#content { padding-top: 50px; }
+
+.content-box {
+    width: 680px;
+
+    background: #FFFFFF;
+    box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.25);
+    border-radius: 6px;
+    margin-bottom: 26px;
+    padding: 14px 18px 8px 18px;
+}
+
+.title {
+    font-size: 1.1rem;
+    font-weight: bold;
+}
+
+.content-list {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 46px;
+    margin: 5px 0;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+.content-list.hover:hover {
+    border-radius: 6px;
+    background-color: rgba(225, 225, 225, 0.3);
+}
+
+.content-list > button {
+    margin: 0;
+    transform: translateX(10px);
+}
+
+/* close 버튼 */
+.close {
+    height: 36px;
+    width: 36px;
+    border-radius: 50%;
+    display:inline-block;
+    display:inline;
+}
+.close:after {
+    display: inline-block;
+    content: "\00d7";
+    font-size:15pt;
+}
+
+h3 {
+    width: 680px;
+}
+
+/* toggle button with checkbox */
+.checkbox { display: none; }
+.checkbox:checked + .toggle { background-color: #BB2649; }
+.checkbox:checked + .toggle > .circle {
+    transform: translateX(22px);
+    transition-duration: 0.2s;
+}
+.toggle {
+    position: relative;
+    width: 52px;
+    height: 28px;
+    border-radius: 50px;
+    background-color: #D9D9D9;
+    cursor: pointer;
+}
+.circle {
+    position: absolute;
+    top: 3px;
+    left: 4px;
+
+    width: 22px;
+    height: 22px;
+    border-radius: 50px;
+    background-color: white;
+ 
+    transform: translateX(0px);
+    transition-duration: 0.2s;
+}

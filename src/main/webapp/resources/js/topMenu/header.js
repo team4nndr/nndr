@@ -3,11 +3,11 @@
 // 검색어 누적창 구현
 
 // 검색 input 태그
-const search = document.getElementById("query");
+const search = document.getElementById("nndrQuery");
 // 자동완성 목록
-const suggestion_pannel = document.querySelector(".suggestions_pannel");
+const suggestion_pannel = document.querySelector(".nndr-suggestions_pannel");
 // 검색 버튼
-const searchBtn = document.getElementById("searchBtn");
+const searchBtn = document.getElementById("nndrSearchBtn");
 
 // 자동완성 데이터 초기 설정(친구 이름 검색 시)
 let s_arr = [
@@ -32,7 +32,6 @@ let hashTagArr = [
     { tagName: "#주말" },
 
 ];
-
 
 // input 태그 이벤트
 search.addEventListener("keyup", (event) => {
@@ -79,35 +78,29 @@ search.addEventListener("keyup", (event) => {
     }
 });
 
-
-
-
-
-
-
 // 드롭다운 아이콘 구현
-var dropdowns = document.getElementById("bellDropdown");
+var dropdowns = document.getElementById("nndrBellDropdown");
 
-const dropBtn1 = document.getElementById("dropBtn1");
-const dropBtn2 = document.getElementById("dropBtn2");
-const bellDropdown = document.getElementById("bellDropdown");
-const myDropdown = document.getElementById("myDropdown");
+const dropBtn1 = document.getElementById("nndrDropBtn1");
+const dropBtn2 = document.getElementById("nndrDropBtn2");
+const bellDropdown = document.getElementById("nndrBellDropdown");
+const myDropdown = document.getElementById("nndrMyDropdown");
 
 
 function bell() {
-    document.getElementById("bellDropdown").classList.toggle("show");
+    document.getElementById("nndrBellDropdown").classList.toggle("nndr-show");
 
 
 }
 
 window.onclick = function (e) {
-    if (e.target.matches('.dropBtn1')) {
-        var dropdowns = document.getElementById("bellDropdown");
+    if (e.target.matches('.DropBtn1')) {
+        var dropdowns = document.getElementById("nndrBellDropdown");
         var i;
         for (i = 0; i < dropdowns.length; i++) {
             var openDropdown = dropdowns[i];
-            if (openDropdown.classList.contains('show')) {
-                openDropdown.classList.remove('show');
+            if (openDropdown.classList.contains('nndr-show')) {
+                openDropdown.classList.remove('nndr-show');
             }
         }
     }
@@ -117,17 +110,17 @@ window.onclick = function (e) {
 }
 
 function my() {
-    document.getElementById("myDropdown").classList.toggle("show");
+    document.getElementById("nndrMyDropdown").classList.toggle("nndr-show");
 }
 
 window.onclick = function (e) {
-    if (!e.target.matches('.dropBtn2')) {
-        var dropdowns = document.getElementById("myDropdown");
+    if (!e.target.matches('.nndrDropBtn2')) {
+        var dropdowns = document.getElementById("nndrMyDropdown");
         var i;
         for (i = 0; i < dropdowns.length; i++) {
             var openDropdown = dropdowns[i];
-            if (openDropdown.classList.contains('show')) {
-                openDropdown.classList.remove('show');
+            if (openDropdown.classList.contains('nndr-show')) {
+                openDropdown.classList.remove('nndr-show');
             }
         }
     }
@@ -192,18 +185,3 @@ dropBtn2.addEventListener("click", e => {
     myDropdown.style.display = "block"; // myDropdown를 보임
     document.addEventListener("click", outclick); // 클릭 이벤트 리스너 등록
 });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
