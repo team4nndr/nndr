@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="/resources/css/friend/friend.css">
 </head>
 
+	<jsp:include page="/WEB-INF/views/topMenu/header.jsp" />
 <body>
     <main>
         <div class="content">
