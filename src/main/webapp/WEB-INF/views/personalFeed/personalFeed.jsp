@@ -11,8 +11,8 @@
     <link rel="shortcut icon" href="#" />
 </head>
 <body>
-<%-- 
-	<jsp:include page="/WEB-INF/views/topMenu/header.jsp" /> --%>
+
+	<jsp:include page="/WEB-INF/views/topMenu/header.jsp" /> 
 
     <header>
     <div class="flex-container">

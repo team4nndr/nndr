@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="memberMapper">
+<mapper namespace="personalMapper">
 
 	<resultMap type="Member" id="member_rm">
 		<!-- DB의 기본 키(복합키면 여러 개 작성) -->
@@ -11,7 +11,6 @@
 		<result property="memberPw" column="MEMBER_PW" />
 		<result property="memberName" column="MEMBER_NAME" />
 		<result property="memberTel" column="MEMBER_TEL" />
-		<result property="accountCondition" column="ACCOUNT_CONDITION" />
 		<result property="memberCode" column="MEMBER_CODE" />
 		<result property="enrollDate" column="ENROLL_DATE" />
 		<result property="disableDate" column="DISABLE_DATE" />
@@ -27,8 +26,8 @@
 		<result property="setAlarmFeed" column="SET_AL_FEED" />
 	</resultMap>
 
-	<select id="test" resultMap="member_rm">
-		SELECT * FROM "MEMBER" WHERE MEMBER_NO = 1
+	<select id="personalMember" resultMap="member_rm">
+		SELECT * FROM "MEMBER" WHERE MEMBER_EMAIL = #{email}
 	</select>
 	
 </mapper>
