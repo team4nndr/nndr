@@ -24,26 +24,34 @@
 		<result property="setAlarmLike" column="SET_AL_LIKE" />
 		<result property="setAlarmShare" column="SET_AL_SHARE" />
 		<result property="setAlarmFeed" column="SET_AL_FEED" />
+		
+		<!-- join MemberInfo -->
+		<result property="profileImage" column="INFO_IMG" />
+		<result property="infoGender" column="INFO_GENDER" />
+		<result property="infoResidence" column="INFO_RESIDENCE" />		
 	</resultMap>
-
-	<!-- 테스트유저 (삭제예정) -->
-	<select id="test" resultMap="member_rm">
-		SELECT * FROM "MEMBER" WHERE MEMBER_NO = 1
-	</select>
 	
 	<!-- 유저 수 조회 -->
 	<select id="getMemberCount" resultType="_int">
 		SELECT COUNT(*) FROM "MEMBER"
-		WHERE MEMBER_CODE='N'
 	</select>
 	
 	<!-- 모든(비활성, 탈퇴유저 포함) 유저 목록 조회 -->
 	<select id="selectMemberList" resultMap="member_rm">
-		SELECT MEMBER_NO, MEMBER_NAME, MEMBER_EMAIL, MEMBER_CODE,
-			TO_CHAR(ENROLL_DATE, 'YYYY-MM-DD') ENROLL_DATE
+		SELECT MEMBER_NO, MEMBER_NAME, MEMBER_EMAIL, MEMBER_CODE, MEMBER_TEL, DISABLE_DATE, DELETE_DATE,
+			TO_CHAR(ENROLL_DATE, 'YYYY-MM-DD') ENROLL_DATE, INFO_IMG
 		FROM "MEMBER"
-		WHERE MEMBER_CODE='N'
-		ORDER BY ENROLL_DATE DESC
+			  LEFT JOIN "MEMBER_INFO" USING(MEMBER_NO)
+		ORDER BY MEMBER_NO DESC
+	</select>
+	
+	<!-- 유저 정보 조회 -->
+	<select id="selectMember" resultMap="member_rm">
+		SELECT MEMBER_NO, MEMBER_NAME, MEMBER_EMAIL, MEMBER_CODE, MEMBER_TEL, DISABLE_DATE, ENROLL_DATE,
+			TO_CHAR(ENROLL_DATE, 'YYYY-MM-DD') ENROLL_DATE, INFO_IMG, INFO_GENDER, INFO_RESIDENCE
+		FROM "MEMBER"
+			  LEFT JOIN "MEMBER_INFO" USING(MEMBER_NO)
+	    WHERE MEMBER_NO = #{memberNo}
 	</select>
 	
 </mapper>

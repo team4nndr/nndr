@@ -28,4 +28,9 @@ public class Member {
 	private String setAlarmLike;
 	private String setAlarmShare;
 	private String setAlarmFeed;
+	
+	// MEMBER_INFO 필드
+	private String profileImage;
+	private String infoGender;
+	private String infoResidence;
 }
