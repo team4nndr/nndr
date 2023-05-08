@@ -121,13 +121,12 @@ COMMIT;
 -- "MEMBER" 일반유저 데이터 삽입
 INSERT INTO "MEMBER" 
 VALUES(
-	SEQ_MEMBER_NO.NEXTVAL, 	-- 회원번호
-	'user01@mail.com', 		-- 이메일
-	'pass01', 				-- 비밀번호
-	'유저일', 				-- 이름
+	3, 	-- 회원번호
+	'test@naver.com', 		-- 이메일
+	'asdasd', 				-- 비밀번호
+	'너나', 				-- 이름
 	'01011112222',			-- 전화번호
-	DEFAULT, 				-- 계정상태(N:정상(기본), B:비활성, D:탈퇴)
-	'M1', 					-- 회원등급(회원등급(M1~M9), 기본:M9)
+	'N', 					-- 회원등급(회원등급(M1~M9), 기본:M9)
 	DEFAULT, 				-- 가입일(기본:SYSDATE)
 	NULL, 					-- 비활성화일
 	NULL, 					-- 탈퇴일
@@ -141,7 +140,7 @@ VALUES(
 	DEFAULT, 				-- 게시글공유알림(N:OFF, Y:ON(기본))
 	DEFAULT					-- 개인피드갱신알림(N:OFF, Y:ON(기본))
 );
-
+SELECT * FROM "MEMBER_INFO";
 COMMIT;
 
 ----------------------------------------------------------------------------------------

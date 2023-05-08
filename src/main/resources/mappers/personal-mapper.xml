@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="personalMapper">
 
-	<resultMap type="Member" id="member_rm">
+	<resultMap type="MemberInfo" id="memberInfo_rm">
 		<!-- DB의 기본 키(복합키면 여러 개 작성) -->
 		<id property="memberNo" column="MEMBER_NO" />
 
@@ -24,10 +24,31 @@
 		<result property="setAlarmLike" column="SET_AL_LIKE" />
 		<result property="setAlarmShare" column="SET_AL_SHARE" />
 		<result property="setAlarmFeed" column="SET_AL_FEED" />
+		<result property="infoIntro" column="INFO_INTRO" />
+		<result property="infoHobby" column="INFO_HOBBY" />
+		<result property="infoGender" column="INFO_GENDER" />
+		<result property="infoBirth" column="INFO_BIRTH" />
+		<result property="infoImg" column="INFO_IMG" />
+		<result property="infoJob" column="INFO_JOB" />
+		<result property="infoCollege" column="INFO_COLLEGE" />
+		<result property="infoHigh" column="INFO_HIGH" />
+		<result property="infoMiddle" column="INFO_MIDDLE" />
+		<result property="infoElementary" column="INFO_ELEMENTARY" />
+		<result property="infoResidence" column="INFO_RESIDENCE" />
+		<result property="infoBirthplace" column="INFO_BIRTHPLACE" />
+		<result property="infoSns" column="INFO_SNS" />
+		<result property="infoLang" column="INFO_LANG" />
+		<result property="romanticYn" column="ROMANTIC_YN" />
+		<result property="infoNick" column="INFO_NICK" />
+		<result property="infoText" column="INFO_TEXT" />
+		<result property="infoBack" column="INFO_BACK" />
+		<result property="infoProfile" column="INFO_PROFILE" />
+		
+		
 	</resultMap>
 
-	<select id="personalMember" resultMap="member_rm">
-		SELECT * FROM "MEMBER" WHERE MEMBER_EMAIL = #{email}
+	<select id="personalMember" resultMap="memberInfo_rm">
+		SELECT * FROM "MEMBER" M LEFT JOIN "MEMBER_INFO" D ON (M.MEMBER_NO=D.MEMBER_NO) WHERE M.MEMBER_NO= #{no}
 	</select>
 	
 </mapper>
