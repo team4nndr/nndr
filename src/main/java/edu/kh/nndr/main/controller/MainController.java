@@ -18,6 +18,6 @@ public class MainController {
 	public String mainForward(Model model) {
 		Member testMember = service.test();
 		model.addAttribute("testMember", testMember); // request scope
-		return "member/login";
+		return "main/main";
 	}
 }
