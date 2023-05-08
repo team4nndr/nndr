@@ -16,6 +16,7 @@
 		<param-value>
 			classpath:spring/root-context.xml
 			classpath:spring/spring-security.xml <!-- spring-security.xml 파일 로드 -->
+			classpath:spring/email-context.xml
 		</param-value>
 	</context-param>
 
