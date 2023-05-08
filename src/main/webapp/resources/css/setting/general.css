@@ -104,6 +104,7 @@ input.info-input { border: 1px solid #ccc; }
     padding-bottom: 10px; */
     padding: 0;
     min-height: 59px;
+    padding: 0 10px;
 }
 
 .mod-wrapper {
