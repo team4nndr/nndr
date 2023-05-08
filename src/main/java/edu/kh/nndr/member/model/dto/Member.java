@@ -15,7 +15,6 @@ public class Member {
 	private String memberPw;
 	private String memberName;
 	private String memberTel;
-	private String accountCondition;
 	private String memberCode;
 	private String enrollDate;
 	private String disableDate;
@@ -29,4 +28,9 @@ public class Member {
 	private String setAlarmLike;
 	private String setAlarmShare;
 	private String setAlarmFeed;
+	
+	// MEMBER_INFO 필드
+	private String profileImage;
+	private String infoGender;
+	private String infoResidence;
 }
