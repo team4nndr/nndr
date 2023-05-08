@@ -29,39 +29,46 @@
                 <h3>회원 상세 정보</h3>
                 <hr>
                 <div class="row">
-                    <span class="title">로그인계정</span>
-                    <span class="data">cyunanne@gmail.com</span>
-                </div>
-                <div class="row">
                     <span class="title">이름</span>
-                    <span class="data">최유나</span>
-                </div>
-                <div class="row">
-                    <span class="title">성별</span>
-                    <span class="data">여</span>
+                    <span class="data">${member.memberName}</span>
                 </div>
                 <div class="row">
                     <span class="title">이메일</span>
-                    <span class="data">cyunanne@gmail.com</span>
+                    <span class="data">${member.memberEmail}</span>
+                </div>
+                <div class="row">
+                    <span class="title">성별</span>
+                    <span class="data">${member.infoGender}</span>
                 </div>
                 <div class="row">
                     <span class="title">주소</span>
-                    <span class="data">경기도 하남시 아리수로 499 미사강변루나리움아파트 502동 1302호</span>
+                    <span class="data">${member.infoResidence}</span>
                 </div>
                 <div class="row">
                     <span class="title">연락처</span>
-                    <span class="data">010-5923-9363</span>
+                    <span class="data">${member.memberTel}</span>
                 </div>
                 <div class="row">
                     <span class="title">회원상태</span>
-                    <div class="data account-condition normal">정상</div>
-                    <div class="data account-condition disabled">비활성</div>
-                    <div class="data account-condition dropped">탈퇴</div>
+                    <c:choose>
+                        <c:when test="${member.memberCode == 'N'}">
+                            <div class="data account-condition normal">정상</div>
+                        </c:when>
+                        <c:when test="${member.memberCode == 'B'}">
+                            <div class="data account-condition disabled">비활성화</div>
+                        </c:when>
+                        <c:when test="${member.memberCode == 'D'}">
+                            <div class="data account-condition dropped">탈퇴</div>
+                        </c:when>
+                        <c:otherwise>
+                            <div class="data account-condition admin">관리자</div>
+                        </c:otherwise>
+                    </c:choose>
                 </div>
             </div>
             <div id="bottom">
-                <button type="button" name="button" value="able" disabled>비활성 해제</button>
-                <button type="button" name="button" vlaue="recover" disabled>계정 복구</button>
+                <button type="button" name="button" value="able" <c:if test="${member.memberCode != 'B'}">disabled</c:if>>비활성 해제</button>
+                <button type="button" name="button" vlaue="recover" <c:if test="${member.memberCode != 'D'}">disabled</c:if>>계정 복구</button>
             </div>
         </form>
     </main>

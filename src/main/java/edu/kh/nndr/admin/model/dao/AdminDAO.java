@@ -26,7 +26,10 @@ public class AdminDAO {
 	public List<Member> selectMemberList(Pagination pagination) {
 		int offset = (pagination.getCurrentPage() - 1) * pagination.getLimit();
 		RowBounds rowBounds = new RowBounds(offset, pagination.getLimit());
-		
-		return sqlSession.selectList("memberMapper.selectMemberList", rowBounds);
+		return sqlSession.selectList("memberMapper.selectMemberList", null, rowBounds);
+	}
+
+	public Member selectMember(int memberNo) {
+		return sqlSession.selectOne("memberMapper.selectMember", memberNo);
 	}
 }
