@@ -50,14 +50,15 @@
                                 <!-- <input type="text" name="query" id="query" 
                                 placeholder="무슨 생각을 하고 계신가요?" autocomplete="off">  -->
                                 <button id="think">고객님은 무슨생각을 하고 계신가요?</button>    
+                                
                                 <%-- 모달 --%>
-                                <div id="myContent"></div> 
+                                <div class="show" id="myContent"></div> 
                                 <div id="myContent-modal">
-                                <div>
-                                <div>게시물 만들기</div>
-                                <div id="close" role="button">X</div>
-                                </div>
-
+                                <section class="myContent-top">
+                                <span class="title">게시물 만들기</span>
+                                <button type="button" class="close close-btn"></button>
+                                </section>
+                                    
 
                                 <div>
                                 <section id="modal-my1">
@@ -88,7 +89,11 @@
 
 
 
-                                <div></div>
+                                <section class="modalBottom" id="modal-my3">
+                                    
+                                    <button class="reverse" id="submitBtn">게시</button>
+                                    
+                                </section>
                                 
                                 
                                 </div>
