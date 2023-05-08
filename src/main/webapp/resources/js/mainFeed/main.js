@@ -34,17 +34,3 @@ document.getElementById("info-confirm").addEventListener("click", () => {
 
 
 
-
-/* 취소 누르면 모달 닫힘 */
-
-const closeBtnList = document.getElementsByClassName('close-btn');
-
-for(let btn of closeBtnList) {
-    btn.addEventListener('click', () => {
-        
-        document.getElementById("myContent").style.display="none";
-        document.getElementById("myContent-modal").style.display="none";
-        
-    });
-}
-

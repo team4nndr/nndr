@@ -154,9 +154,6 @@ align-items: center;
     transition: all .4s;
     pointer-events: visible;
 }
-.show{
-    display: block;
-}
 
 #myContent-modal{
     display: none;
@@ -180,50 +177,37 @@ align-items: center;
 }
 
 
-.myContent-top {
-    position: relative;
-    height: 61px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.myContent-top > button {
-    position: absolute;
-    right: 10px;
-}
-
-div.title {
-    margin-top: 8px;
-    margin-left: 28px;
-    text-align: left;
-}
+#myContent-modal>div{
+display: flex;
 
     
+}
 
+#myContent-modal>div>div:first-child{
+display: flex;
+width: 464px;
+height : 60px;
+box-sizing: border-box;
+font-weight: bold;
+font-size: 20px;
+justify-content: center;
+align-items: center;
 
-/* 취소cancel 버튼 */
-.close {
-    height: 36px;
-    width: 36px;
+}
+#close{
+    border: 1px solid lightgrey;
     border-radius: 50%;
-    display:inline-block;
-    display:inline;
+    font-weight: bold;
+    background-color: #56A8C5;
+    width: 60px;
+    height: 60px;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    box-sizing: border-box;
+
+
 }
-.close:after {
-    display: inline-block;
-    content: "\00d7";
-    font-size:15pt;
-}
-
-
-.close-btn:hover {
-    color:#4A6EA9;
-}
-
-
-
-
 
 #myContent-modal>div:nth-child(2){
 
@@ -287,21 +271,6 @@ display: flex;
 
 
 
-/* 모달아래 게시하기 */
-.modalBottom > button {
-    margin: 0;
-}
-.modalBottom {
-    position: absolute;
-    bottom: 27px;
-    right: 0px;
-    margin-top: 27px;
-    margin-right: 28px;
-    text-align: right;
-}
-#submitBtn{
-    width: 450px;
-}
 
 
 
