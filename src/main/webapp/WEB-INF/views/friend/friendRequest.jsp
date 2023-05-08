@@ -10,7 +10,7 @@
   <title>친구요청</title>
   <link rel="stylesheet" href="/resources/css/friend/friendRequest.css">
 </head>
-
+	<jsp:include page="/WEB-INF/views/topMenu/header.jsp" />
 <body>
   <div class="content">
     <div class="friendNav">

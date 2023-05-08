@@ -164,13 +164,13 @@ window.addEventListener("load", function () {
 });
 
 
+/* 알림내용 추가하기 */
 const nndrAddAlarm = document.getElementsByClassName("nndrAddAlarm");
 const nndrAddAlarmContent = document.getElementsByClassName("nndrAddAlarmContent");
 const nndrTopAlarmDelete =  document.getElementsByClassName("nndrBottomAlarmDelete"); 
 const nndrAddAlarmProfile = document.getElementsByClassName("nndrAddnndrAddAlarmProfile");
 const nndrAddContainer = document.getElementById("nndrAddContainer");
 
-/* 알림내용 추가하기 */
 thumsUp.addEventListener("click", () => {
 
     const nndrAddAlarm = document.createElement("div");
