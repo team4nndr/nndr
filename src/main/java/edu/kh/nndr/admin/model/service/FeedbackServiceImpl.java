@@ -34,7 +34,9 @@ public class FeedbackServiceImpl implements FeedbackService {
 	// 상세 의견 조회
 	@Override
 	public Feedback getFeedback(int feedbackNo) {
-		// TODO Auto-generated method stub
-		return null;
+		Feedback feedback = dao.getFeedback(feedbackNo);
+		String content = feedback.getFeedbackContent();
+		feedback.setFeedbackContent(content.replace("\r\n", "<br/>"));
+		return feedback;
 	}
 }

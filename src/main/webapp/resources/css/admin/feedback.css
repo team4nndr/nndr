@@ -77,8 +77,13 @@
     border-radius: 50px;
     color: white;
     text-align: center;
-    padding: 2px;
+}
+
+.feedback-condition { 
+    display:flex;
+    align-items: center;
+    justify-content: center;
 }
 /* 이 부분은 DB에 저장된 정보에 따라 출력할 상태를 결정할 것임 */
-.feedback-condition-icon.in-porgress { background-color: #4A6EA9; display: none; }
-.feedback-condition-icon.complete { background-color: #8C8D8F; display: inline-block; }
+.feedback-condition-icon.in-porgress { background-color: #4A6EA9; }
+.feedback-condition-icon.complete { background-color: #8C8D8F; }

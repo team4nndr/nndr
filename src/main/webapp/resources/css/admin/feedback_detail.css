@@ -64,7 +64,6 @@ textarea:focus {
     border-radius: 50px;
     color: white;
     text-align: center;
-    padding: 2px;
 }
 .feedback-condition.in-porgress { background-color: #4A6EA9; display: none; }
 .feedback-condition.complete { background-color: #8C8D8F; display: inline-block; }
@@ -77,3 +76,7 @@ textarea:focus {
 #bottom > button {
     width: 130px;
 }
+
+/* #feedbackContent {
+    white-space: pre-wrap;
+} */

@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -46,7 +48,7 @@
                 </div>
                 <div class="row">
                     <span class="title">연락처</span>
-                    <span class="data">${member.memberTel}</span>
+                    <span class="data">${fn:substring(member.memberTel,0,3)}-${fn:substring(member.memberTel,3,7)}-${fn:substring(member.memberTel,7,13)}</span>
                 </div>
                 <div class="row">
                     <span class="title">회원상태</span>

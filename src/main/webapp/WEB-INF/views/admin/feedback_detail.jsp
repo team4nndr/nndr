@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-
-<c:set var="memberList" value="${memberList}"/>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 
 <!DOCTYPE html>
 <html lang="ko">
@@ -32,27 +31,45 @@
                 <div id="feedbackUserSection">
                     <div class="row">
                         <span class="title">의견번호</span>
-                        <span class="data">2</span>
+                        <span class="data">${feedback.feedbackNo}</span>
                     </div>
                     <div class="row">
                         <span class="title">접수회원번호</span>
-                        <span class="data">54</span>
+                        <span class="data">${feedback.memberNo} (${feedback.memberName})</span>
                     </div>
                     <div class="row">
                         <span class="title">접수일</span>
-                        <span class="data">2023-04-20</span>
+                        <span class="data">${feedback.feedbackDate}</span>
                     </div>
                     <div class="row">
                         <span class="title">처리상태</span>
-                        <div class="data feedback-condition in-porgress">처리중</div>
-                        <div class="data feedback-condition complete">처리완료</div>
-                        <div class="data complete-date">처리일시 : <span>2023-04-20</span></div>
+
+                        <c:choose>
+                            <c:when test="${feedback.confirmFlag == 'N'}">
+                                <div class="data feedback-condition in-porgress">처리중</div>
+                            </c:when>
+                            <c:otherwise>
+                                <div class="data feedback-condition complete">처리완료</div>
+                                <div class="data complete-date">(처리일시 : <span>${feedback.confirmDate}</span>)</div>
+                            </c:otherwise>
+                        </c:choose>
+
                     </div class="row">
-                    <div id="feedbackContent" class="data"><span>페이스북이랑 너무 똑같아요 배낀거 아닌가요?</span></div>
+                    <c:set var="crlf" value="\r\n"/>
+                    <div id="feedbackContent" class="data">${fn:replace(feedback.feedbackContent, crlf, "<br/>")}</div>
                 </div>
                 <div id="feedbackAdminSection" class="row">
                     <span class="title">처리의견</span>
-                    <textarea name="adminComment" id="adminComment" placeholder="처리의견을 작성해주세요..."></textarea>
+
+                    <c:choose>
+                        <c:when test="${feedback.confirmFlag == 'N'}">
+                            <textarea name="adminComment" id="adminComment" placeholder="처리의견을 작성해주세요..."></textarea>
+                        </c:when>
+                        <c:otherwise>
+                            <textarea name="adminComment" id="adminComment" disabled>${feedback.adminComment}</textarea>
+                        </c:otherwise>
+                    </c:choose>
+                    
                 </div>
             </div>
             <div id="bottom">
