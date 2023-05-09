@@ -24,11 +24,36 @@
             <div class="leftArea">
                 <div class="leftArea-1"> 
                     <ul>
-                        <li><img src="/resources/images/mainFeed/mainHome.png" alt="home" id="mainHome"><a href="#">홈</a></li>
-                        <li><img src="/resources/images/mainFeed/mainMy.png" alt="myHome" id="myHome"><a href="#">나의피드</a></li>
-                        <li><img src="/resources/images/mainFeed/mainFriends.png" alt="friends" id="friend"><a href="#">친구</a></li>
-                        <li><img src="/resources/images/mainFeed/mainLike.png" alt="like" id="likeLogo"><a href="#">내가 저장한 피드</a></li>
-                        <li><img src="/resources/images/mainFeed/mainSearch.png" alt="search" id="searchLogo"><a href="https://www.naver.com/" target="_blank">초록검색창</a></li>
+                        <li>
+                        <a href="/mainFeed" class="imgLink">
+                        <img src="/resources/images/mainFeed/mainHome.png" alt="home" id="mainHome">
+                        </a> <a href="/mainFeed" class="aLink">홈</a>
+                        </li>
+
+                        <li>
+                        <a href="/personalFeed/4" class="imgLink">
+                        <img src="/resources/images/mainFeed/mainMy.png" alt="myHome" id="myHome">
+                        </a><a href="/personalFeed/4" class="aLink">나의피드</a>
+                        </li>
+
+                        <li>
+                        <a href="#" class="imgLink">
+                        <img src="/resources/images/mainFeed/mainFriends.png" alt="friends" id="friend">
+                        </a>
+                        <a href="/friend" class="aLink">친구</a></li>
+                        
+                        <li>
+                        <a href="#" class="imgLink">
+                        <img src="/resources/images/mainFeed/mainLike.png" alt="like" id="likeLogo">
+                        </a>
+                        <a href="#" class="aLink">내가 저장한 피드</a></li>
+
+
+                        <li>
+                        <a href="" class="imgLink">
+                        <img src="/resources/images/mainFeed/mainSearch.png" alt="search" id="searchLogo" >
+                        </a>
+                        <a href="https://www.naver.com/" target="_blank"class="aLink">초록검색창</a></li>
                     </ul>
                 </div>
 
@@ -53,10 +78,10 @@
                                 <%-- 모달 --%>
                                 <div id="myContent"></div> 
                                 <div id="myContent-modal">
-                                <div>
-                                <div>게시물 만들기</div>
-                                <div id="close" role="button">X</div>
-                                </div>
+                                <section>
+                                <section>게시물 만들기</section>
+                                <section id="close" role="button">X</section>
+                                </section>
 
 
                                 <div>
