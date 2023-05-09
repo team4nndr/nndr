@@ -4,7 +4,7 @@ import java.util.Map;
 
 import edu.kh.nndr.member.model.dto.Member;
 
-public interface AdminService {
+public interface UserManageService {
 
 	Map<String, Object> selectMemberList(int cp);
 

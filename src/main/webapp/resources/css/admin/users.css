@@ -66,7 +66,7 @@
 .user-name { width: 15%; }
 .email { width: 40%; }
 .regist-date { width: 15%; }
-.account-condition { width: 15%; }
+.account { width: 15%; }
 .user-name {
     display: flex;
     align-items: center;
@@ -78,12 +78,12 @@
 }
 
 /* 계정 상태 */
-.account-condition {
+.account {
     display: flex;
     align-items: center;
     justify-content: center;
 }
-.account-condition > div {
+.account > div {
     font-weight: bold;
     width: 100px;
     height: 25px;
@@ -92,9 +92,3 @@
     text-align: center;
     /* padding: 2px; */
 }
-
-/* DB에 저장된 계정 상태에 따라 클래스 선택 */
-.normal { background-color: #4A6EA9; }
-.disabled { background-color: #8C8D8F; }
-.dropped { background-color: black; }
-.admin { background-color: darkred; color: black;}

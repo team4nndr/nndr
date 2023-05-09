@@ -7,35 +7,34 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import edu.kh.nndr.admin.model.dao.AdminDAO;
+import edu.kh.nndr.admin.model.dao.FeedbackDAO;
 import edu.kh.nndr.admin.model.dto.Feedback;
 import edu.kh.nndr.admin.model.dto.Pagination;
-import edu.kh.nndr.member.model.dto.Member;
 
 @Service
-public class AdminServiceImpl implements AdminService {
+public class FeedbackServiceImpl implements FeedbackService {
 	
 	@Autowired
-	private AdminDAO dao;
+	private FeedbackDAO dao;
 
-	// 유저 목록 조회
+	// 의견 목록 조회
 	@Override
-	public Map<String, Object> selectMemberList(int cp) {
-		int listCount = dao.getMemberCount();
+	public Map<String, Object> selectFeedbackList(int cp) {
+		int listCount = dao.getFeedbackCount();
 		Pagination pagination = new Pagination(listCount, cp);
 		
-		List<Member> memberList = dao.selectMemberList(pagination);
+		List<Feedback> feedbackList = dao.selectFeedbackList(pagination);
 		Map<String, Object> map = new HashMap<>();
 		map.put("pagination", pagination);
-		map.put("memberList", memberList);
+		map.put("feedbackList", feedbackList);
 		
 		return map;
 	}
-
-	// 유저 상세 조회
+	
+	// 상세 의견 조회
 	@Override
-	public Member selectMember(int memberNo) {
-		return dao.selectMember(memberNo);
+	public Feedback getFeedback(int feedbackNo) {
+		// TODO Auto-generated method stub
+		return null;
 	}
-
 }

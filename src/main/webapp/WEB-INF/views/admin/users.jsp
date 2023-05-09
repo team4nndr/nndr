@@ -57,7 +57,7 @@
                         <div class="user-name">이름</div>
                         <div class="email">이메일</div>
                         <div class="regist-date">가입일</div>
-                        <div class="account-condition top">계정상태</div>
+                        <div class="account top">계정상태</div>
                     </div>
 
                     <c:forEach var="member" items="${memberList}">
@@ -76,7 +76,7 @@
                             </div>
                             <div class="email">${member.memberEmail}</div>
                             <div class="regist-date">${member.enrollDate}</div>
-                            <div class="account-condition">
+                            <div class="account">
                                 <c:choose>
                                     <c:when test="${member.memberCode == 'N'}">
                                         <div class="normal">정상</div>

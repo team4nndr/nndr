@@ -1,5 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+
+<c:set var="pagination" value="${map.pagination}"/>
+<c:set var="feedbackList" value="${map.feedbackList}"/>
+
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -54,17 +59,34 @@
                         <div class="complete-date">처리일</div>
                         <div class="feedback-condition">처리상태</div>
                     </div>
-                    <a href="feedback/detail" class="row">
-                        <div class="feedback-no">2</div>
-                        <div class="user-no">53</div>
-                        <div class="feedback-content">페이스북이랑 너무 똑같아요 베낀 거 아닌가요?</div>
-                        <div class="regist-date">2023-04-14</div>
-                        <div class="complete-date">2023-04-14</div>
-                        <div class="feedback-condition">
-                            <div class="data feedback-condition-icon in-porgress">처리중</div>
-                            <div class="data feedback-condition-icon complete">처리완료</div>
-                        </div>
-                    </a>
+
+                    <c:forEach var="feedback" items="${feedbackList}">
+
+                        <a href="/admin/feedback/${feedback.feedbackNo}" class="row">
+                            <div class="feedback-no">${feedback.feedbackNo}</div>
+                            <div class="user-no">${feedback.memberNo}</div>
+
+                            <c:choose>
+                                <c:when test="${fn:length(feedback.feedbackContent) > 50}">
+                                    <div class="feedback-content">${feedback.feedbackContent}</div>
+                                </c:when>
+                                <c:otherwise>
+                                    <div class="feedback-content">${feedback.feedbackContent}</div>
+                                </c:otherwise>
+                            </c:choose>
+                            
+                            <div class="feedback-content">${feedback.feedbackContent}</div>
+                            <div class="regist-date">2023-04-14</div>
+                            <div class="complete-date">2023-04-14</div>
+                            <div class="feedback-condition">
+                                <div class="data feedback-condition-icon in-porgress">처리중</div>
+                                <div class="data feedback-condition-icon complete">처리완료</div>
+                            </div>
+                        </a>
+                    </c:forEach>
+
+
+                    
                     <a href="feedback/detail" class="row">
                         <div class="feedback-no">1</div>
                         <div class="user-no">28</div>
@@ -79,14 +101,26 @@
                 </div>
             </div>
             <div class="board-page">
-                <a href="#" class="prev-page">PREV</a>
-                <a href="#" class="current-page">1</a>
-                <a href="#">2</a>
-                <a href="#">3</a>
-                <a href="#">4</a>
-                <a href="#">5</a>
-                <a href="#">6</a>
-                <a href="#" class="next-page">NEXT</a>
+                <a href="?cp=1" class="first-page"><i class="fa-solid fa-angles-left fa-xs"></i></a>
+                <a href="?cp=${pagination.prevPage}" class="prev-page"><i class="fa-solid fa-angle-left fa-xs"></i></a>
+
+                <!-- 특정 페이지로 이동 -->
+                <c:forEach var="i" begin="${pagination.startPage}" end="${pagination.endPage}" step="1">
+                    <c:choose>
+                        <%-- 현재 페이지 --%>
+                        <c:when test="${i == pagination.currentPage}">
+                            <a class="current-page">${i}</a>
+                        </c:when>
+
+                        <%-- 현재 페이지를 제외한 나머지 페이지 --%>
+                        <c:otherwise>
+                            <a href="?cp=${i}">${i}</a>
+                        </c:otherwise>
+                    </c:choose>
+                </c:forEach>
+
+                <a href="?cp=${pagination.nextPage}" class="next-page"><i class="fa-solid fa-angle-right fa-xs"></i></a>
+                <a href="?cp=${pagination.maxPage}" class="last-page"><i class="fa-solid fa-angles-right fa-xs"></i></a>
             </div>
         </section>
     </main>
