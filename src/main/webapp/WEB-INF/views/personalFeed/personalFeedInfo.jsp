@@ -15,7 +15,6 @@
 	<jsp:include page="/WEB-INF/views/topMenu/header.jsp" />
 
     <header>
-        <div id="hobby-checked"></div>
     <div class="flex-container">
         <div class="main-container1">
             <img src="../images/cats/cat2.jpg" alt="로고"id="backLogo">
@@ -28,7 +27,7 @@
                 <div class="main1-1">
                     <a href="#"><img src="../images/cats/cat2.jpg" alt="로고"id="homeLogo"></a>
                 </div>
-                <h2 class="name">${testMember.memberName}</h2>
+                <h2 class="name">${infoMember.memberName}</h2>
                 
                 
                 <div class="main1-2">
@@ -42,10 +41,10 @@
             </div>
             
             <nav class="item5">
-                <li class="main-li"><a class="main-li" href="personalFeed"> 게시물</a></ㅣ>
-                <li class="main-li pick"><a class="main-li " href="personalFeedInfo">정보</a></ㅣ>
-                <li class="main-li"><a class="main-li" href="personalFeedFriend">친구</a></ㅣ>
-                <li class="main-li"><a class="main-li" href="personalFeedPic">사진</a></ㅣ>
+                <li class="main-li"><a class="main-li" href="/personalFeed/${infoMember.memberNo}"> 게시물</a></li>
+                    <li class="main-li pick"><a class="main-li " href="/personalFeedInfo/${infoMember.memberNo}">정보</a></li>
+                        <li class="main-li"><a class="main-li" href="/personalFeedFriend/${infoMember.memberNo}">친구</a></li>
+                            <li class="main-li"><a class="main-li" href="/personalFeedPic/${infoMember.memberNo}">사진</a></li>
                 <div></div>
             </nav>
         </div>
@@ -67,13 +66,13 @@
                 <div id="main-info">
                 <div class="info-experience-1">
                     <h2>개요</h2>
-                    <div id="info-job2">직장</div><br>
-                    <div id="info-college2">대학교</div><br>
-                    <div id="info-high2">고등학교</div><br>
-                    <div id="info_residence2">거주지</div><br>
-                    <div id="info_birth2">출신지</div><br>
+                    <div id="info-job2">${infoMember.infoJob}</div><br>
+                    <div id="info-college2">${infoMember.infoCollege}</div><br>
+                    <div id="info-high2">${infoMember.infoHigh}</div><br>
+                    <div id="info_residence2">${infoMember.infoResidence}</div><br>
+                    <div id="info_birth2">${infoMember.infoBirthplace}</div><br>
                     <div id="info_romantic2">
-                        <div>연애/결혼 분류</div>
+                        <div>${infoMember.romanticYn}</div>
                         <div href="#">연애/결혼 상대방</div>
                         <div>연애/결혼 시작일</div>
                     </div>
@@ -102,11 +101,11 @@
                 </div>
                 <div class="info-experience-2">
                     <h2>경력 및 학력</h2>
-                    <div id="info-job">직장</div><br>
-                    <div id="info-college">대학교</div><br>
-                    <div id="info-high">고등학교</div><br>
-                    <div id="info-middle">중학교</div><br>
-                    <div id="info-elementary">초등학교</div><br>
+                    <div id="info-job">${infoMember.infoJob}</div><br>
+                    <div id="info-college">${infoMember.infoCollege}</div><br>
+                    <div id="info-high">${infoMember.infoHigh}</div><br>
+                    <div id="info-middle">${infoMember.infoMiddle}</div><br>
+                    <div id="info-elementary">${infoMember.infoElementary}</div><br>
                     <br>
                     <div id="info-input">
                         <form action="">
@@ -130,9 +129,8 @@
                 <div class="info-experience-3">
 
                     <h2>이전 거주지</h2>
-                    <div id="info_residence">거주지</div><br>
-                    <div id="info_birth">출신지</div><br>
-                    <div id="info_residence">도시</div><br>
+                    <div id="info_residence">${infoMember.infoResidence}</div><br>
+                    <div id="info_birth">${infoMember.infoBirthplace}</div><br>
                     <br>
                     <div id="info-input">
                         <form action="">
@@ -149,15 +147,14 @@
                     </div>
                     <button class="info-2-1">(+) 거주지 추가</button><br>
                     <button class="info-2-1">(+) 출신지 추가</button><br>
-                    <button class="info-2-1">(+) 도시 추가</button><br>
                 </div>
                 <div class="info-experience-4">
                     <h2>연락처 및 기본 정보</h2>
-                    <div id="info_tel">전화번호</div><br>
-                    <div id="info_sns">소셜 링크</div><br>
-                    <div id="info_lang">언어</div><br>
-                    <div id="info_gender">성별</div><br>
-                    <div id="info_birth">생일</div><br>
+                    <div id="info_tel">${infoMember.memberTel}</div><br>
+                    <div id="info_sns">${infoMember.infoSns}</div><br>
+                    <div id="info_lang">${infoMember.infoLang}</div><br>
+                    <div id="info_gender">${infoMember.infoGender}</div><br>
+                    <div id="info_birth">${infoMember.infoBirth}</div><br>
                     <br>
                     <div id="info-input">
                         <form action="">

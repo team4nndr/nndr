@@ -15,7 +15,7 @@
 	<jsp:include page="/WEB-INF/views/topMenu/header.jsp" />
 
     <header>
-        <div id="hobby-checked"></div>
+    </header>
     <div class="flex-container">
         <div class="main-container1">
             <img src="../images/cats/cat2.jpg" alt="로고"id="backLogo">
@@ -28,7 +28,7 @@
                 <div class="main1-1">
                     <a href="#"><img src="../images/cats/cat2.jpg" alt="로고"id="homeLogo"></a>
                 </div>
-                <h2 class="name">${testMember.memberName}</h2>
+                <h2 class="name">${infoMember.memberName}</h2>
                 
                 
                 <div class="main1-2">
@@ -42,10 +42,10 @@
             </div>
             
             <nav class="item5">
-                <li class="main-li"><a class="main-li" href="personalFeed"> 게시물</a></ㅣ>
-                <li class="main-li "><a class="main-li " href="personalFeedInfo">정보</a></ㅣ>
-                <li class="main-li pick"><a class="main-li" href="personalFeedFriend">친구</a></ㅣ>
-                <li class="main-li"><a class="main-li" href="personalFeedPic">사진</a></ㅣ>
+                <li class="main-li"><a class="main-li" href="/personalFeed/${infoMember.memberNo}"> 게시물</a></li>
+                    <li class="main-li"><a class="main-li " href="/personalFeedInfo/${infoMember.memberNo}">정보</a></li>
+                        <li class="main-li pick"><a class="main-li" href="/personalFeedFriend/${infoMember.memberNo}">친구</a></li>
+                            <li class="main-li"><a class="main-li" href="/personalFeedPic/${infoMember.memberNo}">사진</a></li>
                 <div></div>
             </nav>
         </div>
@@ -76,7 +76,7 @@
                     </div>
                 </div>
                 </div>
-            </header>
+            
             <script src="/resources/js/personalFeed/personalFeed.js"></script>
 </body>
 </html>
