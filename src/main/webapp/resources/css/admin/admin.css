@@ -131,7 +131,7 @@ button.reverse:hover {
     margin-top: 10px;
     margin-bottom: 20px;
     background-color: #F7F8FA;
-    border-bottom: 1px solid #ccc;
+    /* border-bottom: 1px solid #ccc; */
 }
 /* 게시판 헤더 */
 .board-list > .top {
@@ -162,9 +162,6 @@ button.reverse:hover {
 }
 .board-list > a.row * {
     pointer-events: none;
-}
-.board-list > a.row:last-child {
-    border-bottom: none;
 }
 .board-list > a:hover {
     background-color: #F0F2F5;
