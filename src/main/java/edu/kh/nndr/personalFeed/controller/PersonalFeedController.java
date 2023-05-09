@@ -4,9 +4,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import edu.kh.nndr.member.model.dto.Member;
+import edu.kh.nndr.member.model.dto.MemberInfo;
+import edu.kh.nndr.member.model.service.MemberInfoService;
 import edu.kh.nndr.member.model.service.MemberService;
 
 
@@ -15,12 +17,12 @@ import edu.kh.nndr.member.model.service.MemberService;
 public class PersonalFeedController {
 	
 	@Autowired
-	MemberService service;
+	MemberInfoService service;
 
-	@RequestMapping("/personalFeed")
-	public String personalFeed( Model model ) {
-		Member testMember = service.test();
-		model.addAttribute("testMember", testMember); // request scope
+	@RequestMapping("/personalFeed/{no}")
+	public String personalFeed( Model model, @PathVariable("no") int no) {
+		MemberInfo infoMember = service.personalMember(no);
+		model.addAttribute("infoMember", infoMember); // request scope
 		return "personalFeed/personalFeed";
 	}
 }

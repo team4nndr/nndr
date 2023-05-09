@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 import edu.kh.nndr.member.model.dao.MemberDAO;
 import edu.kh.nndr.member.model.dao.MemberInfoDAO;
 import edu.kh.nndr.member.model.dto.Member;
+import edu.kh.nndr.member.model.dto.MemberInfo;
 
 @Service
 public class MemberInfoServiceImpl implements MemberInfoService{
@@ -14,10 +15,10 @@ public class MemberInfoServiceImpl implements MemberInfoService{
 	private MemberInfoDAO dao ;
 
 	@Override
-	public Member personalMember(String email) {
+	public MemberInfo personalMember(int no) {
 	
 		
-		return dao.personalMember(email);
+		return dao.personalMember(no);
 	}
 
 }

@@ -15,6 +15,7 @@
 	<jsp:include page="/WEB-INF/views/topMenu/header.jsp" /> 
 
     <header>
+    </header>
     <div class="flex-container">
         <div class="main-container1">
             <img src="../images/cats/cat2.jpg" alt="로고"id="backLogo">
@@ -27,7 +28,7 @@
                 <div class="main1-1">
                     <a href="#"><img src="../images/cats/cat2.jpg" alt="로고"id="homeLogo"></a>
                 </div>
-                <h2 class="name">${testMember.memberName}</h2>
+                <h2 class="name">${infoMember.memberName}</h2>
                 
                 
                 <div class="main1-2">
@@ -41,10 +42,10 @@
             </div>
             
             <nav class="item5">
-                <li class="main-li pick"><a class="main-li" href="personalFeed"> 게시물</a></ㅣ>
-                    <li class="main-li"><a class="main-li " href="personalFeedInfo">정보</a></ㅣ>
-                        <li class="main-li"><a class="main-li" href="personalFeedFriend">친구</a></ㅣ>
-                            <li class="main-li"><a class="main-li" href="personalFeedPic">사진</a></ㅣ>
+                <li class="main-li pick"><a class="main-li" href="/personalFeed/${infoMember.memberNo}"> 게시물</a></li>
+                    <li class="main-li"><a class="main-li " href="/personalFeedInfo/${infoMember.memberNo}">정보</a></li>
+                        <li class="main-li"><a class="main-li" href="/personalFeedFriend/${infoMember.memberNo}">친구</a></li>
+                            <li class="main-li"><a class="main-li" href="/personalFeedPic/${infoMember.memberNo}">사진</a></li>
                                 <div></div>
                                 </nav>
                                 </div>
@@ -150,7 +151,7 @@
                     <div class="item2-2-1">
                         <div class="so"><h3>&nbsp;&nbsp;소개</h3></div>
                         <div>
-                            <div id="intro-my">dd</div>
+                            <div id="intro-my">${infoMember.infoIntro}</div>
                             <div id="input-intro">
                                 <form action="">
                                     <textarea name="" id="intro-text" cols="50" rows="3"></textarea><br>
@@ -166,11 +167,11 @@
                             </div>
                             <button class="intro-1" onclick="infoMy()">소개수정</button></div>
                             <!-- <div> -->
-                            <div id="info-job">직장</div><br>
-                            <div id="info-college">대학교</div><br>
-                            <div id="info-high">고등학교</div><br>
-                            <div id="info_residence">거주지</div><br>
-                            <div id="info_birth">출신지</div><br>
+                            <div id="info-job">${infoMember.infoJob}</div><br>
+                            <div id="info-college">${infoMember.infoCollege}</div><br>
+                            <div id="info-high">${infoMember.infoHigh}</div><br>
+                            <div id="info_residence">${infoMember.infoResidence}</div><br>
+                            <div id="info_birth">${infoMember.infoBirthplace}</div><br>
                             <div id="info_romantic">
                                 <div>연애/결혼 분류</div>
                                 <div href="#">연애/결혼 상대방</div>
@@ -251,7 +252,7 @@
             </div>
     </div>
 
-</header>
+
 <script src="/resources/js/personalFeed/personalFeed.js"></script>
 </body>
 </html>
