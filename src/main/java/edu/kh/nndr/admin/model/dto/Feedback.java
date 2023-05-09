@@ -10,12 +10,13 @@ import lombok.ToString;
 @Setter
 @ToString
 public class Feedback {
-	private String feedbackNo;
-	private String memberNo;
+	private int feedbackNo;
+	private int memberNo;
+	private String memberName;
 	private String feedbackContent;
 	private String feedbackDate;
 	private String adminNo;
 	private String adminComment;
-	private String confirmFl;
+	private String confirmFlag;
 	private String confirmDate;
 }

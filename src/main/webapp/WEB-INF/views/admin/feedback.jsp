@@ -67,37 +67,28 @@
                             <div class="user-no">${feedback.memberNo}</div>
 
                             <c:choose>
-                                <c:when test="${fn:length(feedback.feedbackContent) > 50}">
-                                    <div class="feedback-content">${feedback.feedbackContent}</div>
+                                <c:when test="${fn:length(feedback.feedbackContent) > 40}">
+                                    <div class="feedback-content">${fn:substring(feedback.feedbackContent, 0, 40)}...</div>
                                 </c:when>
                                 <c:otherwise>
                                     <div class="feedback-content">${feedback.feedbackContent}</div>
                                 </c:otherwise>
                             </c:choose>
                             
-                            <div class="feedback-content">${feedback.feedbackContent}</div>
-                            <div class="regist-date">2023-04-14</div>
-                            <div class="complete-date">2023-04-14</div>
+                            <div class="regist-date">${fn:substring(feedback.feedbackDate, 0, 10)}</div>
+                            <div class="complete-date">${fn:substring(feedback.confirmDate, 0, 10)}</div>
                             <div class="feedback-condition">
-                                <div class="data feedback-condition-icon in-porgress">처리중</div>
-                                <div class="data feedback-condition-icon complete">처리완료</div>
+                            <c:choose>
+                                <c:when test="${feedback.confirmFlag == 'N'}">
+                                    <div class="data feedback-condition-icon in-porgress">처리중</div>
+                                </c:when>
+                                <c:otherwise>
+                                    <div class="data feedback-condition-icon complete">처리완료</div>
+                                </c:otherwise>
+                            </c:choose>
                             </div>
                         </a>
                     </c:forEach>
-
-
-                    
-                    <a href="feedback/detail" class="row">
-                        <div class="feedback-no">1</div>
-                        <div class="user-no">28</div>
-                        <div class="feedback-content">의견은 이런 식으로 보여질것입니다 이렇게 이렇게 그리고 글이 길어...</div>
-                        <div class="regist-date">2023-04-13</div>
-                        <div class="complete-date">2023-04-13</div>
-                        <div class="feedback-condition">
-                            <div class="data feedback-condition-icon in-porgress">처리중</div>
-                            <div class="data feedback-condition-icon complete">처리완료</div>
-                        </div>
-                    </a>
                 </div>
             </div>
             <div class="board-page">
