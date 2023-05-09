@@ -50,20 +50,22 @@
                 </div>
                 <div class="row">
                     <span class="title">회원상태</span>
-                    <c:choose>
-                        <c:when test="${member.memberCode == 'N'}">
-                            <div class="data account-condition normal">정상</div>
-                        </c:when>
-                        <c:when test="${member.memberCode == 'B'}">
-                            <div class="data account-condition disabled">비활성화</div>
-                        </c:when>
-                        <c:when test="${member.memberCode == 'D'}">
-                            <div class="data account-condition dropped">탈퇴</div>
-                        </c:when>
-                        <c:otherwise>
-                            <div class="data account-condition admin">관리자</div>
-                        </c:otherwise>
-                    </c:choose>
+                    <div class="data account">
+                        <c:choose>
+                            <c:when test="${member.memberCode == 'N'}">
+                                <div class="normal">정상</div>
+                            </c:when>
+                            <c:when test="${member.memberCode == 'B'}">
+                                <div class="disabled">비활성화</div>
+                            </c:when>
+                            <c:when test="${member.memberCode == 'D'}">
+                                <div class="dropped">탈퇴</div>
+                            </c:when>
+                            <c:otherwise>
+                                <div class="admin">관리자</div>
+                            </c:otherwise>
+                        </c:choose>
+                    </div>
                 </div>
             </div>
             <div id="bottom">

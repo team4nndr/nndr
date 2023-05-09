@@ -131,7 +131,7 @@ button.reverse:hover {
     margin-top: 10px;
     margin-bottom: 20px;
     background-color: #F7F8FA;
-    border-bottom: 1px solid #ccc;
+    /* border-bottom: 1px solid #ccc; */
 }
 /* 게시판 헤더 */
 .board-list > .top {
@@ -162,9 +162,6 @@ button.reverse:hover {
 }
 .board-list > a.row * {
     pointer-events: none;
-}
-.board-list > a.row:last-child {
-    border-bottom: none;
 }
 .board-list > a:hover {
     background-color: #F0F2F5;
@@ -208,3 +205,9 @@ button.reverse:hover {
     color: white;
     background-color:#4A6EA9;
 }
+
+/* DB에 저장된 계정 상태에 따라 클래스 선택 */
+.normal { background-color: #4A6EA9; }
+.disabled { background-color: #8C8D8F; }
+.dropped { background-color: black; }
+.admin { background-color: darkred; color: black;}

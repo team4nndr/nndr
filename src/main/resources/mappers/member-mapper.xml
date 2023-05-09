@@ -33,15 +33,16 @@
 	
 	<!-- 유저 수 조회 -->
 	<select id="getMemberCount" resultType="_int">
-		SELECT COUNT(*) FROM "MEMBER"
+		SELECT COUNT(*) FROM "MEMBER" WHERE MEMBER_CODE != 'A'
 	</select>
 	
-	<!-- 모든(비활성, 탈퇴유저 포함) 유저 목록 조회 -->
+	<!-- 모든(비활성, 탈퇴유저 포함 / 관리자 제외) 유저 목록 조회 -->
 	<select id="selectMemberList" resultMap="member_rm">
 		SELECT MEMBER_NO, MEMBER_NAME, MEMBER_EMAIL, MEMBER_CODE, MEMBER_TEL, DISABLE_DATE, DELETE_DATE,
 			TO_CHAR(ENROLL_DATE, 'YYYY-MM-DD') ENROLL_DATE, INFO_IMG
 		FROM "MEMBER"
 			  LEFT JOIN "MEMBER_INFO" USING(MEMBER_NO)
+		WHERE MEMBER_CODE != 'A'
 		ORDER BY MEMBER_NO DESC
 	</select>
 	
