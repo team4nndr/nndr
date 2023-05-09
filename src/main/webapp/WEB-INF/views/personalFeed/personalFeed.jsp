@@ -11,140 +11,109 @@
     <link rel="shortcut icon" href="#" />
 </head>
 <body>
-
-	<jsp:include page="/WEB-INF/views/topMenu/header.jsp" /> 
-
     <header>
+	<jsp:include page="/WEB-INF/views/topMenu/header.jsp" /> 
+	<jsp:include page="/WEB-INF/views/personalFeed/personalFeedHeader.jsp" /> 
+    <style>
+        .item5 > li:nth-child(1){
+            border-bottom: 3px solid #56A8C5;
+        }
+    </style>
     </header>
     <div class="flex-container">
-        <div class="main-container1">
-            <img src="../images/cats/cat2.jpg" alt="로고"id="backLogo">
-            <div class="item3">
-                <div class="myname1">
-                    <a class ="backLogobutton" href=""> 커버 사진 추가</a>
+        <div class="main-container2">
+            <div id="fr-border">
+                <div class="item1-2">
+                    <h4>&nbsp;&nbsp;알 수도 있는 사람</h4>
                 </div>
-            </div>
-            <div class="item4">
-                <div class="main1-1">
-                    <a href="#"><img src="../images/cats/cat2.jpg" alt="로고"id="homeLogo"></a>
-                </div>
-                <h2 class="name">${infoMember.memberName}</h2>
-                
-                
-                <div class="main1-2">
-                    <div class="myname2">
-                        <button class ="storypuls" href=""> 친구추가
-                        </button>
-                        <a class ="plo" href=""> 프로필 편집
-                        </a>
+                <div class="item1-3">
+                    <div class="who">
+                        <div class="who-pic">사진1</div>
+                        <div class="who-name">&nbsp;&nbsp;<strong>이름</strong></div>
+                        <div class="add-friend">
+                            <li><button class="add-friend2" href="">친구 추가</button></li>
+                        </div>
+                    </div><div class="who">
+                        <div class="who-pic">사진2</div>
+                        <div class="who-name">&nbsp;&nbsp;<strong>이름</strong></div>
+                        <div class="add-friend">
+                            <li><button class="add-friend2" href="">친구 추가</button></li>
+                        </div>
+                    </div><div class="who">
+                        <div class="who-pic">사진3</div>
+                        <div class="who-name">&nbsp;&nbsp;<strong>이름</strong></div>
+                        <div class="add-friend">
+                            <li><button class="add-friend2" href="">친구 추가</button></li>
+                        </div>
+                    </div><div class="who">
+                        <div class="who-pic">사진4</div>
+                        <div class="who-name">&nbsp;&nbsp;<strong>이름</strong></div>
+                        <div class="add-friend">
+                            <li><button class="add-friend2" href="">친구 추가</button></li>
+                        </div>
+                    </div><div class="who">
+                        <div class="who-pic">사진5</div>
+                        <div class="who-name">&nbsp;&nbsp;<strong>이름</strong></div>
+                        <div class="add-friend">
+                            <li><button class="add-friend2" href="">친구 추가</button></li>
+                        </div>
+                    </div><div class="who">
+                        <div class="who-pic">사진6</div>
+                        <div class="who-name">&nbsp;&nbsp;<strong>이름</strong></div>
+                        <div class="add-friend">
+                            <li><button class="add-friend2" href="">친구 추가</button></li>
+                        </div>
+                    </div>
+                    <div class="who">
+                        <div class="who-pic">사진7</div>
+                        <div class="who-name">&nbsp;&nbsp;<strong>이름</strong></div>
+                        <div class="add-friend">
+                            <li><button class="add-friend2" href="">친구 추가</button></li>
+                        </div>
+                    </div>
+                    <div class="who">
+                        <div class="who-pic">사진8</div>
+                        <div class="who-name">&nbsp;&nbsp;<strong>이름</strong></div>
+                        <div class="add-friend">
+                            <li><button class="add-friend2" href="">친구 추가</button></li>
+                        </div>
+                    </div>
+                    <div class="who">
+                        <div class="who-pic">사진9</div>
+                        <div class="who-name">&nbsp;&nbsp;<strong>이름</strong></div>
+                        <div class="add-friend">
+                            <li><button class="add-friend2" href="">친구 추가</button></li>
+                        </div>
+                    </div>
+                    <div class="who">
+                        <div class="who-pic">사진10</div>
+                        <div class="who-name">&nbsp;&nbsp;<strong>이름</strong></div>
+                        <div class="add-friend">
+                            <li><button class="add-friend2" href="">친구 추가</button></li>
+                        </div>
+                    </div>
+                    <div class="who">
+                        <div class="who-pic">사진11</div>
+                        <div class="who-name">&nbsp;&nbsp;<strong>이름</strong></div>
+                        <div class="add-friend">
+                            <li><button class="add-friend2" href="">친구 추가</button></li>
+                        </div>
+                    </div>
+                    <div class="who">
+                        <div class="who-pic">사진12</div>
+                        <div class="who-name">&nbsp;&nbsp;<strong>이름</strong></div>
+                        <div class="add-friend">
+                            <li><button class="add-friend2" onclick="addfriend">친구 추가</button></li>
+                        </div>
                     </div>
                 </div>
-            </div>
-            
-            <nav class="item5">
-                <li class="main-li pick"><a class="main-li" href="/personalFeed/${infoMember.memberNo}"> 게시물</a></li>
-                    <li class="main-li"><a class="main-li " href="/personalFeedInfo/${infoMember.memberNo}">정보</a></li>
-                        <li class="main-li"><a class="main-li" href="/personalFeedFriend/${infoMember.memberNo}">친구</a></li>
-                            <li class="main-li"><a class="main-li" href="/personalFeedPic/${infoMember.memberNo}">사진</a></li>
-                                <div></div>
-                                </nav>
-                                </div>
-                                <div class="main-container2">
-                                    <div id="fr-border">
-                                        <div class="item1-2">
-                                            <h4>&nbsp;&nbsp;알 수도 있는 사람</h4>
-                                        </div>
-                                        <div class="item1-3">
-                                            <div class="who">
-                                                <div class="who-pic">사진1</div>
-                                                <div class="who-name">&nbsp;&nbsp;<strong>이름</strong></div>
-                                                <div class="add-friend">
-                                                    <li><button class="add-friend2" href="">친구 추가</button></li>
-                                                </div>
-                                            </div><div class="who">
-                                                <div class="who-pic">사진2</div>
-                                                <div class="who-name">&nbsp;&nbsp;<strong>이름</strong></div>
-                                                <div class="add-friend">
-                                                    <li><button class="add-friend2" href="">친구 추가</button></li>
-                                                </div>
-                                            </div><div class="who">
-                                                <div class="who-pic">사진3</div>
-                                                <div class="who-name">&nbsp;&nbsp;<strong>이름</strong></div>
-                                                <div class="add-friend">
-                                                    <li><button class="add-friend2" href="">친구 추가</button></li>
-                                                </div>
-                                            </div><div class="who">
-                                                <div class="who-pic">사진4</div>
-                                                <div class="who-name">&nbsp;&nbsp;<strong>이름</strong></div>
-                                                <div class="add-friend">
-                                                    <li><button class="add-friend2" href="">친구 추가</button></li>
-                                                </div>
-                                            </div><div class="who">
-                                                <div class="who-pic">사진5</div>
-                                                <div class="who-name">&nbsp;&nbsp;<strong>이름</strong></div>
-                                                <div class="add-friend">
-                                                    <li><button class="add-friend2" href="">친구 추가</button></li>
-                                                </div>
-                                            </div><div class="who">
-                                                <div class="who-pic">사진6</div>
-                                                <div class="who-name">&nbsp;&nbsp;<strong>이름</strong></div>
-                                                <div class="add-friend">
-                                                    <li><button class="add-friend2" href="">친구 추가</button></li>
-                                                </div>
-                                            </div>
-                                            <div class="who">
-                                                <div class="who-pic">사진7</div>
-                                                <div class="who-name">&nbsp;&nbsp;<strong>이름</strong></div>
-                                                <div class="add-friend">
-                                                    <li><button class="add-friend2" href="">친구 추가</button></li>
-                                                </div>
-                                            </div>
-                                            <div class="who">
-                                                <div class="who-pic">사진8</div>
-                                                <div class="who-name">&nbsp;&nbsp;<strong>이름</strong></div>
-                                                <div class="add-friend">
-                                                    <li><button class="add-friend2" href="">친구 추가</button></li>
-                                                </div>
-                                            </div>
-                                            <div class="who">
-                                                <div class="who-pic">사진9</div>
-                                                <div class="who-name">&nbsp;&nbsp;<strong>이름</strong></div>
-                                                <div class="add-friend">
-                                                    <li><button class="add-friend2" href="">친구 추가</button></li>
-                                                </div>
-                                            </div>
-                                            <div class="who">
-                                                <div class="who-pic">사진10</div>
-                                                <div class="who-name">&nbsp;&nbsp;<strong>이름</strong></div>
-                                                <div class="add-friend">
-                                                    <li><button class="add-friend2" href="">친구 추가</button></li>
-                                                </div>
-                                            </div>
-                                            <div class="who">
-                                                <div class="who-pic">사진11</div>
-                                                <div class="who-name">&nbsp;&nbsp;<strong>이름</strong></div>
-                                                <div class="add-friend">
-                                                    <li><button class="add-friend2" href="">친구 추가</button></li>
-                                                </div>
-                                            </div>
-                                            <div class="who">
-                                                <div class="who-pic">사진12</div>
-                                                <div class="who-name">&nbsp;&nbsp;<strong>이름</strong></div>
-                                                <div class="add-friend">
-                                                    <li><button class="add-friend2" onclick="addfriend">친구 추가</button></li>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        
-                                        <p class="controller">
-
-                    
-      
+                
+                <p class="controller">
                     <!-- &lang: 왼쪽 방향 화살표
                     &rang: 오른쪽 방향 화살표 -->
                     <span class="prev">&lang;</span>  
                     <span class="next">&rang;</span>
-                  </p>
+                </p>
                 </div>
                 <div class=" item2-1">
                 <div class=" item2-2">
@@ -153,8 +122,8 @@
                         <div>
                             <div id="intro-my">${infoMember.infoIntro}</div>
                             <div id="input-intro">
-                                <form action="">
-                                    <textarea name="" id="intro-text" cols="50" rows="3"></textarea><br>
+                                <form action="personalFeed/introC" method="post" >
+                                    <textarea name="intro" id="intro-text" cols="50" rows="3"></textarea><br>
                                     <div id="texta"></div>
                                     <div id="public">
                                         <div>&nbsp;전체 공개</div>
@@ -249,7 +218,7 @@
                     장반석
                 </h4></div>
             </div>
-            </div>
+        </div>
     </div>
 
 
