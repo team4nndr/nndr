@@ -1,12 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
-    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 
         <link rel="stylesheet" href="/resources/css/topMenu/header.css">
 
         <div id="nndrContainer">
 
             <div class="nndr-home-logo">
-                <a href="#"><img src="/resources/images/topMenu/topLogo-01.png"></a>
+                <a href="/mainFeed"><img src="/resources/images/topMenu/topLogo-01.png"></a>
             </div>
 
             <div class="nndr-search-area">
@@ -30,13 +31,13 @@
                     <!-- 버튼 영역  -->
                     <!-- 홈 버튼 -->
                     <li>
-                        <a href="#">
+                        <a href="/mainFeed">
                             <img src="/resources/images/topMenu/topHome.png" id="nndrImage1">
                         </a>
                     </li>
                     <!-- 친구 버튼  -->
                     <li>
-                        <a href="#">
+                        <a href="/friend">
                             <img src="/resources/images/topMenu/topFriend.png" id="nndrImage2">
                         </a>
                     </li>
@@ -48,15 +49,15 @@
                         <div onclick="bell()" id="nndrDropBtn1"><img src="/resources/images/topMenu/topAlarm.png"
                                 id="nndrImage3"></div>
 
-                        <!-- <div> 
+                        <%-- <div> 
                         <div class="porfileRac">
                             <a href="#" class="Boardprofile"></a>
                         </div>
                         <div>
-                            <a href="#">김핑퐁</a>
+                            <a href="">김핑퐁</a>
                             <p>게시글 정보 입니다. (회원 소개글 들어가도 됨)</p>
                         </div>
-                    </div> -->
+                    </div>  --%>
 
                         <!-- 알림 버튼 클릭 시 하위 메뉴 -->
                         <div id="nndrBellDropdown" class="nndr-dropdown-content1">
@@ -74,8 +75,10 @@
                                 <div class="nndrAlarmNotRead">읽지 않은 알림</div>
                             </div>
 
-                        <div id="nndrAddContainer">
-                            <!-- <div class="nndrAddAlarm">
+
+
+                        <%-- <div id="nndrAddContainer">
+                            <div class="nndrAddAlarm">
                                 <a href="/댓글,좋아요,게시물 업로드 등 해당 회원 프로필 이동 페이지" class="nndrAddAlarmProfile">
                                     <img src="/resources/images/topMenu/topMyProfile.png" class="topMyProfile">
                                 </a>
@@ -83,12 +86,13 @@
                                     <p class="nndrAlarmContent">알림 내용</p>
                                 </a>
                                 <div class="nndr-top-alarm-delete">&times;</div>
-                            </div> -->
-                        </div>
+                            </div> 
+                        </div> --%>
 
                             <button id="thumsUp">좋아여</button>
+                            <%-- <button id="댓글"
 
-                        </div>
+                        </div> --%>
                     </div>
 
                     <div id="nndrDropdown2">

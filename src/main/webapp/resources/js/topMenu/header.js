@@ -191,7 +191,7 @@ thumsUp.addEventListener("click", () => {
 
     const nndrAlarmContent = document.createElement("p");
     nndrAlarmContent.classList.add("nndrAlarmContent");
-    nndrAlarmContent.innerHTML = "알림내용";
+    nndrAlarmContent.innerHTML = "''님이 좋아요를 눌렀습니다.";
 
     const x = document.createElement('div');
     x.classList.add('nndr-top-alarm-delete');
@@ -214,6 +214,8 @@ thumsUp.addEventListener("click", () => {
 
     });
 });
+
+
 
 
 
