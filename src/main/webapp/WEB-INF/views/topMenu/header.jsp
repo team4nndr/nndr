@@ -45,8 +45,8 @@
                 <div id="nndrDropdownBox">
                     <!-- 알림 버튼 -->
                     <div id="nndrDropdown1">
-                        <button onclick="bell()" id="nndrDropBtn1"><img src="/resources/images/topMenu/topAlarm.png"
-                                id="nndrImage3"></button>
+                        <div onclick="bell()" id="nndrDropBtn1"><img src="/resources/images/topMenu/topAlarm.png"
+                                id="nndrImage3"></div>
 
                         <!-- <div> 
                         <div class="porfileRac">
@@ -93,8 +93,8 @@
 
                     <div id="nndrDropdown2">
                         <!-- 내정보 버튼 -->
-                        <button onclick="my()" id="nndrDropBtn2"><img src="/resources/images/topMenu/topMyInfo.png"
-                                id="nndrImage4"></button>
+                        <div onclick="my()" id="nndrDropBtn2"><img src="/resources/images/topMenu/topMyInfo.png"
+                                id="nndrImage4"></div>
 
                         <!-- 내정보 버튼 클릭 시 하위 메뉴 -->
                         <div id="nndrMyDropdown" class="nndr-dropdown-content2">

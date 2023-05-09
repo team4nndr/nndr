@@ -29,7 +29,6 @@ CREATE TABLE "MEMBER" (
 	"MEMBER_PW"			VARCHAR2(300)				NOT NULL,
 	"MEMBER_NAME"		VARCHAR2(60)				NOT NULL,
 	"MEMBER_TEL"		CHAR(11)					NULL,
-	"ACCOUNT_CONDITION"	CHAR(1)		DEFAULT 'N'		NOT NULL,
 	"MEMBER_CODE"		CHAR(2)		DEFAULT 'M9'	NOT NULL,
 	"ENROLL_DATE"		DATE		DEFAULT SYSDATE	NOT NULL,
 	"DISABLE_DATE"		DATE						NULL,
@@ -50,8 +49,7 @@ COMMENT ON COLUMN "MEMBER"."MEMBER_EMAIL" IS '이메일';
 COMMENT ON COLUMN "MEMBER"."MEMBER_PW" IS '비밀번호';
 COMMENT ON COLUMN "MEMBER"."MEMBER_NAME" IS '이름';
 COMMENT ON COLUMN "MEMBER"."MEMBER_TEL" IS '전화번호';
-COMMENT ON COLUMN "MEMBER"."ACCOUNT_CONDITION" IS 'N:정상, B:비활성, D:탈퇴';
-COMMENT ON COLUMN "MEMBER"."MEMBER_CODE" IS '회원등급(M1~M9)';
+COMMENT ON COLUMN "MEMBER"."MEMBER_CODE" IS 'N:정상, B:비활성, D:탈퇴';
 COMMENT ON COLUMN "MEMBER"."ENROLL_DATE" IS '가입일';
 COMMENT ON COLUMN "MEMBER"."DISABLE_DATE" IS '비활성화일';
 COMMENT ON COLUMN "MEMBER"."DELETE_DATE" IS '탈퇴일';
@@ -101,7 +99,6 @@ VALUES(
 	'관리자', 				-- 이름
 	'01000000000',			-- 전화번호
 	DEFAULT, 				-- 계정상태(N:정상(기본), B:비활성, D:탈퇴)
-	'M1', 					-- 회원등급(회원등급(M1~M9), 기본:M9)
 	DEFAULT, 				-- 가입일(기본:SYSDATE)
 	NULL, 					-- 비활성화일
 	NULL, 					-- 탈퇴일
@@ -121,12 +118,12 @@ COMMIT;
 -- "MEMBER" 일반유저 데이터 삽입
 INSERT INTO "MEMBER" 
 VALUES(
-	3, 	-- 회원번호
-	'test@naver.com', 		-- 이메일
-	'asdasd', 				-- 비밀번호
-	'너나', 				-- 이름
-	'01011112222',			-- 전화번호
-	'N', 					-- 회원등급(회원등급(M1~M9), 기본:M9)
+	SEQ_MEMBER_NO.NEXTVAL, 	-- 회원번호
+	'user03@mail.com', 		-- 이메일
+	'pass03', 				-- 비밀번호
+	'유저삼',	 				-- 이름
+	'01033330303',			-- 전화번호
+	DEFAULT, 				-- 계정상태(N:정상(기본), B:비활성, D:탈퇴)
 	DEFAULT, 				-- 가입일(기본:SYSDATE)
 	NULL, 					-- 비활성화일
 	NULL, 					-- 탈퇴일
@@ -145,3 +142,42 @@ COMMIT;
 
 ----------------------------------------------------------------------------------------
 
+-- MEMBER 샘플 데이터 삽입
+BEGIN
+   FOR I IN 1..100 LOOP
+      INSERT INTO "MEMBER" 
+      VALUES(
+      	SEQ_MEMBER_NO.NEXTVAL, 	-- 회원번호
+		'user@mail.com', 		-- 이메일
+		'pass', 				-- 비밀번호
+		'테스트유저',	 			-- 이름
+		'01033330303',			-- 전화번호
+		DEFAULT, 				-- 계정상태(N:정상(기본), B:비활성, D:탈퇴)
+		DEFAULT, 				-- 가입일(기본:SYSDATE)
+		NULL, 					-- 비활성화일
+		NULL, 					-- 탈퇴일
+		DEFAULT, 				-- 친구요청(N:OFF, Y:ON(기본))
+		DEFAULT, 				-- 개인피드설정(N:OFF, Y:ON(기본))
+		DEFAULT, 				-- 친구요청알림(N:OFF, Y:ON(기본))
+		DEFAULT, 				-- 친구신청수락알림(N:OFF, Y:ON(기본))
+		DEFAULT, 				-- 태그알림(N:OFF, Y:ON(기본))
+		DEFAULT, 				-- 게시글댓글알림(N:OFF, Y:ON(기본))
+		DEFAULT, 				-- 게시글좋아요알림(N:OFF, Y:ON(기본))
+		DEFAULT, 				-- 게시글공유알림(N:OFF, Y:ON(기본))
+		DEFAULT					-- 개인피드갱신알림(N:OFF, Y:ON(기본))
+      );
+   END LOOP;
+END;
+
+COMMIT;
+
+----------------------------------------------------------------------------------------
+
+-- 유저 1명 조회 
+
+SELECT MEMBER_NO, MEMBER_NAME, MEMBER_EMAIL, MEMBER_CODE, MEMBER_TEL, DISABLE_DATE, ENROLL_DATE,
+			TO_CHAR(ENROLL_DATE, 'YYYY-MM-DD') ENROLL_DATE, INFO_IMG
+FROM "MEMBER" LEFT JOIN "MEMBER_INFO" USING(MEMBER_NO)
+WHERE MEMBER_NO = 1
+
+;

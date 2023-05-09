@@ -128,7 +128,7 @@ button.reverse:hover {
 .board-list-wrap {
     width: 1200px;
     height: 650px;
-    margin-top: 20px;
+    margin-top: 10px;
     margin-bottom: 20px;
     background-color: #F7F8FA;
     border-bottom: 1px solid #ccc;
@@ -154,7 +154,7 @@ button.reverse:hover {
     display: flex;
     align-items: center;
     justify-items: center;
-    height: 51px;
+    height: 50px;
     text-align: center;
     border-bottom: 1px solid #ccc;
     text-decoration: none;
@@ -162,6 +162,9 @@ button.reverse:hover {
 }
 .board-list > a.row * {
     pointer-events: none;
+}
+.board-list > a.row:last-child {
+    border-bottom: none;
 }
 .board-list > a:hover {
     background-color: #F0F2F5;
@@ -189,15 +192,15 @@ button.reverse:hover {
     background-color:#4A6EA9;
     transition-duration: 0.1s;
 }
-.board-page > a.prev-page, .board-page > a.next-page {
+/* .board-page > a.first-page, .board-page > a.last-page, a.prev-page, a.next-page {
     width: 60px;
     padding: 0 10px;
-}
-.board-page > a.prev-page {
+} */
+.board-page > a.first-page {
     border-left: 1px solid #ccc;
     border-radius: 5px 0 0 5px;
 }
-.board-page > a.next-page {
+.board-page > a.last-page {
     border-right: 1px solid #ccc;
     border-radius: 0 5px 5px 0;
 }

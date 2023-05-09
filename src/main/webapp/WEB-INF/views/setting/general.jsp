@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>설정</title>
     <link rel="stylesheet" href="/resources/css/admin/admin.css">
-    <link rel="stylesheet" href="/resources/css/admin/manage_users.css">
+    <link rel="stylesheet" href="/resources/css/admin/users.css">
     <link rel="stylesheet" href="/resources/css/setting/general.css">
     <script src="https://kit.fontawesome.com/9c2aaccfe5.js" crossorigin="anonymous"></script>
 </head>

@@ -10,7 +10,7 @@
     <title>모든친구</title>
     <link rel="stylesheet" href="/resources/css/friend/friendAll.css">
 </head>
-
+	<jsp:include page="/WEB-INF/views/topMenu/header.jsp" />
 <body>
     <div class="content">
         <div class="friendNav">
