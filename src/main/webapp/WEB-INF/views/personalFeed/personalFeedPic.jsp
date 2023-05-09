@@ -58,18 +58,27 @@
                         <div id="imBtn"><button class="info-2-1">사진추가</button></div>
                     </div>
                     <div id="imgset">
-                        <div><img src="../images/cats/cat2.jpg" alt="" class="im"></div>
-                        <div><img src="../images/cats/cat2.jpg" alt="" class="im"></div>
-                        <div><img src="../images/cats/cat2.jpg" alt="" class="im"></div>
-                        <div><img src="../images/cats/cat2.jpg" alt="" class="im"></div>
-                        <div><img src="../images/cats/cat2.jpg" alt="" class="im"></div>
-                        <div><img src="../images/cats/cat2.jpg" alt="" class="im"></div>
-                        <div><img src="../images/cats/cat2.jpg" alt="" class="im"></div>
-                        <div><img src="../images/cats/cat2.jpg" alt="" class="im"></div>
-                        <div><img src="../images/cats/cat2.jpg" alt="" class="im"></div>
-                        <div><img src="../images/cats/cat2.jpg" alt="" class="im"></div>
-                        <div><img src="../images/cats/cat2.jpg" alt="" class="im"></div>
-                        <div><img src="../images/cats/cat2.jpg" alt="" class="im"></div>
+                        <div><img src="/resources/images/common/user-deafult.png" alt="" class="im"></div>
+                        <div><img src="/resources/images/common/user-deafult.png" alt="" class="im"></div>
+                        <div><img src="/resources/images/common/user-deafult.png" alt="" class="im"></div>
+                        <div><img src="/resources/images/common/user-deafult.png" alt="" class="im"></div>
+                        <div><img src="/resources/images/common/user-deafult.png" alt="" class="im"></div>
+                        <div><img src="/resources/images/common/user-deafult.png" alt="" class="im"></div>
+                        <div><img src="/resources/images/common/user-deafult.png" alt="" class="im"></div>
+                        <div><img src="/resources/images/common/user-deafult.png" alt="" class="im"></div>
+                        <div><img src="/resources/images/common/user-deafult.png" alt="" class="im"></div>
+                        <div><img src="/resources/images/common/user-deafult.png" alt="" class="im"></div>
+                        <div><img src="/resources/images/common/user-deafult.png" alt="" class="im"></div>
+                        <div><img src="/resources/images/common/user-deafult.png" alt="" class="im"></div>
+                        <div><img src="/resources/images/common/user-deafult.png" alt="" class="im"></div>
+                        <div><img src="/resources/images/common/user-deafult.png" alt="" class="im"></div>
+                        <div><img src="/resources/images/common/user-deafult.png" alt="" class="im"></div>
+                        <div><img src="/resources/images/common/user-deafult.png" alt="" class="im"></div>
+                        <div><img src="/resources/images/common/user-deafult.png" alt="" class="im"></div>
+                        <div><img src="/resources/images/common/user-deafult.png" alt="" class="im"></div>
+                        <div><img src="/resources/images/common/user-deafult.png" alt="" class="im"></div>
+                        <div><img src="/resources/images/common/user-deafult.png" alt="" class="im"></div>
+                        <div><img src="/resources/images/common/user-deafult.png" alt="" class="im"></div>
                     </div>
                 </div>
             </div>

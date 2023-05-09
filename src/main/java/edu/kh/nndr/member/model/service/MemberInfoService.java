@@ -7,4 +7,6 @@ public interface MemberInfoService {
 
 	MemberInfo personalMember(int no);
 
+	int infoIntro(MemberInfo member);
+
 }

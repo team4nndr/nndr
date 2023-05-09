@@ -122,13 +122,13 @@
                         <div>
                             <div id="intro-my">${infoMember.infoIntro}</div>
                             <div id="input-intro">
-                                <form action="personalFeed/introC" method="post" >
-                                    <textarea name="intro" id="intro-text" cols="50" rows="3"></textarea><br>
+                                <form action="infoIntro" method="post" >
+                                    <textarea type="text" name="infoIntro" id="intro-text" cols="50" rows="3" ></textarea><br>
                                     <div id="texta"></div>
                                     <div id="public">
                                         <div>&nbsp;전체 공개</div>
                                         <div id="btn-set">
-                                            <button class="in-btn" id="intro-save" type="button" >저장</button>
+                                            <button class="in-btn" id="intro-save" type="submit" >저장</button>
                                         <button class="in-btn" id="intro-can" type="button" onclick="infoCan()">취소</button>
                                         </div>
                                     </div>
@@ -146,7 +146,7 @@
                                 <div href="#">연애/결혼 상대방</div>
                                 <div>연애/결혼 시작일</div>
                             </div>
-                            <div class="intro-1"  id="info-link"><a id="info-link" href="Main_info.html">상세정보 수정</a></div>
+                            <div class="intro-1"  id="info-link"><a id="info-link" href="/personalFeedInfo/${infoMember.memberNo}">상세정보 수정</a></div>
                             
                             
                             <div>
@@ -191,9 +191,9 @@
                             
                         </div>
                         <div class="main-imset">
-                        <div id="main-im1" ><img src="../images/cats/cat4.jpg" alt="로고" class="main-im"></div>
-                        <div id="main-im2"><img src="../images/cats/cat5.jpg" alt="로고" class="main-im"></div>
-                        <div id="main-im3"><img src="../images/cats/진주_2.jpg" alt="로고" class="main-im"></div>
+                        <div id="main-im1" ><img src="/resources/images/common/user-deafult.png" alt="로고" class="main-im"></div>
+                        <div id="main-im2"><img src="/resources/images/common/user-deafult.png" alt="로고" class="main-im"></div>
+                        <div id="main-im3"><img src="/resources/images/common/user-deafult.png" alt="로고" class="main-im"></div>
                         <div class="something"></div>
                         </div>
                     </div>
@@ -204,9 +204,9 @@
                             <a class="my-info" href="Main_fr.html">모든 친구 보기</a>
                         </div>
                         <div class="main-imset">
-                            <div id="main-im1" ><img src="../images/cats/로미.jpg" alt="로고" class="main-im"></div>
-                            <div id="main-im2"><img src="../images/cats/진주_1.jpg" alt="로고" class="main-im"></div>
-                            <div id="main-im3"><img src="../images/cats/cat1.jpg" alt="로고" class="main-im"></div>
+                            <div id="main-im1" ><img src="/resources/images/common/user-deafult.png" alt="로고" class="main-im"></div>
+                            <div id="main-im2"><img src="/resources/images/common/user-deafult.png" alt="로고" class="main-im"></div>
+                            <div id="main-im3"><img src="/resources/images/common/user-deafult.png" alt="로고" class="main-im"></div>
                             <div class="something"></div>
                         </div>
                     </div>

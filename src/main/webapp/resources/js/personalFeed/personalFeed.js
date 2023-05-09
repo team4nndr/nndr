@@ -1,7 +1,3 @@
-const strLength = document.getElementById("intro-text");
-const texta = document.getElementById("texta");
-
-
 function info(num){
     const infoList = document.getElementById("main-info").children;
     for(var n=0; n<7; n++){
@@ -34,22 +30,25 @@ function info(num){
     }
 }
 
-const infoInput = document.getElementById("info-input");
-const intro = document.getElementById("intro-my");
-const introArea = document.getElementById("input-intro");
 function infoMy(){
+    const intro = document.getElementById("intro-my");
+    const introArea = document.getElementById("input-intro");
     intro.style.display = "none";
     introArea.style.display = "block";
 }
 
 function infoCan(){
+    const introArea = document.getElementById("input-intro");
+    const intro = document.getElementById("intro-my");
     introArea.style.display = "none";
     intro.style.display = "block";
 }
 
 if(document.getElementById("intro-save")!=null){
     document.getElementById("intro-save").addEventListener("click", ()=>{
-        if(strLength.value.length<100){
+        if(document.getElementById("intro-text").value.length<100){
+            const introArea = document.getElementById("input-intro");
+            const intro = document.getElementById("intro-my");
             intro.innerText=document.getElementById("intro-text").value;
             introArea.style.display = "none";
             intro.style.display = "block";
@@ -62,25 +61,24 @@ if(document.getElementById("intro-save")!=null){
 if (document.getElementById("info-modal") != null) {
     document.getElementById("intro-text").addEventListener("input", () => {
         const strLength = document.getElementById("intro-text").value.length
-        texta.innerText = 100 - strLength + "자 남음";
-        texta.style.color = "black";
+        document.getElementById("texta").innerText = 100 - strLength + "자 남음";
+        document.getElementById("texta").style.color = "black";
 
         if (100 - strLength < 0) {
-            texta.style.color = "red";
-            texta.innerText = 100 - strLength + "자 초과 ";
+            document.getElementById("texta").style.color = "red";
+            document.getElementById("texta").innerText = 100 - strLength + "자 초과 ";
         }
     })
 }
 
-const infom = document.getElementsByClassName("info-2-1");
-const hobbyl = document.getElementById("what-hobby")
-Array.from(infom).forEach((target) => target.addEventListener("click", function(){ 
-			jsSearch('test', target); 
-		})
-	);
+Array.from( document.getElementsByClassName("info-2-1")).forEach((target) => target.addEventListener("click", function(){ 
+    jsSearch('test', target); 
+})
+);
 
 function jsSearch(str, target){		
     
+    const hobbyl = document.getElementById("what-hobby")
     document.getElementById("info-modal").style.display="block";
     document.getElementById("info-modali").style.display="block";
 
@@ -106,21 +104,22 @@ if (document.getElementById("info-confirm") != null) {
     })
 }
 
-
+if(document.getElementById("hobby-checked") != null){
     document.getElementById("hobby-checked").addEventListener("click", () => {
         document.getElementById("add-hobby").removeAttribute('checked');
     })
+}
 
 
     // 슬라이드
-const slides = document.querySelector('.item1-3'); //전체 슬라이드 컨테이너
-const slideImg = document.querySelectorAll('.who'); //모든 슬라이드들
-let currentIdx = 0; //현재 슬라이드 index
-const slideCount = slideImg.length; // 슬라이드 개수
-const prev = document.querySelector('.prev'); //이전 버튼
-const next = document.querySelector('.next'); //다음 버튼
-const slideWidth = 202; //한개의 슬라이드 넓이
-const slideMargin = 20; //슬라이드간의 margin 값
+var slides = document.querySelector('.item1-3'); //전체 슬라이드 컨테이너
+var slideImg = document.querySelectorAll('.who'); //모든 슬라이드들
+var currentIdx = 0; //현재 슬라이드 index
+var slideCount = slideImg.length; // 슬라이드 개수
+var prev = document.querySelector('.prev'); //이전 버튼
+var next = document.querySelector('.next'); //다음 버튼
+var slideWidth = 202; //한개의 슬라이드 넓이
+var slideMargin = 20; //슬라이드간의 margin 값
 
 //전체 슬라이드 컨테이너 넓이 설정
 // slides.style.width = (slideWidth + slideMargin) * slideCount + 'px';
@@ -155,83 +154,7 @@ if (next != null) {
 if (document.querySelector('.info-cancel') != null) {
     document.getElementById("info-cancel").addEventListener("click", () => {
         document.getElementById("info-modali").style.display = none;
-
-
     })
 }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/*next.addEventListener("click", () => {
-    // 요소 만들기 document.createElement("태그명")
-    // 요소에 속성, 값 추가 : 요소.classList.add("속성명", "값");
-    // 요소에 속성, 값 추가 : 요소.classList.remove("속성명", "값");
-    // 요소에 속성, 값 추가 : 요소.setAttrubute("속성명", "값");
-    // 요소에 속성 제거 : 요소.removeAttrubute("속성명");
-
-
-    // 부모 요소.append(자식 요소) :
-    // 부모 요소의 마지막 자식으로 자식 요소를 추가(덧붙이기)
-    
-    // 부모 요소.prepend(자식 요소) :
-    // 부모 요소의 첫 번째 자식으로 자식 요소를 추가
-
-    // A.after(B) : A의 다음 요소로 B를 추가
-    
-    // A.before(B) : A의 이전 요소로 B를 추가
-    
-    // div 요소 만들기
-    const div = document.createElement("div");
-    div.classList.add("row");
-    // input 요소 만들기
-    const input = document.createElement("input")
-    input.classList.add("in")
-    input.setAttribute("type", "number"); // input에 속성 부여
-
-    //span 요소 만들기
-    const span = document.createElement("span");
-    span.classList.add("remove-row");
-    span.innerHTML="&times;";
-    // 만들어진 span 요소에 이벤트리스너 추가
-    span.addEventListener("click", e => {
-        // 클릭된 요소의 부모 요소를 삭제 == row 삭제
-        e.target.parentElement.remove();
-    });
-
-    //--------------------------------------------------------
-    //div의 자식으로 input 추가
-    // div.append(input);
-    div.prepend(input);
-
-    //div의 마지막 자식으로 span 추가
-    div.append(span);
-
-    // ----------------------------------------------------
-
-    // .container의 마지막 자식으로 div 추가
-    document.querySelector(".container").append(div)
-
-
-});*/

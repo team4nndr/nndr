@@ -1,5 +1,8 @@
 package edu.kh.nndr.member.model.dao;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -18,4 +21,8 @@ public class MemberInfoDAO {
 		return sqlSession.selectOne("personalMapper.personalMember", no);
 	}
 
+
+	public int infoIntro(MemberInfo inputMember) {
+		return sqlSession.update("personalMapper.infoIntro", inputMember);
+	}
 }
