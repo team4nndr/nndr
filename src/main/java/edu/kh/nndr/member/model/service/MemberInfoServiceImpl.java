@@ -1,7 +1,11 @@
 package edu.kh.nndr.member.model.service;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import edu.kh.nndr.member.model.dao.MemberDAO;
 import edu.kh.nndr.member.model.dao.MemberInfoDAO;
@@ -19,6 +23,12 @@ public class MemberInfoServiceImpl implements MemberInfoService{
 	
 		
 		return dao.personalMember(no);
+	}
+
+	@Transactional(rollbackFor = {Exception.class})
+	@Override
+	public int infoIntro(MemberInfo member) {
+		return dao.infoIntro(member);
 	}
 
 }

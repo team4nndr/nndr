@@ -51,4 +51,10 @@
 		SELECT * FROM "MEMBER" M LEFT JOIN "MEMBER_INFO" D ON (M.MEMBER_NO=D.MEMBER_NO) WHERE M.MEMBER_NO= #{no}
 	</select>
 	
+	<update id="infoIntro" parameterType="_int">
+		UPDATE "MEMBER_INFO" SET INFO_INTRO=#{infoIntro} WHERE MEMBER_NO=4
+	</update>
+	
+	
+	
 </mapper>
