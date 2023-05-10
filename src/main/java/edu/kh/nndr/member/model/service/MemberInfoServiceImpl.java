@@ -31,4 +31,6 @@ public class MemberInfoServiceImpl implements MemberInfoService{
 		return dao.infoIntro(member);
 	}
 
+	
+	
 }

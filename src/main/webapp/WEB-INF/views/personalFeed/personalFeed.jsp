@@ -22,6 +22,8 @@
     </header>
     <div class="flex-container">
         <div class="main-container2">
+            <c:if test="${infoMember.memberNo eq loginMember.memberNo}" > 
+                            
             <div id="fr-border">
                 <div class="item1-2">
                     <h4>&nbsp;&nbsp;알 수도 있는 사람</h4>
@@ -108,6 +110,7 @@
                     </div>
                 </div>
                 
+                
                 <p class="controller">
                     <!-- &lang: 왼쪽 방향 화살표
                     &rang: 오른쪽 방향 화살표 -->
@@ -115,10 +118,11 @@
                     <span class="next">&rang;</span>
                 </p>
                 </div>
+                </c:if>
                 <div class=" item2-1">
                 <div class=" item2-2">
                     <div class="item2-2-1">
-                        <div class="so"><h3>&nbsp;&nbsp;소개</h3></div>
+                        <div class="so"><h2>&nbsp;&nbsp;소개</h2></div>
                         <div>
                             <div id="intro-my">${infoMember.infoIntro}</div>
                             <div id="input-intro">
@@ -129,31 +133,40 @@
                                         <div>&nbsp;전체 공개</div>
                                         <div id="btn-set">
                                             <button class="in-btn" id="intro-save" type="submit" >저장</button>
-                                        <button class="in-btn" id="intro-can" type="button" onclick="infoCan()">취소</button>
+                                            <button class="in-btn" id="intro-can" type="button" onclick="infoCan()">취소</button>
                                         </div>
                                     </div>
                                 </form>
+                                </div>
+                            <c:if test="${infoMember.memberNo eq loginMember.memberNo}" > 
+                                <button class="intro-1" onclick="infoMy()">소개수정</button>
+                            </c:if>
                             </div>
-                            <button class="intro-1" onclick="infoMy()">소개수정</button></div>
-                            <!-- <div> -->
-                            <div id="info-job">${infoMember.infoJob}</div><br>
-                            <div id="info-college">${infoMember.infoCollege}</div><br>
-                            <div id="info-high">${infoMember.infoHigh}</div><br>
-                            <div id="info_residence">${infoMember.infoResidence}</div><br>
-                            <div id="info_birth">${infoMember.infoBirthplace}</div><br>
-                            <div id="info_romantic">
-                                <div>연애/결혼 분류</div>
-                                <div href="#">연애/결혼 상대방</div>
-                                <div>연애/결혼 시작일</div>
+                            <div id="intro-infom">
+                                <div id="info-job">${infoMember.infoJob}</div>
+                                <div id="info-college">${infoMember.infoCollege}</div>
+                                <div id="info-high">${infoMember.infoHigh}</div>
+                                <div id="info_residence">${infoMember.infoResidence}</div>
+                                <div id="info_birth">${infoMember.infoBirthplace}</div>
+                                <c:if test="${infoMember.romanticYn eq 'y'}" >
+                                    <div id="info_romantic">
+                                        <div>연애/결혼 분류</div>
+                                        <div href="#">연애/결혼 상대방</div>
+                                        <div>연애/결혼 시작일</div>
+                                    </div>
+                                </c:if>
                             </div>
-                            <div class="intro-1"  id="info-link"><a id="info-link" href="/personalFeedInfo/${infoMember.memberNo}">상세정보 수정</a></div>
+                            <c:if test="${infoMember.memberNo eq loginMember.memberNo}" > 
+                                <div class="intro-1"  id="info-link"><a id="info-link" href="/personalFeedInfo/${infoMember.memberNo}">상세정보 수정</a></div>
+                            </c:if>
                             
                             
                             <div>
                                 <div id="intro-hobby">취미</div>
-                                <div class="hobby-main hobby-center intro-1">
-                                    <input type="checkbox" id="add-hobby">
-                                    <label class="hobby-btn" id="login" for="add-hobby">취미 수정</label>
+                                    <c:if test="${infoMember.memberNo eq loginMember.memberNo}" > 
+                                    <div class="hobby-main hobby-center intro-1">
+                                        <input type="checkbox" id="add-hobby">
+                                        <label class="hobby-btn" id="login" for="add-hobby">취미 수정</label>
                             
                                     <div class="hobby-box hobby-center">
                                     <form action="" id="hobby-choose">
@@ -179,14 +192,20 @@
                                     </div>
                                     <label class="hobby-overlay" for="add-hobby"></label>
                                 </div>
-                            
-                            <button class="intro-1" href="">대표 사진 추가</button></div>
+                                    </c:if>
+                                    <c:if test="${infoMember.memberNo eq loginMember.memberNo}" > 
+                            <button class="intro-1" href="">대표 사진 추가</button>
+                            </c:if>
                             <br>
+                            </div>
                     </div>
                         <br>
                     <div class="item2-2-2">
-                        <div class="item2-2-2-1">
-                            <h3>&nbsp;&nbsp;사진</h3>
+                        <div class="item2-2-2-1" >
+                            <div class="so">
+                                <h3>&nbsp;&nbsp;사진</h3>
+                            
+                            </div>
                             <a class="my-info" href="Main_im.html">모든 사진 보기</a>
                             
                         </div>
@@ -200,7 +219,9 @@
                     <br>
                     <div class="item2-2-2">
                         <div class="item2-2-2-1">
+                        <div class="so">
                             <h3>&nbsp;&nbsp;친구</h3>
+                            </div>
                             <a class="my-info" href="Main_fr.html">모든 친구 보기</a>
                         </div>
                         <div class="main-imset">

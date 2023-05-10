@@ -8,7 +8,7 @@
             <img src="/resources/images/topMenu/페이지 시작화면.gif" alt="로고"id="backLogo">
             <div class="item3">
                 <div class="myname1">
-                    <a class ="backLogobutton" href=""> 커버 사진 추가</a>
+                    <a class ="backLogobutton" class ="storypuls" href=""></a>
                 </div>
             </div>
             <div class="item4">
@@ -18,9 +18,11 @@
                 <h2 class="name">${infoMember.memberName}</h2>
                 <div class="main1-2">
                     <div class="myname2">
+                    <c:if test="${infoMember.memberNo ne loginMember.memberNo}" > 
                         <button class ="storypuls" href=""> 친구추가
+                    </c:if>
                         </button>
-                        <a class ="plo" href=""> 프로필 편집
+                        <a class ="plo" href=""> 커버 사진 추가
                         </a>
                     </div>
                 </div>

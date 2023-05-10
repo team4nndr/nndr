@@ -51,8 +51,13 @@
 		SELECT * FROM "MEMBER" M LEFT JOIN "MEMBER_INFO" D ON (M.MEMBER_NO=D.MEMBER_NO) WHERE M.MEMBER_NO= #{no}
 	</select>
 	
-	<update id="infoIntro" parameterType="_int">
+	<update id="infoIntro">
 		UPDATE "MEMBER_INFO" SET INFO_INTRO=#{infoIntro} WHERE MEMBER_NO=4
+	</update>
+	
+	<!-- 이미지 수정 -->
+	<update id="updateProfileImage">
+		UPDATE "MEMBER_INFO" SET INFO_PROFILE = #{infoProfile} WHERE MEMBER_NO = #{memberNo}
 	</update>
 	
 	

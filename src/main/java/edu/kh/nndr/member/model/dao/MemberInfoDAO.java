@@ -25,4 +25,6 @@ public class MemberInfoDAO {
 	public int infoIntro(MemberInfo inputMember) {
 		return sqlSession.update("personalMapper.infoIntro", inputMember);
 	}
+
+
 }

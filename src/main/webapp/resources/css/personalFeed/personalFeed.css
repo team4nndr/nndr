@@ -84,7 +84,7 @@ button{
     padding : 11px 0;
     background-color: #ccc;
     width: 144px;
-    height: 20px;
+    height: 42px;
 }
 
 #homeLogo{
@@ -189,7 +189,9 @@ button{
     margin-top: 7px;
 }
 
-
+#imageInput{
+    display: none;
+}
 
 
 /* border 바텀 주기 */
@@ -241,8 +243,7 @@ button{
     
 }
 .so{
-    height: 10%;
-    padding-top: 1px;
+    padding: 20px 0 0 15px;
     text-align: left;
     background-color: white;
     border-radius: 15px;
@@ -486,13 +487,24 @@ button{
 
 }
 
+#intro-my{
+    font-size: 25px;
+    font-weight: bold;
+    padding-bottom: 10px;
+}
 
+#intro-infom > div{ 
+    font-weight: bold;
+    padding : 5px;
+    text-align: left;
+    margin-left: 20px;
 
-
+}
 
 #input-intro{
     display: none;
 }
+
 
 #intro-text{
     
@@ -866,3 +878,6 @@ button{
   .next:hover{
     transform: translateX(10px);
   }
+
+
+  
