@@ -8,7 +8,8 @@ body{
     background-color: rgba(0,0,0,0.1);
 }
 
-
+fieldset{
+display: none;}
 
 
 /* 모두 작성후 삭제 */
@@ -222,20 +223,56 @@ justify-content: center;
 align-items: center;
 
 }
-#close{
-    border: 1px solid lightgrey;
-    border-radius: 50%;
-    font-weight: bold;
-    background-color: #56A8C5;
-    width: 60px;
-    height: 60px;
-    justify-content: center;
+/* 모달창 내부 */
+#think{
+    background-color: lightgray;
+    border-radius: 6px;
     align-items: center;
-    text-align: center;
-    box-sizing: border-box;
-
+    justify-content: center;
+    height: 70px;
+    font-weight: bold;
 
 }
+
+#modalTop{
+    position: relative;
+    height: 61px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+#modalTop>button {
+    position: absolute;
+    right: 10px;
+}
+
+#modalTop>span{
+    font-weight: bold;
+    font-size: 1.1rem;
+}
+.close {
+    height: 36px;
+    width: 36px;
+    border-radius: 50%;
+    display:inline-block;
+    display:inline;
+    background: lightgrey;
+    border: none;
+}
+.close:after {
+    display: inline-block;
+    content: "\00d7";
+    font-size:15pt;
+}
+.close:hover{
+    background-color: #4A6EA9;;
+}
+
+
+
+
+
+
 
 #myContent-modal>div:nth-child(2){
 
@@ -366,10 +403,21 @@ display: flex;
 
     display: block;
     text-align: center;
-    height: 100%;
-    
+    width: 130px;
+    height: 36px;
+    border-radius: 6px;
+    border: none;
 
+    background: #eee;
+
+    cursor: pointer;
+    margin: 10px;
 }
+#cArea-2 button:hover{
+    background-color:  #4A6EA9;
+}
+
+
 
 
 .centerArea-1 fieldset{
