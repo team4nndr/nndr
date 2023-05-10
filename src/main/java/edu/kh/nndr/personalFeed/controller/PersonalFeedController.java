@@ -8,6 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.SessionAttribute;
 import org.springframework.web.bind.annotation.SessionAttributes;
@@ -25,7 +26,7 @@ public class PersonalFeedController {
 	@Autowired
 	MemberInfoService service;
 
-	@RequestMapping("/personalFeed/{no}")
+	@RequestMapping("/personalFeed/{no:[0-9]+}")
 	public String personalFeed( Model model, @PathVariable("no") int no) {
 		MemberInfo infoMember = service.personalMember(no);
 		model.addAttribute("infoMember", infoMember); // request scope
@@ -33,16 +34,21 @@ public class PersonalFeedController {
 	}
 	
 	
-	@PostMapping("/infoIntro")
-	public String infoIntro(MemberInfo member, @SessionAttribute("loginMember") MemberInfo loginMember, RedirectAttributes ra) {
+	@PostMapping("/personalFeed/infoIntro")
+	public String infoIntro(MemberInfo member, /*@SessionAttribute("loginMember") MemberInfo loginMember,*/@RequestHeader(value = "referer") String referer, RedirectAttributes ra) {
 		System.out.println("aaaa");
-		member.setMemberNo(loginMember.getMemberNo());
+//		member.setMemberNo(loginMember.getMemberNo());
 		int result = service.infoIntro(member);
+		String path = "redirect:";
 		if(result > 0) {// 성공
 		} else { // 실패
 		}
-		return "redirect:/";
+		path += referer;
+		return path;
 	}
+	
+	
+	
 	
 	
 }
