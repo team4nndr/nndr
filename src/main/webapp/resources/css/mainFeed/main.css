@@ -23,7 +23,7 @@ main{
 }
 /* 헤더 임시로 지정 */
 header{
-    height: 200px;
+    height: 80px;
     flex-basis: auto;
     display: flex;
     flex-direction: row;
@@ -63,6 +63,8 @@ header{
     display: flex;
     align-items: center;
     justify-content: left;
+    flex: 0 1 150px;
+    
     
 
 }
@@ -70,11 +72,37 @@ header{
     background-color: lightgray;
     border-radius: 5px;
 }
+.imgLink{
+    height: 50px;
+    list-style:none;
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    
+    
+}
 
-.leftArea-1 a{
+.aLink{
     font-weight: bold;
+    font-size: 25px;
     color: black;
     text-decoration: none;
+    margin-left: 10px;
+    display: block;
+    width: 100%;
+    
+    
+    
+}
+
+/* 섹션 나누기 */
+.leftArea-1 li:nth-child(2){
+
+    border-bottom: 2px solid rgb(147, 145, 145);
+}
+.leftArea-1 li:nth-child(4){
+
+    border-bottom: 2px solid rgb(147, 145, 145);
 }
 
 
@@ -82,26 +110,26 @@ header{
 
 /* left side */
 #mainHome{
-    width: 20px;
-
+    width: 30px;
+    
     filter: invert(38%) sepia(62%) saturate(468%) hue-rotate(178deg) brightness(93%) contrast(84%);
 }
 #myHome{
-    width: 20px;
-
+    width: 30px;
+    
     
 }
 #friend{
-    width: 20px;
+    width: 30px;
     filter: invert(38%) sepia(62%) saturate(468%) hue-rotate(178deg) brightness(93%) contrast(84%);
 }
 #likeLogo{
-    width: 20px;
+    width: 30px;
     filter: invert(38%) sepia(62%) saturate(468%) hue-rotate(178deg) brightness(93%) contrast(84%);
 }
 
 #searchLogo{
-    width: 20px;
+    width: 30px;
     filter: invert(56%) sepia(100%) saturate(559%) hue-rotate(70deg) brightness(98%) contrast(85%);
 }
 
