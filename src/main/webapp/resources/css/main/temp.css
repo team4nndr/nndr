@@ -1,0 +1,28 @@
+.temp {
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: end;
+}
+
+.temp input {
+    display: none;
+}
+
+.temp button {
+    display: block;
+    border: none;
+    background-color: black;
+    color: white;
+    margin-bottom: 5px;
+    border-radius: 5px;
+    width: 150px;
+    height: 50px;
+    cursor: pointer;
+}
+
+.temp button:hover {
+    background-color: darkgray;
+}
