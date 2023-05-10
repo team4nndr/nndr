@@ -1,5 +1,7 @@
 package edu.kh.nndr.member.model.service;
 
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -19,5 +21,11 @@ public class MemberServiceImpl implements MemberService {
 	@Override
 	public Member test() {
 		return dao.test();
+	}
+
+	// 로그인(임시)
+	@Override
+	public Member login(Map<String, Object> map) {
+		return dao.login(map);
 	}
 }

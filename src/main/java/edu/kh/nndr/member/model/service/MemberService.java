@@ -1,5 +1,7 @@
 package edu.kh.nndr.member.model.service;
 
+import java.util.Map;
+
 import edu.kh.nndr.member.model.dto.Member;
 
 // Service Interface 사용 이유
@@ -11,4 +13,11 @@ import edu.kh.nndr.member.model.dto.Member;
 public interface MemberService {
 	
 	Member test();
+
+	/**
+	 * 로그인(임시)
+	 * @param map
+	 * @return member
+	 */
+	Member login(Map<String, Object> map);
 }
