@@ -74,13 +74,16 @@
                             <fieldset> 
                                 <!-- <input type="text" name="query" id="query" 
                                 placeholder="무슨 생각을 하고 계신가요?" autocomplete="off">  -->
-                                <button id="think">고객님은 무슨생각을 하고 계신가요?</button>    
+                                <div>
+                                <span id="think">고객님은 무슨생각을 하고 계신가요?</span>    
+                                </div>
                                 <%-- 모달 --%>
                                 <div id="myContent"></div> 
                                 <div id="myContent-modal">
-                                <section>
-                                <section>게시물 만들기</section>
-                                <section id="close" role="button">X</section>
+                                
+                                <section id="modalTop">
+                                <span class="title">게시물 만들기</span>
+                                <button type="button" class="close cancelBtn"></button>
                                 </section>
 
 
