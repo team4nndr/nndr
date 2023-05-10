@@ -1,5 +1,7 @@
 package edu.kh.nndr.member.model.dao;
 
+import java.util.Map;
+
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -19,5 +21,10 @@ public class MemberDAO {
 		// sqlSession.selectOne("namespace값.id값", 전달할 값);
 		// -> namespace가 일치하는 Mapper에서 id가 일치하는 SQL구문 수행 후 결과를 1행(dto, 기본자료형) 반환
 		return sqlSession.selectOne("memberMapper.test");
+	}
+
+	// 로그인(임시)
+	public Member login(Map<String, Object> map) {
+		return sqlSession.selectOne("memberMapper.login", map);
 	}
 }

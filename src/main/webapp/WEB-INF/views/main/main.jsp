@@ -22,9 +22,9 @@
                     <h3>Facebook에서 전세계에 있는 친구,가족,지인들과 함께 이야기를 나눠보세요.</h3>
                 </div>
                 <div class="authentication">
-                    <form class="login" action="#" method="#">
-                        <input type="text" placeholder="이메일 또는 전화번호"><br><br>
-                        <input type="password" placeholder="비밀번호"><br><br>
+                    <form class="login" action="/login" method="POST">
+                        <input name="memberEmail" type="text" placeholder="이메일 또는 전화번호"><br><br>
+                        <input name="memberPw" type="password" placeholder="비밀번호"><br><br>
                         <button type="submit" class="submit2">로그인</button><br>
                         <br>
                         <a href="#" class="pwCheck">비밀번호를 잊으셨나요?</a>

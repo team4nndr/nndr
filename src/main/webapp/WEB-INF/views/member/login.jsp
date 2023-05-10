@@ -9,5 +9,7 @@
 	최초 접속 시 로그인 화면<br>
 	
 	test 계정 : ${testMember}
+	<br>
+	login 계정 : ${loginMember}
 </body>
 </html>
