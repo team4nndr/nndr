@@ -32,8 +32,7 @@ public class MemberController {
 		if(loginMember == null) {
 			return "redirect:/";
 		}
-		
-//		return "/member/login";
+	
 		return "redirect:/mainFeed";
 	}
 }
