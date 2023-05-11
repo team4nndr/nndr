@@ -110,13 +110,13 @@
                     </div>
                 </div>
                 
-                
                 <p class="controller">
                     <!-- &lang: 왼쪽 방향 화살표
                     &rang: 오른쪽 방향 화살표 -->
                     <span class="prev">&lang;</span>  
                     <span class="next">&rang;</span>
                 </p>
+
                 </div>
                 </c:if>
                 <div class=" item2-1">
@@ -126,7 +126,7 @@
                         <div>
                             <div id="intro-my">${infoMember.infoIntro}</div>
                             <div id="input-intro">
-                                <form action="infoIntro" method="post" >
+                                <form action="infoIntro" method="get" >
                                     <textarea type="text" name="infoIntro" id="intro-text" cols="50" rows="3" ></textarea><br>
                                     <div id="texta"></div>
                                     <div id="public">

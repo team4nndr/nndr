@@ -52,7 +52,7 @@
 	</select>
 	
 	<update id="infoIntro">
-		UPDATE "MEMBER_INFO" SET INFO_INTRO=#{infoIntro} WHERE MEMBER_NO=4
+		UPDATE "MEMBER_INFO" SET INFO_INTRO=#{infoIntro} WHERE MEMBER_NO = #{memberNo}
 	</update>
 	
 	<!-- 이미지 수정 -->

@@ -62,9 +62,9 @@
                         </form>
                     </div>
                     <div class="infom">
-                    <button class="info-2-1" type="button">(+) 직장 추가</button><br>
-                    <button class="info-2-1" type="button">(+) 대학교 추가</button><br>
-                    <button class="info-2-1" type="button">(+) 고등학교 추가</button><br>
+                    <button class="info-2-1" type="button" data-map="INFO_JOB">(+) 직장 추가</button><br>
+                    <button class="info-2-1" type="button" data="aszxcasd">(+) 대학교 추가</button><br>
+                    <button class="info-2-1" type="button" data="aqweqwsd">(+) 고등학교 추가</button><br>
                     <button class="info-2-1" type="button">(+) 거주지 추가</button><br>
                     <button class="info-2-1" type="button">(+) 출신지 추가</button><br>
                     <button class="info-2-1" type="button">(+) 결혼/연애 상태 추가</button><br>
@@ -140,7 +140,7 @@
                             </div>
                         </form>
                     </div>
-                    <button class="info-2-1">(+) 전화번호</button><br>
+                    <button class="info-2-1" data=>(+) 전화번호</button><br>
                     <button class="info-2-1">(+) 소셜 링크 추가</button><br>
                     <button class="info-2-1">(+) 언어 추가</button><br>
                     <button class="info-2-1">(+) 성별 추가</button><br>
@@ -194,7 +194,7 @@
                     </div>
                     <button class="info-2-1">(+) 내 소개 추가</button><br>
                     <button class="info-2-1">(+) 별명 추가</button><br>
-                    <button class="info-2-1">(+) 좋아하는 문구 추가</button><br>
+                    <button class="info-2-1" data="asd">(+) 좋아하는 문구 추가</button><br>
                 </div>
                 <div class="info-experience-7">
                     <h2>이벤트</h2>
@@ -222,17 +222,18 @@
     <div id="info-modal">
     </div>
         <div id="info-modali">
+            <%-- <form action="/personalFeedInfo/${no}" method="POST"> --%>
             <div id="what-hobby"></div>
-            <form action="">
+            <input type="text" id="whatHobby" name="whatHobby">
                 <div id="hobby-asd">
-                <input id="hobby-input" type="text">
+                <input id="hobby-input" name="hobbyInput" type="text">
             </div>
                 <br>
                 <div id="hbtn-set">
                 <button class="info-addbtn" id="info-confirm"type="button">확인</button>
                 <button class="info-addbtn" id="info-cancel" type="button">취소</button>
             </div>
-            </form>
+            <%-- </form> --%>
         </div>
     </div>
 </header>
