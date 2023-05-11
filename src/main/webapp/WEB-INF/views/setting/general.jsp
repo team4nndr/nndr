@@ -28,13 +28,13 @@
                 <!-- 계정(이메일) -->
                 <div class="row">
                     <span class="title">로그인계정</span>
-                    <span class="data">cyunanne@gmail.com</span>
+                    <span class="data">${loginMember.memberEmail}</span>
                 </div>
 
                 <!-- 이름 -->
                 <div class="row">
                     <span class="title">이름</span>
-                    <span class="data">최유나</span>
+                    <span class="data">${loginMember.memberName}</span>
                 </div>
 
                 <!-- 비밀번호 -->
@@ -49,22 +49,24 @@
                         <div>
                             <span>현재 비밀번호</span>
                             <span class="input-wrapper passwd">
-                                <input class="mod-input" type="password" />
+                                <input id="currentPw" class="mod-input" type="password" />
                             </span>
                         </div>
                         <div>
                             새 비밀번호
                             <span class="input-wrapper passwd">
-                                <input class="mod-input" type="password" />
+                                <input id="newPw" class="mod-input" type="password" />
                             </span>
                         </div>
                         <div>
                             새 비밀번호 재입력
                             <span class="input-wrapper passwd">
-                                <input class="mod-input" type="password" />
+                                <input id="newPwConfirm" class="mod-input" type="password" />
                             </span>
                         </div>
+                        <a href="#">비밀번호를 잊으셨나요?</a>
                     </div>
+
                     <div class="mod-button submit">변경 내용 저장</div>
                     <div class="mod-button close">닫기</div>
                 </div>
@@ -72,15 +74,22 @@
                 <!-- 성별 -->
                 <div class="row gender">
                     <span class="title">성별</span>
-                    <span class="data info-print">여</span>
+                    <span class="data info-print">
+                    <c:choose>
+                        <c:when test="${loginMember.infoGender == '남'}">남</c:when>
+                        <c:when test="${loginMember.infoGender == '여'}">여</c:when>
+                        <c:otherwise>선택하지 않음</c:otherwise>
+                    </c:choose>
+                    </span>
+                    
                     <div class="mod-button mod">수정</div>
                 </div>
                 <div class="row mod gender hidden">
                     <span class="title">성별 수정</span>
                     <div class="mod-wrapper gender">
-                        <label><input type="radio" name="gender" value="M">남</label>
-                        <label><input type="radio" name="gender" value="F">여</label>
-                        <label><input type="radio" name="gender" value="None">알리고 싶지 않음</label>
+                        <label><input type="radio" name="gender" id="genderMale" value="남">남</label>
+                        <label><input type="radio" name="gender" id="genderFemale" value="여">여</label>
+                        <label><input type="radio" name="gender" id="genderNone" value="없음">선택하지 않음</label>
                     </div>
                     <div class="mod-button submit">변경 내용 저장</div>
                     <div class="mod-button close">닫기</div>
@@ -89,14 +98,13 @@
                 <!-- 주소 -->
                 <div class="row address">
                     <span class="title">주소</span>
-                    <span class="data">경기도 하남시 아리수로 499 미사강변루나리움아파트 502동 1302호</span>
-                    <!-- <input class="data info-input" value="경기도 하남시 아리수로 499 미사강변루나리움아파트 502동 1302호" /> -->
+                    <span class="data">${loginMember.infoResidence}</span>
                     <div class="mod-button mod">수정</div>
                 </div>
                 <div class="row mod address hidden">
                     <span class="title">주소 수정</span>
                     <div class="input-wrapper address">
-                        <input class="mod-input" type="text" />
+                        <input class="mod-input" type="text" value="${loginMember.infoResidence}"/>
                     </div>
                     <div class="mod-button submit">변경 내용 저장</div>
                     <div class="mod-button close">닫기</div>
@@ -105,15 +113,16 @@
                 <!-- 연락처 -->
                 <div class="row tel">
                     <span class="title">연락처</span>
-                    <span class="data">010-5923-9363</span>
+                    <span class="data" id="telData">${loginMember.memberTel}</span>
                     <!-- <input class="data info-input" value="010-5923-9363" /> -->
                     <div class="mod-button mod">수정</div>
                 </div>
                 <div class="row mod tel hidden">
                     <span class="title">연락처 수정</span>
                     <div class="input-wrapper tel">
-                        <input class="mod-input" type="text" />
+                        <input class="mod-input" type="text" value="${loginMember.memberTel}" maxlength="11"/>
                     </div>
+                    <span class="mod-message"></span>
                     <div class="mod-button submit">변경 내용 저장</div>
                     <div class="mod-button close">닫기</div>
                 </div>
@@ -122,6 +131,12 @@
         </form>
     </main>
 
+    <script>
+        const infoGender = "${loginMember.infoGender}";
+        const infoResidence = "${loginMember.infoResidence}";
+        const memberTel = "${loginMember.memberTel}";
+    </script>
+    
     <script src="/resources/js/setting/general.js"></script>
 </body>
 </html>

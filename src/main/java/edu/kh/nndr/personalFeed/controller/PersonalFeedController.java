@@ -36,7 +36,7 @@ public class PersonalFeedController {
 	
 	@PostMapping("/personalFeed/infoIntro")
 	public String infoIntro(MemberInfo member, /*@SessionAttribute("loginMember") MemberInfo loginMember,*/@RequestHeader(value = "referer") String referer, RedirectAttributes ra) {
-		System.out.println("aaaa");
+//		System.out.println("aaaa");
 //		member.setMemberNo(loginMember.getMemberNo());
 		int result = service.infoIntro(member);
 		String path = "redirect:";
