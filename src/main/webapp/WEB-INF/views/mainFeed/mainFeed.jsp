@@ -33,7 +33,7 @@
                         <li>
                         <a href="/personalFeed/4" class="imgLink">
                         <img src="/resources/images/mainFeed/mainMy.png" alt="myHome" id="myHome">
-                        </a><a href="/personalFeed/4" class="aLink">나의피드</a>
+                        </a><a href="/personalFeed/${loginMember.memberNo}" class="aLink">나의피드</a>
                         </li>
 
                         <li>
@@ -71,7 +71,7 @@
 
                         <section>
                             <form action="#" method="get">
-                            <fieldset> 
+                            <%-- <fieldset>  --%>
                                 <!-- <input type="text" name="query" id="query" 
                                 placeholder="무슨 생각을 하고 계신가요?" autocomplete="off">  -->
                                 <div>
@@ -83,7 +83,7 @@
                                 
                                 <section id="modalTop">
                                 <span class="title">게시물 만들기</span>
-                                <button type="button" class="close cancelBtn"></button>
+                                <button type="button" class="close cancelBtn" id="cancelBtn"></button>
                                 </section>
 
 
@@ -99,7 +99,7 @@
                                 <section id="modal-my2"> 
 
                                 <section>
-                                <span><a href="#" class="change">송혜교</a></span>
+                                <span><a href="/personalFeed/${loginMember.memberNo}" class="change">${loginMember.memberName}</a></span>
                                 </section>
 
 
@@ -123,7 +123,7 @@
                                     
                                 
     
-                            </fieldset>
+                            <%-- </fieldset> --%>
     
     
                         </form>
