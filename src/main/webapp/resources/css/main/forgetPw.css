@@ -1,0 +1,67 @@
+.forgetPwLogin{
+    width: 1190px;
+    height: 30px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    align-content: space-around;
+}
+
+.forgetPwLogin input {
+    width: 188px;
+    height: 40px;
+}
+
+.found{
+    background-color: #e9ebee;
+    width: 1654px;
+    height: 436px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}   
+
+.found2{
+    background-color: #fff;
+    border: 1px solid #ccd;
+    border-radius: 5%;
+    width: 500px;
+    height: 276px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.headerTitle{
+    width: 500px;
+    height: 60px;
+}
+
+.margin{
+    width: 464px;
+    height: 40px;
+}
+
+
+.inputText{
+    position: relative;
+    width: 462px;
+    height: 52px;
+    border-radius: 8px;
+}
+
+.cancel{
+    width: 70px;
+    height: 36px;
+}
+
+.buttonBtn{
+    width: 70px;
+    height: 36px;
+}
+
+
+
