@@ -64,7 +64,7 @@
                 <div class="centerArea-1"><!-- 나의 피드 올리기 -->
                     <section id="cArea-1">
                         
-                        <section>  <a href="#">
+                        <section>  <a href="/personalFeed/${loginMember.memberNo}">
                             <img src="/resources/images/mainFeed/mainMy.png" alt="로고" id="myLogo">
                         </a>
                     </section>
@@ -75,7 +75,7 @@
                                 <!-- <input type="text" name="query" id="query" 
                                 placeholder="무슨 생각을 하고 계신가요?" autocomplete="off">  -->
                                 <div>
-                                <span id="think">고객님은 무슨생각을 하고 계신가요?</span>    
+                                <span id="think">${loginMember.memberName} 님은 무슨생각을 하고 계신가요?</span>    
                                 </div>
                                 <%-- 모달 --%>
                                 <div id="myContent"></div> 
@@ -89,7 +89,7 @@
 
                                 <div>
                                 <section id="modal-my1">
-                                    <a href="#">
+                                    <a href="/personalFeed/${loginMember.memberNo}">
                                     <img src="/resources/images/mainFeed/mainMy.png" alt="로고" id="myLogo">
                                     </a>
                                 </section>
@@ -116,10 +116,32 @@
 
 
 
-                                <div></div>
+                                <section id="modalContent">
+                                <textarea placeholder="${loginMember.memberName}님은 무슨 생각을 하고 계신가요?"></textarea>
+                                </section>
                                 
-                                
+                                <section id="modalImg">
+                                <section>사진</section>
+                                <div class="img-box">
+                                    <div class="boardImg">
+                                    <label for="img1">
+                                        <img class="preview" src="">
+                                    </label>
+                                    <input type="file" name="images" class="inputImage" id="img1" accept="image/*">
+                                    <span class="delete-image">&times;</span>
+                                    </div>
                                 </div>
+                                
+
+
+                                
+                                </section>
+
+
+
+
+
+                                
                                     
                                 
     
@@ -135,7 +157,7 @@
                     <section id="cArea-2">                  
                     <ul>
                         
-                        <li><button >사진/동영상</button></li>
+                        <li><button id="imgBtn">사진/동영상</button></li>
                         <li><button >기분/활동</button></li>
                     </ul>
                     </section>
@@ -175,7 +197,7 @@
                     <section id="like">
 
                         <ul>
-                            <li><a href="#"><img src="/resources/images/mainFeed/mainLike.png" alt="like" id="likeLogo"> 좋아요</a></li>
+                            <li><a href="#"><img src="/resources/images/mainFeed/mainLike.png" alt="like" id="likeLogo-1"> 좋아요</a></li>
                             <li><a href="#reply"><img src="/resources/images/mainFeed/mainReply.png" alt="reply" id="replyLogo"> 댓글 달기</a></li>
                             <li><a href="#"><img src="/resources/images/mainFeed/mainNext.png" alt="share" id="shareLogo"> 공유하기</a></li>
                         </ul>

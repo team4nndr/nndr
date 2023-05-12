@@ -28,6 +28,15 @@ cancelBtn.addEventListener("click", ()=>{
 
 });
 
+// 사진 버튼 눌렀을 때 모달창 사진 탭으로 이동
+document.getElementById("imgBtn").addEventListener("click",() => {
+    document.getElementById("myContent").style.display="block";
+    document.getElementById("myContent-modal").style.display="block";
+    // 포커스 추가
+
+});
+
+
 
 
 
