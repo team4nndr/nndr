@@ -11,9 +11,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-@WebFilter (filterName = "loginFilter", 
-			urlPatterns = {"/mainFeed/*", "/setting/*", "/friend/*"})
-public class LoginFilter implements Filter {
+@WebFilter (filterName = "loginStateFilter", urlPatterns = "/")
+public class LoginStateFilter implements Filter {
 
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
 
@@ -21,8 +20,8 @@ public class LoginFilter implements Filter {
 		HttpServletResponse resp = (HttpServletResponse)response;
 		HttpSession session = req.getSession();
 
-		if(session.getAttribute("loginMember") == null) {
-			resp.sendRedirect("/");
+		if(session.getAttribute("loginMember") != null) {
+			resp.sendRedirect("/mainFeed");
 		} else {
 			chain.doFilter(request, response);
 		}

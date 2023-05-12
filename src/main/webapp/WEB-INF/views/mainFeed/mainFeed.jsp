@@ -16,7 +16,7 @@
     <!-- 헤더는 아마 상단바가 들어갈거임 이거는 
     fixed나 sticky를 사용해서 고정시켜주는게 좋을 것 같음 -->
         <header>
-        	<jsp:include page="/WEB-INF/views/topMenu/header.jsp"/>
+            <jsp:include page="/WEB-INF/views/topMenu/header.jsp"/>
         </header>
 
         <!-- 중심 내용이 들어갈 것들  -->
