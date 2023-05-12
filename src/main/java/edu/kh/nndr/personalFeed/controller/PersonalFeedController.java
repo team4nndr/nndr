@@ -34,7 +34,6 @@ public class PersonalFeedController {
 		return "personalFeed/personalFeed";
 	}
 	
-	
 	@GetMapping("/personalFeed/infoIntro")
 	public String infoIntro(MemberInfo member, @SessionAttribute("loginMember") Member loginMember, @RequestHeader(value = "referer") String referer, RedirectAttributes ra) {
 		member.setMemberNo(loginMember.getMemberNo());
@@ -47,15 +46,4 @@ public class PersonalFeedController {
 		path += referer;
 		return path;
 	}
-	
-	
-	
-	
-	
-	
-	
 }
-
-
-
-

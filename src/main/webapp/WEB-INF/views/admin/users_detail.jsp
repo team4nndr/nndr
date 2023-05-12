@@ -48,7 +48,7 @@
                 </div>
                 <div class="row">
                     <span class="title">연락처</span>
-                    <span class="data">${fn:substring(member.memberTel,0,3)}-${fn:substring(member.memberTel,3,7)}-${fn:substring(member.memberTel,7,13)}</span>
+                    <span class="data" id="telData">${member.memberTel}</span>
                 </div>
                 <div class="row">
                     <span class="title">회원상태</span>
