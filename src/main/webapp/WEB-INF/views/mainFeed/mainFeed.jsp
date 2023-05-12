@@ -31,9 +31,9 @@
                         </li>
 
                         <li>
-                        <a href="/personalFeed/4" class="imgLink">
+                        <a href="/personalFeed/${loginMember.memberNo}" class="imgLink">
                         <img src="/resources/images/mainFeed/mainMy.png" alt="myHome" id="myHome">
-                        </a><a href="/personalFeed/4" class="aLink">나의피드</a>
+                        </a><a href="/personalFeed/${loginMember.memberNo}" class="aLink">나의피드</a>
                         </li>
 
                         <li>
