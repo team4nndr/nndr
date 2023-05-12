@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.SessionAttribute;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import edu.kh.nndr.member.model.dto.Member;
 import edu.kh.nndr.member.model.dto.MemberInfo;
 import edu.kh.nndr.member.model.service.MemberInfoService;
 import edu.kh.nndr.member.model.service.MemberService;
@@ -26,18 +27,17 @@ public class PersonalFeedController {
 	@Autowired
 	MemberInfoService service;
 
-	@RequestMapping("/personalFeed/{no:[0-9]+}")
+	@GetMapping("/personalFeed/{no:[0-9]+}")
 	public String personalFeed( Model model, @PathVariable("no") int no) {
 		MemberInfo infoMember = service.personalMember(no);
 		model.addAttribute("infoMember", infoMember); // request scope
 		return "personalFeed/personalFeed";
 	}
 	
-	
-	@PostMapping("/personalFeed/infoIntro")
-	public String infoIntro(MemberInfo member, /*@SessionAttribute("loginMember") MemberInfo loginMember,*/@RequestHeader(value = "referer") String referer, RedirectAttributes ra) {
-//		System.out.println("aaaa");
-//		member.setMemberNo(loginMember.getMemberNo());
+	@GetMapping("/personalFeed/infoIntro")
+	public String infoIntro(MemberInfo member, @SessionAttribute("loginMember") Member loginMember, @RequestHeader(value = "referer") String referer, RedirectAttributes ra) {
+		member.setMemberNo(loginMember.getMemberNo());
+		System.out.println(member.getMemberNo());
 		int result = service.infoIntro(member);
 		String path = "redirect:";
 		if(result > 0) {// 성공
@@ -46,13 +46,4 @@ public class PersonalFeedController {
 		path += referer;
 		return path;
 	}
-	
-	
-	
-	
-	
 }
-
-
-
-
