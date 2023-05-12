@@ -18,19 +18,19 @@ document.getElementById("myContent").addEventListener("click", () => {
 });
 
 
+/* 모달창 열어서 취소버튼을 눌렀을 때도 원래로 */
+
+const cancelBtn = document.getElementById("cancelBtn");
+
+cancelBtn.addEventListener("click", ()=>{
+    document.getElementById("myContent").style.display="none";
+    document.getElementById("myContent-modal").style.display="none";
+
+});
 
 
-document.getElementById("info-cancel").addEventListener("click", () => {
-    document.getElementById("info-modal").style.display="none";
-    document.getElementById("info-modali").style.display="none";
-})
-document.getElementById("info-confirm").addEventListener("click", () => {
-    document.getElementById("info-modal").style.display="none";
-    document.getElementById("info-modali").style.display="none";
 
 
-
-})
 
 
 
