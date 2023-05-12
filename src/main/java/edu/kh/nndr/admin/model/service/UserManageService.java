@@ -10,4 +10,25 @@ public interface UserManageService {
 
 	Member selectMember(int memberNo);
 
+	/**
+	 * 계정 삭제
+	 * @param memberNo
+	 * @return result
+	 */
+	int deleteMember(int memberNo);
+
+	/**
+	 * 계정 복구
+	 * @param memberNo
+	 * @return result
+	 */
+	int recoverMember(int memberNo);
+
+	/**
+	 * 계정 비활성화
+	 * @param memberNo
+	 * @return result
+	 */
+	int disableMember(int memberNo);
+
 }

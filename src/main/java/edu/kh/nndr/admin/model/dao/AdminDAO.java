@@ -32,4 +32,21 @@ public class AdminDAO {
 	public Member selectMember(int memberNo) {
 		return sqlSession.selectOne("memberMapper.selectMember", memberNo);
 	}
+
+	public int deleteMember(int memberNo) {
+		return sqlSession.selectOne("memberMapper.deleteMember", memberNo);
+	}
+
+	public int recoverMember(int memberNo) {
+		return sqlSession.selectOne("memberMapper.recoverMember", memberNo);
+	}
+
+	/**
+	 * 계정 비활성화
+	 * @param memberNo
+	 * @return result
+	 */
+	public int disableMember(int memberNo) {
+		return sqlSession.update("memberMapper.disableMember", memberNo);
+	}
 }

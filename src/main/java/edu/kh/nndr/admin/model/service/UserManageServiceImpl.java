@@ -38,4 +38,21 @@ public class UserManageServiceImpl implements UserManageService {
 		return dao.selectMember(memberNo);
 	}
 
+	// 계정 삭제
+	@Override
+	public int deleteMember(int memberNo) {
+		return dao.deleteMember(memberNo);
+	}
+
+	// 계정 복구
+	@Override
+	public int recoverMember(int memberNo) {
+		return dao.recoverMember(memberNo);
+	}
+
+	// 계정 비활성화
+	@Override
+	public int disableMember(int memberNo) {
+		return dao.disableMember(memberNo);
+	}
 }

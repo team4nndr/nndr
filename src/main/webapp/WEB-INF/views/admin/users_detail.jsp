@@ -59,9 +59,11 @@
                             </c:when>
                             <c:when test="${member.memberCode == 'B'}">
                                 <div class="disabled">비활성화</div>
+                                <span class="date">(비활성화 일시 : ${member.disableDate})</span>
                             </c:when>
                             <c:when test="${member.memberCode == 'D'}">
                                 <div class="dropped">탈퇴</div>
+                                <span class="date">(탈퇴 일시 : ${member.deleteDate})</span>
                             </c:when>
                             <c:otherwise>
                                 <div class="admin">관리자</div>
@@ -71,12 +73,40 @@
                 </div>
             </div>
             <div id="bottom">
-                <button type="button" name="button" value="able" <c:if test="${member.memberCode != 'B'}">disabled</c:if>>비활성 해제</button>
-                <button type="button" name="button" vlaue="recover" <c:if test="${member.memberCode != 'D'}">disabled</c:if>>계정 복구</button>
+                <c:choose>
+                    <c:when test="${member.memberCode == 'N'}">
+                        <button type="button" id="disableBtn">유저 비활성</button>
+                        <button type="button" id="deleteBtn">계정 삭제</button>
+                    </c:when>
+
+                    <c:when test="${member.memberCode == 'B'}">
+                        <button type="button" id="enableBtn">비활성 해제</button>
+                        <button type="button" id="deleteBtn">계정 삭제</button>
+                    </c:when>
+                
+                    <c:otherwise>
+                        <button type="button" id="disableBtn" disabled>유저 비활성</button>
+                        <button type="button" id="recoverBtn">계정 삭제</button>
+                    </c:otherwise>
+                </c:choose>
+                <c:if test="" >
+                    
+                </c:if>
+                
             </div>
+            <%-- <div id="bottom">
+                <button type="button" id="enableBtn" name="enableBtn"></button>
+                <button type="button" id="recoverBtn" name="recoverBtn"></button>
+            </div> --%>
         </form>
     </main>
 
+    <jsp:include page="/WEB-INF/views/common/footer.jsp"/>
+
+    <script>
+        const memberNo = "${member.memberNo}";
+        let memberCode = "${member.memberCode}";
+    </script>
     <script src="/resources/js/admin/admin.js"></script>
 </body>
 </html>
