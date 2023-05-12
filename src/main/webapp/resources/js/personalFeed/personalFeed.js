@@ -72,21 +72,26 @@ if (document.getElementById("info-modal") != null) {
 }
 
 Array.from( document.getElementsByClassName("info-2-1")).forEach((target) => target.addEventListener("click", function(){ 
-    jsSearch('test', target); 
+    jsSearch(target); 
 })
 );
 var a = "asd";
-function jsSearch(str, target){		
+var b;
+function jsSearch(target){		
     const hobbyl = document.getElementById("what-hobby")
     document.getElementById("info-modal").style.display="block";
     document.getElementById("info-modali").style.display="block";
-    document.getElementById("whatHobby").value=(target.innerText).substring(4);
-    // alert(target.dataset.map);
-    a=target.dataset.map;
-    // hobbyl.innerText=(target.innerText).substring(4);
-    // hobbyl.style.fontSize="19px";
+    document.getElementById("whatHobby").innerText=(target.innerText).substring(4);
+    b=target;
 
+    a=target.dataset.map;
+    document.getElementsByClassName("infom").forEach((element) =>
+        element.children.forEach((element) =>
+
+        )
+    )
 };   
+// document.getElementsByClassName("infom")[0].children[0]
 
 document.getElementById("info-confirm").addEventListener('click', () => {
     const i = document.getElementById("hobby-input").value;
@@ -98,7 +103,7 @@ document.getElementById("info-confirm").addEventListener('click', () => {
 
 
 function inputhobby(i){
-    const hobby = a+" "+i;
+    const hobby = a+"§"+i;
     fetch("/inputhobby?hobby="+hobby)  // 지정된 주소로 GET방식 비동기 요청(ajax)
     // 전달하고자 하는 파라미터를 주소 뒤 쿼리스트링으로 추가
     
@@ -108,6 +113,8 @@ function inputhobby(i){
     
     .catch (e => { console.log(e)}); // 예외 발생 시 처리할 내용을 작성
     alert(i)
+
+    
 }
 
 

@@ -760,10 +760,9 @@ button{
 #hobby-input{
     height: 50px;
     width: 270px;
-    margin-left: 10px;
     border-radius: 7px;
     background-color: beige;
-    
+    margin-top: 10px;
 }
 
 #hbtn-set{

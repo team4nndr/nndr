@@ -1,6 +1,7 @@
 package edu.kh.nndr.member.model.service;
 
 import java.io.IOException;
+import java.util.Map;
 
 import org.springframework.web.multipart.MultipartFile;
 
@@ -13,5 +14,7 @@ public interface MemberInfoService {
 
 	int infoIntro(MemberInfo member);
 
+	int infoInput(Map<String, Object> hobbyInput);
+	
 
 }

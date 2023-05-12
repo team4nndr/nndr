@@ -27,4 +27,12 @@ public class MemberInfoDAO {
 	}
 
 
+	public int infoInput(Map<String, Object> hobbyInput) {
+		System.out.println(hobbyInput.get("whatHobby"));
+		System.out.println(hobbyInput.get("hobby"));
+		System.out.println(hobbyInput.get("memberNo"));
+		return sqlSession.update("personalMapper.infoInput", hobbyInput);
+	}
+
+
 }

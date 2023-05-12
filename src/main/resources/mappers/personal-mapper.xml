@@ -55,10 +55,16 @@
 		UPDATE "MEMBER_INFO" SET INFO_INTRO=#{infoIntro} WHERE MEMBER_NO = #{memberNo}
 	</update>
 	
-	<!-- 이미지 수정 -->
+	<update id="infoInput">
+		UPDATE "MEMBER_INFO" SET ${whatHobby} = #{hobby} WHERE MEMBER_NO = #{memberNo}
+	</update>
+	
+	
+	
+	<!--  이미지 수정 
 	<update id="updateProfileImage">
 		UPDATE "MEMBER_INFO" SET INFO_PROFILE = #{infoProfile} WHERE MEMBER_NO = #{memberNo}
-	</update>
+	</update> -->
 	
 	
 	

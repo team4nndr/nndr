@@ -31,6 +31,13 @@ public class MemberInfoServiceImpl implements MemberInfoService{
 		return dao.infoIntro(member);
 	}
 
+	@Transactional(rollbackFor = {Exception.class})
+	@Override
+	public int infoInput(Map<String, Object> hobbyInput) {
+		 int result =dao.infoInput(hobbyInput);
+		 return result;
+	}
+
 	
 	
 }
