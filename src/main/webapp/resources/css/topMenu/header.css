@@ -277,6 +277,21 @@
     border-radius: 15px;
 }
 
+/* 상단바 admin 아이콘 */
+.nndrAdminSetting{
+    height: 56px;
+    border-bottom: 1px solid #ccc;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    margin-right: 152px;
+}
+
+#nndrAdminImg{
+    height: 40px;
+    padding: 3px;
+}
+
 /* 상단바 아이콘 hover */
 .nndr-top-menu>.nndr-menu>li:nth-child(1)>a {
     width: 50px;
