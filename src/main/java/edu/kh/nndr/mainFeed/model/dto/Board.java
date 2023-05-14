@@ -18,6 +18,7 @@ public class Board {
 	private String delete;
 	private int memeberNo;
 	
+	
 	// 이미지 
 	private int imgNo;
 	private String imgPath;

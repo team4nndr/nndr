@@ -104,7 +104,7 @@
 
 
                                 <section>
-                                <li>
+                                <li><!-- 없애야해 -->
                                     <a href="#" class="change">현재 시간</a>
                                 </li> 
                                 </section>
