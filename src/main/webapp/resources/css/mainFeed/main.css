@@ -365,9 +365,38 @@ textarea:focus {
     cursor: pointer;
 }
 
+/* 모달창 내부 게시 버튼 */
 
+.modalBot > button {
+    margin: 0;
+}
+.modalBot {
+    margin-top: 18px;
+    margin-right: 28px;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    
+}
+#submitBtn{
+    width: 375px;
+    height: 36px;
+    background-color: lightgray;
+    border-radius: 6px;
+    margin-top: 24px;
+    margin-left: 30px;
+    border: none;
+    font-weight: bold;
+    cursor: pointer;
+  
+    }
 
-
+#submitBtn:hover{
+    
+    background: #4A6EA9;
+    color: white;
+}
 
 
 #myContent-modal>div:nth-child(2){

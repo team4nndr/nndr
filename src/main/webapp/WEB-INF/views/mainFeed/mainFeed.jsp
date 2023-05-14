@@ -132,11 +132,14 @@
                                     </div>
                                 </div>
                                 
-
-
                                 
-                                </section>
+                                
+                            </section>
+                            
+                            <section class="modalBot">
+                                <button type="button" id="submitBtn">게시</button>
 
+                            </section>
 
 
 
@@ -145,7 +148,7 @@
                                     
                                 
     
-                            <%-- </fieldset> --%>
+                            <!-- <%-- </fieldset> --%> -->
     
     
                         </form>
