@@ -1,7 +1,12 @@
 package edu.kh.nndr.friend.controller;
 
+import java.util.List;
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import edu.kh.nndr.friend.model.dto.Friend;
@@ -32,15 +37,13 @@ public class friendController {
 		return "friend/friendAll"; //파일경로
 	}
 	
-	public String friendRequest(
-		Friend friend, int friendNo, int friendSender) {
+	@RequestMapping("/request")
+	public String selectFrendRq(int friendReciver,int friendSender, Model model) {
 		
-		friend.setFriendNo(friendNo);
-		friend.setFriendSender(friendSender);
-		
-		int resultFriendRq = service.friendRequest(friend, friendNo, friendSender);
+		Map<String, Object> map = service.selectFrendRq(friendReciver,friendSender);
+		model.addAttribute("map", map);
 		return "friend/friendRequest";
-		
 	}
+
 	
 }
