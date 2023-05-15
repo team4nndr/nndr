@@ -28,8 +28,14 @@ public class FeedbackDAO {
 		return sqlSession.selectList("feedbackMapper.selectFeedbackList", null, rowBounds);
 	}
 
+	// 상세 의견 조회
 	public Feedback getFeedback(int feedbackNo) {
 		return sqlSession.selectOne("feedbackMapper.getFeedback", feedbackNo);
+	}
+
+	// 회원 의견 처리 
+	public int confirmFeedback(Feedback feedback) {
+		return sqlSession.update("feedbackMapper.confirmFeedback", feedback);
 	}
 
 }

@@ -62,7 +62,7 @@
 
                     <c:forEach var="feedback" items="${feedbackList}">
 
-                        <a href="/admin/feedback/${feedback.feedbackNo}" class="row">
+                        <a href="/admin/feedback/${feedback.feedbackNo}?cp=${pagination.currentPage}" class="row">
                             <div class="feedback-no">${feedback.feedbackNo}</div>
                             <div class="user-no">${feedback.memberNo}</div>
 

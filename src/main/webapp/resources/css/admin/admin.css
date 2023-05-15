@@ -69,11 +69,11 @@ button:disabled {
     cursor: unset;
 }
 
-button[type='submit']:not(:disabled) {
+.submit:not(:disabled) {
     color: white;
     background-color: #4A6EA9;
 }
-button[type='submit']:not(:disabled):hover {
+.submit:not(:disabled):hover {
     color: white;
     background-color: #3d5c8d;
 }
@@ -211,3 +211,5 @@ button.reverse:hover {
 .disabled { background-color: #8C8D8F; }
 .dropped { background-color: black; }
 .admin { background-color: darkred; color: black;}
+
+textarea { white-space: pre-wrap; }
