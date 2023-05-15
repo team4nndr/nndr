@@ -211,3 +211,6 @@ button.reverse:hover {
 .disabled { background-color: #8C8D8F; }
 .dropped { background-color: black; }
 .admin { background-color: darkred; color: black;}
+
+/* 요소 숨기기 */
+.class { display: none; }

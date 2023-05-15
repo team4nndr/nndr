@@ -17,28 +17,50 @@ public class AdminDAO {
 	@Autowired
 	private SqlSessionTemplate sqlSession;
 
-	// 유저 수 반환
+	/**
+	 * 총 회원 수 조회
+	 * @return count
+	 */
 	public int getMemberCount() {
 		return sqlSession.selectOne("memberMapper.getMemberCount");
 	}
 
-	// 유저 목록 반환
+	/**
+	 * 전체 회원 목록 조회
+	 * @param pagination
+	 * @return memberList
+	 */
 	public List<Member> selectMemberList(Pagination pagination) {
 		int offset = (pagination.getCurrentPage() - 1) * pagination.getLimit();
 		RowBounds rowBounds = new RowBounds(offset, pagination.getLimit());
 		return sqlSession.selectList("memberMapper.selectMemberList", null, rowBounds);
 	}
 
+	/**
+	 * 특정 회원 조회 by memberNo
+	 * @param memberNo
+	 * @return member
+	 */
 	public Member selectMember(int memberNo) {
 		return sqlSession.selectOne("memberMapper.selectMember", memberNo);
 	}
 
+	/**
+	 * 계정 삭제
+	 * @param memberNo
+	 * @return result
+	 */
 	public int deleteMember(int memberNo) {
 		return sqlSession.selectOne("memberMapper.deleteMember", memberNo);
 	}
 
-	public int recoverMember(int memberNo) {
-		return sqlSession.selectOne("memberMapper.recoverMember", memberNo);
+	/**
+	 * 계정 복구
+	 * @param memberNo
+	 * @return result
+	 */
+	public int enableMember(int memberNo) {
+		return sqlSession.selectOne("memberMapper.enableMember", memberNo);
 	}
 
 	/**

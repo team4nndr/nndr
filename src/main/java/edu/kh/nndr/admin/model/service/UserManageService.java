@@ -18,17 +18,17 @@ public interface UserManageService {
 	int deleteMember(int memberNo);
 
 	/**
-	 * 계정 복구
-	 * @param memberNo
-	 * @return result
-	 */
-	int recoverMember(int memberNo);
-
-	/**
 	 * 계정 비활성화
 	 * @param memberNo
 	 * @return result
 	 */
 	int disableMember(int memberNo);
+
+	/**
+	 * 계정 정상화(삭제유저 복구, 비활성 해제)
+	 * @param memberNo
+	 * @return result
+	 */
+	int enableMember(int memberNo);
 
 }
