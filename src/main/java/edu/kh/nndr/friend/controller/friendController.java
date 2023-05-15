@@ -1,12 +1,19 @@
 package edu.kh.nndr.friend.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+import edu.kh.nndr.friend.model.dto.Friend;
+import edu.kh.nndr.friend.model.sevice.FriendService;
 @Controller
 @RequestMapping("/friend") //기본 주소 +
 public class friendController {
    
+	@Autowired
+	private FriendService service;
+	
+	
 	@RequestMapping("")
    public String friend() {
       return "friend/friend"; 
@@ -25,5 +32,15 @@ public class friendController {
 		return "friend/friendAll"; //파일경로
 	}
 	
+	public String friendRequest(
+		Friend friend, int friendNo, int friendSender) {
+		
+		friend.setFriendNo(friendNo);
+		friend.setFriendSender(friendSender);
+		
+		int resultFriendRq = service.friendRequest(friend, friendNo, friendSender);
+		return "friend/friendRequest";
+		
+	}
 	
 }

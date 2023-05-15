@@ -10,4 +10,13 @@
 		<result property="friendFl" column="FRIEND_FL" />
 	</resultMap>
 
+	<!-- 친구요청 (test)조회 -->
+	<select id="friendRequest" resultType="map">
+		SELECT FRIEND_NO,
+		FRIEND_SENDER, MEMBER_NAME
+		FROM FRIEND
+		JOIN MEMBER ON FRIEND.FRIEND_SENDER = MEMBER.MEMBER_NO
+		WHERE FRIEND_FL = 'N'
+		ORDER BY FRIEND_NO DESC
+	</select>
 </mapper>
