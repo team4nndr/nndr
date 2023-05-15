@@ -84,4 +84,19 @@
 		WHERE	MEMBER_NO = #{memberNo}
 	</update>
 	
+	<!-- 계정 정상화 (비활성 해제, 탈퇴 유저 복구) -->
+	<update id="enableMember">
+		UPDATE "MEMBER"
+		SET		MEMBER_CODE = 'N'
+		WHERE	MEMBER_NO = #{memberNo}
+	</update>
+	
+	<!-- 계정 삭제 -->
+	<update id="deleteMember">
+		UPDATE "MEMBER"
+		SET		MEMBER_CODE = 'D',
+				DELETE_DATE = SYSDATE
+		WHERE	MEMBER_NO = #{memberNo}
+	</update>
+	
 </mapper>

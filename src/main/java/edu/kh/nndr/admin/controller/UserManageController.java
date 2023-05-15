@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -43,33 +44,25 @@ public class UserManageController {
 	}
 	
 	// 유저 비활성
+	@ResponseBody
 	@GetMapping("/{memberNo:[0-9]+}/disable")
-	@ResponseBody
 	public String disableMember(@PathVariable("memberNo") int memberNo) {
-		int result = service.disableMember(memberNo);
-		
-		String disableDate = null;
-		if(result > 0) {
-			Member member = service.selectMember(memberNo);
-			disableDate = service.selectMember(memberNo).getDisableDate();
-		}
-		
-		return disableDate;
+		service.disableMember(memberNo);
+		return service.selectMember(memberNo).getDisableDate();
 	}
 	
-	// 유저 삭제/복구 변경
-	@GetMapping("/{memberNo:[0-9]+}/recover")
+	// 유저 삭제
 	@ResponseBody
-	public String recover(@PathVariable("memberNo") int memberNo, String memberCode) {
-		
-		if(memberCode.equals("N")) {
-			service.deleteMember(memberNo);
-			return "D";
-		} else {
-			service.recoverMember(memberNo);
-			return "N";
-		}
+	@GetMapping("/{memberNo:[0-9]+}/delete")
+	public String deleteMember(@PathVariable("memberNo") int memberNo) {
+		service.deleteMember(memberNo);
+		return service.selectMember(memberNo).getDeleteDate();
 	}
 	
-	// 탈퇴 유저 복구
+	// 계정 정상화(삭제유저 복구, 비활성 해제)
+	@ResponseBody
+	@GetMapping("/{memberNo:[0-9]+}/enable")
+	public int enableMember(@PathVariable("memberNo") int memberNo) {
+		return service.enableMember(memberNo);
+	}
 }

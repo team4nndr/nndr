@@ -12,10 +12,29 @@ if( telData != null ) {
     telData.innerText = telData.innerText.replace(/^(\d{2,3})(\d{3,4})(\d{4})$/, `$1-$2-$3`);
 }
 
-// 비활성 버튼
-const disableBtn = document.getElementById('disableBtn'); 
-if( disableBtn != null ) {
-    disableBtn.addEventListener('click', e => {
+// 버튼 출력 초기화
+const btns = document.getElementById('bottom').children;
+for(let btn of btns) {
+    if(!btn.contains(memberCode)) {
+        btn.classList.add('hidden');
+    }
+}
+
+// 계정 상태에 따른 버튼 출력 변경
+function btnChange(memberCode) {
+    for(let btn of btns) {
+        if(!btn.contains(memberCode)) {
+            btn.classList.add('hidden');
+        } else {
+            btn.classList.remove('hidden');
+        }
+    }
+}
+
+// 계정 비활성 버튼(disable-btn)
+const disableBtns = document.getElementByClassName('disable-btn');
+for(let btn of disableBtns) {
+    btn.addEventListener('click', e => {
         if(!confirm("해당 계정을 비활성화 하시겠습니까?")) return;
 
         fetch(memberNo + "/disable")
@@ -23,6 +42,8 @@ if( disableBtn != null ) {
         .then(disableDate => {
             document.querySelector('.account .date').innerText
                 = "(비활성화 일시 : " + disableDate + ")";
+            memberCode = 'B'; // 계정 상태 동기화
+            btnChange(memberCode); // 출력 버튼 변경
         })
         .catch(e => console.log(e));
 
@@ -30,43 +51,71 @@ if( disableBtn != null ) {
     });
 }
 
-// 비활성 해제 버튼
-const enableBtn = document.getElementById('enableBtn'); 
-if( enableBtn != null ) {
-    enableBtn.addEventListener('click', e => {
-        fetch("/enable?memberNo=" + memberNo)
+// if( disableBtn != null ) {
+//     disableBtn.addEventListener('click', e => {
+//         if(!confirm("해당 계정을 비활성화 하시겠습니까?")) return;
+
+//         fetch(memberNo + "/disable")
+//         .then(resp => resp.text())
+//         .then(disableDate => {
+//             document.querySelector('.account .date').innerText
+//                 = "(비활성화 일시 : " + disableDate + ")";
+//         })
+//         .catch(e => console.log(e));
+
+//         alert('비활성화 처리 되었습니다.');
+//     });
+// }
+
+// 비활성 해제 / 복구 버튼
+const enableBtns = document.getElementByClassName('enable-btn');
+for(let btn of enableBtns) {
+    btn.addEventListener('click', e => {
+        if(memberCode == 'B' && !confirm("해당 계정을 활성화 하시겠습니까?")) return;
+        if(memberCode == 'D' && !confirm("해당 계정을 복구하시겠습니까?")) return;
+
+        fetch(memberNo + "/enable")
         .then(resp => resp.text())
-        .then(returnCode => {
-            memberCode = returnCode;
+        .then(() => {
+            document.querySelector('.account .date').innerText = "";
+            memberCode = 'N'; // 계정 상태 동기화
+            btnChange(memberCode); // 출력 버튼 변경
         })
         .catch(e => console.log(e));
+
+        alert('계정이 정상적으로 복구되었습니다.');
     });
 }
 
-// 계정 복구 버튼
-const recoverBtn = document.getElementById('recoverBtn');
-if( recoverBtn != null ) {
-    recoverBtn.addEventListener('click', e => {
-        if(memberCode != "D" || !confirm("정말로 삭제하시겠습니까?")) return;
+// const enableBtn = document.getElementById('enableBtn'); 
+// if( enableBtn != null ) {
+//     enableBtn.addEventListener('click', e => {
+//         fetch("/enable?memberNo=" + memberNo)
+//         .then(resp => resp.text())
+//         .then(returnCode => {
+//             memberCode = returnCode;
+//         })
+//         .catch(e => console.log(e));
+//     });
+// }
 
-        fetch(memberNo + "/recover?memberCode=" + memberCode)
+// 계정 삭제 버튼
+const deleteBtns = document.getElementByClassName('delete-btn');
+for(let btn of deleteBtns) {
+    btn.addEventListener('click', e => {
+        if(!confirm("정말로 삭제하시겠습니까?")) return;
+
+        fetch(memberNo + "/delete")
         .then(resp => resp.text())
-        .then(returnCode => {
-            memberCode = returnCode;
-            if(memberCode == "D") { // 삭제된 계정일 때
-                enableBtn.innerText = "유저 비활성";
-                enableBtn.disabled = true;
-
-                recoverBtn.classList.remove('alert');
-                recoverBtn.innerText = "계정 복구";
-                alert("삭제 처리 되었습니다.");
-            } else {
-                recoverBtn.classList.add('alert');
-                recoverBtn.innerText = "계정 삭제";
-                alert("계정이 복구되었습니다.");
-            }
+        .then(deleteDate => {
+            document.querySelector('.account .date').innerText
+                = "(삭제 일시 : " + deleteDate + ")";
+            memberCode = 'D'; // 계정 상태 동기화
+            btnChange(memberCode); // 출력 버튼 변경
         })
         .catch(e => console.log(e));
+
+        alert('계정이 삭제되었습니다.');
     });
 }
 

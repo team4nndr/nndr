@@ -213,3 +213,5 @@ button.reverse:hover {
 .admin { background-color: darkred; color: black;}
 
 textarea { white-space: pre-wrap; }
+/* 요소 숨기기 */
+.class { display: none; }

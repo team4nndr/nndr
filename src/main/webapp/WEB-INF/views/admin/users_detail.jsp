@@ -73,31 +73,27 @@
                 </div>
             </div>
             <div id="bottom">
-                <c:choose>
+                <%-- <c:choose>
                     <c:when test="${member.memberCode == 'N'}">
-                        <button type="button" id="disableBtn">유저 비활성</button>
-                        <button type="button" id="deleteBtn">계정 삭제</button>
+                        <button type="button" class="N" id="disableBtn">유저 비활성</button>
+                        <button type="button" class="N" id="deleteBtn">계정 삭제</button>
                     </c:when>
 
                     <c:when test="${member.memberCode == 'B'}">
-                        <button type="button" id="enableBtn">비활성 해제</button>
-                        <button type="button" id="deleteBtn">계정 삭제</button>
+                        <button type="button" class="B" id="enableBtn">비활성 해제</button>
+                        <button type="button" class="B" id="deleteBtn">계정 삭제</button>
                     </c:when>
                 
                     <c:otherwise>
-                        <button type="button" id="disableBtn" disabled>유저 비활성</button>
-                        <button type="button" id="recoverBtn">계정 삭제</button>
+                        <button type="button" class="D" id="enableBtn">계정 복구</button>
                     </c:otherwise>
-                </c:choose>
-                <c:if test="" >
-                    
-                </c:if>
-                
+                </c:choose> --%>
+
+                <button type="button" class="N disable-btn">유저 비활성</button>
+                <button type="button" class="B enable-btn">비활성 해제</button>
+                <button type="button" class="N B delete-btn">계정 삭제</button>
+                <button type="button" class="D enable-btn">계정 복구</button>
             </div>
-            <%-- <div id="bottom">
-                <button type="button" id="enableBtn" name="enableBtn"></button>
-                <button type="button" id="recoverBtn" name="recoverBtn"></button>
-            </div> --%>
         </form>
     </main>
 
