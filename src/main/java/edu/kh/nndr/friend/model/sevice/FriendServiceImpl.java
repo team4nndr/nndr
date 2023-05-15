@@ -1,6 +1,7 @@
 package edu.kh.nndr.friend.model.sevice;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,14 +15,20 @@ public class FriendServiceImpl implements FriendService{
 
 	@Autowired
 	private FriendDAO dao;
-	
+
 	@Override
-	public int friendRequest(Friend friend, int friendNo, int friendSender) {
-		Map<String, Object> reQuestMap = new HashMap<>();
-		reQuestMap.put ("friendNo", friendNo);
-		reQuestMap.put ("friendSender", friendSender);
-		int resultFriendRq = dao.friendRequest(reQuestMap);
-		return resultFriendRq;
+	public Map<String, Object> selectFrendRq(int friendReciver, int friendSender) {
+		List<Friend> friendList = dao.selectFrendRq(friendReciver, friendSender);
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("friendList",friendList);
+		return map;
 	}
+
+
+
+	
+	
+
+
 
 }

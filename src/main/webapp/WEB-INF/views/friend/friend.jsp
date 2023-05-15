@@ -18,13 +18,13 @@
             <div class="friendNav">
                 <ul>
                     <strong id="friend">친구</strong>
-                    <li><a href="friend"><img src="/resources/images/friend/free-icon-friend-5003758.png" alt=""> 홈</a>
+                    <li><a href="friend"><img class="friendimg" src="/resources/images/friend/free-icon-friend-5003758.png" alt=""> 홈</a>
                     </li>
-                    <li><a href="friend/request"><img src="/resources/images/friend/free-icon-add-friend-3394625.png" alt="">
+                    <li><a href="friend/request"><img class="friendimg" src="/resources/images/friend/free-icon-add-friend-3394625.png" alt="">
                             친구요청</a></li>
-                    <li><a href="friend/recom"><img src="/resources/images/friend/free-icon-friends-2583035.png" alt=""> 친구추천</a>
+                    <li><a href="friend/recom"><img class="friendimg" src="/resources/images/friend/free-icon-friends-2583035.png" alt=""> 친구추천</a>
                     </li>
-                    <li><a href="friend/all"><img src="/resources/images/friend/free-icon-friends-7596695.png" alt=""> 모든친구</a>
+                    <li><a href="friend/all"><img class="friendimg" src="/resources/images/friend/free-icon-friends-7596695.png" alt=""> 모든친구</a>
                     </li>
                 </ul>
             </div>
