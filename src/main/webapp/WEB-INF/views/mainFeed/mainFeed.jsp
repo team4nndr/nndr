@@ -83,7 +83,11 @@
                                 
                                 <section id="modalTop">
                                 <span class="title">게시물 만들기</span>
+
+                                
                                 <button type="button" class="close cancelBtn" id="cancelBtn"></button>
+                                
+
                                 </section>
 
 
@@ -121,17 +125,27 @@
                                 </section>
                                 
                                 <section id="modalImg">
-                                <section>사진</section>
-                                <div class="img-box">
-                                    <div class="boardImg">
-                                    <label for="img1">
-                                        <img class="preview" src="">
-                                    </label>
-                                    <input type="file" name="images" class="inputImage" id="img1" accept="image/*">
-                                    <span class="delete-image">&times;</span>
+                                <h3>사진</h3>
+                                <div class="img-box" id="imgBox1">
+                                    <div class="boardImg" id="num">
+                                        <label for="img1">
+                                            <img class="preview" src="">
+                                        </label>
+                                        <input type="file" name="images" class="inputImage" id="img1" accept="image/*">
+                                        <span class="delete-image">&times;</span>
                                     </div>
+
+                                    
+                                <button id=plusBtn><img src="/resources/images/mainFeed/plusLogo.png" id="plusLogo" ></button>
+
                                 </div>
+
                                 
+
+                                
+
+
+
                                 
                                 
                             </section>
