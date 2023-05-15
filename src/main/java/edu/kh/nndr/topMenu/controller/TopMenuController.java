@@ -10,25 +10,13 @@ import org.springframework.web.bind.support.SessionStatus;
 
 @SessionAttributes({"loginMember"})
 @Controller
-public class topMenuController {
+public class TopMenuController {
 
+	// 로그아웃(세션 만료)
 	@RequestMapping("/logout")
-	public String logout(SessionStatus status, HttpSession session) {
-		
-		// SessionStatus : 세션 상태를 관리하는 객체
-		
-		// 세션 무효화
-		// Servlet -> HttpSession.invalidate()
-		
-		// Spring
-		// 1) HttpSession을 이용한 경우
-		//    -> HttpSession.invalidate()
-		
-		// 2) Model + @SessionAttributes 이용한 경우
-		//    -> SessionStatus.setComplete()
+	public String logout(SessionStatus status) {
 		
 		 status.setComplete(); 
-//		 session.invalidate(); // 세션 무효화
 		
 		return "redirect:/";
 	}

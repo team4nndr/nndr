@@ -1,8 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+        <c:set var="tagList" value="${tagList}"/>
 
         <link rel="stylesheet" href="/resources/css/topMenu/header.css">
-
         <div id="nndrContainer">
 
             <div class="nndr-home-logo">
@@ -29,14 +29,14 @@
                 <ul class="nndr-menu">
                     <!-- 버튼 영역  -->
                     <!-- 홈 버튼 -->
-                    <li>
-                        <a href="/mainFeed">
+                    <li id="nndrHomeBtn">
+                        <a href="/mainFeed" class="nndrMainFeedBtn"> 
                             <img src="/resources/images/topMenu/topHome.png" id="nndrImage1">
                         </a>
                     </li>
                     <!-- 친구 버튼  -->
-                    <li>
-                        <a href="/friend">
+                    <li id="nndrFriendBtn">
+                        <a href="/friend" class="nndrMainFeedBtn" >
                             <img src="/resources/images/topMenu/topFriend.png" id="nndrImage2">
                         </a>
                     </li>
@@ -118,5 +118,13 @@
             </div>
         </div>
 
+        <script>
+            var tagArr = new Array("${tagList}");
+            
+
+            
+            
+        
+        </script>
 
         <script src="/resources/js/topMenu/header.js"></script>

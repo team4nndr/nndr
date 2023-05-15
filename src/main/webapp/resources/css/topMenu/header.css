@@ -20,7 +20,7 @@
     display: grid;
 }
 
-.nndr-home-logo > a {
+.nndr-home-logo > a{
     height: 56px;
     padding-left: 100px;
     position: absolute;
@@ -96,9 +96,13 @@
     width: 200px;
 }
 
+.nndr-suggestions {
+    margin-top: 22px;
+}
+
 .nndr-suggestions > div {
     padding: 5px;
-    margin-top: 22px;
+    
     cursor: pointer;
     background-color: #f0f2f5;
     z-index: 999;
@@ -106,7 +110,7 @@
 }
 
 .nndr-suggestions_pannel > div:hover {
-    margin-top: 22px;
+    
     height: 30px;
     background-color: rgb(207, 204, 204);
     z-index: 999;
@@ -192,7 +196,11 @@
     outline: none;
 }
 
-#nndrDropBtn1,
+#nndrMainFeedBtn > #nndrImage1{
+
+}
+
+#nndrMainFeedBtn>#nndrDropBtn1,
 #nndrDropBtn1:focus {
     border: none;
     background-color: white;
@@ -293,21 +301,21 @@
 }
 
 /* 상단바 아이콘 hover */
-.nndr-top-menu>.nndr-menu>li:nth-child(1)>a {
+#nndrHomeBtn>.nndrMainFeedBtn{
     width: 50px;
 }
 
-.nndr-top-menu>.nndr-menu>li:nth-child(2)>a {
+#nndrFriendBtn>.nndrMainFeedBtn {
     width: 50px;
 }
 
-.nndr-top-menu>.nndr-menu>li:nth-child(1)>a:hover {
+.nndr-top-menu>.nndr-menu>li:nth-child(1)>.nndrMainFeedBtn:hover {
     background-color: #ccc;
     border-radius: 5px;
     width: 50px;
 }
 
-.nndr-top-menu>.nndr-menu>li:nth-child(2)>a:hover {
+.nndr-top-menu>.nndr-menu>li:nth-child(2)>.nndrMainFeedBtn:hover {
     background-color: #ccc;
     border-radius: 5px;
     width: 50px;
