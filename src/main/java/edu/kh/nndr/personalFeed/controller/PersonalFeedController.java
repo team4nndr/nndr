@@ -41,7 +41,6 @@ public class PersonalFeedController {
 		return "personalFeed/personalFeed";
 	}
 	
-	
 	@GetMapping("/personalFeed/infoIntro")
 	public String infoIntro(MemberInfo member, @SessionAttribute("loginMember") Member loginMember, @RequestHeader(value = "referer") String referer, RedirectAttributes ra) {
 		member.setMemberNo(loginMember.getMemberNo());
@@ -54,27 +53,4 @@ public class PersonalFeedController {
 		path += referer;
 		return path;
 	}
-	
-//	@GetMapping("/personalFeed/infoHobby")
-//	public String infoIntro(MemberInfo member, @SessionAttribute("loginMember") Member loginMember, @RequestHeader(value = "referer") String referer, RedirectAttributes ra) {
-//		member.setMemberNo(loginMember.getMemberNo());
-//		System.out.println(member.getMemberNo());
-//		int result = service.infoIntro(member);
-//		String path = "redirect:";
-//		if(result > 0) {// 성공
-//		} else { // 실패
-//		}
-//		path += referer;
-//		return path;
-//	}
-	
-	
-	
-	
-	
-	
 }
-
-
-
-

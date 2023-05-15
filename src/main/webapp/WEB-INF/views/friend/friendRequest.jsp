@@ -34,13 +34,14 @@
             <span id="friendRQ">친구 요청 9개</span>
           </div>
         </div>
+        <form action= "/request" method="GET">
         <div class="frtopdiv">
           <img class="proimg" src="/resources/images/friend/143086968_2856368904622192_1959732218791162458_n.png" alt="">
           <div class="frbox"> <!--이름 + 확인,삭제-->
             <div class="namecount"><!--이름, 함께 아는친구-->
-              <span class="freindName">정용화</span>
+              <span class="freindName">${memberName}</span>
               <div class="pulsfrcountBox">
-                <span class="pulsfrcount">함께 아는 친구 2명</span>
+                <%-- <span class="pulsfrcount">함께 아는 친구 2명</span> --%>
               </div>
             </div>
             <div class="boxbtn"> <!--확인, 삭제 -->
@@ -49,7 +50,8 @@
             </div>
           </div>
         </div>
-        <div class="frtopdiv">
+        </form>
+        <%-- <div class="frtopdiv">
           <img class="proimg" src="/resources/images/friend/143086968_2856368904622192_1959732218791162458_n.png" alt="">
           <div class="frbox"> <!--이름 + 확인,삭제-->
             <div class="namecount"><!--이름, 함께 아는친구-->
@@ -123,7 +125,7 @@
               <button class="nobtn">삭제</button>
             </div>
           </div>
-        </div>
+        </div> --%>
       </div>
     </div>
     <div id="mainfrbox"> <!--메인 피드-->

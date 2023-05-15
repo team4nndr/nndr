@@ -53,14 +53,14 @@ html,body, main{
 
 }
 
-ul li a img {
+.friendimg {
     width: 30px;
     height: 30px;
     margin-right: 10px;
     background-color: #EBEDF0;
     border-radius: 50%;
 }
-ul li a img:hover{
+.friendimg:hover{
     width: 30px;
     height: 30px;
     margin-right: 10px;
