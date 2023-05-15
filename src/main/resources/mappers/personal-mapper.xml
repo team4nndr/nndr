@@ -42,9 +42,11 @@
 		<result property="infoNick" column="INFO_NICK" />
 		<result property="infoText" column="INFO_TEXT" />
 		<result property="infoBack" column="INFO_BACK" />
-		<result property="infoProfile" column="INFO_PROFILE" />
-		
-		
+	</resultMap>
+	<resultMap type="MemberHobby" id="memberHobby_rm">
+		<id property="memberNo" column="MEMBER_NO" />
+		<result property="hobbyNo" column="HOBBY_NO" />
+		<result property="hobby" column="HOBBY" />
 	</resultMap>
 
 	<select id="personalMember" resultMap="memberInfo_rm">
@@ -55,10 +57,23 @@
 		UPDATE "MEMBER_INFO" SET INFO_INTRO=#{infoIntro} WHERE MEMBER_NO = #{memberNo}
 	</update>
 	
-	<!-- 이미지 수정 -->
+	<update id="infoInput">
+		UPDATE "MEMBER_INFO" SET ${whatHobby} = #{hobby} WHERE MEMBER_NO = #{memberNo}
+	</update>
+	
+	<select id="selectHobbyList" resultMap="memberHobby_rm">
+		SELECT * FROM "MEMBER_HOBBY"
+	</select>
+	<select id="selectPerHobbyList" resultMap="memberHobby_rm">
+		SELECT * FROM "MEMBER_HOBBY WHERE MEMBER_NO =#{memberNo}"
+	</select>
+	
+	
+	
+	<!--  이미지 수정 
 	<update id="updateProfileImage">
 		UPDATE "MEMBER_INFO" SET INFO_PROFILE = #{infoProfile} WHERE MEMBER_NO = #{memberNo}
-	</update>
+	</update> -->
 	
 	
 	

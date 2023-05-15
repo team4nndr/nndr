@@ -1,5 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<c:set var="hobbyList"  value="${HobbyMap.hobbyList}"/>
+<c:set var="perhobbyList"  value="${HobbyMap.perhobbyList}"/>
+
+
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -169,19 +173,16 @@
                                         <label class="hobby-btn" id="login" for="add-hobby">취미 수정</label>
                             
                                     <div class="hobby-box hobby-center">
-                                    <form action="" id="hobby-choose">
+                                    <form action="infoHobby" id="hobby-choose">
                                             <h2>취미</h2>
                                             <div id="hobby-list">
-                                                <input class="hobby-check" type="checkbox" id="hobby-baseball">
-                                                <label for="baseball">baseball</label> 
-                                                <input class="hobby-check" type="checkbox" id="hobby-game">
-                                                <label for="game">game</label>
-                                                <input class="hobby-check" type="checkbox" id="hobby-read">
-                                                <label for="read">read</label>
-                                                <input class="hobby-check" type="checkbox" id="hobby-run">
-                                                <label for="run">run</label>
-                                                <input class="hobby-check" type="checkbox" id="hobby-java">
-                                                <label for="java">java</label>
+                                            
+                                            <c:forEach items="${hobbyList}" var="hobby">
+                                                <input class="hobby-check" type="checkbox" id="${hobby.hobby}">
+                                                <label for="${hobby.hobby}">${hobby.hobby}</label> 
+
+                                            </c:forEach>
+                                                
                                             </div>
                                             <div id="hobt"><button id="hobby-checked"><div class="btn-sty">확인</div></button>
                                             <label for="add-hobby" class="hobby-btn">

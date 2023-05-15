@@ -1,7 +1,9 @@
 package edu.kh.nndr.personalFeed.controller;
 
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 
@@ -57,18 +59,25 @@ public class PersonalFeedInfoController {
 //		return null;
 //	}
 	
-	// 닉네임으로 전화번호 조회
 	@GetMapping(value = "/inputhobby", produces = "application/text; charset=UTF-8")
 	@ResponseBody
-	public String inputhobby(String hobby) { // 쿼리 스트링에 담겨있는 파라미터
-		String[] subHobby = hobby.split(" ");
+	public String inputhobby(String hobby, @SessionAttribute("loginMember") Member loginMember) { // 쿼리 스트링에 담겨있는 파라미터
+		String[] subHobby = hobby.split("§");
 		System.out.println(subHobby[0]);
 		System.out.println(subHobby[1]);
-		
+		Map<String, Object> hobbyInput = new HashMap<>();
+		hobbyInput.put("whatHobby", subHobby[0]);
+		hobbyInput.put("hobby", subHobby[1]);
+		hobbyInput.put("memberNo", loginMember.getMemberNo());
 		// return 리다이렉트 / 포워드; -> 새로운 화면이 보임(동기식)
 //			return 데이터; -> 데이터를 요청한 곳으로 반환(비동기식)
-//			@ResponseBody 
-		// -> Controller의 결과로 데이터를 반환할 때 사용하는 어노테이션
+		int result = service.infoInput(hobbyInput);
+		if(result>0) {
+			System.out.println("바뀜");
+			
+		}else {
+			System.out.println("ss");
+		}
 
 		return null;
 
