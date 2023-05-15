@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-        <c:set var="tagList" value="${tagList}"/>
+        
 
         <link rel="stylesheet" href="/resources/css/topMenu/header.css">
         <div id="nndrContainer">
@@ -9,8 +9,10 @@
                 <a href="/mainFeed"><img src="/resources/images/topMenu/topLogo-01.png"></a>
             </div>
 
+
+
             <div class="nndr-search-area">
-                <form action="#" method="GET">
+                <form action="${hashtag.hashtagList}" method="GET">
                     <fieldset id="nndrSearchBox">
                         <div>
                             <input type="search" class="nndr-input" name="query" id="nndrQuery" autocomplete="off"
@@ -18,12 +20,14 @@
                             <button type="submit" id="nndrSearchBtn"></button>
 
                             <!-- 검색어 저장 영역 -->
+            
                         </div>
-                        <div class="nndr-suggestions nndr-suggestions_pannel">
+                        <div class="nndr-suggestions nndr-suggestions_pannel" id="suggestion_pannel">
                         </div>
                     </fieldset>
                 </form>
             </div>
+        
 
             <div class="nndr-top-menu">
                 <ul class="nndr-menu">
@@ -119,8 +123,7 @@
         </div>
 
         <script>
-            var tagArr = new Array("${tagList}");
-            
+
 
             
             

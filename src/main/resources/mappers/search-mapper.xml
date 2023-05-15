@@ -3,10 +3,13 @@
 <mapper namespace="searchMapper">
 
 
+
+
+
 	<select id="selectHashTagList" resultType="string">
 		SELECT HASHTAG_KEYWORD
 		FROM HASHTAG
+		WHERE HASHTAG_KEYWORD LIKE %#%
 	</select>
-
 
 </mapper>
