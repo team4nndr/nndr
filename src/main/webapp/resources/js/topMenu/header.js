@@ -1,5 +1,5 @@
-
-
+// 검색어 누적창 구현
+console.log(tagArr[0]);
 // 검색어 누적창 구현
 
 // 검색 input 태그h
@@ -8,8 +8,6 @@ const search = document.getElementById("nndrQuery");
 const suggestion_pannel = document.querySelector(".nndr-suggestions_pannel");
 // 검색 버튼
 const searchBtn = document.getElementById("nndrSearchBtn");
-
-let tagList = [];
 
 // 자동완성 데이터 초기 설정(친구 이름 검색 시)
 // let s_arr = [
@@ -35,73 +33,50 @@ let tagList = [];
 
 // ];
 
-// HTML 요소 선택
-const searchInput = document.getElementById('nndrQuery');
-const suggestionPanel = document.getElementById('suggestion_pannel');
-
-// 입력 이벤트 리스너 등록
-searchInput.addEventListener('keyup', (event) => {
-  const inputValue = searchInput.value.trim(); // 입력 값 가져오기
-
- 
-
 // input 태그 이벤트
+search.addEventListener("keyup", (event) => {
 
-    fetch("/getTags?hashtagKeyword=" + hashtagKeyword)
-    .then(resp => resp.json())
-    .then(tagList => {
+    event.preventDefault();
 
-        event.preventDefault();
-    
-        suggestion_pannel.innerHTML = "";
-    
-        let input_value = search.value;
-    
-        // #으로 시작하는 검색어인 경우
-        if (input_value.startsWith("#")) {
-            tagList.forEach(function (tag) {
-                if (tag.hashtagKeyword.toLowerCase().startsWith(input_value.toLowerCase())) {
-                    let div = document.createElement("div");
-                    div.innerHTML = tag.hashtagKeyword;
-                    suggestion_pannel.appendChild(div);
-    
-                    div.onclick = () => {
-                        input_value = div.innerHTML;
-                        suggestion_pannel.innerHTML = "";
-                    };
-                }
-            });
-        } else { // 일반 검색어인 경우
-            let suggestions = s_arr.filter(function (exam) {
-                return exam.name.toLowerCase().startsWith(input_value);
-            });
-    
-            suggestions.forEach(function (suggested) {
+    suggestion_pannel.innerHTML = "";
+
+    let input_value = search.value;
+
+    // #으로 시작하는 검색어인 경우
+    if (input_value.startsWith("#")) {
+        tagList.forEach(function (tag) {
+            if (tag.tagName.toLowerCase().startsWith(input_value.toLowerCase())) {
                 let div = document.createElement("div");
-                div.innerHTML = suggested.name;
-    
+                div.innerHTML = tag.tagName;
                 suggestion_pannel.appendChild(div);
-    
+
                 div.onclick = () => {
                     input_value = div.innerHTML;
                     suggestion_pannel.innerHTML = "";
                 };
-            });
-        }
-        if (input_value == "") {
-            suggestion_pannel.innerHTML = "";
-        }
-    })
+            }
+        });
+    } else { // 일반 검색어인 경우
+        let suggestions = s_arr.filter(function (exam) {
+            return exam.name.toLowerCase().startsWith(input_value);
+        });
 
-    .catch(err => console.log(err));
-})
+        suggestions.forEach(function (suggested) {
+            let div = document.createElement("div");
+            div.innerHTML = suggested.name;
 
+            suggestion_pannel.appendChild(div);
 
-
-
-
-
-
+            div.onclick = () => {
+                input_value = div.innerHTML;
+                suggestion_pannel.innerHTML = "";
+            };
+        });
+    }
+    if (input_value == "") {
+        suggestion_pannel.innerHTML = "";
+    }
+});
 
 // 드롭다운 아이콘 구현
 var dropdowns = document.getElementById("nndrBellDropdown");
