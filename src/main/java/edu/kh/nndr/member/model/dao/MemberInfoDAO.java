@@ -1,6 +1,7 @@
 package edu.kh.nndr.member.model.dao;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.mybatis.spring.SqlSessionTemplate;
@@ -8,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import edu.kh.nndr.member.model.dto.Member;
+import edu.kh.nndr.member.model.dto.MemberHobby;
 import edu.kh.nndr.member.model.dto.MemberInfo;
 
 @Repository
@@ -33,6 +35,19 @@ public class MemberInfoDAO {
 		System.out.println(hobbyInput.get("memberNo"));
 		return sqlSession.update("personalMapper.infoInput", hobbyInput);
 	}
+
+
+	public List<MemberHobby> selectHobbyList() {
+		return sqlSession.selectList("personalMapper.selectHobbyList");
+	}
+
+
+	public List<MemberHobby> selectPerHobbyList(int memberNo) {
+		return sqlSession.selectList("personalMapper.selectPerHobbyList", memberNo);
+	}
+
+
+
 
 
 }

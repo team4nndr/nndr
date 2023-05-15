@@ -37,15 +37,13 @@
                 <div id="main-info">
                 <div class="info-experience-1">
                     <h2>개요</h2>
-                        <div id="info-job2">${infoMember.infoJob}</div><br>
-                        <div id="info-college2">${infoMember.infoCollege}</div><br>
-                        <div id="info-high2">${infoMember.infoHigh}</div><br>
-                        <div id="info_residence2">${infoMember.infoResidence}</div><br>
-                        <div id="info_birth2">${infoMember.infoBirthplace}</div><br>
-                        <div id="info_romantic2">
-                        <div>${infoMember.romanticYn}</div>
-                        <div href="#">연애/결혼 상대방</div>
-                        <div>연애/결혼 시작일</div>
+                    <div class="infoText">
+                        <div id="info-job2">${infoMember.infoJob}</div>
+                        <div id="info-college2">${infoMember.infoCollege}</div>
+                        <div id="info-high2">${infoMember.infoHigh}</div>
+                        <div id="info_residence2">${infoMember.infoResidence}</div>
+                        <div id="info_birth2">${infoMember.infoBirthplace}</div>
+                        <div id="info_romantic2">${infoMember.romanticYn}</div>
                     </div>
                     <br>
                     <div id="info-input">
@@ -62,21 +60,23 @@
                         </form>
                     </div>
                     <div class="infom">
-                        <button class="info-2-1" type="button" data-map="INFO_JOB">(+) 직장 추가</button><br>
-                        <button class="info-2-1" type="button" data-map="INFO_COLLEGE">(+) 대학교 추가</button><br>
-                        <button class="info-2-1" type="button" data-map="INFO_HIGH">(+) 고등학교 추가</button><br>
-                        <button class="info-2-1" type="button" data-map="INFO_RESIDENCE">(+) 거주지 추가</button><br>
-                        <button class="info-2-1" type="button" data-map="INFO_BIRTHPLACE">(+) 출신지 추가</button><br>
-                        <button class="info-2-1" type="button" data-map="ROMANTIC_YN">(+) 결혼/연애 상태 추가</button><br>
+                        <button class="info-2-1" type="button" data-map="INFO_JOB">(+) 직장 추가</button>
+                        <button class="info-2-1" type="button" data-map="INFO_COLLEGE">(+) 대학교 추가</button>
+                        <button class="info-2-1" type="button" data-map="INFO_HIGH">(+) 고등학교 추가</button>
+                        <button class="info-2-1" type="button" data-map="INFO_RESIDENCE">(+) 거주지 추가</button>
+                        <button class="info-2-1" type="button" data-map="INFO_BIRTHPLACE">(+) 출신지 추가</button>
+                        <button class="info-2-1" type="button" data-map="ROMANTIC_YN">(+) 결혼/연애 상태 추가</button>
                     </div>
                 </div>
                 <div class="info-experience-2">
                     <h2>경력 및 학력</h2>
-                    <div id="info-job">${infoMember.infoJob}</div><br>
-                    <div id="info-college">${infoMember.infoCollege}</div><br>
-                    <div id="info-high">${infoMember.infoHigh}</div><br>
-                    <div id="info-middle">${infoMember.infoMiddle}</div><br>
-                    <div id="info-elementary">${infoMember.infoElementary}</div><br>
+                    <div class="infoText">
+                        <div id="info-job">${infoMember.infoJob}</div>
+                        <div id="info-college">${infoMember.infoCollege}</div>
+                        <div id="info-high">${infoMember.infoHigh}</div>
+                        <div id="info-middle">${infoMember.infoMiddle}</div>
+                        <div id="info-elementary">${infoMember.infoElementary}</div>
+                    </div>
                     <br>
                     <div id="info-input">
                         <form action="">
@@ -92,18 +92,20 @@
                         </form>
                     </div>
                     <div class="infom">
-                        <button class="info-2-1" type="button" data-map="INFO_JOB">(+) 직장 추가</button><br>
-                        <button class="info-2-1" type="button" data-map="INFO_COLLEGE">(+) 대학교 추가</button><br>
-                        <button class="info-2-1" type="button" data-map="INFO_HIGH">(+) 고등학교 추가</button><br>
-                        <button class="info-2-1" type="button" data-map="INFO_MIDDLE">(+) 중학교 추가</button><br>
-                        <button class="info-2-1" type="button" data-map="INFO_ELEMENTARY">(+) 초등학교 추가</button><br>
+                        <button class="info-2-1" type="button" data-map="INFO_JOB">(+) 직장 추가</button>
+                        <button class="info-2-1" type="button" data-map="INFO_COLLEGE">(+) 대학교 추가</button>
+                        <button class="info-2-1" type="button" data-map="INFO_HIGH">(+) 고등학교 추가</button>
+                        <button class="info-2-1" type="button" data-map="INFO_MIDDLE">(+) 중학교 추가</button>
+                        <button class="info-2-1" type="button" data-map="INFO_ELEMENTARY">(+) 초등학교 추가</button>
                     </div>
                 </div>
                 <div class="info-experience-3">
 
                     <h2>이전 거주지</h2>
-                    <div id="info_residence">${infoMember.infoResidence}</div><br>
-                    <div id="info_birth">${infoMember.infoBirthplace}</div><br>
+                    <div class="infoText">
+                        <div id="info_residence">${infoMember.infoResidence}</div>
+                        <div id="info_birth">${infoMember.infoBirthplace}</div>
+                    </div>
                     <br>
                     <div id="info-input">
                         <form action="">
@@ -119,17 +121,18 @@
                         </form>
                     </div>
                     <div class="infom">
-                        <button class="info-2-1" type="button" data-map="INFO_RESIDENCE">(+) 거주지 추가</button><br>
-                        <button class="info-2-1" type="button" data-map="INFO_BIRTHPLACE">(+) 출신지 추가</button><br>
+                        <button class="info-2-1" type="button" data-map="INFO_RESIDENCE">(+) 거주지 추가</button>
+                        <button class="info-2-1" type="button" data-map="INFO_BIRTHPLACE">(+) 출신지 추가</button>
                     </div>
                 </div>
                 <div class="info-experience-4">
                     <h2>연락처 및 기본 정보</h2>
-                    <div id="info_tel">${infoMember.memberTel}</div><br>
-                    <div id="info_sns">${infoMember.infoSns}</div><br>
-                    <div id="info_lang">${infoMember.infoLang}</div><br>
-                    <div id="info_gender">${infoMember.infoGender}</div><br>
-                    <div id="info_birth">${infoMember.infoBirth}</div><br>
+                    <div class="infoText">
+                        <div id="info_sns">${infoMember.infoSns}</div>
+                        <div id="info_lang">${infoMember.infoLang}</div>
+                        <div id="info_gender">${infoMember.infoGender}</div>
+                        <div id="info_birth">${infoMember.infoBirth}</div>
+                    </div>
                     <br>
                     <div id="info-input">
                         <form action="">
@@ -145,45 +148,25 @@
                         </form>
                     </div>
                     <div class="infom">
-                        <button class="info-2-1" type="button" data-map="">(+) 전화번호</button><br>
-                        <button class="info-2-1" type="button" data-map="INFO_SNS">(+) 소셜 링크 추가</button><br>
-                        <button class="info-2-1" type="button" data-map="INFO_LANG">(+) 언어 추가</button><br>
-                        <button class="info-2-1" type="button" data-map="INFO_GENDER">(+) 성별 추가</button><br>
-                        <button class="info-2-1" type="button" data-map="INFO_BIRTH">(+) 생일 추가</button><br>
+                        <button class="info-2-1" type="button" data-map="INFO_SNS">(+) 소셜 링크 추가</button>
+                        <button class="info-2-1" type="button" data-map="INFO_LANG">(+) 언어 추가</button>
+                        <button class="info-2-1" type="button" data-map="INFO_GENDER">(+) 성별 추가</button>
+                        <button class="info-2-1" type="button" data-map="INFO_BIRTH">(+) 생일 추가</button>
                     </div>
                 </div>
                 <div class="info-experience-5">
                     <h2>가족 및 결혼/연애 상태</h2>
-                    <div id="info_romantic">
-                        <div >연애/결혼 분류</div>
-                        <div href="#">연애/결혼 상대방</div>
-                        <div>연애/결혼 시작일</div>
-                    </div><br>
-                    <div id="info_fam">
-                        <a href="#">가족 이름</a>-<div>가족 관계</div>
-                    </div>
-                    <br>
-                    <div id="info-input">
-                        <form action="">
-                            <textarea name="" id="intro-text" cols="50" rows="3"></textarea><br>
-                            <div id="texta"></div>
-                            <div id="public">
-                                <div>&nbsp;전체 공개</div>
-                                <div id="btn-set">
-                                <button class="in-btn" id="intro-can" type="button" onclick="infoCan()">취소</button>
-                                <button class="in-btn" id="intro-save" type="button" >저장</button>
-                                </div>
+                    <div class="infoText">
+                        <div id="info_romantic">
+                            <div >연애/결혼 분류
+                                <div href="#">연애/결혼 상대방</div>
+                                <div>연애/결혼 시작일</div>
                             </div>
-                        </form>
+                            <div id="info_fam">
+                                <a href="#">가족 이름</a>-<div>가족 관계</div>
+                            </div>
+                        </div>
                     </div>
-                    <button class="info-2-1" type="button" data-map="ROMANTIC_YN">(+) 결혼/연애 상태 추가</button><br>
-                    <button class="info-2-1" type="button" data-map="">(+) 가족 추가</button><br>
-                </div>
-                <div class="info-experience-6">
-                    <h2>자세한 내 소개</h2>
-                    <div id="info-intro">내 소개</div><br>
-                    <div id="info-nick">별명</div><br>
-                    <div id="info-text">좋아하는 문구</div><br>
                     <br>
                     <div id="info-input">
                         <form action="">
@@ -199,9 +182,35 @@
                         </form>
                     </div>
                     <div class="infom">
-                        <button class="info-2-1" type="button" data-map="INFO_INTRO">(+) 내 소개 추가</button><br>
-                        <button class="info-2-1" type="button" data-map="INFO_NICK">(+) 별명 추가</button><br>
-                        <button class="info-2-1" type="button" data-map="INFO_TEXT">(+) 좋아하는 문구 추가</button><br>
+                        <button class="romantic" type="button" data-map="ROMANTIC_YN">(+) 결혼/연애 상태 추가</button>
+                        <button class="info-2-1" type="button" data-map="">(+) 가족 추가</button>
+                    </div>  
+                </div>
+                <div class="info-experience-6">
+                    <h2>자세한 내 소개</h2>
+                    <div class="infoText">
+                        <div id="info-intro">${infoMember.infoIntro}</div>
+                        <div id="info-nick">${infoMember.infoNick}</div>
+                        <div id="info-text">${infoMember.infoText} </div>
+                    </div>
+                    <br>
+                    <div id="info-input">
+                        <form action="">
+                            <textarea name="" id="intro-text" cols="50" rows="3"></textarea><br>
+                            <div id="texta"></div>
+                            <div id="public">
+                                <div>&nbsp;전체 공개</div>
+                                <div id="btn-set">
+                                <button class="in-btn" id="intro-can" type="button" onclick="infoCan()">취소</button>
+                                <button class="in-btn" id="intro-save" type="button" >저장</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="infom">
+                        <button class="info-2-1" type="button" data-map="INFO_INTRO">(+) 내 소개 추가</button>
+                        <button class="info-2-1" type="button" data-map="INFO_NICK">(+) 별명 추가</button>
+                        <button class="info-2-1" type="button" data-map="INFO_TEXT">(+) 좋아하는 문구 추가</button>
                     </div>
                 </div>
                 <div class="info-experience-7">
@@ -222,7 +231,7 @@
                             </div>
                         </form>
                     </div>
-                    <div class="info-2-1">(+) 중요 이벤트 추가</div><br>
+                    <div class="info-2-1">(+) 중요 이벤트 추가</div>
                 </div>
             </div>
             </div>

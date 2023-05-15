@@ -15,6 +15,9 @@ public interface MemberInfoService {
 	int infoIntro(MemberInfo member);
 
 	int infoInput(Map<String, Object> hobbyInput);
-	
+
+	Map<String, Object> selectHobbyList(int memberNo);
+
+
 
 }

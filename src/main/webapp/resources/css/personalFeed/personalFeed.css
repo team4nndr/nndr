@@ -445,9 +445,10 @@ button{
 
 }
 
-.info-modali{
-
-
+.infoText{
+    font-size: 20px;
+    font-weight: bold;
+    margin: 10px 0 10px 0;
 }
 
 #add-hobby:checked ~ .hobby-overlay {
@@ -500,6 +501,7 @@ button{
     margin-left: 20px;
 
 }
+
 
 #input-intro{
     display: none;
@@ -620,50 +622,44 @@ button{
     flex-direction: row;
     color: #56A8C5 ;
     font-weight: bold;
-    font-size: 15px;
+    font-size: 18px;
+    margin: 10px 0;
 }
 
 
 .info-experience-1{
     padding :10px;
     font-weight : bold;
-    font-size : 15px;
 }
 .info-experience-2{
     display : none;
     padding :10px;
     font-weight : bold;
-    font-size : 15px;
 }
 .info-experience-3{
     display : none;
     padding :10px;
     font-weight : bold;
-    font-size : 15px;
 }
 .info-experience-4{
     display : none;
     padding :10px;
     font-weight : bold;
-    font-size : 15px;
 }
 .info-experience-5{
     display : none;
     padding :10px;
     font-weight : bold;
-    font-size : 15px;
 }
 .info-experience-6{
     display : none;
     padding :10px;
     font-weight : bold;
-    font-size : 15px;
 }
 .info-experience-7{
     display : none;
     padding :10px;
     font-weight : bold;
-    font-size : 15px;
 }
 
 #info-input{
@@ -878,5 +874,3 @@ button{
     transform: translateX(10px);
   }
 
-
-  

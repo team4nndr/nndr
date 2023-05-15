@@ -71,34 +71,40 @@ if (document.getElementById("info-modal") != null) {
     })
 }
 
+var a = "asd";
+var b = [];
 Array.from( document.getElementsByClassName("info-2-1")).forEach((target) => target.addEventListener("click", function(){ 
     jsSearch(target); 
 })
-);
-var a = "asd";
-var b;
+)
 function jsSearch(target){		
     const hobbyl = document.getElementById("what-hobby")
     document.getElementById("info-modal").style.display="block";
     document.getElementById("info-modali").style.display="block";
     document.getElementById("whatHobby").innerText=(target.innerText).substring(4);
-    b=target;
 
+    const infozz = document.getElementsByClassName("infom");
+    const infoText = document.getElementsByClassName("infoText");
     a=target.dataset.map;
-    document.getElementsByClassName("infom").forEach((element) =>
-        element.children.forEach((element) =>
-
-        )
-    )
+    for(var i = 0; i<infozz.length; i++){
+        
+        for(var j=0; j<infozz[i].childElementCount*2+1; j++){
+            if(target.innerText==infozz[i].childNodes[j].innerText){
+                b.push(infoText[i].childNodes[j]);
+            }
+        }
+    }
+    
 };   
 // document.getElementsByClassName("infom")[0].children[0]
 
-document.getElementById("info-confirm").addEventListener('click', () => {
-    const i = document.getElementById("hobby-input").value;
-    
-    inputhobby(i)
-})
-
+if (document.getElementById("info-confirm") != null) {
+    document.getElementById("info-confirm").addEventListener('click', () => {
+        const i = document.getElementById("hobby-input").value;
+        
+        inputhobby(i)
+    })
+}
 
 
 
@@ -112,7 +118,12 @@ function inputhobby(i){
     .then(hobby => { console.log(hobby) }) // 첫 번째 then에서 파싱한 데이터를 이용한 동작 작성
     
     .catch (e => { console.log(e)}); // 예외 발생 시 처리할 내용을 작성
-    alert(i)
+    b.forEach(element => {
+        element.innerText = i;
+        console.log("123")
+        console.log(element)
+    });
+    b=[];
 
     
 }
