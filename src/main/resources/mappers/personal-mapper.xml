@@ -62,10 +62,10 @@
 	</update>
 	
 	<select id="selectHobbyList" resultMap="memberHobby_rm">
-		SELECT * FROM "MEMBER_HOBBY"
+		SELECT DISTINCT(HOBBY) FROM "MEMBER_HOBBY" ORDER BY HOBBY
 	</select>
 	<select id="selectPerHobbyList" resultMap="memberHobby_rm">
-		SELECT * FROM "MEMBER_HOBBY WHERE MEMBER_NO =#{memberNo}"
+		SELECT DISTINCT(HOBBY) FROM "MEMBER_HOBBY" WHERE MEMBER_NO =#{memberNo}
 	</select>
 	
 	

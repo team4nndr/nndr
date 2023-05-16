@@ -59,19 +59,19 @@ public class PersonalFeedInfoController {
 //		return null;
 //	}
 	
-	@GetMapping(value = "/inputhobby", produces = "application/text; charset=UTF-8")
+	@GetMapping(value = "/inputInfo", produces = "application/text; charset=UTF-8")
 	@ResponseBody
-	public String inputhobby(String hobby, @SessionAttribute("loginMember") Member loginMember) { // 쿼리 스트링에 담겨있는 파라미터
-		String[] subHobby = hobby.split("§");
-		System.out.println(subHobby[0]);
-		System.out.println(subHobby[1]);
-		Map<String, Object> hobbyInput = new HashMap<>();
-		hobbyInput.put("whatHobby", subHobby[0]);
-		hobbyInput.put("hobby", subHobby[1]);
-		hobbyInput.put("memberNo", loginMember.getMemberNo());
+	public String inputhobby(String info, @SessionAttribute("loginMember") Member loginMember) { // 쿼리 스트링에 담겨있는 파라미터
+		String[] subInfo = info.split("§");
+		System.out.println(subInfo[0]);
+		System.out.println(subInfo[1]);
+		Map<String, Object> infoMap = new HashMap<>();
+		infoMap.put("whatHobby", subInfo[0]);
+		infoMap.put("hobby", subInfo[1]);
+		infoMap.put("memberNo", loginMember.getMemberNo());
 		// return 리다이렉트 / 포워드; -> 새로운 화면이 보임(동기식)
 //			return 데이터; -> 데이터를 요청한 곳으로 반환(비동기식)
-		int result = service.infoInput(hobbyInput);
+		int result = service.infoInput(infoMap);
 		if(result>0) {
 			System.out.println("바뀜");
 			

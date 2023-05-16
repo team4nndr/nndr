@@ -25,5 +25,3 @@ public class PersonalFeedFriendController {
 		return "personalFeed/personalFeedFriend";
 	}
 }
-
-

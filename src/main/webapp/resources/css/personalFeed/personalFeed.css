@@ -399,10 +399,13 @@ button{
     flex-wrap: wrap;
     border-radius: 30px;
     justify-content: center;
+    align-items: center;
     border : 1px solid #ccc;
 }
 
-
+#login{
+    display: block;
+}
 
 .hobby-box{
     position:fixed;
@@ -477,14 +480,17 @@ button{
 #hobt{
     display: flex;
     align-items: center;
+    justify-content: center;
 }
 
 .btn-sty {
     display: flex;
     text-align: center;
+    justify-content: center;
     align-items: center;
     font-size : 18px;
-    flex-direction: row;
+    width: 100px;
+    height: 100%;
 
 }
 
@@ -539,6 +545,7 @@ button{
 #info-link {
     text-decoration: none;
     color : black;
+    display: block;
 }
 
 #intro-save{
@@ -710,7 +717,6 @@ button{
     display: none;
     position: fixed;
     top:0; left:0;
-    width: 100vw;
     height: 100vh;
     background: black;
     opacity: 0;

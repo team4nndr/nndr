@@ -46,6 +46,19 @@ public class MemberInfoDAO {
 		return sqlSession.selectList("personalMapper.selectPerHobbyList", memberNo);
 	}
 
+	
+	
+
+	
+	public int inputhobby(List<MemberHobby> hobbyInput) {
+		return sqlSession.update("personalMapper.inputHobby", hobbyInput);
+	}
+	
+	public int deletehobby(int memberNo) {
+		return 0;
+	}
+
+
 
 
 

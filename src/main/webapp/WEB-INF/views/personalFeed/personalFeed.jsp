@@ -1,7 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <c:set var="hobbyList"  value="${HobbyMap.hobbyList}"/>
-<c:set var="perhobbyList"  value="${HobbyMap.perhobbyList}"/>
+<c:set var="perHobbyList"  value="${HobbyMap.perhobbyList}"/>
 
 
 <!DOCTYPE html>
@@ -166,30 +167,41 @@
                             
                             
                             <div>
-                                <div id="intro-hobby">취미</div>
+                                <div id="intro-hobby">
+                                    <h3>관심있는 취미</h3>
+                                    <c:forEach items="${perHobbyList}" var="hobby">
+                                        <div>${hobby.hobby}</div>
+                                        
+                                    </c:forEach></div>
                                     <c:if test="${infoMember.memberNo eq loginMember.memberNo}" > 
                                     <div class="hobby-main hobby-center intro-1">
                                         <input type="checkbox" id="add-hobby">
                                         <label class="hobby-btn" id="login" for="add-hobby">취미 수정</label>
                             
                                     <div class="hobby-box hobby-center">
-                                    <form action="infoHobby" id="hobby-choose">
+                                    <%-- <form action="infoHobby" method="get" id="hobby-choose"> --%>
                                             <h2>취미</h2>
                                             <div id="hobby-list">
-                                            
                                             <c:forEach items="${hobbyList}" var="hobby">
-                                                <input class="hobby-check" type="checkbox" id="${hobby.hobby}">
+                                                <c:forEach items="${perHobbyList}" var="perHobby">
+                                                    <c:if test="${hobby.hobby eq perHobby.hobby}">
+                                                        <c:set var="ch"  value="checked"/>
+                                                    </c:if>
+                                                </c:forEach>
+                                                <input class="hobby-check" type="checkbox" name="hobbychecked" id="${hobby.hobby}" ${ch}>
                                                 <label for="${hobby.hobby}">${hobby.hobby}</label> 
-
+                                                <c:remove var="ch" />
                                             </c:forEach>
-                                                
                                             </div>
-                                            <div id="hobt"><button id="hobby-checked"><div class="btn-sty">확인</div></button>
-                                            <label for="add-hobby" class="hobby-btn">
-                                                <a id="hobby-no"><div class="btn-sty">닫기</div></a>
-                                            </label>
+                                            <div id="hobt">
+                                                <button id="hobby-checked" class="hobby-btn" type="button">
+                                                    <label class="btn-sty"  for="add-hobby">확인</label>
+                                                </button>
+                                                <button id="hobby-no" class="hobby-btn"  type="button">
+                                                    <label class="btn-sty"  for="add-hobby">닫기</label>
+                                                </button>
                                         </div>
-                                        </form>
+                                        <%-- </form> --%>
                                     </div>
                                     <label class="hobby-overlay" for="add-hobby"></label>
                                 </div>
