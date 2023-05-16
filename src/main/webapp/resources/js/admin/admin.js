@@ -44,10 +44,13 @@ for(let btn of disableBtns) {
                 = "(비활성화 일시 : " + disableDate + ")";
             memberCode = 'B'; // 계정 상태 동기화
             btnChange(memberCode); // 출력 버튼 변경
+
+            if(disableDate != null) 
+                alert('비활성화 처리 되었습니다.');
+            else
+                alert('비활성화 처리 실패');
         })
         .catch(e => console.log(e));
-
-        alert('비활성화 처리 되었습니다.');
     });
 }
 
@@ -76,14 +79,17 @@ for(let btn of enableBtns) {
 
         fetch(memberNo + "/enable")
         .then(resp => resp.text())
-        .then(() => {
+        .then(result => {
             document.querySelector('.account .date').innerText = "";
             memberCode = 'N'; // 계정 상태 동기화
             btnChange(memberCode); // 출력 버튼 변경
+
+            if(result > 0) 
+                alert('계정이 정상적으로 복구되었습니다.');
+            else
+                alert('계정 복구 실패');
         })
         .catch(e => console.log(e));
-
-        alert('계정이 정상적으로 복구되었습니다.');
     });
 }
 
@@ -112,10 +118,13 @@ for(let btn of deleteBtns) {
                 = "(삭제 일시 : " + deleteDate + ")";
             memberCode = 'D'; // 계정 상태 동기화
             btnChange(memberCode); // 출력 버튼 변경
+
+            if(deleteDate != null) 
+                alert('계정이 삭제되었습니다.');
+            else
+                alert('계정 삭제 실패');
         })
         .catch(e => console.log(e));
-
-        alert('계정이 삭제되었습니다.');
     });
 }
 
