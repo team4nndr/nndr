@@ -76,7 +76,7 @@
             <div id="remove">
                 &times;
             </div>
-            <form action="#">
+            <form action="#" method="post" name="signUpFrm" id="signUpFrm">
                 <div id="insert2">
                     <p>가입하기</p>
                 </div>
@@ -88,17 +88,23 @@
                         <input type="text" placeholder="이름">
                     </div>
                     <div class="box">
-                        <input type="email" placeholder="이메일">
-                    </div>
+                        <input type="email" name="memberEmail" id="memberEmail" placeholder="이메일"
+                                maxlength="30" autocomplete="off">
 
+                        <button id="sendAutoKeyBtn" type="button">인증번호 받기</button>
                     <div class="box">
-                        <input type="password" placeholder="비밀번호">
+                        <input type="text" name="authKey" id="authKey" placeholder="인증번호 입력" maxlength="6" autocomplete="off" >
+                    
+                        <button id="checkAuthKeyBtn" type="button">인증하기</button>
                     </div>
                     <div class="box">
-                        <input type="password" placeholder="비밀번호 확인">
+                        <input type="password" name="memberPw" id="memberPw" placeholder="비밀번호" maxlength="20">
                     </div>
                     <div class="box">
-                        <input type="number" placeholder="전화번호" id="phone">
+                        <input type="password" name="memberPwConfirm" id="memberPwConfirm" placeholder="비밀번호 확인" maxlength="20">
+                    </div>
+                    <div class="box">
+                        <input type="number" placeholder="(- 없이 숫자만 입력)" id="memberTel" maxlength="11">
                     </div>
                     <div class="bir">
                         생일
