@@ -1,6 +1,7 @@
 package edu.kh.nndr.personalFeed.controller;
 
 import java.net.http.HttpClient.Redirect;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -10,6 +11,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttribute;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
@@ -31,6 +33,11 @@ public class PersonalFeedController {
 	public String personalFeed( Model model, @PathVariable("no") int no) {
 		MemberInfo infoMember = service.personalMember(no);
 		model.addAttribute("infoMember", infoMember); // request scope
+		// 취미 목록 조회 서비스 호출
+		Map<String, Object> HobbyMap = service.selectHobbyList(no); 
+				
+		// 조회 결과를 request scope에 세팅 후 forward
+		model.addAttribute("HobbyMap", HobbyMap);
 		return "personalFeed/personalFeed";
 	}
 	

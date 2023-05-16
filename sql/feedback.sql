@@ -70,7 +70,7 @@ END;
 
 COMMIT;
 
-SELECT * FROM "FEEDBACK";
+SELECT * FROM "FEEDBACK" ORDER BY feedback_no desc;
 
 
 -- 조회

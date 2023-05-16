@@ -25,7 +25,7 @@ public class AdminFilter implements Filter {
 		
 		// 관리자가 아니면 메인페이지로 
 		Member loginMember = (Member)session.getAttribute("loginMember");
-		if(!loginMember.getMemberCode().equals("A")) { 
+		if( loginMember == null || !loginMember.getMemberCode().equals("A")) { 
 			resp.sendRedirect("/");
 		} else {
 			chain.doFilter(request, response);
