@@ -15,10 +15,6 @@ public class FriendDAO {
 	@Autowired
 	private SqlSessionTemplate sqlSession;
 
-	public List<Friend> selectFrendRq(int friendReciver, int friendSender) {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
 
 	
