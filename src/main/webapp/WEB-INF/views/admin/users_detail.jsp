@@ -91,7 +91,7 @@
 
                 <button type="button" class="N disable-btn">유저 비활성</button>
                 <button type="button" class="B enable-btn">비활성 해제</button>
-                <button type="button" class="N B delete-btn">계정 삭제</button>
+                <button type="button" class="N B delete-btn alert">계정 삭제</button>
                 <button type="button" class="D enable-btn">계정 복구</button>
             </div>
         </form>

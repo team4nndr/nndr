@@ -15,7 +15,7 @@ if( telData != null ) {
 // 버튼 출력 초기화
 const btns = document.getElementById('bottom').children;
 for(let btn of btns) {
-    if(!btn.contains(memberCode)) {
+    if(!btn.classList.contains(memberCode)) {
         btn.classList.add('hidden');
     }
 }
@@ -23,7 +23,7 @@ for(let btn of btns) {
 // 계정 상태에 따른 버튼 출력 변경
 function btnChange(memberCode) {
     for(let btn of btns) {
-        if(!btn.contains(memberCode)) {
+        if(!btn.classList.contains(memberCode)) {
             btn.classList.add('hidden');
         } else {
             btn.classList.remove('hidden');
@@ -32,7 +32,7 @@ function btnChange(memberCode) {
 }
 
 // 계정 비활성 버튼(disable-btn)
-const disableBtns = document.getElementByClassName('disable-btn');
+const disableBtns = document.getElementsByClassName('disable-btn');
 for(let btn of disableBtns) {
     btn.addEventListener('click', e => {
         if(!confirm("해당 계정을 비활성화 하시겠습니까?")) return;
@@ -68,7 +68,7 @@ for(let btn of disableBtns) {
 // }
 
 // 비활성 해제 / 복구 버튼
-const enableBtns = document.getElementByClassName('enable-btn');
+const enableBtns = document.getElementsByClassName('enable-btn');
 for(let btn of enableBtns) {
     btn.addEventListener('click', e => {
         if(memberCode == 'B' && !confirm("해당 계정을 활성화 하시겠습니까?")) return;
@@ -100,7 +100,7 @@ for(let btn of enableBtns) {
 // }
 
 // 계정 삭제 버튼
-const deleteBtns = document.getElementByClassName('delete-btn');
+const deleteBtns = document.getElementsByClassName('delete-btn');
 for(let btn of deleteBtns) {
     btn.addEventListener('click', e => {
         if(!confirm("정말로 삭제하시겠습니까?")) return;
@@ -139,10 +139,12 @@ if(adminComment != null) {
 }
 
 // 뒤로가기, 목록으로 버튼 설정
-const backBtns = document.querySelectorAll('#content .back');
+const backBtns = document.querySelectorAll('#feedbackContent .back');
 for(let btn of backBtns) {
     const cp = window.location.search.split("=")[1];
     btn.addEventListener("click", () => {
-        location.href = "/admin/feedback?cp=" + cp;
+        if(cp != undefined) {
+            location.href = "/admin/feedback?cp=" + cp;
+        }
     });
 }

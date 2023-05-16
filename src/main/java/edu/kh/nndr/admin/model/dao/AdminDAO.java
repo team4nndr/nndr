@@ -51,7 +51,7 @@ public class AdminDAO {
 	 * @return result
 	 */
 	public int deleteMember(int memberNo) {
-		return sqlSession.selectOne("memberMapper.deleteMember", memberNo);
+		return sqlSession.update("memberMapper.deleteMember", memberNo);
 	}
 
 	/**
@@ -60,7 +60,7 @@ public class AdminDAO {
 	 * @return result
 	 */
 	public int enableMember(int memberNo) {
-		return sqlSession.selectOne("memberMapper.enableMember", memberNo);
+		return sqlSession.update("memberMapper.enableMember", memberNo);
 	}
 
 	/**
