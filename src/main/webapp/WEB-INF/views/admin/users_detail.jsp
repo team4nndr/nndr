@@ -109,6 +109,6 @@
         const memberNo = "${member.memberNo}";
         let memberCode = "${member.memberCode}";
     </script>
-    <script src="/resources/js/admin/admin.js"></script>
+    <script src="/resources/js/admin/users.js"></script>
 </body>
 </html>
