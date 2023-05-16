@@ -116,6 +116,6 @@
         </section>
     </main>
 
-    <script src="/resources/js/admin/admin.js"></script>
+    <script src="/resources/js/admin/feedback.js"></script>
 </body>
 </html>

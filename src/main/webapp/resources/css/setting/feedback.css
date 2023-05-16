@@ -116,3 +116,15 @@ textarea + div {
 #cancelBtn:hover {
     background-color:#F4F4F4;
 }
+
+/* 회원의견 전송 버튼 비활성화 */
+#submitBtn:disabled {
+    color: #C4C4C4;
+    background-color: #F0F2F5;
+    cursor: unset;
+}
+#submitBtn:disabled:hover {
+    color: #C4C4C4;
+    background-color: #F0F2F5;
+    cursor: unset;
+}

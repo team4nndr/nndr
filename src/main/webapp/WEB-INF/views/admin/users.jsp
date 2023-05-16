@@ -61,7 +61,7 @@
                     </div>
 
                     <c:forEach var="member" items="${memberList}">
-                        <a href="/admin/user/${member.memberNo}" class="row">
+                        <a href="/admin/user/${member.memberNo}?cp=${pagination.currentPage}" class="row">
                             <div class="user-no">${member.memberNo}</div>
                             <div class="user-name">
                                 <c:choose>
@@ -121,6 +121,6 @@
         </section>
     </main>
 
-    <script src="/resources/js/admin/admin.js"></script>
+    <script src="/resources/js/admin/users.js"></script>
 </body>
 </html>

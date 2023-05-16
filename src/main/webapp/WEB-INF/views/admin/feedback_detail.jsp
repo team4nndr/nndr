@@ -22,7 +22,7 @@
         <jsp:include page="/WEB-INF/views/admin/sidebar.jsp" />
 
         <%-- 회원 의견 상세 페이지 --%>
-        <form action="/admin/feedback/${feedback.feedbackNo}/confirm" method="POST" id="feedbackContent">
+        <form action="/admin/feedback/${feedback.feedbackNo}/confirm" method="POST" id="feedbackFrm">
             <button type="button" id="backBtn" class="back">
                 <i class="fa-solid fa-arrow-left"></i>
                 <span>뒤로가기</span>                
@@ -80,7 +80,7 @@
 
     <jsp:include page="/WEB-INF/views/common/footer.jsp"/>
 
-    <script src="/resources/js/admin/admin.js"></script>
+    <script src="/resources/js/admin/feedback.js"></script>
 
 </body>
 </html>

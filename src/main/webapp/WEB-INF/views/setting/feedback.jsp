@@ -39,7 +39,7 @@
                 </section>
                 <section class="modalBottom" id="modalBottom1">
                     <button type="button" class="cancelBtn" id="cancelBtn">취소</button>
-                    <button class="reverse" id="submitBtn">제출</button>
+                    <button class="reverse" id="submitBtn" disabled>제출</button>
                     <!-- 제출버튼 누르면 ajax로 DB에 데이터 전송하기..! -->
                 </section>
 
@@ -47,8 +47,8 @@
                     <div class="title">의견이 성공적으로 제출되었습니다.</div>
                 </section>
                 <section class="modalBottom" id="modalBottom2">
-                    <button class="reverse cancelBtn" id="cancelBtn2">닫기</button>
-                    <!-- 여기서 창 닫고나면 메인 피드 화면으로 이동 -->
+                    <button class="reverse" id="cancelBtn2">닫기</button>
+                    <!-- 여기서 창 닫고나면 설정 > 일반 화면으로 이동 -->
                 </section>
             </div>
         </div>
