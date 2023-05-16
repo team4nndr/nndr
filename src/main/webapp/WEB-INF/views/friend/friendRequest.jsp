@@ -31,26 +31,27 @@
       <div>
         <div> <!--친구요청 개수-->
           <div id="friendRQBox">
-            <span id="friendRQ">친구 요청 9개</span>
+            <span id="friendRQ">친구 요청 ${friendCount}개</span>
           </div>
         </div>
-        <form action= "/request" method="GET">
+        <c:forEach  var="reciver" items="${friendList}">
+        
         <div class="frtopdiv">
           <img class="proimg" src="/resources/images/friend/143086968_2856368904622192_1959732218791162458_n.png" alt="">
           <div class="frbox"> <!--이름 + 확인,삭제-->
             <div class="namecount"><!--이름, 함께 아는친구-->
-              <span class="freindName">${memberName}</span>
+              <span class="freindName">${reciver.memberName}</span>
               <div class="pulsfrcountBox">
                 <%-- <span class="pulsfrcount">함께 아는 친구 2명</span> --%>
               </div>
             </div>
             <div class="boxbtn"> <!--확인, 삭제 -->
-              <button class="yesbtn">확인</button>
+              <button class="yesbtn" onclick="accept(${reciver.friendNo})">확인</button>
               <button class="nobtn">삭제</button>
             </div>
           </div>
         </div>
-        </form>
+        </c:forEach>
         <%-- <div class="frtopdiv">
           <img class="proimg" src="/resources/images/friend/143086968_2856368904622192_1959732218791162458_n.png" alt="">
           <div class="frbox"> <!--이름 + 확인,삭제-->

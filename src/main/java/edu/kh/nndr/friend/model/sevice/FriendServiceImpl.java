@@ -16,6 +16,15 @@ public class FriendServiceImpl implements FriendService{
 	@Autowired
 	private FriendDAO dao;
 
+	@Override
+	public List<Friend> friendRqList(int memberNo) {
+		return dao.friendRqList(memberNo);
+	}
+
+	@Override
+	public int friendUpdate(int friendNo) {
+		return dao.friendUpdate(friendNo);
+	}
 
 
 

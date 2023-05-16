@@ -16,11 +16,14 @@ public class FriendDAO {
 	private SqlSessionTemplate sqlSession;
 
 
+	public List<Friend> friendRqList(int memberNo) {
+		 return sqlSession.selectList("friendMapper.friendRqList", memberNo);
+	}
 
-	
 
+	public int friendUpdate(int friendNo) {
+		return sqlSession.update("friendMapper.friendUpdate",friendNo);
+	}
 
-
-	
 
 }
