@@ -80,3 +80,7 @@ h3 {
     transform: translateX(0px);
     transition-duration: 0.2s;
 }
+
+.hidden {
+    display: none;
+}
