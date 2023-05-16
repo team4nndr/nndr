@@ -21,7 +21,8 @@
 	<!-- VO클래스의 패키지명 + 클래스명 작성하는 것이 불편하기 때문에 짧은 별칭 부여 -->
 	<typeAliases>
 		<typeAlias type="edu.kh.nndr.member.model.dto.Member" alias="Member" />
-    <typeAlias type="edu.kh.nndr.member.model.dto.MemberInfo" alias="MemberInfo" />
+	    <typeAlias type="edu.kh.nndr.member.model.dto.MemberInfo" alias="MemberInfo" />
+	    <typeAlias type="edu.kh.nndr.member.model.dto.MemberHobby" alias="MemberHobby" />
 		<typeAlias type="edu.kh.nndr.admin.model.dto.Feedback" alias="Feedback" />
 		<typeAlias type="edu.kh.nndr.friend.model.dto.Friend" alias="Friend" />
 	</typeAliases>
@@ -29,7 +30,7 @@
 	<!-- mapper 파일(SQL 작성되는파일) 위치 등록 부분 -->
 	<mappers>
 		<mapper resource="/mappers/member-mapper.xml" />
-    <mapper resource="/mappers/personal-mapper.xml" />
+  		<mapper resource="/mappers/personal-mapper.xml" />
 		<mapper resource="/mappers/feedback-mapper.xml" />
 		<mapper resource="/mappers/friend-mapper.xml" />
 	</mappers>
