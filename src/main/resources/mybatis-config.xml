@@ -18,6 +18,7 @@
     <typeAlias type="edu.kh.nndr.member.model.dto.MemberHobby" alias="MemberHobby" />
     <typeAlias type="edu.kh.nndr.admin.model.dto.Feedback" alias="Feedback" />
     <typeAlias type="edu.kh.nndr.friend.model.dto.Friend" alias="Friend" />
+    <typeAlias type="edu.kh.nndr.mainFeed.model.dto.Hashtag" alias="Hashtag"/>
 	</typeAliases>
 
 	<!-- mapper 파일(SQL 작성되는파일) 위치 등록 부분 -->

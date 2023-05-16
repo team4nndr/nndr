@@ -119,12 +119,7 @@
         </div>
 
         <script>
-            var tagArr = new Array("${tagList}");
             
-
-            
-            
-        
         </script>
 
         <script src="/resources/js/topMenu/header.js"></script>

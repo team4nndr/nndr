@@ -34,32 +34,43 @@ const searchBtn = document.getElementById("nndrSearchBtn");
 // ];
 
 // input 태그 이벤트
-search.addEventListener("keyup", (event) => {
+search.addEventListener("input", e => {
 
-    event.preventDefault();
+    // e.target.preventDefault();
 
     suggestion_pannel.innerHTML = "";
 
     let input_value = search.value;
 
     // #으로 시작하는 검색어인 경우
-    if (input_value.startsWith("#")) {
-        tagList.forEach(function (tag) {
-            if (tag.tagName.toLowerCase().startsWith(input_value.toLowerCase())) {
-                let div = document.createElement("div");
-                div.innerHTML = tag.tagName;
-                suggestion_pannel.appendChild(div);
+    if (input_value.startsWith("#") && input_value.trim().length > 1) {
+        console.log(input_value);
+        const query = input_value.replace("#", "%23");
+        fetch("/mainFeed/getTags?query=" + query)
+        .then(resp => resp.json())
+        .then(tagList => {
 
+            console.log(tagList);
+
+            if (query.toLowerCase().startsWith(query.toLowerCase())) {
+                let div = document.createElement("div");
+                const query = input_value.replace("%23", "#");
+                div.innerHTML = query;
+                suggestion_pannel.appendChild(div);
+    
                 div.onclick = () => {
-                    input_value = div.innerHTML;
+                    const query = input_value.replace("%23", "#");
+                    query = div.innerHTML;
                     suggestion_pannel.innerHTML = "";
                 };
             }
         });
-    } else { // 일반 검색어인 경우
-        let suggestions = s_arr.filter(function (exam) {
-            return exam.name.toLowerCase().startsWith(input_value);
-        });
+            
+    }
+
+     else { // 일반 검색어인 경우
+        
+            toLowerCase().startsWith(input_value);
 
         suggestions.forEach(function (suggested) {
             let div = document.createElement("div");
