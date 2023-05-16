@@ -26,7 +26,8 @@ cancelBtn.addEventListener("click", ()=>{
     document.getElementById("myContent").style.display="none";
     document.getElementById("myContent-modal").style.display="none";
     document.querySelector("textarea").value="";
-   
+    
+    
     
 
     

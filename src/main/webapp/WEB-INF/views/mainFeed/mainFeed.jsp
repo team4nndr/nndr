@@ -188,15 +188,15 @@
                         </a>
 
                         </section> <!-- 상단의 이미지 -->
-
+                        
                         <section id="cTopArea2">
                             <section >
-                                <span><a href="#" class="change">송혜교</a></span>
+                                <span><a href="#" class="change">${board.memberName}</a></span>
                             </section>
 
                             <section >
                                 <li>
-                                    <a href="#" class="change">현재 시간</a>
+                                    <a href="#" class="change">${board.uploadDate}</a>
                                 </li> 
 
                             </section>
@@ -208,7 +208,7 @@
                     </section>
                     
                     <!--  나의게시물 중간  -->
-                    <section></section>
+                    <section>${board.boardText}</section>
 
                     <!--  나의 게시물 좋아요 등등등 -->
                     <section id="like">
