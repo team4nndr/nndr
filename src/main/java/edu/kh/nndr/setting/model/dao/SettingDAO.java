@@ -13,6 +13,6 @@ public class SettingDAO {
 	private SqlSessionTemplate sqlSession;
 
 	public int feedback(Feedback feedback) {
-		return sqlSession.insert("feedbackMapping.feedback", feedback);
+		return sqlSession.insert("feedbackMapper.feedback", feedback);
 	}
 }

@@ -7,27 +7,34 @@ const modalBottom1 = document.getElementById('modalBottom1');
 const modalBottom2 = document.getElementById('modalBottom2');
 
 // 모달창 외부 클릭 시 창 닫힘
-modal.addEventListener("click", (e) => {
-    // 팝업 내부 클릭 시 동작 안함
-    if( e.clientX > modalBody.getBoundingClientRect().left 
-        && e.clientX < modalBody.getBoundingClientRect().right
-        && e.clientY > modalBody.getBoundingClientRect().top 
-        && e.clientY < modalBody.getBoundingClientRect().bottom ) {
-            return;
-    }
+// modal.addEventListener("click", e => {
+//     // 팝업 내부 클릭 시 동작 안함
+//     if( e.clientX > modalBody.getBoundingClientRect().left 
+//         && e.clientX < modalBody.getBoundingClientRect().right
+//         && e.clientY > modalBody.getBoundingClientRect().top 
+//         && e.clientY < modalBody.getBoundingClientRect().bottom ) {
+//             return;
+//     }
 
-    // 팝업 외부 클릭 시 팝업 닫힘
-    modal.style.display = "none";
+//     modal.style.display = "none"; // 팝업 닫힘
+//     location.href = "/setting/general"; // 설정 > 일반 화면으로 이동
+// });
+
+// ESC 버튼 눌리면 메인 화면으로 이동
+window.addEventListener("keyup", e => {
+    if(e.keyCode == 27) { // ESC==27
+        modal.style.display = "none"; // 팝업 닫힘
+        location.href = "/setting/general"; // 설정 > 일반 화면으로 이동
+    }
 });
 
 // 전송버튼 클릭 시 DB에 데이터 전송 + 성공 시 두 번째 모달 창으로 이동
 const submitBtn = document.getElementById('submitBtn');
 submitBtn.addEventListener('click', () => {
 
-    const data = {
-        "memberNo" : memberNo,
-        "feedbackContent" : document.getElementById('feedbackContent').value
-    };
+    const data = {};
+    data.memberNo = memberNo;
+    data.feedbackContent = document.getElementById('feedbackContent').value;
     
     fetch("feedback", {
         method : "POST",
@@ -49,10 +56,32 @@ submitBtn.addEventListener('click', () => {
     .catch(e => console.log(e));
 });
 
+// 아무것도 입력하지 않으면 전송버튼 비활성화
+const feedbackContent = document.getElementById('feedbackContent');
+if(feedbackContent != null) {
+    feedbackContent.addEventListener('input', () => {
+        if( feedbackContent.value.trim().length == 0 ) {
+            submitBtn.disabled = true;
+        } else {
+            submitBtn.disabled = false;
+        }
+    });
+}
+
+
 // 모달창 취소 버튼 기능 넣기
-const cancelBtnList = document.getElementsByClassName('cancelBtn');
-for(let btn of cancelBtnList) {
+const cancelBtns = document.getElementsByClassName('cancelBtn');
+for(let btn of cancelBtns) {
     btn.addEventListener('click', () => {
         modal.classList.remove('show');
+        location.href = "/setting/general"; // 설정 > 일반 화면으로 이동
+    });
+}
+
+// 의견 전송 완료 후 창 닫으면 설정 > 일반 화면으로 이동
+const cancelBtn2 = document.getElementById('cancelBtn2');
+if(cancelBtn2 != null) {
+    cancelBtn2.addEventListener('click', () => {
+        location.href = "/setting/general";
     });
 }

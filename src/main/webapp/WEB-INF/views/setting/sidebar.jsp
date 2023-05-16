@@ -8,7 +8,7 @@
     <hr>
     <ul>
         <li>
-            <a href="/setting">
+            <a href="/setting/general">
                 <img src="/resources/images/setting/setting-icon.png" alt="회원 관리">
                 <span>일반</span>
             </a>
