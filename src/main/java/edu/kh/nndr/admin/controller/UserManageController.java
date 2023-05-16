@@ -35,14 +35,6 @@ public class UserManageController {
 		return "admin/users";
 	}
 	
-	// 유저 상세 조회
-	@GetMapping("/{memberNo:[0-9]+}")	
-	public String selectMember(@PathVariable("memberNo") int memberNo, Model model) {
-		Member member = service.selectMember(memberNo); 
-		model.addAttribute("member", member);
-		return "admin/users_detail";
-	}
-	
 	// 유저 비활성
 	@ResponseBody
 	@GetMapping("/{memberNo:[0-9]+}/disable")
@@ -56,6 +48,7 @@ public class UserManageController {
 	@GetMapping("/{memberNo:[0-9]+}/delete")
 	public String deleteMember(@PathVariable("memberNo") int memberNo) {
 		service.deleteMember(memberNo);
+		String tmp = service.selectMember(memberNo).getDeleteDate();
 		return service.selectMember(memberNo).getDeleteDate();
 	}
 	
@@ -64,5 +57,14 @@ public class UserManageController {
 	@GetMapping("/{memberNo:[0-9]+}/enable")
 	public int enableMember(@PathVariable("memberNo") int memberNo) {
 		return service.enableMember(memberNo);
+	}
+	
+	
+	// 유저 상세 조회
+	@GetMapping("/{memberNo:[0-9]+}")	
+	public String selectMember(@PathVariable("memberNo") int memberNo, Model model) {
+		Member member = service.selectMember(memberNo); 
+		model.addAttribute("member", member);
+		return "admin/users_detail";
 	}
 }
