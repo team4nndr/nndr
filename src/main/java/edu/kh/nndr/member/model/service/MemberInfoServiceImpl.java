@@ -44,16 +44,27 @@ public class MemberInfoServiceImpl implements MemberInfoService{
 	public Map<String, Object> selectHobbyList(int memberNo) {
 		// 1. 특정 게시판의 삭제되지 않은 게시글 수 조회
 		List<MemberHobby> hobbyList = dao.selectHobbyList();
-//		List<MemberHobby> perhobbyList = dao.selectPerHobbyList(memberNo);
+		List<MemberHobby> perhobbyList = dao.selectPerHobbyList(memberNo);
 		
 				
 		// 4. pagination, boardList를 Map에 담아서 반환
 		Map<String, Object> hobbyMap = new HashMap<String, Object>();
 		hobbyMap.put("hobbyList", hobbyList);
-//		hobbyMap.put("perhobbyList", perhobbyList);
+		hobbyMap.put("perhobbyList", perhobbyList);
 		
 		return hobbyMap;
 		}
 
+	@Override
+	public List<MemberHobby> myHobby(int memberNo) {
+		List<MemberHobby> perhobbyList = dao.selectPerHobbyList(memberNo);
+		return perhobbyList;
+	}
+
+	
+	
+
+	
 			
+	
 }
