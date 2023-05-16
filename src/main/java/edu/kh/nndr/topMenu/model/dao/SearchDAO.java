@@ -1,4 +1,4 @@
-package edu.kh.nndr.topMenu.model.DAO;
+package edu.kh.nndr.topMenu.model.dao;
 
 import java.util.List;
 

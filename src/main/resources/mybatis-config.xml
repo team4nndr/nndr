@@ -21,6 +21,8 @@
 			alias="Feedback" />
 		<typeAlias type="edu.kh.nndr.friend.model.dto.Friend"
 			alias="Friend" />
+		
+
 	</typeAliases>
 
 	<!-- mapper 파일(SQL 작성되는파일) 위치 등록 부분 -->
@@ -30,6 +32,7 @@
 		<mapper resource="/mappers/feedback-mapper.xml" />
 		<mapper resource="/mappers/friend-mapper.xml" />
 		<mapper resource="/mappers/search-mapper.xml" />
+		
 	</mappers>
 
 </configuration>
