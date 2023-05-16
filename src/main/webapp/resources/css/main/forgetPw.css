@@ -72,7 +72,7 @@ div a {
 .found{
     background-color: #e9ebee;
     width: 100%;
-    height: 436px;
+    height: 487px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -84,33 +84,49 @@ div a {
     border: 1px solid #ccd;
     border-radius: 5%;
     width: 500px;
-    height: 276px;
+    height: 382px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
 }
 
-.headerTitle{
-    width: 500px;
-    height: 60px;
-    font-size: 20px;
-    padding-left: 20px;
+.mine{
+    display: flex;
+    justify-content: left;
+    padding-top: 14px;
 }
+
+.headerTitle{
+    width: 503px;
+    height: 90px;
+    font-size: 23px;
+    padding-left: 18px;
+}
+
+
+/* 비밀번호 실패 화면 */
+.forgetFail{
+    background-color: #e4cac2;
+    border: 1px solid #dd3c10; 
+    margin : 10px 1px;
+    width: 497px;
+    height: 102px;
+}
+
 /* 내계정찾기 밑 라인줄 */
 .line1{
-    border-top: 1px solid #4444;
-    width: 500px;
-    margin-bottom: 5px;
+    border-top: 2px solid #4444;
+    width: 497px;
+    margin-bottom: 7px;
 }
 
 /* 취소 위 라인줄 */
 .line2{
     border-top: 1px solid #4444;
     width: 500px;
-    margin-top: 29px;
-
-}
+    margin : 13px 15px;
+    }
 
 .cancelBox{
     margin-top: 16px;
@@ -138,7 +154,8 @@ div a {
 
 .buttonBtn{
     width: 70px;
-    height: 36px;
+    height: 38px;
+    margin-bottom: 10px;
 }
 
 footer{
