@@ -20,7 +20,6 @@
         <jsp:include page="/WEB-INF/views/setting/sidebar.jsp" />
 
         <%-- 회원 의견 상세 페이지 --%>
-<!--         <form id="content"> -->
         <div class="modal show">
             <div class="modal-body">
                 <section class="modalTop">
@@ -30,7 +29,7 @@
                 <hr>
                 <section class="modalContent" id="modalContent1">
                     <div class="title">어떻게 개선할 수 있을까요?</div>
-                    <textarea placeholder="최대한 자세히 적어주세요..."></textarea>
+                    <textarea id="feedbackContent" placeholder="최대한 자세히 적어주세요..."></textarea>
                     <div>
                         더 나은 제품을 만드는 데 도움이 될 만한 의견이 있다면 알려주세요. 
                         특정 문제를 해결하기 위해 도움이 필요한 경우 관리자에게 개별적으로 연락주세요.
@@ -53,9 +52,11 @@
                 </section>
             </div>
         </div>
-<!--         </form> -->
     </main>
-
+    
+    <script>
+        const memberNo = "${loginMember.memberNo}";
+    </script>
     <!-- <script src="../../js/setting/setting.js"></script> -->
     <script src="/resources/js/setting/feedback.js"></script>
 </body>

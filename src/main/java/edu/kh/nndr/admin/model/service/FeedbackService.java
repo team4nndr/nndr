@@ -19,4 +19,11 @@ public interface FeedbackService {
 	 * @return feedback
 	 */
 	Feedback getFeedback(int feedbackNo);
+
+	/**
+	 * 회원 의견 처리
+	 * @param feedback
+	 * @return result
+	 */
+	int confirmFeedback(Feedback feedback);
 }

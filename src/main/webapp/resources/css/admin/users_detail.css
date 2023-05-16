@@ -13,12 +13,31 @@
     padding: 17px 10px;
 }
 
+/* 활성버튼 설정 */
+#bottom > button:not(:disabled) {
+    background: #4A6EA9;
+    color: white;
+}
+
+#bottom > button:hover:not(:disabled) {
+    background: #35507a;
+    transition-duration: 0.1s;
+}
+
+.alert {
+    background: darkred !important;
+}
+
+.alert:hover {
+    background: rgb(88, 1, 1) !important;
+}
+
 /* 계정 상태 */
 .account {
     display: inline-flex;
     align-items: center;
-    justify-content: center;
-    width: 100px;
+    justify-content: flex-start;
+    width: 100%;
 }
 .account > div {
     font-weight: bold;
@@ -28,4 +47,7 @@
     color: white;
     text-align: center;
     /* padding: 2px; */
+}
+.account > span {
+    margin-left: 10px;
 }

@@ -20,13 +20,33 @@ modal.addEventListener("click", (e) => {
     modal.style.display = "none";
 });
 
-// 두 번째 모달 창으로 이동
+// 전송버튼 클릭 시 DB에 데이터 전송 + 성공 시 두 번째 모달 창으로 이동
 const submitBtn = document.getElementById('submitBtn');
 submitBtn.addEventListener('click', () => {
-    modalContent1.style.display = 'none';
-    modalBottom1.style.display = 'none';
-    modalContent2.style.display = 'flex';
-    modalBottom2.style.display = 'block';
+
+    const data = {
+        "memberNo" : memberNo,
+        "feedbackContent" : document.getElementById('feedbackContent').value
+    };
+    
+    fetch("feedback", {
+        method : "POST",
+        headers : {"Content-Type" : "application/json"},
+        body : JSON.stringify(data)
+    })
+    .then(resp => resp.text())
+    .then(result => {
+        if(result > 0){
+            // 의견 제출 성공 시 두번째 모달창 출력
+            modalContent1.style.display = 'none';
+            modalBottom1.style.display = 'none';
+            modalContent2.style.display = 'flex';
+            modalBottom2.style.display = 'block';
+        }else{
+            alert("의견 제출 실패");
+        }
+    })
+    .catch(e => console.log(e));
 });
 
 // 모달창 취소 버튼 기능 넣기

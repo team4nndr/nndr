@@ -36,4 +36,30 @@
 	    WHERE FEEDBACK_NO = #{feedbackNo}
 	</select>
 	
+	<!-- 회원 의견 처리 + 관리자 의견 추가 -->
+	<update id="confirmFeedback">
+		UPDATE "FEEDBACK" 
+		SET		CONFIRM_FL = 'Y', 
+				ADMIN_NO = #{adminNo}, 
+				ADMIN_COMMENT = #{adminComment}, 
+				CONFIRM_DATE = SYSDATE
+		WHERE 	FEEDBACK_NO = #{feedbackNo}
+	</update>
+	
+	<!-- 새로운 의견 등록 -->
+	<insert id="feedback">
+		INSERT 
+		INTO "FEEDBACK" 
+      	VALUES (
+	      	SEQ_FEEDBACK_NO.NEXTVAL,
+			#{memberNo},
+			#{feedbackContent},
+			DEFAULT,
+			NULL,
+			NULL,
+			DEFAULT,
+			NULL
+      	)
+	</insert>
+	
 </mapper>
