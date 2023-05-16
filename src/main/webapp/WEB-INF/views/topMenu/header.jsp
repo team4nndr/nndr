@@ -1,12 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+        <c:set var="tagList" value="${tagList}"/>
 
         <link rel="stylesheet" href="/resources/css/topMenu/header.css">
-
         <div id="nndrContainer">
 
             <div class="nndr-home-logo">
-                <a href="#"><img src="/resources/images/topMenu/topLogo-01.png"></a>
+                <a href="/mainFeed"><img src="/resources/images/topMenu/topLogo-01.png"></a>
             </div>
 
             <div class="nndr-search-area">
@@ -29,14 +29,14 @@
                 <ul class="nndr-menu">
                     <!-- 버튼 영역  -->
                     <!-- 홈 버튼 -->
-                    <li>
-                        <a href="#">
+                    <li id="nndrHomeBtn">
+                        <a href="/mainFeed" class="nndrMainFeedBtn"> 
                             <img src="/resources/images/topMenu/topHome.png" id="nndrImage1">
                         </a>
                     </li>
                     <!-- 친구 버튼  -->
-                    <li>
-                        <a href="#">
+                    <li id="nndrFriendBtn">
+                        <a href="/friend" class="nndrMainFeedBtn" >
                             <img src="/resources/images/topMenu/topFriend.png" id="nndrImage2">
                         </a>
                     </li>
@@ -65,7 +65,7 @@
                                 <div><img src="/resources/images/topMenu/optionAlarm.png" id="nndrOptionAlarm">
                                     <div id="nndrOptionAlarmContent">
                                         <a href="#">모두 읽은 상태로 표시</a>
-                                        <a href="#">알림설정</a>
+                                        <a href="/setting/alarm">알림설정</a>
                                     </div>
                                 </div>
                             </div>
@@ -99,14 +99,32 @@
                         <!-- 내정보 버튼 클릭 시 하위 메뉴 -->
                         <div id="nndrMyDropdown" class="nndr-dropdown-content2">
                             <a href="/setting">설정</a>
-                            <a href="#">의견 보내기</a>
-                            <a href="#">1:1문의</a>
-                            <a href="#">로그아웃</a>
+                            <a href="/setting/feedback">의견 보내기</a>
+                            <a href="/logout">로그아웃</a>
                         </div>
                     </div>
                 </div>
+                
+                <!-- 관리자 아이콘 -->
+                <div name="nndrAdminSetting">
+                <c:if test="${loginMember.memberCode == 'A'}" >
+                    <a href="/admin" name="nndrAdminLink">
+                        <img src="/resources/images/topMenu/topSetting.png" id="nndrAdminImg">
+                    </a>
+                </c:if>
+                    
+                </div>
+                
             </div>
         </div>
 
+        <script>
+            var tagArr = new Array("${tagList}");
+            
+
+            
+            
+        
+        </script>
 
         <script src="/resources/js/topMenu/header.js"></script>
