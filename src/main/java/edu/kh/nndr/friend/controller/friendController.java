@@ -37,13 +37,5 @@ public class friendController {
 		return "friend/friendAll"; //파일경로
 	}
 	
-	@RequestMapping("/request")
-	public String selectFrendRq(int friendReciver,int friendSender, Model model) {
-		
-		Map<String, Object> map = service.selectFrendRq(friendReciver,friendSender);
-		model.addAttribute("map", map);
-		return "friend/friendRequest";
-	}
-
 	
 }

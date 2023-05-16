@@ -16,13 +16,6 @@ public class FriendServiceImpl implements FriendService{
 	@Autowired
 	private FriendDAO dao;
 
-	@Override
-	public Map<String, Object> selectFrendRq(int friendReciver, int friendSender) {
-		List<Friend> friendList = dao.selectFrendRq(friendReciver, friendSender);
-		Map<String, Object> map = new HashMap<String, Object>();
-		map.put("friendList",friendList);
-		return map;
-	}
 
 
 
