@@ -26,11 +26,4 @@ public class FriendServiceImpl implements FriendService{
 		return dao.friendUpdate(friendNo);
 	}
 
-
-
-	
-	
-
-
-
 }
