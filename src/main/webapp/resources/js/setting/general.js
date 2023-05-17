@@ -81,7 +81,7 @@ pwSubmitBtn.addEventListener('click', e => {
     .then(resp => resp.text())
     .then(result => {
         if(result == "false") {
-            alert(result + " 현재 비밀번호가 일치하지 않습니다.");
+            alert("현재 비밀번호가 일치하지 않습니다.");
         } else {
 
             // 비밀번호 수정

@@ -1,5 +1,7 @@
 package edu.kh.nndr.setting.model.service;
 
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -40,5 +42,13 @@ public class SettingServiceImpl implements SettingService {
 	@Override
 	public boolean checkPasswd(Member member) {
 		return member.getMemberPw().equals(dao.checkPasswd(member));
+	}
+
+	// 환경설정 변경
+	@Override
+	public int changeSetting(Map<String, Object> paramMap, Member loginMember) {
+
+		paramMap.put("memberNo", loginMember.getMemberNo());
+		return dao.changeSetting(paramMap);
 	}
 }

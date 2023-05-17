@@ -21,18 +21,17 @@
 
         <%-- 회원 의견 상세 페이지 --%>
         <section id="content">
-        <!-- <form action="#" id="content"> -->
             <h3>보안 관련 설정</h3>
             <div class="content-box">
                 <div class="title">친구 요청</div>
                 <div class="content-list hover">
                     친구 요청을 받으시겠어요?
-                    <label>
-                        <input type="checkbox" class="checkbox">
-                        <div class="toggle">
-                            <div class="circle"></div>
-                        </div>
-                    </label>
+                    <%-- <input type="checkbox" id="setFriendReqCheckbox" class="checkbox" name="setFriendReq" 
+                        <c:if test="${loginMember.setFriendReq eq 'Y'}" >checked</c:if>/> --%>
+                    <%-- <div class='toggle <c:if test="${loginMember.setFriendReq eq 'Y'}" >checked</c:if>' id="setFriendReq" key="SET_FRIEND_REQ"> --%>
+                    <div class='toggle <c:if test="${loginMember.setFriendReq eq 'Y'}" >checked</c:if>' key="SET_FRIEND_REQ">
+                        <div class="circle"></div>
+                    </div>
                 </div>
             </div>
             <div class="content-box">
@@ -64,7 +63,6 @@
                     <button class="reverse disableBtn" id="accountDisableBtn">계정 비활성화</button>
                 </div>
             </div>
-        <!-- </form> -->
         </section>
     </main>
 
@@ -84,10 +82,8 @@
                 표시되는 등 다른 사람이 회원님의 정보 일부를 계속 보게 될 수 있습니다.
             </section>
             <section class="modalBottom show" id="modalBottom1">
-            <!-- <form action="#" class="modalBottom show" id="modalBottom1"> -->
                 <button type="button" class="cancelBtn" id="cancelBtn1">취소</button>
                 <button class="reverse" id="disableContinueBtn">계정 비활성화</button>
-            <!-- </form> -->
             </section>
 
             <section class="modalContent" id="modalContent2">
@@ -96,14 +92,12 @@
                 이메일 인증 절차가 필요합니다. 언제든 다시 돌아오시길 기다리겠습니다. 감사합니다.
             </section>
             <section  class="modalBottom" id="modalBottom2">
-            <!-- <form action="#" class="modalBottom" id="modalBottom2"> -->
-                <button class="reverse cancelBtn" id="cancelBtn2">닫기</button>
-            <!-- </form> -->
+                <button class="reverse" id="finalBtn">닫기</button>
             </section>
         </div>
     </div>
 
-    <!-- <script src="../../js/setting/setting.js"></script> -->
+    <script src="/resources/js/setting/setting.js"></script>
     <script src="/resources/js/setting/security.js"></script>
 </body>
 </html>

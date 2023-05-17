@@ -62,4 +62,55 @@
       	)
 	</insert>
 	
+	<!-- 검색결과 게시글 수 조회 -->
+	<select id="getFeedbackSearchCount" resultType="_int">
+		SELECT  COUNT(*) 
+		FROM   "FEEDBACK"
+				JOIN "MEMBER" USING(MEMBER_NO)
+		<if test="query != null">
+			WHERE   (FEEDBACK_NO LIKE '%${query}%'
+			        OR MEMBER_NO LIKE '%${query}%'
+			        OR FEEDBACK_CONTENT LIKE '%${query}%'
+			        OR MEMBER_NAME LIKE '%${query}%')
+        </if>
+        <if test="query == null">
+    		WHERE 1=1
+    	</if>
+        <choose>
+        	<when test='op == "처리중"'>
+        		<!-- 내용 -->
+	        	AND CONFIRM_FL='N'
+        	</when>
+        	<when test='op == "처리완료"'>
+        		<!-- 제목 + 내용 -->
+	        	AND CONFIRM_FL='Y'
+        	</when>
+        </choose>
+	</select>
+	
+	<!-- [검색] 게시글 목록 조회 -->
+	<select id="selectFeedbackSearchList" resultMap="feedback_rm">
+		SELECT  *
+		FROM   "FEEDBACK"
+				JOIN "MEMBER" USING(MEMBER_NO)
+		<if test="query != null">
+			WHERE   (FEEDBACK_NO LIKE '%${query}%'
+			        OR MEMBER_NO LIKE '%${query}%'
+			        OR FEEDBACK_CONTENT LIKE '%${query}%'
+			        OR MEMBER_NAME LIKE '%${query}%')
+        </if>
+        <if test="query == null">
+	    		WHERE 1=1
+    	</if>
+	    <choose>
+        	<when test='op == "처리중"'>
+	        	AND CONFIRM_FL='N'
+        	</when>
+        	<when test='op == "처리완료"'>
+	        	AND CONFIRM_FL='Y'
+        	</when>
+        </choose>
+		ORDER BY CONFIRM_FL ASC, FEEDBACK_NO DESC
+	</select>
+	
 </mapper>

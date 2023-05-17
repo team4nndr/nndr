@@ -119,10 +119,10 @@ COMMIT;
 INSERT INTO "MEMBER" 
 VALUES(
 	SEQ_MEMBER_NO.NEXTVAL, 	-- 회원번호
-	'user03@mail.com', 		-- 이메일
-	'pass03', 				-- 비밀번호
-	'유저삼',	 				-- 이름
-	'01033330303',			-- 전화번호
+	'user04@mail.com', 		-- 이메일
+	'pass04', 				-- 비밀번호
+	'유저사',	 				-- 이름
+	'01054440344',			-- 전화번호
 	DEFAULT, 				-- 계정상태(N:정상(기본), B:비활성, D:탈퇴)
 	DEFAULT, 				-- 가입일(기본:SYSDATE)
 	NULL, 					-- 비활성화일
@@ -187,3 +187,19 @@ FROM   "MEMBER"
 WHERE 	MEMBER_NO = 1
 
 ;
+
+----------------------------------------------------------------------------------------
+-- 검색 결과 유저 수 조회
+
+SELECT 	 COUNT(*)
+FROM 	"MEMBER"
+WHERE	 MEMBER_CODE != 'A'
+AND (MEMBER_EMAIL LIKE '로미'
+OR MEMBER_NAME LIKE '로미')
+AND MEMBER_CODE='N'
+
+;
+
+SELECT * FROM "MEMBER" ORDER BY MEMBER_NO desc;
+SELECT SET_FRIEND_REQ FROM "MEMBER"  WHERE MEMBER_NO = 307;
+SELECT * FROM "MEMBER_INFO" WHERE MEMBER_NO =2;

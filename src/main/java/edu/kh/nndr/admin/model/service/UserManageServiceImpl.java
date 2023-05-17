@@ -55,4 +55,19 @@ public class UserManageServiceImpl implements UserManageService {
 	public int enableMember(int memberNo) {
 		return dao.enableMember(memberNo);
 	}
+	
+	// 회원 검색 결과 조회
+	@Override
+	public Map<String, Object> selectMemberList(Map<String, Object> paramMap, int cp) {
+		
+		int listCount = dao.getMemberCount(paramMap);
+		Pagination pagination = new Pagination(listCount, cp);
+		
+		List<Member> memberList = dao.selectMemberList(paramMap, pagination);
+		Map<String, Object> map = new HashMap<>();
+		map.put("pagination", pagination);
+		map.put("memberList", memberList);
+		
+		return map;
+	}
 }

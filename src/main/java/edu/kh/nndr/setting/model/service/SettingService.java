@@ -1,5 +1,7 @@
 package edu.kh.nndr.setting.model.service;
 
+import java.util.Map;
+
 import edu.kh.nndr.admin.model.dto.Feedback;
 import edu.kh.nndr.member.model.dto.Member;
 
@@ -32,5 +34,13 @@ public interface SettingService {
 	 * @return true / false
 	 */
 	boolean checkPasswd(Member member);
+
+	/**
+	 * 환경설정 변경
+	 * @param paramMap
+	 * @param loginMember
+	 * @return result
+	 */
+	int changeSetting(Map<String, Object> paramMap, Member loginMember);
 
 }

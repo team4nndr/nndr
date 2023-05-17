@@ -6,20 +6,6 @@ const modalContent2 = document.getElementById('modalContent2');
 const modalBottom1 = document.getElementById('modalBottom1');
 const modalBottom2 = document.getElementById('modalBottom2');
 
-// 모달창 외부 클릭 시 창 닫힘
-// modal.addEventListener("click", e => {
-//     // 팝업 내부 클릭 시 동작 안함
-//     if( e.clientX > modalBody.getBoundingClientRect().left 
-//         && e.clientX < modalBody.getBoundingClientRect().right
-//         && e.clientY > modalBody.getBoundingClientRect().top 
-//         && e.clientY < modalBody.getBoundingClientRect().bottom ) {
-//             return;
-//     }
-
-//     modal.style.display = "none"; // 팝업 닫힘
-//     location.href = "/setting/general"; // 설정 > 일반 화면으로 이동
-// });
-
 // ESC 버튼 눌리면 메인 화면으로 이동
 window.addEventListener("keyup", e => {
     if(e.keyCode == 27) { // ESC==27

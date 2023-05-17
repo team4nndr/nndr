@@ -31,4 +31,12 @@ public interface UserManageService {
 	 */
 	int enableMember(int memberNo);
 
+	/**
+	 * 회원 검색 결과 조회
+	 * @param paramMap
+	 * @param cp
+	 * @return map
+	 */
+	Map<String, Object> selectMemberList(Map<String, Object> paramMap, int cp);
+
 }
