@@ -11,7 +11,12 @@
     display: grid;
     grid-template-columns: 0.2fr 1.8fr 1fr;
     background-color: white;
-    position: relative;
+    /* position: relative; */
+    position: sticky;
+    top:0;
+    left:0;
+    background-color: white;
+    z-index:999;
 }
 
 /* 홈 로고 영역 */

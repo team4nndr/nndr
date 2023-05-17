@@ -16,7 +16,6 @@
     <link rel="shortcut icon" href="#" />
 </head>
 <body>
-    <header>
 	<jsp:include page="/WEB-INF/views/topMenu/header.jsp" /> 
 	<jsp:include page="/WEB-INF/views/personalFeed/personalFeedHeader.jsp" /> 
     <style>
@@ -24,7 +23,6 @@
             border-bottom: 3px solid #56A8C5;
         }
     </style>
-    </header>
     <div class="flex-container">
         <div class="main-container2">
             <c:if test="${infoMember.memberNo eq loginMember.memberNo}" > 

@@ -18,8 +18,9 @@
 <body>
     <%-- 상단바 메뉴 --%>
     <jsp:include page="/WEB-INF/views/topMenu/header.jsp" />
-    
+
     <main>
+
         <%-- 사이드바 --%>
         <jsp:include page="/WEB-INF/views/admin/sidebar.jsp" />
 

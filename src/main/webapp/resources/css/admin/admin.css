@@ -14,8 +14,8 @@
 body {
     display: flex;
     flex-direction: column;
-    height: 100vh;
-    width: 100vw;
+    /* height: 100vh; */
+    /* width: 100vw; */
 }
 header {
     height: 56px;
@@ -26,8 +26,8 @@ header {
 }
 main {
     flex-grow: 1;
-    display: flex;
-    overflow: auto;
+    display: relative;
+    /* overflow: auto; */
 }
 
 h3 {
@@ -40,8 +40,10 @@ h3 {
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 100%;
+    /* width: 100%; */
     min-width: 950px;
+    margin-left: 360px;
+    /* margin-top: 56px; */
 }
 
 #backBtn {
@@ -132,6 +134,7 @@ button.reverse:hover {
     margin-bottom: 20px;
     background-color: #F7F8FA;
     /* border-bottom: 1px solid #ccc; */
+    overflow: none;
 }
 /* 게시판 헤더 */
 .board-list > .top {
@@ -284,18 +287,21 @@ i.hidden { display: none; }
 /* 화면 상단 뒤로가기 버튼 */
 #backBtn {
     position: sticky;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-shrink: 0;
+    top: 86px;
+    
     width: 36px;
     height: 36px;
-    top: 24px;
-
+    flex-shrink: 0;
+    
     margin-left: 30px;
+    
     border-radius: 50px;
     background-color: #eee;
     cursor: pointer;
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 #backBtn:hover {
