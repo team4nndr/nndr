@@ -1,5 +1,8 @@
 package edu.kh.nndr.personalFeed.controller;
 
+import java.util.List;
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -22,6 +25,8 @@ public class PersonalFeedPicController {
 	public String personalFeedPic( Model model, @PathVariable("no") int no) {
 		MemberInfo infoMember = service.personalMember(no);
 		model.addAttribute("infoMember", infoMember); // request scope
+		List<Map<String, String>> imgSet = service.imgSet(no);
+		model.addAttribute("imgSet", imgSet);
 		return "personalFeed/personalFeedPic";
 	}
 }

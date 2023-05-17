@@ -174,7 +174,24 @@ function checkForm() {
     
     .then(response => response.text()) // 요청에 대한 응답 객체(response)를 필요한 형태로 파싱
     
-    .then(hobby => { console.log(hobbyArray) }) // 첫 번째 then에서 파싱한 데이터를 이용한 동작 작성
+    .then(() => { 
+        const l = hobbyArray.length;
+        
+        if(l==0){
+            document.getElementById("zzs").style.display = "none";
+            if (document.getElementById("myhho")!=null) {
+                document.getElementById("myhho").innerText ="";
+            }
+        }else{
+            document.getElementById("zzs").style.display = "block";
+            document.getElementById("myhho").innerText ="";
+            for(var i =0; i<l; i++){
+                document.getElementById("myhho").innerText += hobbyArray.shift();
+                document.getElementById("myhho").innerHTML += "　";
+            }
+        }
+
+    }) // 첫 번째 then에서 파싱한 데이터를 이용한 동작 작성
     
     .catch (e => { console.log(e)}); // 예외 발생 시 처리할 내용을 작성
     
@@ -229,6 +246,21 @@ if (document.querySelector('.info-cancel') != null) {
     })
 }
 
+// var a = <c:out value="${perHobbyList}"/>;
+if (document.getElementById("hobby-no") != null) {
+    document.getElementById("hobby-no").addEventListener("click", () => {
+        const mh = document.getElementById("myhho").innerText.trim().split('　');
+        const dhho = document.getElementById("dhho").innerText.trim().split('　');
+        
 
+        for(var j=0; j<dhho.length; j++){
+            document.getElementById(dhho[j]).checked = false;
+        }
+        for(var i =0; i<mh.length; i++){
+            document.getElementById(mh[i]).checked = true;
 
-
+        }
+    })
+}
+    
+    

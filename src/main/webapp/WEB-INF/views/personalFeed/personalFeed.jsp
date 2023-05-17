@@ -2,7 +2,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <c:set var="hobbyList"  value="${HobbyMap.hobbyList}"/>
-<c:set var="perHobbyList"  value="${HobbyMap.perhobbyList}"/>
+<c:set var="perHobbyList"  value="${HobbyMap.perhobbyList}" />
 
 
 <!DOCTYPE html>
@@ -85,34 +85,6 @@
                             <li><button class="add-friend2" href="">친구 추가</button></li>
                         </div>
                     </div>
-                    <div class="who">
-                        <div class="who-pic">사진9</div>
-                        <div class="who-name">&nbsp;&nbsp;<strong>이름</strong></div>
-                        <div class="add-friend">
-                            <li><button class="add-friend2" href="">친구 추가</button></li>
-                        </div>
-                    </div>
-                    <div class="who">
-                        <div class="who-pic">사진10</div>
-                        <div class="who-name">&nbsp;&nbsp;<strong>이름</strong></div>
-                        <div class="add-friend">
-                            <li><button class="add-friend2" href="">친구 추가</button></li>
-                        </div>
-                    </div>
-                    <div class="who">
-                        <div class="who-pic">사진11</div>
-                        <div class="who-name">&nbsp;&nbsp;<strong>이름</strong></div>
-                        <div class="add-friend">
-                            <li><button class="add-friend2" href="">친구 추가</button></li>
-                        </div>
-                    </div>
-                    <div class="who">
-                        <div class="who-pic">사진12</div>
-                        <div class="who-name">&nbsp;&nbsp;<strong>이름</strong></div>
-                        <div class="add-friend">
-                            <li><button class="add-friend2" onclick="addfriend">친구 추가</button></li>
-                        </div>
-                    </div>
                 </div>
                 
                 <p class="controller">
@@ -168,38 +140,42 @@
                             
                             <div>
                                 <div id="intro-hobby">
-                                    <h3>관심있는 취미</h3>
-                                    <c:forEach items="${perHobbyList}" var="hobby">
-                                        <div>${hobby.hobby}</div>
-                                        
-                                    </c:forEach></div>
-                                    <c:if test="${infoMember.memberNo eq loginMember.memberNo}" > 
-                                    <div class="hobby-main hobby-center intro-1">
-                                        <input type="checkbox" id="add-hobby">
-                                        <label class="hobby-btn" id="login" for="add-hobby">취미 수정</label>
-                            
+                                    <h3 id=zzs>관심있는 취미</h3>
+                                    <div id="dhho" style="display:none">
+                                        <c:forEach items="${hobbyList}" var="hobby">${hobby.hobby}　</c:forEach>
+                                    </div>
+                                    <div id="myhho">
+                                        <c:if test="${not empty perHobbyList}" >
+                                            <c:forEach items="${perHobbyList}" var="hobby">${hobby.hobby}　</c:forEach>
+                                        </c:if>
+                                    </div>
+                                </div>
+                                <c:if test="${infoMember.memberNo eq loginMember.memberNo}" > 
+                                <div class="hobby-main hobby-center intro-1">
+                                    <input type="checkbox" id="add-hobby">
+                                    <label class="hobby-btn" id="login" for="add-hobby">취미 수정</label>
                                     <div class="hobby-box hobby-center">
                                     <%-- <form action="infoHobby" method="get" id="hobby-choose"> --%>
-                                            <h2>취미</h2>
-                                            <div id="hobby-list">
-                                            <c:forEach items="${hobbyList}" var="hobby">
-                                                <c:forEach items="${perHobbyList}" var="perHobby">
-                                                    <c:if test="${hobby.hobby eq perHobby.hobby}">
-                                                        <c:set var="ch"  value="checked"/>
-                                                    </c:if>
-                                                </c:forEach>
-                                                <input class="hobby-check" type="checkbox" name="hobbychecked" id="${hobby.hobby}" ${ch}>
-                                                <label for="${hobby.hobby}">${hobby.hobby}</label> 
-                                                <c:remove var="ch" />
+                                        <h2>취미</h2>
+                                        <div id="hobby-list">
+                                        <c:forEach items="${hobbyList}" var="hobby">
+                                            <c:forEach items="${perHobbyList}" var="perHobby">
+                                                <c:if test="${hobby.hobby eq perHobby.hobby}">
+                                                    <c:set var="ch"  value="checked"/>
+                                                </c:if>
                                             </c:forEach>
-                                            </div>
-                                            <div id="hobt">
-                                                <button id="hobby-checked" class="hobby-btn" type="button">
-                                                    <label class="btn-sty"  for="add-hobby">확인</label>
-                                                </button>
-                                                <button id="hobby-no" class="hobby-btn"  type="button">
-                                                    <label class="btn-sty"  for="add-hobby">닫기</label>
-                                                </button>
+                                            <input class="hobby-check" type="checkbox" name="hobbychecked" id="${hobby.hobby}" ${ch}>
+                                            <label for="${hobby.hobby}">${hobby.hobby}</label> 
+                                            <c:remove var="ch" />
+                                        </c:forEach>
+                                        </div>
+                                        <div id="hobt">
+                                            <button id="hobby-checked" class="hobby-btn" type="button">
+                                                <label class="btn-sty"  for="add-hobby">확인</label>
+                                            </button>
+                                            <button id="hobby-no" class="hobby-btn"  type="button">
+                                                <label class="btn-sty"  for="add-hobby">닫기</label>
+                                            </button>
                                         </div>
                                         <%-- </form> --%>
                                     </div>
@@ -223,10 +199,10 @@
                             
                         </div>
                         <div class="main-imset">
-                        <div id="main-im1" ><img src="/resources/images/common/user-deafult.png" alt="로고" class="main-im"></div>
-                        <div id="main-im2"><img src="/resources/images/common/user-deafult.png" alt="로고" class="main-im"></div>
-                        <div id="main-im3"><img src="/resources/images/common/user-deafult.png" alt="로고" class="main-im"></div>
-                        <div class="something"></div>
+                            <c:forEach items="${imgSet}" var="i">
+                                <div id="main-im3"><img src="${i.imgPath}${i.imgRename}" alt="로고" class="main-im"></div>
+                            </c:forEach>
+                        <div class="something"></div>3
                         </div>
                     </div>
                     <br>
@@ -238,21 +214,130 @@
                             <a class="my-info" href="Main_fr.html">모든 친구 보기</a>
                         </div>
                         <div class="main-imset">
-                            <div id="main-im1" ><img src="/resources/images/common/user-deafult.png" alt="로고" class="main-im"></div>
-                            <div id="main-im2"><img src="/resources/images/common/user-deafult.png" alt="로고" class="main-im"></div>
-                            <div id="main-im3"><img src="/resources/images/common/user-deafult.png" alt="로고" class="main-im"></div>
+                            <c:forEach items="${imgSet}" var="i">
+                                <div id="main-im3"><img src="${i}" alt="로고" class="main-im"></div>
+                            </c:forEach>
                             <div class="something"></div>
                         </div>
                     </div>
                     <hr>
                 </div> 
-                <div class="item item2-3"><h4>
-                    ?
-                    게시물
-                    장반석
-                </h4></div>
-            </div>
-        </div>
+                <div class="item item2-3">
+                    <div class="centerArea-1"><!-- 나의 피드 올리기 -->
+                        <section id="cArea-1">
+                        <section>  
+                            <a href="#">
+                            <img src="/resources/images/mainFeed/mainMy.png" alt="로고" id="myLogo">
+                        </a>
+                        </section>
+                        <section>
+                            <form action="#" method="get">
+                            <%-- <fieldset>  --%>
+                                <!-- <input type="text" name="query" id="query" 
+                                placeholder="무슨 생각을 하고 계신가요?" autocomplete="off">  -->
+                                <div>
+                                <span id="think">고객님은 무슨생각을 하고 계신가요?</span>    
+                                </div>
+                                <%-- 모달 --%>
+                                <div id="myContent"></div> 
+                                <div id="myContent-modal">
+                                <section id="modalTop">
+                                <span class="title">게시물 만들기</span>
+                                <button type="button" class="close cancelBtn" id="cancelBtn"></button>
+                                </section>
+                                <div>
+                                <section id="modal-my1">
+                                    <a href="#">
+                                    <img src="/resources/images/mainFeed/mainMy.png" alt="로고" id="myLogo">
+                                    </a>
+                                </section>
+                                <section id="modal-my2"> 
+                                <section>
+                                <span><a href="/personalFeed/${loginMember.memberNo}" class="change">${loginMember.memberName}</a></span>
+                                </section>
+                                <section>
+                                <li>
+                                    <a href="#" class="change">현재 시간</a>
+                                </li> 
+                                </section>
+                                </section>
+                                </div>
+                                <div></div>
+                                </div>
+                            <%-- </fieldset> --%>
+                        </form>
+                    </section>
+                    </section>
+                    <section id="cArea-2">                  
+                    <ul>
+                        <li><button >사진/동영상</button></li>
+                        <li><button >기분/활동</button></li>
+                    </ul>
+                    </section>
+
+                    
+                </div>
+                <div class="centerArea-2">
+                    <section > <!-- 나의 게시물 상단  -->
+                        <section id="cTopArea1"> <a href="#">
+                            <img src="/resources/images/mainFeed/mainMy.png" alt="로고" id="myLogo">
+                        </a>
+
+                        </section> <!-- 상단의 이미지 -->
+
+                        <section id="cTopArea2">
+                            <section >
+                                <span><a href="#" class="change">송혜교</a></span>
+                            </section>
+
+                            <section >
+                                <li>
+                                    <a href="#" class="change">현재 시간</a>
+                                </li> 
+
+                            </section>
+
+                        </section> <!-- 상단의 이름 and 시간  -->
+                        
+                        
+
+                    </section>
+                    
+                    <!--  나의게시물 중간  -->
+                    <section>asd</section>
+
+                    <!--  나의 게시물 좋아요 등등등 -->
+                    <section id="like">
+
+                        <ul>
+                            <li><a href="#"><img src="/resources/images/mainFeed/mainLike.png" alt="like" id="likeLogo"> 좋아요</a></li>
+                            <li><a href="#reply"><img src="/resources/images/mainFeed/mainReply.png" alt="reply" id="replyLogo"> 댓글 달기</a></li>
+                            <li><a href="#"><img src="/resources/images/mainFeed/mainNext.png" alt="share" id="shareLogo"> 공유하기</a></li>
+                        </ul>
+                        
+                    </section>
+
+
+                    <!-- 댓글 작성칸  -->
+                    <section id="cBot">
+
+                        <section>  <a href="#">
+                            <img src="/resources/images/mainFeed/mainMy.png" alt="로고" id="myLogo">
+                        </a>
+                        </section>
+
+
+                        <section>
+                            <input type="text" name="reply" id="reply" 
+                            placeholder="댓글을 입력하세요....." autocomplete="off"> 
+
+                        </section>
+                    </section>
+
+                </div>
+                
+
+        
     </div>
 
 

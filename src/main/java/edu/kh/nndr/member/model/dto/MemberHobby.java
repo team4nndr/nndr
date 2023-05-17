@@ -13,5 +13,11 @@ public class MemberHobby {
 	private int hobbyNo;
 	private int memberNo;
 	private String hobby;
+	public MemberHobby(int hobbyNo, int memberNo, String hobby) {
+		super();
+		this.hobbyNo = hobbyNo;
+		this.memberNo = memberNo;
+		this.hobby = hobby;
+	}
 }
 

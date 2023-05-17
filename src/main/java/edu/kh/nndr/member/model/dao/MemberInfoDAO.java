@@ -59,6 +59,23 @@ public class MemberInfoDAO {
 	}
 
 
+	public int insertHobby(List<MemberHobby> insertHobby) {
+		return sqlSession.insert("personalMapper.insertHobby", insertHobby);
+	}
+
+
+	public int deleteHobby(List<MemberHobby> deleteHobby) {
+		return sqlSession.delete("personalMapper.deleteHobby", deleteHobby);
+	}
+
+
+	public List<Map<String, String>> imgSet(int no) {
+		return sqlSession.selectList("personalMapper.imgSet", no);
+	}
+
+
+
+
 
 
 
