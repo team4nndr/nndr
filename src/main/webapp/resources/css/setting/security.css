@@ -76,6 +76,76 @@ body { background-color: #F0F2F5; }
 }
 
 /* dorpdown 메뉴 */
+#setPersonalFeed {
+    
+}
+
+.dropdown {
+    height: 24px;
+    z-index: 100;
+    position: relative;
+}
+/* .dropdwon ul {
+    
+} */
+.dropdown ul.list-wrap {
+    position: absolute;
+
+    width: 130px;
+    padding: 5px 0;
+    border: 1px solid #ccc;
+    border-radius: 0 6px 6px 6px;
+    background-color: white;
+}
+.dropdown li {
+    padding: 0 8px;
+    height: 23px;
+    list-style: none;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+.dropdown li:hover {
+    background-color: #4A6EA9;
+    color: white;
+}
+.dropdown li.button {
+    list-style: none;
+    width: fit-content;
+    max-width: 112px;
+    border: 1px solid #ccc;
+    border-radius: 2px;
+}
+.dropdown li.button:hover {
+    background-color: #eee;
+    color: black;
+}
+.dropdown li.button.clicked {
+    background-color: #4A6EA9;
+    color: white;
+}
+.dropdown span {
+    padding: 0 4px 0 8px;
+    font-size: 0.8rem;
+    pointer-events: none;
+}
+.dropdown img {
+    height: 16px;
+    width: 16px;
+    margin-left: 2px;
+    pointer-events: none;
+}
+.dropdown img.mini {
+    height: 6px;
+    width: 10px;
+}
+.dropdown img.hidden + img {
+    margin-left: 20px;
+}
+
+
+
+
 /* .container > div { display: none; }
 
 #checkbox:checked + .container > div { display: block; }
@@ -114,9 +184,7 @@ body { background-color: #F0F2F5; }
     cursor: pointer;
 }
 
-#setPersonalFeed {
-    position: relative;
-}
+
 
 .dropdown {
     position: absolute;

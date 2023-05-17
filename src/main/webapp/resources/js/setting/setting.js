@@ -7,7 +7,7 @@ for(let toggle of toggles) {
         const key = e.target.getAttribute("key");
         let value = toggle.classList.contains('checked') ? 'Y' : 'N';
 
-        fetch("changeSetting?key=" + key + "&value=" + value)
+        fetch("change/set?key=" + key + "&value=" + value)
         .then(resp => resp.text())
         .then(result => {
             if(result == 0) {

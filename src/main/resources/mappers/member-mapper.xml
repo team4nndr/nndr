@@ -43,7 +43,7 @@
 		FROM "MEMBER"
 			  LEFT JOIN "MEMBER_INFO" USING(MEMBER_NO)
 	    WHERE MEMBER_EMAIL = #{memberEmail} AND MEMBER_PW = #{memberPw}
-	          AND MEMBER_CODE = 'N'
+	          AND MEMBER_CODE != 'B' AND MEMBER_CODE != 'D'
 	</select>
 	
 	<!-- 유저 수 조회 -->
