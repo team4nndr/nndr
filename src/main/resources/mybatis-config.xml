@@ -28,6 +28,8 @@
     <mapper resource="/mappers/friend-mapper.xml" />
     <mapper resource="/mappers/admin-mapper.xml" />
     <mapper resource="/mappers/search-mapper.xml" />
+    <mapper resource="/mappers/email-mapper.xml" />
+    <mapper resource="/mappers/emailCheck-mapper.xml" />
 	</mappers>
 
 </configuration>

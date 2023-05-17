@@ -225,7 +225,7 @@ footer span{
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color:  rgb(265, 237, 252);
+  background-color:  whitesmoke;
 }
 
 #insert > *{box-sizing: border-box;}
@@ -262,6 +262,7 @@ footer span{
   border-radius: 5px;
   border:solid 1px #6f6d6d;
   background-color: #f5f6f7;
+  padding-left: 8px;
 }
 
 /* phone 화살표 제거 */
@@ -329,14 +330,14 @@ footer span{
   margin-top: 30px;
 }
 
-#sendAutoKeyBtn{
+#sendAuthKeyBtn{
   border: 1px solid #8c8686;
   cursor: pointer;
   border-radius: 5px;
   
 }
 
-#sendAutoKeyBtn:hover{
+#sendAuthKeyBtn:hover{
   background-color: #ccc;
   border-radius: 5px;
 }
