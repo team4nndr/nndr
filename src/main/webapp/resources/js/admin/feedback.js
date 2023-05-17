@@ -16,10 +16,7 @@ if(adminComment != null) {
 // 뒤로가기, 목록으로 버튼 설정
 const backBtns = document.querySelectorAll('.back');
 for(let btn of backBtns) {
-    const cp = window.location.search.split("=")[1];
     btn.addEventListener("click", () => {
-        if(cp != undefined) {
-            location.href = "/admin/feedback?cp=" + cp;
-        }
+        location.href = "/admin/feedback" + window.location.search;
     });
 }

@@ -216,3 +216,58 @@ textarea { white-space: pre-wrap; }
 
 /* 요소 숨기기 */
 .hidden { display: none; }
+
+/* 의견 처리상태 */
+#condition_select_wrap {
+    z-index: 100;
+    align-self:flex-start;
+    margin-top: 6px;
+}
+
+#condition_select_wrap > ul { 
+    list-style: none;
+}
+
+#checkboxLabel {
+    display: block;
+    position: relative;
+    width: 130px;
+    height: 36px;
+    border-radius: 6px;
+    border: none;
+    background: #eee;
+    color: black;
+    cursor: pointer;
+    margin: 2px 10px;
+    font-weight: bold;
+    font-size: 0.8rem;
+    text-align: center;
+    padding: 7px 0;
+}
+#checkboxLabel:hover {
+    background: #4A6EA9;
+    color: white;
+}
+
+#checkboxLabel > i {
+    display: absolute;
+    right: 0;
+}
+
+#checkbox + ul { 
+    display: none;
+}
+
+#checkbox:checked + ul { 
+    display: block;
+}
+
+#listbox .list {
+    margin: 1px 10px; 
+}
+#listbox .list:hover {
+    margin: 1px 10px; 
+    background: #8C8D8F;
+}
+
+i.hidden { display: none; }

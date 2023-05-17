@@ -1,5 +1,7 @@
 package edu.kh.nndr.setting.model.dao;
 
+import java.util.Map;
+
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -56,5 +58,14 @@ public class SettingDAO {
 	 */
 	public String checkPasswd(Member member) {
 		return sqlSession.selectOne("memberMapper.checkPasswd", member);
+	}
+
+	/**
+	 * 환경설정 세팅값 변경
+	 * @param paramMap
+	 * @return result
+	 */
+	public int changeSetting(Map<String, Object> paramMap) {
+		return sqlSession.update("memberMapper.changeSetting", paramMap);
 	}
 }

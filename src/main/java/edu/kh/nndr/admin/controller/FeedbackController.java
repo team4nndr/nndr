@@ -28,9 +28,19 @@ public class FeedbackController {
 	@GetMapping("")
 	public String selectFeedbackList(
 			@RequestParam(value="cp", required=false, defaultValue="1") int cp,
-			Model model) {
-		Map<String, Object> map = service.selectFeedbackList(cp);
-		model.addAttribute("map", map);
+			Model model, @RequestParam Map<String, Object> paramMap) {
+		
+		// 검색이 아닐 때(단순목록조회)
+		if(paramMap.get("query") == null) {
+			Map<String, Object> map = service.selectFeedbackList(cp);
+			model.addAttribute("map", map);
+			
+		// 검색결과조회	
+		} else { 
+			Map<String, Object> map = service.selectFeedbackList(paramMap, cp);
+			model.addAttribute("map", map);
+		}
+		
 		return "admin/feedback";
 	}
 	
