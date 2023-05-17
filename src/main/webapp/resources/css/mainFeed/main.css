@@ -516,6 +516,20 @@ display: flex;
 
 /* 나의 피드 아래꺼 */
 
+/* 업로드된 이미지 */
+/* 이미지를 감싸는 div */
+.boardImg1{
+    width: 25%;
+    height: 240px;
+    float: left;
+    text-align: center;
+}
+
+/* 이미지 */
+.boardImg1 img{
+    max-width: 90%;
+    max-height: 90%;
+}
 
 #cArea-2{
     height: 30%;

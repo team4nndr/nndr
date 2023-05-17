@@ -28,11 +28,12 @@ public class MainFeedController {
 	 * @param boardNo
 	 * @return
 	 */
-	@GetMapping("/mainFeed/{memberNo}")
-	public String mainFeed(@PathVariable("memberNo") int memberNo,Model model) {
-		Board board = service.feedContent(memberNo);
-		model.addAttribute("board",board);
-		System.out.println(board.getUploadDate());
+	@GetMapping("/mainFeed")
+	public String feedList(Model model) {
+		
+		List<Board> boardList = service.feedList();
+		
+		model.addAttribute("boardList",boardList);
 		
 		return "mainFeed/mainFeed";
 		

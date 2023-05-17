@@ -8,15 +8,16 @@ import edu.kh.nndr.member.model.dto.Member;
 public interface MainFeedService {
 
 
+
 	/** 게시글 확이
 	 * @param boardNo
 	 * @return
 	 */
+	List<Board> feedList();
 
 
 	
 
-	Board feedContent(int memberNo);
 
 	
 	

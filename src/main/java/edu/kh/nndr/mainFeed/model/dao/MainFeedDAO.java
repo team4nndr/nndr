@@ -25,8 +25,13 @@ public class MainFeedDAO {
 
 	public Board feedContent(int memberNo) {
 		
-		System.out.println("asd");
+		
 		return sqlSession.selectOne("mainFeedMapper.feedContent",memberNo);
+	}
+
+	public List<Board> feedList() {
+		
+		return sqlSession.selectList("mainFeedMapper.feedList");
 	}
 	
 	

@@ -16,11 +16,16 @@ public class MainFeedServiceImpl implements MainFeedService {
 	private MainFeedDAO dao;
 
 	@Override
-	public Board feedContent(int memberNo) {
+	public List<Board> feedList() {
 		
-		
-		return dao.feedContent(memberNo);
+		return dao.feedList();
 	}
+
+	
+	
+	
+
+	
 
 	
 	

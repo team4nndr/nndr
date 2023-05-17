@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"  %>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -58,7 +58,6 @@
                 </div>
 
             </div>
-
 
             <div class="centerArea"><!--  가운데를 각 needs에 맞춰서 섹터를 나누는게 좋을 것 같아 -->
                 <div class="centerArea-1"><!-- 나의 피드 올리기 -->
@@ -181,6 +180,7 @@
 
                     
                 </div>
+                <c:forEach items="${boardList}" var="board">
                 <div class="centerArea-2">
                     <section > <!-- 나의 게시물 상단  -->
                         <section id="cTopArea1"> <a href="#">
@@ -208,8 +208,30 @@
                     </section>
                     
                     <!--  나의게시물 중간  -->
+                    <div class="feedContent">
                     <section>${board.boardText}</section>
+                    
+                    <%-- 이미지가 있다면 --%>
+                    <c:if test="${not empty board.imageList}" >
+                    <c:set var="start" value="0"/>
+                    <c:if test="${fn:length(board.imageList)>start}" >
+                        <div class="img-box">
+                            <c:forEach var="i" begin="${start}" end="${fn:length(board.imageList)}">
+                            <div class="boardImg1">
+                            <c:set var="path" value="${board.imageList[i].imgPath}${board.imageList[i].imgReName}"/>
+                                <img src="${path}">
+                                                
+                            </div>
+                            </c:forEach>
 
+
+                        </div>
+
+                    </c:if>
+                    </c:if>
+
+
+                    </div>
                     <!--  나의 게시물 좋아요 등등등 -->
                     <section id="like">
 
@@ -239,6 +261,7 @@
                     </section>
 
                 </div>
+                </c:forEach>
                 
                 
 
