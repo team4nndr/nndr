@@ -23,6 +23,7 @@
 
         <%-- 사이드바 --%>
         <jsp:include page="/WEB-INF/views/admin/sidebar.jsp" />
+            
 
         <c:set var="sp" value=""/>
         <c:if test="${not empty param.query && fn:length(param.query) gt 0}">

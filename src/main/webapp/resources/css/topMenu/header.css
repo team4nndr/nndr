@@ -178,8 +178,8 @@
     padding: 12px 16px;
     text-decoration: none;
     display: block;
-    width: 400px;
-    height: 50px;
+    /* width: 400px; */
+    height: 49px;
 }
 
 .nndr-dropdown-content2 a {
@@ -190,7 +190,8 @@
     width: 300px;
 }
 
-#nndrDropBtn1>img {
+/* #nndrDropBtn1>img { */
+#nndrImage3 {
 
     height: 40px;
     padding: 3px;
@@ -298,6 +299,7 @@
     align-items: center;
     justify-content: flex-end;
     margin-right: 152px;
+    user-select: none;
 }
 
 #nndrAdminImg{
@@ -336,6 +338,7 @@
     background-color: #ccc;
     border-radius: 5px;
     width: 50px;
+    cursor: pointer;
 }
 
 /* .nndr-dropdown-content1 a:hover {
@@ -371,21 +374,29 @@
     height: 30px;
 }
 
+
 #nndrOptionAlarm{
     width: 30px;
     height: 30px;
     cursor: pointer;
 }
 
-#nndrOptionAlarm:hover{
-    border-radius: 50%;
+#nndrOptionAlarm > img {
+    width: 30px;
+    height: 30px;
+    pointer-events: none;
+    user-select: none;
+}
+
+#nndrOptionAlarm:hover {
+    border-radius: 50px;
     background-color: #ccc;
 }
 
 /* 알람 옵션 내용 (모두 읽은 상태로 표시 및 알림 설정) */
-#nndrOptionAlarmContent{
+#nndrOptionAlarmContent {
     font-size: 15px;
-    display: none;
+    display: block;
     position: absolute; right: 15px; top: 15px;
     width: 200px;
     height: 100px;
@@ -393,7 +404,11 @@
     border: 1px solid black;
     right: 30px;
     bottom: 20px;
-    
+}
+#nndrOptionAlarmContent > a:hover {
+    background-color: #eee;
+    transition-duration: 0.2s;
+    cursor: pointer;
 }
 
 /* 알람 읽음,읽지 않음 표시 */
@@ -482,7 +497,10 @@
 .nndr-top-alarm-delete{
     display: flex;
     align-items: center;
-    margin-right: 10px;
+    position: absolute;
+    right: 10px;
+    /* align-self: flex-end; */
+    /* margin-right: 10px; */
     cursor: pointer;
 }
 .nndr-top-alarm-delete:hover{
@@ -490,7 +508,39 @@
     font-weight: bold;
 }
 
+/* 프로필 사진 - dropdown */
+#nndrImage4, #nndrDropBtn2 {
+    pointer-events: none;
+    user-select: none;
+    background: none;
+}
+#nndrDropdown2 {
+    cursor: pointer;
+    width: 50px;
+}
+#nndrDropdown2:hover {
+    background-color: #ccc;
+    border-radius: 5px;
+}
 
+/* 알림 - dropdown */
+#nndrImage3/* , #nndrDropBtn1 */ {
+    pointer-events: none;
+    user-select: none;
+    background: none;
+}
+#nndrDropdown1 {
+    cursor: pointer;
+    width: 50px;
+    height: 45px;
 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+#nndrDropdown1:hover {
+    background-color: #ccc;
+    border-radius: 5px;
+}
 
-
+.hidden { display: none !important; }

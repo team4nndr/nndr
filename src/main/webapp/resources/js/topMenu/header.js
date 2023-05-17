@@ -79,88 +79,119 @@ search.addEventListener("keyup", (event) => {
 });
 
 // 드롭다운 아이콘 구현
-var dropdowns = document.getElementById("nndrBellDropdown");
+// var dropdowns = document.getElementById("nndrBellDropdown");
 
-const dropBtn1 = document.getElementById("nndrDropBtn1");
-const dropBtn2 = document.getElementById("nndrDropBtn2");
-const bellDropdown = document.getElementById("nndrBellDropdown");
-const myDropdown = document.getElementById("nndrMyDropdown");
+// const dropBtn1 = document.getElementById("nndrDropBtn1");
+// const dropBtn2 = document.getElementById("nndrDropBtn2");
+const bellDropdown = document.getElementById("nndrBellDropdown"); // 알림 - dropdown 메뉴
+const myDropdown = document.getElementById("nndrMyDropdown"); // 프로필 - dropdown 메뉴
+
 const thumsUp = document.getElementById("thumsUp");
-const nndrOptionAlarm = document.getElementById("nndrOptionAlarm");
-const nndrOptionAlarmContent = document.getElementById("nndrOptionAlarmContent");
+// const nndrOptionAlarm = document.getElementById("nndrOptionAlarm");
+// const nndrOptionAlarmContent = document.getElementById("nndrOptionAlarmContent");
 
-function bell() {
-    document.getElementById("nndrBellDropdown").classList.toggle("nndr-show");
+// function bell() {
+//     document.getElementById("nndrMyDropdown").classList.remove("nndr-show");
+//     document.getElementById("nndrBellDropdown").classList.toggle("nndr-show");
 
+//     const children = document.getElementById("nndrBellDropdown").children;
+//     for(let child of children) {
+//         child.stopPropagation()
+//     }
+// }
 
-}
-
-window.onclick = function (e) {
-    if (e.target.matches('.DropBtn1')) {
-        var dropdowns = document.getElementById("nndrBellDropdown");
-        var i;
-        for (i = 0; i < dropdowns.length; i++) {
-            var openDropdown = dropdowns[i];
-            if (openDropdown.classList.contains('nndr-show')) {
-                openDropdown.classList.remove('nndr-show');
-            }
-        }
+// function bell()
+const nndrDropdown1 = document.getElementById("nndrDropdown1"); // 알림 버튼
+nndrDropdown1.addEventListener('click', e => {
+    if( e.target.id == "nndrDropdown1" ) {
+        myDropdown.classList.remove("nndr-show");
+        bellDropdown.classList.toggle("nndr-show");
     }
+});
 
 
-
-}
+// window.onclick = function (e) {
+//     if (e.target.matches('.DropBtn1')) {
+//         var dropdowns = document.getElementById("nndrBellDropdown");
+//         var i;
+//         for (i = 0; i < dropdowns.length; i++) {
+//             var openDropdown = dropdowns[i];
+//             if (openDropdown.classList.contains('nndr-show')) {
+//                 openDropdown.classList.remove('nndr-show');
+//             }
+//         }
+//     }
+// }
 
 function my() {
-    document.getElementById("nndrMyDropdown").classList.toggle("nndr-show");
+    bellDropdown.classList.remove("nndr-show"); // 알림 드롭다운 없애기
+    nndrOptionAlarmContent.classList.add("hidden"); // 알림 내부 드롭다운 없애기
+    myDropdown.classList.toggle("nndr-show");
 }
 
-window.onclick = function (e) {
-    if (!e.target.matches('.nndrDropBtn2')) {
-        var dropdowns = document.getElementById("nndrMyDropdown");
-        var i;
-        for (i = 0; i < dropdowns.length; i++) {
-            var openDropdown = dropdowns[i];
-            if (openDropdown.classList.contains('nndr-show')) {
-                openDropdown.classList.remove('nndr-show');
-            }
-        }
-    }
-
-
-}
+// window.onclick = function (e) {
+//     if (!e.target.matches('.nndrDropBtn2')) {
+//         var dropdowns = document.getElementById("nndrMyDropdown");
+//         var i;
+//         for (i = 0; i < dropdowns.length; i++) {
+//             var openDropdown = dropdowns[i];
+//             if (openDropdown.classList.contains('nndr-show')) {
+//                 openDropdown.classList.remove('nndr-show');
+//             }
+//         }
+//     }
+// }
 
 
 /* 드롭다운 content 영역 */
 
 /* 알림 버튼1 */
-dropBtn1.addEventListener("click", () => {
-    myDropdown.style.display = "none";
-    thumsUp.style.display = "inline-block";
+// dropBtn1.addEventListener("click", () => {
+//     myDropdown.style.display = "none";
+//     thumsUp.style.display = "inline-block";
 
-    if (bellDropdown.style.display != "none") {
-        bellDropdown.style.display = "none";
-        thumsUp.style.cursor = "pointer";
-        return;
-    } else {
-        bellDropdown.style.display = "block";
+//     if (bellDropdown.style.display != "none") {
+//         bellDropdown.style.display = "none";
+//         thumsUp.style.cursor = "pointer";
+//         return;
+//     } else {
+//         bellDropdown.style.display = "block";
 
-    }
-})
+//     }
+// })
 
 
 /* 알람 옵션 */
-window.addEventListener("load", function () {
-    var nndrOptionAlarm = document.getElementById("nndrOptionAlarm");
-    var nndrOptionAlarmContent = document.getElementById("nndrOptionAlarmContent");
+var nndrOptionAlarmContent = document.getElementById("nndrOptionAlarmContent");
+var nndrOptionAlarm = document.getElementById("nndrOptionAlarm");
 
-    nndrOptionAlarm.addEventListener("click", function () {
-        if (nndrOptionAlarmContent.style.display === "none") {
-            nndrOptionAlarmContent.style.display = "block";
-        } else {
-            nndrOptionAlarmContent.style.display = "none";
-        }
-    });
+// window.addEventListener("load", function () {
+
+//     nndrOptionAlarm.addEventListener("click", function () {
+//         if (nndrOptionAlarmContent.style.display === "none") {
+//             nndrOptionAlarmContent.style.display = "block";
+//         } else {
+//             nndrOptionAlarmContent.style.display = "none";
+//         }
+//     });
+// });
+
+nndrOptionAlarm.addEventListener("click", e => {
+
+    // nndrOptionAlarmContent.classList.toggle("nndr-show");
+    e.stopPropagation();
+    
+    nndrOptionAlarmContent.classList.toggle("hidden");
+
+
+    // if (nndrOptionAlarmContent.style.display == "none") {
+    //     nndrOptionAlarmContent.style.display = "block";
+    // } else {
+    //     nndrOptionAlarmContent.style.display = "none";
+    // }
+});
+nndrOptionAlarmContent.addEventListener("click", e => {
+    e.stopPropagation();
 });
 
 
@@ -218,15 +249,15 @@ thumsUp.addEventListener("click", () => {
 
 
 /* 알림 버튼 2 */
-dropBtn2.addEventListener("click", () => {
-    bellDropdown.style.display = "none";
-    if (myDropdown.style.display != "none") {
-        myDropdown.style.display = "none";
-        return;
-    } else {
-        myDropdown.style.display = "block";
-    }
-})
+// dropBtn2.addEventListener("click", () => {
+//     bellDropdown.style.display = "none";
+//     if (myDropdown.style.display != "none") {
+//         myDropdown.style.display = "none";
+//         return;
+//     } else {
+//         myDropdown.style.display = "block";
+//     }
+// })
 
 
 
