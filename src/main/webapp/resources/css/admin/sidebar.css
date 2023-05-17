@@ -15,15 +15,17 @@
 #sidebar {
     width: 360px;
     height: 100%;
-    box-shadow: 0px 0px 3.5px #bdbebd;
+    box-shadow: 0px 0px 2px #bdbebd;
     padding : 10px;
-    box-shadow: 2px 0px 5px rgba(0, 0, 0, 0.25);
+    box-shadow: 2px 0px 5px rgba(0, 0, 0, 0.08);
     flex-shrink: 0;
     flex-grow: 0;
     position: sticky;
+    left:0;
+    top:0px;
 }
 #sidebar > h1 {
-    margin: 10px 0 0 14px;
+    margin: 0px 0 0 5px;
 }
 #sidebar > hr {
     margin: 12px 0;
