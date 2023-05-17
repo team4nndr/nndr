@@ -43,7 +43,10 @@ public class friendController {
 	    model.addAttribute("friendList",friendList);
 	    model.addAttribute("friendCount", friendCount); 
 		return "friend/friendRequest"; //파일경로
+		
 	}
+	
+	
 	@RequestMapping("/all") // + 주소 
 	public String friendall() {
 		return "friend/friendAll"; //파일경로
@@ -55,6 +58,12 @@ public class friendController {
 	@ResponseBody
 	public int friendUpdate(int friendNo) {
 		return service.friendUpdate(friendNo);
+	}
+	
+	@GetMapping(value = "/request/birequest",  produces="application/json; charset=UTF-8")
+	@ResponseBody
+	public List<Friend> friendRequestRejoin(@SessionAttribute("loginMember") Member member ) {
+		return  service.friendRqList(member.getMemberNo());
 	}
 	
 }
