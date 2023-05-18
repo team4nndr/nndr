@@ -263,5 +263,6 @@ if (document.getElementById("hobby-no") != null) {
         }
     })
 }
-    
-    
+
+Array.from( document.getElementsByClassName("profi")).forEach((target) => target.addEventListener("click", function(){imgCho(target);}))
+

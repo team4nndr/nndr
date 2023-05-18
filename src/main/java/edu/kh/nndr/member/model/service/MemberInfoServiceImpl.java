@@ -13,6 +13,7 @@ import edu.kh.nndr.member.model.dao.MemberInfoDAO;
 import edu.kh.nndr.member.model.dto.Member;
 import edu.kh.nndr.member.model.dto.MemberHobby;
 import edu.kh.nndr.member.model.dto.MemberInfo;
+import edu.kh.nndr.member.model.dto.PersonalFriend;
 
 /**
  * @author user1
@@ -81,6 +82,25 @@ public class MemberInfoServiceImpl implements MemberInfoService{
 	public List<Map<String, String>> imgSet(int no) {
 		return dao.imgSet(no);
 	}
+
+	@Transactional
+	@Override
+	public int personalAdd(Map<String, String> addMap) {
+		return dao.personalAdd(addMap);
+	}
+
+
+	@Transactional
+	@Override
+	public int personalCan(Map<String, String> delMap) {
+		return dao.personalCan(delMap);
+	}
+
+	@Override
+	public PersonalFriend friendChecking(Map<String, Object> friendche) {
+		return dao.friendChecking(friendche);
+	}
+
 	
 	
 	

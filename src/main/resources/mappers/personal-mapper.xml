@@ -47,8 +47,17 @@
 		<result property="uploadDate" column="UPLOAD_DATE" />
 		<result property="boardNo" column="BOARD_NO" />
 		
-		
 	</resultMap>
+	<resultMap type="PersonalFriend" id="personalFriend_rm">
+		<id property="friendNo" column="FRIEND_NO" />
+		<result property="friendSender" column="FRIEND_SENDER" />
+		<result property="friendReciver" column="FRIEND_RECIVER" />
+		<result property="friendFl" column="FRIEND_FL" />
+		<result property="memberNo" column="MEMBER_NO" />
+		<result property="memberName" column="MEMBER_NAME" />
+	</resultMap>
+	
+	
 	<resultMap type="MemberHobby" id="memberHobby_rm">
 		<id property="memberNo" column="MEMBER_NO" />
 		<result property="hobbyNo" column="HOBBY_NO" />
@@ -98,10 +107,17 @@
 	</select>
 	
 	
+	<insert id="personalAdd">
+		INSERT INTO FRIEND VALUES(101, ${friendSender}, ${friendReciver}, DEFAULT)
+	</insert>
 	
+	<select id="perFriend" resultMap="personalFriend_rm">
+		SELECT * FROM FRIEND WHERE FRIEND_SENDER = ${friendSender} AND FRIEND_RECIVER=${friendReciver}
+	</select>
 	
-	
-	
+	<delete id="personalCan">
+		DELETE FROM "FRIEND" WHERE FRIEND_SENDER=${friendSender} AND FRIEND_RECIVER=${friendReciver}
+	</delete>
 	<!--  이미지 수정 
 	<update id="updateProfileImage">
 		UPDATE "MEMBER_INFO" SET INFO_PROFILE = #{infoProfile} WHERE MEMBER_NO = #{memberNo}
