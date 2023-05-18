@@ -124,7 +124,10 @@ input.info-input { border: 1px solid #ccc; }
     /* padding: 0 10px; */
 }
 /* .input-wrapper {  } */
-.input-wrapper > input { border: none; }
+.input-wrapper > input { 
+    border: none; 
+    font-size: 1rem;
+}
 .input-wrapper > input:focus { outline: none; }
 
 /* 비밀번호 수정 */
@@ -160,7 +163,10 @@ input.info-input { border: 1px solid #ccc; }
 .input-wrapper.tel { margin-left: 60px; }
 .input-wrapper.tel > input { width: 230px; }
 .hidden { display: none; }
-.tel .mod-message { padding-left: 5px; }
+.tel .mod-message { 
+    padding-left: 5px; 
+    font-size: 0.8rem;
+}
 
 .passwd a {
     margin-top: 5px;

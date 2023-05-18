@@ -23,10 +23,9 @@
 
         <%-- 회원 관리 상세 페이지 --%>
         <form action="#" method="POST" id="content">
-            <button type="button" id="backBtn" class="back">
-                <i class="fa-solid fa-arrow-left"></i>
-                <span>뒤로가기</span>                
-            </button>
+            <div id="backBtn" class="back">
+                <i class="fa-solid fa-arrow-left"></i>        
+            </div>
             <div id="details">
                 <h3>회원 상세 정보</h3>
                 <hr>

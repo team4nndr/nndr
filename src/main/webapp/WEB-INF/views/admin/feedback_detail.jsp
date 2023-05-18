@@ -23,10 +23,9 @@
 
         <%-- 회원 의견 상세 페이지 --%>
         <form action="/admin/feedback/${feedback.feedbackNo}/confirm" method="POST" id="feedbackFrm">
-            <button type="button" id="backBtn" class="back">
-                <i class="fa-solid fa-arrow-left"></i>
-                <span>뒤로가기</span>                
-            </button>
+            <div id="backBtn" class="back">
+                <i class="fa-solid fa-arrow-left"></i>                
+            </div>
             <div id="details">
                 <div id="feedbackUserSection">
                     <div class="row">
