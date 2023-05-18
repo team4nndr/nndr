@@ -267,12 +267,12 @@ checkAuthKeyBtn.addEventListener("click", function(){
         .then(result => {
             if(result > 0){
                 clearInterval(authTimer); // 시간가는거 멈추는 코드
-                authKeyMessage.innerText = "인증되었습니다.";
-                authKeyMessage.classList.add("confirm");
+                checkAuthKeyBtn.style.backgroundColor = "lightblue";
                 checkObj.authKey = true; // 인증되면
 
             } else{
                 alert("인증번호가 일치하지 않습니다.")
+                checkAuthKeyBtn.style.backgroundColor = "red";
                 checkObj.authKey = false;
             }
         })
@@ -284,5 +284,37 @@ checkAuthKeyBtn.addEventListener("click", function(){
     }
 
 });
+
+
+// 회원 가입 form 태그가 제출 되었을 때
+document.getElementById("btn").addEventListener("submit", e => {
+
+    for (let key in checkObj) {
+
+        if (!checkObj[key]) { 
+        
+            switch (key) {
+                case "memberEmail":
+                    alert("이메일이 유효하지 않습니다."); break;
+
+                case "memberPw":
+                    alert("비밀번호가 유효하지 않습니다."); break;
+
+                case "memberPwConfirm":
+                    alert("비밀번호가 확인되지 않았습니다"); break;
+
+                case "memberTel":
+                    alert("전화번호가 유효하지 않습니다"); break;
+            }
+
+            document.getElementById(key).focus();
+
+            e.preventDefault(); 
+            return; 
+        }
+    }
+
+});
+
 
 

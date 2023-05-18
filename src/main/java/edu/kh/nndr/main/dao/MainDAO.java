@@ -18,12 +18,20 @@ public class MainDAO {
 		return sqlSession.selectOne("emailCheckMapper.emailCheck",email);
 	}
 
-	/** 이메일 중복 확인(새 계정 만들기) 
+	/** 이메일 유효성 확인(새 계정 만들기) 
 	 * @param inputEmail
 	 * @return result
 	 */
 	public int email(String inputEmail) {
 		return sqlSession.selectOne("emailCheckMapper.email",inputEmail);
+	}
+
+	/** 비밀번호 찾기 => 이메일 유효성 검사
+	 * @param emailDup
+	 * @return result
+	 */
+	public int emailDup(String emailDup) {
+		return sqlSession.selectOne("emailCheckMapper.emailDup", emailDup);
 	}
 	
 	

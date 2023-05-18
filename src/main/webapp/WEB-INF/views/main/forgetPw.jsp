@@ -38,10 +38,10 @@
                 <div class="margin">계정을 검색하려면 이메일 입력하시오.</div>
                 <form action="#" method="POST" name="inputEmail"><input type="email"  id="emailCheck" class="inputText" placeholder="이메일"></form> 
 
-                <button id="sendAutoKeyBtn" type="button">인증번호 받기</button>
+                <button id="sendAuthKeyBtn" type="button">인증번호 받기</button>
                 <div class="line2"></div>
                 <div class="emailCheck" id="certification">
-                    <form action="#" method="POST" name="certification"><input type="email" class="inputText" placeholder="이메일 인증 입력"></form>
+                    <form action="#" method="POST" name="certification"><input type="email" id="inputText" class="inputText" placeholder="이메일 인증 입력"></form>
 
                      <button id="checkAuthKeyBtn" type="button">인증하기</button>
                 </div>

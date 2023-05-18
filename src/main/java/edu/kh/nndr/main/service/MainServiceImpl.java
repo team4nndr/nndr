@@ -18,10 +18,16 @@ public class MainServiceImpl implements MainService{
 		return dao.emailCheck(email);
 	}
 
-	// 새 계정 만들기(이메일 중복 확인)
+	// 새 계정 만들기(이메일 유효성 확인)
 	@Override
 	public int email(String inputEmail) {
 		return dao.email(inputEmail);
+	}
+	
+	// 비밀번호 찾기 => 이메일 유효성 검사
+	@Override
+	public int emailDup(String emailDup) {
+		return dao.emailDup(emailDup);
 	}
 	
 	

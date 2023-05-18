@@ -46,6 +46,7 @@
     width: 188px;
     height: 40px;
     border-radius: 7px;
+    padding: 0 10px;
 }
 
 .forgetPwLogin input:hover{
@@ -147,6 +148,7 @@ div a {
     width: 462px;
     height: 52px;
     border-radius: 8px;
+    padding: 0 10px;
 }
 
 .inputText:hover{
@@ -163,6 +165,7 @@ div a {
     width: 70px;
     height: 38px;
     margin-bottom: 10px;
+    cursor: pointer;
 }
 
 footer{

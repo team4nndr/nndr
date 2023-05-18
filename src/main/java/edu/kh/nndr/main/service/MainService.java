@@ -9,11 +9,17 @@ public interface  MainService {
 	 */
 	int emailCheck(String email);
 
-	/** 이메일 중복 확인(새 계정 만들기) 
+	/** 이메일 유효성 확인(새 계정 만들기) 
 	 * @param inputEmail
 	 * @return result
 	 */
 	int email(String inputEmail);
+
+	/** 비밀번호 잊으셨습니까 => 이메일 유효성 확인 
+	 * @param emailDup
+	 * @return result
+	 */
+	int emailDup(String emailDup);
 	
 	
 	
