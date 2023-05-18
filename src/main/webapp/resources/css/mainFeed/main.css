@@ -143,7 +143,7 @@ header{
 
     display: flex;
 
-    
+    margin: 10px;
     /* flex 지정 시 기본 값 */
     flex-direction: column;
     justify-content: flex-start;
@@ -527,7 +527,7 @@ display: flex;
 
 /* 이미지 */
 .boardImg1 img{
-    max-width: 90%;
+    max-width: 150px;
     max-height: 90%;
 }
 .img-box1{
@@ -692,6 +692,33 @@ flex-direction: column;
     text-decoration: none;
 }
 
+/*  더보기 버튼  */
+.detail {
+    height: 36px;
+    width: 36px;
+    border-radius: 50%;
+    
+    display:flex;
+    background: white;
+    border: none;
+    
+    justify-content: center;
+}
+.detail:after {
+    cursor: pointer;
+    display: inline-block;
+    content: "\2026";
+    font-size:15pt;
+    font-weight: bold;
+}
+.detail:hover{
+    background-color: lightgray;
+}
+#more{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 
 
 

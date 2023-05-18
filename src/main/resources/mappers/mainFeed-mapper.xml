@@ -12,7 +12,6 @@
 		<result property="uploadDate" column="UPLOAD_DATE" />
 		<result property="contentLike" column="CONTENT_LIKE" />
 		<result property="delete" column="DELETE" />
-		<result property="memberNo" column="MEMBER_NO" />
 		<result property="disableDate" column="DISABLE_DATE" />
 		<result property="memberName" column="MEMBER_NAME" />
 	
@@ -39,7 +38,7 @@
 	<!-- 게시글 확인 -->
 	
 	<select id="feedList" resultMap="board_rm">
-SELECT BOARD_NO, MEMBER_NAME,BOARD_TEXT,
+SELECT BOARD_NO, MEMBER_NAME,BOARD_TEXT,MEMBER_NO,
 	<![CDATA[
 	CASE  
 		WHEN SYSDATE - UPLOAD_DATE < 1/24/60
@@ -59,10 +58,43 @@ ORDER BY UPLOAD_DATE DESC
 	
 	<select id="selectImageList" resultMap="image_rm">
 	SELECT * FROM "IMAGE"
-	WHERE BOARD_NO=3
-	ORDER BY IMG_ORDER
+	WHERE BOARD_NO=#{boardNo}
+	ORDER BY IMG_ORDER DESC
 	
 	</select>
+	
+	<!-- 게시글 등록 -->
+	<insert id="feedInsert" parameterType="Board" useGeneratedKeys="true">
+		<selectKey order="BEFORE" resultType="_int" keyProperty="boardNo">
+			SELECT SEQ_BOARD_NO.NEXTVAL FROM DUAL
+		</selectKey>
+       	INSERT INTO BOARD 
+       	VALUES( #{boardNo},
+              #{boardText},
+              DEFAULT, DEFAULT, DEFAULT,
+              #{memberNo} 
+              )
+	
+	</insert>
+	
+	
+		<insert id="insertImageList" parameterType="list" >
+	INSERT INTO "IMAGE" 
+SELECT SEQ_IMG_NO.NEXTVAL, A.*
+FROM (
+	
+	<foreach collection="list" item="img" separator=" UNION ALL ">
+	
+SELECT #{img.imgPath} IMG_PATH, #{img.imgReName} IMG_RENAME, #{img.imgOriginal} IMG_ORGINAL,
+		#{img.imgOrder} IMG_ORDER, #{img.boardNo} BOARD_NO
+FROM DUAL
+
+	</foreach>
+)A
+
+	
+	</insert>
+	
 	
 	
 	

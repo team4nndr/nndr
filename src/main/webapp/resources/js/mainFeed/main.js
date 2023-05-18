@@ -46,57 +46,131 @@ document.getElementById("imgBtn").addEventListener("click",() => {
 
 // 일단 해보고 수정해보자
 // 플러스 버튼을 눌렀을 때 이미지 창 생성
-const addImg = document.getElementById("plusLogo");
-var result = 0;
+// const addImg = document.getElementById("plusLogo");
+// var result = 0;
 
 
     
 
-    addImg.addEventListener("click",()=>{
+//     addImg.addEventListener("click",()=>{
 
-        const imgBox = document.getElementById("imgBox1");
-        const num = document.getElementById("num");
-        
-        if(result <4){
+//         const imgBox = document.getElementById("imgBox1");
+//         const num = document.getElementById("num");
+//         let a = 1;
+//         if(result <4){
 
-            const div = document.createElement("div");
-            const label = document.createElement("label");
-            const img = document.createElement("img"); // label 자식 요소추가
-            const input = document.createElement("input");
-            const span = document.createElement("span");
+//             const div = document.createElement("div");
+//             const label = document.createElement("label");
+//             const img = document.createElement("img"); // label 자식 요소추가
+//             const input = document.createElement("input");
+//             const span = document.createElement("span");
             
             
         
             
-            label.setAttribute("for","img2")
-            input.setAttribute("type","file");
+//             label.setAttribute("for","img1")
+//             input.setAttribute("type","file","name","images","id","img+'a++'","accept","image/*")
             
-            div.classList.add("boardImg");
-            img.classList.add("preview");
-            input.classList.add("inputImage");
-            span.classList.add("delete-image");
-            span.innerHTML = "&times;";
+
             
-            label.append(img);
+//             div.classList.add("boardImg");
+//             img.classList.add("preview");
+//             input.classList.add("inputImage");
+//             span.classList.add("delete-image");
+//             span.innerHTML = "&times;";
             
-            div.prepend(label);
-            div.append(input);
-            div.append(span);
+//             label.append(img);
             
-            num.after(div);
+//             div.prepend(label);
+//             div.append(input);
+//             div.append(span);
+            
+//             num.after(div);
+//         }
+//         result++;
+//         if(document.getElementsByClassName("boardImg").length>5){
+//             alert("5개까지 추가할 수 있습니다");
+//         return;
+//         }
+
+            
+        
+            
+        
+//     })
+
+
+    // 게시글 등록 JS
+// 미리보기 관련 요소 모두 얻어오기
+
+// img 5개
+const preview = document.getElementsByClassName("preview"); 
+// file 5개
+const inputImage = document.getElementsByClassName("inputImage");
+
+// x버튼 5개
+const deleteImage = document.getElementsByClassName("delete-image");
+
+for(let i =0; i < inputImage.length; i++){
+
+    // 파일이 선택 되거나 선택 후 취소 되었을 때
+    inputImage[i].addEventListener("change", e => {
+
+        const file = e.target.files[0];
+
+         // 선택된 파일의 데이터
+        if(file != undefined){
+
+        const reader = new FileReader(); // 파일을 읽는 객체
+            reader.readAsDataURL(file);
+            // 지정된 파일을 읽은 후 result 변수에 URL형식으로 저장
+
+            reader.onload = e=>{ // 파일을 다 읽은 후 수행
+                preview[i].setAttribute("src",e.target.result);
+            }
+
+        }else{ // 선택후 취소 되었을 떄
+
+            preview[i].removeAttribute("src");
+
         }
-        result++;
-        if(document.getElementsByClassName("boardImg").length>5){
-            alert("5개까지 추가할 수 있습니다");
-        return;
-        }
 
-            
-        
-            
-        
-    })
+        // 미리보기 삭제 버튼(X버튼)
+        deleteImage[i].addEventListener("click", ()=>{
+            if(preview[i].getAttribute("src")!=""){
+                
+                // 미리보기 삭제
+                preview[i].removeAttribute("src");
 
+                // input type="file" 태그의 value 삭제
+                inputImage[i].value="";
+
+            };
+
+        })
+
+    });
+
+
+}
+
+
+// 컨텐츠가 비었을때
+const boardWriteFrm = document.querySelector("#boardWriteFrm");
+const boardContent = document.querySelector("[name='boardText']");
+
+boardWriteFrm.addEventListener("submit", e=>{
+    if(boardContent.value.trim().length==0){
+    
+        alert("내용을 입력해주세요")
+        boardContent.value="";
+        boardContent.focus();
+        e.preventDefault();
+    }
+    return;
+
+
+});
 
 
 

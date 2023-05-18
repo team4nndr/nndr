@@ -67,7 +67,7 @@
                     </section>
 
                         <section>
-                            <form action="#" method="get">
+                            <form action="mainFeed" method="post" id="boardWriteFrm" enctype="multipart/form-data">
                             <%-- <fieldset>  --%>
                                 <!-- <input type="text" name="query" id="query" 
                                 placeholder="무슨 생각을 하고 계신가요?" autocomplete="off">  -->
@@ -118,7 +118,8 @@
 
 
                                 <section id="modalContent">
-                                <textarea placeholder="${loginMember.memberName}님은 무슨 생각을 하고 계신가요?"></textarea>
+                                <textarea placeholder="${loginMember.memberName}님은 무슨 생각을 하고 계신가요?"
+                                name="boardText"></textarea>
                                 </section>
                                 
                                 <section id="modalImg">
@@ -130,12 +131,40 @@
                                         </label>
                                         <input type="file" name="images" class="inputImage" id="img1" accept="image/*">
                                         <span class="delete-image">&times;</span>
-                                    </div>
-
-                                    
-                                <button id=plusBtn><img src="/resources/images/mainFeed/plusLogo.png" id="plusLogo" ></button>
-
                                 </div>
+
+                                    <div class="boardImg" id="num">
+                                        <label for="img2">
+                                            <img class="preview" src="">
+                                        </label>
+                                        <input type="file" name="images" class="inputImage" id="img2" accept="image/*">
+                                        <span class="delete-image">&times;</span>
+                                </div>
+
+                                    <div class="boardImg" id="num">
+                                        <label for="img3">
+                                            <img class="preview" src="">
+                                        </label>
+                                        <input type="file" name="images" class="inputImage" id="img3" accept="image/*">
+                                        <span class="delete-image">&times;</span>
+                                </div>
+
+                                    <div class="boardImg" id="num">
+                                        <label for="img4">
+                                            <img class="preview" src="">
+                                        </label>
+                                        <input type="file" name="images" class="inputImage" id="img4" accept="image/*">
+                                        <span class="delete-image">&times;</span>
+                                </div>
+
+                                    <div class="boardImg" id="num">
+                                        <label for="img5">
+                                            <img class="preview" src="">
+                                        </label>
+                                        <input type="file" name="images" class="inputImage" id="img5" accept="image/*">
+                                        <span class="delete-image">&times;</span>
+                                </div>
+                                <%-- <button id=plusBtn><img src="/resources/images/mainFeed/plusLogo.png" id="plusLogo" ></button> --%>
 
                                 
 
@@ -148,7 +177,7 @@
                             </section>
                             
                             <section class="modalBot">
-                                <button type="button" id="submitBtn">게시</button>
+                                <button type="submit" id="submitBtn">게시</button>
 
                             </section>
 
@@ -192,14 +221,23 @@
                                 <span><a href="#" class="change">${board.memberName}</a></span>
                             </section>
 
-                            <section >
+                            <section>
                                 <li>
                                     <a href="#" class="change">${board.uploadDate}</a>
                                 </li> 
 
                             </section>
 
+
                         </section> <!-- 상단의 이름 and 시간  -->
+                        
+                        <c:if test="${board.memberNo eq loginMember.memberNo}" >
+                        <div id="more">
+                        <button type="button" class="detail detailBtn" id="detailBtn"></button>
+                        </div>
+                        </c:if>
+                        
+                        
                         
                         
 
@@ -208,12 +246,12 @@
                     <!--  나의게시물 중간  -->
                     <div class="feedContent">
                     <section>${board.boardText}</section>
+                        <div class="img-box1">
                     
                     <%-- 이미지가 있다면 --%>
                     <c:if test="${not empty board.imageList}" >
                     <c:set var="start" value="0"/>
                     <c:if test="${fn:length(board.imageList)>start}" >
-                        <div class="img-box1">
                             <c:forEach var="i" begin="${start}" end="${fn:length(board.imageList)}">
                             <div class="boardImg1">
                             <c:set var="path" value="${board.imageList[i].imgPath}${board.imageList[i].imgReName}"/>
@@ -223,10 +261,10 @@
                             </c:forEach>
 
 
-                        </div>
 
                     </c:if>
                     </c:if>
+                        </div>
 
 
                     </div>
@@ -272,7 +310,11 @@
 
 
 
-            <div class="rightArea"></div>
+            <div class="rightArea">
+            
+            </div>
+                
+                
         </div>
 
 
@@ -290,7 +332,7 @@
 </main>
 
 
-
+<jsp:include page="/WEB-INF/views/common/footer.jsp"/>
     <script src="/resources/js/mainFeed/main.js"></script>
     
 </body>
