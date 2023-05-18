@@ -68,7 +68,7 @@ search.addEventListener("input", e => {
             
     }
 
-     if(/* 수정 예정 */) { // 일반 검색어인 경우
+     if(false) { // 일반 검색어인 경우
         
             toLowerCase().startsWith(input_value);
 
@@ -88,6 +88,39 @@ search.addEventListener("input", e => {
         suggestion_pannel.innerHTML = "";
     }
 });
+
+
+// // 드롭다운 아이콘 구현
+// var dropdowns = document.getElementById("nndrBellDropdown");
+
+// const dropBtn1 = document.getElementById("nndrDropBtn1");
+// const dropBtn2 = document.getElementById("nndrDropBtn2");
+// const bellDropdown = document.getElementById("nndrBellDropdown");
+// const myDropdown = document.getElementById("nndrMyDropdown");
+// const thumsUp = document.getElementById("thumsUp");
+// const nndrOptionAlarm = document.getElementById("nndrOptionAlarm");
+// const nndrOptionAlarmContent = document.getElementById("nndrOptionAlarmContent");
+
+// function bell() {
+//     document.getElementById("nndrBellDropdown").classList.toggle("nndr-show");
+
+
+// }
+
+// window.onclick = function (e) {
+//     if (e.target.matches('.nndrDropBtn1')) {
+//         var dropdowns = document.getElementById("nndrBellDropdown");
+//         var i;
+//         for (i = 0; i < dropdowns.length; i++) {
+//             var openDropdown = dropdowns[i];
+//             if (openDropdown.classList.contains('nndr-show')) {
+//                 openDropdown.classList.remove('nndr-show');
+//             }
+//         }
+//     }
+
+
+// }
 
 // 알림 드롭다운 관련 요소
 const nndrDropBtn1 = document.getElementById("nndrDropBtn1"); // 알림 버튼
