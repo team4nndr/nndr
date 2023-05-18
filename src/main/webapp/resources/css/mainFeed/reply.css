@@ -1,0 +1,80 @@
+/* 댓글 프로필 사진 */
+.reply-profile-image {
+    height: 32px;
+    width: 32px;
+}
+
+/* 댓글 목록 */
+.reply-container {
+    padding: 6px 16px 0px 16px;
+}
+.reply {
+    display: flex;
+}
+.reply-footer > a {
+    text-decoration: none;
+    color: #666;
+    font-size: 0.8rem;
+    margin-left: 6px;
+    font-weight: bold;
+}
+.reply-footer > a:hover {
+    text-decoration: underline;
+}
+.reply-footer > a.date {
+    font-weight: normal;
+}
+
+.reply-body {
+    margin: 0 12px;
+}
+.reply-bubble {
+    background-color: #F0F2F5;
+    border-radius: 15px;
+    padding: 8px 12px;
+}
+.reply-name {
+    font-size: 0.8rem;
+    font-weight: bold;
+}
+.reply-content {
+    font-size: 0.9rem;
+}
+
+/* 댓글 작성 */
+.reply-write {
+    width: 100%;
+}
+.reply-write.reply-container {
+    padding-bottom: 8px;
+}
+.reply-write .reply-body {
+    width: 100%;
+    margin-right: 0;
+}
+.reply-write .reply-bubble {
+    height: 40px;
+    padding: 8px 12px;
+    display: flex;
+    align-items: center;
+}
+.reply-write .reply-bubble > input {
+    border: none;
+    background: none;
+    outline: none;
+    width: 100%;
+    display: flex;
+    align-items: center;
+}
+.reply-write .reply-bubble > input:focus {
+    border: none;
+}
+.reply-bubble a {
+    height: 20px;
+    width: 20px;    
+}
+.reply-send {
+    height: 16px;
+    width: 16px;
+    align-self: flex-end;
+}

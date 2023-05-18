@@ -1,5 +1,5 @@
 // 검색어 누적창 구현
-console.log(tagArr[0]);
+// console.log(tagArr[0]);
 // 검색어 누적창 구현
 
 // 검색 input 태그h

@@ -14,8 +14,6 @@
 body {
     display: flex;
     flex-direction: column;
-    /* height: 100vh; */
-    /* width: 100vw; */
 }
 header {
     height: 56px;
@@ -27,9 +25,7 @@ header {
 main {
     flex-grow: 1;
     display: relative;
-    /* overflow: auto; */
 }
-
 h3 {
     padding-bottom: 27px;
     font-size: 20px;
@@ -40,10 +36,8 @@ h3 {
     display: flex;
     flex-direction: column;
     align-items: center;
-    /* width: 100%; */
     min-width: 950px;
     margin-left: 360px;
-    /* margin-top: 56px; */
 }
 
 #backBtn {
@@ -83,7 +77,6 @@ button:disabled {
 button.back {
     width: 99px;
     height: 36px;
-    /* background: #4A6EA9; */
     border-radius: 6px;
     margin-top: 24px;
     margin-left: 30px;
@@ -133,7 +126,6 @@ button.reverse:hover {
     margin-top: 10px;
     margin-bottom: 20px;
     background-color: #F7F8FA;
-    /* border-bottom: 1px solid #ccc; */
     overflow: none;
 }
 /* 게시판 헤더 */
@@ -192,10 +184,6 @@ button.reverse:hover {
     background-color:#4A6EA9;
     transition-duration: 0.1s;
 }
-/* .board-page > a.first-page, .board-page > a.last-page, a.prev-page, a.next-page {
-    width: 60px;
-    padding: 0 10px;
-} */
 .board-page > a.first-page {
     border-left: 1px solid #ccc;
     border-radius: 5px 0 0 5px;

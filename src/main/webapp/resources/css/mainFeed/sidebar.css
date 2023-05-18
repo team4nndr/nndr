@@ -1,0 +1,62 @@
+@font-face {
+    font-family: 'NotoSansKR';
+    src: url('../../fonts/NotoSansKR-Regular.otf');
+    font-weight: normal;
+    font-style: normal;
+}
+
+* {
+    font-family: 'NotoSansKR';
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+.sidebar {
+    width: 360px;
+    height: inherit;
+    padding : 10px;
+    flex-shrink: 0;
+    flex-grow: 0;
+    position: sticky;
+    top: 56px;
+    z-index:80;
+}
+#sidebarL > h1 {
+    margin: 0px 0 0 5px;
+}
+#sidebarL > hr {
+    margin: 12px 0;
+    height: 1px;
+    border: 0;
+    background-color: #CDCDCD;
+}
+#sidebarL > ul {
+    display: flex;
+    flex-direction: column;
+    list-style-type: none; /* li 태그 앞에 기호를 삭제 */
+    width: 100%;
+}
+#sidebarL > ul > li > a {
+    margin: 0px 0;
+    padding: 10px 10px;
+    font-size: 1.1em;
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: black;
+    border-radius: 8px;
+}
+#sidebarL > ul > li > a:hover {
+    background-color: #eee;
+    user-select: none;
+}
+#sidebarL li img {
+    width: 35px;
+    height: auto;
+    margin-right: 10px;
+}
+#sidebarL li span {
+    position: absolute;
+    left: 65px;
+}
