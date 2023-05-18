@@ -68,7 +68,7 @@ search.addEventListener("input", e => {
             
     }
 
-     else { // 일반 검색어인 경우
+     if(/* 수정 예정 */) { // 일반 검색어인 경우
         
             toLowerCase().startsWith(input_value);
 
