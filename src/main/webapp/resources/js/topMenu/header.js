@@ -89,89 +89,56 @@ search.addEventListener("input", e => {
     }
 });
 
-// 드롭다운 아이콘 구현
-var dropdowns = document.getElementById("nndrBellDropdown");
+// 알림 드롭다운 관련 요소
+const nndrDropBtn1 = document.getElementById("nndrDropBtn1"); // 알림 버튼
+const nndrBellDropdown = document.getElementById("nndrBellDropdown"); // 알림 하위메뉴
+const nndrOptionAlarmContent = document.getElementById('nndrOptionAlarmContent'); // 알림 하위하위메뉴
 
-const dropBtn1 = document.getElementById("nndrDropBtn1");
-const dropBtn2 = document.getElementById("nndrDropBtn2");
-const bellDropdown = document.getElementById("nndrBellDropdown");
-const myDropdown = document.getElementById("nndrMyDropdown");
-const thumsUp = document.getElementById("thumsUp");
-const nndrOptionAlarm = document.getElementById("nndrOptionAlarm");
-const nndrOptionAlarmContent = document.getElementById("nndrOptionAlarmContent");
+// 내정보 드롭다운 관련 요소
+const nndrDropBtn2 = document.getElementById("nndrDropBtn2"); // 내정보 버튼
+const nndrMyDropdown = document.getElementById('nndrMyDropdown'); // 내정보 하위메뉴
 
-function bell() {
-    document.getElementById("nndrBellDropdown").classList.toggle("nndr-show");
+// 알림버튼 클릭 이벤트 (function bell())
+nndrDropBtn1.addEventListener('click', e => {
+    nndrBellDropdown.classList.toggle("hidden");
+    nndrMyDropdown.classList.add("hidden"); // 내정보 메뉴 없애기
+});
 
+// 프로필사진 클릭 이벤트 (function my())
+nndrDropBtn2.addEventListener('click', e => { 
+    nndrMyDropdown.classList.toggle("hidden");
+    nndrBellDropdown.classList.add("hidden"); // 알림 메뉴 없애기
+    nndrOptionAlarmContent.classList.add("hidden"); // 알림 내부 메뉴 없애기
+});
 
-}
+// 드롭다운 외부 클릭 시 드롭다운 메뉴 닫기
+window.addEventListener('click', e => {
 
-window.onclick = function (e) {
-    if (e.target.matches('.DropBtn1')) {
-        var dropdowns = document.getElementById("nndrBellDropdown");
-        var i;
-        for (i = 0; i < dropdowns.length; i++) {
-            var openDropdown = dropdowns[i];
-            if (openDropdown.classList.contains('nndr-show')) {
-                openDropdown.classList.remove('nndr-show');
-            }
-        }
+    if(e.target.className == "nndr-dropdown-container") {
+        alert("!");
     }
+    // if ( !e.target.matches('.nndr-dropdown-container') 
+    //     && !e.target.matches('.nndr-dropdown-button') 
+    //     && !e.target.matches('.nndr-dropdown-menu')) {
+    //     nndrMyDropdown.classList.add("hidden");
+    //     nndrBellDropdown.classList.add("hidden");
+    //     nndrOptionAlarmContent.classList.add("hidden");
+    // }
+    // const modal = document.getElementById('nndrDropdown1');
+    // e.target == modal ? false : nndrBellDropdown.classList.add('hidden');
+});
 
 
-
-}
-
-function my() {
-    document.getElementById("nndrMyDropdown").classList.toggle("nndr-show");
-}
-
-window.onclick = function (e) {
-    if (!e.target.matches('.nndrDropBtn2')) {
-        var dropdowns = document.getElementById("nndrMyDropdown");
-        var i;
-        for (i = 0; i < dropdowns.length; i++) {
-            var openDropdown = dropdowns[i];
-            if (openDropdown.classList.contains('nndr-show')) {
-                openDropdown.classList.remove('nndr-show');
-            }
-        }
-    }
-
-
-}
-
-
-/* 드롭다운 content 영역 */
-
-/* 알림 버튼1 */
-dropBtn1.addEventListener("click", () => {
-    myDropdown.style.display = "none";
-    thumsUp.style.display = "inline-block";
-
-    if (bellDropdown.style.display != "none") {
-        bellDropdown.style.display = "none";
-        thumsUp.style.cursor = "pointer";
-        return;
-    } else {
-        bellDropdown.style.display = "block";
-
-    }
-})
 
 
 /* 알람 옵션 */
-window.addEventListener("load", function () {
-    var nndrOptionAlarm = document.getElementById("nndrOptionAlarm");
-    var nndrOptionAlarmContent = document.getElementById("nndrOptionAlarmContent");
-
-    nndrOptionAlarm.addEventListener("click", function () {
-        if (nndrOptionAlarmContent.style.display === "none") {
-            nndrOptionAlarmContent.style.display = "block";
-        } else {
-            nndrOptionAlarmContent.style.display = "none";
-        }
-    });
+var nndrOptionAlarm = document.getElementById("nndrOptionAlarm");
+nndrOptionAlarm.addEventListener("click", e => {
+    e.stopPropagation();
+    nndrOptionAlarmContent.classList.toggle("hidden");
+});
+nndrOptionAlarmContent.addEventListener("click", e => {
+    e.stopPropagation();
 });
 
 
@@ -225,48 +192,3 @@ thumsUp.addEventListener("click", () => {
 
     });
 });
-
-
-
-/* 알림 버튼 2 */
-dropBtn2.addEventListener("click", () => {
-    bellDropdown.style.display = "none";
-    if (myDropdown.style.display != "none") {
-        myDropdown.style.display = "none";
-        return;
-    } else {
-        myDropdown.style.display = "block";
-    }
-})
-
-
-
-// const outclick = e => {
-//     if (!bellDropdown.contains(e.target)) { // 클릭한 요소가 bellDropown의 하위 요소인지 확인
-//         bellDropdown.style.display = "none"; // bellDropown를 숨김
-//         document.removeEventListener("click", outclick); // 클릭 이벤트 리스너 제거
-//     }
-
-
-//     if (!myDropdown.contains(e.target)) { // 클릭한 요소가 myDropdown의 하위 요소인지 확인
-//         myDropdown.style.display = "none"; // myDropdown를 숨김
-//         document.removeEventListener("click", outclick); // 클릭 이벤트 리스너 제거
-//     }
-
-// };
-
-// dropBtn1.addEventListener("click", e => {
-//     e.stopPropagation(); // dropBtn1 클릭 이벤트 전파 방지
-//     bellDropdown.style.display = "block"; // bellDropdown를 보임
-//     document.addEventListener("click", outclick); // 클릭 이벤트 리스너 등록
-// });
-
-
-
-// dropBtn2.addEventListener("click", e => {
-//     e.stopPropagation(); //dropBtn2 클릭 이벤트 전파 방지
-//     myDropdown.style.display = "block"; // myDropdown를 보임
-//     document.addEventListener("click", outclick); // 클릭 이벤트 리스너 등록
-// });
-
-

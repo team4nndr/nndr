@@ -26,9 +26,6 @@
                 <div class="title">친구 요청</div>
                 <div class="content-list hover">
                     친구 요청을 받으시겠어요?
-                    <%-- <input type="checkbox" id="setFriendReqCheckbox" class="checkbox" name="setFriendReq" 
-                        <c:if test="${loginMember.setFriendReq eq 'Y'}" >checked</c:if>/> --%>
-                    <%-- <div class='toggle <c:if test="${loginMember.setFriendReq eq 'Y'}" >checked</c:if>' id="setFriendReq" key="SET_FRIEND_REQ"> --%>
                     <div class='toggle <c:if test="${loginMember.setFriendReq eq 'Y'}" >checked</c:if>' key="SET_FRIEND_REQ">
                         <div class="circle"></div>
                     </div>
@@ -38,6 +35,33 @@
                 <div class="title">개인 피드 설정</div>
                 <div class="content-list" id="setPersonalFeed">
                     내 피드에 새로운 게시글을 올릴 수 있는 사람은?
+
+                    <div class="dropdown">
+                        <ul>
+                            <li class="button">
+                                <img src="/resources/images/setting/everyone.png" class="img">
+                                <span>모든 사람</span>
+                                <img class="mini" src="/resources/images/setting/triangle-down.png">
+                            </li>
+                        </ul>
+                        <ul class="list-wrap hidden">
+                            <li value="A">
+                                <img src="/resources/images/setting/check.png" class="<c:if test='${loginMember.setFeedAuthority ne "A"}'>hidden</c:if>">
+                                <img src="/resources/images/setting/everyone.png" class="img">
+                                <span>모든 사람</span>
+                            </li>
+                            <li value="F">
+                                <img src="/resources/images/setting/check.png" class="<c:if test='${loginMember.setFeedAuthority ne "F"}'>hidden</c:if>">
+                                <img src="/resources/images/setting/only-friend.png" class="img">
+                                <span>친구만</span>
+                            </li>
+                            <li value="M">
+                                <img src="/resources/images/setting/check.png" class="<c:if test='${loginMember.setFeedAuthority ne "M"}'>hidden</c:if>">
+                                <img src="/resources/images/setting/only-me.png" class="img">
+                                <span>나만</span>
+                            </li>
+                        </ul>
+                    </div>
 
 
                     <!-- <div class="dropdown">
@@ -49,11 +73,11 @@
                             <div class="item" id="test3">나만</div>
                         </div>
                     </div> -->
-                    <select>
+                    <%-- <select>
                         <option value="모두">모두</option>
                         <option value="친구만">친구만</option>
                         <option value="나만">나만</option>
-                    </select>
+                    </select> --%>
                 </div> 
             </div>
             <div class="content-box">

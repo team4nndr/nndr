@@ -37,6 +37,11 @@ public class MemberController {
 			return "redirect:/";
 		}
 	
+		// 관리자 로그인일 경우
+		if(loginMember.getMemberCode().equals("A")) {
+			return "redirect:/admin";
+		}	
+		
 		return "redirect:/mainFeed";
 	}
 }

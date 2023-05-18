@@ -14,8 +14,8 @@
 body {
     display: flex;
     flex-direction: column;
-    height: 100vh;
-    width: 100vw;
+    /* height: 100vh; */
+    /* width: 100vw; */
 }
 header {
     height: 56px;
@@ -26,8 +26,8 @@ header {
 }
 main {
     flex-grow: 1;
-    display: flex;
-    overflow: auto;
+    display: relative;
+    /* overflow: auto; */
 }
 
 h3 {
@@ -40,8 +40,10 @@ h3 {
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 100%;
+    /* width: 100%; */
     min-width: 950px;
+    margin-left: 360px;
+    /* margin-top: 56px; */
 }
 
 #backBtn {
@@ -132,6 +134,7 @@ button.reverse:hover {
     margin-bottom: 20px;
     background-color: #F7F8FA;
     /* border-bottom: 1px solid #ccc; */
+    overflow: none;
 }
 /* 게시판 헤더 */
 .board-list > .top {
@@ -219,7 +222,7 @@ textarea { white-space: pre-wrap; }
 
 /* 의견 처리상태 */
 #condition_select_wrap {
-    z-index: 100;
+    z-index: 900;
     align-self:flex-start;
     margin-top: 6px;
 }
@@ -233,7 +236,7 @@ textarea { white-space: pre-wrap; }
     position: relative;
     width: 130px;
     height: 36px;
-    border-radius: 6px;
+    border-radius: 2px;
     border: none;
     background: #eee;
     color: black;
@@ -263,11 +266,44 @@ textarea { white-space: pre-wrap; }
 }
 
 #listbox .list {
-    margin: 1px 10px; 
+    margin: 0px 10px;
+    border-radius: 0;
 }
+
+#listbox .list:first-child {
+    border-radius: 2px 2px 0 0;
+}
+
+#listbox .list:last-child {
+    border-radius: 0 0 2px 2px;
+}
+
 #listbox .list:hover {
-    margin: 1px 10px; 
     background: #8C8D8F;
 }
 
 i.hidden { display: none; }
+
+/* 화면 상단 뒤로가기 버튼 */
+#backBtn {
+    position: sticky;
+    top: 86px;
+    
+    width: 36px;
+    height: 36px;
+    flex-shrink: 0;
+    
+    margin-left: 30px;
+    
+    border-radius: 50px;
+    background-color: #eee;
+    cursor: pointer;
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#backBtn:hover {
+    background-color: #ccc;
+}

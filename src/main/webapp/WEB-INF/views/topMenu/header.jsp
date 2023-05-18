@@ -42,37 +42,40 @@
                     </li>
                 </ul>
 
-                <div id="nndrDropdownBox">
-                    <!-- 알림 버튼 -->
-                    <div id="nndrDropdown1">
-                        <div onclick="bell()" id="nndrDropBtn1"><img src="/resources/images/topMenu/topAlarm.png"
-                                id="nndrImage3"></div>
+                <%-- <div id="nndrDropdownBox"> --%>
+                <!-- 알림 버튼 -->
+                <%-- <div onclick="bell()" id="nndrDropdown1"> --%>
+                <div id="nndrDropdown1" class="nndr-dropdown-container">
+                    <div id="nndrDropBtn1" class="nndr-dropdown-button">
+                        <img src="/resources/images/topMenu/topAlarm.png" id="nndrImage3">
+                    </div>
 
-                        <!-- <div> 
-                        <div class="porfileRac">
-                            <a href="#" class="Boardprofile"></a>
-                        </div>
-                        <div>
-                            <a href="#">김핑퐁</a>
-                            <p>게시글 정보 입니다. (회원 소개글 들어가도 됨)</p>
-                        </div>
+                    <!-- <div> 
+                    <div class="porfileRac">
+                        <a href="#" class="Boardprofile"></a>
+                    </div>
+                    <div>
+                        <a href="#">김핑퐁</a>
+                        <p>게시글 정보 입니다. (회원 소개글 들어가도 됨)</p>
+                    </div>
                     </div> -->
 
-                        <!-- 알림 버튼 클릭 시 하위 메뉴 -->
-                        <div id="nndrBellDropdown" class="nndr-dropdown-content1">
-                            <div id="nndrAlarm">
-                                <div>알림</div>
-                                <div><img src="/resources/images/topMenu/optionAlarm.png" id="nndrOptionAlarm">
-                                    <div id="nndrOptionAlarmContent">
-                                        <a href="#">모두 읽은 상태로 표시</a>
-                                        <a href="/setting/alarm">알림설정</a>
-                                    </div>
+                    <!-- 알림 버튼 클릭 시 하위 메뉴 -->
+                    <div id="nndrBellDropdown" class="nndr-dropdown-content1 nndr-dropdown-menu hidden">
+                        <div id="nndrAlarm">
+                            <div>알림</div>
+                            <div id="nndrOptionAlarm">
+                                <img src="/resources/images/topMenu/optionAlarm.png">
+                                <div id="nndrOptionAlarmContent" class="hidden">
+                                    <a href="#">모두 읽은 상태로 표시</a>
+                                    <a href="/setting/alarm">알림설정</a>
                                 </div>
                             </div>
-                            <div class="nndrAlarmRead">
-                                <div class="nndrAllAlarm">모든 알림</div>
-                                <div class="nndrAlarmNotRead">읽지 않은 알림</div>
-                            </div>
+                        </div>
+                        <div class="nndrAlarmRead">
+                            <div class="nndrAllAlarm">모든 알림</div>
+                            <div class="nndrAlarmNotRead">읽지 않은 알림</div>
+                        </div>
 
                         <div id="nndrAddContainer">
                             <!-- <div class="nndrAddAlarm">
@@ -85,26 +88,26 @@
                                 <div class="nndr-top-alarm-delete">&times;</div>
                             </div> -->
                         </div>
-
-                            <button id="thumsUp">좋아여</button>
-
-                        </div>
-                    </div>
-
-                    <div id="nndrDropdown2">
-                        <!-- 내정보 버튼 -->
-                        <div onclick="my()" id="nndrDropBtn2"><img src="/resources/images/topMenu/topMyInfo.png"
-                                id="nndrImage4"></div>
-
-                        <!-- 내정보 버튼 클릭 시 하위 메뉴 -->
-                        <div id="nndrMyDropdown" class="nndr-dropdown-content2">
-                            <a href="/setting">설정</a>
-                            <a href="/setting/feedback">의견 보내기</a>
-                            <a href="/logout">로그아웃</a>
-                        </div>
+                        <button id="thumsUp">좋아여</button>
                     </div>
                 </div>
-                
+
+
+                <!-- 내정보 버튼 -->
+                <div id="nndrDropdown2" class="nndr-dropdown-container">
+                    <div id="nndrDropBtn2" class="nndr-dropdown-button">
+                        <img src="/resources/images/topMenu/topMyInfo.png" id="nndrImage4">
+                    </div>
+
+                    <!-- 내정보 버튼 클릭 시 하위 메뉴 -->
+                    <div id="nndrMyDropdown" class="nndr-dropdown-content2 nndr-dropdown-menu hidden">
+                        <a href="/setting">설정</a>
+                        <a href="/setting/feedback">의견 보내기</a>
+                        <a href="/logout">로그아웃</a>
+                    </div>  
+                </div>
+                    
+                <%-- </div> --%>
                 <!-- 관리자 아이콘 -->
                 <div name="nndrAdminSetting">
                 <c:if test="${loginMember.memberCode == 'A'}" >

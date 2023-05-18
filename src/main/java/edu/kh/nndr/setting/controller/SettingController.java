@@ -121,7 +121,7 @@ public class SettingController {
 	}
 	
 	//
-	@GetMapping("/changeSetting")
+	@GetMapping("/change/set")
 	@ResponseBody
 	public int changeSetting(
 			@SessionAttribute("loginMember") Member loginMember,
