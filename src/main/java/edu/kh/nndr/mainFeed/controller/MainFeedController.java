@@ -16,8 +16,9 @@ import edu.kh.nndr.mainFeed.model.service.MainFeedService;
 import edu.kh.nndr.member.model.dto.Member;
 
 import edu.kh.nndr.member.model.dto.Member;
-@SessionAttributes("{loginMember}")
+
 @Controller
+@SessionAttributes("{loginMember}")
 public class MainFeedController {
 	
 	@Autowired

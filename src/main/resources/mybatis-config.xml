@@ -21,6 +21,7 @@
     <typeAlias type="edu.kh.nndr.mainFeed.model.dto.Hashtag" alias="Hashtag"/>
     <typeAlias type="edu.kh.nndr.mainFeed.model.dto.Board" alias="Board" />
 		<typeAlias type="edu.kh.nndr.mainFeed.model.dto.Image" alias="Image" />
+		<typeAlias type="edu.kh.nndr.mainFeed.model.dto.Reply" alias="Reply" />
 	</typeAliases>
 
 	<!-- mapper 파일(SQL 작성되는파일) 위치 등록 부분 -->
@@ -34,6 +35,7 @@
     <mapper resource="/mappers/email-mapper.xml" />
     <mapper resource="/mappers/emailCheck-mapper.xml" />
     <mapper resource="/mappers/mainFeed-mapper.xml" />
+    <mapper resource="/mappers/reply-mapper.xml" />
 	</mappers>
 
 </configuration>
