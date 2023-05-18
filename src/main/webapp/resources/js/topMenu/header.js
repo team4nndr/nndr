@@ -68,7 +68,7 @@ search.addEventListener("input", e => {
             
     }
 
-     if(/* 수정 예정 */) { // 일반 검색어인 경우
+     if(false) { // 일반 검색어인 경우
         
             toLowerCase().startsWith(input_value);
 
@@ -107,7 +107,7 @@ function bell() {
 }
 
 window.onclick = function (e) {
-    if (e.target.matches('.DropBtn1')) {
+    if (e.target.matches('.nndrDropBtn1')) {
         var dropdowns = document.getElementById("nndrBellDropdown");
         var i;
         for (i = 0; i < dropdowns.length; i++) {
@@ -117,7 +117,6 @@ window.onclick = function (e) {
             }
         }
     }
-
 
 
 }
