@@ -29,98 +29,113 @@
 
             <%-- 피드 목록 --%>
             <div class="centerArea-2">
-            
-            <c:forEach items="${boardList}" var="board">
-                <div class="feed">
+                
+                <c:forEach items="${boardList}" var="board">
+                    <div class="feed">
 
-                    <!-- 나의 게시물 상단  -->
-                    <section class="cTopArea">
+                        <!-- 나의 게시물 상단  -->
+                        <section class="cTopArea">
 
-                        <!-- 이미지 -->
-                        <section class="cTopArea1">
-                            <a href="#"><img src="/resources/images/common/user-default.png" class="wirter-profile-image"></a>
-                        </section> 
+                            <!-- 이미지 -->
+                            <section class="cTopArea1">
+                                <a href="#"><img src="/resources/images/common/user-default.png" class="wirter-profile-image"></a>
+                            </section> 
+                            
+                            <!-- 이름 and 시간  -->
+                            <section class="cTopArea2">
+                                <a href="/personalFeed/${board.memberNo}" class="name change">${board.memberName}</a>
+                                <a href="#" class="date change">${board.uploadDate}</a>
+                            </section> 
+
+                        </section>
                         
-                        <!-- 이름 and 시간  -->
-                        <section class="cTopArea2">
-                            <a href="/personalFeed/${board.memberNo}" class="name change">${board.memberName}</a>
-                            <a href="#" class="date change">${board.uploadDate}</a>
-                        </section> 
+                        <hr>
 
-                    </section>
-                    
-                    <hr>
-
-                    <!--  나의 게시물 중간  -->
-                    <div class="feedContent">
-
-                        <section>${board.boardText}</section>
-                        
-                        <%-- 이미지가 있다면 --%>
-                        <%-- <c:if test="${not empty board.imageList}" >
-                            <c:set var="start" value="0"/>
-                            <c:if test="${fn:length(board.imageList)>start}" >
-                                <c:forEach var="i" begin="${start}" end="${fn:length(board.imageList)}">
-                                    <div class="boardImg1">
-                                        <c:set var="path" value="${board.imageList[i].imgPath}${board.imageList[i].imgReName}"/>
-                                        <img src="${path}">
-                                    </div>
-                                </c:forEach>
+                        <!--  나의 게시물 중간  -->
+                        <div class="feedContent">
+                            <div class="text-container">${board.boardText}</div>
+                            
+                            <%-- 이미지가 있다면 --%>
+                            <c:if test="${not empty board.imageList}" >
+                                <div class="image-container">
+                                    <c:set var="start" value="0"/>
+                                    <c:if test="${fn:length(board.imageList) > start}">
+                                        <c:forEach var="i" begin="${start}" end="${fn:length(board.imageList)}">
+                                            <div class="boardImg1">
+                                                <c:set var="path" value="${board.imageList[i].imgPath}${board.imageList[i].imgReName}"/>
+                                                <img src="${path}">
+                                            </div>
+                                        </c:forEach>
+                                    </c:if>
+                                </div>
                             </c:if>
-                        </c:if> --%>
+                        </div>
 
+                        <hr>
+
+                        <!--  나의 게시물 좋아요 등등등 -->
+                        <section class="like">
+                            <ul>
+                                <li><a href="#"><img src="/resources/images/mainFeed/mainLike.png">좋아요</a></li>
+                                <li><a href="#"><img src="/resources/images/mainFeed/mainReply.png">댓글 달기</a></li>
+                                <li><a href="#"><img src="/resources/images/mainFeed/mainNext.png">공유하기</a></li>
+                            </ul>
+                        </section>
+
+                        <hr>
+
+                        <!-- 댓글 목록  -->
+                        <section class="reply-container">
+                            <div class="reply">
+                                <img src="/resources/images/common/user-default.png" class="reply-profile-image">
+                                <div class="reply-body">
+                                    <div class="reply-bubble">
+                                        <p class="reply-name">Steve Yoo</p>
+                                        <p class="reply-content">looking good hyung!</p>
+                                    </div>
+                                    <div class="reply-footer">
+                                        <a href="#" class="like-btn">좋아요</a>
+                                        <a href="#" class="re-reply">답글달기</a>
+                                        <a href="#" class="date">6일</a>
+                                    </div>
+                                </div>                        
+                            </div>
+                            <div class="reply">
+                                <img src="/resources/images/common/user-default.png" class="reply-profile-image">
+                                <div class="reply-body">
+                                    <div class="reply-bubble">
+                                        <p class="reply-name">최유나</p>
+                                        <p class="reply-content">홀리몰리 댓글을 더 길~~~게 달아보도록 하겠읍니다.</p>
+                                    </div>
+                                    <div class="reply-footer">
+                                        <a href="#" class="like-btn">좋아요</a>
+                                        <a href="#" class="re-reply">답글달기</a>
+                                        <a href="#" class="date">6일</a>
+                                    </div>
+                                </div>                        
+                            </div>
+                        </section>
+
+                        <!-- 댓글 작성  -->
+                        <section class="reply-write reply-container">
+                            <div class="reply">
+                                <img src="/resources/images/common/user-default.png" class="reply-profile-image">
+                                <div class="reply-body">
+                                    <div class="reply-bubble">
+                                        <textarea type="textarea" placeholder="댓글을 입력하세요..."></textarea>
+                                        <a>
+                                            <img src="/resources/images/mainFeed/send.png" class="reply-send-disable">
+                                            <img src="/resources/images/mainFeed/send-blue.png" class="reply-send-enable hidden">
+                                        </a>
+                                    </div>
+                                </div>              
+                            </div>
+                        </section>
                     </div>
 
-                    <hr>
-
-                    <!--  나의 게시물 좋아요 등등등 -->
-                    <section class="like">
-                        <ul>
-                            <li><a href="#"><img src="/resources/images/mainFeed/mainLike.png">좋아요</a></li>
-                            <li><a href="#"><img src="/resources/images/mainFeed/mainReply.png">댓글 달기</a></li>
-                            <li><a href="#"><img src="/resources/images/mainFeed/mainNext.png">공유하기</a></li>
-                        </ul>
-                    </section>
-
-                    <hr>
-
-                    <!-- 댓글 목록  -->
-                    <section class="reply-container">
-                        <div class="reply">
-                            <img src="/resources/images/common/user-default.png" class="reply-profile-image">
-                            <div class="reply-body">
-                                <div class="reply-bubble">
-                                    <p class="reply-name">Steve Yoo</p>
-                                    <p class="reply-content">looking good hyung!</p>
-                                </div>
-                                <div class="reply-footer">
-                                    <a href="#" class="like-btn">좋아요</a>
-                                    <a href="#" class="re-reply">답글달기</a>
-                                    <a href="#" class="date">6일</a>
-                                </div>
-                            </div>                        
-                        </div>
-                    </section>
-
-                    <!-- 댓글 작성  -->
-                    <section class="reply-write reply-container">
-                        <div class="reply">
-                            <img src="/resources/images/common/user-default.png" class="reply-profile-image">
-                            <div class="reply-body">
-                                <div class="reply-bubble">
-                                    <input type="text" placeholder="댓글을 입력하세요...">
-                                    <a href="#"><img src="/resources/images/mainFeed/send.png" class="reply-send"></a>
-                                </div>
-                            </div>              
-                        </div>
-                    </section>
-                </div>
-
-            </c:forEach>
-
+                </c:forEach>
 
             </div>
-
         </div> <%-- Grid 2 : 중심 내용 종료 --%>
 
         <%-- Grid 3 : 사이드바(오른쪽) --%>
@@ -129,6 +144,7 @@
     </main>
     
     <script src="/resources/js/mainFeed/main.js"></script>
+    <script src="/resources/js/mainFeed/reply.js"></script>
 
 </body>
 </html>
