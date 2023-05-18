@@ -66,8 +66,6 @@
             <p></p>
 
             <article>
-                <a href="#">한국어</a>
-                <span>|</span>
                 <a href="#">로그인</a>
                 <span>|</span>
                 <a href="#">친구</a>
@@ -97,7 +95,7 @@
                         <input type="email" name="memberEmail" id="memberEmail" placeholder="이메일"
                                 maxlength="30" autocomplete="off">
 
-                        <button id="sendAutoKeyBtn" type="button">인증번호 받기</button>
+                        <button id="sendAuthKeyBtn" type="button">인증번호 받기</button>
                     <div class="box">
                         <input type="text" name="authKey" id="authKey" placeholder="인증번호 입력" maxlength="6" autocomplete="off" >
                     
@@ -210,6 +208,9 @@
                         <input type="radio" name="gen">
 
                         <label for="gender2">남성</label>
+                        <input type="radio" name="gen">
+
+                        <label for="gender3">선택 없음</label>
                         <input type="radio" name="gen">
 
                     </span>
