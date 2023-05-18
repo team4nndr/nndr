@@ -11,7 +11,12 @@
     display: grid;
     grid-template-columns: 0.2fr 1.8fr 1fr;
     background-color: white;
-    position: relative;
+    /* position: relative; */
+    position: sticky;
+    top:0;
+    left:0;
+    background-color: white;
+    z-index:999;
 }
 
 /* 홈 로고 영역 */
@@ -20,7 +25,7 @@
     display: grid;
 }
 
-.nndr-home-logo > a {
+.nndr-home-logo > a{
     height: 56px;
     padding-left: 100px;
     position: absolute;
@@ -96,9 +101,13 @@
     width: 200px;
 }
 
+.nndr-suggestions {
+    margin-top: 22px;
+}
+
 .nndr-suggestions > div {
     padding: 5px;
-    margin-top: 22px;
+    
     cursor: pointer;
     background-color: #f0f2f5;
     z-index: 999;
@@ -106,7 +115,7 @@
 }
 
 .nndr-suggestions_pannel > div:hover {
-    margin-top: 22px;
+    
     height: 30px;
     background-color: rgb(207, 204, 204);
     z-index: 999;
@@ -153,10 +162,7 @@
     align-items: center;
 }
 
-#nndrDropdown1 {
-    position: relative;
-    display: inline-block;
-}
+
 
 #nndrDropdown2 {
     position: relative;
@@ -169,8 +175,8 @@
     padding: 12px 16px;
     text-decoration: none;
     display: block;
-    width: 400px;
-    height: 50px;
+    /* width: 400px; */
+    height: 49px;
 }
 
 .nndr-dropdown-content2 a {
@@ -181,7 +187,8 @@
     width: 300px;
 }
 
-#nndrDropBtn1>img {
+/* #nndrDropBtn1>img { */
+#nndrImage3 {
 
     height: 40px;
     padding: 3px;
@@ -192,7 +199,11 @@
     outline: none;
 }
 
-#nndrDropBtn1,
+#nndrMainFeedBtn > #nndrImage1{
+
+}
+
+#nndrMainFeedBtn>#nndrDropBtn1,
 #nndrDropBtn1:focus {
     border: none;
     background-color: white;
@@ -225,20 +236,22 @@
     justify-content: center;
 }
 
-#nndrBellDropdown {
-    width: 450px;
-    margin-top: 10px;
+/* 알람 드롭다운 메뉴 */
+.nndr-dropdown-menu, #nndrMyDropdown {
+    margin-top: 15px;
     z-index: 9999;
     background-color: white;
 }
 
-#nndrMyDropdown {
-    margin-top: 15px;
-    z-index: 999;
-    background-color: white;
+#nndrBellDropdown {
+    width: 450px;
+    /* margin-top: 10px; */
+    /* z-index: 9999; */
+    /* background-color: white; */
 }
 
-#nndrBellDropdown>.nndr-dropdown-content1 {
+/* 
+#nndrBellDropdown > .nndr-dropdown-content1 {
     display: flex;
     flex-direction: column;
     position: absolute;
@@ -247,52 +260,51 @@
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
     padding: 0px 10px 10px 10px;
 
-}
+} */
 
-.nndr-dropdown-content1{
-    display: none;
-    position: absolute;
-    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.5);
-    top  : 40px;
-    right: 5px;
 
-    border-radius: 15px;
-}
-
-#nndrMyDropdown >.nndr-dropdown-content2 {
+/* #nndrMyDropdown > .nndr-dropdown-content2 {
     display: flex;
     flex-direction: column;
     position: absolute;
     background-color: #ccc;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+} */
+
+
+
+/* 상단바 admin 아이콘 */
+.nndrAdminSetting{
+    height: 56px;
+    border-bottom: 1px solid #ccc;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    margin-right: 152px;
+    user-select: none;
 }
 
-.nndr-dropdown-content2{
-    display: none;
-    position: absolute;
-    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.5);
-    top  : 40px;
-    right: 7px;
-
-    border-radius: 15px;
+#nndrAdminImg{
+    height: 40px;
+    padding: 3px;
 }
 
 /* 상단바 아이콘 hover */
-.nndr-top-menu>.nndr-menu>li:nth-child(1)>a {
+#nndrHomeBtn>.nndrMainFeedBtn{
     width: 50px;
 }
 
-.nndr-top-menu>.nndr-menu>li:nth-child(2)>a {
+#nndrFriendBtn>.nndrMainFeedBtn {
     width: 50px;
 }
 
-.nndr-top-menu>.nndr-menu>li:nth-child(1)>a:hover {
+.nndr-top-menu > .nndr-menu>li:nth-child(1)>.nndrMainFeedBtn:hover {
     background-color: #ccc;
     border-radius: 5px;
     width: 50px;
 }
 
-.nndr-top-menu>.nndr-menu>li:nth-child(2)>a:hover {
+.nndr-top-menu>.nndr-menu>li:nth-child(2)>.nndrMainFeedBtn:hover {
     background-color: #ccc;
     border-radius: 5px;
     width: 50px;
@@ -308,6 +320,7 @@
     background-color: #ccc;
     border-radius: 5px;
     width: 50px;
+    cursor: pointer;
 }
 
 /* .nndr-dropdown-content1 a:hover {
@@ -343,21 +356,29 @@
     height: 30px;
 }
 
+
 #nndrOptionAlarm{
     width: 30px;
     height: 30px;
     cursor: pointer;
 }
 
-#nndrOptionAlarm:hover{
-    border-radius: 50%;
+#nndrOptionAlarm > img {
+    width: 30px;
+    height: 30px;
+    pointer-events: none;
+    user-select: none;
+}
+
+#nndrOptionAlarm:hover {
+    border-radius: 50px;
     background-color: #ccc;
 }
 
 /* 알람 옵션 내용 (모두 읽은 상태로 표시 및 알림 설정) */
-#nndrOptionAlarmContent{
+#nndrOptionAlarmContent {
     font-size: 15px;
-    display: none;
+    display: block;
     position: absolute; right: 15px; top: 15px;
     width: 200px;
     height: 100px;
@@ -365,7 +386,11 @@
     border: 1px solid black;
     right: 30px;
     bottom: 20px;
-    
+}
+#nndrOptionAlarmContent > a:hover {
+    background-color: #eee;
+    transition-duration: 0.2s;
+    cursor: pointer;
 }
 
 /* 알람 읽음,읽지 않음 표시 */
@@ -454,7 +479,10 @@
 .nndr-top-alarm-delete{
     display: flex;
     align-items: center;
-    margin-right: 10px;
+    position: absolute;
+    right: 10px;
+    /* align-self: flex-end; */
+    /* margin-right: 10px; */
     cursor: pointer;
 }
 .nndr-top-alarm-delete:hover{
@@ -464,5 +492,70 @@
 
 
 
+/* 드롭다운 공통 */
+.nndr-dropdown-menu {
+    position: absolute;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.5);
+    top  : 40px;
+    right: 5px;
+    border-radius: 15px;
+}
+.nndr-dropdown-button {
+    cursor: pointer;
+    width: 50px;
+    height: 45px;
+}
+.nndr-dropdown-button:hover {
+    background-color: #ccc;
+    border-radius: 5px;
+}
 
 
+
+
+
+
+
+/* 내정보 드롭다운 메뉴 */
+#nndrMyDropdown a:first-child { border-radius: 15px 15px 0 0; }
+#nndrMyDropdown a:last-child { border-radius: 0 0 15px 15px; }
+#nndrImage4 {
+    pointer-events: none;
+    user-select: none;
+    background: none;
+}
+/* #nndrDropBtn2 {
+    cursor: pointer;
+    width: 50px;
+} */
+/* #nndrDropBtn2:hover {
+    background-color: #ccc;
+    border-radius: 5px;
+} */
+
+/* 알림 - dropdown */
+#nndrDropdown1 {
+    position: relative;
+    flex-direction: column;
+}
+#nndrImage3 {
+    pointer-events: none;
+    user-select: none;
+    background: none;
+}
+#nndrDropBtn1 {
+    /* cursor: pointer;
+    width: 50px;
+    height: 45px; */
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+/* #nndrDropBtn1:hover {
+    background-color: #ccc;
+    border-radius: 5px;
+} */
+
+/* 윈도우 창 띄웠다 지웠다 */
+.hidden { display: none !important; }

@@ -23,10 +23,9 @@
 
         <%-- 회원 관리 상세 페이지 --%>
         <form action="#" method="POST" id="content">
-            <button type="button" id="backBtn" class="back">
-                <i class="fa-solid fa-arrow-left"></i>
-                <span>뒤로가기</span>                
-            </button>
+            <div id="backBtn" class="back">
+                <i class="fa-solid fa-arrow-left"></i>        
+            </div>
             <div id="details">
                 <h3>회원 상세 정보</h3>
                 <hr>
@@ -53,30 +52,62 @@
                 <div class="row">
                     <span class="title">회원상태</span>
                     <div class="data account">
-                        <c:choose>
+                        <div class="normal account-label N">정상</div>
+                        <div class="disabled account-label B">비활성화</div>
+                        <span class="date account-label B">(비활성화 일시 : ${member.disableDate})</span>
+                        <div class="dropped account-label D">탈퇴</div>
+                        <span class="date account-label D">(탈퇴 일시 : ${member.deleteDate})</span>
+                        <div class="admin account-label A">관리자</div>
+                        <%-- <c:choose>
                             <c:when test="${member.memberCode == 'N'}">
-                                <div class="normal">정상</div>
+                                <div class="normal account-label N">정상</div>
                             </c:when>
                             <c:when test="${member.memberCode == 'B'}">
-                                <div class="disabled">비활성화</div>
+                                <div class="disabled account-label B">비활성화</div>
+                                <span class="date account-label B">(비활성화 일시 : ${member.disableDate})</span>
                             </c:when>
                             <c:when test="${member.memberCode == 'D'}">
-                                <div class="dropped">탈퇴</div>
+                                <div class="dropped account-label D">탈퇴</div>
+                                <span class="date account-label D">(탈퇴 일시 : ${member.deleteDate})</span>
                             </c:when>
                             <c:otherwise>
-                                <div class="admin">관리자</div>
+                                <div class="admin account-label A">관리자</div>
                             </c:otherwise>
-                        </c:choose>
+                        </c:choose> --%>
                     </div>
                 </div>
             </div>
             <div id="bottom">
-                <button type="button" name="button" value="able" <c:if test="${member.memberCode != 'B'}">disabled</c:if>>비활성 해제</button>
-                <button type="button" name="button" vlaue="recover" <c:if test="${member.memberCode != 'D'}">disabled</c:if>>계정 복구</button>
+                <%-- <c:choose>
+                    <c:when test="${member.memberCode == 'N'}">
+                        <button type="button" class="N" id="disableBtn">유저 비활성</button>
+                        <button type="button" class="N" id="deleteBtn">계정 삭제</button>
+                    </c:when>
+
+                    <c:when test="${member.memberCode == 'B'}">
+                        <button type="button" class="B" id="enableBtn">비활성 해제</button>
+                        <button type="button" class="B" id="deleteBtn">계정 삭제</button>
+                    </c:when>
+                
+                    <c:otherwise>
+                        <button type="button" class="D" id="enableBtn">계정 복구</button>
+                    </c:otherwise>
+                </c:choose> --%>
+
+                <button type="button" class="N disable-btn">유저 비활성</button>
+                <button type="button" class="B enable-btn">비활성 해제</button>
+                <button type="button" class="N B delete-btn alert">계정 삭제</button>
+                <button type="button" class="D enable-btn">계정 복구</button>
             </div>
         </form>
     </main>
 
-    <script src="/resources/js/admin/admin.js"></script>
+    <jsp:include page="/WEB-INF/views/common/footer.jsp"/>
+
+    <script>
+        const memberNo = "${member.memberNo}";
+        let memberCode = "${member.memberCode}";
+    </script>
+    <script src="/resources/js/admin/users.js"></script>
 </body>
 </html>

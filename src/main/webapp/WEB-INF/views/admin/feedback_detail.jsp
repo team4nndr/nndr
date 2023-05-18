@@ -22,11 +22,10 @@
         <jsp:include page="/WEB-INF/views/admin/sidebar.jsp" />
 
         <%-- 회원 의견 상세 페이지 --%>
-        <section id="content">
-            <button type="button" id="backBtn" class="back">
-                <i class="fa-solid fa-arrow-left"></i>
-                <span>뒤로가기</span>                
-            </button>
+        <form action="/admin/feedback/${feedback.feedbackNo}/confirm" method="POST" id="feedbackFrm">
+            <div id="backBtn" class="back">
+                <i class="fa-solid fa-arrow-left"></i>                
+            </div>
             <div id="details">
                 <div id="feedbackUserSection">
                     <div class="row">
@@ -55,40 +54,32 @@
                         </c:choose>
 
                     </div class="row">
-                    <c:set var="crlf" value="\r\n"/>
-                    <div id="feedbackContent" class="data">${fn:replace(feedback.feedbackContent, crlf, "<br/>")}</div>
+                    <div id="feedbackContent" class="data">${feedback.feedbackContent}</div>
                 </div>
                 <div id="feedbackAdminSection" class="row">
                     <span class="title">처리의견</span>
-
                     <c:choose>
                         <c:when test="${feedback.confirmFlag == 'N'}">
                             <textarea name="adminComment" id="adminComment" placeholder="처리의견을 작성해주세요..."></textarea>
                         </c:when>
                         <c:otherwise>
-                            <textarea name="adminComment" id="adminComment" disabled>${feedback.adminComment}</textarea>
+                            <div id="adminComment">${feedback.adminComment}</div>
                         </c:otherwise>
                     </c:choose>
-                    
                 </div>
+                <input type="hidden" name="adminNo" value="${loginMember.memberNo}">
+                <input type="hidden" name="cp" value="${param.cp}">
             </div>
             <div id="bottom">
-                <button type="button" class="back">뒤로가기</button>
-                <button type="submit" id="submit" disabled>처리완료</button>
+                <button type="button" class="back">목록으로</button>
+                <button type="submit" class="submit" id="feedbackSubmit" disabled>처리하기</button>
             </div>
-        </section>
+        </form>
     </main>
 
-    <script src="/resources/js/admin/admin.js"></script>
-    <script>
-        const adminComment = document.getElementById('adminComment');
-        adminComment.addEventListener('input', () => {
-            if( adminComment.value.length > 0 ) {
-                document.getElementById('submit').disabled = false;
-            } else {
-                document.getElementById('submit').disabled = true;
-            }
-        });
-    </script>
+    <jsp:include page="/WEB-INF/views/common/footer.jsp"/>
+
+    <script src="/resources/js/admin/feedback.js"></script>
+
 </body>
 </html>

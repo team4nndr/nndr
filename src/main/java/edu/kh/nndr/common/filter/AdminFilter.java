@@ -13,7 +13,7 @@ import javax.servlet.http.HttpSession;
 
 import edu.kh.nndr.member.model.dto.Member;
 
-@WebFilter (filterName = "loginFilter", urlPatterns = "/admin/*")
+@WebFilter (filterName = "adminFilter", urlPatterns = "/admin/*")
 public class AdminFilter implements Filter {
 
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
@@ -25,7 +25,7 @@ public class AdminFilter implements Filter {
 		
 		// 관리자가 아니면 메인페이지로 
 		Member loginMember = (Member)session.getAttribute("loginMember");
-		if(!loginMember.getMemberCode().equals("A")) { 
+		if( loginMember == null || !loginMember.getMemberCode().equals("A")) { 
 			resp.sendRedirect("/");
 		} else {
 			chain.doFilter(request, response);

@@ -56,6 +56,10 @@ main {
     margin-bottom: 20px;
 }
 
+.friendMenuList{
+    width: 359px;
+    height: 100%;
+}
 .frmidbox {
     display: flex;
     flex-direction: column;

@@ -8,6 +8,33 @@
 		<result property="friendSender" column="FRIEND_SENDER" />
 		<result property="friendReciver" column="FRIEND_RECIVER" />
 		<result property="friendFl" column="FRIEND_FL" />
-	</resultMap>
 
+		<!-- join memeber -->
+		<result property="memberNo" column="MEMBER_NO" />
+		<result property="memberName" column="MEMBER_NAME" />
+	</resultMap>
+	
+	<!-- 친구요청 (test)조회 -->
+	<select id="friendRqList" resultMap="friend_rm">
+		SELECT FRIEND_NO,
+		FRIEND_SENDER,
+		MEMBER_NAME
+		FROM FRIEND
+		JOIN MEMBER ON
+		FRIEND.FRIEND_SENDER = MEMBER.MEMBER_NO
+		WHERE FRIEND_FL = 'N'
+		AND
+		FRIEND_RECIVER = #{memberNo}
+		ORDER BY FRIEND_NO DESC
+	</select>
+
+	<!-- 친구수락 -->
+	<update id="friendUpdate">
+		UPDATE "FRIEND" SET
+		FRIEND_FL = 'Y'
+		WHERE FRIEND_NO = #{friendNo}
+	</update>
+	
+	
+	
 </mapper>

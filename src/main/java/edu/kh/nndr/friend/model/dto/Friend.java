@@ -15,4 +15,7 @@ public class Friend {
 	private int friendReciver;
 	private String friendFl;
 	
+//	member join
+	private int memberNo;
+	private String memberName;
 }

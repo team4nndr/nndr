@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="searchMapper">
+
+	<resultMap type="Hashtag" id="tag_rm">
+		<id property="hashtagNo" column="HASHTAG_NO" />
+		<result property="hashtagKeyword" column="HASHTAG_KEYWORD" />
+	</resultMap>
+
+
+
+	<select id="getTags" resultMap="tag_rm">
+		SELECT HASHTAG_KEYWORD 
+		FROM HASHTAG
+		WHERE HASHTAG_KEYWORD LIKE '${hashtagKeyword}%'
+	</select>
+
+
+
+<!--  친구 목록 불러오기  -->
+<!-- SQL :
+SELECT FRIEND_NO, FRIEND_SENDER, MEMBER_NAME
+FROM FRIEND
+JOIN MEMBER ON FRIEND.FRIEND_SENDER = MEMBER.MEMBER_NO
+WHERE FRIEND_FL = 'N'
+AND FRIEND_RECIVER = 2
+ORDER BY FRIEND_NO DESC;
+COMMIT; -->
+
+
+</mapper>

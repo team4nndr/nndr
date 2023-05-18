@@ -71,43 +71,59 @@ if (document.getElementById("info-modal") != null) {
     })
 }
 
-Array.from( document.getElementsByClassName("info-2-1")).forEach((target) => target.addEventListener("click", function(){ 
-    jsSearch('test', target); 
-})
-);
 var a = "asd";
-function jsSearch(str, target){		
+var b = [];
+Array.from( document.getElementsByClassName("info-2-1")).forEach((target) => target.addEventListener("click", function(){ 
+    jsSearch(target); 
+})
+)
+function jsSearch(target){		
     const hobbyl = document.getElementById("what-hobby")
     document.getElementById("info-modal").style.display="block";
     document.getElementById("info-modali").style.display="block";
-    document.getElementById("whatHobby").value=(target.innerText).substring(4);
-    // alert(target.dataset.map);
+    document.getElementById("whatHobby").innerText=(target.innerText).substring(4);
+
+    const infozz = document.getElementsByClassName("infom");
+    const infoText = document.getElementsByClassName("infoText");
     a=target.dataset.map;
-    // hobbyl.innerText=(target.innerText).substring(4);
-    // hobbyl.style.fontSize="19px";
-
-};   
-
-document.getElementById("info-confirm").addEventListener('click', () => {
-    const i = document.getElementById("hobby-input").value;
+    for(var i = 0; i<infozz.length; i++){
+        
+        for(var j=0; j<infozz[i].childElementCount*2+1; j++){
+            if(target.innerText==infozz[i].childNodes[j].innerText){
+                b.push(infoText[i].childNodes[j]);
+                console.log(i)
+                console.log(j)
+            }
+        }
+    }
     
-    inputhobby(i)
-})
+};   
+// document.getElementsByClassName("infom")[0].children[0]
+
+if (document.getElementById("info-confirm") != null) {
+    document.getElementById("info-confirm").addEventListener('click', () => {
+        const i = document.getElementById("hobby-input").value;
+        
+        inputInfo(i)
+    })
+}
 
 
 
-
-function inputhobby(i){
-    const hobby = a+" "+i;
-    fetch("/inputhobby?hobby="+hobby)  // 지정된 주소로 GET방식 비동기 요청(ajax)
+function inputInfo(i){
+    const info = a+"§"+i;
+    fetch("/inputInfo?info="+info)  // 지정된 주소로 GET방식 비동기 요청(ajax)
     // 전달하고자 하는 파라미터를 주소 뒤 쿼리스트링으로 추가
     
     .then(response => response.text()) // 요청에 대한 응답 객체(response)를 필요한 형태로 파싱
     
-    .then(hobby => { console.log(hobby) }) // 첫 번째 then에서 파싱한 데이터를 이용한 동작 작성
+    .then(info => { console.log(info) }) // 첫 번째 then에서 파싱한 데이터를 이용한 동작 작성
     
     .catch (e => { console.log(e)}); // 예외 발생 시 처리할 내용을 작성
-    alert(i)
+    b.forEach(element => {
+        element.innerText = i;
+    });
+    b=[];
 }
 
 
@@ -136,9 +152,52 @@ if (document.getElementById("info-confirm") != null) {
 
 if(document.getElementById("hobby-checked") != null){
     document.getElementById("hobby-checked").addEventListener("click", () => {
+        checkForm()
         document.getElementById("add-hobby").removeAttribute('checked');
     })
 }
+if(document.getElementById("hobby-no") != null){
+    document.getElementById("hobby-no").addEventListener("click", () => {
+        document.getElementById("add-hobby").removeAttribute('checked');
+    })
+}
+function checkForm() {
+    var hobbyArray = new Array();
+
+    document.getElementsByName("hobbychecked").forEach(element => {
+        if (element.checked) {
+            hobbyArray.push(element.id);
+        }
+    });
+    fetch("/inputhobby?hobbyArray="+hobbyArray)  // 지정된 주소로 GET방식 비동기 요청(ajax)
+    // 전달하고자 하는 파라미터를 주소 뒤 쿼리스트링으로 추가
+    
+    .then(response => response.text()) // 요청에 대한 응답 객체(response)를 필요한 형태로 파싱
+    
+    .then(() => { 
+        const l = hobbyArray.length;
+        
+        if(l==0){
+            document.getElementById("zzs").style.display = "none";
+            if (document.getElementById("myhho")!=null) {
+                document.getElementById("myhho").innerText ="";
+            }
+        }else{
+            document.getElementById("zzs").style.display = "block";
+            document.getElementById("myhho").innerText ="";
+            for(var i =0; i<l; i++){
+                document.getElementById("myhho").innerText += hobbyArray.shift();
+                document.getElementById("myhho").innerHTML += "　";
+            }
+        }
+
+    }) // 첫 번째 then에서 파싱한 데이터를 이용한 동작 작성
+    
+    .catch (e => { console.log(e)}); // 예외 발생 시 처리할 내용을 작성
+    
+    //other code
+}
+
 
 
     // 슬라이드
@@ -187,3 +246,21 @@ if (document.querySelector('.info-cancel') != null) {
     })
 }
 
+// var a = <c:out value="${perHobbyList}"/>;
+if (document.getElementById("hobby-no") != null) {
+    document.getElementById("hobby-no").addEventListener("click", () => {
+        const mh = document.getElementById("myhho").innerText.trim().split('　');
+        const dhho = document.getElementById("dhho").innerText.trim().split('　');
+        
+
+        for(var j=0; j<dhho.length; j++){
+            document.getElementById(dhho[j]).checked = false;
+        }
+        for(var i =0; i<mh.length; i++){
+            document.getElementById(mh[i]).checked = true;
+
+        }
+    })
+}
+    
+    
