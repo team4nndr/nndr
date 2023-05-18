@@ -530,6 +530,15 @@ display: flex;
     max-width: 90%;
     max-height: 90%;
 }
+.img-box1{
+    display: grid;
+    grid-template-columns: repeat(3,100px);
+    grid-auto-rows: 100px;
+    overflow: auto;
+    grid-column-gap: 35px;
+    grid-row-gap : 5px;
+    min-height: 370px;
+}
 
 #cArea-2{
     height: 30%;

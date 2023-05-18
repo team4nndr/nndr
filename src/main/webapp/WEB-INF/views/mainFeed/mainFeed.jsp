@@ -215,7 +215,7 @@
                     <c:if test="${not empty board.imageList}" >
                     <c:set var="start" value="0"/>
                     <c:if test="${fn:length(board.imageList)>start}" >
-                        <div class="img-box">
+                        <div class="img-box1">
                             <c:forEach var="i" begin="${start}" end="${fn:length(board.imageList)}">
                             <div class="boardImg1">
                             <c:set var="path" value="${board.imageList[i].imgPath}${board.imageList[i].imgReName}"/>
