@@ -202,7 +202,7 @@
                             <c:forEach items="${imgSet}" var="i">
                                 <div id="main-im3"><img src="${i.imgPath}${i.imgRename}" alt="로고" class="main-im"></div>
                             </c:forEach>
-                        <div class="something"></div>3
+                        <div class="something"></div>
                         </div>
                     </div>
                     <br>
@@ -220,9 +220,9 @@
                             <div class="something"></div>
                         </div>
                     </div>
-                    <hr>
                 </div> 
                 <div class="item item2-3">
+                <%-- ========================================================== --%>
                     <div class="centerArea-1"><!-- 나의 피드 올리기 -->
                         <section id="cArea-1">
                         <section>  

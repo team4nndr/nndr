@@ -45,6 +45,8 @@
 		<result property="imgPath" column="IMG_PATH" />
 		<result property="imgRename" column="IMG_RENAME" />
 		<result property="uploadDate" column="UPLOAD_DATE" />
+		<result property="boardNo" column="BOARD_NO" />
+		
 		
 	</resultMap>
 	<resultMap type="MemberHobby" id="memberHobby_rm">
@@ -92,7 +94,7 @@
 	
 	
 	<select id="imgSet" resultMap="memberInfo_rm">
-		SELECT IMG_PATH, IMG_RENAME, UPLOAD_DATE FROM "IMAGE" LEFT JOIN "BOARD" USING(BOARD_NO) LEFT JOIN "MEMBER" USING(MEMBER_NO) WHERE MEMBER_NO = #{memberNo} AND ROWNUM<![CDATA[<]]>=3
+		SELECT BOARD_NO, IMG_PATH, IMG_RENAME, UPLOAD_DATE FROM "IMAGE" LEFT JOIN "BOARD" USING(BOARD_NO) LEFT JOIN "MEMBER" USING(MEMBER_NO) WHERE MEMBER_NO = #{memberNo} AND ROWNUM<![CDATA[<]]>=3
 	</select>
 	
 	
