@@ -30,7 +30,7 @@
                     </div>
                     <div id="imgset">
                             <c:forEach items="${imgSet}" var="i">
-                                <div><img src="${i.imgPath}${i.imgRename}" alt="" class="im"></div>
+                                <div><img src="${i.imgPath}${i.imgRename}" alt="" class="im" data-boardNo = "${i.boardNo}"></div>
                             </c:forEach>
                         
                     </div>

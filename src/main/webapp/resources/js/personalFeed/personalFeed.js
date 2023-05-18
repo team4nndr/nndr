@@ -35,6 +35,7 @@ function infoMy(){
     const introArea = document.getElementById("input-intro");
     intro.style.display = "none";
     introArea.style.display = "block";
+    document.getElementById("intro-text").innerText = document.getElementById("intro-my").innerText
 }
 
 function infoCan(){
@@ -82,17 +83,15 @@ function jsSearch(target){
     document.getElementById("info-modal").style.display="block";
     document.getElementById("info-modali").style.display="block";
     document.getElementById("whatHobby").innerText=(target.innerText).substring(4);
-
     const infozz = document.getElementsByClassName("infom");
     const infoText = document.getElementsByClassName("infoText");
+
+    infoText.value = "";
     a=target.dataset.map;
     for(var i = 0; i<infozz.length; i++){
-        
         for(var j=0; j<infozz[i].childElementCount*2+1; j++){
             if(target.innerText==infozz[i].childNodes[j].innerText){
                 b.push(infoText[i].childNodes[j]);
-                console.log(i)
-                console.log(j)
             }
         }
     }
@@ -105,6 +104,7 @@ if (document.getElementById("info-confirm") != null) {
         const i = document.getElementById("hobby-input").value;
         
         inputInfo(i)
+        
     })
 }
 
@@ -121,6 +121,7 @@ function inputInfo(i){
     
     .catch (e => { console.log(e)}); // 예외 발생 시 처리할 내용을 작성
     b.forEach(element => {
+        console.log(element);
         element.innerText = i;
     });
     b=[];

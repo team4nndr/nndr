@@ -52,5 +52,6 @@ public class MemberInfo {
 	private String imgPath;
 	private String imgRename;
 	private String uploadDate;
+	private String boardNo;
 }
 
