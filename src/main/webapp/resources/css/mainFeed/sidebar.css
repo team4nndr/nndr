@@ -18,26 +18,35 @@
     padding : 10px;
     flex-shrink: 0;
     flex-grow: 0;
-    position: sticky;
+    position: fixed;
     top: 56px;
     z-index:80;
+
+    /* 사이드바 배경 유무 */
+    /* background-color: white;
+    box-shadow: 2px 0px 5px rgba(0, 0, 0, 0.08); */
 }
-#sidebarL > h1 {
+
+#sidebarR {
+    right: 0;
+}
+
+.sidebar > h1 {
     margin: 0px 0 0 5px;
 }
-#sidebarL > hr {
+.sidebar > hr {
     margin: 12px 0;
     height: 1px;
     border: 0;
     background-color: #CDCDCD;
 }
-#sidebarL > ul {
+.sidebar > ul {
     display: flex;
     flex-direction: column;
     list-style-type: none; /* li 태그 앞에 기호를 삭제 */
     width: 100%;
 }
-#sidebarL > ul > li > a {
+.sidebar > ul > li > a {
     margin: 0px 0;
     padding: 10px 10px;
     font-size: 1.1em;
@@ -47,20 +56,21 @@
     color: black;
     border-radius: 8px;
 }
-#sidebarL > ul > li > a:hover {
-    background-color: #eee;
+.sidebar > ul > li > a:hover {
+    background-color: #ddd;
     user-select: none;
 }
-#sidebarL li img {
+.sidebar li img {
     width: 35px;
     height: auto;
+    max-height: 50px;
     margin-right: 10px;
 }
-#sidebarL li span {
+.sidebar li span {
     position: absolute;
     left: 65px;
 }
 
 hr.sidebar-hr {
-    /* margin: 12px 12px; */
+    margin: 12px 12px;
 }

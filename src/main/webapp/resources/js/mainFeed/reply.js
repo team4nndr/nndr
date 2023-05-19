@@ -79,7 +79,7 @@ function printReplyList(boardNo) {
 
             bubble.append(name, content);
 
-            // 2-2. 추가기능(좋아요, 답글달기, 작성일)
+            // 2-2. 추가기능(좋아요, 답글, 수정, 삭제, 작성일)
             const footer = document.createElement('div');
             footer.classList.add('reply-footer');
 
@@ -89,13 +89,21 @@ function printReplyList(boardNo) {
 
             const rere = document.createElement('a');
             rere.classList.add('re-reply');
-            rere.innerText = '답글 달기';
+            rere.innerText = '답글';
+
+            const mod = document.createElement('a');
+            mod.classList.add('reply-mod');
+            mod.innerText = '수정';
+
+            const del = document.createElement('a');
+            del.classList.add('reply-del');
+            del.innerText = '삭제';
             
             const date = document.createElement('a');
             date.classList.add('date');
             date.innerText = re.replyDate;
 
-            footer.append(/*like, */rere, date);
+            footer.append(/*like, */rere, mod, del, date);
 
             rebody.append(bubble, footer);
             newRe.append(img, rebody);

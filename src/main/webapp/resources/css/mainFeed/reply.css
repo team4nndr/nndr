@@ -28,9 +28,12 @@
 .reply-content {
     font-size: 0.9rem;
 }
+
 /* 댓글 부가기능(좋아요, 답글달기, 날짜출력) */
 .reply-footer {
-    margin-bottom: 3px;
+    margin-bottom: 5px;
+    display: flex;
+    align-items: flex-start;
 }
 .reply-footer > a {
     text-decoration: none;
