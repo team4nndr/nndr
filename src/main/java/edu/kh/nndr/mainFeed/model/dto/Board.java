@@ -18,6 +18,7 @@ public class Board {
 	private String uploadDate;
 	private String contentLike;
 	private String delete;
+	private String updateDate;
 	
 	// 서브쿼리
 	private int memberNo;

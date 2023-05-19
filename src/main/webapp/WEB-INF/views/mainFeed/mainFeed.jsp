@@ -189,7 +189,8 @@
                                 
     
                             <!-- <%-- </fieldset> --%> -->
-    
+                                <%-- 기존 이미지가 있다가 삭제된 이미지의 순서 기록 --%>
+                                <input type="hidden" name="deleteList" value="">
     
                         </form>
     
@@ -233,7 +234,13 @@
                         
                         <c:if test="${board.memberNo eq loginMember.memberNo}" >
                         <div id="more">
-                        <button type="button" class="detail detailBtn" id="detailBtn"></button>
+                            <div class="detail detailBtn" id="detailBtn">
+                            <div class="feedContain hidden" id="feedHidden">
+                                <button type="submit" class="feedUpdate" id="feedUpdate" data="${board.boardNo}" >게시물 수정</button>
+                                <button type="submit" class="feedDelete" id="feedDelete" data="${board.boardNo}">게시물 삭제</button>
+                            </div>
+
+                            </div>
                         </div>
                         </c:if>
                         

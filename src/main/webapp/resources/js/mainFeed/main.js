@@ -162,6 +162,7 @@ const boardContent = document.querySelector("[name='boardText']");
 boardWriteFrm.addEventListener("submit", e=>{
     if(boardContent.value.trim().length==0){
     
+        
         alert("내용을 입력해주세요")
         boardContent.value="";
         boardContent.focus();
@@ -171,6 +172,68 @@ boardWriteFrm.addEventListener("submit", e=>{
 
 
 });
+
+// 게시글 더보기 버튼 
+
+const detailBtnList = document.querySelectorAll(".detailBtn");
+const feedHiddenList = document.querySelectorAll(".feedContain");
+
+
+detailBtnList.forEach(detailBtn => {
+    feedHiddenList.forEach(feedHidden=>{
+    
+        detailBtn.addEventListener("click", e => {
+            e.stopPropagation();
+            feedHidden.classList.toggle("hidden");
+        });
+
+        feedHidden.addEventListener("click", e => {
+            e.stopPropagation();
+        });
+    })
+
+
+
+})
+
+
+
+/* 
+detailBtn.addEventListener("click", e => {
+    e.stopPropagation();
+    feedHidden.classList.toggle("hidden");
+});
+feedHidden.addEventListener("click", e => {
+    e.stopPropagation();
+}); */
+
+
+
+
+
+// 게시물 삭제버튼을 누르면 삭제가 되게
+const feedDeleteList = document.querySelectorAll(".feedDelete");
+
+feedDeleteList.forEach(feedDelete => {
+
+    feedDelete.addEventListener("click", e =>{
+        if( confirm("정말 삭제하시겠습니까?")){
+            location.href="/mainFeed/delete?boardNo=" + e.currentTarget.getAttribute("data");
+        }
+    })
+
+
+})
+
+
+
+
+
+
+
+
+
+// feedUpdate버튼을 누른다면 수정버튼이 나올 수 있도록!
 
 
 

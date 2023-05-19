@@ -2,6 +2,7 @@ package edu.kh.nndr.mainFeed.model.dao;
 
 
 import java.util.List;
+import java.util.Map;
 
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -55,6 +56,42 @@ public class MainFeedDAO {
 		int result = sqlSession.insert("mainFeedMapper.insertImageList",uploadList);
 		
 		return result;
+	}
+
+	// 게시글 삭제
+	public int feedDelete(Board board) {
+		
+		return sqlSession.update("mainFeedMapper.feedDelete",board);
+	}
+
+	// 게시글 업데이트 
+	public int feedUpdate(Board board) {
+		
+		return sqlSession.update("mainFeedMapper.feedUpdate",board);
+	}
+
+	
+	
+	// 게시글 업데이트 이미지 삭제
+	public int imageDelete(Map<String, Object> deleteMap) {
+		
+		
+		return sqlSession.delete("mainFeedMapper.imageDelete",deleteMap);
+	}
+
+	
+	// 게시글 업데이트 이미지 수정
+	public int imageUpdate(Image img) {
+		
+		return sqlSession.update("mainFeedMapper.imageUpdate",img);
+	}
+
+	
+	
+	// 게시글 수정 (1개)이미지 삽입 
+	public int imgInsert(Image img) {
+		// TODO Auto-generated method stub
+		return sqlSession.insert("mainFeedMapper.imgInsert",img);
 	}
 	
 	

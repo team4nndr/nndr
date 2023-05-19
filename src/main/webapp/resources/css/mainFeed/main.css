@@ -694,8 +694,8 @@ flex-direction: column;
 
 /*  더보기 버튼  */
 .detail {
-    height: 36px;
-    width: 36px;
+    height: 40px;
+    width: 40px;
     border-radius: 50%;
     
     display:flex;
@@ -719,6 +719,57 @@ flex-direction: column;
     align-items: center;
     justify-content: center;
 }
+
+/* 더보기 버튼 안 게시글 수정 , 삭제  */
+.feedUpdate{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 165px;
+    height: 30px;
+    border-radius: 6px;
+    font-weight: bold;
+
+
+}
+.feedUpdate:hover {
+    background-color: lightgrey;
+    cursor: pointer;
+
+}
+.feedDelete{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 165px;
+    height: 30px;
+    border-radius: 6px;
+    font-weight: bold;
+
+}
+.feedDelete:hover{
+    background-color: lightgrey;
+    cursor: pointer;
+}
+
+.feedContain{
+    height: 200px;
+    position: absolute;
+    display: flex;
+    margin-top: 50px;
+    margin-right: 150px;
+    flex-direction: column;
+    align-content: wrap;
+
+}
+
+
+
+
+
+
+
+.hidden { display: none !important; }
 
 
 
