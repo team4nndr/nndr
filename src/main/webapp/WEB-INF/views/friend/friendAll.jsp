@@ -29,42 +29,33 @@
             <div id="searchFrBox"> <!-- 검색 기능-->
                 <label for="searchfr" id="lafrbel">
                     <span id="searchimg"> <img src="/resources/images/friend/KakaoTalk_20230420_151612862.png" alt=""></span>
-                    <input type="text" id="searchfr" placeholder="친구 검색">
+                    <input type="search"  name="query" id="searchfr"  autocomplete="off" placeholder="친구 검색"> <button class = "searchbtn"></button>
                 </label>
+                <div class = "frsearch searchList"></div>
             </div>
             <div class="hr2"> <!-- 줄 -->
             </div>
             <div id="friendRQBox">
-                <span id="friendRQ">친구 128명</span>
+                <span id="friendRQ">친구 ${friendCount}명</span>
             </div>
+            <c:forEach  var="allfriend" items="${friendListAll}">
             <div class="frtopdiv">
                 <img class="proimg" src="/resources/images/friend/143086968_2856368904622192_1959732218791162458_n.png" alt="">
                 <div class="frbox"> <!--이름 + 확인,삭제-->
-                    <div class="namecount"><!--이름, 함께 아는친구-->
-                        <span class="freindName">정용화</span>
+                    <div class="namecount"><!--이름-->
+                        <div class="friendAll">
+                        <span class="friendName">${allfriend.memberName}</span>
                         <span class="pulsnav"><img src="/resources/images/friend/free-icon-three-dots-6941941.png" alt="">
                             </span>
+                                </div>
                             <div class="frmenu"> 
-                                <div class="noProfile">정용화님의 프로필 차단</div>
-                                <div class="noFriend">정용화님과 친구 관계 끊기</div>
+                                <div class="noProfile">${allfriend.memberName}님의 프로필 차단</div>
+                                <div class="noFriend">${allfriend.memberName}님과 친구 관계 끊기</div>
                             </div>
                     </div>
                 </div>
             </div>
-            <div class="frtopdiv">
-                <img class="proimg" src="/resources/images/friend/143086968_2856368904622192_1959732218791162458_n.png" alt="">
-                <div class="frbox"> <!--이름 + 확인,삭제-->
-                    <div class="namecount"><!--이름, 함께 아는친구-->
-                        <span class="freindName">정용화</span>
-                        <span class="pulsnav"><img src="/resources/images/friend/free-icon-three-dots-6941941.png" alt="">
-                            </span>
-                            <div class="frmenu"> 
-                                <div class="noProfile">정용화님의 프로필 차단</div>
-                                <div class="noFriend">정용화님과 친구 관계 끊기</div>
-                            </div>
-                    </div>
-                </div>
-            </div>
+            </c:forEach>
         </div>
         <div id="mainfrbox"> <!--메인 피드-->
             <div id="mainbox">
