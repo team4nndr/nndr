@@ -20,7 +20,7 @@ public class Board {
 	private String delete;
 	
 	// 서브쿼리
-	private int memeberNo;
+	private int memberNo;
 	private int commentCount; // 댓글 수 
     private int likeCount;
     private String memberName;
