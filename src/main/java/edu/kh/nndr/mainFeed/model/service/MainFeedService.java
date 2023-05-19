@@ -31,6 +31,15 @@ public interface MainFeedService {
 			throws IllegalStateException, IOException;
 
 
+
+	int feedDelete(Board board);
+
+
+
+	int feedUpdate(Board board, List<MultipartFile> images, String webPath, String filePath, String deleteList)
+			throws IllegalStateException, IOException;
+
+
 	
 
 

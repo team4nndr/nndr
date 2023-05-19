@@ -47,6 +47,16 @@ public class MainFeedController {
 	}
 	
 	
+	/** 게시글작성
+	 * @param board
+	 * @param loginMember
+	 * @param images
+	 * @param ra
+	 * @param session
+	 * @return
+	 * @throws IllegalStateException
+	 * @throws IOException
+	 */
 	@PostMapping("/mainFeed")
 	public String feedInsert(Board board
 			, @SessionAttribute("loginMember") Member loginMember
@@ -79,6 +89,69 @@ public class MainFeedController {
 		
 		return "redirect:/mainFeed";
 	}
+	
+	
+	//  게시글 삭제하기!
+	@GetMapping("/mainFeed/delete")
+	public String feedDelete(Board board
+			, @SessionAttribute("loginMember") Member loginMember
+			, RedirectAttributes ra
+			,HttpSession session){
+		
+			board.setMemberNo(loginMember.getMemberNo());
+		
+			int result = service.feedDelete(board);
+		
+			String msg = null;
+			
+			if(result>0) {
+				msg = "게시글이 삭제되었습니다";
+			
+				
+			}else {
+				msg = "게시글 삭제 실패....";
+
+			}
+			ra.addFlashAttribute("message",msg);
+			
+		
+		return "redirect:/mainFeed";
+	}
+	
+	// 게시글 수정하기 !!
+	@PostMapping("/mainFeed/update")
+	public String feedUpdate(Board board
+			, @SessionAttribute("loginMember") Member loginMember	
+		, @RequestParam(value="deleteList",required=false) String deleteList
+		, @RequestParam(value="images",required=false) List<MultipartFile> images
+		, HttpSession session
+		, RedirectAttributes ra) throws IllegalStateException, IOException {
+		
+		
+		board.setMemberNo(loginMember.getMemberNo());
+		
+		String webPath = "/resources/images/mainFeed/";
+		String filePath = session.getServletContext().getRealPath(webPath);
+		
+		int result = service.feedUpdate(board,images,webPath,filePath,deleteList);
+		
+		String message = null;
+		
+		if(result>0) {
+			
+			message = "게시글이 수정되었습니다";
+		}else {
+			message = "게시글 수정 실패..............";
+		}
+		
+		
+		return "redirect:/mainFeed";
+		
+	}
+	
+	
+	
+	
 	
 	
 }

@@ -12,6 +12,7 @@
 		<result property="uploadDate" column="UPLOAD_DATE" />
 		<result property="contentLike" column="CONTENT_LIKE" />
 		<result property="delete" column="DELETE" />
+		<result property="updateDate" column="UPDATE_DATE" />
 		<result property="disableDate" column="DISABLE_DATE" />
 		<result property="memberName" column="MEMBER_NAME" />
 	
@@ -53,7 +54,7 @@ SELECT BOARD_NO, MEMBER_NAME,BOARD_TEXT,MEMBER_NO,
 FROM BOARD b 
 JOIN MEMBER USING(MEMBER_NO)
 WHERE "DELETE" = 'N'
-ORDER BY UPLOAD_DATE DESC
+ORDER BY BOARD_NO DESC
 	</select>
 	
 	<select id="selectImageList" resultMap="image_rm">
@@ -95,7 +96,52 @@ FROM DUAL
 	
 	</insert>
 	
+	<!-- 게시글 삭제 -->
+		<update id="feedDelete">
+			UPDATE "BOARD" SET
+			"DELETE" = 'Y'
+			WHERE MEMBER_NO =#{memberNo}
+			AND BOARD_NO =#{boardNo}
 	
+		</update>
+		
+		
+		<!-- 게시글 수정  -->
+	<update id="feedUpdate">
+		UPDATE "BOARD" SET
+		BOARD_TEXT = #{boardText},
+		UPDATE_DATE = SYSDATE 
+		WHERE BOARD_NO = #{boardNo}
+		AND BOARD_NO = #{boardNo}
+	</update>
+		
+		<!-- 게시글 수정 중 이미지삭제 -->
+		
+	<delete id="imageDelete">
+		DELETE FROM "IMAGE"
+		WHERE BOARD_NO = #{boardNo}
+		AND IMG_ORDER IN(${deleteList)
+	</delete>
+	
+	<!-- 게시글 이미지 수정   -->
+		<update id="imageUpdate">
+			UPDATE "IMAGE" SET
+			IMG_PATH = #{imgPath},
+			IMG_ORIGINAL = #{imgOriginal},
+			IMG_RENAME = #{imgReName}
+			WHERE BOARD_NO = #{boardNo}
+			AND IMG_ORDER = #{imageOrder}
+		</update>
+		
+	<!-- 게시글 이미지 하나   -->
+	
+		<insert id="imgInsert">
+			INSERT INTO "IMAGE"
+			VALUES(SEQ_IMG_NO.NEXTVAL,#{imagePath},#{imgReName},
+			#{imgOriginal},#{imgOrder},#{boardNo})
+			
+		</insert>
+			
 	
 	
 </mapper>
