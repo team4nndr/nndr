@@ -14,6 +14,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestHeader;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttribute;
 import org.springframework.web.bind.annotation.SessionAttributes;
@@ -54,4 +55,30 @@ public class PersonalFeedHeadController {
 		int result = service.personalCan(delMap);
 		return "";
 	}
+
+	@GetMapping(value = "/cvCho", produces = "application/text; charset=UTF-8")
+	@ResponseBody
+	public String cvCho(@RequestParam Map<String, Object> cvCho) { // 쿼리 스트링에 담겨있는 파라미터
+		System.out.println("ASDSS");
+		System.out.println(cvCho);
+		int result = service.backImg(cvCho);
+		return "";
+	}
+	
+	@GetMapping(value = "/delback", produces = "application/text; charset=UTF-8")
+	@ResponseBody
+	public String delback(@RequestParam int memberNo) { // 쿼리 스트링에 담겨있는 파라미터
+		int result = service.delBackImg(memberNo);
+		return "";
+	}
+	
+	@GetMapping(value = "/pcvCho", produces = "application/text; charset=UTF-8")
+	@ResponseBody
+	public String pcvCho(@RequestParam Map<String, Object> pcvCho) { // 쿼리 스트링에 담겨있는 파라미터
+		System.out.println("ASDSS");
+		System.out.println(pcvCho);
+		int result = service.proImg(pcvCho);
+		return "";
+	}
+	
 }

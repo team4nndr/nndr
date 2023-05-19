@@ -48,20 +48,11 @@ if (document.getElementById("profile-modal") != null) {
     document.getElementById("profile-modal").addEventListener("click", () => {
         document.getElementById("profile-modal").style.display="none";
         document.getElementById("profile-modali").style.display="none";
+        document.getElementById("profile-asd").style.left = "0";
+        pcurrentIdx=0;
     })
 }
-if (document.getElementById("profile-cancel") != null) {
-    document.getElementById("profile-cancel").addEventListener("click", () => {
-        document.getElementById("profile-modal").style.display="none";
-        document.getElementById("profile-modali").style.display="none";
-    })
-}
-if (document.getElementById("profile-confirm") != null) {
-    document.getElementById("profile-confirm").addEventListener("click", () => {
-        document.getElementById("profile-modal").style.display="none";
-        document.getElementById("profile-modali").style.display="none";
-    })
-}
+
 
 
    // 슬라이드
@@ -104,8 +95,170 @@ if (pnext != null) {
         다음 버튼 눌러도 아무런 반응 없게 하기 위해
         currentIdx !==slideCount - 1 일때만 
         moveSlide 함수 불러옴 */
-        if (pcurrentIdx < pslideCount-2) {
+        if (pcurrentIdx < pslideCount-3) {
             pmoveSlide(pcurrentIdx + 1);
         }
     });
 }
+
+
+
+
+
+   // 슬라이드
+
+if (document.getElementById("choback") != null) {
+    document.getElementById("choback").addEventListener('click', () => {
+        document.getElementById("back-modal").style.display="block";
+        document.getElementById("back-modali").style.display="block";
+    })
+}
+
+if (document.getElementById("back-modal") != null) {
+    document.getElementById("back-modal").addEventListener("click", () => {
+        document.getElementById("back-modal").style.display="none";
+        document.getElementById("back-modali").style.display="none";
+        document.getElementById("profile-asd").style.left = "0";
+        bcurrentIdx=0;
+})
+}
+   var bslides = document.getElementById('back-asd'); //전체 슬라이드 컨테이너
+   var bslideImg = document.getElementsByClassName('backi'); //모든 슬라이드들
+   var bcurrentIdx = 0; //현재 슬라이드 index
+   var bslideCount = bslideImg.length; // 슬라이드 개수
+   var bprev = document.querySelector('.backprev'); //이전 버튼
+   var bnext = document.querySelector('.backnext'); //다음 버튼
+   var bslideWidth = 202; //한개의 슬라이드 넓이
+   var bslideMargin = 20; //슬라이드간의 margin 값
+
+function bmoveSlide(bnum) {
+    console.log(bcurrentIdx)
+    console.log(bslideCount)
+    console.log(bnum)
+    let bslideNum = 0;
+    bslideNum  = -bnum * 285;
+    bslides.style.left = bslideNum+ 'px';
+    bcurrentIdx = bnum;
+}
+if(bprev !=null){
+    bprev.addEventListener('click', function () {
+        if (bcurrentIdx > 0) {
+            bmoveSlide(bcurrentIdx - 1);
+        }
+    })
+}
+
+;
+if (bnext != null) {
+    bnext.addEventListener('click', function () {
+        if (bcurrentIdx < bslideCount-3) {
+            bmoveSlide(bcurrentIdx + 1);
+
+        }
+    });
+}
+
+// 배경화면 수정
+Array.from( document.getElementsByClassName("backi")).forEach((target) => target.addEventListener("click", function(){ 
+    console.log(target.dataset.boardno)
+    console.log(target)
+    cvCho(target); 
+    
+    })
+)
+
+function cvCho(target){		
+    // const cvCho = new Map([["boardNo", target.dataset.memberno],["imgPath", target.dataset.imgpath],["imgRename", target.dataset.imgrename]]);
+    const memberNo = target.dataset.memberno;
+    const imgPath = target.dataset.imgpath
+    const imgRename = target.dataset.imgrename
+
+
+   console.log(cvCho)
+    fetch("/cvCho?memberNo=" + memberNo + "&imgPath=" + imgPath + "&imgRename=" + imgRename) 
+    .then(response => response.text()) 
+    .then(() => {
+    }) 
+    .catch (e => { console.log(e)});
+    document.getElementById("backLogo").src = imgPath+imgRename;
+    document.getElementById("cv-set").style.display = "none";
+    document.getElementById("back-modal").style.display="none";
+    document.getElementById("back-modali").style.display="none";
+};   
+
+
+
+
+document.getElementById("uploadback").addEventListener("click", () => {
+    const personalCanFriend = new Array(perAddFriend.dataset.seno, perAddFriend.dataset.reno);
+    fetch("/personalCanFriend?personalCanFriend="+personalCanFriend)  
+    .then(response => response.text()) 
+    .then(() => {
+    }) 
+    .catch (e => { console.log(e)}); 
+    perAddFriend.innerText ="친구 추가";
+    perAddFriend.classList.remove('friendAdd');
+    return;
+})
+document.getElementById("delback").addEventListener("click", () => {
+    const memberNo = document.getElementById("delback").dataset.no; 
+    fetch("/delback?memberNo="+memberNo)  
+    .then(response => response.text()) 
+    .then(() => {}) 
+    .catch (e => { console.log(e)}); 
+    document.getElementById("backLogo").src = "/resources/images/topMenu/페이지 시작화면.gif";
+    document.getElementById("cv-set").style.display = "none";
+    console.log("asd");
+    return;
+})
+
+
+
+document.getElementById("backPlus").addEventListener("click", () => {
+    if(document.getElementById("cv-set").style.display == "none") {
+        document.getElementById("cv-set").style.display = "block";
+        document.getElementById("all").style.display = "block";
+        return
+    }
+    if(document.getElementById("cv-set").style.display == "") {
+        document.getElementById("cv-set").style.display = "block";
+        document.getElementById("all").style.display = "block";
+        
+        return
+    }
+})
+
+document.getElementById("all").addEventListener("click", () =>{
+    document.getElementById("cv-set").style.display = "none";
+    document.getElementById("all").style.display = "none";
+})
+    
+//프로필 변경
+// 배경화면 수정
+Array.from( document.getElementsByClassName("profi")).forEach((target) => target.addEventListener("click", function(){ 
+    console.log(target.dataset.boardno)
+    console.log(target)
+    pcvCho(target); 
+    })
+)
+
+function pcvCho(target){		
+    // const cvCho = new Map([["boardNo", target.dataset.memberno],["imgPath", target.dataset.imgpath],["imgRename", target.dataset.imgrename]]);
+    const memberNo = target.dataset.memberno;
+    const imgPath = target.dataset.imgpath
+    const imgRename = target.dataset.imgrename
+
+
+   console.log(pcvCho)
+    fetch("/pcvCho?memberNo=" + memberNo + "&imgPath=" + imgPath + "&imgRename=" + imgRename) 
+    .then(response => response.text()) 
+    .then(() => {
+    }) 
+    .catch (e => { console.log(e)});
+    document.getElementById("profile-modal").style.display="none";
+    document.getElementById("profile-modali").style.display="none";
+
+    
+    document.getElementById("homeLogo").src = imgPath+imgRename;
+    document.getElementById("cv-set").style.display = "none";
+};   

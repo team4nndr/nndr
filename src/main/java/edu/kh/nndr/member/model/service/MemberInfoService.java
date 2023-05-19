@@ -34,6 +34,12 @@ public interface MemberInfoService {
 
 	PersonalFriend friendChecking(Map<String, Object> friendche);
 
+	int backImg(Map<String, Object> cvCho);
+
+	int delBackImg(int memberNo);
+
+	int proImg(Map<String, Object> pcvCho);
+
 
 
 

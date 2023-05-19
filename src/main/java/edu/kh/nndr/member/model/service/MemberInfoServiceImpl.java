@@ -101,6 +101,24 @@ public class MemberInfoServiceImpl implements MemberInfoService{
 		return dao.friendChecking(friendche);
 	}
 
+	@Transactional
+	@Override
+	public int backImg(Map<String, Object> cvCho) {
+		return dao.backImg(cvCho);
+	}
+
+	@Transactional
+	@Override
+	public int delBackImg(int memberNo) {
+		return dao.delBackImg(memberNo);
+	}
+
+	@Transactional
+	@Override
+	public int proImg(Map<String, Object> pcvCho) {
+		return dao.proImg(pcvCho);
+	}
+
 	
 	
 	

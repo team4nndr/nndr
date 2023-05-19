@@ -92,6 +92,21 @@ public class MemberInfoDAO {
 	}
 
 
+	public int backImg(Map<String, Object> cvCho) {
+		return sqlSession.update("personalMapper.backImg", cvCho);
+	}
+
+
+	public int delBackImg(int memberNo) {
+		return sqlSession.update("personalMapper.delBackImg", memberNo);
+	}
+
+
+	public int proImg(Map<String, Object> pcvCho) {
+		return sqlSession.update("personalMapper.proImg", pcvCho);
+	}
+
+
 
 
 

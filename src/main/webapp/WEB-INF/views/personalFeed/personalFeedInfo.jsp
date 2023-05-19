@@ -11,6 +11,7 @@
     <link rel="shortcut icon" href="#" />
 </head>
 <body>
+<div id="all"></div>
 
 	<jsp:include page="/WEB-INF/views/topMenu/header.jsp" />
 	<jsp:include page="/WEB-INF/views/personalFeed/personalFeedHeader.jsp" /> 
