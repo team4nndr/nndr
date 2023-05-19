@@ -35,7 +35,7 @@ public class SearchController {
 	// 일치하는 친구 이름 목록 조회(검색)
     @GetMapping(value="/mainFeed/friendNameList", produces="application/json; charset=UTF-8")
     @ResponseBody
-    public List<Friend> friendNameList(@RequestParam("fName") String fName, @SessionAttribute("loginMember") Friend loginMember){
+    public List<Friend> friendNameList(@RequestParam("fName") String fName, @SessionAttribute("loginMember") Member loginMember){
     	Map<String, Object> map = new HashMap<>();
     	map.put("memberNo", loginMember.getMemberNo());
     	map.put("fName", fName);

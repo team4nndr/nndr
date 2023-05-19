@@ -35,7 +35,7 @@ emailCheck.addEventListener("input", ()=>{
     if(emailCheck.value.trim().length == 0){
         emailCheck.value = ""; // 띄어쓰기 입력 막기
 
-        emailCheck.style.backgroundColor ="red";
+        emailCheck.style.backgroundColor ="#e4cac2";
 
         checkObj.emailCheck = false
         return;
@@ -45,15 +45,15 @@ emailCheck.addEventListener("input", ()=>{
 
     if(regEx.test(emailCheck.value)){
 
-        fetch('/main/emailDuplication?emailDup='+emailCheck.value)
+        fetch('/main/emailDuplication?emailDup='+ emailCheck.value)
         .then(response => response.text())   
         .then(result => {
             
             if(result == 0){
-                emailCheck.style.backgroundColor = "red";
+                emailCheck.style.backgroundColor = "#e4cac2";
                 checkObj.emailCheck = true;
             }else{
-                emailCheck.style.backgroundColor = "lightblue";
+                emailCheck.style.backgroundColor = "rgba(142, 179, 234, 0.617)";
                 checkObj.emailCheck = false;
             }
 
@@ -61,8 +61,8 @@ emailCheck.addEventListener("input", ()=>{
         .catch(err =>console.log(err));
 
     } else{
-        emailCheck.style.backgroundColor = "red";
-        checkObj.emailCheck = false
+        emailCheck.style.backgroundColor = "#e4cac2";
+        checkObj.emailCheck = false;
     }
 
 });
@@ -155,12 +155,12 @@ checkAuthKeyBtn.addEventListener("click", function(){
         .then(result => {
             if(result > 0){
                 clearInterval(authTimer); // 시간가는거 멈추는 코드
-                checkAuthKeyBtn.style.backgroundColor = "lightblue";
+                checkAuthKeyBtn.style.backgroundColor = "rgba(142, 179, 234, 0.617)";
                 checkObj.authKey = true; // 인증되면
 
             } else{
                 alert("인증번호가 일치하지 않습니다.")
-                checkAuthKeyBtn.style.backgroundColor = "red";
+                checkAuthKeyBtn.style.backgroundColor = "#e4cac2";
                 checkObj.authKey = false;
             }
         })

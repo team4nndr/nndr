@@ -26,12 +26,13 @@
 		WHERE HASHTAG_KEYWORD LIKE '${hashtagKeyword}%'
 	</select>
 
-	<select id="freindNameList" resultMap="friend_rm">
-		SELECT MEMBER_NAME, MEMBER_NO
-		FROM MEMBER JOIN FRIEND ON MEMBER.MEMBER_NO = FRIEND.FRIEND_SENDER
-		WHERE FRIEND_FL = 'N'
-		AND MEMBER_NO != ${memberNo}
-		AND FRIEND_RECIVER = ${friendSender}
+	<select id="friendNameList" resultMap="friend_rm">
+		SELECT MEMBER_NAME 
+		FROM FRIEND JOIN MEMBER ON FRIEND.FRIEND_SENDER = MEMBER.MEMBER_NO 
+		WHERE FRIEND_FL = 'Y' 
+		AND MEMBER_NO != #{memberNo}
+		AND MEMBER_NAME LIKE '%${fName}%'
+		ORDER BY MEMBER_NAME DESC
 	</select>
 
 
