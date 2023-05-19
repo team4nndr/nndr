@@ -19,16 +19,21 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import edu.kh.nndr.mainFeed.model.dto.Board;
+import edu.kh.nndr.mainFeed.model.dto.Reply;
 import edu.kh.nndr.mainFeed.model.service.MainFeedService;
+import edu.kh.nndr.mainFeed.model.service.ReplyService;
 import edu.kh.nndr.member.model.dto.Member;
 
 import edu.kh.nndr.member.model.dto.Member;
-@SessionAttributes("{loginMember}")
+
 @Controller
+@SessionAttributes("{loginMember}")
 public class MainFeedController {
 	
 	@Autowired
 	private MainFeedService service;
+	@Autowired
+	private ReplyService replyService;
 
 	/** 게시글확인
 	 * @param loginMember
@@ -40,13 +45,17 @@ public class MainFeedController {
 		
 		List<Board> boardList = service.feedList();
 		
-		model.addAttribute("boardList",boardList);
+		// 조회한 게시글에 달린 댓글 조회
+		for(Board board : boardList) {
+			List<Reply> list = replyService.replyList(board.getBoardNo());
+			board.setReplyList(list);
+		}
 		
-		return "mainFeed/mainFeed";
+		model.addAttribute("boardList", boardList);
 		
+		return "mainFeed/mainFeed";	
 	}
-	
-	
+
 	/** 게시글작성
 	 * @param board
 	 * @param loginMember
@@ -142,16 +151,8 @@ public class MainFeedController {
 			message = "게시글이 수정되었습니다";
 		}else {
 			message = "게시글 수정 실패..............";
-		}
-		
-		
-		return "redirect:/mainFeed";
-		
+    }
+    
+		return "redirect:/mainFeed";	
 	}
-	
-	
-	
-	
-	
-	
 }

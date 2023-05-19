@@ -6,8 +6,8 @@
 		<!-- DB의 기본 키(복합키면 여러 개 작성) -->
 		<id property="memberNo" column="MEMBER_NO" />
 		<id property="boardNo" column="BOARD_NO"/>
+		
 		<!-- DB의 일반 컬럼들 -->
-		<result property="boardNo" column="BOARD_NO" />
 		<result property="boardText" column="BOARD_TEXT" />
 		<result property="uploadDate" column="UPLOAD_DATE" />
 		<result property="contentLike" column="CONTENT_LIKE" />
@@ -16,28 +16,24 @@
 		<result property="disableDate" column="DISABLE_DATE" />
 		<result property="memberName" column="MEMBER_NAME" />
 	
-			<collection property="imageList" select="selectImageList"
-					column="BOARD_NO"
-					javaType="java.util.ArrayList" 
-					ofType="Image"/>
-		
-	
+		<collection property="imageList" select="selectImageList"
+				column="BOARD_NO"
+				javaType="java.util.ArrayList" 
+				ofType="Image"/>
 	</resultMap>
 	
 	
-		<!-- BoardImage resultMap -->
-		<resultMap type="Image" id="image_rm">
-			<id property="imgNo" column="IMG_NO"/>
-			<result property="imgPath" column="IMG_PATH"/>
-			<result property="imgReName" column="IMG_RENAME"/>
-			<result property="imgOriginal" column="IMG_ORIGINAL"/>
-			<result property="imgOrder" column="IMG_ORDER"/>
-			<result property="boardNo" column="BOARD_NO"/>
-		
-		</resultMap>
+	<!-- BoardImage resultMap -->
+	<resultMap type="Image" id="image_rm">
+		<id property="imgNo" column="IMG_NO"/>
+		<result property="imgPath" column="IMG_PATH"/>
+		<result property="imgReName" column="IMG_RENAME"/>
+		<result property="imgOriginal" column="IMG_ORIGINAL"/>
+		<result property="imgOrder" column="IMG_ORDER"/>
+		<result property="boardNo" column="BOARD_NO"/>
+	</resultMap>
 	
 	<!-- 게시글 확인 -->
-	
 	<select id="feedList" resultMap="board_rm">
 SELECT BOARD_NO, MEMBER_NAME,BOARD_TEXT,MEMBER_NO,
 	<![CDATA[
@@ -141,7 +137,4 @@ FROM DUAL
 			#{imgOriginal},#{imgOrder},#{boardNo})
 			
 		</insert>
-			
-	
-	
 </mapper>

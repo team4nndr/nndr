@@ -8,339 +8,46 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>main</title>
+    <link rel="stylesheet" href="/resources/css/mainFeed/sidebar.css">
     <link rel="stylesheet" href="/resources/css/mainFeed/main.css">
+    <link rel="stylesheet" href="/resources/css/mainFeed/reply.css">
 
 </head>
 <body>
-<main>
-    <!-- 헤더는 아마 상단바가 들어갈거임 이거는 
-    fixed나 sticky를 사용해서 고정시켜주는게 좋을 것 같음 -->
-        <jsp:include page="/WEB-INF/views/topMenu/header.jsp"/>
+    <!-- 상단바 -->
+    <jsp:include page="/WEB-INF/views/topMenu/header.jsp"/>
 
-        <!-- 중심 내용이 들어갈 것들  -->
-        <div class="mainView">
-            <div class="leftArea">
-                <div class="leftArea-1"> 
-                    <ul>
-                        <li>
-                        <a href="/mainFeed" class="imgLink">
-                        <img src="/resources/images/mainFeed/mainHome.png" alt="home" id="mainHome">
-                        </a> <a href="/mainFeed" class="aLink">홈</a>
-                        </li>
+    <main id="mainFeedGridContainer">
 
-                        <li>
-                        <a href="/personalFeed/${loginMember.memberNo}" class="imgLink">
-                        <img src="/resources/images/mainFeed/mainMy.png" alt="myHome" id="myHome">
-                        </a><a href="/personalFeed/${loginMember.memberNo}" class="aLink">나의피드</a>
-                        </li>
+        <%-- Grid 1 : 사이드바(왼쪽) --%>
+        <jsp:include page="/WEB-INF/views/mainFeed/sidebarL.jsp"/>
+        
+        <!-- Grid 2 : 중심 내용  -->
+        <section class="mainView">
 
-                        <li>
-                        <a href="#" class="imgLink">
-                        <img src="/resources/images/mainFeed/mainFriends.png" alt="friends" id="friend">
-                        </a>
-                        <a href="/friend" class="aLink">친구</a></li>
-                        
-                        <li>
-                        <a href="#" class="imgLink">
-                        <img src="/resources/images/mainFeed/mainLike.png" alt="like" id="likeLogo">
-                        </a>
-                        <a href="#" class="aLink">내가 저장한 피드</a></li>
+            <%-- 피드 작성 --%>
+            <div id="newFeed">
+                <img src="/resources/images/common/user-default.png">
+                <p id="newFeedBtn">${loginMember.memberName}님, 무슨 생각을 하고 계신가요?</p>
 
-
-                        <li>
-                        <a href="" class="imgLink">
-                        <img src="/resources/images/mainFeed/mainSearch.png" alt="search" id="searchLogo" >
-                        </a>
-                        <a href="https://www.naver.com/" target="_blank"class="aLink">초록검색창</a></li>
-                    </ul>
-                </div>
-
+                <%-- 피드 작성 모달 --%>
+                <jsp:include page="/WEB-INF/views/mainFeed/newFeed.jsp"/>
             </div>
+                      
+            <%-- 피드 목록 --%>
+            <jsp:include page="/WEB-INF/views/mainFeed/feedList.jsp"/>
 
-            <div class="centerArea"><!--  가운데를 각 needs에 맞춰서 섹터를 나누는게 좋을 것 같아 -->
-                <div class="centerArea-1"><!-- 나의 피드 올리기 -->
-                    <section id="cArea-1">
-                        
-                        <section>  <a href="/personalFeed/${loginMember.memberNo}">
-                            <img src="/resources/images/mainFeed/mainMy.png" alt="로고" id="myLogo">
-                        </a>
-                    </section>
+        </section>
 
-                        <section>
-                            <form action="mainFeed" method="post" id="boardWriteFrm" enctype="multipart/form-data">
-                            <%-- <fieldset>  --%>
-                                <!-- <input type="text" name="query" id="query" 
-                                placeholder="무슨 생각을 하고 계신가요?" autocomplete="off">  -->
-                                <div>
-                                <span id="think">${loginMember.memberName} 님은 무슨생각을 하고 계신가요?</span>    
-                                </div>
-                                <%-- 모달 --%>
-                                <div id="myContent"></div> 
-                                <div id="myContent-modal">
-                                
-                                <section id="modalTop">
-                                <span class="title">게시물 만들기</span>
+        <%-- Grid 3 : 사이드바(오른쪽) --%>
+        <jsp:include page="/WEB-INF/views/mainFeed/sidebarR.jsp"/>
 
-                                
-                                <button type="button" class="close cancelBtn" id="cancelBtn"></button>
-                                
+    </main>
 
-                                </section>
-
-
-                                <div>
-                                <section id="modal-my1">
-                                    <a href="/personalFeed/${loginMember.memberNo}">
-                                    <img src="/resources/images/mainFeed/mainMy.png" alt="로고" id="myLogo">
-                                    </a>
-                                </section>
-
-
-
-                                <section id="modal-my2"> 
-
-                                <section>
-                                <span><a href="/personalFeed/${loginMember.memberNo}" class="change">${loginMember.memberName}</a></span>
-                                </section>
-
-
-                                <section>
-                                <li><!-- 없애야해 -->
-                                    <a href="#" class="change">현재 시간</a>
-                                </li> 
-                                </section>
-
-
-                                </section>
-                                </div>
-
-
-
-
-                                <section id="modalContent">
-                                <textarea placeholder="${loginMember.memberName}님은 무슨 생각을 하고 계신가요?"
-                                name="boardText"></textarea>
-                                </section>
-                                
-                                <section id="modalImg">
-                                <h3>사진</h3>
-                                <div class="img-box" id="imgBox1">
-                                    <div class="boardImg" id="num">
-                                        <label for="img1">
-                                            <img class="preview" src="">
-                                        </label>
-                                        <input type="file" name="images" class="inputImage" id="img1" accept="image/*">
-                                        <span class="delete-image">&times;</span>
-                                </div>
-
-                                    <div class="boardImg" id="num">
-                                        <label for="img2">
-                                            <img class="preview" src="">
-                                        </label>
-                                        <input type="file" name="images" class="inputImage" id="img2" accept="image/*">
-                                        <span class="delete-image">&times;</span>
-                                </div>
-
-                                    <div class="boardImg" id="num">
-                                        <label for="img3">
-                                            <img class="preview" src="">
-                                        </label>
-                                        <input type="file" name="images" class="inputImage" id="img3" accept="image/*">
-                                        <span class="delete-image">&times;</span>
-                                </div>
-
-                                    <div class="boardImg" id="num">
-                                        <label for="img4">
-                                            <img class="preview" src="">
-                                        </label>
-                                        <input type="file" name="images" class="inputImage" id="img4" accept="image/*">
-                                        <span class="delete-image">&times;</span>
-                                </div>
-
-                                    <div class="boardImg" id="num">
-                                        <label for="img5">
-                                            <img class="preview" src="">
-                                        </label>
-                                        <input type="file" name="images" class="inputImage" id="img5" accept="image/*">
-                                        <span class="delete-image">&times;</span>
-                                </div>
-                                <%-- <button id=plusBtn><img src="/resources/images/mainFeed/plusLogo.png" id="plusLogo" ></button> --%>
-
-                                
-
-                                
-
-
-
-                                
-                                
-                            </section>
-                            
-                            <section class="modalBot">
-                                <button type="submit" id="submitBtn">게시</button>
-
-                            </section>
-
-
-
-
-                                
-                                    
-                                
+    <jsp:include page="/WEB-INF/views/common/footer.jsp"/>
     
-                            <!-- <%-- </fieldset> --%> -->
-                                <%-- 기존 이미지가 있다가 삭제된 이미지의 순서 기록 --%>
-                                <input type="hidden" name="deleteList" value="">
-    
-                        </form>
-    
-    </section>
-
-                    </section>
-                    
-                    <section id="cArea-2">                  
-                    <ul>
-                        
-                        <li><button id="imgBtn">사진/동영상</button></li>
-                        <li><button >기분/활동</button></li>
-                    </ul>
-                    </section>
-
-                    
-                </div>
-                <c:forEach items="${boardList}" var="board">
-                <div class="centerArea-2">
-                    <section > <!-- 나의 게시물 상단  -->
-                        <section id="cTopArea1"> <a href="#">
-                            <img src="/resources/images/mainFeed/mainMy.png" alt="로고" id="myLogo">
-                        </a>
-
-                        </section> <!-- 상단의 이미지 -->
-                        
-                        <section id="cTopArea2">
-                            <section >
-                                <span><a href="#" class="change">${board.memberName}</a></span>
-                            </section>
-
-                            <section>
-                                <li>
-                                    <a href="#" class="change">${board.uploadDate}</a>
-                                </li> 
-
-                            </section>
-
-
-                        </section> <!-- 상단의 이름 and 시간  -->
-                        
-                        <c:if test="${board.memberNo eq loginMember.memberNo}" >
-                        <div id="more">
-                            <div class="detail detailBtn" id="detailBtn">
-                            <div class="feedContain hidden" id="feedHidden">
-                                <button type="submit" class="feedUpdate" id="feedUpdate" data="${board.boardNo}" >게시물 수정</button>
-                                <button type="submit" class="feedDelete" id="feedDelete" data="${board.boardNo}">게시물 삭제</button>
-                            </div>
-
-                            </div>
-                        </div>
-                        </c:if>
-                        
-                        
-                        
-                        
-
-                    </section>
-                    
-                    <!--  나의게시물 중간  -->
-                    <div class="feedContent">
-                    <section>${board.boardText}</section>
-                        <div class="img-box1">
-                    
-                    <%-- 이미지가 있다면 --%>
-                    <c:if test="${not empty board.imageList}" >
-                    <c:set var="start" value="0"/>
-                    <c:if test="${fn:length(board.imageList)>start}" >
-                            <c:forEach var="i" begin="${start}" end="${fn:length(board.imageList)}">
-                            <div class="boardImg1">
-                            <c:set var="path" value="${board.imageList[i].imgPath}${board.imageList[i].imgReName}"/>
-                                <img src="${path}">
-                                                
-                            </div>
-                            </c:forEach>
-
-
-
-                    </c:if>
-                    </c:if>
-                        </div>
-
-
-                    </div>
-                    <!--  나의 게시물 좋아요 등등등 -->
-                    <section id="like">
-
-                        <ul>
-                            <li><a href="#"><img src="/resources/images/mainFeed/mainLike.png" alt="like" id="likeLogo-1"> 좋아요</a></li>
-                            <li><a href="#reply"><img src="/resources/images/mainFeed/mainReply.png" alt="reply" id="replyLogo"> 댓글 달기</a></li>
-                            <li><a href="#"><img src="/resources/images/mainFeed/mainNext.png" alt="share" id="shareLogo"> 공유하기</a></li>
-                        </ul>
-                        
-                    </section>
-
-
-                    <!-- 댓글 작성칸  -->
-                    <section id="cBot">
-
-                        <section>  <a href="#">
-                            <img src="/resources/images/mainFeed/mainMy.png" alt="로고" id="myLogo">
-                        </a>
-                        </section>
-
-
-                        <section>
-                            <input type="text" name="reply" id="reply" 
-                            placeholder="댓글을 입력하세요....." autocomplete="off"> 
-
-                        </section>
-                    </section>
-
-                </div>
-                </c:forEach>
-                
-                
-
-
-
-
-
-            </div>
-
-
-
-
-            <div class="rightArea">
-            
-            </div>
-                
-                
-        </div>
-
-
-
-    
-
-
-
-
-
-
-
-
-
-</main>
-
-
-<jsp:include page="/WEB-INF/views/common/footer.jsp"/>
     <script src="/resources/js/mainFeed/main.js"></script>
-    
+    <script src="/resources/js/mainFeed/reply.js"></script>
+
 </body>
 </html>

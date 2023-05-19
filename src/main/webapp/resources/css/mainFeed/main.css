@@ -1,168 +1,18 @@
-*{
-    box-sizing: border-box;
-    padding: 0;
-    margin:0;
 
-}
-body{
-    background-color: rgba(0,0,0,0.1);
-}
-
-fieldset{
-display: none;}
-
-
-/* 모두 작성후 삭제 */
-/* div,main,section,header,footer,article,nav,aside,form
-{border:1px solid black;}  */
-
-/* 메인  */
-main{
-    width: 100%;
-    height: 100%;
-    
-}
-/* 헤더 임시로 지정 */
-header{
-    height: 80px;
-    flex-basis: auto;
-    display: flex;
-    flex-direction: row;
-
-}
-
-/*  내용이 보여질 것들  */
-.mainView{
-    min-height: 800px;
-    display: grid;
-
-    grid-template-columns: repeat(3,1fr);
-}
-
-.leftArea{
-    font-size: 20px;
-    font-weight: bold;
-    padding: 10px;
-    margin-top: top 15px;
-    display: flex;
-    flex-direction: column;
-    
-
-}
-.leftArea-1{
-    margin-bottom: 10px;
-    display: flex;
-    flex-basis: auto;
-    width: 100%;
-    
-    
-}
-
-.leftArea-1 li{
-    height: 50px;
-    list-style:none;
-    display: flex;
-    align-items: center;
-    justify-content: left;
-    flex: 0 1 150px;
-    
-    
-
-}
-.leftArea-1 li:hover{
-    background-color: lightgray;
-    border-radius: 5px;
-}
-.imgLink{
-    height: 50px;
-    list-style:none;
-    display: flex;
-    align-items: center;
-    justify-content: left;
-    
-    
-}
-
-.aLink{
-    font-weight: bold;
-    font-size: 25px;
-    color: black;
-    text-decoration: none;
-    margin-left: 10px;
-    display: block;
-    width: 100%;
-    
-    
-    
-}
-
-/* 섹션 나누기 */
-.leftArea-1 li:nth-child(2){
-
-    border-bottom: 2px solid rgb(147, 145, 145);
-}
-.leftArea-1 li:nth-child(4){
-
-    border-bottom: 2px solid rgb(147, 145, 145);
-}
-
-
-
-
-/* left side */
-#mainHome{
-    width: 30px;
-    
-    filter: invert(38%) sepia(62%) saturate(468%) hue-rotate(178deg) brightness(93%) contrast(84%);
-}
-#myHome{
-    width: 30px;
-    
-    
-}
-#friend{
-    width: 30px;
-    filter: invert(38%) sepia(62%) saturate(468%) hue-rotate(178deg) brightness(93%) contrast(84%);
-}
-
-#likeLogo{
-    width: 30px;
-    filter: invert(38%) sepia(62%) saturate(468%) hue-rotate(178deg) brightness(93%) contrast(84%);
-}
-#likeLogo-1{
-    width: 20px;
-    filter: invert(38%) sepia(62%) saturate(468%) hue-rotate(178deg) brightness(93%) contrast(84%);
-}
-#searchLogo{
-    width: 30px;
-    filter: invert(56%) sepia(100%) saturate(559%) hue-rotate(70deg) brightness(98%) contrast(85%);
-}
-
-
-.centerArea{
-
-    display: flex;
-
-    margin: 10px;
-    /* flex 지정 시 기본 값 */
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: stretch;
-}
+/* 피드 작성 */
 .centerArea-1{
-/* flex-basis: 30%; */
-height: 180px;
-border: 1px solid rgba(0,0,0,0.3);
-padding: 2px;
-border-radius: 10px;
-display: flex;
-background-color: white;
+    height: 180px;
+    border: 1px solid rgba(0,0,0,0.3);
+    padding: 2px;
+    border-radius: 10px;
+    display: flex;
+    background-color: white;
 
-flex-direction: column;
-justify-content: center;
-align-items: center;
-
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
+
 #cArea-1{
     display: flex;
     flex-direction: row;
@@ -180,7 +30,7 @@ align-items: center;
     height: 100vh;
     background: black;
     opacity: 0;
-    z-index:10;
+    z-index:1000;
     transform:scale(0.5);
     pointer-events: none;
     opacity: 0.9;
@@ -198,7 +48,7 @@ align-items: center;
     background: #fff;
     width : 500px;
     height: 450px;
-    z-index: 100;
+    z-index: 2000;
     opacity: 0;
     pointer-events: none;
     border-radius: 5px;
@@ -228,7 +78,7 @@ justify-content: center;
 align-items: center;
 
 }
-/* 모달창 내부 */
+모달창 내부
 #think{
     background-color: lightgray;
     border-radius: 6px;
@@ -287,7 +137,7 @@ align-items: center;
     
 }
 
-textarea{
+#modalContent > textarea {
     margin-top: 9px;
     width: 455px;
     
@@ -301,7 +151,7 @@ textarea{
 
 
 }
-textarea:focus {
+#modalContent > textarea:focus {
     outline: none;
 }
 
@@ -513,17 +363,22 @@ display: flex;
     height: auto;
 }
 
+/*  이름 색깔바꾸기 */
+.change {
+    font-weight: bold;
+    color: black;
+}
 
 /* 나의 피드 아래꺼 */
 
 /* 업로드된 이미지 */
 /* 이미지를 감싸는 div */
-.boardImg1{
+/* .boardImg1{
     width: 25%;
     height: 240px;
     float: left;
     text-align: center;
-}
+} */
 
 /* 이미지 */
 .boardImg1 img{
@@ -538,7 +393,7 @@ display: flex;
     grid-column-gap: 35px;
     grid-row-gap : 5px;
     min-height: 370px;
-}
+} */
 
 #cArea-2{
     height: 30%;
@@ -582,114 +437,104 @@ display: flex;
     background-color:  #4A6EA9;
 }
 
-
-
-
-.centerArea-1 fieldset{
+/* .centerArea-1 fieldset {
     width: 100%;
     border: 2px solid #455ba8;
     padding: 2px;
     border-radius: 5px;
     display: flex;
     justify-content: center;
-    
-    
-}
-#query{
-width:100% ; 
-border: none;
-outline: none;
-font-size: 18px;
-font-weight: bold;
-padding: 10px;
-}
+} */
 
-
-
-
-
-.centerArea-2{
-flex-basis: 70%;
-
-border: 1px solid rgba(0,0,0,0.3);
-padding: 2px;
-border-radius: 10px;
-display: flex;
-margin-top: 10px;
-background-color: white;
-
-display: flex;
-flex-direction: column;
-
-
+#query {
+    width:100% ; 
+    border: none;
+    outline: none;
+    font-size: 18px;
+    font-weight: bold;
+    padding: 10px;
 }
 
-/* 나의 게시글 상단 */
-.centerArea-2>section:nth-child(1){
+#more {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* 더보기 버튼 안 게시글 수정 , 삭제  */
+.feedUpdate{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 165px;
+    height: 30px;
+    border-radius: 6px;
+    font-weight: bold;
+}
+
+.feedUpdate:hover {
+    background-color: lightgrey;
+    cursor: pointer;
+
+}
+
+.feedDelete{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 165px;
+    height: 30px;
+    border-radius: 6px;
+    font-weight: bold;
+
+}
+.feedDelete:hover{
+    background-color: lightgrey;
+    cursor: pointer;
+}
+
+.feedContain{
+    height: 200px;
+    position: absolute;
+    display: flex;
+    margin-top: 50px;
+    margin-right: 150px;
+    flex-direction: column;
+    align-content: wrap;
+
+}
+
+.image-container img.col {
+    width: 100%;
+    height: auto;
+}
+
+/* 나의 게시물 댓글 달기 */
+/* .centerArea-2>section:nth-child(4){
     width: 100%;
     height: 10%;
-    
     display: flex;
     flex-direction: row;
-    border-bottom: 2px solid lightgrey ;
-}
-/*  이름 색깔바꾸기 */
-.change{
-    font-weight: bold;
-    color: black;
-}
+} */
 
-
-/* 나의 게시글 상단 중 위 */
-#cTopArea1{
+#cBot>section:first-child{
+    
     width: 10%;
     height: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
-    
 
 }
-#cTopArea2{
+
+#cBot>section:last-child{
     width: 90%;
-    height: 100%;
+    border: 1px solid #455ba8;
+    border: 2px solid #455ba8;
+    padding: 2px;
+    border-radius: 5px;
     display: flex;
-    flex-direction: column;
-    
-
-}
-
-#cTopArea2>section:first-child{
-    width: 100%;
-    height: 60%;
-    
-}
-#cTopArea2 span{
-    display: inline-block;
-    margin-top: 5px;
-
-
-
-}
-
-#cTopArea2 a:first-child{
-    margin-left: 5px;
-    display:flex;
-    justify-content: left;
-    align-items: center;
-    text-decoration: none;
-
-}
-
-#cTopArea2>section:last-child{
-    width: 100%;
-    height: 40%;
-}
-
-#cTopArea2 li{
-    list-style: none;
-    font-size: 11px;
-    text-decoration: none;
+    justify-content: center;
 }
 
 /*  더보기 버튼  */
@@ -772,113 +617,75 @@ flex-direction: column;
 .hidden { display: none !important; }
 
 
+/********************************************************************/
 
 
-
-
-/* 나의 게시물 중단 */
-.centerArea-2>section:nth-child(2){
-    width: 100%;
-    height: 70%;
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin:0;
 }
 
+body { background-color: #F0F2F5; }
 
-/* 나의 게시물 좋아요 댓글 등 */
-.centerArea-2>section:nth-child(3){
-    width: 100%;
-    height: 10%;
-}
-#like{
-    border-top: 2px solid lightgrey ;
-    width: 100%;
-    border-bottom: 2px solid lightgrey ;
-    margin-bottom: 7px;
-    
-}
-#like>ul{
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    list-style: none;
-    height: 100%;
-    
-
-
-}
-
-#like>ul>li{
-
-    display: flex;
-    flex: 1 1 150px;    
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-}
-#like a{
-    text-decoration: none;
-    color: black;
-    font-size: 15px;
-    font-weight: bold;
-    padding: 15px 0;
-    display: block;
-    text-align: center;
-    height: 100%;
-    width: 100%;
-}
-
-#like a:hover{
-    background-color: lightgrey;
-    border-radius: 5px;
-}
-
-
-/*  reply 로고 */
-
-#replyLogo{
-    width: 20px;
-}
-
-/* 공유하기 로고 */
-#shareLogo{
-    width: 20px;
-}
-
-
-/* 나의 게시물 댓글 달기 */
-.centerArea-2>section:nth-child(4){
-    width: 100%;
-    height: 10%;
-    display: flex;
-    flex-direction: row;
-}
-
-#cBot>section:first-child{
-    
-    width: 10%;
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-}
-#cBot>section:last-child{
-width: 90%;
-border: 1px solid #455ba8;
-border: 2px solid #455ba8;
-padding: 2px;
-border-radius: 5px;
-display: flex;
-justify-content: center;
-}
-#reply{
-    
-    width:100% ; 
+hr {
     border: none;
-    outline: none;
-    font-size: 18px;
-    font-weight: bold;
-    padding: 10px;
+    height: 1px;
+    background-color: #ccc;
+    margin: 0 16px;
 }
 
+#mainFeedGridContainer {
+    height: 100%;
+    display: flex;
+}
 
+/*  가운데 (피드가 보여질 부분) */
+.mainView { 
+    margin: 0 20px; 
+    flex-grow: 1;
 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* 피드 작성 */
+#newFeed {
+    width: 100%;
+    max-width: 712px;
+    height: 64px;
+    padding: 12px 16px;
+    margin: 20px 20px 0;
+
+    border-radius: 10px;
+    background-color: white;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+
+    display: flex;
+    align-items: center;
+}
+#newFeed > img {
+    height: 40px;
+    width: 40px;
+    border-radius: 50px;
+}
+#newFeed > p {
+    background-color: #eee;
+    border-radius: 50px;
+    width: 100%;
+    height: 100%;
+    margin-left: 12px;
+
+    display: flex;
+    align-items: center;
+    padding-left: 12px;
+    color: #666;
+    cursor: pointer;
+}
+#newFeed > p:hover {
+    background-color: #ddd;
+    transition-duration: 0.2s;
+}
+
+/********************************************************************/

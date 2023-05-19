@@ -3,45 +3,44 @@
 // document.getElementById("info-modali").style.display="block";
 
 /* 모달창 확인 */
-const think = document.getElementById("think");
+const newFeedBtn = document.getElementById("newFeedBtn");
+if(newFeedBtn != null) {
+    newFeedBtn.addEventListener("click",()=>{
+        document.getElementById("myContent").style.display="block";
+        document.getElementById("myContent-modal").style.display="block";
+    });
+}
 
-think.addEventListener("click",()=>{
-
-    document.getElementById("myContent").style.display="block";
-    document.getElementById("myContent-modal").style.display="block";
-
-});
-
-document.getElementById("myContent").addEventListener("click", () => {
-    document.getElementById("myContent").style.display="none";
-    document.getElementById("myContent-modal").style.display="none";
-});
+const myContent = document.getElementById("myContent");
+if(myContent != null) {
+    myContent.addEventListener("click", () => {
+        document.getElementById("myContent").style.display="none";
+        document.getElementById("myContent-modal").style.display="none";
+    });
+}
 
 
 /* 모달창 열어서 취소버튼을 눌렀을 때도 원래로 */
 
 const cancelBtn = document.getElementById("cancelBtn");
-
-cancelBtn.addEventListener("click", ()=>{
-    document.getElementById("myContent").style.display="none";
-    document.getElementById("myContent-modal").style.display="none";
-    document.querySelector("textarea").value="";
-    
-    
-    
-
-    
-
-
-});
+if(cancelBtn != null) {
+    cancelBtn.addEventListener("click", ()=>{
+        document.getElementById("myContent").style.display="none";
+        document.getElementById("myContent-modal").style.display="none";
+        document.querySelector("textarea").value="";
+    });
+}
 
 // 사진 버튼 눌렀을 때 모달창 사진 탭으로 이동
-document.getElementById("imgBtn").addEventListener("click",() => {
-    document.getElementById("myContent").style.display="block";
-    document.getElementById("myContent-modal").style.display="block";
-    // 포커스 추가
+const imgBtn = document.getElementById("imgBtn");
+if(imgBtn != null) {
+    imgBtn.addEventListener("click",() => {
+        document.getElementById("myContent").style.display="block";
+        document.getElementById("myContent-modal").style.display="block";
+        // 포커스 추가
 
-});
+    });
+}
 
 
 // 일단 해보고 수정해보자
@@ -228,25 +227,4 @@ feedDeleteList.forEach(feedDelete => {
 
 
 
-
-
-
-
-
 // feedUpdate버튼을 누른다면 수정버튼이 나올 수 있도록!
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

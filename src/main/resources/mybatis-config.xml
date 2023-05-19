@@ -22,19 +22,21 @@
     <typeAlias type="edu.kh.nndr.mainFeed.model.dto.Hashtag" alias="Hashtag"/>
     <typeAlias type="edu.kh.nndr.mainFeed.model.dto.Board" alias="Board" />
 		<typeAlias type="edu.kh.nndr.mainFeed.model.dto.Image" alias="Image" />
+		<typeAlias type="edu.kh.nndr.mainFeed.model.dto.Reply" alias="Reply" />
 	</typeAliases>
 
 	<!-- mapper 파일(SQL 작성되는파일) 위치 등록 부분 -->
 	<mappers>
-    <mapper resource="/mappers/member-mapper.xml" />
-    <mapper resource="/mappers/personal-mapper.xml" />
-    <mapper resource="/mappers/feedback-mapper.xml" />
-    <mapper resource="/mappers/friend-mapper.xml" />
-    <mapper resource="/mappers/admin-mapper.xml" />
-    <mapper resource="/mappers/search-mapper.xml" />
-    <mapper resource="/mappers/email-mapper.xml" />
-    <mapper resource="/mappers/emailCheck-mapper.xml" />
-    <mapper resource="/mappers/mainFeed-mapper.xml" />
+	    <mapper resource="/mappers/member-mapper.xml" />
+	    <mapper resource="/mappers/personal-mapper.xml" />
+	    <mapper resource="/mappers/feedback-mapper.xml" />
+	    <mapper resource="/mappers/friend-mapper.xml" />
+	    <mapper resource="/mappers/admin-mapper.xml" />
+	    <mapper resource="/mappers/search-mapper.xml" />
+	    <mapper resource="/mappers/email-mapper.xml" />
+	    <mapper resource="/mappers/emailCheck-mapper.xml" />
+	    <mapper resource="/mappers/mainFeed-mapper.xml" />
+	    <mapper resource="/mappers/reply-mapper.xml" />
 	</mappers>
 
 </configuration>

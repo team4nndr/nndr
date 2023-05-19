@@ -1,4 +1,3 @@
-
 // 검색 input 태그
 const search = document.getElementById("nndrQuery");
 // 자동완성 목록
