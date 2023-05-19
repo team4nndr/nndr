@@ -38,6 +38,7 @@ button{
 }   
 #backLogo{
     width: 1250px;
+    height: 703px;
     border-radius: 10px;
 }
 
@@ -86,10 +87,12 @@ button{
 }
 
 #homeLogo{
+    position : relative;
     width: 160px;
     height: 160px;
     border-radius: 50%;
     border : 2px solid white;
+    z-index: 5;
 }
 .main-imset{
     display: flex;
@@ -956,7 +959,7 @@ button{
     transform: translate(-50%, -50%)scale(1);
     transition: all .4s;
     transition-delay: 0.1s;
-    width: 600px;
+    width: 880px;;
     overflow: hidden;
 }
 #profile-set{
@@ -973,11 +976,173 @@ button{
     background-color: white;
     position: relative;
     margin: 10px;
-    overflow: hidden;
+    width: 100%;
+}
+
+.cv{
+    display: block;
+    width: 144px;
+    height: 42px;
+    background-color: blue;
+    border-radius: 5px;
+    text-align: center;
+    padding: 11px 0;
+    margin: 1px 0;
+}
+.flexall{
+    display: flex;
+    justify-content: space-between;
+}
+
+#cv-set{
+    display : none;
+    position:absolute;
+    transition-duration: 1s;
+    z-index: 5;
+    border-radius: 5px;
+    background-color: white;
+    border: 1px solid #ccc;
+    padding: 10px;
+
+}
+
+#all{
+    display: none;
+    height: 100vh;
+    width: 100vw;
+    z-index: 4;
+    transform: scale(1);
+    position: fixed;
 }
 
 
+/* 백그라운드 모달 */
 
+.backcontroller span{
+    position:absolute;
+    background-color: transparent;
+    color: black;
+    text-align: center;
+    border-radius: 50%;
+    padding: 10px 20px;
+    top: 50%;
+    font-size: 1.3em;
+    cursor: pointer;
+  }
+  .backcontroller span{
+    position:absolute;
+    background-color: transparent;
+    color: black;
+    text-align: center;
+    border-radius: 50%;
+    padding: 10px 20px;
+    top: 50%;
+    font-size: 1.3em;
+    cursor: pointer;
+  }
+  /* 이전, 다음 화살표에 마우스 커서가 올라가 있을때 */
+  .backcontroller span:hover{
+    background-color: rgba(128, 128, 128, 0.11);
+  }
+  .backcontroller span:hover{
+    background-color: rgba(128, 128, 128, 0.11);
+  }
+  
+  .backprev{
+    left: 10px;
+  }
+  
+  /* 이전 화살표에 마우스 커서가 올라가 있을때 
+  이전 화살표가 살짝 왼쪽으로 이동하는 효과*/
+  .backprev:hover{
+    transform: translateX(-5px);
+  }
+  
+  .backnext{
+    right: 10px;
+  }
+  
+  /* 다음 화살표에 마우스 커서가 올라가 있을때 
+  이전 화살표가 살짝 오른쪽으로 이동하는 효과*/
+  .backnext:hover{
+    transform: translateX(5px);
+}
+.friendAdd{
+    background: red;
+    transition-duration: 1s;
+}
+#what-profile{
+    font-weight: bolder;
+    font-size: 25px;
+}
+
+
+#back-modal{
+    display: none;
+    position: fixed;
+    top:0; left:0;
+    width: 100vw;
+    height: 100vh;
+    background: black;
+    opacity: 0;
+    z-index:10;
+    transform:scale(0.5);
+    pointer-events: none;
+    opacity: 0.9;
+    transform: scale(1);
+    transition: all .4s;
+    pointer-events: visible;
+}
+.backi{
+    display: flex;
+    height: 265px;
+    width: 265px;
+    margin: 10px;
+    flex-direction: column;
+    border-radius: 5px;
+}
+#back-modali{
+    display: none;
+    position:fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0.5);
+    background: #fff;
+    z-index: 100;
+    opacity: 0;
+    pointer-events: none;
+    border-radius: 5px;
+    border : 5px solid #56A8C5 ;
+    opacity : 1;
+    pointer-events: visible;
+    transform: translate(-50%, -50%)scale(1);
+    transition: all .4s;
+    transition-delay: 0.1s;
+    width: 880px;
+    overflow: hidden;
+}
+#back-set{
+    display: flex;
+    height: 341px;
+    position: absolute;
+    
+
+}
+#back-asd{
+    height: 270px;
+    border-radius: 15px;
+    border-radius: 15px;
+    background-color: white;
+    position: relative;
+    margin: 10px;
+    overflow: hidden;
+}
+#dePro{
+    background-color: hsl(110, 42%, 54%);
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc
+}
 
 
 

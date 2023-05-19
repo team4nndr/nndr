@@ -49,7 +49,6 @@ public class PersonalFeedController {
 		friendche.put("friendReciver", no);
 		PersonalFriend friendcheck = service.friendChecking(friendche);
 		model.addAttribute("friendcheck", friendcheck);
-		System.out.println(friendcheck);
 		return "personalFeed/personalFeed";
 	}
 	
