@@ -197,7 +197,7 @@
                             
                         </div>
                         <div class="main-imset">
-                            <c:forEach items="${imgSet}" var="i">
+                            <c:forEach items="${imgSet}" var="i" begin="0" end="2">
                                 <div id="main-im3"><img src="${i.imgPath}${i.imgRename}" alt="로고" class="main-im"></div>
                             </c:forEach>
                         <div class="something"></div>

@@ -9,6 +9,7 @@ import org.springframework.web.multipart.MultipartFile;
 import edu.kh.nndr.member.model.dto.Member;
 import edu.kh.nndr.member.model.dto.MemberHobby;
 import edu.kh.nndr.member.model.dto.MemberInfo;
+import edu.kh.nndr.member.model.dto.PersonalFriend;
 
 public interface MemberInfoService {
 
@@ -26,9 +27,15 @@ public interface MemberInfoService {
 
 	List<Map<String, String>> imgSet(int no);
 
-//	int inputhobby(List<MemberHobby> hobbyInput, int memberNo);
-//
-//	List<MemberHobby> updateHobby(int memberNo);
+	int personalAdd(Map<String, String> addMap);
+
+
+	int personalCan(Map<String, String> delMap);
+
+	PersonalFriend friendChecking(Map<String, Object> friendche);
+
+
+
 
 
 

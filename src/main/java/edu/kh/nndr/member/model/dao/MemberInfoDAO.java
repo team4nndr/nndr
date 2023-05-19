@@ -11,6 +11,7 @@ import org.springframework.stereotype.Repository;
 import edu.kh.nndr.member.model.dto.Member;
 import edu.kh.nndr.member.model.dto.MemberHobby;
 import edu.kh.nndr.member.model.dto.MemberInfo;
+import edu.kh.nndr.member.model.dto.PersonalFriend;
 
 @Repository
 public class MemberInfoDAO {
@@ -71,6 +72,23 @@ public class MemberInfoDAO {
 
 	public List<Map<String, String>> imgSet(int no) {
 		return sqlSession.selectList("personalMapper.imgSet", no);
+	}
+
+
+
+
+	public int personalAdd(Map<String, String> addMap) {
+		return sqlSession.insert("personalMapper.personalAdd", addMap);
+	}
+
+
+	public int personalCan(Map<String, String> delMap) {
+		return sqlSession.delete("personalMapper.personalCan", delMap);
+	}
+
+
+	public PersonalFriend friendChecking(Map<String, Object> friendche) {
+		return sqlSession.selectOne("personalMapper.perFriend", friendche);
 	}
 
 
