@@ -35,7 +35,7 @@ public class MainController {
 		return "main/newPw";
 	}
 	
-	// 새 계정 만들기 이메일 중복 검사
+	// 새 계정 만들기 이메일 유효성 검사
 	@GetMapping("/main/email")
 	@ResponseBody
 	public int email(@RequestParam("inputEmail") String inputEmail ){
@@ -49,6 +49,15 @@ public class MainController {
 	public int emailCheck(@RequestParam("email") String email ) {
 		
 		return service.emailCheck(email);
+	}
+	
+	// 비밀번호를 잊으셨습니까 => 이메일 유효성 확인
+	@GetMapping("/main/emailDupilcation")
+	@ResponseBody
+	public int emailDup (@RequestParam ("emailDup") String emailDup) {
+		
+		
+		return service.emailDup(emailDup);
 	}
 	
 	

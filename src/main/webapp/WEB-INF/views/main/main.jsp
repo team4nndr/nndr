@@ -80,7 +80,7 @@
             <div id="remove">
                 &times;
             </div>
-            <form action="#" method="post" name="signUpFrm" id="signUpFrm">
+            <form action="/" method="post" name="signUpFrm" id="signUpFrm">
                 <div id="insert2">
                     <p>가입하기</p>
                 </div>
@@ -89,7 +89,7 @@
                 </div>
                 <div id="box1">
                     <div class="box">
-                        <input type="text" placeholder="이름">
+                        <input type="text" name="memberName" placeholder="이름">
                     </div>
                     <div class="box">
                         <input type="email" name="memberEmail" id="memberEmail" placeholder="이메일"
@@ -110,7 +110,7 @@
                     <div class="box">
                         <input type="number" placeholder="(- 없이 숫자만 입력)" id="memberTel" maxlength="11">
                     </div>
-                    <div class="bir">
+                    <div class="bir" name="memberBirth">
                         생일
                         <a href="_58ms mlm" id="birthday-help" href="#" role="button">
                         </a>
@@ -200,7 +200,7 @@
                             <option value="31">31일</option>
                         </select>
                     </span>
-                    <div class="gender">
+                    <div class="gender" name="memberGen">
                         성별
                     </div>
                     <span id="choose">

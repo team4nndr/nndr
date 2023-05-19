@@ -27,4 +27,20 @@ public class MemberDAO {
 	public Member login(Map<String, Object> map) {
 		return sqlSession.selectOne("memberMapper.login", map);
 	}
+	
+	// 회원 가입
+	public int signUp(Member inputMember) {
+		int result = sqlSession.insert("memberMapper.signUp",inputMember); // 성공한 행의 개수
+		
+		if(result >0) result = inputMember.getMemberNo();
+		
+		return result;
+	}
+	
+	// 회원 가입 추가
+	public int signUpPlus(Member inputMember) {
+		return sqlSession.insert("memberMapper.signUpPlus",inputMember);
+	}
+	
+	
 }

@@ -33,4 +33,5 @@ public class Member {
 	private String profileImage;
 	private String infoGender;
 	private String infoResidence;
+	private String infoBirth; // 생일 추가
 }

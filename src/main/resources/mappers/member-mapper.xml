@@ -11,6 +11,8 @@
 		<result property="memberPw" column="MEMBER_PW" />
 		<result property="memberName" column="MEMBER_NAME" />
 		<result property="memberTel" column="MEMBER_TEL" />
+		<result property="memberBirth" column="MEMBER_BIRTH" />
+		<result property="memberGen" column="MEMBER_GEN" />
 		<result property="memberCode" column="MEMBER_CODE" />
 		<result property="enrollDate" column="ENROLL_DATE" />
 		<result property="disableDate" column="DISABLE_DATE" />
@@ -126,7 +128,30 @@
 		FROM   "MEMBER"
 		WHERE 	MEMBER_NO = #{memberNo}
 	</select>
+		
+	<!-- 회원 가입 -->
+	<insert id="signUp" useGeneratedKeys="true">
 	
+		<selectKey order="BEFORE" resultType="_int" keyProperty="memberNo">
+			SELECT SEQ_MEMBER_NO.NEXTVAL FROM DUAL
+		</selectKey>
+	
+		INSERT INTO "MEMBER"
+		VALUES(#{memberNo}    
+		, #{memberEmail}
+		, #{memberPw}
+		, #{memberName}
+		, #{memberTel}
+		,DEFAULT, SYSDATE,NULL, NULL,DEFAULT,DEFAULT,DEFAULT
+		,DEFAULT,DEFAULT,DEFAULT,DEFAULT,DEFAULT,DEFAULT)
+	</insert>	
+	
+	<!-- 회원 가입 추가 -->
+	<insert id="signUpPlus">
+		INSERT INTO	"MEMBER_INFO"(MEMBER_NO,INFO_GENDER,INFO_BIRTH)
+		VALUES (#{memberNo}, #{infoGender},#{infoBirth})
+	</insert>
+
 	<!-- 검색 유저 수 조회 -->
 	<select id="getMemberSearchCount" resultType="_int">
 		SELECT 	 COUNT(*)

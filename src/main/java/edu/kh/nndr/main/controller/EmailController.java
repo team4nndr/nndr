@@ -28,7 +28,7 @@ public class EmailController {
         
     }
     
-    
+    // 이메일 인증(회원 가입)
     @GetMapping("/checkAuthKey")
     @ResponseBody
     public int checkAuthKey(@RequestParam Map<String, Object> paramMap){
