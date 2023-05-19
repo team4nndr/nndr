@@ -7,14 +7,31 @@
 .main-logo-box{
     display: flex;
     align-items: center;
-    
+    height: 56px;
+    object-fit: cover;
+}
+
+.main-logo-box > a{
+    margin-top: 14px;
+}
+
+.main-logo-box > a >img {
+    width: 200px;
 }
 
 .forgetBox{
     display: flex;
     justify-content: space-between;
-
 }
+
+/* 상단 이메일 및 비밀번호 입력 input */
+.main-top-inputBox{
+    border: 1px solid #ccc;
+}
+.main-top-inputBox:focus{
+    outline: 1.2px solid rgb(105 156 233)
+}
+
 
 /* form 태그 이메일 비번 입력칸 */
 .forgetPwLogin{
@@ -49,25 +66,31 @@
     padding: 0 10px;
 }
 
-.forgetPwLogin input:hover{
-    border-width: 4px;
-    border-color : rgb(105, 105, 247)
-}
 
 /* 로그인 버튼 */
 .submit{
     width: 80px;
     height: 40px;
     border-radius: 7px;
-    background-color: #1877f2;
+    background-color: #56A8C5;
     color: #fff;
-    border-color: #ccc;
+    border: none;
+    cursor: pointer;
+}
+
+.submit:hover{
+    background-color: rgb(63, 122, 211);
 }
 
 /* 계정을 잊으셨나요 */
-div a {
+.main-forget-account{
     text-decoration: none;
-    color :rgb(105, 105, 247);
+    color :rgb(77, 79, 84);
+}
+
+.main-forget-account:hover{
+    text-decoration: underline;
+    color :rgb(77, 79, 84);
 }
 
 .found{
@@ -149,12 +172,35 @@ div a {
     height: 52px;
     border-radius: 8px;
     padding: 0 10px;
+    border: 1px solid #ccc;
+
+    margin-bottom: 10px;
+    
+}
+
+.inputText:focus{
+    outline: 1.2px solid rgb(111, 155, 223);
 }
 
 .inputText:hover{
-    border: 1px solid  #1877f2;
-
+    border: 1px solid rgb(105 156 233);
 }
+
+/* 인증번호 받기 버튼 */
+#sendAuthKeyBtn{
+    background-color: #b2afaf;
+    border: none;
+    border-radius: 7px;
+    cursor: pointer;
+    width: 100px;
+    height: 25px;
+}
+
+#sendAuthKeyBtn:hover{
+    background-color: #9c9595;
+}
+
+
 
 .cancel{
     width: 70px;

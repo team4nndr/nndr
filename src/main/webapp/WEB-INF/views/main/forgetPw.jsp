@@ -13,14 +13,22 @@
 <body>
     <div class="forgetBox">
         <div class="main-logo-box">
-            <img src="nndr로고" class="main-logo">
+            <a href="/">
+            <img src="/resources/images/topMenu/상단바 홈 로고 이미지-002.png" class="main-logo">
+            </a>
         </div>
                 <div >
                     <form action="#" method="post" class="forgetPwLogin" >
-                        <div><input type="text" placeholder="이메일" ></div>
-                        <div><input type="password" placeholder="비밀번호"></div>
-                        <div><button type="submit" class="submit">로그인</button></div>
-                        <a href="#">계정을 잊으셨나요?</a>
+                        <div>
+                            <input type="text" placeholder="이메일" class="main-top-inputBox">
+                        </div>
+                        <div>
+                            <input type="password" placeholder="비밀번호" class="main-top-inputBox">
+                        </div>
+                        <div>
+                            <button type="submit" class="submit">로그인</button>
+                        </div>
+                        <a href="#" class="main-forget-account">계정을 잊으셨나요?</a>
                     </form>
                 </div>
     </div>
@@ -36,14 +44,18 @@
                     일치하는 이메일이 없습니다.
                 </div>
                 <div class="margin">계정을 검색하려면 이메일 입력하시오.</div>
-                <form action="#" method="POST" name="inputEmail"><input type="email"  id="emailCheck" class="inputText" placeholder="이메일"></form> 
+                    <form action="#" method="POST" name="inputEmail">
+                        <input type="email"  id="emailCheck" class="inputText" placeholder="이메일">
+                    </form> 
 
                 <button id="sendAuthKeyBtn" type="button">인증번호 받기</button>
                 <div class="line2"></div>
                 <div class="emailCheck" id="certification">
-                    <form action="#" method="POST" name="certification"><input type="email" id="inputText" class="inputText" placeholder="이메일 인증 입력"></form>
+                    <form action="#" method="POST" name="certification">
+                        <input type="email" id="inputText" class="inputText" placeholder="이메일 인증 입력">
+                    </form>
 
-                     <button id="checkAuthKeyBtn" type="button">인증하기</button>
+                    <button id="checkAuthKeyBtn" type="button">인증하기</button>
                 </div>
                 <div class="cancelBox">
                     <a class="cancel" href="/main/forgetPw/newPw">취소</a>

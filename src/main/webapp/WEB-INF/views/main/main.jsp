@@ -42,8 +42,8 @@
         <div class="init">
             <div class="frame">
                 <div class="logo">
-                    <h2>Facebook</h2>
-                    <h3>Facebook에서 전세계에 있는 친구,가족,지인들과 함께 이야기를 나눠보세요.</h3>
+                    <div class="main-home-logo"><img src="/resources/images/topMenu/너나드리 시안1-001.png"></div>
+                    
                 </div>
                 <div class="authentication">
                     <form class="login" action="/login" method="POST">
@@ -62,16 +62,16 @@
                 </div>
             </div>
         </div>
-        <footer>
-            <p></p>
-
-            <article>
-                <a href="#">로그인</a>
-                <span>|</span>
-                <a href="#">친구</a>
-                <span>|</span>
-                <a href="#">고객센터</a>
-            </article>
+        <footer class="main-bottom">
+                <div>
+                <a href="#">로그인</a> 
+                </div>
+                <div>
+                <a href="#">친구</a> 
+                </div>
+                <div>
+                <a href="#">1:1 문의</a> 
+                </div>
         </footer>
     </div>
 

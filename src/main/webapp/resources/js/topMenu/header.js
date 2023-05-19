@@ -14,6 +14,7 @@ const searchBtn = document.getElementById("nndrSearchBtn");
 //     { name: "정사원" },
 //     { name: "박사원" },
 //     { name: "이사원" },
+
 // ];
 
 
@@ -35,7 +36,7 @@ search.addEventListener("input", e => {
     // #으로 시작하는 검색어인 경우
     if (input_value.startsWith("#") && input_value.length > 1) {
         console.log(input_value);
-        const query = input_value.replace("#", "%23");
+        var query = input_value.replace("#", "%23");
         fetch("/mainFeed/getTags?query=" + query)
         .then(resp => resp.json())
         .then(tagList => {
@@ -77,7 +78,7 @@ search.addEventListener("input", e => {
     }  else {
 
         console.log(input_value);
-        const fName = input_value;
+        var fName = input_value;
         fetch("/mainFeed/friendNameList?fName=" + fName)
         .then(resp => resp.json())
         .then(friendNameList => {
@@ -96,7 +97,7 @@ search.addEventListener("input", e => {
             for(let names of friendNameList) {
                 const div = document.createElement("div");
                 div.classList.add("result");
-                div.setAttribute("hashTags", names.memberNo);
+                div.setAttribute("names", names.memberNo);
 
                 if(fName.toLowerCase().startsWith(fName.toLowerCase())) {
                         
@@ -219,11 +220,6 @@ nndrOptionAlarm.addEventListener("click", e => {
 nndrOptionAlarmContent.addEventListener("click", e => {
     e.stopPropagation();
 });
-
-
-
-
-
 
 
 /* 알림내용 추가하기 */
