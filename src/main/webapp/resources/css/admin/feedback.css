@@ -9,6 +9,7 @@
     align-items: center;
     justify-content: center;
     padding-top: 20px;
+    position: relative;
 }
 .search_wrap > span {
     font-weight: bold;
@@ -18,12 +19,6 @@
 }
 .search_wrap > select:focus {
     outline: none;
-}
-
-
-.condition_select > .fa-angle-up { display: none; }
-.search_wrap > ul { 
-    list-style: none;
 }
 
 .search_box {
@@ -69,7 +64,6 @@
     text-align: left;
 }
 
-/* 의견 처리상태 */
 .feedback-condition-icon {
     font-weight: bold;
     width: 100px;

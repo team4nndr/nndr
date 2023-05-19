@@ -16,14 +16,23 @@ public class FriendDAO {
 	private SqlSessionTemplate sqlSession;
 
 
+	/** 친구 요청 목록조회
+	 * @param memberNo
+	 * @return
+	 */
 	public List<Friend> friendRqList(int memberNo) {
 		 return sqlSession.selectList("friendMapper.friendRqList", memberNo);
 	}
 
 
+	/** 친구요청 확인 눌렀을 때
+	 * @param friendNo
+	 * @return
+	 */
 	public int friendUpdate(int friendNo) {
 		return sqlSession.update("friendMapper.friendUpdate",friendNo);
 	}
+
 
 
 }

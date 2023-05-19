@@ -29,6 +29,12 @@
             <input type="text" name="memberPw" value="pass01">
             <button id="user">일반유저 로그인<br>(user01@mail.com)</button>
         </form>
+
+        <form action="/login" method="POST">
+            <input type="text" name="memberEmail" value="user04@mail.com">
+            <input type="text" name="memberPw" value="pass04">
+            <button id="user">일반유저 로그인<br>(user04@mail.com)</button>
+        </form>
     </div>
     <%-- 위 코드는 추후 삭제 예정 --%>
 

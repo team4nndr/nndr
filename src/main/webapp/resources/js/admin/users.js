@@ -1,11 +1,3 @@
-// // 뒤로가기
-// const backBtnList = document.getElementsByClassName('back');
-// for(let back of backBtnList) {
-//     back.addEventListener('click', () => {
-//         window.history.back();
-//     });
-// };
-
 // 연락처 대쉬(-) 추가
 const telData = document.getElementById('telData');
 if( telData != null ) {
@@ -80,22 +72,6 @@ for(let btn of disableBtns) {
     });
 }
 
-// if( disableBtn != null ) {
-//     disableBtn.addEventListener('click', e => {
-//         if(!confirm("해당 계정을 비활성화 하시겠습니까?")) return;
-
-//         fetch(memberNo + "/disable")
-//         .then(resp => resp.text())
-//         .then(disableDate => {
-//             document.querySelector('.account .date').innerText
-//                 = "(비활성화 일시 : " + disableDate + ")";
-//         })
-//         .catch(e => console.log(e));
-
-//         alert('비활성화 처리 되었습니다.');
-//     });
-// }
-
 // 비활성 해제 / 복구 버튼
 const enableBtns = document.getElementsByClassName('enable-btn');
 for(let btn of enableBtns) {
@@ -121,18 +97,6 @@ for(let btn of enableBtns) {
         .catch(e => console.log(e));
     });
 }
-
-// const enableBtn = document.getElementById('enableBtn'); 
-// if( enableBtn != null ) {
-//     enableBtn.addEventListener('click', e => {
-//         fetch("/enable?memberNo=" + memberNo)
-//         .then(resp => resp.text())
-//         .then(returnCode => {
-//             memberCode = returnCode;
-//         })
-//         .catch(e => console.log(e));
-//     });
-// }
 
 // 계정 삭제 버튼
 const deleteBtns = document.getElementsByClassName('delete-btn');
@@ -161,10 +125,7 @@ for(let btn of deleteBtns) {
 // 뒤로가기, 목록으로 버튼 설정
 const backBtns = document.querySelectorAll('.back');
 for(let btn of backBtns) {
-    const cp = window.location.search.split("=")[1];
     btn.addEventListener("click", () => {
-        if(cp != undefined) {
-            location.href = "/admin/user?cp=" + cp;
-        }
+        location.href = "/admin/user" + window.location.search;
     });
 }

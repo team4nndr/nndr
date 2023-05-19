@@ -42,7 +42,22 @@
 		<result property="infoNick" column="INFO_NICK" />
 		<result property="infoText" column="INFO_TEXT" />
 		<result property="infoBack" column="INFO_BACK" />
+		<result property="imgPath" column="IMG_PATH" />
+		<result property="imgRename" column="IMG_RENAME" />
+		<result property="uploadDate" column="UPLOAD_DATE" />
+		<result property="boardNo" column="BOARD_NO" />
+		
 	</resultMap>
+	<resultMap type="PersonalFriend" id="personalFriend_rm">
+		<id property="friendNo" column="FRIEND_NO" />
+		<result property="friendSender" column="FRIEND_SENDER" />
+		<result property="friendReciver" column="FRIEND_RECIVER" />
+		<result property="friendFl" column="FRIEND_FL" />
+		<result property="memberNo" column="MEMBER_NO" />
+		<result property="memberName" column="MEMBER_NAME" />
+	</resultMap>
+	
+	
 	<resultMap type="MemberHobby" id="memberHobby_rm">
 		<id property="memberNo" column="MEMBER_NO" />
 		<result property="hobbyNo" column="HOBBY_NO" />
@@ -65,11 +80,44 @@
 		SELECT DISTINCT(HOBBY) FROM "MEMBER_HOBBY" ORDER BY HOBBY
 	</select>
 	<select id="selectPerHobbyList" resultMap="memberHobby_rm">
-		SELECT DISTINCT(HOBBY) FROM "MEMBER_HOBBY" WHERE MEMBER_NO =#{memberNo}
+		SELECT DISTINCT(HOBBY) FROM "MEMBER_HOBBY" WHERE MEMBER_NO =#{memberNo} ORDER BY HOBBY
 	</select>
 	
 	
+
+	<insert id="insertHobby" parameterType="list">
+		INSERT INTO MEMBER_HOBBY (HOBBY_NO, MEMBER_NO, HOBBY)
+		<foreach collection="list" item="item" separator=" UNION ALL ">
+    		SELECT GET_SEQ_HOBBY_NO(), #{item.memberNo}, #{item.hobby} FROM DUAL
+    	</foreach>
+	</insert>
+
+	<delete id="deleteHobby" parameterType="list">
+		DELETE FROM MEMBER_HOBBY
+		<where> 
+		<foreach collection="list" item="item" separator=" OR ">
+    		(MEMBER_NO = #{item.memberNo} AND HOBBY = #{item.hobby})
+    	</foreach>
+    	</where>
+	</delete>
 	
+	
+	<select id="imgSet" resultMap="memberInfo_rm">
+		SELECT BOARD_NO, IMG_PATH, IMG_RENAME, UPLOAD_DATE FROM "IMAGE" LEFT JOIN "BOARD" USING(BOARD_NO) LEFT JOIN "MEMBER" USING(MEMBER_NO) WHERE MEMBER_NO = #{memberNo} AND ROWNUM<![CDATA[<]]>=3
+	</select>
+	
+	
+	<insert id="personalAdd">
+		INSERT INTO FRIEND VALUES(101, ${friendSender}, ${friendReciver}, DEFAULT)
+	</insert>
+	
+	<select id="perFriend" resultMap="personalFriend_rm">
+		SELECT * FROM FRIEND WHERE FRIEND_SENDER = ${friendSender} AND FRIEND_RECIVER=${friendReciver}
+	</select>
+	
+	<delete id="personalCan">
+		DELETE FROM "FRIEND" WHERE FRIEND_SENDER=${friendSender} AND FRIEND_RECIVER=${friendReciver}
+	</delete>
 	<!--  이미지 수정 
 	<update id="updateProfileImage">
 		UPDATE "MEMBER_INFO" SET INFO_PROFILE = #{infoProfile} WHERE MEMBER_NO = #{memberNo}

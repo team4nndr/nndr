@@ -13,7 +13,7 @@
 		<result property="memberNo" column="MEMBER_NO" />
 		<result property="memberName" column="MEMBER_NAME" />
 	</resultMap>
-
+	
 	<!-- 친구요청 (test)조회 -->
 	<select id="friendRqList" resultMap="friend_rm">
 		SELECT FRIEND_NO,
@@ -34,4 +34,7 @@
 		FRIEND_FL = 'Y'
 		WHERE FRIEND_NO = #{friendNo}
 	</update>
+	
+	
+	
 </mapper>

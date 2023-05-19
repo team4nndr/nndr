@@ -47,4 +47,18 @@ public class FeedbackServiceImpl implements FeedbackService {
 	public int confirmFeedback(Feedback feedback) {
 		return dao.confirmFeedback(feedback);
 	}
+
+	// 회원 의견 검색 결과 조회
+	@Override
+	public Map<String, Object> selectFeedbackList(Map<String, Object> paramMap, int cp) {
+		int listCount = dao.getFeedbackCount(paramMap);
+		Pagination pagination = new Pagination(listCount, cp);
+		
+		List<Feedback> feedbackList = dao.selectFeedbackList(paramMap, pagination);
+		Map<String, Object> map = new HashMap<>();
+		map.put("pagination", pagination);
+		map.put("feedbackList", feedbackList);
+		
+		return map;
+	}
 }

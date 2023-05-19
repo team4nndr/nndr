@@ -81,7 +81,7 @@ pwSubmitBtn.addEventListener('click', e => {
     .then(resp => resp.text())
     .then(result => {
         if(result == "false") {
-            alert(result + " 현재 비밀번호가 일치하지 않습니다.");
+            alert("현재 비밀번호가 일치하지 않습니다.");
         } else {
 
             // 비밀번호 수정
@@ -195,7 +195,7 @@ tel.querySelector('.submit').addEventListener('click', e => {
             const newTel = telFormmater(telInput.value);
             tel.previousElementSibling.querySelector('.info-print').innerText = newTel;
             alert("정상적으로 수정되었습니다.");
-        }else{
+        } else {
             alert("수정 실패");
         }
     })
@@ -213,10 +213,10 @@ telInput.addEventListener("input", () => {
     // 정규 표현식으로 유효성 검사
     const regEx = /^0(1[01679]|2|[3-6][1-5]|70)[1-9]\d{3,4}\d{4}$/;
     if(regEx.test(telInput.value)) { // 유효
-        telMessage.innerText = "유효한 입력입니다.";
+        telMessage.innerText = "유효한 입력입니다";
         telMessage.style.color = "green";
     } else { // 무효
-        telMessage.innerText = "유효하지 않은 입력입니다.";
+        telMessage.innerText = "유효하지 않은 입력입니다 (숫자만 입력)";
         telMessage.style.color = "red";
     }
 });
