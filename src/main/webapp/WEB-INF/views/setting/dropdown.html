@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* dorpdown 메뉴 */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: content-box;
+            font-size: 0.9rem;
+        }
+        body {
+            padding: 10px;
+        }
+        .dropdown {
+            height: 24px;
+            z-index: 100;
+            position: flex;
+            flex-direction: column;
+        }
+        .dropdown ul.list-wrap {
+            padding: 5px 0;
+            border: 1px solid #ccc;
+            border-radius: 0 6px 6px 6px;
+            background-color: white;
+
+            display: inline-flex;
+            flex-direction: column;
+        }
+        .dropdown li {
+            padding: 0 8px;
+            height: 23px;
+            list-style: none;
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+        }
+        .dropdown li:hover {
+            background-color: #BB2649;
+            color: white;
+        }
+        .dropdown li.button {
+            list-style: none;
+            width: fit-content;
+            max-width: 112px;
+            border: 1px solid #ccc;
+            border-radius: 2px;
+            margin-bottom: 2px;
+        }
+        .dropdown li.button:hover {
+            background-color: #eee;
+            color: black;
+        }
+        .dropdown li.button.clicked {
+            background-color: #BB2649;
+            color: white;
+        }
+        .dropdown span {
+            pointer-events: none;
+        }
+        
+        .hidden { display: none !important; }
+    </style>
+</head>
+<body>
+    <div class="dropdown">
+        <ul>
+            <li class="button">
+                <span>선택하기</span>
+            </li>
+        </ul>
+        <ul class="list-wrap hidden">
+            <li value="A">
+                <span>메뉴 1 : 내용</span>
+            </li>
+            <li value="B">
+                <span>메뉴 2 : 긴......내용</span>
+            </li>
+            <li value="C">
+                <span>메뉴 3 : 내용</span>
+            </li>
+        </ul>
+    </div>
+
+    <script>
+        // 드롭다운
+        const dropdown = document.querySelector('.dropdown');
+        const dropdownBtn = dropdown.querySelector('.button');
+        const dropdownListWrap = dropdown.querySelector('.list-wrap');
+        const dropdownLists = dropdownListWrap.querySelectorAll('li');
+
+        // 드롭다운 버튼 클릭 시 메뉴 출력
+        dropdownBtn.addEventListener('click', e => {
+            e.target.classList.toggle('clicked');
+            dropdownListWrap.classList.toggle('hidden');
+        });
+
+        // 드롭다운 외부 클릭 시 메뉴 닫기
+        document.querySelector("body").addEventListener("click", e => {
+            if(e.target.className != e.target.querySelector(".dropdown").className) {
+                dropdownListWrap.classList.add('hidden');
+                dropdownBtn.classList.remove('clicked');
+            }
+        })
+
+        // 드롭다운 메뉴 선택
+        for(let li of dropdownLists) {
+            li.addEventListener('click', e => {
+                const span = li.querySelector('span').innerText;
+                dropdownBtn.querySelector('span').innerText = span;
+            });
+        }
+    </script>
+</body>
+</html>

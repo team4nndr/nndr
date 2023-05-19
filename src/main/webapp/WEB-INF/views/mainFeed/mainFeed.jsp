@@ -7,11 +7,11 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>main</title>
+    <title>NNDR :: 너나들이</title>
+
     <link rel="stylesheet" href="/resources/css/mainFeed/sidebar.css">
     <link rel="stylesheet" href="/resources/css/mainFeed/main.css">
     <link rel="stylesheet" href="/resources/css/mainFeed/reply.css">
-
 </head>
 <body>
     <!-- 상단바 -->
