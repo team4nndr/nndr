@@ -19,11 +19,12 @@ public class Board {
 	private String uploadDate;
 	private String contentLike;
 	private String delete;
+	private String updateDate;
 	
-	// 서브쿼리
+  // 서브쿼리
 	private int commentCount; // 댓글 수 
-    private int likeCount;
-    private String memberName;
+  private int likeCount;
+  private String memberName;
     
 	// 이미지 리스트
 	private List<Image> imageList;

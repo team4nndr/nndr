@@ -12,6 +12,7 @@
 		<result property="uploadDate" column="UPLOAD_DATE" />
 		<result property="contentLike" column="CONTENT_LIKE" />
 		<result property="delete" column="DELETE" />
+		<result property="updateDate" column="UPDATE_DATE" />
 		<result property="disableDate" column="DISABLE_DATE" />
 		<result property="memberName" column="MEMBER_NAME" />
 	
@@ -34,28 +35,106 @@
 	
 	<!-- 게시글 확인 -->
 	<select id="feedList" resultMap="board_rm">
-		SELECT BOARD_NO, MEMBER_NO, MEMBER_NAME,BOARD_TEXT,
-			<![CDATA[
-			CASE  
-				WHEN SYSDATE - UPLOAD_DATE < 1/24/60
-				THEN FLOOR( (SYSDATE - UPLOAD_DATE) * 24 * 60 * 60 ) || '초 전'
-				WHEN SYSDATE - UPLOAD_DATE < 1/24
-				THEN FLOOR( (SYSDATE - UPLOAD_DATE) * 24 * 60) || '분 전'
-				WHEN SYSDATE - UPLOAD_DATE < 1
-				THEN FLOOR( (SYSDATE - UPLOAD_DATE) * 24) || '시간 전'
-				ELSE TO_CHAR(UPLOAD_DATE, 'YYYY-MM-DD')
-			END UPLOAD_DATE
-			]]>
-		FROM BOARD b 
-		JOIN MEMBER USING(MEMBER_NO)
-		WHERE "DELETE" = 'N'
-		ORDER BY UPLOAD_DATE DESC
+SELECT BOARD_NO, MEMBER_NAME,BOARD_TEXT,MEMBER_NO,
+	<![CDATA[
+	CASE  
+		WHEN SYSDATE - UPLOAD_DATE < 1/24/60
+		THEN FLOOR( (SYSDATE - UPLOAD_DATE) * 24 * 60 * 60 ) || '초 전'
+		WHEN SYSDATE - UPLOAD_DATE < 1/24
+		THEN FLOOR( (SYSDATE - UPLOAD_DATE) * 24 * 60) || '분 전'
+		WHEN SYSDATE - UPLOAD_DATE < 1
+		THEN FLOOR( (SYSDATE - UPLOAD_DATE) * 24) || '시간 전'
+		ELSE TO_CHAR(UPLOAD_DATE, 'YYYY-MM-DD')
+	END UPLOAD_DATE
+	]]>
+FROM BOARD b 
+JOIN MEMBER USING(MEMBER_NO)
+WHERE "DELETE" = 'N'
+ORDER BY BOARD_NO DESC
 	</select>
 	
 	<select id="selectImageList" resultMap="image_rm">
-		SELECT * FROM "IMAGE"
-		WHERE BOARD_NO=3
-		ORDER BY IMG_ORDER
+	SELECT * FROM "IMAGE"
+	WHERE BOARD_NO=#{boardNo}
+	ORDER BY IMG_ORDER DESC
+	
 	</select>
 	
+	<!-- 게시글 등록 -->
+	<insert id="feedInsert" parameterType="Board" useGeneratedKeys="true">
+		<selectKey order="BEFORE" resultType="_int" keyProperty="boardNo">
+			SELECT SEQ_BOARD_NO.NEXTVAL FROM DUAL
+		</selectKey>
+       	INSERT INTO BOARD 
+       	VALUES( #{boardNo},
+              #{boardText},
+              DEFAULT, DEFAULT, DEFAULT,
+              #{memberNo} 
+              )
+	
+	</insert>
+	
+	
+		<insert id="insertImageList" parameterType="list" >
+	INSERT INTO "IMAGE" 
+SELECT SEQ_IMG_NO.NEXTVAL, A.*
+FROM (
+	
+	<foreach collection="list" item="img" separator=" UNION ALL ">
+	
+SELECT #{img.imgPath} IMG_PATH, #{img.imgReName} IMG_RENAME, #{img.imgOriginal} IMG_ORGINAL,
+		#{img.imgOrder} IMG_ORDER, #{img.boardNo} BOARD_NO
+FROM DUAL
+
+	</foreach>
+)A
+
+	
+	</insert>
+	
+	<!-- 게시글 삭제 -->
+		<update id="feedDelete">
+			UPDATE "BOARD" SET
+			"DELETE" = 'Y'
+			WHERE MEMBER_NO =#{memberNo}
+			AND BOARD_NO =#{boardNo}
+	
+		</update>
+		
+		
+		<!-- 게시글 수정  -->
+	<update id="feedUpdate">
+		UPDATE "BOARD" SET
+		BOARD_TEXT = #{boardText},
+		UPDATE_DATE = SYSDATE 
+		WHERE BOARD_NO = #{boardNo}
+		AND BOARD_NO = #{boardNo}
+	</update>
+		
+		<!-- 게시글 수정 중 이미지삭제 -->
+		
+	<delete id="imageDelete">
+		DELETE FROM "IMAGE"
+		WHERE BOARD_NO = #{boardNo}
+		AND IMG_ORDER IN(${deleteList)
+	</delete>
+	
+	<!-- 게시글 이미지 수정   -->
+		<update id="imageUpdate">
+			UPDATE "IMAGE" SET
+			IMG_PATH = #{imgPath},
+			IMG_ORIGINAL = #{imgOriginal},
+			IMG_RENAME = #{imgReName}
+			WHERE BOARD_NO = #{boardNo}
+			AND IMG_ORDER = #{imageOrder}
+		</update>
+		
+	<!-- 게시글 이미지 하나   -->
+	
+		<insert id="imgInsert">
+			INSERT INTO "IMAGE"
+			VALUES(SEQ_IMG_NO.NEXTVAL,#{imagePath},#{imgReName},
+			#{imgOriginal},#{imgOrder},#{boardNo})
+			
+		</insert>
 </mapper>

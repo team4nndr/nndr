@@ -41,14 +41,28 @@
 		<result property="romanticYn" column="ROMANTIC_YN" />
 		<result property="infoNick" column="INFO_NICK" />
 		<result property="infoText" column="INFO_TEXT" />
+		<!-- 이미지 관련 -->
 		<result property="infoBack" column="INFO_BACK" />
+		<result property="infoBackPath" column="INFO_BACKPATH" />
+		<result property="infoProfile" column="INFO_PROFILE" />
+		<result property="infoProfilePath" column="INFO_PROFILEPATH" />
+
 		<result property="imgPath" column="IMG_PATH" />
 		<result property="imgRename" column="IMG_RENAME" />
 		<result property="uploadDate" column="UPLOAD_DATE" />
 		<result property="boardNo" column="BOARD_NO" />
 		
-		
 	</resultMap>
+	<resultMap type="PersonalFriend" id="personalFriend_rm">
+		<id property="friendNo" column="FRIEND_NO" />
+		<result property="friendSender" column="FRIEND_SENDER" />
+		<result property="friendReciver" column="FRIEND_RECIVER" />
+		<result property="friendFl" column="FRIEND_FL" />
+		<result property="memberNo" column="MEMBER_NO" />
+		<result property="memberName" column="MEMBER_NAME" />
+	</resultMap>
+	
+	
 	<resultMap type="MemberHobby" id="memberHobby_rm">
 		<id property="memberNo" column="MEMBER_NO" />
 		<result property="hobbyNo" column="HOBBY_NO" />
@@ -98,8 +112,29 @@
 	</select>
 	
 	
+	<insert id="personalAdd">
+		INSERT INTO FRIEND VALUES(101, ${friendSender}, ${friendReciver}, DEFAULT)
+	</insert>
 	
+	<select id="perFriend" resultMap="personalFriend_rm">
+		SELECT * FROM FRIEND WHERE FRIEND_SENDER = ${friendSender} AND FRIEND_RECIVER=${friendReciver}
+	</select>
 	
+	<delete id="personalCan">
+		DELETE FROM "FRIEND" WHERE FRIEND_SENDER=${friendSender} AND FRIEND_RECIVER=${friendReciver}
+	</delete>
+
+	<update id="backImg">
+		UPDATE "MEMBER_INFO" SET INFO_BACK=#{imgRename}, INFO_BACKPATH=#{imgPath} WHERE MEMBER_NO = #{memberNo}
+	</update>
+	
+	<update id="delBackImg">
+		UPDATE "MEMBER_INFO" SET INFO_BACK= null, INFO_BACKPATH= null WHERE MEMBER_NO = #{memberNo}
+	</update>
+
+	<update id="proImg">
+		UPDATE "MEMBER_INFO" SET INFO_PROFILE=#{imgRename}, INFO_PROFILEPATH=#{imgPath} WHERE MEMBER_NO = #{memberNo}
+	</update>
 	
 	
 	<!--  이미지 수정 

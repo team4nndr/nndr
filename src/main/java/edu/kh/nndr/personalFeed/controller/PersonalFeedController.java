@@ -2,6 +2,7 @@ package edu.kh.nndr.personalFeed.controller;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
@@ -21,6 +22,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import edu.kh.nndr.member.model.dto.Member;
 import edu.kh.nndr.member.model.dto.MemberHobby;
 import edu.kh.nndr.member.model.dto.MemberInfo;
+import edu.kh.nndr.member.model.dto.PersonalFriend;
 import edu.kh.nndr.member.model.service.MemberInfoService;
 
 
@@ -32,7 +34,7 @@ public class PersonalFeedController {
 	MemberInfoService service;
 
 	@GetMapping("/personalFeed/{no:[0-9]+}")
-	public String personalFeed( Model model, @PathVariable("no") int no) {
+	public String personalFeed( Model model, @SessionAttribute("loginMember") Member loginMember, @PathVariable("no") int no) {
 		MemberInfo infoMember = service.personalMember(no);
 		model.addAttribute("infoMember", infoMember); // request scope
 
@@ -42,6 +44,11 @@ public class PersonalFeedController {
 		List<Map<String, String>> imgSet = service.imgSet(no);
 		model.addAttribute("imgSet", imgSet);
 		
+		Map<String, Object> friendche = new HashMap<>();
+		friendche.put("friendSender", loginMember.getMemberNo());
+		friendche.put("friendReciver", no);
+		PersonalFriend friendcheck = service.friendChecking(friendche);
+		model.addAttribute("friendcheck", friendcheck);
 		return "personalFeed/personalFeed";
 	}
 	

@@ -5,11 +5,13 @@
     background-color: rgb(245, 245, 245);
   }
 
+
+
 #top{
   width: 100%;
-  /* height: 926px; */
   display: grid;
-  grid-template-rows: 1.8fr 0.2fr;
+  align-content: space-evenly;
+  grid-template-rows: 1fr 1fr 1fr;
   height: 969px;
 }
 
@@ -20,12 +22,17 @@
 } 
 
 .frame{
-  
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
 }
+
+.main-home-logo{
+  display: flex; 
+  justify-content: center;
+}
+
 
 .logo h2{
   width: 302px;
@@ -51,11 +58,12 @@
   align-content: center;
   justify-content: center;
   border-radius: 20px;
+  margin-bottom: 50px;
 }
 
 .login{
   background-color: #fff;
-  border-radius: 6px;
+  border-radius: 90px;
   padding: 25px;
   text-align: center;
   border-color: #ccc;
@@ -68,24 +76,31 @@
   border-radius: 7px;
   border: 0.5px solid #6f6d6d;
   outline: none;
+  padding: 0 10px;
 }
 .login input:hover{
   border-width: 2px;
-  border-color : rgb(105, 105, 247)
+  border-color : rgb(105 156 233);
 }
 
 
 
 
- .submit2{
+.submit2{
+  font-weight: bold;
   font-size: 22px;
   width: 340px;
   height: 43px;
-  background-color: #1877f2;
+  background-color: #56A8C5;
   color: #fff;
   border-radius: 6px;
-  border-color: #ccc;
+  cursor: pointer;
+  border: none;
+}
 
+.submit2:hover{
+  background-color:  #56A8C5 ;
+  box-shadow: 3px 5px 11px 2px  #ccc;
 }
 
 /* 비밀번호를 잊으셨나요? 와 hr사이 간격 */
@@ -95,9 +110,10 @@
   width: 300px;
 }
 
+
 .pwCheck{
   text-decoration: none;
-  color: #1877f2;
+  color: rgba(36, 34, 34, 0.733);
 }
 
 .pwCheck:hover{
@@ -107,7 +123,7 @@
 
 .login.signup {
   font-size: 25px;
-  background-color: #0ae728;
+  background-color: #99d1a0;
   color: #fff;
   padding-left: 25px;
   padding-right: 25px;
@@ -128,13 +144,15 @@
   border-radius: 5px;
   outline: none;
   border: none;
-  background-color: rgb(61, 234, 61);
+  background-color: rgb(105, 156, 233);
   color: white;
   font-size: 18px;
   font-weight: bold;
+  cursor: pointer;
 }
+
 .signup:hover{
-  background-color: #13671e;
+  background-color: rgb(63, 122, 211);
 
 }
 
@@ -144,36 +162,79 @@
 }
 
 
-footer{
-    height: 200px;
-    background-color: #a3add342;
+.main-bottom{
+    height: 210px;
+    background-color: #e0e3ed;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     justify-content: center;
     align-items: center;
 }
 
-footer > p{font-weight: bold;}
+.main-bottom > div {
+  display: flex;
+  background-color: #e0e3ed;
+}
+
+.main-bottom > div:nth-child(1){
+  font-weight: bold;
+  color: #4c4c4c;
+  height: 21px;
+  display: flex;
+  align-items: center;
+  border-right: 1px solid #4c4c4c;
+  padding-right: 10px;
+
+}
+.main-bottom > div:nth-child(2){
+  color: #4c4c4c;
+  font-weight: bold;
+  padding : 0 10px;
+  height: 21px;
+  display: flex;
+  align-items: center;
+  border-right: 1px solid #4c4c4c;
+}
+.main-bottom > div:nth-child(3){
+  color: #4c4c4c;
+  font-weight: bold;
+  padding-left: 10px;
+  
+}
+
+
+.main-bottom > div > a {
+  display: flex;
+  background-color: #e0e3ed;
+  text-decoration: none;
+  
+  color: #4c4c4c;
+  font-weight: bold;
+}
+
+
+.main-bottom > p{font-weight: bold;}
 
 /* article의 모든 자식 */
-footer > article > *{
+/* footer > article > *{
+
+  font-size: 14px;
+  margin: 16px 0;
+} */
+/* 
+.main-bottom a{
   font-size: 14px;
   margin: 16px 0;
 }
 
-footer a{
-  font-size: 14px;
-  margin: 16px 0;
-}
-
-footer a{
+.main-bottom a{
   color: black;
   text-decoration: none;
 }
-
-footer span{
-  padding: 0 10px;
-}
+#e0e3ed
+.main-bottom span{
+  padding: 0 10px; 
+} */
 
 
 /* 메세지 색상 지정 */
@@ -265,8 +326,9 @@ footer span{
   padding-left: 8px;
 }
 
-/* phone 화살표 제거 */
-#memberTel{ 
+/* memberTel 화살표 제거 */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
   -webkit-appearance: none;
 }
 
@@ -322,13 +384,18 @@ footer span{
   border-radius: 5px;
   outline: none;
   border: none;
-  background-color: rgb(61, 234, 61);
+  background-color: rgb(105, 156, 233);
   color: white;
   font-size: 18px;
   font-weight: bold;
   margin-left: 90px;
   margin-top: 30px;
+  cursor: pointer;
 }
+
+#btn:hover{
+  background-color: rgb(105, 156, 233);
+  box-shadow: 5px 3px 8px 1px  #CCC}
 
 #sendAuthKeyBtn{
   border: 1px solid #8c8686;

@@ -227,24 +227,4 @@ feedDeleteList.forEach(feedDelete => {
 
 
 
-
-
-
-
-
 // feedUpdate버튼을 누른다면 수정버튼이 나올 수 있도록!
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
