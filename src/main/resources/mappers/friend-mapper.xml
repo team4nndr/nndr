@@ -14,7 +14,7 @@
 		<result property="memberName" column="MEMBER_NAME" />
 	</resultMap>
 	
-	<!-- 친구요청 (test)조회 -->
+	<!-- 친구요청 조회 -->
 	<select id="friendRqList" resultMap="friend_rm">
 		SELECT FRIEND_NO,
 		FRIEND_SENDER,
@@ -36,5 +36,34 @@
 	</update>
 	
 	
+	<!-- 친구거절  -->
+	<delete id="friendDelete">
+		DELETE FROM "FRIEND"
+		WHERE FRIEND_NO = #{friendNo}
+	</delete>
+	
+	<!-- 친구 목록 조회 -->
+	<select id="friendListAll" resultMap="friend_rm">
+		SELECT FRIEND_NO,
+		FRIEND_SENDER,
+		MEMBER_NAME
+		FROM FRIEND
+		JOIN MEMBER ON
+		FRIEND.FRIEND_SENDER = MEMBER.MEMBER_NO
+		WHERE FRIEND_FL = 'Y'
+		AND
+		FRIEND_RECIVER = #{memberNo}
+		ORDER BY FRIEND_NO DESC
+	</select>
+	
+	<!-- 친구 검색 -->
+	<select id="friendListsearch" resultMap="friend_rm">
+	SELECT MEMBER_NAME 
+      FROM FRIEND JOIN MEMBER ON FRIEND.FRIEND_SENDER = MEMBER.MEMBER_NO 
+      WHERE FRIEND_FL = 'Y' 
+      AND MEMBER_NO != #{memberNo}
+      AND MEMBER_NAME LIKE '%${query}%'
+      ORDER BY MEMBER_NAME DESC
+	</select>
 	
 </mapper>

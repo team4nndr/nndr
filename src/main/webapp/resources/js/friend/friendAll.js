@@ -36,3 +36,60 @@ for (let i = 0; i < frtopdiv.length; i++) {
         }
     });
 };
+
+const frsearch = document.querySelector(".frsearch");
+const searchfr = document.getElementById("searchfr");
+
+
+
+searchfr.addEventListener("input", (e) => {
+
+
+    const query = e.target.value.trim();
+
+    if (query.length > 0) {
+
+        fetch("/friend/all/ser?query=" + query)
+            .then(resp => resp.json())
+            .then(friendList => {
+
+                console.log(friendList);
+                frsearch.innerHTML = "";
+
+
+                if (friendList.length == 0) {
+                    var div = document.createElement("div");
+                    div.classList.add("result2");
+                    div.innerText = "일치하는 친구가 없습니다.";
+                    frsearch.appendChild(div);
+                }
+
+                for (let fr of friendList) {
+                    const div = document.createElement("div");
+                    div.classList.add("result2");
+                    div.setAttribute("fr", fr.memberNo);
+
+                    if (query.toLowerCase().startsWith(query.toLowerCase())) {
+
+                        let div = document.createElement("div");
+                        const query = searchfr;
+                        div.innerHTML = query.value;
+                        frsearch.appendChild(div);
+
+                        div.onclick = () => {
+                            var query = searchfr;
+                            query = div.innerHTML;
+                            frsearch.innerHTML = "";
+                            return;
+                        };
+                    }
+                }
+            });
+    }
+
+    if (searchfr == "") {
+        frsearch.innerHTML = "";
+    }
+
+})
+
