@@ -108,6 +108,7 @@
 .nndr-suggestions > div {
     padding: 5px;
     
+    border-radius: 5px;
     cursor: pointer;
     background-color: #f0f2f5;
     z-index: 999;
@@ -115,7 +116,8 @@
 }
 
 .nndr-suggestions_pannel > div:hover {
-    
+    box-shadow: #a4a6aa;
+    border-radius: 7px;
     height: 30px;
     background-color: rgb(207, 204, 204);
     z-index: 999;
