@@ -51,24 +51,56 @@
                         
                         <hr>
 
-                        <!--  나의 게시물 중간  -->
-                        <div class="feedContent">
-                            <div class="text-container">${board.boardText}</div>
-                            
-                            <%-- 이미지가 있다면 --%>
-                            <c:if test="${not empty board.imageList}" >
-                                <div class="image-container">
-                                    <c:set var="start" value="0"/>
-                                    <c:if test="${fn:length(board.imageList) > start}">
-                                        <c:forEach var="i" begin="${start}" end="${fn:length(board.imageList)}">
-                                            <div class="boardImg1">
-                                                <c:set var="path" value="${board.imageList[i].imgPath}${board.imageList[i].imgReName}"/>
-                                                <img src="${path}">
-                                            </div>
-                                        </c:forEach>
-                                    </c:if>
-                                </div>
-                            </c:if>
+                        <!--  피드 본문 : 텍스트  -->
+                        <div class="text-container">${board.boardText}</div>
+
+                        <%-- 피드 본문 : 이미지 --%>
+                        <div class="image-container">
+                            <%-- <c:if test="${not empty board.imageList}" >
+                                <c:set var="start" value="0"/>
+                                <c:if test="${fn:length(board.imageList) > start}">
+                                    <c:forEach var="i" begin="${start}" end="${fn:length(board.imageList)-1}">
+                                        <div class="image-content">
+                                            <c:set var="path" value="${board.imageList[i].imgPath}${board.imageList[i].imgReName}"/>
+                                            <img src="${path}">
+                                        </div>
+                                    </c:forEach>
+                                </c:if>
+                            </c:if> --%>
+
+                            <%-- 세로사진 --%>
+                            <div class="image-content">
+                                <img src="/resources/images/mainFeed/sample/1.jpg">
+                            </div>
+                            <div class="image-content">
+                                <img src="/resources/images/mainFeed/sample/2.jpg">
+                            </div>
+                            <div class="image-content">
+                                <img src="/resources/images/mainFeed/sample/3.jpg">
+                            </div>
+                            <%-- <div class="image-content">
+                                <img src="/resources/images/mainFeed/sample/3.jpg">
+                            </div>
+                            <div class="image-content">
+                                <img src="/resources/images/mainFeed/sample/3.jpg">
+                            </div> --%>
+
+                            <%-- 가로사진--%>
+                            <%-- <div class="image-content">
+                                <img src="/resources/images/mainFeed/sample/1-1.jpg">
+                            </div>
+                            <div class="image-content">
+                                <img src="/resources/images/mainFeed/sample/2-1.jpg">
+                            </div>
+                            <div class="image-content">
+                                <img src="/resources/images/mainFeed/sample/2-1.jpg">
+                            </div> 
+                            <div class="image-content">
+                                <img src="/resources/images/mainFeed/sample/2-1.jpg">
+                            </div> 
+                            <div class="image-content">
+                                <img src="/resources/images/mainFeed/sample/2-1.jpg">
+                            </div>  --%>
                         </div>
 
                         <hr>
@@ -85,35 +117,28 @@
                         <hr>
 
                         <!-- 댓글 목록  -->
-                        <section class="reply-container">
-                            <div class="reply">
-                                <img src="/resources/images/common/user-default.png" class="reply-profile-image">
-                                <div class="reply-body">
-                                    <div class="reply-bubble">
-                                        <p class="reply-name">Steve Yoo</p>
-                                        <p class="reply-content">looking good hyung!</p>
-                                    </div>
-                                    <div class="reply-footer">
-                                        <a href="#" class="like-btn">좋아요</a>
-                                        <a href="#" class="re-reply">답글달기</a>
-                                        <a href="#" class="date">6일</a>
-                                    </div>
-                                </div>                        
-                            </div>
-                            <div class="reply">
-                                <img src="/resources/images/common/user-default.png" class="reply-profile-image">
-                                <div class="reply-body">
-                                    <div class="reply-bubble">
-                                        <p class="reply-name">최유나</p>
-                                        <p class="reply-content">홀리몰리 댓글을 더 길~~~게 달아보도록 하겠읍니다.</p>
-                                    </div>
-                                    <div class="reply-footer">
-                                        <a href="#" class="like-btn">좋아요</a>
-                                        <a href="#" class="re-reply">답글달기</a>
-                                        <a href="#" class="date">6일</a>
-                                    </div>
-                                </div>                        
-                            </div>
+                        <section class="reply-container board${board.boardNo}">
+                            <c:forEach items="${board.replyList}" var="reply">
+                                <c:if test="${reply.parentReplyNo == 0 || reply.parentReplyNo == null}" >
+                                    <div class="reply">
+                                </c:if>
+                                <c:if test="${reply.parentReplyNo != 0}" >
+                                    <div class="reply re-reply">
+                                </c:if>
+                                    <img src="/resources/images/common/user-default.png" class="reply-profile-image">
+                                    <div class="reply-body">
+                                        <div class="reply-bubble">
+                                            <p class="reply-name">${reply.memberName}</p>
+                                            <p class="reply-content">${reply.replyContent}</p>
+                                        </div>
+                                        <div class="reply-footer">
+                                            <%-- <a class="like-btn">좋아요</a> --%>
+                                            <a class="re-reply" onclick="replyWrite(${reply.replyNo}, ${reply.memberNo}, ${reply.memberName})">답글 달기</a>
+                                            <a class="date">${reply.replyDate}</a>
+                                        </div>
+                                    </div>                    
+                                </div>
+                            </c:forEach>
                         </section>
 
                         <!-- 댓글 작성  -->
@@ -122,13 +147,13 @@
                                 <img src="/resources/images/common/user-default.png" class="reply-profile-image">
                                 <div class="reply-body">
                                     <div class="reply-bubble">
-                                        <textarea type="textarea" placeholder="댓글을 입력하세요..."></textarea>
-                                        <a>
+                                        <textarea class="reply-textarea" no="${board.boardNo}" type="textarea" placeholder="댓글을 입력하세요..." maxlength="1000"></textarea>
+                                        <a onclick="svubmitReply(${board.boardNo})">
                                             <img src="/resources/images/mainFeed/send.png" class="reply-send-disable">
                                             <img src="/resources/images/mainFeed/send-blue.png" class="reply-send-enable hidden">
                                         </a>
                                     </div>
-                                </div>              
+                                </div>
                             </div>
                         </section>
                     </div>
@@ -142,7 +167,7 @@
         <jsp:include page="/WEB-INF/views/mainFeed/sidebarR.jsp"/>
 
     </main>
-    
+
     <script src="/resources/js/mainFeed/main.js"></script>
     <script src="/resources/js/mainFeed/reply.js"></script>
 

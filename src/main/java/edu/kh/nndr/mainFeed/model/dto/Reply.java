@@ -13,10 +13,20 @@ import lombok.ToString;
 @ToString
 public class Reply {
 	private int replyNo;
+	
 	private String replyContent;
 	private String  replyDate;
 	private String replyDelete;
 	private int memberNo;
 	private int boardNo;
 	private int parentReplyNo;
+	
+	private String memberName;
+	private String setFriendReq;
+	private String setAlarmReply;
+	private String setAlarmLike;
+	private String setAlarmTag;
+	private String setAlarmReqAccept;
+	
+	private String profileImage;
 }

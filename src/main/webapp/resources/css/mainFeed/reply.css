@@ -39,8 +39,9 @@
     margin-left: 6px;
     font-weight: bold;
 }
-.reply-footer > a:hover {
+.reply-footer > a:not(.date):hover {
     text-decoration: underline;
+    cursor: pointer;
 }
 .reply-footer > a.date {
     font-weight: normal;
@@ -90,6 +91,14 @@
     height: 16px;
     width: 16px;
 }
+.pointer {
+    cursor: pointer;
+}
 
 /* hidden 요소 */
 .hidden { display: none; }
+
+/* 대댓글 */
+.reply.re-reply {
+    margin-left: 50px;
+}

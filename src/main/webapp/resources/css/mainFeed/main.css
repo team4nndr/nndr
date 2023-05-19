@@ -40,7 +40,7 @@ hr {
     width: 100%;
     max-width: 712px;
     min-height: 264px;
-    max-height: 910px;
+    /* max-height: 910px; */
 
     border-radius: 10px;
     background-color: white;
@@ -122,27 +122,70 @@ hr {
 }
 
 
-/* 나의 게시물 중단 */
-.feedContent {
+/* 피드 본문 : 텍스트 */
+.text-container {
     padding: 12px 16px;
     width: 100%;
     display: relative;
 }
 
+/* 피드 본문 : 이미지 */
+/* .image-container {
+    padding: 0;
+    width: 100%;
+    display: flex;
+} */
+
 /* 피드 내부 이미지 */
-.boardImg1 {
+.image-container {
+    padding: 0;
+
+    width: 100%;
+    max-width: 712px;
+    max-height: 715px;
+
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    column-gap: 2px;
+    row-gap: 2px;
+
+    overflow: hidden;
+}
+
+.image-content {
     background-color: black;
     display: flex;
     flex-direction: center;
     align-items: center;
 
-    width: inherit;
-    max-width: 680px;
-    max-height: 666px;
-}
+    width: 100%;
+    max-height: inherit;
 
-.boardImg1 img {
+    overflow: hidden;
+}
+.image-content.row {
+
+}
+.image-content.col {
+
+}
+.image-container img {
+    display: block;
     object-fit: contain;
+    max-height: 715px;
+    
+    width: 100%;
+    height: auto;
+
+    object-fit: cover;
+}
+.image-container img.row {
+    width: auto;
+    height: 100%;
+}
+.image-container img.col {
+    width: 100%;
+    height: auto;
 }
 
 /* 나의 게시물 좋아요 */

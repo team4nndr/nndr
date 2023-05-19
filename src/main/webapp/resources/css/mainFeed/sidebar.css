@@ -60,3 +60,7 @@
     position: absolute;
     left: 65px;
 }
+
+hr.sidebar-hr {
+    /* margin: 12px 12px; */
+}

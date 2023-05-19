@@ -15,6 +15,7 @@
                 <span>나의 피드</span>
             </a>
         </li>
+        <hr class="sidebar-hr">
         <li>
             <a href="/friend">
                 <img src="/resources/images/mainFeed/mainFriends.png">
@@ -27,6 +28,7 @@
                 <span>내가 저장한 피드</span>
             </a>
         </li>
+        <hr class="sidebar-hr">
         <li>
             <a href="https://www.naver.com/">
                 <img src="/resources/images/mainFeed/mainSearch.png">
