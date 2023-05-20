@@ -58,4 +58,13 @@ public class ReplyDAO {
 	public Reply info(int replyNo) {
 		return sqlSession.selectOne("replyMapper.info", replyNo);
 	}
+
+	/**
+	 * 댓글 수정
+	 * @param reply
+	 * @return result
+	 */
+	public int update(Reply reply) {
+		return sqlSession.update("replyMapper.update", reply);
+	}
 }

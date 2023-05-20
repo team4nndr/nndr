@@ -37,19 +37,20 @@
     display: flex;
     align-items: flex-start;
 }
-.reply-footer > a {
+.reply-footer > * {
     text-decoration: none;
     color: #666;
     font-size: 0.8rem;
     margin-left: 6px;
     font-weight: bold;
 }
-.reply-footer > a:not(.date):hover {
+.reply-footer > *:not(.date):hover {
     text-decoration: underline;
     cursor: pointer;
 }
-.reply-footer > a.date {
+.reply-footer > .date {
     font-weight: normal;
+    font-size: 0.7rem;
 }
 
 /* 댓글 작성 */
@@ -84,7 +85,7 @@
 .reply-write .reply-bubble > textarea:focus {
     border: none;
 }
-.reply-bubble a {
+.reply-bubble .submit-btn {
     height: 20px;
     width: 20px;
     align-self: flex-end;
@@ -92,12 +93,26 @@
     bottom: 12px;
     right: 12px;
 }
-.reply-write .reply-bubble img {
+.reply-bubble img {
     height: 16px;
     width: 16px;
+    pointer-events: none;
 }
 .pointer {
     cursor: pointer;
+}
+.update-info {
+    margin-left: 6px;
+    font-size: 0.7rem;
+    color: #aaa;
+}
+.update-info .cancel-btn {
+    color: #4A6EA9;
+    cursor: pointer;
+    display: inline-block;
+}
+.update-info .cancel-btn:hover {
+    text-decoration: underline;
 }
 
 /* hidden 요소 */
@@ -108,6 +123,12 @@
     margin-left: 50px;
 }
 .reply-write.re-reply {
+    margin-left: 0;
+    padding-left: 0;
+}
+
+/* 댓글 수정 */
+.reply-write.reply-update {
     margin-left: 0;
     padding-left: 0;
 }

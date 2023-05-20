@@ -9,6 +9,7 @@
 		<!-- DB의 일반 컬럼들 -->
 		<result property="replyContent" column="REPLY_CONTENT" />
 		<result property="replyDate" column="REPLY_DATE" />
+		<result property="updateDate" column="UPDATE_DATE" />
 		<result property="replyDelete" column="REPLY_DELETE" />
 		<result property="memberNo" column="MEMBER_NO" />
 		<result property="boardNo" column="BOARD_NO" />
@@ -39,7 +40,8 @@
 			${memberNo},
 			${boardNo},
 			<if test="parentReplyNo == 0">NULL</if>		
-			<if test="parentReplyNo != 0">#{parentReplyNo}</if>
+			<if test="parentReplyNo != 0">#{parentReplyNo}</if>,
+			NULL
 		)
 	</insert>
 
@@ -59,6 +61,17 @@
 					ELSE TO_CHAR(REPLY_DATE, 'YYYY-MM-DD')
 				END REPLY_DATE,
 				]]>
+				<![CDATA[
+				CASE  
+					WHEN SYSDATE - UPDATE_DATE < 1/24/60
+					THEN FLOOR( (SYSDATE - UPDATE_DATE) * 24 * 60 * 60 ) || '초 전'
+					WHEN SYSDATE - UPDATE_DATE < 1/24
+					THEN FLOOR( (SYSDATE - UPDATE_DATE) * 24 * 60) || '분 전'
+					WHEN SYSDATE - UPDATE_DATE < 1
+					THEN FLOOR( (SYSDATE - UPDATE_DATE) * 24) || '시간 전'
+					ELSE TO_CHAR(UPDATE_DATE, 'YYYY-MM-DD')
+				END UPDATE_DATE,
+				]]>
 				MEMBER_NAME, SET_FRIEND_REQ, SET_AL_REPLY, SET_AL_LIKE, SET_AL_TAG, SET_AL_REQ_ACCEPT, INFO_PROFILEPATH||INFO_PROFILE INFO_IMG
 			FROM "REPLY" JOIN "MEMBER" USING(MEMBER_NO) JOIN "MEMBER_INFO" USING(MEMBER_NO)
 			) C
@@ -76,13 +89,16 @@
 	</update>
 	
 	<!-- 댓글 삭제(대댓글도 삭제) -->
-	<update id="delete">
+	<update id="delete">			
 		UPDATE "REPLY"
 		SET		REPLY_DELETE = 'Y'
-		WHERE 	REPLY_NO = ${replyNo}
-				OR PARENT_REPLY_NO = ${replyNo}
+		WHERE   REPLY_NO IN(
+			SELECT REPLY_NO FROM REPLY
+			START WITH REPLY_NO = #{replyNo}
+			CONNECT BY PRIOR REPLY_NO = PARENT_REPLY_NO
+		)
 	</update>
-	
+
 	<!-- 댓글 정보 조회 -->
 	<select id="info" resultMap="reply_rm">
 		SELECT REPLY_NO, MEMBER_NO, BOARD_NO, INFO_PROFILEPATH||INFO_PROFILE INFO_IMG
@@ -90,4 +106,12 @@
 		WHERE  REPLY_NO = ${replyNo} AND REPLY_DELETE = 'N'
 	</select>
 	
+	<!-- 댓글 수정 -->
+	<update id="update">
+		UPDATE "REPLY"
+		SET		REPLY_CONTENT = #{replyContent},
+				UPDATE_DATE = SYSDATE
+		WHERE 	REPLY_NO = ${replyNo}
+				AND REPLY_DELETE = 'N'
+	</update>
 </mapper>

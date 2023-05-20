@@ -145,6 +145,8 @@ img.wirter-profile-image {
 
     padding-left: 7px;
     padding-top: 2px;
+
+    position: relative;
 }
 .feed-more:hover{
     background-color: #ddd;
@@ -185,9 +187,9 @@ img.wirter-profile-image {
 .feedContain {
     height: 200px;
     position: absolute;
+    right: 0;
+    top: 40px;
     display: flex;
-    margin-top: 50px;
-    margin-right: 150px;
     flex-direction: column;
     align-content: wrap;
     z-index: 600;
