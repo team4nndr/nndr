@@ -2,6 +2,7 @@
 .reply-profile-image {
     height: 32px;
     width: 32px;
+    border-radius: 50px;
 }
 
 /* 댓글 목록 */
@@ -27,6 +28,7 @@
 }
 .reply-content {
     font-size: 0.9rem;
+    white-space: pre-wrap;
 }
 
 /* 댓글 부가기능(좋아요, 답글달기, 날짜출력) */
@@ -104,4 +106,8 @@
 /* 대댓글 */
 .reply.re-reply {
     margin-left: 50px;
+}
+.reply-write.re-reply {
+    margin-left: 0;
+    padding-left: 0;
 }

@@ -21,14 +21,17 @@ public class Board {
 	private String delete;
 	private String updateDate;
 	
-  // 서브쿼리
+	// 서브쿼리
 	private int commentCount; // 댓글 수 
-  private int likeCount;
-  private String memberName;
+	private int likeCount;
+	private String memberName;
     
 	// 이미지 리스트
 	private List<Image> imageList;
 	
 	// 댓글 리스트
 	private List<Reply> replyList;
+	
+	// 작성자 프로필사진
+	private String profileImage;
 }

@@ -2,27 +2,31 @@ const replyTextareas = document.querySelectorAll('.reply-bubble textarea');
 const disableImages = document.querySelectorAll('.reply-send-disable');
 const enableImages = document.querySelectorAll('.reply-send-enable');
 
-for(let i=0; i<replyTextareas.length; i++) {
-    replyTextareas[i].style.height = "24px";
+
+function addTextareaEvent(textarea) {
+    textarea.style.height = "24px";
 
     // 댓글창 최초 클릭 시 창 크기 늘리기
-    replyTextareas[i].addEventListener('focus', e => {
+    textarea.addEventListener('focus', e => {
         if( e.target.value == "" ) {
             e.target.style.transitionDuration = "0.5s";
             e.target.style.height = "40px";
         }
     });
 
-    replyTextareas[i].addEventListener('input', e => {
-        // 글자 입력 시 전송 버튼 활성화 
-        const valueLength = replyTextareas[i].value.trim().length;
+    // 글자 입력 시 전송 버튼 활성화 
+    textarea.addEventListener('input', e => {
+        const valueLength = e.target.value.trim().length;
+        const disableImage = e.target.nextElementSibling.children[0];
+        const enableImage = e.target.nextElementSibling.children[1];
+
         if( valueLength > 0 ) {
-            disableImages[i].classList.add('hidden');
-            enableImages[i].classList.remove('hidden');
+            disableImage.classList.add('hidden');
+            enableImage.classList.remove('hidden');
             e.target.parentElement.classList.add('pointer');
         } else {
-            disableImages[i].classList.remove('hidden');
-            enableImages[i].classList.add('hidden');
+            disableImage.classList.remove('hidden');
+            enableImage.classList.add('hidden');
             e.target.parentElement.classList.remove('pointer');
         }
 
@@ -34,6 +38,106 @@ for(let i=0; i<replyTextareas.length; i++) {
             e.target.style.height = e.target.scrollHeight + "px";
         }
     });
+}
+
+for(let i=0; i<replyTextareas.length; i++) {
+    addTextareaEvent(replyTextareas[i]);
+
+    // replyTextareas[i].style.height = "24px";
+
+    // // 댓글창 최초 클릭 시 창 크기 늘리기
+    // replyTextareas[i].addEventListener('focus', e => {
+    //     if( e.target.value == "" ) {
+    //         e.target.style.transitionDuration = "0.5s";
+    //         e.target.style.height = "40px";
+    //     }
+    // });
+
+    // replyTextareas[i].addEventListener('input', e => {
+    //     // 글자 입력 시 전송 버튼 활성화 
+    //     const valueLength = replyTextareas[i].value.trim().length;
+    //     if( valueLength > 0 ) {
+    //         disableImages[i].classList.add('hidden');
+    //         enableImages[i].classList.remove('hidden');
+    //         e.target.parentElement.classList.add('pointer');
+    //     } else {
+    //         disableImages[i].classList.remove('hidden');
+    //         enableImages[i].classList.add('hidden');
+    //         e.target.parentElement.classList.remove('pointer');
+    //     }
+
+    //     // 댓글이 길어지면 댓글 창 크기 자동조정
+    //     e.target.style.height = "";
+    //     if( e.target.scrollHeight < 40) {
+    //         e.target.style.height = "24px";
+    //     } else {
+    //         e.target.style.height = e.target.scrollHeight + "px";
+    //     }
+    // });
+}
+
+// 댓글 제출
+function submitReply(boardNo, parentReplyNo) {
+    
+    const textarea = document.querySelector('.reply-textarea[no="' + boardNo + '"]');
+    const replyContent = textarea.value;
+    
+    const data = {
+        "boardNo" : boardNo,
+        "replyContent" : replyContent,
+        "parentReplyNo" : parentReplyNo
+    };
+
+    fetch("/reply/submit", {
+        method : "POST",
+        headers : {"Content-Type" : "application/json"},
+        body : JSON.stringify(data)
+    })
+    .then(resp => resp.text())
+    .then(result => {
+        if(result > 0) {
+            printReplyList(boardNo);
+            textarea.value = "";
+        } else {
+            alert('댓글 작성 실패');
+        }
+    })
+    .catch(e => console.log(e));
+}
+
+// 엔터로 댓글 제출
+const textareas = document.querySelectorAll('.reply-textarea');
+for(let textarea of textareas) {
+    textarea.addEventListener('keypress', e => {
+        if(e.keyCode == 13) {
+            e.preventDefault();
+        }
+    });
+
+    textarea.addEventListener('keyup', e => {
+        if (e.keyCode == 13 && !e.shiftKey) {
+            e.preventDefault();
+            submitReply(e.target.getAttribute("no"));
+        }
+    });
+}
+
+// 댓글 삭제
+function deleteReply(boardNo, replyNo) {
+
+    if( confirm("댓글을 삭제하시겠어요?") ) {
+        fetch("/reply/delete?replyNo=" + replyNo)
+        .then(resp => resp.text())
+        .then(result => {
+            if(result > 0) {
+                printReplyList(boardNo);
+                confirmDelete.classList.add('hidden')
+            } else {
+                alert('댓글 삭제 실패');
+            }
+        })
+        .catch(e => console.log(e));
+    }
 }
 
 // 댓글 작성 시 실시간 추가
@@ -89,6 +193,8 @@ function printReplyList(boardNo) {
 
             const rere = document.createElement('a');
             rere.classList.add('re-reply');
+            const profileImg = re.profileImage == null ? -1 : re.profileImage
+            rere.addEventListener('click', () => showReplyForm(re.boardNo, re.replyNo, profileImg, rere));
             rere.innerText = '답글';
 
             const mod = document.createElement('a');
@@ -97,6 +203,7 @@ function printReplyList(boardNo) {
 
             const del = document.createElement('a');
             del.classList.add('reply-del');
+            del.addEventListener('click', () => deleteReply(re.boardNo, re.replyNo));
             del.innerText = '삭제';
             
             const date = document.createElement('a');
@@ -113,49 +220,56 @@ function printReplyList(boardNo) {
     .catch(e => console.log(e));
 }
 
-// 댓글 제출
-function submitReply(boardNo, parentReplyNo) {
-    
-    const textarea = document.querySelector('.reply-textarea[no="' + boardNo + '"]');
-    const replyContent = textarea.value;
-    
-    const data = {
-        "boardNo" : boardNo,
-        "replyContent" : replyContent,
-        "parentReplyNo" : parentReplyNo
-    };
-
-    fetch("/reply/submit", {
-        method : "POST",
-        headers : {"Content-Type" : "application/json"},
-        body : JSON.stringify(data)
-    })
-    .then(resp => resp.text())
-    .then(result => {
-        if(result > 0) {
-            printReplyList(boardNo);
-            textarea.value = "";
-        } else {
-            alert('댓글 작성 실패');
-        }
-    })
-    .catch(e => console.log(e));
-}
-
-// 엔터로 댓글 제출
-const textareas = document.querySelectorAll('.reply-textarea');
-for(let textarea of textareas) {
-
-    textarea.addEventListener('keyup', e => {
-        if (e.keyCode == 13)
-            if ( !e.shiftKey ) {
-                e.preventDefault();
-                submitReply(e.target.getAttribute("no"));
-            }
-    });
-}
-
 // 대댓글작성란 추가
-function replyWrite(parentReplyNo, memberNo, memberName) {
+function showReplyForm(boardNo, replyNo, profileImage, btn) {
 
+    const reForm = document.createElement('section');
+    reForm.classList.add('reply-write');
+    reForm.classList.add('reply-container');
+    reForm.classList.add('re-reply');
+    
+    const form = document.createElement('div');
+    form.classList.add('reply');
+    form.classList.add('re-reply');
+
+    const img = document.createElement('img');
+    if(profileImage != 0) {
+        img.setAttribute('src', profileImage);
+    } else {
+        img.setAttribute('src', "/resources/images/common/user-default.png");
+    }
+    img.classList.add('reply-profile-image');
+
+    const div1 = document.createElement('div');
+    div1.classList.add('reply-body');
+
+    const div2 = document.createElement('div');
+    div2.classList.add('reply-bubble');
+
+    const textarea = document.createElement('textarea');
+    // textarea.setAttribute('no', reply.boardNo);
+    textarea.classList.add('reply-textarea');
+    textarea.setAttribute('no', boardNo);
+    textarea.setAttribute('placeholder', '댓글을 입력하세요...');
+    textarea.setAttribute('maxlength', '1000');
+    addTextareaEvent(textarea);
+
+    const a = document.createElement('a');
+    a.setAttribute('onclick', 'submitReply(' + boardNo + ', ' + replyNo + ')');
+
+    const img1 = document.createElement('img');
+    img1.setAttribute('src', '/resources/images/mainFeed/send.png');
+    img1.classList.add('reply-send-disable');
+
+    const img2 = document.createElement('img');
+    img2.setAttribute('src', '/resources/images/mainFeed/send-blue.png');
+    img2.classList.add('reply-send-enable');
+    img2.classList.add('hidden');
+
+    a.append(img1, img2);
+    div2.append(textarea, a);
+    div1.append(div2);
+    form.append(img, div1);
+    reForm.append(form);
+    btn.parentElement.parentElement.parentElement.after(reForm);
 }

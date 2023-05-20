@@ -26,6 +26,7 @@
 		<result property="profileImage" column="INFO_IMG" />
 	</resultMap>
 	
+	<!-- 댓글 등록 -->
 	<insert id="submit">
 		<selectKey order="BEFORE" resultType="_int" keyProperty="replyNo">
 			SELECT SEQ_REPLY_NO.NEXTVAL FROM DUAL
@@ -42,6 +43,7 @@
 		)
 	</insert>
 
+	<!-- 댓글 조회 -->
 	<select id="replyList" resultMap="reply_rm">
 		SELECT LEVEL, C.*
 		FROM (
@@ -56,8 +58,8 @@
 					THEN FLOOR( (SYSDATE - REPLY_DATE) * 24) || '시간 전'
 					ELSE TO_CHAR(REPLY_DATE, 'YYYY-MM-DD')
 				END REPLY_DATE,
-				MEMBER_NAME, SET_FRIEND_REQ, SET_AL_REPLY, SET_AL_LIKE, SET_AL_TAG, SET_AL_REQ_ACCEPT, INFO_IMG
 				]]>
+				MEMBER_NAME, SET_FRIEND_REQ, SET_AL_REPLY, SET_AL_LIKE, SET_AL_TAG, SET_AL_REQ_ACCEPT, INFO_PROFILEPATH||INFO_PROFILE INFO_IMG
 			FROM "REPLY" JOIN "MEMBER" USING(MEMBER_NO) JOIN "MEMBER_INFO" USING(MEMBER_NO)
 			) C
 		WHERE BOARD_NO = ${boardNo} AND REPLY_DELETE = 'N'
@@ -67,16 +69,25 @@
 	</select>
 	
 	<!-- boardNo 게시글 삭제 시 해당 게시글의 댓글 모두 삭제 -->
-	<delete id="deleteReplyAll">
+	<update id="deleteReplyAll">
 		UPDATE "REPLY"
 		SET		REPLY_DELETE = 'Y'
 		WHERE 	BOARD_NO = ${boardNo}
-	</delete>
+	</update>
 	
-	<!-- 댓글 삭제 -->
-	<delete id="deleteReply">
+	<!-- 댓글 삭제(대댓글도 삭제) -->
+	<update id="delete">
 		UPDATE "REPLY"
 		SET		REPLY_DELETE = 'Y'
 		WHERE 	REPLY_NO = ${replyNo}
-	</delete>
+				OR PARENT_REPLY_NO = ${replyNo}
+	</update>
+	
+	<!-- 댓글 정보 조회 -->
+	<select id="info" resultMap="reply_rm">
+		SELECT REPLY_NO, MEMBER_NO, BOARD_NO, INFO_PROFILEPATH||INFO_PROFILE INFO_IMG
+		FROM  "REPLY" JOIN "MEMBER_INFO" USING(MEMBER_NO)
+		WHERE  REPLY_NO = ${replyNo} AND REPLY_DELETE = 'N'
+	</select>
+	
 </mapper>

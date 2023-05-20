@@ -62,9 +62,13 @@
 }
 .sidebar li img {
     width: 35px;
-    height: auto;
+    height: 35px;
     max-height: 50px;
     margin-right: 10px;
+}
+/* 프로필사진 */
+.sidebar .profile-image {
+    border-radius: 50px;
 }
 .sidebar li span {
     position: absolute;

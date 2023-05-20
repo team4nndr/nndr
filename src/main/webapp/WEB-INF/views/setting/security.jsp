@@ -62,22 +62,6 @@
                             </li>
                         </ul>
                     </div>
-
-
-                    <!-- <div class="dropdown">
-                        <label for="checkbox" id="label">드롭다운</label>
-                        <input type="checkbox" id="checkbox">
-                        <div class="container">
-                            <div class="item" id="test1">모두</div>
-                            <div class="item" id="test2">친구만</div>
-                            <div class="item" id="test3">나만</div>
-                        </div>
-                    </div> -->
-                    <%-- <select>
-                        <option value="모두">모두</option>
-                        <option value="친구만">친구만</option>
-                        <option value="나만">나만</option>
-                    </select> --%>
                 </div> 
             </div>
             <div class="content-box">

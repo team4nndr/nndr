@@ -13,7 +13,12 @@
         </li>
         <li>
             <a href="/personalFeed/${loginMember.memberNo}">
-                <img src="/resources/images/mainFeed/mainMy.png">
+                <c:if test="${empty loginMember.profileImage}">
+                    <img class="profile-image" src="/resources/images/common/user-default.png">
+                </c:if>
+                <c:if test="${not empty loginMember.profileImage}">
+                    <img class="profile-image" src="${loginMember.profileImage}">
+                </c:if>
                 <span>나의 피드</span>
             </a>
         </li>

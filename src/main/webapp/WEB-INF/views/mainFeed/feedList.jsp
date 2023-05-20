@@ -14,7 +14,12 @@
                 <div class="feed-head-left">
                     <!-- 프로필 이미지 -->
                     <a class="feed-head-profile" href="#">
-                        <img src="/resources/images/common/user-default.png" class="wirter-profile-image">
+                        <c:if test="${empty board.profileImage}">
+                            <img src="/resources/images/common/user-default.png" class="wirter-profile-image">
+                        </c:if>
+                        <c:if test="${not empty board.profileImage}">
+                            <img class="wirter-profile-image" src="${board.profileImage}">
+                        </c:if>
                     </a>
                     
                     <!-- 이름, 시간 -->
@@ -75,15 +80,19 @@
                     <c:if test="${reply.parentReplyNo != 0}" >
                         <div class="reply re-reply">
                     </c:if>
-                        <img src="/resources/images/common/user-default.png" class="reply-profile-image">
+                        <c:if test="${empty reply.profileImage}">
+                            <img src="/resources/images/common/user-default.png" class="reply-profile-image">
+                        </c:if>
+                        <c:if test="${not empty reply.profileImage}">
+                            <img class="reply-profile-image" src="${reply.profileImage}">
+                        </c:if>
                         <div class="reply-body">
                             <div class="reply-bubble">
                                 <p class="reply-name">${reply.memberName}</p>
                                 <p class="reply-content">${reply.replyContent}</p>
                             </div>
                             <div class="reply-footer">
-                                <%-- <a class="like-btn">좋아요</a> --%>
-                                <a class="re-reply" onclick="replyWrite(${reply.replyNo}, ${reply.memberNo}, ${reply.memberName})">답글</a><a class="reply-mod" onclick="">수정</a><a class="reply-del" onclick="">삭제</a><a class="date">${reply.replyDate}</a>
+                                <a class="re-reply" onclick="showReplyForm(${reply.boardNo}, ${reply.replyNo}, '${loginMember.profileImage eq null ? 0 : loginMember.profileImage}', this)">답글</a><a class="reply-mod" onclick="">수정</a><a class="reply-del" onclick="deleteReply(${reply.boardNo}, ${reply.replyNo})">삭제</a><a class="date">${reply.replyDate}</a>
                             </div>
                         </div>                    
                     </div>
@@ -93,11 +102,17 @@
             <!-- 댓글 작성  -->
             <section class="reply-write reply-container">
                 <div class="reply">
-                    <img src="/resources/images/common/user-default.png" class="reply-profile-image">
+
+                    <c:if test="${empty loginMember.profileImage}">
+                        <img src="/resources/images/common/user-default.png" class="reply-profile-image">
+                    </c:if>
+                    <c:if test="${not empty loginMember.profileImage}">
+                        <img class="reply-profile-image" src="${loginMember.profileImage}">
+                    </c:if>
                     <div class="reply-body">
                         <div class="reply-bubble">
-                            <textarea class="reply-textarea" no="${board.boardNo}" type="textarea" placeholder="댓글을 입력하세요..." maxlength="1000"></textarea>
-                            <a onclick="svubmitReply(${board.boardNo})">
+                            <textarea class="reply-textarea" no="${board.boardNo}" placeholder="댓글을 입력하세요..." maxlength="1000"></textarea>
+                            <a onclick="submitReply(${board.boardNo})">
                                 <img src="/resources/images/mainFeed/send.png" class="reply-send-disable">
                                 <img src="/resources/images/mainFeed/send-blue.png" class="reply-send-enable hidden">
                             </a>
@@ -110,5 +125,3 @@
     </c:forEach>
 
 </div>
-
-<script src="/resources/js/mainFeed/reply.js"></script>

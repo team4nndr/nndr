@@ -31,7 +31,12 @@
 
                 <%-- 피드 작성 --%>
                 <div id="newFeed">
-                    <img src="/resources/images/common/user-default.png">
+                    <c:if test="${empty loginMember.profileImage}">
+                        <img src="/resources/images/common/user-default.png" class="profile-image">
+                    </c:if>
+                    <c:if test="${not empty loginMember.profileImage}">
+                        <img src="${loginMember.profileImage}" class="profile-image" >
+                    </c:if>
                     <p id="newFeedBtn">${loginMember.memberName}님, 무슨 생각을 하고 계신가요?</p>
 
                     <%-- 피드 작성 모달 --%>
@@ -51,6 +56,7 @@
 
     <jsp:include page="/WEB-INF/views/common/footer.jsp"/>
 
-    <script src="/resources/js/mainFeed/main.js"></script>    
+    <script src="/resources/js/mainFeed/main.js"></script>
+    <script src="/resources/js/mainFeed/reply.js"></script>
 </body>
 </html>
