@@ -32,7 +32,7 @@ public class PersonalFeedController {
 	
 	@Autowired
 	MemberInfoService service;
-
+//asd
 	@GetMapping("/personalFeed/{no:[0-9]+}")
 	public String personalFeed( Model model, @SessionAttribute("loginMember") Member loginMember, @PathVariable("no") int no) {
 		MemberInfo infoMember = service.personalMember(no);
