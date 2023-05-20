@@ -8,6 +8,7 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import edu.kh.nndr.mainFeed.model.dto.Board;
 import edu.kh.nndr.member.model.dto.Member;
 import edu.kh.nndr.member.model.dto.MemberHobby;
 import edu.kh.nndr.member.model.dto.MemberInfo;
@@ -104,6 +105,11 @@ public class MemberInfoDAO {
 
 	public int proImg(Map<String, Object> pcvCho) {
 		return sqlSession.update("personalMapper.proImg", pcvCho);
+	}
+
+
+	public List<Board> personalfeedList(int no) {
+		return sqlSession.selectList("personalMapper.personalfeedList",no);
 	}
 
 

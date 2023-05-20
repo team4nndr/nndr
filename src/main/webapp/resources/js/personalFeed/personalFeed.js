@@ -79,14 +79,15 @@ Array.from( document.getElementsByClassName("info-2-1")).forEach((target) => tar
 })
 )
 function jsSearch(target){		
+    const infoText = document.getElementsByClassName("infoText");
     const hobbyl = document.getElementById("what-hobby")
     document.getElementById("info-modal").style.display="block";
     document.getElementById("info-modali").style.display="block";
     document.getElementById("whatHobby").innerText=(target.innerText).substring(4);
+    document.getElementById("hobby-input").value = "";
     const infozz = document.getElementsByClassName("infom");
-    const infoText = document.getElementsByClassName("infoText");
-
-    infoText.value = "";
+    
+    
     a=target.dataset.map;
     for(var i = 0; i<infozz.length; i++){
         for(var j=0; j<infozz[i].childElementCount*2+1; j++){
@@ -264,5 +265,4 @@ if (document.getElementById("hobby-no") != null) {
     })
 }
 
-Array.from( document.getElementsByClassName("profi")).forEach((target) => target.addEventListener("click", function(){imgCho(target);}))
 

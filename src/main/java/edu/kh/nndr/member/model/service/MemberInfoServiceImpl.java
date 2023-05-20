@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import edu.kh.nndr.mainFeed.model.dto.Board;
 import edu.kh.nndr.member.model.dao.MemberDAO;
 import edu.kh.nndr.member.model.dao.MemberInfoDAO;
 import edu.kh.nndr.member.model.dto.Member;
@@ -117,6 +118,11 @@ public class MemberInfoServiceImpl implements MemberInfoService{
 	@Override
 	public int proImg(Map<String, Object> pcvCho) {
 		return dao.proImg(pcvCho);
+	}
+
+	@Override
+	public List<Board> personalfeedList(int no) {
+		return dao.personalfeedList(no);
 	}
 
 	

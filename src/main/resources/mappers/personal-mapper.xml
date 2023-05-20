@@ -68,6 +68,39 @@
 		<result property="hobbyNo" column="HOBBY_NO" />
 		<result property="hobby" column="HOBBY" />
 	</resultMap>
+	
+	<resultMap type="Board" id="board_rm">
+		<!-- DB의 기본 키(복합키면 여러 개 작성) -->
+		<id property="memberNo" column="MEMBER_NO" />
+		<id property="boardNo" column="BOARD_NO"/>
+		
+		<!-- DB의 일반 컬럼들 -->
+		<result property="boardText" column="BOARD_TEXT" />
+		<result property="uploadDate" column="UPLOAD_DATE" />
+		<result property="contentLike" column="CONTENT_LIKE" />
+		<result property="delete" column="DELETE" />
+		<result property="updateDate" column="UPDATE_DATE" />
+		<result property="disableDate" column="DISABLE_DATE" />
+		
+		<!-- JOIN 컬럼들 -->
+		<result property="memberName" column="MEMBER_NAME" />
+		<result property="profileImage" column="INFO_IMG" />
+		
+		<collection property="imageList" select="selectImageList"
+				column="BOARD_NO"
+				javaType="java.util.ArrayList" 
+				ofType="Image"/>
+	
+	</resultMap>
+	
+	<resultMap type="Image" id="image_rm">
+		<id property="imgNo" column="IMG_NO"/>
+		<result property="imgPath" column="IMG_PATH"/>
+		<result property="imgReName" column="IMG_RENAME"/>
+		<result property="imgOriginal" column="IMG_ORIGINAL"/>
+		<result property="imgOrder" column="IMG_ORDER"/>
+		<result property="boardNo" column="BOARD_NO"/>
+	</resultMap>
 
 	<select id="personalMember" resultMap="memberInfo_rm">
 		SELECT * FROM "MEMBER" M LEFT JOIN "MEMBER_INFO" D ON (M.MEMBER_NO=D.MEMBER_NO) WHERE M.MEMBER_NO= #{no}
@@ -135,6 +168,32 @@
 	<update id="proImg">
 		UPDATE "MEMBER_INFO" SET INFO_PROFILE=#{imgRename}, INFO_PROFILEPATH=#{imgPath} WHERE MEMBER_NO = #{memberNo}
 	</update>
+	
+	<select id="personalfeedList" resultMap="board_rm">
+		SELECT BOARD_NO, MEMBER_NAME,BOARD_TEXT,MEMBER_NO, INFO_PROFILEPATH||INFO_PROFILE INFO_IMG,
+		<![CDATA[
+		CASE  
+			WHEN SYSDATE - UPLOAD_DATE < 1/24/60
+			THEN FLOOR( (SYSDATE - UPLOAD_DATE) * 24 * 60 * 60 ) || '초 전'
+			WHEN SYSDATE - UPLOAD_DATE < 1/24
+			THEN FLOOR( (SYSDATE - UPLOAD_DATE) * 24 * 60) || '분 전'
+			WHEN SYSDATE - UPLOAD_DATE < 1
+			THEN FLOOR( (SYSDATE - UPLOAD_DATE) * 24) || '시간 전'
+			ELSE TO_CHAR(UPLOAD_DATE, 'YYYY-MM-DD')
+		END UPLOAD_DATE
+		]]>
+		FROM BOARD b 
+		JOIN MEMBER USING(MEMBER_NO) JOIN "MEMBER_INFO" USING(MEMBER_NO)
+		WHERE "DELETE" = 'N' AND MEMBER_NO = #{no}
+		ORDER BY BOARD_NO DESC
+	</select>
+	
+	<select id="selectImageList" resultMap="image_rm">
+		SELECT * FROM "IMAGE"
+		WHERE BOARD_NO=#{boardNo}
+		ORDER BY IMG_ORDER DESC
+	
+	</select>
 	
 	
 	<!--  이미지 수정 
