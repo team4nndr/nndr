@@ -65,7 +65,7 @@
             <!--  나의 게시물 좋아요, 댓글달기, 공유하기 -->
             <section class="like">
                 <div><img src="/resources/images/mainFeed/mainLike.png">좋아요</div>
-                <div><img src="/resources/images/mainFeed/mainReply.png">댓글 달기</div>
+                <div onclick="replyFocus(${board.boardNo})"><img src="/resources/images/mainFeed/mainReply.png">댓글 달기</div>
                 <div><img src="/resources/images/mainFeed/mainNext.png">공유하기</div>
             </section>
 

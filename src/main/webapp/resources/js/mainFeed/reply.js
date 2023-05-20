@@ -38,45 +38,27 @@ function addTextareaEvent(textarea) {
             e.target.style.height = e.target.scrollHeight + "px";
         }
     });
+
+    // 엔터로 댓글 제출
+    textarea.addEventListener('keypress', e => {
+        if(e.keyCode == 13) {
+            e.preventDefault();
+        }
+    });
+    textarea.addEventListener('keyup', e => {
+        if (e.keyCode == 13 && !e.shiftKey) {
+            e.preventDefault();
+            submitReply(e.target.getAttribute("no"));
+        }
+    });
 }
 
+// 댓글 textaread에 위 함수 적용
 for(let i=0; i<replyTextareas.length; i++) {
     addTextareaEvent(replyTextareas[i]);
-
-    // replyTextareas[i].style.height = "24px";
-
-    // // 댓글창 최초 클릭 시 창 크기 늘리기
-    // replyTextareas[i].addEventListener('focus', e => {
-    //     if( e.target.value == "" ) {
-    //         e.target.style.transitionDuration = "0.5s";
-    //         e.target.style.height = "40px";
-    //     }
-    // });
-
-    // replyTextareas[i].addEventListener('input', e => {
-    //     // 글자 입력 시 전송 버튼 활성화 
-    //     const valueLength = replyTextareas[i].value.trim().length;
-    //     if( valueLength > 0 ) {
-    //         disableImages[i].classList.add('hidden');
-    //         enableImages[i].classList.remove('hidden');
-    //         e.target.parentElement.classList.add('pointer');
-    //     } else {
-    //         disableImages[i].classList.remove('hidden');
-    //         enableImages[i].classList.add('hidden');
-    //         e.target.parentElement.classList.remove('pointer');
-    //     }
-
-    //     // 댓글이 길어지면 댓글 창 크기 자동조정
-    //     e.target.style.height = "";
-    //     if( e.target.scrollHeight < 40) {
-    //         e.target.style.height = "24px";
-    //     } else {
-    //         e.target.style.height = e.target.scrollHeight + "px";
-    //     }
-    // });
 }
 
-// 댓글 제출
+// 댓글 제출 to DB
 function submitReply(boardNo, parentReplyNo) {
     
     const textarea = document.querySelector('.reply-textarea[no="' + boardNo + '"]');
@@ -105,22 +87,6 @@ function submitReply(boardNo, parentReplyNo) {
     .catch(e => console.log(e));
 }
 
-// 엔터로 댓글 제출
-const textareas = document.querySelectorAll('.reply-textarea');
-for(let textarea of textareas) {
-    textarea.addEventListener('keypress', e => {
-        if(e.keyCode == 13) {
-            e.preventDefault();
-        }
-    });
-
-    textarea.addEventListener('keyup', e => {
-        if (e.keyCode == 13 && !e.shiftKey) {
-            e.preventDefault();
-            submitReply(e.target.getAttribute("no"));
-        }
-    });
-}
 
 // 댓글 삭제
 function deleteReply(boardNo, replyNo) {
@@ -223,6 +189,13 @@ function printReplyList(boardNo) {
 // 대댓글작성란 추가
 function showReplyForm(boardNo, replyNo, profileImage, btn) {
 
+    // 동일한 댓글에 대댓글 작성칸이 이미 있으면 추가 안함
+    const el = btn.parentElement.parentElement.parentElement.nextElementSibling;
+    if( el.classList.contains('reply-write') ) {
+        el.querySelector('.reply-textarea').focus();
+        return;
+    }
+
     const reForm = document.createElement('section');
     reForm.classList.add('reply-write');
     reForm.classList.add('reply-container');
@@ -272,4 +245,11 @@ function showReplyForm(boardNo, replyNo, profileImage, btn) {
     form.append(img, div1);
     reForm.append(form);
     btn.parentElement.parentElement.parentElement.after(reForm);
+
+    textarea.focus();
+}
+
+// 게시글 하단 댓글 달기 버튼 클릭 시 댓글 창으로 바로 이동
+function replyFocus(boardNo) {
+    document.querySelector('.reply-textarea[no="' + boardNo + '"]').focus();
 }
