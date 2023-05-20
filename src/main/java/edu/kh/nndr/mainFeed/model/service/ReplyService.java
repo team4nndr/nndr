@@ -25,4 +25,17 @@ public interface ReplyService {
 	 */
 	int deleteReplyAll(int boardNo);
 
+	/**
+	 * 댓글 삭제(대댓글도 삭제)
+	 * @param replyNo
+	 * @return result
+	 */
+	int delete(int replyNo);
+
+	/**
+	 * 댓글 정보 조회
+	 * @param replyNo
+	 * @return Reply
+	 */
+	Reply info(int replyNo);
 }
