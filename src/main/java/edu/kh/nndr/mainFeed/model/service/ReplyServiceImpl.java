@@ -25,4 +25,10 @@ public class ReplyServiceImpl implements ReplyService {
 	public List<Reply> replyList(int boardNo) {
 		return dao.replyList(boardNo);
 	}
+
+	// 게시글 삭제 시 종속된 댓글 모두 삭제
+	@Override
+	public int deleteReplyAll(int boardNo) {
+		return dao.deleteReplyAll(boardNo);
+	}
 }

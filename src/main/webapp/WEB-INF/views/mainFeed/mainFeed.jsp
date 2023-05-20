@@ -11,6 +11,7 @@
 
     <link rel="stylesheet" href="/resources/css/mainFeed/sidebar.css">
     <link rel="stylesheet" href="/resources/css/mainFeed/main.css">
+    <link rel="stylesheet" href="/resources/css/mainFeed/feed.css">
     <link rel="stylesheet" href="/resources/css/mainFeed/reply.css">
 </head>
 <body>
@@ -25,8 +26,9 @@
         <!-- Grid 2 : 중심 내용  -->
         <section class="mainView">
         
+            <%-- 피드 작성 + 피드 목록 --%>
             <div class="feed-list">
-        
+
                 <%-- 피드 작성 --%>
                 <div id="newFeed">
                     <img src="/resources/images/common/user-default.png">
@@ -48,9 +50,7 @@
     </main>
 
     <jsp:include page="/WEB-INF/views/common/footer.jsp"/>
-    
-    <script src="/resources/js/mainFeed/main.js"></script>
-    <script src="/resources/js/mainFeed/reply.js"></script>
 
+    <script src="/resources/js/mainFeed/main.js"></script>    
 </body>
 </html>

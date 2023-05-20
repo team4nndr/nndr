@@ -18,5 +18,11 @@ public interface ReplyService {
 	 * @return replyList
 	 */
 	List<Reply> replyList(int boardNo);
+	
+	/**
+	 * 게시글 삭제 시 종속된 댓글 모두 삭제
+	 * @return result
+	 */
+	int deleteReplyAll(int boardNo);
 
 }
