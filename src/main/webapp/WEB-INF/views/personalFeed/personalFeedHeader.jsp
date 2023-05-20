@@ -47,7 +47,6 @@
                 <h2 class="name">${infoMember.memberName}</h2>
                 <div class="main1-2">
                     <div class="myname2">
-                            <div>
                         <c:if test="${infoMember.memberNo ne loginMember.memberNo}" > 
                             <c:if test="${not empty friendcheck}">
                                 <div class ="storypuls friendAdd" id="perAddFriend"data-seNo="${loginMember.memberNo}" data-reNo="${infoMember.memberNo}">친구 신청 중</div>
@@ -57,9 +56,7 @@
                             </c:if>
                         </c:if>
                         <c:if test="${infoMember.memberNo eq loginMember.memberNo}" ></c:if>
-
-
-
+                            <div>
                                 <c:if test="${infoMember.memberNo eq loginMember.memberNo}" >
                                     <div id="backPlus" class ="plo"> 커버 사진 추가</div>
                                     <div id="cv-set">

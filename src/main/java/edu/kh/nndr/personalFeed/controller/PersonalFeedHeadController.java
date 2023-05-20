@@ -74,10 +74,17 @@ public class PersonalFeedHeadController {
 	
 	@GetMapping(value = "/pcvCho", produces = "application/text; charset=UTF-8")
 	@ResponseBody
-	public String pcvCho(@RequestParam Map<String, Object> pcvCho) { // 쿼리 스트링에 담겨있는 파라미터
+	public String pcvCho( Model model, @RequestParam Map<String, Object> pcvCho, @SessionAttribute("loginMember") Member loginMember) { // 쿼리 스트링에 담겨있는 파라미터
 		System.out.println("ASDSS");
 		System.out.println(pcvCho);
+		String path =(String)pcvCho.get("imgPath");
+		String img = (String)pcvCho.get("imgRename");
+		loginMember.setProfileImage(path+img);
+		model.addAttribute("loginMember", loginMember);
+		System.out.println(loginMember);
 		int result = service.proImg(pcvCho);
+		
+		
 		return "";
 	}
 	

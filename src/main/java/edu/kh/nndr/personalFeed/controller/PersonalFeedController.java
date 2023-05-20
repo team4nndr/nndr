@@ -19,6 +19,9 @@ import org.springframework.web.bind.annotation.SessionAttribute;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import edu.kh.nndr.mainFeed.model.dto.Board;
+import edu.kh.nndr.mainFeed.model.dto.Reply;
+import edu.kh.nndr.mainFeed.model.service.ReplyService;
 import edu.kh.nndr.member.model.dto.Member;
 import edu.kh.nndr.member.model.dto.MemberHobby;
 import edu.kh.nndr.member.model.dto.MemberInfo;
@@ -32,7 +35,11 @@ public class PersonalFeedController {
 	
 	@Autowired
 	MemberInfoService service;
-//asd
+
+	@Autowired
+	private ReplyService replyService;
+
+
 	@GetMapping("/personalFeed/{no:[0-9]+}")
 	public String personalFeed( Model model, @SessionAttribute("loginMember") Member loginMember, @PathVariable("no") int no) {
 		MemberInfo infoMember = service.personalMember(no);
@@ -49,6 +56,15 @@ public class PersonalFeedController {
 		friendche.put("friendReciver", no);
 		PersonalFriend friendcheck = service.friendChecking(friendche);
 		model.addAttribute("friendcheck", friendcheck);
+		
+		
+		List<Board> boardList = service.personalfeedList(no);
+		for(Board board : boardList) {
+			List<Reply> list = replyService.replyList(board.getBoardNo());
+			board.setReplyList(list);
+		}
+		
+		model.addAttribute("boardList", boardList);
 		return "personalFeed/personalFeed";
 	}
 	

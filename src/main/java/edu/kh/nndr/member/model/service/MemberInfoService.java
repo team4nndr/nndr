@@ -6,6 +6,7 @@ import java.util.Map;
 
 import org.springframework.web.multipart.MultipartFile;
 
+import edu.kh.nndr.mainFeed.model.dto.Board;
 import edu.kh.nndr.member.model.dto.Member;
 import edu.kh.nndr.member.model.dto.MemberHobby;
 import edu.kh.nndr.member.model.dto.MemberInfo;
@@ -39,6 +40,8 @@ public interface MemberInfoService {
 	int delBackImg(int memberNo);
 
 	int proImg(Map<String, Object> pcvCho);
+
+	List<Board> personalfeedList(int no);
 
 
 
