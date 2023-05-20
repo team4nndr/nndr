@@ -3,8 +3,7 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <link rel="stylesheet" href="/resources/css/mainFeed/feed.css">
 
-<div class="feed-list">
-    
+    <%-- 피드 목록 --%>
     <c:forEach items="${boardList}" var="board">
         <div class="feed">
 

@@ -24,18 +24,21 @@
         
         <!-- Grid 2 : 중심 내용  -->
         <section class="mainView">
+        
+            <div class="feed-list">
+        
+                <%-- 피드 작성 --%>
+                <div id="newFeed">
+                    <img src="/resources/images/common/user-default.png">
+                    <p id="newFeedBtn">${loginMember.memberName}님, 무슨 생각을 하고 계신가요?</p>
 
-            <%-- 피드 작성 --%>
-            <div id="newFeed">
-                <img src="/resources/images/common/user-default.png">
-                <p id="newFeedBtn">${loginMember.memberName}님, 무슨 생각을 하고 계신가요?</p>
+                    <%-- 피드 작성 모달 --%>
+                    <jsp:include page="/WEB-INF/views/mainFeed/newFeed.jsp"/>
+                </div>
 
-                <%-- 피드 작성 모달 --%>
-                <jsp:include page="/WEB-INF/views/mainFeed/newFeed.jsp"/>
+                <%-- 피드 목록 --%>
+                <jsp:include page="/WEB-INF/views/mainFeed/feedList.jsp"/>
             </div>
-                      
-            <%-- 피드 목록 --%>
-            <jsp:include page="/WEB-INF/views/mainFeed/feedList.jsp"/>
 
         </section>
 
