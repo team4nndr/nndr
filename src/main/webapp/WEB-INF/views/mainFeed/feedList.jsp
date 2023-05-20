@@ -1,10 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+
 <link rel="stylesheet" href="/resources/css/mainFeed/feed.css">
 
-<div class="feed-list">
-    
+    <%-- 피드 목록 --%>
     <c:forEach items="${boardList}" var="board">
         <div class="feed">
 
@@ -27,9 +27,9 @@
                 <%-- 내 피드 더보기 --%>
                 <c:if test="${board.memberNo eq loginMember.memberNo}" >
                     <div class="feed-more detailBtn">
-                        <div class="feedContain hidden" id="feedHidden">
-                            <button type="submit" class="feedUpdate" id="feedUpdate" data="${board.boardNo}" >게시물 수정</button>
-                            <button type="submit" class="feedDelete" id="feedDelete" data="${board.boardNo}">게시물 삭제</button>
+                        <div class="feedContain hidden">
+                            <button type="submit" class="feedUpdate" data="${board.boardNo}" >게시물 수정</button>
+                            <button type="submit" class="feedDelete" data="${board.boardNo}">게시물 삭제</button>
                         </div>
                     </div>
                 </c:if>
@@ -110,3 +110,5 @@
     </c:forEach>
 
 </div>
+
+<script src="/resources/js/mainFeed/reply.js"></script>

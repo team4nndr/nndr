@@ -1,3 +1,42 @@
+/* 피드 작성 */
+#newFeed {
+    width: 100%;
+    max-width: 712px;
+    /* height: 64px; */
+    padding: 12px 16px;
+    margin: 20px;
+
+    border-radius: 10px;
+    background-color: white;
+    box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.16), 1px 1px 2px rgba(0, 0, 0, 0.23);
+
+    display: flex;
+    align-items: center;
+}
+#newFeed > img {
+    height: 40px;
+    width: 40px;
+    border-radius: 50px;
+}
+#newFeed > p {
+    background-color: #eee;
+    border-radius: 50px;
+    width: 100%;
+    height: 40px;
+    margin-left: 12px;
+    padding: 8px 12px;
+
+    display: flex;
+    align-items: center;
+    padding-left: 12px;
+    color: #666;
+    cursor: pointer;
+}
+#newFeed > p:hover {
+    background-color: #ddd;
+    transition-duration: 0.2s;
+}
+
 /* 피드 */
 .feed {
     width: 100%;
@@ -68,6 +107,34 @@ img.wirter-profile-image {
     text-decoration: underline;
 }
 
+/*  더보기 버튼  */
+.detail {
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+    
+    display:flex;
+    background: white;
+    border: none;
+    
+    justify-content: center;
+}
+.detail:after {
+    cursor: pointer;
+    display: inline-block;
+    content: "\2026";
+    font-size:15pt;
+    font-weight: bold;
+}
+.detail:hover{
+    background-color: lightgray;
+}
+#more{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 /* 피드 상단 더보기 버튼 */
 .feed-more {
     height: 30px;
@@ -84,6 +151,45 @@ img.wirter-profile-image {
 .feed-more::after {
     content: "\2026";
     font-weight: bold;
+}
+
+/* 더보기 버튼 안 게시글 수정 , 삭제  */
+.feedUpdate{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 165px;
+    height: 30px;
+    border-radius: 6px;
+    font-weight: bold;
+}
+.feedUpdate:hover {
+    background-color: lightgrey;
+    cursor: pointer;
+}
+.feedDelete{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 165px;
+    height: 30px;
+    border-radius: 6px;
+    font-weight: bold;
+}
+.feedDelete:hover{
+    background-color: lightgrey;
+    cursor: pointer;
+}
+
+.feedContain {
+    height: 200px;
+    position: absolute;
+    display: flex;
+    margin-top: 50px;
+    margin-right: 150px;
+    flex-direction: column;
+    align-content: wrap;
+    z-index: 600;
 }
 
 /* 피드 본문 : 텍스트 */
@@ -168,3 +274,6 @@ img.wirter-profile-image {
     width: 26px;
     padding: 11px 4px;
 }
+
+/* 요소 숨기기 */
+.hidden { display: none !important; }

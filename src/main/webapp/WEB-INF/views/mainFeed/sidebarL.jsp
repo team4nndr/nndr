@@ -25,14 +25,26 @@
         </li>
         <li>
             <a href="#">
-                <img src="/resources/images/mainFeed/mainLike.png">
+                <img src="/resources/images/mainFeed/archive.png">
                 <span>내가 저장한 피드</span>
             </a>
         </li>
         <hr class="sidebar-hr">
         <li>
+            <a href="https://github.com/team4nndr/nndr">
+                <img src="/resources/images/mainFeed/github.png">
+                <span>너나들이(NNDR) Github</span>
+            </a>
+        </li>
+        <li>
+            <a href="https://www.google.com/">
+                <img src="/resources/images/mainFeed/google.png">
+                <span>Google</span>
+            </a>
+        </li>
+        <li>
             <a href="https://www.naver.com/">
-                <img src="/resources/images/mainFeed/mainSearch.png">
+                <img src="/resources/images/mainFeed/naver.png">
                 <span>초록검색창</span>
             </a>
         </li>

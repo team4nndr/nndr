@@ -18,7 +18,11 @@ public class ReplyDAO {
 		return sqlSession.insert("replyMapper.submit", reply);
 	}
 
-	public List<Reply> replyList(int boardNO) {
-		return sqlSession.selectList("replyMapper.replyList", boardNO);
+	public List<Reply> replyList(int boardNo) {
+		return sqlSession.selectList("replyMapper.replyList", boardNo);
+	}
+
+	public int deleteReplyAll(int boardNo) {
+		return sqlSession.delete("replyMapper.deleteReplyAll", boardNo);
 	}
 }

@@ -100,34 +100,36 @@ public class MainFeedController {
 	}
 	
 	
-	//  게시글 삭제하기!
+	// 게시글 삭제
+	// + 해당 게시글에 달린 댓글 모두 삭제
 	@GetMapping("/mainFeed/delete")
 	public String feedDelete(Board board
 			, @SessionAttribute("loginMember") Member loginMember
 			, RedirectAttributes ra
 			,HttpSession session){
 		
-			board.setMemberNo(loginMember.getMemberNo());
-		
-			int result = service.feedDelete(board);
-		
-			String msg = null;
-			
-			if(result>0) {
-				msg = "게시글이 삭제되었습니다";
-			
-				
-			}else {
-				msg = "게시글 삭제 실패....";
+		board.setMemberNo(loginMember.getMemberNo());
+	
+		int result = service.feedDelete(board);
+		String msg = null;				
 
+		if(result > 0) {		
+			int replyResult = replyService.deleteReplyAll(board.getBoardNo());
+	
+			if(replyResult > 0) {
+				msg = "게시글이 삭제되었습니다";
+			} else {
+				msg = "댓글 삭제 실패";
 			}
-			ra.addFlashAttribute("message",msg);
-			
+		} else {
+			msg = "게시글 삭제 실패....";
+		}
+		ra.addFlashAttribute("message", msg);
 		
 		return "redirect:/mainFeed";
 	}
 	
-	// 게시글 수정하기 !!
+	// 게시글 수정
 	@PostMapping("/mainFeed/update")
 	public String feedUpdate(Board board
 			, @SessionAttribute("loginMember") Member loginMember	

@@ -190,12 +190,7 @@ detailBtnList.forEach(detailBtn => {
             e.stopPropagation();
         });
     })
-
-
-
 })
-
-
 
 /* 
 detailBtn.addEventListener("click", e => {
@@ -206,25 +201,15 @@ feedHidden.addEventListener("click", e => {
     e.stopPropagation();
 }); */
 
-
-
-
-
 // 게시물 삭제버튼을 누르면 삭제가 되게
 const feedDeleteList = document.querySelectorAll(".feedDelete");
 
 feedDeleteList.forEach(feedDelete => {
-
-    feedDelete.addEventListener("click", e =>{
-        if( confirm("정말 삭제하시겠습니까?")){
-            location.href="/mainFeed/delete?boardNo=" + e.currentTarget.getAttribute("data");
+    feedDelete.addEventListener("click", e => {
+        if( confirm("정말 삭제하시겠습니까?") ) {
+            location.href = "/mainFeed/delete?boardNo=" + e.currentTarget.getAttribute("data");
         }
-    })
-
-
+    });
 })
-
-
-
 
 // feedUpdate버튼을 누른다면 수정버튼이 나올 수 있도록!
