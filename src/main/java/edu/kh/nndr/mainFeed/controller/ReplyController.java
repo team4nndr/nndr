@@ -54,8 +54,13 @@ public class ReplyController {
 	@GetMapping("/info")
 	@ResponseBody
 	public Reply info(@RequestParam int replyNo) {
-		System.out.println(replyNo);
-		System.out.println(service.info(replyNo));
 		return service.info(replyNo);
+	}
+	
+	// 댓글 수정
+	@PostMapping("/update")
+	@ResponseBody
+	public int update(@RequestBody Reply reply) {
+		return service.update(reply);
 	}
 }

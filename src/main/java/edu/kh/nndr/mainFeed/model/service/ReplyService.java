@@ -38,4 +38,11 @@ public interface ReplyService {
 	 * @return Reply
 	 */
 	Reply info(int replyNo);
+
+	/**
+	 * 댓글 수정
+	 * @param reply
+	 * @return result
+	 */
+	int update(Reply reply);
 }

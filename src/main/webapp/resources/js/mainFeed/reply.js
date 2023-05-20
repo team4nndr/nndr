@@ -2,15 +2,18 @@ const replyTextareas = document.querySelectorAll('.reply-bubble textarea');
 const disableImages = document.querySelectorAll('.reply-send-disable');
 const enableImages = document.querySelectorAll('.reply-send-enable');
 
-
 function addTextareaEvent(textarea) {
     textarea.style.height = "24px";
 
     // 댓글창 최초 클릭 시 창 크기 늘리기
     textarea.addEventListener('focus', e => {
+        e.target.style.height = "";
+        e.target.style.transitionDuration = "0.5s";
+
         if( e.target.value == "" ) {
-            e.target.style.transitionDuration = "0.5s";
-            e.target.style.height = "40px";
+            e.target.style.height = "42px";
+        } else {
+            e.target.style.height = e.target.scrollHeight + "px";
         }
     });
 
@@ -23,11 +26,13 @@ function addTextareaEvent(textarea) {
         if( valueLength > 0 ) {
             disableImage.classList.add('hidden');
             enableImage.classList.remove('hidden');
-            e.target.parentElement.classList.add('pointer');
+            e.target.nextElementSibling.classList.add('pointer');
+            e.target.nextElementSibling.classList.add('enable');
         } else {
             disableImage.classList.remove('hidden');
             enableImage.classList.add('hidden');
-            e.target.parentElement.classList.remove('pointer');
+            e.target.nextElementSibling.classList.remove('pointer');
+            e.target.nextElementSibling.classList.remove('enable');
         }
 
         // 댓글이 길어지면 댓글 창 크기 자동조정
@@ -41,14 +46,15 @@ function addTextareaEvent(textarea) {
 
     // 엔터로 댓글 제출
     textarea.addEventListener('keypress', e => {
-        if(e.keyCode == 13) {
+        if(e.keyCode == 13 && !e.shiftKey) {
             e.preventDefault();
         }
     });
     textarea.addEventListener('keyup', e => {
         if (e.keyCode == 13 && !e.shiftKey) {
             e.preventDefault();
-            submitReply(e.target.getAttribute("no"));
+            console.log(e.target.nextElementSibling);
+            e.target.nextElementSibling.click();
         }
     });
 }
@@ -59,8 +65,10 @@ for(let i=0; i<replyTextareas.length; i++) {
 }
 
 // 댓글 제출 to DB
-function submitReply(boardNo, parentReplyNo) {
+function submitReply(boardNo, parentReplyNo, btn) {
     
+    if( btn != null && !btn.classList.contains('enable') ) return;
+
     const textarea = document.querySelector('.reply-textarea[no="' + boardNo + '"]');
     const replyContent = textarea.value;
     
@@ -87,7 +95,6 @@ function submitReply(boardNo, parentReplyNo) {
     .catch(e => console.log(e));
 }
 
-
 // 댓글 삭제
 function deleteReply(boardNo, replyNo) {
 
@@ -97,7 +104,6 @@ function deleteReply(boardNo, replyNo) {
         .then(result => {
             if(result > 0) {
                 printReplyList(boardNo);
-                confirmDelete.classList.add('hidden')
             } else {
                 alert('댓글 삭제 실패');
             }
@@ -157,26 +163,30 @@ function printReplyList(boardNo) {
             // like.classList.add('like-btn');
             // like.innerText = '좋아요';
 
-            const rere = document.createElement('a');
+            const rere = document.createElement('div');
             rere.classList.add('re-reply');
-            const profileImg = re.profileImage == null ? -1 : re.profileImage
-            rere.addEventListener('click', () => showReplyForm(re.boardNo, re.replyNo, profileImg, rere));
+            rere.addEventListener('click', e => showReplyForm(re.boardNo, re.replyNo, e.target));
             rere.innerText = '답글';
 
-            const mod = document.createElement('a');
+            const mod = document.createElement('div');
             mod.classList.add('reply-mod');
+            mod.addEventListener('click', e => showUpdateForm(re.boardNo, re.replyNo, e.target));
             mod.innerText = '수정';
 
-            const del = document.createElement('a');
+            const del = document.createElement('div');
             del.classList.add('reply-del');
             del.addEventListener('click', () => deleteReply(re.boardNo, re.replyNo));
             del.innerText = '삭제';
             
-            const date = document.createElement('a');
+            const date = document.createElement('div');
             date.classList.add('date');
-            date.innerText = re.replyDate;
+            date.innerText = re.updateDate == null ? re.replyDate : re.updateDate + '에 수정됨';
 
-            footer.append(/*like, */rere, mod, del, date);
+            if(re.memberNo == loginMemberNo) {
+                footer.append(rere, mod, del, date);
+            } else {
+                footer.append(rere, date);
+            }
 
             rebody.append(bubble, footer);
             newRe.append(img, rebody);
@@ -187,11 +197,11 @@ function printReplyList(boardNo) {
 }
 
 // 대댓글작성란 추가
-function showReplyForm(boardNo, replyNo, profileImage, btn) {
+function showReplyForm(boardNo, replyNo, btn) {
 
     // 동일한 댓글에 대댓글 작성칸이 이미 있으면 추가 안함
     const el = btn.parentElement.parentElement.parentElement.nextElementSibling;
-    if( el.classList.contains('reply-write') ) {
+    if( el != null && el.classList.contains('reply-write') ) {
         el.querySelector('.reply-textarea').focus();
         return;
     }
@@ -200,13 +210,14 @@ function showReplyForm(boardNo, replyNo, profileImage, btn) {
     reForm.classList.add('reply-write');
     reForm.classList.add('reply-container');
     reForm.classList.add('re-reply');
+
     
     const form = document.createElement('div');
     form.classList.add('reply');
     form.classList.add('re-reply');
 
     const img = document.createElement('img');
-    if(profileImage != 0) {
+    if(profileImage != null) {
         img.setAttribute('src', profileImage);
     } else {
         img.setAttribute('src', "/resources/images/common/user-default.png");
@@ -220,27 +231,27 @@ function showReplyForm(boardNo, replyNo, profileImage, btn) {
     div2.classList.add('reply-bubble');
 
     const textarea = document.createElement('textarea');
-    // textarea.setAttribute('no', reply.boardNo);
     textarea.classList.add('reply-textarea');
     textarea.setAttribute('no', boardNo);
     textarea.setAttribute('placeholder', '댓글을 입력하세요...');
     textarea.setAttribute('maxlength', '1000');
     addTextareaEvent(textarea);
 
-    const a = document.createElement('a');
-    a.setAttribute('onclick', 'submitReply(' + boardNo + ', ' + replyNo + ')');
-
+    const submitBtn = document.createElement('div');
+    submitBtn.classList.add('submit-btn');
+    submitBtn.addEventListener('click', e => submitReply(boardNo, replyNo, e.target));
+    
     const img1 = document.createElement('img');
     img1.setAttribute('src', '/resources/images/mainFeed/send.png');
     img1.classList.add('reply-send-disable');
-
+    
     const img2 = document.createElement('img');
     img2.setAttribute('src', '/resources/images/mainFeed/send-blue.png');
     img2.classList.add('reply-send-enable');
     img2.classList.add('hidden');
 
-    a.append(img1, img2);
-    div2.append(textarea, a);
+    submitBtn.append(img1, img2);
+    div2.append(textarea, submitBtn);
     div1.append(div2);
     form.append(img, div1);
     reForm.append(form);
@@ -249,7 +260,120 @@ function showReplyForm(boardNo, replyNo, profileImage, btn) {
     textarea.focus();
 }
 
+// 댓글 수정 칸 띄우기
+function showUpdateForm(boardNo, replyNo, btn) {
+
+    // 원본 댓글 숨기기
+    const origin = btn.parentElement.parentElement.parentElement;
+    origin.classList.add('hidden');
+
+    const reForm = document.createElement('section');
+    reForm.classList.add('reply-write');
+    reForm.classList.add('reply-container');
+    reForm.classList.add('reply-update');
+    if(origin.classList.contains('re-reply')) reForm.classList.add('re-reply');
+
+    const form = document.createElement('div');
+    form.classList.add('reply');
+    if(origin.classList.contains('re-reply')) form.classList.add('re-reply');
+
+    const img = document.createElement('img');
+    if(profileImage != null) {
+        img.setAttribute('src', profileImage);
+    } else {
+        img.setAttribute('src', "/resources/images/common/user-default.png");
+    }
+    img.classList.add('reply-profile-image');
+
+    const body = document.createElement('div');
+    body.classList.add('reply-body');
+    
+    const bubble = document.createElement('div');
+    bubble.classList.add('reply-bubble');
+    
+    const textarea = document.createElement('textarea');
+    textarea.classList.add('reply-textarea');
+    textarea.setAttribute('no', boardNo);
+    textarea.setAttribute('placeholder', '댓글을 입력하세요...');
+    textarea.setAttribute('maxlength', '1000');
+    textarea.value = origin.querySelector('.reply-content').innerText;
+    addTextareaEvent(textarea); // 엔터로 제출
+    
+    // ESC 키로 수정 취소
+    textarea.addEventListener('keyup', e => {
+        if(e.keyCode == 27) {
+            // printReplyList(boardNo);
+            origin.classList.remove('hidden');
+            origin.nextElementSibling.remove();
+        }
+    });
+
+    const submitBtn = document.createElement('div');
+    submitBtn.classList.add('submit-btn');
+    submitBtn.addEventListener('click', e => updateReply(boardNo, replyNo, e.target));
+    
+    const cancelBtn = document.createElement('div');
+    cancelBtn.classList.add('cancel-btn');
+    cancelBtn.setAttribute('onclick', 'printReplyList('+boardNo+')');
+    cancelBtn.innerText = '취소';
+
+    const updateInfo = document.createElement('p');
+    updateInfo.classList.add('update-info');
+    updateInfo.append(cancelBtn);
+    const updateInfoAppend = updateInfo.innerHTML;
+    updateInfo.innerHTML = updateInfoAppend + '하려면 ESC 키를 누르세요.';
+
+    const img1 = document.createElement('img');
+    img1.setAttribute('src', '/resources/images/mainFeed/send.png');
+    img1.classList.add('reply-send-disable');
+    
+    const img2 = document.createElement('img');
+    img2.setAttribute('src', '/resources/images/mainFeed/send-blue.png');
+    img2.classList.add('reply-send-enable');
+    img2.classList.add('hidden');
+    
+    submitBtn.append(img1, img2);
+    bubble.append(textarea, submitBtn);
+    body.append(bubble, updateInfo);
+    form.append(img, body);
+    reForm.append(form);
+    origin.after(reForm);
+    
+    textarea.focus();
+}
+
 // 게시글 하단 댓글 달기 버튼 클릭 시 댓글 창으로 바로 이동
 function replyFocus(boardNo) {
     document.querySelector('.reply-textarea[no="' + boardNo + '"]').focus();
 }
+
+// 댓글 수정
+function updateReply(boardNo, replyNo, btn) {
+    
+    if( btn != null && !btn.classList.contains('enable') ) return;
+    
+    const textarea = document.querySelector('.reply-textarea[no="' + boardNo + '"]');
+    const replyContent = textarea.value;
+    
+    const data = {
+        "replyNo" : replyNo,
+        "replyContent" : replyContent
+    };
+    
+    fetch("/reply/update", {
+        method : "POST",
+        headers : {"Content-Type" : "application/json"},
+        body : JSON.stringify(data)
+    })
+    .then(resp => resp.text())
+    .then(result => {
+        if(result > 0) {
+            printReplyList(boardNo);
+            textarea.value = "";
+        } else {
+            alert('댓글 수정 실패');
+        }
+    })
+    .catch(e => console.log(e));
+}
+

@@ -3,7 +3,10 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 
 <link rel="stylesheet" href="/resources/css/mainFeed/feed.css">
-
+<script> 
+    const loginMemberNo = "${loginMember.memberNo}";
+    const profileImage = "${loginMember.profileImage}";
+</script>
     <%-- 피드 목록 --%>
     <c:forEach items="${boardList}" var="board">
         <div class="feed">
@@ -92,7 +95,17 @@
                                 <p class="reply-content">${reply.replyContent}</p>
                             </div>
                             <div class="reply-footer">
-                                <a class="re-reply" onclick="showReplyForm(${reply.boardNo}, ${reply.replyNo}, '${loginMember.profileImage eq null ? 0 : loginMember.profileImage}', this)">답글</a><a class="reply-mod" onclick="">수정</a><a class="reply-del" onclick="deleteReply(${reply.boardNo}, ${reply.replyNo})">삭제</a><a class="date">${reply.replyDate}</a>
+                                <div class="re-reply" onclick="showReplyForm(${reply.boardNo}, ${reply.replyNo}, this)">답글</div>
+                                <c:if test="${reply.memberNo == loginMember.memberNo}">
+                                    <div class="reply-mod" onclick="showUpdateForm(${reply.boardNo}, ${reply.replyNo}, this)">수정</div>
+                                    <div class="reply-del" onclick="deleteReply(${reply.boardNo}, ${reply.replyNo})">삭제</div>
+                                </c:if>
+                                <c:if test="${empty reply.updateDate}">
+                                    <div class="date">${reply.replyDate}</div>
+                                </c:if>
+                                <c:if test="${not empty reply.updateDate}">
+                                    <div class="date">${reply.updateDate}에 수정됨</div>
+                                </c:if>
                             </div>
                         </div>                    
                     </div>
@@ -112,10 +125,10 @@
                     <div class="reply-body">
                         <div class="reply-bubble">
                             <textarea class="reply-textarea" no="${board.boardNo}" placeholder="댓글을 입력하세요..." maxlength="1000"></textarea>
-                            <a onclick="submitReply(${board.boardNo})">
+                            <div class="submit-btn" onclick="submitReply('${board.boardNo}', null, this)">
                                 <img src="/resources/images/mainFeed/send.png" class="reply-send-disable">
                                 <img src="/resources/images/mainFeed/send-blue.png" class="reply-send-enable hidden">
-                            </a>
+                            </div>
                         </div>
                     </div>
                 </div>

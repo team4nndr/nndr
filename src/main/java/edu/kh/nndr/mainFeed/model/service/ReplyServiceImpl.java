@@ -42,5 +42,11 @@ public class ReplyServiceImpl implements ReplyService {
 	@Override
 	public Reply info(int replyNo) {
 		return dao.info(replyNo);
+	}
+
+	// 댓글 수정
+	@Override
+	public int update(Reply reply) {
+		return dao.update(reply);
 	}	
 }
