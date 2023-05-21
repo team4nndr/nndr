@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="/resources/css/mainFeed/sidebar.css">
     <link rel="stylesheet" href="/resources/css/mainFeed/main.css">
     <link rel="stylesheet" href="/resources/css/mainFeed/feed.css">
-    <link rel="stylesheet" href="/resources/css/mainFeed/reply.css">
+
 </head>
 <body>
     <!-- 상단바 -->

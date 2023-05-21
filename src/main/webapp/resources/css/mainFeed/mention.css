@@ -1,0 +1,67 @@
+.mention-container {
+    margin: 0;
+    width: 364px;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+    z-index: 9999;
+
+    position: absolute;
+    /* top: 0;
+    left: 0; */
+}
+.mention {
+    height: 52px;
+    padding: 6px;
+    border-radius: 10px;
+    cursor: pointer;
+
+    display: flex;
+    align-items: center;
+}
+.mention * { pointer-events: none; }
+.mention:hover {
+    background-color: #e0e0e0;
+    transition-duration: 0.1s;
+}
+.mention img {
+    height: 40px;
+    width: 40px;
+    border-radius: 50px;
+}
+.mention-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 0 12px;
+}
+.mention-content > p {
+    display: block;
+}
+
+ul.mention-container {
+    list-style: none;
+}
+
+.mention-name {
+    font-weight: bold;
+}
+.mention-friend {
+    font-size: 0.8rem;
+    color: #666;
+}
+.mention.me {
+    background-color: #f1f1f1;
+}
+.mention-mark {
+    text-decoration: none;
+    color: black;
+    background-color: powderblue;
+    cursor: pointer;
+    font-weight: bold;
+}
+.mention-mark:hover {
+    /* text-decoration: underline; */
+    background-color: skyblue;
+    transition-duration: 0.2;
+}
