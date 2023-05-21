@@ -43,7 +43,7 @@
                 </c:if>
             </section>
             
-            <hr>
+            <hr class="feed-hr">
 
             <!--  피드 본문 : 텍스트  -->
             <div class="text-container">${board.boardText}</div>
@@ -63,7 +63,7 @@
                 </c:if>
             </div>
 
-            <hr>
+            <hr class="feed-hr">
 
             <!--  나의 게시물 좋아요, 댓글달기, 공유하기 -->
             <section class="like">
@@ -72,7 +72,7 @@
                 <div><img src="/resources/images/mainFeed/mainNext.png">공유하기</div>
             </section>
 
-            <hr>
+            <hr class="feed-hr">
 
             <!-- 댓글 목록  -->
             <section class="reply-container board${board.boardNo}">

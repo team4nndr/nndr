@@ -14,6 +14,7 @@
     <title>main</title>
     <link rel="stylesheet" href="/resources/css/personalFeed/personalFeed.css">
     <link rel="stylesheet" href="/resources/css/mainFeed/reply.css">
+    <link rel="stylesheet" href="/resources/css/mainFeed/feed.css">
     <link rel="shortcut icon" href="#" />
 </head>
 <body>
@@ -200,6 +201,9 @@
                 </div>
             </div>
         </div>
-<script src="/resources/js/personalFeed/personalFeed.js"></script>
+        
+    <script src="/resources/js/personalFeed/personalFeed.js"></script>
+    <script src="/resources/js/mainFeed/main.js"></script>
+    <script src="/resources/js/mainFeed/reply.js"></script>
 </body>
 </html>
