@@ -43,6 +43,16 @@ public interface MemberInfoService {
 
 	List<Board> personalfeedList(int no);
 
+	/** 개인피드 멤버 설정 조회
+	 * @param no
+	 * @return
+	 */
+	Member personalInfo(int no);
+
+	int personalDel(Map<String, String> delMap);
+
+	int personalAccept(Map<String, String> acceptMap);
+
 
 
 

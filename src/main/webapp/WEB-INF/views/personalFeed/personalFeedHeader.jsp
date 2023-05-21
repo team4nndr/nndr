@@ -48,13 +48,37 @@
                 <div class="main1-2">
                     <div class="myname2">
                         <c:if test="${infoMember.memberNo ne loginMember.memberNo}" > 
-                            <c:if test="${not empty friendcheck}">
-                                <div class ="storypuls friendAdd" id="perAddFriend"data-seNo="${loginMember.memberNo}" data-reNo="${infoMember.memberNo}">친구 신청 중</div>
+                            <c:if test="${personalInfo.setFriendReq eq 'Y'}">
+                                <c:if test="${not empty friendcheck}">
+                                    <c:if test="${friendcheck.friendFl eq 'Y'}">
+                                        <div class ="storypuls friendDel" id="perAddFriend"data-seNo="${loginMember.memberNo}" data-reNo="${infoMember.memberNo}">친구 끊기</div>
+                                    </c:if>
+                                    <c:if test="${friendcheck.friendFl eq 'N'}">
+                                        <c:if test="${friendcheck.friendSender eq loginMember.memberNo}">
+                                            <div class ="storypuls friendAdd" id="perAddFriend"data-seNo="${loginMember.memberNo}" data-reNo="${infoMember.memberNo}">신청 취소</div>
+                                        </c:if>
+                                        <c:if test="${friendcheck.friendReciver eq loginMember.memberNo}">
+                                            <div class ="storypuls friendAccept" id="perAddFriend"data-seNo="${loginMember.memberNo}" data-reNo="${infoMember.memberNo}">친구 수락</div>
+                                        </c:if>
+                                    </c:if>
+                                </c:if>
+                                <c:if test="${empty friendcheck}">
+                                    <div class ="storypuls noFriend" id="perAddFriend"data-seNo="${loginMember.memberNo}" data-reNo="${infoMember.memberNo}">친구 추가</div>
+                                </c:if>
                             </c:if>
-                            <c:if test="${empty friendcheck}">
-                                <div class ="storypuls" id="perAddFriend"data-seNo="${loginMember.memberNo}" data-reNo="${infoMember.memberNo}">친구 추가</div>
+                            <c:if test="${personalInfo.setFriendReq eq 'N'}">
+                                <c:if test="${friendcheck.friendFl eq 'N'}">
+                                    <c:if test="${friendcheck.friendReciver eq loginMember.memberNo}">
+                                        <div class ="storypuls friendAccept" id="perAddFriend"data-seNo="${loginMember.memberNo}" data-reNo="${infoMember.memberNo}">친구 수락</div>
+                                    </c:if>
+                                </c:if>
+                                <c:if test="${friendcheck.friendFl eq 'Y'}">
+                                    <div class ="storypuls friendDel" id="perAddFriend"data-seNo="${loginMember.memberNo}" data-reNo="${infoMember.memberNo}">친구 끊기</div>
+                                </c:if>
                             </c:if>
                         </c:if>
+
+
                         <c:if test="${infoMember.memberNo eq loginMember.memberNo}" ></c:if>
                             <div>
                                 <c:if test="${infoMember.memberNo eq loginMember.memberNo}" >

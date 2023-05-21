@@ -11,20 +11,50 @@ if (document.getElementById("perAddFriend") != null) {
             .catch (e => { console.log(e)}); 
             perAddFriend.innerText ="친구 추가";
             perAddFriend.classList.remove('friendAdd');
+            perAddFriend.classList.add('noFriend')
             return;
         }
-        const personalAddFriend = new Array(perAddFriend.dataset.seno, perAddFriend.dataset.reno);
-        fetch("/personalAddFriend?personalAddFriend="+personalAddFriend)  
-        .then(response => response.text()) 
-        .then(() => {
-        }) 
-        .catch (e => { console.log(e)}); 
-        perAddFriend.innerText ="친구 신청 중";
-        perAddFriend.classList.add('friendAdd')
-        return;
-        
+        if(perAddFriend.classList.contains('friendDel')){
+            const personalDelFriend = new Array(perAddFriend.dataset.seno, perAddFriend.dataset.reno);
+            fetch("/personalDelFriend?personalDelFriend="+personalDelFriend)  
+            .then(response => response.text()) 
+            .then(() => {
+            }) 
+            .catch (e => { console.log(e)}); 
+            perAddFriend.innerText ="친구 추가";
+            perAddFriend.classList.remove('friendDel');
+            perAddFriend.classList.add('noFriend')
+            return;
+        }
+        if(perAddFriend.classList.contains('friendAccept')){ //수락
+            const personalAcceptFriend = new Array(perAddFriend.dataset.seno, perAddFriend.dataset.reno);
+            fetch("/personalAcceptFriend?personalAcceptFriend="+personalAcceptFriend)  
+            .then(response => response.text()) 
+            .then(() => {
+            }) 
+            .catch (e => { console.log(e)}); 
+            perAddFriend.innerText ="친구 끊기";
+            perAddFriend.classList.remove('friendAccept');
+            perAddFriend.classList.add('friendDel')
+            return;
+        }
+        if(perAddFriend.classList.contains('noFriend')){ 
+            const personalAddFriend = new Array(perAddFriend.dataset.seno, perAddFriend.dataset.reno);
+            fetch("/personalAddFriend?personalAddFriend="+personalAddFriend)  
+            .then(response => response.text()) 
+            .then(() => {
+            }) 
+            .catch (e => { console.log(e)}); 
+            perAddFriend.innerText ="신청 취소";
+            perAddFriend.classList.remove('noFriend');
+            perAddFriend.classList.add('friendAdd')
+            return;
+        }
     })
 }
+
+
+
 if (document.getElementById("profileChg") != null) {
     document.getElementById("profileChg").addEventListener('click', () => {
         document.getElementById("profile-modal").style.display="block";
