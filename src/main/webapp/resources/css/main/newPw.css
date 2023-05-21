@@ -1,0 +1,207 @@
+/***************************폰트 설정*********************************/
+@font-face {
+    font-family: 'NotoSansKR';
+    src: url('/resources/fonts/NotoSansKR-Regular.otf');
+    font-weight: normal;
+    font-style: normal;
+}
+* {
+    font-family: 'NotoSansKR';
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+/********************************************************************/
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+.main-logo-box{
+    display: flex;
+    align-items: center;
+    height: 56px;
+    object-fit: cover;
+}
+
+.main-logo-box > a{
+    margin-top: 14px;
+}
+
+.main-logo-box > a >img {
+    width: 200px;
+}
+
+.forgetBox{
+    display: flex;
+    justify-content: space-between;
+}
+
+/* 상단 이메일 및 비밀번호 입력 input */
+.main-top-inputBox{
+    border: 1px solid #ccc;
+}
+.main-top-inputBox:focus{
+    outline: 1.2px solid rgb(105 156 233)
+}
+
+/* form 태그 이메일 비번 입력칸 */
+.forgetPwLogin{
+    width: 1190px;
+    height: 56px;
+    display: flex;
+    flex-direction: row;
+    justify-content: right;
+    align-items: center;
+}
+
+/* form 태그 비밀번호 칸 */
+.forgetPwLogin>:nth-of-type(1){
+    margin-right: 10px;
+    border-radius: 5px;
+}
+
+.forgetPwLogin>:nth-of-type(2){
+    margin-right: 10px;
+}
+
+.forgetPwLogin>:nth-of-type(3){
+    margin-right: 10px;
+}
+
+
+/* forgetPwLogin input의 크기 */
+.forgetPwLogin input {
+    width: 188px;
+    height: 40px;
+    border-radius: 7px;
+    padding: 0 10px;
+}
+
+
+/* 로그인 버튼 */
+.submit{
+    width: 80px;
+    height: 40px;
+    border-radius: 7px;
+    background-color: #56A8C5;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    
+    
+}
+
+.submit:hover{
+    background-color: rgb(63, 122, 211);
+}
+
+/* 계정을 잊으셨나요 */
+.main-forget-account{
+    text-decoration: none;
+    color :rgb(77, 79, 84);
+}
+
+.main-forget-account:hover{
+    text-decoration: underline;
+    color :rgb(77, 79, 84);
+}
+
+.found{
+    background-color: #e9ebee;
+    width: 100%;
+    height: 487px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}   
+
+.found2{
+    background-color: #fff;
+    border: 1px solid #ccd;
+    border-radius: 5%;
+    width: 500px;
+    height: 382px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.mine{
+    display: flex;
+    justify-content: left;
+    padding-top: 14px;
+}
+
+
+
+
+/* 내계정찾기 밑 라인줄 */
+.line1{
+    border-top: 2px solid #4444;
+    width: 497px;
+    margin-bottom: 7px;
+}
+
+/* 취소 위 라인줄 */
+.line2{
+    border-top: 1px solid #4444;
+    width: 500px;
+    margin : 13px 15px;
+    }
+
+.cancelBox{
+    margin-top: 16px;
+}
+
+
+.margin{
+    width: 464px;
+    height: 40px;
+    margin-bottom: 5px;
+}
+
+
+.inputText{
+    position: relative;
+    width: 462px;
+    height: 52px;
+    border-radius: 8px;
+}
+
+.inputText:hover{
+    border: 1px solid  #1877f2;
+
+}
+
+.cancel{
+    width: 70px;
+    height: 36px;
+}
+
+.buttonBtn{
+    width: 70px;
+    height: 38px;
+    margin-bottom: 10px;
+}
+
+footer{
+        height: 200px;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+}
+footer > span{font-weight: bold;}
+
+footer span{
+  font-size: 14px;
+  margin: 16px 0;
+  color: black;
+  padding: 0 10px;
+}
+

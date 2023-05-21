@@ -30,96 +30,20 @@
             </div>
             <div class="topdiv">
                 <div class="topfr">친구요청</div>
-                <div class="friendContent">
+                <div id="friendContent">
+                <c:forEach  var="reciver" items="${friendList}">
                     <div class="friendbax">
                         <!-- pick = img로  -->
                         <div class="tbox"> <img class="pick"
                                 src="/resources/images/friend/143086968_2856368904622192_1959732218791162458_n.png" alt="">
                         </div>
                         <div class="boxname">
-                            <div class="namebar"><span class="frName">정용화</span></div>
-                            <div class="plusfr"><span class="together">함께 아는 친구 1명</span></div>
-                            <div class="btnbox"><button class="checkYes">확인</button></div>
-                            <div class="btnbox"><button class="checkNo">삭제</button></div>
+                            <div class="namebar"><span class="frName">${reciver.memberName}</span></div>
+                            <div class="btnbox"><button class="checkYes" onclick="accept(${reciver.friendNo})">확인</button></div>
+                            <div class="btnbox"><button class="checkNo"  onclick="refuse(${reciver.friendNo})">삭제</button></div>
                         </div>
                     </div>
-                    <div class="friendbax">
-                        <div class="tbox"> <img class="pick"
-                                src="/resources/images/friend/143086968_2856368904622192_1959732218791162458_n.png" alt="">
-                        </div>
-                        <div class="boxname">
-                            <div class="namebar"><span class="frName">박종욱</span></div>
-                            <div class="plusfr"><span class="together">함께 아는 친구 1명</span></div>
-                            <div class="btnbox"><button class="checkYes">확인</button></div>
-                            <div class="btnbox"><button class="checkNo">삭제</button></div>
-                        </div>
-                    </div>
-                    <div class="friendbax">
-                        <div class="tbox"> <img class="pick"
-                                src="/resources/images/friend/143086968_2856368904622192_1959732218791162458_n.png" alt="">
-                        </div>
-                        <div class="boxname">
-                            <div class="namebar"><span class="frName">이예슬</span></div>
-                            <div class="plusfr"><span class="together">함께 아는 친구 1명</span></div>
-                            <div class="btnbox"><button class="checkYes">확인</button></div>
-                            <div class="btnbox"><button class="checkNo">삭제</button></div>
-                        </div>
-                    </div>
-                    <div class="friendbax">
-                        <div class="tbox"> <img class="pick"
-                                src="/resources/images/friend/143086968_2856368904622192_1959732218791162458_n.png" alt="">
-                        </div>
-                        <div class="boxname">
-                            <div class="namebar"><span class="frName">최유나</span></div>
-                            <div class="plusfr"><span class="together">함께 아는 친구 1명</span></div>
-                            <div class="btnbox"><button class="checkYes">확인</button></div>
-                            <div class="btnbox"><button class="checkNo">삭제</button></div>
-                        </div>
-                    </div>
-                    <div class="friendbax">
-                        <div class="tbox"> <img class="pick"
-                                src="/resources/images/friend/143086968_2856368904622192_1959732218791162458_n.png" alt="">
-                        </div>
-                        <div class="boxname">
-                            <div class="namebar"><span class="frName">정반석</span></div>
-                            <div class="plusfr"><span class="together">함께 아는 친구 1명</span></div>
-                            <div class="btnbox"><button class="checkYes">확인</button></div>
-                            <div class="btnbox"><button class="checkNo">삭제</button></div>
-                        </div>
-                    </div>
-                    <div class="friendbax">
-                        <div class="tbox"> <img class="pick"
-                                src="/resources/images/friend/143086968_2856368904622192_1959732218791162458_n.png" alt="">
-                        </div>
-                        <div class="boxname">
-                            <div class="namebar"><span class="frName">조우형</span></div>
-                            <div class="plusfr"><span class="together">함께 아는 친구 1명</span></div>
-                            <div class="btnbox"><button class="checkYes">확인</button></div>
-                            <div class="btnbox"><button class="checkNo">삭제</button></div>
-                        </div>
-                    </div>
-                    <div class="friendbax">
-                        <div class="tbox"> <img class="pick"
-                                src="/resources/images/friend/143086968_2856368904622192_1959732218791162458_n.png" alt="">
-                        </div>
-                        <div class="boxname">
-                            <div class="namebar"><span class="frName">홍길동</span></div>
-                            <div class="plusfr"><span class="together">함께 아는 친구 1명</span></div>
-                            <div class="btnbox"><button class="checkYes">확인</button></div>
-                            <div class="btnbox"><button class="checkNo">삭제</button></div>
-                        </div>
-                    </div>
-                    <div class="friendbax">
-                        <div class="tbox"> <img class="pick"
-                                src="/resources/images/friend/143086968_2856368904622192_1959732218791162458_n.png" alt="">
-                        </div>
-                        <div class="boxname">
-                            <div class="namebar"><span class="frName">홍길동</span></div>
-                            <div class="plusfr"><span class="together">함께 아는 친구 1명</span></div>
-                            <div class="btnbox"><button class="checkYes">확인</button></div>
-                            <div class="btnbox"><button class="checkNo">삭제</button></div>
-                        </div>
-                    </div>
+                    </c:forEach>
                 </div>
             </div>
         </div>

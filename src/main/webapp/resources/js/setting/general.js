@@ -38,6 +38,7 @@ for(let i=0; i<saveTextList.length; i++) {
 }
 
 /********* 비밀번호 수정 *********/
+const passwd = document.querySelector('.row.mod.passwd');
 const currentPw = document.getElementById('currentPw');
 const newPw = document.getElementById('newPw');
 const newPwConfirm = document.getElementById('newPwConfirm');
@@ -71,14 +72,43 @@ pwSubmitBtn.addEventListener('click', e => {
         return;
     }
 
-    // ajax로 구현
-    alert("정상적으로 수정되었습니다.");
+    // 현재 비밀번호 체크
+    fetch("/setting/checkPasswd", {
+        method : "POST",
+        headers : {"Content-Type" : "application/json"},
+        body : currentPw.value
+    })
+    .then(resp => resp.text())
+    .then(result => {
+        if(result == "false") {
+            alert("현재 비밀번호가 일치하지 않습니다.");
+        } else {
 
-    // 수정 완료 후 수정 화면 닫기 + input 내용 삭제
-    document.querySelector('.row.mod.passwd').classList.add('hidden');
-    document.querySelector('.row.passwd').classList.remove('hidden');
-    currentPw.value = newPw.value = newPwConfirm.value = "";
+            // 비밀번호 수정
+            fetch("/setting/change/passwd", {
+                method : "POST",
+                headers : {"Content-Type" : "application/json"},
+                body : newPw.value
+            })
+            .then(resp => resp.text())
+            .then(result => {
+                if(result > 0) { // 화면 최신화
+                    passwd.classList.add('hidden');
+                    passwd.previousElementSibling.classList.remove('hidden');
+                    alert("정상적으로 수정되었습니다.");
+                }else{
+                    alert("수정 실패");
+                }
+            })
+            .catch(e => console.log(e));
 
+            // 수정 완료 후 수정 화면 닫기 + input 내용 삭제
+            document.querySelector('.row.mod.passwd').classList.add('hidden');
+            document.querySelector('.row.passwd').classList.remove('hidden');
+            currentPw.value = newPw.value = newPwConfirm.value = "";
+        }
+    })
+    .catch(e => console.log(e));
 });
 
 // 닫기버튼 클릭 시 input 내용 삭제
@@ -89,12 +119,28 @@ pwCloseBtn.addEventListener('click', e => {
 });
 
 
+
 /********* 성별 수정 *********/
 const gender = document.querySelector('.row.mod.gender');
 gender.querySelector('.submit').addEventListener('click', e => {
-    // ajax로 구현
-    alert("정상적으로 수정되었습니다.");
+    let checkedGender = document.querySelector('[name="gender"]:checked').value;
+
+    fetch("/setting/change/info?k=gender&v=" + checkedGender)
+    .then(resp => resp.text())
+    .then(result => {
+        if(result > 0) { // 화면 최신화
+            gender.classList.add('hidden');
+            gender.previousElementSibling.classList.remove('hidden');
+            if(checkedGender == "없음") checkedGender = "선택하지 않음";
+            gender.previousElementSibling.querySelector('.info-print').innerText = checkedGender;
+            alert("정상적으로 수정되었습니다.");
+        }else{
+            alert("수정 실패");
+        }
+    })
+    .catch(e => console.log(e));
 });
+
 // 닫기 버튼 클릭 시 성별 선택 초기화
 gender.querySelector('.close').addEventListener('click', e => {
     if(infoGender == '남') {
@@ -106,42 +152,84 @@ gender.querySelector('.close').addEventListener('click', e => {
     }
 });
 
+
+
 /********* 주소 수정 *********/
 const address = document.querySelector('.row.mod.address');
 address.querySelector('.submit').addEventListener('click', e => {
-    // ajax로 구현
-    alert("정상적으로 수정되었습니다.");
+    let newAddress = address.querySelector('.mod-input').value;
+    
+    fetch("/setting/change/info?k=addr&v=" + newAddress)
+    .then(resp => resp.text())
+    .then(result => {
+        if(result > 0) { // 화면 최신화
+            address.classList.add('hidden');
+            address.previousElementSibling.classList.remove('hidden');
+            address.previousElementSibling.querySelector('.info-print').innerText = newAddress;
+            alert("정상적으로 수정되었습니다.");
+        }else{
+            alert("수정 실패");
+        }
+    })
+    .catch(e => console.log(e));
 });
+
 // 닫기 버튼 클릭 시 주소 input 내용 초기화
 address.querySelector('.close').addEventListener('click', e => {
     address.querySelector('.mod-input').value = infoResidence;
 });
+
 
 /********* 연락처 수정 *********/
 const tel = document.querySelector('.row.mod.tel');
 const telInput = tel.querySelector('.mod-input');
 const telMessage = tel.querySelector('.mod-message');
 tel.querySelector('.submit').addEventListener('click', e => {
-    // ajax로 구현
-    alert("정상적으로 수정되었습니다.");
+
+    fetch("/setting/change/info?k=tel&v=" + telInput.value)
+    .then(resp => resp.text())
+    .then(result => {
+        if(result > 0) { // 화면 최신화
+            tel.classList.add('hidden');
+            tel.previousElementSibling.classList.remove('hidden');
+            const newTel = telFormmater(telInput.value);
+            tel.previousElementSibling.querySelector('.info-print').innerText = newTel;
+            alert("정상적으로 수정되었습니다.");
+        } else {
+            alert("수정 실패");
+        }
+    })
+    .catch(e => console.log(e));
 });
+
 // 닫기 버튼 클릭 시 연락처 input 내용 초기화
 tel.querySelector('.close').addEventListener('click', e => {
     telInput.value = memberTel;
     telMessage.innerText = "";
 });
+
 // 연락처 입력 유효성 검사
 telInput.addEventListener("input", () => {
     // 정규 표현식으로 유효성 검사
     const regEx = /^0(1[01679]|2|[3-6][1-5]|70)[1-9]\d{3,4}\d{4}$/;
     if(regEx.test(telInput.value)) { // 유효
-        telMessage.innerText = "유효한 입력입니다.";
+        telMessage.innerText = "유효한 입력입니다";
         telMessage.style.color = "green";
     } else { // 무효
-        telMessage.innerText = "유효하지 않은 입력입니다.";
+        telMessage.innerText = "유효하지 않은 입력입니다 (숫자만 입력)";
         telMessage.style.color = "red";
     }
 });
+
+// 연락처 대쉬(-) 추가
+function telFormmater(tel) {
+    return tel.replace(/^(\d{2,3})(\d{3,4})(\d{4})$/, `$1-$2-$3`);
+}
+telData.innerText = telFormmater(telData.innerText); // 화면 최초 렌더링 시 실행
+// const telData = document.getElementById('telData');
+// telData.innerText = telData.innerText.replace(/^(\d{2,3})(\d{3,4})(\d{4})$/, `$1-$2-$3`);
+
+
 
 /********* 정보 수정 공통코드 *********/
 // 수정버튼 클릭 시 수정 화면 출력
@@ -164,16 +252,12 @@ for(let btn of modCancelButtons) {
     });
 }
 
-// 성별 수정 화면에서 현재 성별 선택해서 출력
-// const infoGender 미리 선언 : "남", "여", "없음"
-if(infoGender == '남') {
-    document.getElementById("genderMale").checked = true;
-} else if(infoGender == '여') {
-    document.getElementById("genderFemale").checked = true;
-} else {
-    document.getElementById("genderNone").checked = true;
-}
-
-// 연락처 대쉬(-) 추가
-const telData = document.getElementById('telData');
-telData.innerText = telData.innerText.replace(/^(\d{2,3})(\d{3,4})(\d{4})$/, `$1-$2-$3`);
+// // 성별 수정 화면에서 현재 성별 선택해서 출력
+// // const infoGender 미리 선언 : "남", "여", "없음"
+// if(infoGender == '남') {
+//     document.getElementById("genderMale").checked = true;
+// } else if(infoGender == '여') {
+//     document.getElementById("genderFemale").checked = true;
+// } else {
+//     document.getElementById("genderNone").checked = true;
+// }

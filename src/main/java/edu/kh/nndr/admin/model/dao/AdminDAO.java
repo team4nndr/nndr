@@ -1,6 +1,7 @@
 package edu.kh.nndr.admin.model.dao;
 
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.RowBounds;
 import org.mybatis.spring.SqlSessionTemplate;
@@ -51,7 +52,7 @@ public class AdminDAO {
 	 * @return result
 	 */
 	public int deleteMember(int memberNo) {
-		return sqlSession.selectOne("memberMapper.deleteMember", memberNo);
+		return sqlSession.update("memberMapper.deleteMember", memberNo);
 	}
 
 	/**
@@ -60,7 +61,7 @@ public class AdminDAO {
 	 * @return result
 	 */
 	public int enableMember(int memberNo) {
-		return sqlSession.selectOne("memberMapper.enableMember", memberNo);
+		return sqlSession.update("memberMapper.enableMember", memberNo);
 	}
 
 	/**
@@ -70,5 +71,26 @@ public class AdminDAO {
 	 */
 	public int disableMember(int memberNo) {
 		return sqlSession.update("memberMapper.disableMember", memberNo);
+	}
+
+	/**
+	 * 회원 검색 결과 목록 수 반환
+	 * @param paramMap
+	 * @return count
+	 */
+	public int getMemberCount(Map<String, Object> paramMap) {
+		return sqlSession.selectOne("memberMapper.getMemberSearchCount", paramMap);
+	}
+
+	/**
+	 * 회원 검색 결과 조회
+	 * @param paramMap
+	 * @param pagination
+	 * @return memberList
+	 */
+	public List<Member> selectMemberList(Map<String, Object> paramMap, Pagination pagination) {
+		int offset = (pagination.getCurrentPage() - 1) * pagination.getLimit();
+		RowBounds rowBounds = new RowBounds(offset, pagination.getLimit());
+		return sqlSession.selectList("memberMapper.selectMemberSearchList", paramMap, rowBounds);
 	}
 }

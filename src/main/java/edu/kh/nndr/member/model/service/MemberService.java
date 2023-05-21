@@ -20,4 +20,10 @@ public interface MemberService {
 	 * @return member
 	 */
 	Member login(Map<String, Object> map);
+
+	/** 회원 가입 
+	 * @param inputMember
+	 * @return result 
+	 */
+	int signUp(Member inputMember);
 }

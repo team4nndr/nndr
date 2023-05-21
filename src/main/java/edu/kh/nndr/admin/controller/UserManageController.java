@@ -29,18 +29,20 @@ public class UserManageController {
 	@GetMapping("")
 	public String selectMemberList(
 			@RequestParam(value="cp", required=false, defaultValue="1") int cp,
-			Model model) {
-		Map<String, Object> map = service.selectMemberList(cp);
-		model.addAttribute("map", map);
-		return "admin/users";
-	}
-	
-	// 유저 상세 조회
-	@GetMapping("/{memberNo:[0-9]+}")	
-	public String selectMember(@PathVariable("memberNo") int memberNo, Model model) {
-		Member member = service.selectMember(memberNo); 
-		model.addAttribute("member", member);
-		return "admin/users_detail";
+			Model model, @RequestParam Map<String, Object> paramMap) {
+
+		// 검색이 아닐 때(단순목록조회)
+		if(paramMap.get("query") == null) {
+			Map<String, Object> map = service.selectMemberList(cp);
+			model.addAttribute("map", map);
+			
+		// 검색결과조회	
+		} else { 
+			Map<String, Object> map = service.selectMemberList(paramMap, cp);
+			model.addAttribute("map", map);
+		}
+		
+		return "admin/users";		
 	}
 	
 	// 유저 비활성
@@ -56,6 +58,7 @@ public class UserManageController {
 	@GetMapping("/{memberNo:[0-9]+}/delete")
 	public String deleteMember(@PathVariable("memberNo") int memberNo) {
 		service.deleteMember(memberNo);
+		String tmp = service.selectMember(memberNo).getDeleteDate();
 		return service.selectMember(memberNo).getDeleteDate();
 	}
 	
@@ -64,5 +67,14 @@ public class UserManageController {
 	@GetMapping("/{memberNo:[0-9]+}/enable")
 	public int enableMember(@PathVariable("memberNo") int memberNo) {
 		return service.enableMember(memberNo);
+	}
+	
+	
+	// 유저 상세 조회
+	@GetMapping("/{memberNo:[0-9]+}")	
+	public String selectMember(@PathVariable("memberNo") int memberNo, Model model) {
+		Member member = service.selectMember(memberNo); 
+		model.addAttribute("member", member);
+		return "admin/users_detail";
 	}
 }

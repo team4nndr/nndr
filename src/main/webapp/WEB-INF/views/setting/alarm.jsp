@@ -27,75 +27,54 @@
                 <div class="title">친구 요청</div>
                 <div class="content-list hover">
                     누군가 회원님께 친구 요청을 했을 때 알림 받기
-                    <label>
-                        <input type="checkbox" class="checkbox">
-                        <div class="toggle">
-                            <div class="circle"></div>
-                        </div>
-                    </label>
+                    <div class='toggle <c:if test="${loginMember.setAlarmFriendReq eq 'Y'}" >checked</c:if>' key="SET_AL_FRIEND_REQ">
+                        <div class="circle"></div>
+                    </div>
                 </div>
                 <div class="content-list hover">
                     회원님의 친구 요청이 수락되었을 때 알림 받기
-                    <label>
-                        <input type="checkbox" class="checkbox">
-                        <div class="toggle">
-                            <div class="circle"></div>
-                        </div>
-                    </label>
+                    <div class='toggle <c:if test="${loginMember.setAlarmReqAccept eq 'Y'}" >checked</c:if>' key="SET_AL_REQ_ACCEPT">
+                        <div class="circle"></div>
+                    </div>
                 </div>
             </div>
             <div class="content-box">
                 <div class="title">태그</div>
                 <div class="content-list hover">
                     누군가 회원님을 태그(@)했을 때 알림 받기
-                    <label>
-                        <input type="checkbox" class="checkbox">
-                        <div class="toggle">
-                            <div class="circle"></div>
-                        </div>
-                    </label>
+                    <div class='toggle <c:if test="${loginMember.setAlarmTag eq 'Y'}" >checked</c:if>' key="SET_AL_TAG">
+                        <div class="circle"></div>
+                    </div>
                 </div>
             </div>
             <div class="content-box">
                 <div class="title">게시글</div>
                 <div class="content-list hover">
                     회원님의 게시글에 댓글이 달렸을 때 알림 받기
-                    <label>
-                        <input type="checkbox" class="checkbox">
-                        <div class="toggle">
-                            <div class="circle"></div>
-                        </div>
-                    </label>
+                    <div class='toggle <c:if test="${loginMember.setAlarmReply eq 'Y'}" >checked</c:if>' key="SET_AL_REPLY">
+                        <div class="circle"></div>
+                    </div>
                 </div>
                 <div class="content-list hover">
                     회원님의 게시글에 좋아요가 눌렸을 때 알림 받기
-                    <label>
-                        <input type="checkbox" class="checkbox">
-                        <div class="toggle">
-                            <div class="circle"></div>
-                        </div>
-                    </label>
+                    <div class='toggle <c:if test="${loginMember.setAlarmLike eq 'Y'}" >checked</c:if>' key="SET_AL_LIKE">
+                        <div class="circle"></div>
+                    </div>
                 </div>
                 <div class="content-list hover">
                     회원님의 게시글이 공유되었을 때 알림 받기
-                    <label>
-                        <input type="checkbox" class="checkbox">
-                        <div class="toggle">
-                            <div class="circle"></div>
-                        </div>
-                    </label>
+                    <div class='toggle <c:if test="${loginMember.setAlarmShare eq 'Y'}" >checked</c:if>' key="SET_AL_SHARE">
+                        <div class="circle"></div>
+                    </div>
                 </div>
             </div>
             <div class="content-box">
                 <div class="title">내 피드</div>
                 <div class="content-list hover">
                     회원님의 피드에 새로운 게시글이 작성되었을 때 알림 받기
-                    <label>
-                        <input type="checkbox" class="checkbox">
-                        <div class="toggle">
-                            <div class="circle"></div>
-                        </div>
-                    </label>
+                    <div class='toggle <c:if test="${loginMember.setAlarmFeed eq 'Y'}" >checked</c:if>' key="SET_AL_FEED">
+                        <div class="circle"></div>
+                    </div>
                 </div>
             </div>
         </section>

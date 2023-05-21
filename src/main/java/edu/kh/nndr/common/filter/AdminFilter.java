@@ -13,7 +13,7 @@ import javax.servlet.http.HttpSession;
 
 import edu.kh.nndr.member.model.dto.Member;
 
-@WebFilter (filterName = "loginFilter", urlPatterns = "/admin/*")
+@WebFilter (filterName = "adminFilter", urlPatterns = "/admin/*")
 public class AdminFilter implements Filter {
 
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {

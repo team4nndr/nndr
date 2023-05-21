@@ -41,12 +41,65 @@
 		<result property="romanticYn" column="ROMANTIC_YN" />
 		<result property="infoNick" column="INFO_NICK" />
 		<result property="infoText" column="INFO_TEXT" />
+		<!-- 이미지 관련 -->
 		<result property="infoBack" column="INFO_BACK" />
+		<result property="infoBackPath" column="INFO_BACKPATH" />
+		<result property="infoProfile" column="INFO_PROFILE" />
+		<result property="infoProfilePath" column="INFO_PROFILEPATH" />
+
+		<result property="imgPath" column="IMG_PATH" />
+		<result property="imgRename" column="IMG_RENAME" />
+		<result property="uploadDate" column="UPLOAD_DATE" />
+		<result property="boardNo" column="BOARD_NO" />
+		
 	</resultMap>
+	<resultMap type="PersonalFriend" id="personalFriend_rm">
+		<id property="friendNo" column="FRIEND_NO" />
+		<result property="friendSender" column="FRIEND_SENDER" />
+		<result property="friendReciver" column="FRIEND_RECIVER" />
+		<result property="friendFl" column="FRIEND_FL" />
+		<result property="memberNo" column="MEMBER_NO" />
+		<result property="memberName" column="MEMBER_NAME" />
+	</resultMap>
+	
+	
 	<resultMap type="MemberHobby" id="memberHobby_rm">
 		<id property="memberNo" column="MEMBER_NO" />
 		<result property="hobbyNo" column="HOBBY_NO" />
 		<result property="hobby" column="HOBBY" />
+	</resultMap>
+	
+	<resultMap type="Board" id="board_rm">
+		<!-- DB의 기본 키(복합키면 여러 개 작성) -->
+		<id property="memberNo" column="MEMBER_NO" />
+		<id property="boardNo" column="BOARD_NO"/>
+		
+		<!-- DB의 일반 컬럼들 -->
+		<result property="boardText" column="BOARD_TEXT" />
+		<result property="uploadDate" column="UPLOAD_DATE" />
+		<result property="contentLike" column="CONTENT_LIKE" />
+		<result property="delete" column="DELETE" />
+		<result property="updateDate" column="UPDATE_DATE" />
+		<result property="disableDate" column="DISABLE_DATE" />
+		
+		<!-- JOIN 컬럼들 -->
+		<result property="memberName" column="MEMBER_NAME" />
+		<result property="profileImage" column="INFO_IMG" />
+		
+		<collection property="imageList" select="selectImageList"
+				column="BOARD_NO"
+				javaType="java.util.ArrayList" 
+				ofType="Image"/>
+	
+	</resultMap>
+	
+	<resultMap type="Image" id="image_rm">
+		<id property="imgNo" column="IMG_NO"/>
+		<result property="imgPath" column="IMG_PATH"/>
+		<result property="imgReName" column="IMG_RENAME"/>
+		<result property="imgOriginal" column="IMG_ORIGINAL"/>
+		<result property="imgOrder" column="IMG_ORDER"/>
+		<result property="boardNo" column="BOARD_NO"/>
 	</resultMap>
 
 	<select id="personalMember" resultMap="memberInfo_rm">
@@ -62,12 +115,85 @@
 	</update>
 	
 	<select id="selectHobbyList" resultMap="memberHobby_rm">
-		SELECT * FROM "MEMBER_HOBBY"
+		SELECT DISTINCT(HOBBY) FROM "MEMBER_HOBBY" ORDER BY HOBBY
 	</select>
 	<select id="selectPerHobbyList" resultMap="memberHobby_rm">
-		SELECT * FROM "MEMBER_HOBBY WHERE MEMBER_NO =#{memberNo}"
+		SELECT DISTINCT(HOBBY) FROM "MEMBER_HOBBY" WHERE MEMBER_NO =#{memberNo} ORDER BY HOBBY
 	</select>
 	
+	
+
+	<insert id="insertHobby" parameterType="list">
+		INSERT INTO MEMBER_HOBBY (HOBBY_NO, MEMBER_NO, HOBBY)
+		<foreach collection="list" item="item" separator=" UNION ALL ">
+    		SELECT GET_SEQ_HOBBY_NO(), #{item.memberNo}, #{item.hobby} FROM DUAL
+    	</foreach>
+	</insert>
+
+	<delete id="deleteHobby" parameterType="list">
+		DELETE FROM MEMBER_HOBBY
+		<where> 
+		<foreach collection="list" item="item" separator=" OR ">
+    		(MEMBER_NO = #{item.memberNo} AND HOBBY = #{item.hobby})
+    	</foreach>
+    	</where>
+	</delete>
+	
+	
+	<select id="imgSet" resultMap="memberInfo_rm">
+		SELECT BOARD_NO, IMG_PATH, IMG_RENAME, UPLOAD_DATE FROM "IMAGE" LEFT JOIN "BOARD" USING(BOARD_NO) LEFT JOIN "MEMBER" USING(MEMBER_NO) WHERE MEMBER_NO = #{memberNo} AND ROWNUM<![CDATA[<]]>=3
+	</select>
+	
+	
+	<insert id="personalAdd">
+		INSERT INTO FRIEND VALUES(101, ${friendSender}, ${friendReciver}, DEFAULT)
+	</insert>
+	
+	<select id="perFriend" resultMap="personalFriend_rm">
+		SELECT * FROM FRIEND WHERE FRIEND_SENDER = ${friendSender} AND FRIEND_RECIVER=${friendReciver}
+	</select>
+	
+	<delete id="personalCan">
+		DELETE FROM "FRIEND" WHERE FRIEND_SENDER=${friendSender} AND FRIEND_RECIVER=${friendReciver}
+	</delete>
+
+	<update id="backImg">
+		UPDATE "MEMBER_INFO" SET INFO_BACK=#{imgRename}, INFO_BACKPATH=#{imgPath} WHERE MEMBER_NO = #{memberNo}
+	</update>
+	
+	<update id="delBackImg">
+		UPDATE "MEMBER_INFO" SET INFO_BACK= null, INFO_BACKPATH= null WHERE MEMBER_NO = #{memberNo}
+	</update>
+
+	<update id="proImg">
+		UPDATE "MEMBER_INFO" SET INFO_PROFILE=#{imgRename}, INFO_PROFILEPATH=#{imgPath} WHERE MEMBER_NO = #{memberNo}
+	</update>
+	
+	<select id="personalfeedList" resultMap="board_rm">
+		SELECT BOARD_NO, MEMBER_NAME,BOARD_TEXT,MEMBER_NO, INFO_PROFILEPATH||INFO_PROFILE INFO_IMG,
+		<![CDATA[
+		CASE  
+			WHEN SYSDATE - UPLOAD_DATE < 1/24/60
+			THEN FLOOR( (SYSDATE - UPLOAD_DATE) * 24 * 60 * 60 ) || '초 전'
+			WHEN SYSDATE - UPLOAD_DATE < 1/24
+			THEN FLOOR( (SYSDATE - UPLOAD_DATE) * 24 * 60) || '분 전'
+			WHEN SYSDATE - UPLOAD_DATE < 1
+			THEN FLOOR( (SYSDATE - UPLOAD_DATE) * 24) || '시간 전'
+			ELSE TO_CHAR(UPLOAD_DATE, 'YYYY-MM-DD')
+		END UPLOAD_DATE
+		]]>
+		FROM BOARD b 
+		JOIN MEMBER USING(MEMBER_NO) JOIN "MEMBER_INFO" USING(MEMBER_NO)
+		WHERE "DELETE" = 'N' AND MEMBER_NO = #{no}
+		ORDER BY BOARD_NO DESC
+	</select>
+	
+	<select id="selectImageList" resultMap="image_rm">
+		SELECT * FROM "IMAGE"
+		WHERE BOARD_NO=#{boardNo}
+		ORDER BY IMG_ORDER DESC
+	
+	</select>
 	
 	
 	<!--  이미지 수정 

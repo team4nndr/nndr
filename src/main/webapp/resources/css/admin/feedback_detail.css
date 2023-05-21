@@ -1,16 +1,17 @@
 #content {
-    min-width: 1250px;
+    /* min-width: 1250px; */
 }
 
 #details {
     width: 1200px;
-    height: 650px;
     margin-top: 20px;
     margin-bottom: 20px;
     /* border: 1px solid #ccc; */
     background-color: #F0F2F5;
     border-radius: 6px;
     padding: 25px;
+
+    box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.16), 1px 1px 2px rgba(0, 0, 0, 0.23);
 }
 
 #feedbackUserSection > div {
@@ -28,14 +29,26 @@
     display: block;
 }
 
+#feedbackFrm {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-left: 360px;
+    /* width: 100%; */
+    /* min-width: 950px; */
+}
+
 #feedbackContent {
     resize: none;
     width: 100%;
-    height: 243px;
+    min-height: 243px;
     background-color: white;
     padding: 20px 25px;
-    overflow-y: auto;
+    /* overflow-y: auto; */
+    white-space: pre-wrap;
 }
+
 #adminComment {
     width: 100%;
     height: 100px;
@@ -70,4 +83,4 @@ textarea:focus {
 }
 
 /* 화면 하단 뒤로가기, 처리하기 버튼 */
-#bottom > button { width: 130px; }
+#bottom > button { width: 130px; margin-bottom: 50px;}

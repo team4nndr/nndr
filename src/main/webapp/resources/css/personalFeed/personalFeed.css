@@ -1,3 +1,17 @@
+/***************************폰트 설정*********************************/
+@font-face {
+    font-family: 'NotoSansKR';
+    src: url('/resources/fonts/NotoSansKR-Regular.otf');
+    font-weight: normal;
+    font-style: normal;
+}
+* {
+    font-family: 'NotoSansKR';
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+/********************************************************************/
 
 button{
     border:0;
@@ -19,7 +33,6 @@ button{
     align-items: center;
 }   
 .main-container1{
-    height: 980px;
     display: flex;
     flex-direction: row;
     flex-direction: column;
@@ -28,7 +41,6 @@ button{
 }   
 .main-container2{
     width: 100%;
-    height: 3000px;
     background-color: hsl(195, 15%, 90%);
     display: flex;
     flex-direction: column;
@@ -39,7 +51,7 @@ button{
 }   
 #backLogo{
     width: 1250px;
-    height: 1000px;
+    height: 703px;
     border-radius: 10px;
 }
 
@@ -71,7 +83,7 @@ button{
     width: 144px;
     height: 42px;
     margin-right: 10px;
-    
+    transition-duration: 1s;
 }
 .plo{
     text-decoration: none;
@@ -88,10 +100,12 @@ button{
 }
 
 #homeLogo{
+    position : relative;
     width: 160px;
     height: 160px;
     border-radius: 50%;
     border : 2px solid white;
+    z-index: 5;
 }
 .main-imset{
     display: flex;
@@ -100,10 +114,10 @@ button{
 
 .main-im{
     padding:10px;
-    width: 125px;
-    height: 125px;
+    width: 135px;
+    height: 135px;
     display: flex;
-    margin: 9px;
+    margin: 9px 10px 9px;
     border-radius: 15px;
 }
 
@@ -311,11 +325,11 @@ button{
     flex-direction: column;
 }
 .item2-3{
-    height: 360px;
+    position: relative;
+    left: -20px;
+    margin: -20px 0 0 0;
     width: 680px;
-    background-color: white;
-    display: flex;
-    border: 1px solid #ccc;
+    display: block;
     border-radius: 10px;
 }
 
@@ -399,10 +413,13 @@ button{
     flex-wrap: wrap;
     border-radius: 30px;
     justify-content: center;
+    align-items: center;
     border : 1px solid #ccc;
 }
 
-
+#login{
+    display: block;
+}
 
 .hobby-box{
     position:fixed;
@@ -477,15 +494,22 @@ button{
 #hobt{
     display: flex;
     align-items: center;
+    justify-content: center;
 }
 
 .btn-sty {
     display: flex;
     text-align: center;
+    justify-content: center;
     align-items: center;
     font-size : 18px;
-    flex-direction: row;
+    width: 100px;
+    height: 100%;
 
+}
+
+#zzs{
+    margin-bottom: 20px;
 }
 
 #intro-my{
@@ -539,6 +563,7 @@ button{
 #info-link {
     text-decoration: none;
     color : black;
+    display: block;
 }
 
 #intro-save{
@@ -701,16 +726,10 @@ button{
 }
 
 
-
-
-
-
-
 #info-modal{
     display: none;
     position: fixed;
     top:0; left:0;
-    width: 100vw;
     height: 100vh;
     background: black;
     opacity: 0;
@@ -849,11 +868,44 @@ button{
     font-size: 1.3em;
     cursor: pointer;
   }
+  .pcontroller span{
+    position:absolute;
+    background-color: transparent;
+    color: black;
+    text-align: center;
+    border-radius: 50%;
+    padding: 10px 20px;
+    top: 50%;
+    font-size: 1.3em;
+    cursor: pointer;
+  }
   /* 이전, 다음 화살표에 마우스 커서가 올라가 있을때 */
+  .pcontroller span:hover{
+    background-color: rgba(128, 128, 128, 0.11);
+  }
   .controller span:hover{
     background-color: rgba(128, 128, 128, 0.11);
   }
   
+  .pofileprev{
+    left: 10px;
+  }
+  
+  /* 이전 화살표에 마우스 커서가 올라가 있을때 
+  이전 화살표가 살짝 왼쪽으로 이동하는 효과*/
+  .pofileprev:hover{
+    transform: translateX(-5px);
+  }
+  
+  .pofilenext{
+    right: 10px;
+  }
+  
+  /* 다음 화살표에 마우스 커서가 올라가 있을때 
+  이전 화살표가 살짝 오른쪽으로 이동하는 효과*/
+  .pofilenext:hover{
+    transform: translateX(5px);
+}
   .prev{
     left: 10px;
   }
@@ -861,7 +913,7 @@ button{
   /* 이전 화살표에 마우스 커서가 올라가 있을때 
   이전 화살표가 살짝 왼쪽으로 이동하는 효과*/
   .prev:hover{
-    transform: translateX(-10px);
+    transform: translateX(-5px);
   }
   
   .next{
@@ -871,6 +923,793 @@ button{
   /* 다음 화살표에 마우스 커서가 올라가 있을때 
   이전 화살표가 살짝 오른쪽으로 이동하는 효과*/
   .next:hover{
-    transform: translateX(10px);
+    transform: translateX(5px);
+}
+.friendAdd{
+    background: red;
+    transition-duration: 1s;
+}
+#what-profile{
+    font-weight: bolder;
+    font-size: 20px;
+}
+
+#profile-modal{
+    display: none;
+    position: fixed;
+    top:0; left:0;
+    width: 100vw;
+    height: 100vh;
+    background: black;
+    opacity: 0;
+    z-index:10;
+    transform:scale(0.5);
+    pointer-events: none;
+    opacity: 0.9;
+    transform: scale(1);
+    transition: all .4s;
+    pointer-events: visible;
+}
+.profi{
+    display: flex;
+    height: 265px;
+    width: 265px;
+    margin: 10px;
+    flex-direction: column;
+    border-radius: 5px;
+}
+#profile-modali{
+    display: none;
+    position:fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0.5);
+    background: #fff;
+    z-index: 100;
+    opacity: 0;
+    pointer-events: none;
+    border-radius: 5px;
+    border : 5px solid #56A8C5 ;
+    opacity : 1;
+    pointer-events: visible;
+    transform: translate(-50%, -50%)scale(1);
+    transition: all .4s;
+    transition-delay: 0.1s;
+    width: 880px;;
+    overflow: hidden;
+}
+#profile-set{
+    display: flex;
+    height: 341px;
+    position: absolute;
+    
+
+}
+#profile-asd{
+    height: 270px;
+    border-radius: 15px;
+    border-radius: 15px;
+    background-color: white;
+    position: relative;
+    margin: 10px;
+    width: 100%;
+}
+
+.cv{
+    display: block;
+    width: 144px;
+    height: 42px;
+    background-color: blue;
+    border-radius: 5px;
+    text-align: center;
+    padding: 11px 0;
+    margin: 1px 0;
+}
+.flexall{
+    display: flex;
+    justify-content: space-between;
+}
+
+#cv-set{
+    display : none;
+    position:absolute;
+    transition-duration: 1s;
+    z-index: 5;
+    border-radius: 5px;
+    background-color: white;
+    border: 1px solid #ccc;
+    padding: 10px;
+
+}
+
+#all{
+    display: none;
+    height: 100vh;
+    width: 100vw;
+    z-index: 4;
+    transform: scale(1);
+    position: fixed;
+}
+
+
+/* 백그라운드 모달 */
+
+.backcontroller span{
+    position:absolute;
+    background-color: transparent;
+    color: black;
+    text-align: center;
+    border-radius: 50%;
+    padding: 10px 20px;
+    top: 50%;
+    font-size: 1.3em;
+    cursor: pointer;
   }
+  .backcontroller span{
+    position:absolute;
+    background-color: transparent;
+    color: black;
+    text-align: center;
+    border-radius: 50%;
+    padding: 10px 20px;
+    top: 50%;
+    font-size: 1.3em;
+    cursor: pointer;
+  }
+  /* 이전, 다음 화살표에 마우스 커서가 올라가 있을때 */
+  .backcontroller span:hover{
+    background-color: rgba(128, 128, 128, 0.11);
+  }
+  .backcontroller span:hover{
+    background-color: rgba(128, 128, 128, 0.11);
+  }
+  
+  .backprev{
+    left: 10px;
+  }
+  
+  /* 이전 화살표에 마우스 커서가 올라가 있을때 
+  이전 화살표가 살짝 왼쪽으로 이동하는 효과*/
+  .backprev:hover{
+    transform: translateX(-5px);
+  }
+  
+  .backnext{
+    right: 10px;
+  }
+  
+  /* 다음 화살표에 마우스 커서가 올라가 있을때 
+  이전 화살표가 살짝 오른쪽으로 이동하는 효과*/
+  .backnext:hover{
+    transform: translateX(5px);
+}
+.friendAdd{
+    background: red;
+    transition-duration: 1s;
+}
+#what-profile{
+    font-weight: bolder;
+    font-size: 25px;
+}
+
+
+#back-modal{
+    display: none;
+    position: fixed;
+    top:0; left:0;
+    width: 100vw;
+    height: 100vh;
+    background: black;
+    opacity: 0;
+    z-index:10;
+    transform:scale(0.5);
+    pointer-events: none;
+    opacity: 0.9;
+    transform: scale(1);
+    transition: all .4s;
+    pointer-events: visible;
+}
+.backi{
+    display: flex;
+    height: 265px;
+    width: 265px;
+    margin: 10px;
+    flex-direction: column;
+    border-radius: 5px;
+}
+#back-modali{
+    display: none;
+    position:fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0.5);
+    background: #fff;
+    z-index: 100;
+    opacity: 0;
+    pointer-events: none;
+    border-radius: 5px;
+    border : 5px solid #56A8C5 ;
+    opacity : 1;
+    pointer-events: visible;
+    transform: translate(-50%, -50%)scale(1);
+    transition: all .4s;
+    transition-delay: 0.1s;
+    width: 880px;
+    overflow: hidden;
+}
+#back-set{
+    display: flex;
+    height: 341px;
+    position: absolute;
+    
+
+}
+#back-asd{
+    height: 270px;
+    border-radius: 15px;
+    border-radius: 15px;
+    background-color: white;
+    position: relative;
+    margin: 10px;
+    overflow: hidden;
+}
+#dePro{
+    background-color: hsl(110, 42%, 54%);
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc
+}
+
+
+
+/* 메인피드 */
+/* 메인피드 */
+/* 메인피드 */
+
+
+.centerArea{
+
+    display: block;
+
+    
+    /* flex 지정 시 기본 값 */
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: stretch;
+}
+
+.centerArea-1{
+/* flex-basis: 30%; */
+width: 100%;
+height: 155px;
+border: 1px solid rgba(0,0,0,0.3);
+padding: 2px;
+border-radius: 10px;
+display: flex;
+background-color: white;
+margin-bottom: 10px;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+
+}
+#cArea-1{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: 200px;
+    
+}
+
+/* 모달창  */
+#myContent{
+    display: none;
+    position: fixed;
+    top:0; left:0;
+    width: 100vw;
+    height: 100vh;
+    background: black;
+    opacity: 0;
+    z-index:10;
+    transform:scale(0.5);
+    pointer-events: none;
+    opacity: 0.9;
+    transform: scale(1);
+    transition: all .4s;
+    pointer-events: visible;
+}
+
+#myContent-modal{
+    display: none;
+    position:fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0.5);
+    background: #fff;
+    width : 500px;
+    height: 450px;
+    z-index: 100;
+    opacity: 0;
+    pointer-events: none;
+    border-radius: 5px;
+    border : 5px solid #56A8C5 ;
+    opacity : 1;
+    pointer-events: visible;
+    transform: translate(-50%, -50%)scale(1);
+    transition: all .4s;
+    transition-delay: 0.1s;
+}
+
+
+#myContent-modal>div{
+display: flex;
+
+    
+}
+
+#myContent-modal>div>div:first-child{
+display: flex;
+width: 464px;
+height : 60px;
+box-sizing: border-box;
+font-weight: bold;
+font-size: 20px;
+justify-content: center;
+align-items: center;
+
+}
+/* 모달창 내부 */
+#think{
+    background-color: lightgray;
+    border-radius: 6px;
+    align-items: center;
+    justify-content: center;
+    height: 30px;
+    font-weight: bold;
+    display: flex;
+    width: 280px;
+}
+
+#modalTop{
+    position: relative;
+    height: 61px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+#modalTop>button {
+    position: absolute;
+    right: 10px;
+}
+
+#modalTop>span{
+    font-weight: bold;
+    font-size: 1.1rem;
+}
+.close {
+    height: 36px;
+    width: 36px;
+    border-radius: 50%;
+    display:inline-block;
+    display:inline;
+    background: lightgrey;
+    border: none;
+}
+.close:after {
+    display: inline-block;
+    content: "\00d7";
+    font-size:15pt;
+}
+.close:hover{
+    background-color: #4A6EA9;;
+}
+
+
+
+
+
+
+
+#myContent-modal>div:nth-child(2){
+
+height: 70px;
+border-top :2px solid lightgray;
+border-bottom :2px solid lightgray;
+display: flex;
+
+
+}
+
+#modal-my1{
+    width: 10%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+
+#modal-my2{
+    width: 90%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+#modal-my2>section:first-child{
+    width: 100%;
+    height: 60%;
+    
+}
+#modal-my2 span{
+    display: inline-block;
+    margin-top: 5px;
+
+
+
+}
+
+#modal-my2 a:first-child{
+    margin-left: 5px;
+    display:flex;
+    justify-content: left;
+    align-items: center;
+    text-decoration: none;
+
+}
+
+#modal-my2>section:last-child{
+    width: 100%;
+    height: 40%;
+}
+
+#modal-my2 li{
+    list-style: none;
+    font-size: 11px;
+    text-decoration: none;
+}
+
+
+
+
+
+
+
+
+
+
+/* 섹션 안 나누기  */
+#cArea-1>section:nth-child(1){
+    width: 15%;
+    height: 100%;
+}
+#cArea-1>section:nth-child(2){
+    width: 85%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+
+}
+
+/*  로고를 넣는거 */
+#cArea-1>section:first-child{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+/* 로고 크기 */
+#myLogo{
+    width: 37px;
+    height: auto;
+}
+
+
+/* 나의 피드 아래꺼 */
+
+#cArea-2{
+    height: 30%;
+    width: 100%;
+    background-color: white;
+    border-top: 2px solid lightgray;
+    
+}
+
+#cArea-2 > ul {
+    display: flex;
+    list-style: none;
+    height: 100%;
+    justify-content: space-around;
+    flex-direction: center;
+    align-items: center;
+
+}
+
+
+
+#cArea-2 button{
+    text-decoration: none;
+    color: black;
+    font-size: 18px;
+    font-weight: bold;
+
+    display: block;
+    text-align: center;
+    width: 130px;
+    height: 36px;
+    border-radius: 6px;
+    border: none;
+
+    background: #eee;
+
+    cursor: pointer;
+    margin: 10px;
+}
+#cArea-2 button:hover{
+    background-color:  #4A6EA9;
+}
+
+
+
+
+.centerArea-1 fieldset{
+    width: 100%;
+    border: 2px solid #455ba8;
+    padding: 2px;
+    border-radius: 5px;
+    justify-content: center;
+    
+    
+}
+#query{
+width:100% ; 
+border: none;
+outline: none;
+font-size: 18px;
+font-weight: bold;
+padding: 10px;
+}
+
+
+
+
+
+.centerArea-2{
+flex-basis: 70%;
+
+border: 1px solid rgba(0,0,0,0.3);
+padding: 2px;
+border-radius: 10px;
+display: flex;
+margin-top: 10px;
+background-color: white;
+
+display: flex;
+flex-direction: column;
+
+
+}
+
+/* 나의 게시글 상단 */
+.centerArea-2>section:nth-child(1){
+    width: 100%;
+    height: 10%;
+    
+    display: flex;
+    flex-direction: row;
+    border-bottom: 2px solid lightgrey ;
+}
+/*  이름 색깔바꾸기 */
+.change{
+    font-weight: bold;
+    color: black;
+}
+
+
+/* 나의 게시글 상단 중 위 */
+#cTopArea1{
+    width: 10%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+
+}
+#cTopArea2{
+    width: 90%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    
+
+}
+
+#cTopArea2>section:first-child{
+    width: 100%;
+    height: 60%;
+    
+}
+#cTopArea2 span{
+    display: inline-block;
+    margin-top: 5px;
+
+
+
+}
+
+#cTopArea2 a:first-child{
+    margin-left: 5px;
+    display:flex;
+    justify-content: left;
+    align-items: center;
+    text-decoration: none;
+
+}
+
+#cTopArea2>section:last-child{
+    width: 100%;
+    height: 40%;
+}
+
+#cTopArea2 li{
+    list-style: none;
+    font-size: 11px;
+    text-decoration: none;
+}
+
+
+
+
+
+
+
+/* 나의 게시물 중단 */
+.centerArea-2>section:nth-child(2){
+    width: 100%;
+    height: 70%;
+}
+
+#likeLogo{
+    width: 30px;
+    filter: invert(38%) sepia(62%) saturate(468%) hue-rotate(178deg) brightness(93%) contrast(84%);
+}
+
+/* 나의 게시물 좋아요 댓글 등 */
+.centerArea-2>section:nth-child(3){
+    width: 100%;
+    height: 10%;
+}
+#like{
+    border-top: 2px solid lightgrey ;
+    width: 100%;
+    border-bottom: 2px solid lightgrey ;
+    margin-bottom: 7px;
+    
+}
+#like>ul{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    list-style: none;
+    height: 100%;
+    
+
+
+}
+
+#like>ul>li{
+
+    display: flex;
+    flex: 1 1 150px;    
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+#like a{
+    text-decoration: none;
+    color: black;
+    font-size: 15px;
+    font-weight: bold;
+    padding: 15px 0;
+    display: block;
+    text-align: center;
+    height: 100%;
+    width: 100%;
+}
+
+#like a:hover{
+    background-color: lightgrey;
+    border-radius: 5px;
+}
+
+
+/*  reply 로고 */
+
+#replyLogo{
+    width: 20px;
+}
+
+/* 공유하기 로고 */
+#shareLogo{
+    width: 20px;
+}
+
+
+/* 나의 게시물 댓글 달기 */
+.centerArea-2>section:nth-child(4){
+    width: 100%;
+    height: 10%;
+    display: flex;
+    flex-direction: row;
+}
+
+#cBot>section:first-child{
+    
+    width: 10%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+#cBot>section:last-child{
+width: 90%;
+border: 1px solid #455ba8;
+border: 2px solid #455ba8;
+padding: 2px;
+border-radius: 5px;
+display: flex;
+justify-content: center;
+}
+#reply{
+    
+    width:100% ; 
+    border: none;
+    outline: none;
+    font-size: 18px;
+    font-weight: bold;
+    padding: 10px;
+}
+
+
+#newFeed {
+    width: 100%;
+    max-width: 712px;
+    /* height: 64px; */
+    padding: 12px 16px;
+
+    border-radius: 10px;
+    background-color: white;
+    box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.16), 1px 1px 2px rgba(0, 0, 0, 0.23);
+
+    display: flex;
+    align-items: center;
+}
+#newFeed > img {
+    height: 40px;
+    width: 40px;
+    border-radius: 50px;
+    flex-shrink: 0;
+}
+#newFeed > p {
+    background-color: #eee;
+    border-radius: 50px;
+    width: 100%;
+    height: 40px;
+    margin-left: 12px;
+    padding: 8px 12px;
+
+    display: flex;
+    align-items: center;
+    padding-left: 12px;
+    color: #666;
+    cursor: pointer;
+}
+#newFeed > p:hover {
+    background-color: #ddd;
+    transition-duration: 0.2s;
+}
 

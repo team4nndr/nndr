@@ -28,4 +28,21 @@ public class MemberServiceImpl implements MemberService {
 	public Member login(Map<String, Object> map) {
 		return dao.login(map);
 	}
+	
+	// 회원 가입 서비스
+	@Transactional(rollbackFor = {Exception.class})
+	@Override
+	public int signUp(Member inputMember) {
+		
+		// DAO 호출
+		// 실패하면 0 성공하면 회원번호
+		int result = dao.signUp(inputMember);
+		
+		if(result>0) {
+			//  추가정보 삽입할 때 inputMember에 담겨있는 회원번호 이용
+			result = dao.signUpPlus(inputMember);
+		}
+		
+		return result;
+	}
 }

@@ -52,13 +52,6 @@ h3 {
     width: 680px;
 }
 
-/* toggle button with checkbox */
-.checkbox { display: none; }
-.checkbox:checked + .toggle { background-color: #BB2649; }
-.checkbox:checked + .toggle > .circle {
-    transform: translateX(22px);
-    transition-duration: 0.2s;
-}
 .toggle {
     position: relative;
     width: 52px;
@@ -76,7 +69,19 @@ h3 {
     height: 22px;
     border-radius: 50px;
     background-color: white;
- 
+
     transform: translateX(0px);
     transition-duration: 0.2s;
+
+    pointer-events: none;
+}
+
+.toggle.checked { background-color: #4A6EA9; }
+.toggle.checked > .circle {
+    transform: translateX(22px);
+    transition-duration: 0.2s;
+}
+
+.hidden {
+    display: none;
 }

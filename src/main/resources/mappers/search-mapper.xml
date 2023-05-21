@@ -6,26 +6,40 @@
 		<id property="hashtagNo" column="HASHTAG_NO" />
 		<result property="hashtagKeyword" column="HASHTAG_KEYWORD" />
 	</resultMap>
+	
+	<resultMap type="Friend" id="friend_rm">
+		<id property="friendNo" column="FRIEND_NO" />
+		<result property="friendSender" column="FRIEND_SENDER" />
+		<result property="friendReciver" column="FRIEND_RECIVER" />
+		<result property="friendFl" column="FRIEND_FL" />
+
+		<!-- join memeber -->
+		<result property="memberNo" column="MEMBER_NO" />
+		<result property="memberName" column="MEMBER_NAME" />
+	</resultMap>
 
 
 
 	<select id="getTags" resultMap="tag_rm">
-		SELECT HASHTAG_KEYWORD 
+		SELECT HASHTAG_KEYWORD
 		FROM HASHTAG
 		WHERE HASHTAG_KEYWORD LIKE '${hashtagKeyword}%'
 	</select>
 
+	<select id="friendNameList" resultMap="friend_rm">
+		SELECT MEMBER_NAME 
+		FROM FRIEND JOIN MEMBER ON FRIEND.FRIEND_SENDER = MEMBER.MEMBER_NO 
+		WHERE FRIEND_FL = 'Y' 
+		AND MEMBER_NO != #{memberNo}
+		AND MEMBER_NAME LIKE '%${fName}%'
+		ORDER BY MEMBER_NAME DESC
+	</select>
 
 
-<!--  친구 목록 불러오기  -->
-<!-- SQL :
-SELECT FRIEND_NO, FRIEND_SENDER, MEMBER_NAME
-FROM FRIEND
-JOIN MEMBER ON FRIEND.FRIEND_SENDER = MEMBER.MEMBER_NO
-WHERE FRIEND_FL = 'N'
-AND FRIEND_RECIVER = 2
-ORDER BY FRIEND_NO DESC;
-COMMIT; -->
+	<!-- 친구 목록 불러오기 -->
+	<!-- SQL : SELECT FRIEND_NO, FRIEND_SENDER, MEMBER_NAME FROM FRIEND JOIN 
+		MEMBER ON FRIEND.FRIEND_SENDER = MEMBER.MEMBER_NO WHERE FRIEND_FL = 'N' AND 
+		FRIEND_RECIVER = 2 ORDER BY FRIEND_NO DESC; COMMIT; -->
 
 
 </mapper>

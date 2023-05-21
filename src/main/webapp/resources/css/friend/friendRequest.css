@@ -1,3 +1,18 @@
+/***************************폰트 설정*********************************/
+@font-face {
+    font-family: 'NotoSansKR';
+    src: url('/resources/fonts/NotoSansKR-Regular.otf');
+    font-weight: normal;
+    font-style: normal;
+}
+* {
+    font-family: 'NotoSansKR';
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+/********************************************************************/
+
 * {
     box-sizing: border-box;
     padding: 0;
@@ -56,6 +71,10 @@ main {
     margin-bottom: 20px;
 }
 
+.friendMenuList{
+    width: 359px;
+    height: 100%;
+}
 .frmidbox {
     display: flex;
     flex-direction: column;
@@ -87,8 +106,9 @@ main {
     width: 340px;
     height: 76px;
     display: flex;
-    margin-top: 10px;
     margin-left: 15px;
+    align-items: center;
+    justify-content: center;
 }
 
 /* 프사 */
@@ -96,6 +116,7 @@ main {
     width: 60px;
     height: 60px;
     border-radius: 50%;
+  
 }
 
 /* 프사외. */
@@ -103,6 +124,8 @@ main {
     width: 280px;
     height: 72px;
     display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 /* 이름 */
@@ -112,23 +135,19 @@ main {
     color: #050505;
 }
 
-/* 함께아는 친구 */
-.pulsfrcount {
-    font-size: 14px;
-    color: #65676b;
-}
-
-.pulsfrcountBox {
-    width: 134px;
-    height: 19px;
-    margin-top: 2px;
-}
 
 /* 이름, 함께 아는 친구 */
 .namecount {
     width: 134px;
     height: 45px;
     margin-left: 10px;
+    display: flex;
+    align-items: center;
+
+}
+
+.boxbtn{
+    width: 146px;
 }
 
 .yesbtn {
@@ -137,21 +156,20 @@ main {
     border-radius: 8px;
     background-color: #1B74E4;
     border: 0px;
-    margin-top: 10px;
     color: white;
     font-size: 16px;
     font-weight: bold;
-    margin-left: 10px;
+    
 }
 
 .nobtn {
     width: 57px;
     height: 36px;
     border: 0px;
-    margin-top: 10px;
     border-radius: 5px;
     font-weight: bold;
     font-size: 16px;
+    margin-left: 10px;
     background-color: #E4E6EB;
 }
 

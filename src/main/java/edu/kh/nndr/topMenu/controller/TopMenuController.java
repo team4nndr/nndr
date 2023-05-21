@@ -13,14 +13,9 @@ import org.springframework.web.bind.support.SessionStatus;
 public class TopMenuController {
 
 	// 로그아웃(세션 만료)
-	@RequestMapping("/logout")
+	@GetMapping("/logout")
 	public String logout(SessionStatus status) {
-		
-		 status.setComplete(); 
-		
+		status.setComplete(); 
 		return "redirect:/";
 	}
-	
-	
-
 }

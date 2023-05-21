@@ -48,7 +48,12 @@ public class MemberInfo {
 	private String infoNick;
 	private String infoText;
 	private String infoBack;
+	private String infoBackPath;
 	private String infoProfile;
-	
+	private String infoProfilePath;
+	private String imgPath;
+	private String imgRename;
+	private String uploadDate;
+	private String boardNo;
 }
 

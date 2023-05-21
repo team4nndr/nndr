@@ -1,0 +1,304 @@
+/***************************폰트 설정*********************************/
+@font-face {
+    font-family: 'NotoSansKR';
+    src: url('/resources/fonts/NotoSansKR-Regular.otf');
+    font-weight: normal;
+    font-style: normal;
+}
+* {
+    font-family: 'NotoSansKR';
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+/********************************************************************/
+
+hr.feed-hr {
+    border: none;
+    height: 1px;
+    background-color: #ccc;
+    margin: 0 16px;
+}
+
+/* 피드 작성 */
+#newFeed {
+    width: 100%;
+    max-width: 712px;
+    /* height: 64px; */
+    padding: 12px 16px;
+    margin: 20px;
+
+    border-radius: 10px;
+    background-color: white;
+    box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.16), 1px 1px 2px rgba(0, 0, 0, 0.23);
+
+    display: flex;
+    align-items: center;
+}
+#newFeed > img {
+    height: 40px;
+    width: 40px;
+    border-radius: 50px;
+    flex-shrink: 0;
+}
+#newFeed > p {
+    background-color: #eee;
+    border-radius: 50px;
+    width: 100%;
+    height: 40px;
+    margin-left: 12px;
+    padding: 8px 12px;
+
+    display: flex;
+    align-items: center;
+    padding-left: 12px;
+    color: #666;
+    cursor: pointer;
+}
+#newFeed > p:hover {
+    background-color: #ddd;
+    transition-duration: 0.2s;
+}
+
+/* 피드 */
+.feed {
+    width: 100%;
+    max-width: 712px;
+    /* max-height: 910px; */
+
+    border-radius: 10px;
+    background-color: white;
+    
+    box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.16), 1px 1px 2px rgba(0, 0, 0, 0.23);
+    margin: 20px;
+
+    display: flex;
+    flex-direction: column;
+}
+
+/* 나의 게시글 상단 */
+.feed-head {
+    width: 100%;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 16px 0;
+    margin-bottom: 12px;
+}
+
+.feed-head-left {
+    display: flex;
+    align-items: center;
+    height: 100%;
+}
+
+/* 프로필 이미지 */
+.feed-head-profile {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+img.wirter-profile-image {
+    height: 40px;
+    width: 40px;
+    border-radius: 50px;
+    margin-right: 10px;
+}
+
+/* 피드 상단 이름, 시간 */
+.feed-head-info {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    margin-top: 4px;
+}
+.feed-head-info > .date {
+    font-size: 0.7rem;
+    color: #666;
+    font-weight: light;
+}
+
+.feed-head-info > a {
+    display:flex;
+    justify-content: left;
+    align-items: center;
+    text-decoration: none;
+}
+.feed-head-info > a:hover {
+    text-decoration: underline;
+}
+
+/*  더보기 버튼  */
+.detail {
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+    
+    display:flex;
+    background: white;
+    border: none;
+    
+    justify-content: center;
+}
+.detail:after {
+    cursor: pointer;
+    display: inline-block;
+    content: "\2026";
+    font-size:15pt;
+    font-weight: bold;
+}
+.detail:hover{
+    background-color: lightgray;
+}
+#more{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* 피드 상단 더보기 버튼 */
+.feed-more {
+    height: 30px;
+    width: 30px;
+    border-radius: 50%;
+    cursor: pointer;
+
+    padding-left: 7px;
+    padding-top: 2px;
+
+    position: relative;
+}
+.feed-more:hover{
+    background-color: #ddd;
+}
+.feed-more::after {
+    content: "\2026";
+    font-weight: bold;
+}
+
+/* 더보기 버튼 안 게시글 수정 , 삭제  */
+.feedUpdate{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 165px;
+    height: 30px;
+    border-radius: 6px;
+    font-weight: bold;
+}
+.feedUpdate:hover {
+    background-color: lightgrey;
+    cursor: pointer;
+}
+.feedDelete{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 165px;
+    height: 30px;
+    border-radius: 6px;
+    font-weight: bold;
+}
+.feedDelete:hover{
+    background-color: lightgrey;
+    cursor: pointer;
+}
+
+.feedContain {
+    height: 200px;
+    position: absolute;
+    right: 0;
+    top: 40px;
+    display: flex;
+    flex-direction: column;
+    align-content: wrap;
+    z-index: 600;
+}
+
+/* 피드 본문 : 텍스트 */
+.text-container {
+    padding: 12px 16px;
+    width: 100%;
+    display: relative;
+}
+
+/* 피드 본문 : 이미지 */
+.image-container {
+    padding: 0;
+    margin-bottom: 12px;
+
+    width: 100%;
+    max-width: 712px;
+    max-height: 715px;
+
+    display: flex;
+    overflow: hidden;
+}
+
+.image-content {
+    background-color: black;
+    display: flex;
+    flex-direction: center;
+    align-items: center;
+    width: 100%;
+    max-height: inherit;
+    overflow: hidden;
+    
+    margin-bottom: 2px;
+}
+.image-content:not(:last-of-type) {
+    margin-right: 2px;
+}
+
+.image-container img {
+    display: block;
+    object-fit: contain;
+    max-height: 715px;
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+}
+.image-container img.row {
+    width: auto;
+    height: 100%;
+}
+
+/* 나의 게시물 좋아요 */
+.like {
+    width: 100%;
+    height: 44px;
+    padding: 0 16px;
+
+    display: flex;
+}
+
+.like div {
+    width: 100%;
+    margin: 4px;
+
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+
+    text-decoration: none;
+    transition-duration: 0.2s;
+    color: black;
+    font-weight: bold;
+    font-size: 0.9rem;
+    cursor: pointer;
+}
+.like div:hover {
+    background-color: #f3f3f3;
+    border-radius: 6px;
+    transition-duration: 0.2s;
+}
+.like img {
+    height: 40px;
+    width: 26px;
+    padding: 11px 4px;
+}
+
+/* 요소 숨기기 */
+.hidden { display: none !important; }

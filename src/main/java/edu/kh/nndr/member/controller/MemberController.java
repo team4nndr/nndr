@@ -37,6 +37,40 @@ public class MemberController {
 			return "redirect:/";
 		}
 	
+		// 관리자 로그인일 경우
+		if(loginMember.getMemberCode().equals("A")) {
+			return "redirect:/admin";
+		}	
+		
 		return "redirect:/mainFeed";
 	}
+	
+	// 회원 가입 진행
+	@PostMapping("/")
+	public String signUp(Member inputMember , RedirectAttributes ra){
+							
+		String path = "redirect:/";
+		String message = null;
+		
+		int result = service.signUp(inputMember);
+		
+		
+		if(result > 0) { // 가입 성공
+			
+			message = inputMember.getMemberName() + "야  nndr은 처음이지 ?.";
+					
+		}else { // 가입 실패
+			
+			message = "회원 가입 실패";
+		
+		}
+		
+		ra.addFlashAttribute("message", message);
+		
+		return path;
+	}
+	
+	
+	
+	
 }

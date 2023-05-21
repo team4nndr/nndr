@@ -1,3 +1,18 @@
+/***************************폰트 설정*********************************/
+@font-face {
+    font-family: 'NotoSansKR';
+    src: url('/resources/fonts/NotoSansKR-Regular.otf');
+    font-weight: normal;
+    font-style: normal;
+}
+* {
+    font-family: 'NotoSansKR';
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+/********************************************************************/
+
 * {
     box-sizing: border-box;
     padding: 0;
@@ -8,6 +23,7 @@ html,body, main{
 }
 .content{
     height: 937px;
+    width: 100%;
 }
 
 .friendNav {
@@ -44,8 +60,7 @@ html,body, main{
 }
 
 
-.friendContent {
-    width: 1560px;   /*1309*/
+#friendContent {
     display: flex;
     height: 877px;
     
@@ -107,8 +122,8 @@ html,body, main{
 
 .namebar {
     width: 170.67px;
-    height: 21px;
-    padding-top: 2px;
+    height: 50px;
+    padding-top: 10px;
     padding-left: 10px;
 }
 

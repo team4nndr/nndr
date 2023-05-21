@@ -19,8 +19,8 @@
         <%-- 사이드바 --%>
         <jsp:include page="/WEB-INF/views/setting/sidebar.jsp" />
 
-        <%-- 회원 의견 상세 페이지 --%>
-        <form action="#" id="content">
+        <%-- 회원 정보 --%>
+        <div id="content">
             <div id="details">
                 <h3>내 정보</h3>
                 <hr>
@@ -76,9 +76,9 @@
                     <span class="title">성별</span>
                     <span class="data info-print">
                     <c:choose>
-                        <c:when test="${loginMember.infoGender == '남'}">남</c:when>
-                        <c:when test="${loginMember.infoGender == '여'}">여</c:when>
-                        <c:otherwise>선택하지 않음</c:otherwise>
+                        <c:when test="${loginMember.infoGender eq '남'}">남</c:when>
+                        <c:when test="${loginMember.infoGender eq '여'}">여</c:when>
+                        <c:when test="${loginMember.infoGender eq '없음'}">선택하지 않음</c:when>
                     </c:choose>
                     </span>
                     
@@ -87,9 +87,9 @@
                 <div class="row mod gender hidden">
                     <span class="title">성별 수정</span>
                     <div class="mod-wrapper gender">
-                        <label><input type="radio" name="gender" id="genderMale" value="남">남</label>
-                        <label><input type="radio" name="gender" id="genderFemale" value="여">여</label>
-                        <label><input type="radio" name="gender" id="genderNone" value="없음">선택하지 않음</label>
+                        <label><input type="radio" name="gender" id="genderMale" value="남" <c:if test="${loginMember.infoGender eq '남'}" >checked</c:if>>남</label>
+                        <label><input type="radio" name="gender" id="genderFemale" value="여" <c:if test="${loginMember.infoGender eq '여'}" >checked</c:if>>여</label>
+                        <label><input type="radio" name="gender" id="genderNone" value="없음" <c:if test="${loginMember.infoGender eq '없음'}" >checked</c:if>>선택하지 않음</label>
                     </div>
                     <div class="mod-button submit">변경 내용 저장</div>
                     <div class="mod-button close">닫기</div>
@@ -98,7 +98,7 @@
                 <!-- 주소 -->
                 <div class="row address">
                     <span class="title">주소</span>
-                    <span class="data">${loginMember.infoResidence}</span>
+                    <span class="data info-print">${loginMember.infoResidence}</span>
                     <div class="mod-button mod">수정</div>
                 </div>
                 <div class="row mod address hidden">
@@ -113,8 +113,7 @@
                 <!-- 연락처 -->
                 <div class="row tel">
                     <span class="title">연락처</span>
-                    <span class="data" id="telData">${loginMember.memberTel}</span>
-                    <!-- <input class="data info-input" value="010-5923-9363" /> -->
+                    <span class="data info-print" id="telData">${loginMember.memberTel}</span>
                     <div class="mod-button mod">수정</div>
                 </div>
                 <div class="row mod tel hidden">
@@ -128,7 +127,7 @@
                 </div>
                 <hr>
             </div>
-        </form>
+        </div>
     </main>
 
     <script>

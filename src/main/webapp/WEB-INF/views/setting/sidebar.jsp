@@ -8,7 +8,7 @@
     <hr>
     <ul>
         <li>
-            <a href="/setting">
+            <a href="/setting/general">
                 <img src="/resources/images/setting/setting-icon.png" alt="회원 관리">
                 <span>일반</span>
             </a>
@@ -33,3 +33,13 @@
         </li>
     </ul>
 </section>
+
+<script>
+    document.getElementById("sidebar").style.height = window.innerHeight - 56 + "px";
+    
+    // 윈도우 창 크기 변할 때마다 사이즈바 높이 재설정
+    window.onresize = e => {
+    document.getElementById("sidebar").style.height = window.innerHeight - 56 + "px";
+        
+    };
+</script>

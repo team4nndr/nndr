@@ -1,0 +1,149 @@
+/***************************폰트 설정*********************************/
+@font-face {
+    font-family: 'NotoSansKR';
+    src: url('/resources/fonts/NotoSansKR-Regular.otf');
+    font-weight: normal;
+    font-style: normal;
+}
+* {
+    font-family: 'NotoSansKR';
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+/********************************************************************/
+
+/* 댓글 프로필 사진 */
+.reply-profile-image {
+    height: 32px;
+    width: 32px;
+    border-radius: 50px;
+}
+
+/* 댓글 목록 */
+.reply-container {
+    padding: 6px 16px 0px 16px;
+}
+.reply {
+    display: flex;
+}
+
+/* 댓글 + 부가기능(좋아요, 답글달기, 날짜출력) */
+.reply-body {
+    margin: 0 12px;
+}
+.reply-bubble {
+    background-color: #F0F2F5;
+    border-radius: 15px;
+    padding: 8px 12px;
+}
+.reply-name {
+    font-size: 0.8rem;
+    font-weight: bold;
+}
+.reply-content {
+    font-size: 0.9rem;
+    white-space: pre-wrap;
+}
+
+/* 댓글 부가기능(좋아요, 답글달기, 날짜출력) */
+.reply-footer {
+    margin-bottom: 5px;
+    display: flex;
+    align-items: flex-start;
+}
+.reply-footer > * {
+    text-decoration: none;
+    color: #666;
+    font-size: 0.8rem;
+    margin-left: 6px;
+    font-weight: bold;
+}
+.reply-footer > *:not(.date):hover {
+    text-decoration: underline;
+    cursor: pointer;
+}
+.reply-footer > .date {
+    font-weight: normal;
+    font-size: 0.7rem;
+}
+
+/* 댓글 작성 */
+.reply-write {
+    width: 100%;
+}
+.reply-write.reply-container {
+    padding-bottom: 12px;
+}
+.reply-write .reply-body {
+    width: 100%;
+    margin-right: 0;
+}
+.reply-write .reply-bubble {
+    padding: 8px 12px;
+    display: flex;
+    align-items: center;
+    position: relative;  
+}
+.reply-write .reply-bubble > textarea {
+    border: none;
+    background: none;
+    outline: none;
+    width: 95%;
+    display: flex;
+    align-items: center;
+    font-size: 0.9rem;
+    resize: none;
+    white-space: pre-wrap;
+    max-height: 300px; 
+}
+.reply-write .reply-bubble > textarea:focus {
+    border: none;
+}
+.reply-bubble .submit-btn {
+    height: 20px;
+    width: 20px;
+    align-self: flex-end;
+    position: absolute;
+    bottom: 12px;
+    right: 12px;
+}
+.reply-bubble img {
+    height: 16px;
+    width: 16px;
+    pointer-events: none;
+}
+.pointer {
+    cursor: pointer;
+}
+.update-info {
+    margin-left: 6px;
+    font-size: 0.7rem;
+    color: #aaa;
+}
+.update-info .cancel-btn {
+    color: #4A6EA9;
+    cursor: pointer;
+    display: inline-block;
+}
+.update-info .cancel-btn:hover {
+    text-decoration: underline;
+}
+
+/* hidden 요소 */
+.hidden { display: none; }
+
+/* 대댓글 */
+.reply.re-reply {
+    margin-left: 50px;
+}
+.reply-write.re-reply {
+    margin-left: 0;
+    padding-left: 0;
+}
+
+/* 댓글 수정 */
+.reply-write.reply-update {
+    margin-left: 0;
+    padding-left: 0;
+}

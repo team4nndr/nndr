@@ -1,0 +1,81 @@
+/***************************폰트 설정*********************************/
+@font-face {
+    font-family: 'NotoSansKR';
+    src: url('/resources/fonts/NotoSansKR-Regular.otf');
+    font-weight: normal;
+    font-style: normal;
+}
+* {
+    font-family: 'NotoSansKR';
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+/********************************************************************/
+
+.sidebar {
+    width: 360px;
+    height: inherit;
+    padding : 10px;
+    flex-shrink: 0;
+    flex-grow: 0;
+    position: fixed;
+    top: 56px;
+    z-index:80;
+
+    /* 사이드바 배경 유무 */
+    /* background-color: white;
+    box-shadow: 2px 0px 5px rgba(0, 0, 0, 0.08); */
+}
+
+#sidebarR {
+    right: 0;
+}
+
+.sidebar > h1 {
+    margin: 0px 0 0 5px;
+}
+.sidebar > hr {
+    margin: 12px 0;
+    height: 1px;
+    border: 0;
+    background-color: #CDCDCD;
+}
+.sidebar > ul {
+    display: flex;
+    flex-direction: column;
+    list-style-type: none; /* li 태그 앞에 기호를 삭제 */
+    width: 100%;
+}
+.sidebar > ul > li > a {
+    margin: 0px 0;
+    padding: 10px 10px;
+    font-size: 1.1em;
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: black;
+    border-radius: 8px;
+}
+.sidebar > ul > li > a:hover {
+    background-color: #ddd;
+    user-select: none;
+}
+.sidebar li img {
+    width: 35px;
+    height: 35px;
+    max-height: 50px;
+    margin-right: 10px;
+}
+/* 프로필사진 */
+.sidebar .profile-image {
+    border-radius: 50px;
+}
+.sidebar li span {
+    position: absolute;
+    left: 65px;
+}
+
+hr.sidebar-hr {
+    margin: 12px 12px;
+}

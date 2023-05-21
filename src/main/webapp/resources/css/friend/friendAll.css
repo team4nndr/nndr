@@ -1,3 +1,18 @@
+/***************************폰트 설정*********************************/
+@font-face {
+    font-family: 'NotoSansKR';
+    src: url('/resources/fonts/NotoSansKR-Regular.otf');
+    font-weight: normal;
+    font-style: normal;
+}
+* {
+    font-family: 'NotoSansKR';
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+/********************************************************************/
+
 * {
     box-sizing: border-box;
     padding: 0;
@@ -180,37 +195,32 @@ main {
     height: 72px;
     display: flex;
 }
-
-/* 이름 */
-.freindName {
+.friendAll{
+    width: 250px;
+    height: 72px;
     margin-left: 10px;
-    font-size: 17px;
-    font-weight: bold;
-    color: #050505;
     display: flex;
     align-items: center;
-    justify-content:center;
-    margin-bottom: 5px;
+    justify-content: space-between;
+}
+/* 이름 */
+.friendName {
+    font-size: 17px;
+    font-weight: bold;
+    color: #050505; 
 }
 
 .namecount{
-    display: flex;
-    align-content: center;
+    width: 280px;
+    height: 72px;
 }
-
-/* .pulsnav:hover{
-    background-color: #EBEDF0;
-} */
 
 .pulsnav{
     display: flex;
     align-items: center;
-    justify-content: center;
-    margin-top: 22.5px;
     width: 25px;
     height: 25px;
-    margin-bottom: 15px;
-    margin-left: 180px;
+    margin-left: 20px;
     background-color: #ffffff;
     border-radius: 50%;
 }
@@ -221,15 +231,14 @@ main {
 
 /* ... 클릭했을때 나오는거  */
 .frmenu{
-    position: absolute;
-    left: 340px;
-    margin-top: 40px;
+    position: relative;
+    left: 271px;
     width: 240px;
     height: 100px;
     border: black solid 1px;
     background-color: #ffffff;
     display: none;
-    
+    top: -26px;
 }
 
 .noProfile{
@@ -250,4 +259,39 @@ main {
 }
 .noProfile:hover {
     background-color: #EBEDF0;
+}
+
+
+.searchbtn{
+    display: none;
+
+}
+
+
+/* 검색창 드롭다운 영역 */
+
+.searchFrBox > label {
+    margin-top: 22px;
+    width: 200px;
+}
+
+.nndr-suggestions {
+    margin-top: 22px;
+}
+
+.nndr-suggestions > div {
+    padding: 5px;
+    
+    cursor: pointer;
+    background-color: #f0f2f5;
+    z-index: 999;
+    /* background-color: white; */
+}
+
+.nndr-suggestions_pannel > div:hover {
+    
+    height: 30px;
+    background-color: rgb(207, 204, 204);
+    z-index: 999;
+    /* background-color: white; */
 }

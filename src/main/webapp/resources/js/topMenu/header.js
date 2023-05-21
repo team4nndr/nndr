@@ -1,8 +1,4 @@
-// 검색어 누적창 구현
-console.log(tagArr[0]);
-// 검색어 누적창 구현
-
-// 검색 input 태그h
+// 검색 input 태그
 const search = document.getElementById("nndrQuery");
 // 자동완성 목록
 const suggestion_pannel = document.querySelector(".nndr-suggestions_pannel");
@@ -17,170 +13,221 @@ const searchBtn = document.getElementById("nndrSearchBtn");
 //     { name: "정사원" },
 //     { name: "박사원" },
 //     { name: "이사원" },
-// ];
-
-// // 자동완성 (#검색)
-// let hashTagArr = [
-//     { tagName: "#사과" },
-//     { tagName: "#바나나" },
-//     { tagName: "#수박" },
-//     { tagName: "#메론" },
-//     { tagName: "#딸기" },
-//     { tagName: "#파인애플" },
-//     { tagName: "#여행" },
-//     { tagName: "#코딩" },
-//     { tagName: "#주말" },
 
 // ];
+
+
 
 // input 태그 이벤트
 search.addEventListener("input", e => {
 
     // e.target.preventDefault();
+    const input_value = e.target.value.trim();
+    
 
-    suggestion_pannel.innerHTML = "";
+    // 입력된 값이 없을 때
+    if(input_value.length === 0) {
+        suggestion_pannel.innerHTML = "";
+        return;
+    }
 
-    let input_value = search.value;
-
+    
     // #으로 시작하는 검색어인 경우
-    if (input_value.startsWith("#") && input_value.trim().length > 1) {
+    if (input_value.startsWith("#") && input_value.length > 1) {
         console.log(input_value);
-        const query = input_value.replace("#", "%23");
+        var query = input_value.replace("#", "%23");
         fetch("/mainFeed/getTags?query=" + query)
         .then(resp => resp.json())
         .then(tagList => {
-
-            console.log(tagList);
-
-            if (query.toLowerCase().startsWith(query.toLowerCase())) {
-                let div = document.createElement("div");
-                const query = input_value.replace("%23", "#");
-                div.innerHTML = query;
-                suggestion_pannel.appendChild(div);
     
-                div.onclick = () => {
-                    const query = input_value.replace("%23", "#");
-                    query = div.innerHTML;
-                    suggestion_pannel.innerHTML = "";
-                };
+                console.log(tagList);
+                suggestion_pannel.innerHTML = ""; // 이전 검색 결과 비우기
+                
+                if(tagList.length == 0){
+                    const div = document.createElement("div");
+                    div.classList.add("result");
+                    div.innerText = "일치하는 태그가 없습니다.";
+                    suggestion_pannel.appendChild(div);
+                }
+                
+                
+                for(let tags of tagList) {
+                    const div = document.createElement("div");
+                    div.classList.add("result");
+                    div.setAttribute("hashTags", tags.hashtagKeyword);
+
+
+                    if(query.toLowerCase().startsWith(query.toLowerCase())) {
+                        
+                        let div = document.createElement("div");
+                        const query = input_value.replace("%23", "#");
+                        div.innerHTML = query;
+                        suggestion_pannel.appendChild(div);
+    
+                        div.onclick = () => {
+                            const query = input_value.replace("%23", "#");
+                            query = div.innerHTML;
+                            suggestion_pannel.innerHTML = "";
+                            return;
+                        };
+                    }
+                }
+        });
+
+    }  else {
+
+        console.log(input_value);
+        var fName = input_value;
+        fetch("/mainFeed/friendNameList?fName=" + fName)
+        .then(resp => resp.json())
+        .then(friendNameList => {
+
+            console.log(friendNameList);
+            suggestion_pannel.innerHTML = "";
+
+
+            if(friendNameList.length == 0){
+                const div = document.createElement("div");
+                div.classList.add("result");
+                div.innerText = "일치하는 태그가 없습니다.";
+                suggestion_pannel.appendChild(div);
+            }
+
+            for(let names of friendNameList) {
+                const div = document.createElement("div");
+                div.classList.add("result");
+                div.setAttribute("names", names.memberNo);
+
+                if(fName.toLowerCase().startsWith(fName.toLowerCase())) {
+                        
+                    let div = document.createElement("div");
+                    const fName = input_value;
+                    div.innerHTML = fName;
+                    suggestion_pannel.appendChild(div);
+
+                    div.onclick = () => {
+                        const fName = input_value;
+                        fName = div.innerHTML;
+                        suggestion_pannel.innerHTML = "";
+                        return;
+                    };
+                }
             }
         });
-            
+
     }
-
-     else { // 일반 검색어인 경우
-        
-            toLowerCase().startsWith(input_value);
-
-        suggestions.forEach(function (suggested) {
-            let div = document.createElement("div");
-            div.innerHTML = suggested.name;
-
-            suggestion_pannel.appendChild(div);
-
-            div.onclick = () => {
-                input_value = div.innerHTML;
-                suggestion_pannel.innerHTML = "";
-            };
-        });
-    }
+    // } else {
+    //     if (input_value.startsWith(input_value) && input_value.trim().length > 1) {
+    //         console.log(input_value);
+    //         const friend = input_value
+    //         fetch("/mainFeed/freindNameList?friend=" + friend)
+    //             .then(resp => resp.json())
+    //             .then(friendNameList => {
+    
+    //                 console.log(friendNameList);
+    
+    //                 if (friend.toLowerCase().startsWith(friend.toLowerCase())) {
+    //                     let div = document.createElement("div");
+    //                     div.innerHTML = friend;
+    //                     suggestion_pannel.appendChild(div);
+    
+    //                     div.onclick = () => {
+    //                         input_value = div.innerHTML;
+    //                         suggestion_pannel.innerHTML = "";
+    //                         return;
+    //                     };
+    
+    //                 }
+    
+    //             })
+    //     }
+    
     if (input_value == "") {
         suggestion_pannel.innerHTML = "";
     }
+        
+
 });
 
-// 드롭다운 아이콘 구현
-var dropdowns = document.getElementById("nndrBellDropdown");
-
-const dropBtn1 = document.getElementById("nndrDropBtn1");
-const dropBtn2 = document.getElementById("nndrDropBtn2");
-const bellDropdown = document.getElementById("nndrBellDropdown");
-const myDropdown = document.getElementById("nndrMyDropdown");
-const thumsUp = document.getElementById("thumsUp");
-const nndrOptionAlarm = document.getElementById("nndrOptionAlarm");
-const nndrOptionAlarmContent = document.getElementById("nndrOptionAlarmContent");
-
-function bell() {
-    document.getElementById("nndrBellDropdown").classList.toggle("nndr-show");
-
-
-}
-
-window.onclick = function (e) {
-    if (e.target.matches('.DropBtn1')) {
-        var dropdowns = document.getElementById("nndrBellDropdown");
-        var i;
-        for (i = 0; i < dropdowns.length; i++) {
-            var openDropdown = dropdowns[i];
-            if (openDropdown.classList.contains('nndr-show')) {
-                openDropdown.classList.remove('nndr-show');
-            }
-        }
-    }
 
 
 
-}
-
-function my() {
-    document.getElementById("nndrMyDropdown").classList.toggle("nndr-show");
-}
-
-window.onclick = function (e) {
-    if (!e.target.matches('.nndrDropBtn2')) {
-        var dropdowns = document.getElementById("nndrMyDropdown");
-        var i;
-        for (i = 0; i < dropdowns.length; i++) {
-            var openDropdown = dropdowns[i];
-            if (openDropdown.classList.contains('nndr-show')) {
-                openDropdown.classList.remove('nndr-show');
-            }
-        }
-    }
 
 
-}
 
 
-/* 드롭다운 content 영역 */
+// // 드롭다운 아이콘 구현
+// var dropdowns = document.getElementById("nndrBellDropdown");
 
-/* 알림 버튼1 */
-dropBtn1.addEventListener("click", () => {
-    myDropdown.style.display = "none";
-    thumsUp.style.display = "inline-block";
+// const dropBtn1 = document.getElementById("nndrDropBtn1");
+// const dropBtn2 = document.getElementById("nndrDropBtn2");
+// const bellDropdown = document.getElementById("nndrBellDropdown");
+// const myDropdown = document.getElementById("nndrMyDropdown");
+// const thumsUp = document.getElementById("thumsUp");
+// const nndrOptionAlarm = document.getElementById("nndrOptionAlarm");
+// const nndrOptionAlarmContent = document.getElementById("nndrOptionAlarmContent");
 
-    if (bellDropdown.style.display != "none") {
-        bellDropdown.style.display = "none";
-        thumsUp.style.cursor = "pointer";
-        return;
-    } else {
-        bellDropdown.style.display = "block";
+// function bell() {
+//     document.getElementById("nndrBellDropdown").classList.toggle("nndr-show");
 
-    }
-})
 
+// }
+
+// window.onclick = function (e) {
+//     if (e.target.matches('.nndrDropBtn1')) {
+//         var dropdowns = document.getElementById("nndrBellDropdown");
+//         var i;
+//         for (i = 0; i < dropdowns.length; i++) {
+//             var openDropdown = dropdowns[i];
+//             if (openDropdown.classList.contains('nndr-show')) {
+//                 openDropdown.classList.remove('nndr-show');
+//             }
+//         }
+//     }
+
+
+// }
+
+// 알림 드롭다운 관련 요소
+const nndrDropBtn1 = document.getElementById("nndrDropBtn1"); // 알림 버튼
+const nndrBellDropdown = document.getElementById("nndrBellDropdown"); // 알림 하위메뉴
+const nndrOptionAlarmContent = document.getElementById('nndrOptionAlarmContent'); // 알림 하위하위메뉴
+
+// 내정보 드롭다운 관련 요소
+const nndrDropBtn2 = document.getElementById("nndrDropBtn2"); // 내정보 버튼
+const nndrMyDropdown = document.getElementById('nndrMyDropdown'); // 내정보 하위메뉴
+
+// 알림버튼 클릭 이벤트 (function bell())
+nndrDropBtn1.addEventListener('click', e => {
+    nndrBellDropdown.classList.toggle("hidden");
+    nndrMyDropdown.classList.add("hidden"); // 내정보 메뉴 없애기
+});
+
+// 프로필사진 클릭 이벤트 (function my())
+nndrDropBtn2.addEventListener('click', e => {
+    nndrMyDropdown.classList.toggle("hidden");
+    nndrBellDropdown.classList.add("hidden"); // 알림 메뉴 없애기
+    nndrOptionAlarmContent.classList.add("hidden"); // 알림 내부 메뉴 없애기
+});
 
 /* 알람 옵션 */
-window.addEventListener("load", function () {
-    var nndrOptionAlarm = document.getElementById("nndrOptionAlarm");
-    var nndrOptionAlarmContent = document.getElementById("nndrOptionAlarmContent");
-
-    nndrOptionAlarm.addEventListener("click", function () {
-        if (nndrOptionAlarmContent.style.display === "none") {
-            nndrOptionAlarmContent.style.display = "block";
-        } else {
-            nndrOptionAlarmContent.style.display = "none";
-        }
-    });
+var nndrOptionAlarm = document.getElementById("nndrOptionAlarm");
+nndrOptionAlarm.addEventListener("click", e => {
+    e.stopPropagation();
+    nndrOptionAlarmContent.classList.toggle("hidden");
+});
+nndrOptionAlarmContent.addEventListener("click", e => {
+    e.stopPropagation();
 });
 
 
 /* 알림내용 추가하기 */
 const nndrAddAlarm = document.getElementsByClassName("nndrAddAlarm");
 const nndrAddAlarmContent = document.getElementsByClassName("nndrAddAlarmContent");
-const nndrTopAlarmDelete =  document.getElementsByClassName("nndrBottomAlarmDelete"); 
+const nndrTopAlarmDelete = document.getElementsByClassName("nndrBottomAlarmDelete");
 const nndrAddAlarmProfile = document.getElementsByClassName("nndrAddnndrAddAlarmProfile");
 const nndrAddContainer = document.getElementById("nndrAddContainer");
+
 
 thumsUp.addEventListener("click", () => {
 
@@ -218,55 +265,47 @@ thumsUp.addEventListener("click", () => {
     nndrAddAlarmContent.append(nndrAlarmContent);
 
     /* 알람 삭제 하기 */
-    
-    x.addEventListener('click', (e) =>{
-        
+
+    x.addEventListener('click', (e) => {
+
+        console.log(e.target.parentElement);
         e.target.parentElement.remove();
 
     });
 });
 
+// 드롭다운 외부 클릭 시 드롭다운 메뉴 닫기
+document.addEventListener('click', e => {
 
-
-/* 알림 버튼 2 */
-dropBtn2.addEventListener("click", () => {
-    bellDropdown.style.display = "none";
-    if (myDropdown.style.display != "none") {
-        myDropdown.style.display = "none";
-        return;
-    } else {
-        myDropdown.style.display = "block";
+    /*if(e.target.className == "nndr-dropdown-container") {
+        alert("!");
     }
-})
+    if ( !e.target.matches('.nndr-dropdown-container') 
+        && !e.target.matches('.nndr-dropdown-button') 
+        && !e.target.matches('.nndr-dropdown-menu')) {
+        nndrMyDropdown.classList.add("hidden");
+        nndrBellDropdown.classList.add("hidden");
+        nndrOptionAlarmContent.classList.add("hidden");
+    }*/
+
+    if (e.target.className == "nndr-top-alarm-delete") return;
+
+    const temp = document.querySelectorAll(".nndr-dropdown-container, .nndr-dropdown-container *");
+
+    let flag = true;
+    for (let el of temp) {
+        if (el == e.target) {
+            flag = false;
+            break;
+        }
+    }
+
+    if (flag) {
+        nndrMyDropdown.classList.add("hidden");
+        nndrBellDropdown.classList.add("hidden");
+        nndrOptionAlarmContent.classList.add("hidden");
+    }
 
 
-
-// const outclick = e => {
-//     if (!bellDropdown.contains(e.target)) { // 클릭한 요소가 bellDropown의 하위 요소인지 확인
-//         bellDropdown.style.display = "none"; // bellDropown를 숨김
-//         document.removeEventListener("click", outclick); // 클릭 이벤트 리스너 제거
-//     }
-
-
-//     if (!myDropdown.contains(e.target)) { // 클릭한 요소가 myDropdown의 하위 요소인지 확인
-//         myDropdown.style.display = "none"; // myDropdown를 숨김
-//         document.removeEventListener("click", outclick); // 클릭 이벤트 리스너 제거
-//     }
-
-// };
-
-// dropBtn1.addEventListener("click", e => {
-//     e.stopPropagation(); // dropBtn1 클릭 이벤트 전파 방지
-//     bellDropdown.style.display = "block"; // bellDropdown를 보임
-//     document.addEventListener("click", outclick); // 클릭 이벤트 리스너 등록
-// });
-
-
-
-// dropBtn2.addEventListener("click", e => {
-//     e.stopPropagation(); //dropBtn2 클릭 이벤트 전파 방지
-//     myDropdown.style.display = "block"; // myDropdown를 보임
-//     document.addEventListener("click", outclick); // 클릭 이벤트 리스너 등록
-// });
-
-
+    const modal = document.getElementById('nndrDropdown1');
+}); 
