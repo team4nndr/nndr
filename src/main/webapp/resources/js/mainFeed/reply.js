@@ -9,9 +9,9 @@ function addTextareaEvent(textarea) {
     textarea.addEventListener('focus', e => {
         e.target.style.height = "";
         e.target.style.transitionDuration = "0.5s";
-
+        
         if( e.target.value == "" ) {
-            e.target.style.height = "42px";
+            e.target.style.height =  "42px";
         } else {
             e.target.style.height = e.target.scrollHeight + "px";
         }
@@ -37,11 +37,8 @@ function addTextareaEvent(textarea) {
 
         // 댓글이 길어지면 댓글 창 크기 자동조정
         e.target.style.height = "";
-        if( e.target.scrollHeight < 40) {
-            e.target.style.height = "24px";
-        } else {
-            e.target.style.height = e.target.scrollHeight + "px";
-        }
+        e.target.style.transitionDuration = "0.5s";
+        e.target.style.height = e.target.scrollHeight + "px";
     });
 
     // 엔터로 댓글 제출
@@ -55,6 +52,13 @@ function addTextareaEvent(textarea) {
             e.preventDefault();
             console.log(e.target.nextElementSibling);
             e.target.nextElementSibling.click();
+        }
+    });
+
+    // 댓글 입력 중 다른 유저 태그하기(@)
+    textarea.addEventListener('keyup', e => {
+        if(e.keyCode == 50 && e.shiftKey) {
+            
         }
     });
 }
@@ -112,7 +116,7 @@ function deleteReply(boardNo, replyNo) {
     }
 }
 
-// 댓글 작성 시 실시간 추가
+// 댓글 등록/수정/삭제 시 화면에 실시간 반영
 function printReplyList(boardNo) {
     fetch("/reply?boardNo=" + boardNo)
     .then(resp => resp.json())
@@ -376,4 +380,3 @@ function updateReply(boardNo, replyNo, btn) {
     })
     .catch(e => console.log(e));
 }
-

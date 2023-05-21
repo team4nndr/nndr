@@ -1,17 +1,3 @@
-@font-face {
-    font-family: 'NotoSansKR';
-    src: url('../../fonts/NotoSansKR-Regular.otf');
-    font-weight: normal;
-    font-style: normal;
-}
-
-* {
-    font-family: 'NotoSansKR';
-    box-sizing: border-box;
-    padding: 0;
-    margin: 0;
-}
-
 #sidebar {
     width: 360px;
     /* height: 100vh; */
