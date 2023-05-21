@@ -57,6 +57,9 @@ public class PersonalFeedController {
 		PersonalFriend friendcheck = service.friendChecking(friendche);
 		model.addAttribute("friendcheck", friendcheck);
 		
+		Member personalInfo = service.personalInfo(no);
+		model.addAttribute("personalInfo", personalInfo);
+		
 		
 		List<Board> boardList = service.personalfeedList(no);
 		for(Board board : boardList) {

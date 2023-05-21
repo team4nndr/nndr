@@ -925,10 +925,6 @@ button{
   .next:hover{
     transform: translateX(5px);
 }
-.friendAdd{
-    background: red;
-    transition-duration: 1s;
-}
 #what-profile{
     font-weight: bolder;
     font-size: 20px;
@@ -1713,3 +1709,23 @@ justify-content: center;
     transition-duration: 0.2s;
 }
 
+
+
+
+
+
+
+
+
+.friendAdd{
+    background: red;
+    transition-duration: 1s;
+}
+.friendAccept{
+    background: hsl(130, 90%, 40%);
+    transition-duration: 1s;
+}
+.friendDel{
+    background: #ccc;
+    transition-duration: 1s;
+}

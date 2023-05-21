@@ -30,7 +30,7 @@
             <c:if test="${infoMember.memberNo eq loginMember.memberNo}" > 
                 <div id="fr-border">
                     <div class="item1-2">
-                        <h4>&nbsp;&nbsp;알 수도 있는 사람</h4>
+                        <h4>&nbsp;&nbsp; 알 수도 있는 사람</h4>
                     </div>
                     <div class="item1-3">
                         <div class="who">
@@ -179,22 +179,46 @@
                         <div class="feed-list">
 
                             <%-- 피드 작성 --%>
-                            <div id="newFeed">
-                                <c:if test="${empty loginMember.profileImage}">
-                                    <img src="/resources/images/common/user-default.png" class="profile-image">
-                                </c:if>
-                                <c:if test="${not empty loginMember.profileImage}">
-                                    <img src="${loginMember.profileImage}" class="profile-image" >
-                                </c:if>
-                                <p id="newFeedBtn">${loginMember.memberName}님, 무슨 생각을 하고 계신가요?</p>
+                            <c:if test="${infoMember.memberNo eq loginMember.memberNo}">  <%-- 본인 일 때 --%>
+                                <div id="newFeed">
+                                    <c:if test="${empty loginMember.profileImage}">
+                                        <img src="/resources/images/common/user-default.png" class="profile-image">
+                                    </c:if>
+                                    <c:if test="${not empty loginMember.profileImage}">
+                                        <img src="${loginMember.profileImage}" class="profile-image" >
+                                    </c:if>
+                                    <p id="newFeedBtn">${loginMember.memberName}님, 무슨 생각을 하고 계신가요?</p>
+                                    <%-- 피드 작성 모달 --%>
+                                    <jsp:include page="/WEB-INF/views/mainFeed/newFeed.jsp"/>
+                                </div>
+                            </c:if>
+                            <c:if test="${infoMember.memberNo ne loginMember.memberNo}"> <%-- 본인 x --%>
+                                <c:if test="${}">
+                                    <div id="newFeed">
+                                        <c:if test="${empty loginMember.profileImage}">
+                                            <img src="/resources/images/common/user-default.png" class="profile-image">
+                                        </c:if>
+                                        <c:if test="${not empty loginMember.profileImage}">
+                                            <img src="${loginMember.profileImage}" class="profile-image" >
+                                        </c:if>
+                                        <p id="newFeedBtn">${loginMember.memberName}님, 무슨 생각을 하고 계신가요?</p>
+                                        <%-- 피드 작성 모달 --%>
+                                        <jsp:include page="/WEB-INF/views/mainFeed/newFeed.jsp"/>
+                                    </div>
+                                </c:if>    
+                            </c:if>
 
-                                <%-- 피드 작성 모달 --%>
-                            </div>
 
+
+
+
+
+
+                            <%-- <c:if test="${personalInfo.setFriendReq eq 'Y'}"> --%>
                             <%-- 피드 목록 --%>
 
-                        </div>
                             <jsp:include page="/WEB-INF/views/mainFeed/feedList.jsp"/>
+                        </div>
                         
 
                     </section>

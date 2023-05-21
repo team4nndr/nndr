@@ -34,21 +34,40 @@ public class PersonalFeedHeadController {
 	MemberInfoService service;
 
 	
+	
 	@GetMapping(value = "/personalAddFriend", produces = "application/text; charset=UTF-8")
 	@ResponseBody
 	public String personalAddFriend(String[] personalAddFriend, @SessionAttribute("loginMember") Member loginMember ) { // 쿼리 스트링에 담겨있는 파라미터
-		System.out.println("add");
 		Map<String, String> addMap = new HashMap<>();
 		addMap.put("friendSender", personalAddFriend[0]);
 		addMap.put("friendReciver", personalAddFriend[1]);
 		int result = service.personalAdd(addMap);
 		return "";
-		
 	}
+	@GetMapping(value = "/personalDelFriend", produces = "application/text; charset=UTF-8")
+	@ResponseBody
+	public String personalDelFriend(String[] personalDelFriend, @SessionAttribute("loginMember") Member loginMember ) { // 쿼리 스트링에 담겨있는 파라미터
+		Map<String, String> delMap = new HashMap<>();
+		delMap.put("friendSender", personalDelFriend[0]);
+		delMap.put("friendReciver", personalDelFriend[1]);
+		int result = service.personalDel(delMap);
+		return "";
+	}
+	@GetMapping(value = "/personalAcceptFriend", produces = "application/text; charset=UTF-8")
+	@ResponseBody
+	public String personalAcceptFriend(String[] personalAcceptFriend, @SessionAttribute("loginMember") Member loginMember ) { // 쿼리 스트링에 담겨있는 파라미터
+		Map<String, String> AcceptMap = new HashMap<>();
+		AcceptMap.put("friendSender", personalAcceptFriend[0]);
+		AcceptMap.put("friendReciver", personalAcceptFriend[1]);
+		System.out.println(personalAcceptFriend[0]);
+		System.out.println(personalAcceptFriend[1]);
+		int result = service.personalAccept(AcceptMap);
+		return "";
+	}
+	
 	@GetMapping(value = "/personalCanFriend", produces = "application/text; charset=UTF-8")
 	@ResponseBody
 	public String personalCanFriend(String[] personalCanFriend, @SessionAttribute("loginMember") Member loginMember ) { // 쿼리 스트링에 담겨있는 파라미터
-		System.out.println("del");
 		Map<String, String> delMap = new HashMap<>();
 		delMap.put("friendSender", personalCanFriend[0]);
 		delMap.put("friendReciver", personalCanFriend[1]);
@@ -59,8 +78,6 @@ public class PersonalFeedHeadController {
 	@GetMapping(value = "/cvCho", produces = "application/text; charset=UTF-8")
 	@ResponseBody
 	public String cvCho(@RequestParam Map<String, Object> cvCho) { // 쿼리 스트링에 담겨있는 파라미터
-		System.out.println("ASDSS");
-		System.out.println(cvCho);
 		int result = service.backImg(cvCho);
 		return "";
 	}
@@ -75,13 +92,10 @@ public class PersonalFeedHeadController {
 	@GetMapping(value = "/pcvCho", produces = "application/text; charset=UTF-8")
 	@ResponseBody
 	public String pcvCho( Model model, @RequestParam Map<String, Object> pcvCho, @SessionAttribute("loginMember") Member loginMember) { // 쿼리 스트링에 담겨있는 파라미터
-		System.out.println("ASDSS");
-		System.out.println(pcvCho);
 		String path =(String)pcvCho.get("imgPath");
 		String img = (String)pcvCho.get("imgRename");
 		loginMember.setProfileImage(path+img);
 		model.addAttribute("loginMember", loginMember);
-		System.out.println(loginMember);
 		int result = service.proImg(pcvCho);
 		
 		

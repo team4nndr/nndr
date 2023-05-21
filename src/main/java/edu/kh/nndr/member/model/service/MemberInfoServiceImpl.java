@@ -125,15 +125,22 @@ public class MemberInfoServiceImpl implements MemberInfoService{
 		return dao.personalfeedList(no);
 	}
 
-	
-	
-	
-	
-	
+	@Override
+	public Member personalInfo(int no) {
+		return dao.personalInfo(no);
+	}
+
+	@Override
+	public int personalDel(Map<String, String> delMap) {
+		return dao.personalDel(delMap);
+	}
+
+	@Override
+	public int personalAccept(Map<String, String> acceptMap) {
+		return dao.personalAccept(acceptMap);
+	}
 
 	
-	
-
 	
 			
 	

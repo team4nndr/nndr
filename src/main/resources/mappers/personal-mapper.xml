@@ -150,7 +150,7 @@
 	</insert>
 	
 	<select id="perFriend" resultMap="personalFriend_rm">
-		SELECT * FROM FRIEND WHERE FRIEND_SENDER = ${friendSender} AND FRIEND_RECIVER=${friendReciver}
+		SELECT * FROM FRIEND WHERE (FRIEND_SENDER = ${friendSender} AND FRIEND_RECIVER=${friendReciver}) OR (FRIEND_SENDER = ${friendReciver} AND FRIEND_RECIVER=${friendSender})
 	</select>
 	
 	<delete id="personalCan">
@@ -194,6 +194,13 @@
 		ORDER BY IMG_ORDER DESC
 	
 	</select>
+	
+	<delete id="personalDel">
+		DELETE FROM FRIEND WHERE (FRIEND_SENDER = ${friendSender} AND FRIEND_RECIVER=${friendReciver}) OR (FRIEND_SENDER = ${friendReciver} AND FRIEND_RECIVER=${friendSender})
+	</delete>
+	<update id="personalAccept">
+		UPDATE FRIEND SET FRIEND_FL = 'Y' WHERE FRIEND_SENDER = ${friendReciver} AND FRIEND_RECIVER = ${friendSender}
+	</update>
 	
 	
 	<!--  이미지 수정 
