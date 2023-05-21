@@ -2,7 +2,9 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 
-<link rel="stylesheet" href="/resources/css/mainFeed/feed.css">
+<link rel="stylesheet" href="/resources/css/mainFeed/reply.css">
+<link rel="stylesheet" href="/resources/css/mainFeed/mention.css">
+
 <script> 
     const loginMemberNo = "${loginMember.memberNo}";
     const profileImage = "${loginMember.profileImage}";
@@ -133,8 +135,11 @@
                     </div>
                 </div>
             </section>
+
         </div>
 
     </c:forEach>
+
+    <script src="/resources/js/mainFeed/mention.js"></script>
 
 </div>

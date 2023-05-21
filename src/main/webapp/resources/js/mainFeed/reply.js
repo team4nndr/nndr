@@ -1,7 +1,9 @@
+// 댓글 관련 요소
 const replyTextareas = document.querySelectorAll('.reply-bubble textarea');
 const disableImages = document.querySelectorAll('.reply-send-disable');
 const enableImages = document.querySelectorAll('.reply-send-enable');
 
+// 댓글창 textarea 기능
 function addTextareaEvent(textarea) {
     textarea.style.height = "24px";
 
@@ -50,17 +52,12 @@ function addTextareaEvent(textarea) {
     textarea.addEventListener('keyup', e => {
         if (e.keyCode == 13 && !e.shiftKey) {
             e.preventDefault();
-            console.log(e.target.nextElementSibling);
             e.target.nextElementSibling.click();
         }
     });
 
-    // 댓글 입력 중 다른 유저 태그하기(@)
-    textarea.addEventListener('keyup', e => {
-        if(e.keyCode == 50 && e.shiftKey) {
-            
-        }
-    });
+    // 멘션 기능 추가
+    addMentionEvent(textarea);
 }
 
 // 댓글 textaread에 위 함수 적용
@@ -68,14 +65,22 @@ for(let i=0; i<replyTextareas.length; i++) {
     addTextareaEvent(replyTextareas[i]);
 }
 
-// 댓글 제출 to DB
+// 댓글 제출 ajax
 function submitReply(boardNo, parentReplyNo, btn) {
     
     if( btn != null && !btn.classList.contains('enable') ) return;
 
     const textarea = document.querySelector('.reply-textarea[no="' + boardNo + '"]');
-    const replyContent = textarea.value;
+    let replyContent = textarea.value;
     
+    // 태그 문자열에 HTML 처리
+    for(let obj of mentionData) {
+        if(obj.name.length == 0) continue;
+        while( replyContent.includes('@' + obj.name) ) {
+            replyContent = replyContent.replace('@' + obj.name, '<a class="mention-mark" href="/personalFeed/' + obj.memberNo + '">' + obj.name + '</a>');
+        }
+    }
+ 
     const data = {
         "boardNo" : boardNo,
         "replyContent" : replyContent,
@@ -99,7 +104,7 @@ function submitReply(boardNo, parentReplyNo, btn) {
     .catch(e => console.log(e));
 }
 
-// 댓글 삭제
+// 댓글 삭제 ajax
 function deleteReply(boardNo, replyNo) {
 
     if( confirm("댓글을 삭제하시겠어요?") ) {
@@ -116,7 +121,7 @@ function deleteReply(boardNo, replyNo) {
     }
 }
 
-// 댓글 등록/수정/삭제 시 화면에 실시간 반영
+// 댓글 등록/수정/삭제 시 화면에 실시간 반영 ajax
 function printReplyList(boardNo) {
     fetch("/reply?boardNo=" + boardNo)
     .then(resp => resp.json())
@@ -155,7 +160,7 @@ function printReplyList(boardNo) {
 
             const content = document.createElement('p');
             content.classList.add('reply-content');
-            content.innerText = re.replyContent;
+            content.innerHTML = re.replyContent;
 
             bubble.append(name, content);
 
@@ -351,7 +356,7 @@ function replyFocus(boardNo) {
     document.querySelector('.reply-textarea[no="' + boardNo + '"]').focus();
 }
 
-// 댓글 수정
+// 댓글 수정 ajax
 function updateReply(boardNo, replyNo, btn) {
     
     if( btn != null && !btn.classList.contains('enable') ) return;
