@@ -79,7 +79,7 @@
                                         <span class="delete-image">&times;</span>
                                 </div>
 
-                                    <div class="boardImg" id="num">
+                                    <%-- <div class="boardImg" id="num">
                                         <label for="img4">
                                             <img class="preview" src="">
                                         </label>
@@ -93,7 +93,7 @@
                                         </label>
                                         <input type="file" name="images" class="inputImage" id="img5" accept="image/*">
                                         <span class="delete-image">&times;</span>
-                                </div>
+                                </div> --%>
                                 <%-- <button id=plusBtn><img src="/resources/images/mainFeed/plusLogo.png" id="plusLogo" ></button> --%>
 
                                 

@@ -82,7 +82,7 @@
 	</select>
 	
 	<!-- boardNo 게시글 삭제 시 해당 게시글의 댓글 모두 삭제 -->
-	<update id="deleteReplyAll">
+	<update id="deleteAll">
 		UPDATE "REPLY"
 		SET		REPLY_DELETE = 'Y'
 		WHERE 	BOARD_NO = ${boardNo}
