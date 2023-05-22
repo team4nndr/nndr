@@ -26,7 +26,7 @@ public interface MemberInfoService {
 
 	int updateHobby(List<MemberHobby> insertHobby, List<MemberHobby> deleteHobby);
 
-	List<Map<String, String>> imgSet(int no);
+	List<MemberInfo> imgSet(int no);
 
 	int personalAdd(Map<String, String> addMap);
 

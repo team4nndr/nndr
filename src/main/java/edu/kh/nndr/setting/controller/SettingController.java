@@ -9,12 +9,14 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttribute;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import edu.kh.nndr.admin.controller.UserManageController;
 import edu.kh.nndr.admin.model.dto.Feedback;
@@ -126,31 +128,46 @@ public class SettingController {
 		return result;
 	}
 	
-	//
+	// 환경설정 변경
 	@GetMapping("/change/set")
 	@ResponseBody
 	public int changeSetting(
 			@SessionAttribute("loginMember") Member loginMember,
 			@RequestParam Map<String, Object> paramMap, SessionStatus status, Model model) {
-//			@RequestParam("key") String key,
-//			@RequestParam("value") String value) {
-		
-//		Map<String, Object> paramMap = new HashMap<>();
-//		paramMap.put("key", key);
-//		paramMap.put("value", value);
 
-//		paramMap.put("memberNo", loginMember.getMemberNo());
-		
-//		return 0;
-		
 		int result = service.changeSetting(paramMap, loginMember);
 		
 		if(result > 0) {
-//			status.setComplete();
-//			loginMember = userService.selectMember(loginMember.getMemberNo());
 			model.addAttribute("loginMember", userService.selectMember(loginMember.getMemberNo()));
 		}
 	
 		return result;
 	}
+	
+	// 계정 삭제
+	@PostMapping("/delete")
+	public String delete(
+			@SessionAttribute("loginMember") Member loginMember,
+			@RequestHeader(value="referer") String referer,
+			String passwd,
+			RedirectAttributes ra,
+			SessionStatus status) {
+
+		// 비밀번호 확인
+		Member member = new Member();
+		member.setMemberPw(passwd);
+		member.setMemberNo(loginMember.getMemberNo());
+		
+		if( !service.checkPasswd(member) ) {
+			ra.addFlashAttribute("message", "비밀번호가 일치하지 않습니다.");
+			return "redirect:" + referer;
+		}
+		
+		userService.deleteMember(member.getMemberNo());
+		ra.addFlashAttribute("message", "탈퇴되었습니다.");
+		status.setComplete();
+		
+		return "redirect:/";
+	}
+	
 }

@@ -22,7 +22,31 @@
         <%-- 계정 삭제 페이지 --%>
         <section class="delete-container">
 
-            정말로 계정을 삭제하시겠어요?
+            <h3>회원 탈퇴</h3>
+
+            <div class="content-box">
+                <div class="delete-section">
+                    <p>아쉬운 점이 있으셨다면</p> 
+                    <p>너나들이가 발전할 수 있도록</p> 
+                    <p> 의견을 보내주세요.</p> 
+                    <a href="/setting/feedback"><button class="delete-btn reverse">의견 보내기</button></a>
+                </div>
+                <br><br><br><br>
+
+                <form action="/setting/delete" method="post">
+                    <div class="delete-section">
+                        <p>정말로 계정을 삭제하시려면</p> 
+                        <p>비밀번호를 입력하고</p> 
+                        <p>탈퇴하기 버튼을 눌러주세요.</p> 
+                        <p>
+                            <div id="deletePasswdInput">
+                                <input type="password" name="passwd" placeholder="비밀번호를 입력해주세요...">
+                            </div>
+                        </p>
+                        <button class="delete-btn reverse">탈퇴하기</button>
+                    </div>
+                </form>
+            </div>
             
         </section>
     </main>

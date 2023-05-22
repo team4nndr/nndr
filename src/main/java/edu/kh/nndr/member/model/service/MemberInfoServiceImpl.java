@@ -80,7 +80,7 @@ public class MemberInfoServiceImpl implements MemberInfoService{
 	}
 
 	@Override
-	public List<Map<String, String>> imgSet(int no) {
+	public List<MemberInfo> imgSet(int no) {
 		return dao.imgSet(no);
 	}
 
