@@ -23,6 +23,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import edu.kh.nndr.member.model.dto.Member;
 import edu.kh.nndr.member.model.dto.MemberHobby;
 import edu.kh.nndr.member.model.dto.MemberInfo;
+import edu.kh.nndr.member.model.dto.PersonalFriend;
 import edu.kh.nndr.member.model.service.MemberInfoService;
 
 
@@ -37,10 +38,20 @@ public class PersonalFeedHeadController {
 	
 	@GetMapping(value = "/personalAddFriend", produces = "application/text; charset=UTF-8")
 	@ResponseBody
-	public String personalAddFriend(String[] personalAddFriend, @SessionAttribute("loginMember") Member loginMember ) { // 쿼리 스트링에 담겨있는 파라미터
+	public String personalAddFriend(String[] personalAddFriend, @SessionAttribute("loginMember") Member loginMember , RedirectAttributes ra) { // 쿼리 스트링에 담겨있는 파라미터
 		Map<String, String> addMap = new HashMap<>();
 		addMap.put("friendSender", personalAddFriend[0]);
 		addMap.put("friendReciver", personalAddFriend[1]);
+		
+		Map<String, Object> friendche = new HashMap<>();
+		friendche.put("friendSender", personalAddFriend[0]);
+		friendche.put("friendReciver", personalAddFriend[1]);
+		PersonalFriend friendcheck = service.friendChecking(friendche);
+		if(friendcheck != null) {
+			String message = "이미 친구 상태이거나 신청 중인 회원입니다.";
+			ra.addFlashAttribute("message",message);
+			return "redirect:";
+		}
 		int result = service.personalAdd(addMap);
 		return "";
 	}
