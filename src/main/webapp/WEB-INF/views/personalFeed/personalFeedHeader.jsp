@@ -2,6 +2,8 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
     <link rel="stylesheet" href="/resources/css/personalFeed/personalFeed.css">
+        <link rel="stylesheet" href="/resources/css/mainFeed/main.css">
+    <link rel="stylesheet" href="/resources/css/mainFeed/feed.css">
     
     <%-- <div class="flex-container"> --%>
         <div class="main-container1">

@@ -41,16 +41,24 @@ public class PersonalFeedController {
 
 
 	@GetMapping("/personalFeed/{no:[0-9]+}")
-	public String personalFeed( Model model, @SessionAttribute("loginMember") Member loginMember, @PathVariable("no") int no) {
+	public String personalFeed(@RequestHeader(value="referer", required=false) String referer, Model model, @SessionAttribute("loginMember") Member loginMember, @PathVariable("no") int no, RedirectAttributes ra) {
 		MemberInfo infoMember = service.personalMember(no);
+		if(infoMember == null) {
+			String message = "없는 회원이거나 탈퇴한 회원입니다.";
+			ra.addFlashAttribute("message",message);
+			String path ="redirect:";
+			path+= referer;
+			
+			return path;
+		}
 		model.addAttribute("infoMember", infoMember); // request scope
 
 		Map<String, Object> HobbyMap = service.selectHobbyList(no); 
 		model.addAttribute("HobbyMap", HobbyMap);
 		
-		List<Map<String, String>> imgSet = service.imgSet(no);
-		model.addAttribute("imgSet", imgSet);
-		
+//		List<Map<String, String>> imgSet = service.imgSet(no);
+//		model.addAttribute("imgSet", imgSet);
+//		
 		Map<String, Object> friendche = new HashMap<>();
 		friendche.put("friendSender", loginMember.getMemberNo());
 		friendche.put("friendReciver", no);
@@ -66,7 +74,6 @@ public class PersonalFeedController {
 			List<Reply> list = replyService.replyList(board.getBoardNo());
 			board.setReplyList(list);
 		}
-		
 		model.addAttribute("boardList", boardList);
 		return "personalFeed/personalFeed";
 	}
