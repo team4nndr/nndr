@@ -226,6 +226,15 @@ public class MainFeedServiceImpl implements MainFeedService {
 		
 		return result;
 	}
+
+
+	@Override
+	public Board selectOne(int boardNo) {
+		return dao.selectOne(boardNo);
+	}
+	
+	
+	
 	
 	
 	

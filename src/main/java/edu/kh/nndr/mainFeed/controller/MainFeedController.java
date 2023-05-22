@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttribute;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.multipart.MultipartFile;
@@ -41,7 +42,8 @@ public class MainFeedController {
 	 * @return
 	 */
 	@GetMapping("/mainFeed")
-	public String feedList(Model model) {
+	public String feedList(Model model
+			) {
 		
 		List<Board> boardList = service.feedList();
 		
@@ -50,6 +52,8 @@ public class MainFeedController {
 			List<Reply> list = replyService.replyList(board.getBoardNo());
 			board.setReplyList(list);
 		}
+		
+		
 		
 		model.addAttribute("boardList", boardList);
 		
@@ -109,6 +113,7 @@ public class MainFeedController {
 			,HttpSession session){
 		
 		board.setMemberNo(loginMember.getMemberNo());
+		
 	
 		int result = service.feedDelete(board);
 		String msg = null;				
@@ -140,6 +145,9 @@ public class MainFeedController {
 		
 		
 		board.setMemberNo(loginMember.getMemberNo());
+		System.out.println(board.getBoardNo());
+		System.out.println(board.getBoardText());
+		
 		
 		String webPath = "/resources/images/mainFeed/";
 		String filePath = session.getServletContext().getRealPath(webPath);
@@ -153,8 +161,15 @@ public class MainFeedController {
 			message = "게시글이 수정되었습니다";
 		}else {
 			message = "게시글 수정 실패..............";
-    }
+		}
+		ra.addFlashAttribute("message", message);
     
 		return "redirect:/mainFeed";	
+	}
+	
+	@GetMapping(value="/mainFeed/selectOne", produces="application/json; charset=UTF-8")
+	@ResponseBody
+	public Board selectOne(int boardNo) {
+		return service.selectOne(boardNo);
 	}
 }

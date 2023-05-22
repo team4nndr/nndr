@@ -55,7 +55,6 @@
     </main>
 
     <jsp:include page="/WEB-INF/views/common/footer.jsp"/>
-
     <script src="/resources/js/mainFeed/main.js"></script>
     <script src="/resources/js/mainFeed/reply.js"></script>
 </body>
