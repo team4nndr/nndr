@@ -50,7 +50,7 @@ function addTextareaEvent(textarea) {
         }
     });
     textarea.addEventListener('keyup', e => {
-        if (e.keyCode == 13 && !e.shiftKey) {
+        if (e.keyCode == 13 && !e.shiftKey && e.target.matches(":focus")) {
             e.preventDefault();
             e.target.nextElementSibling.click();
         }
