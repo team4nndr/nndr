@@ -72,7 +72,7 @@
        	VALUES( #{boardNo},
               #{boardText},
               DEFAULT, DEFAULT, DEFAULT,
-              #{memberNo} 
+              #{memberNo} ,NULL
               )
 	
 	</insert>
