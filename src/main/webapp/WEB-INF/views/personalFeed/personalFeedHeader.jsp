@@ -6,7 +6,8 @@
     <link rel="stylesheet" href="/resources/css/mainFeed/feed.css">
     
     <%-- <div class="flex-container"> --%>
-        <div class="main-container1">
+    <div id="memberInfo" data-senderMemberNo = "${loginMember.memberNo}" data-reciverMemberNo = "${infoMember.memberNo}"></div>
+        <div class="main-container1" >
             <c:if test="${infoMember.memberNo eq loginMember.memberNo}" > <%-- 일치 ㅇ--%>
                 <c:if test="${empty infoMember.infoBack}" >
                     <div id="backChg"><img src="/resources/images/topMenu/페이지 시작화면.gif" alt="로고"id="backLogo" ></div>
@@ -154,7 +155,7 @@
             </p>
         </div>
     </div>
-
-
+<script src="https://cdn.jsdelivr.net/npm/sockjs-client@1/dist/sockjs.min.js"></script>
 <script src="/resources/js/personalFeed/personalFeed.js"></script>
 <script src="/resources/js/personalFeed/personalFeedHeader.js"></script>
+<script src="/resources/js/alram/alram.js"></script>

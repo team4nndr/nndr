@@ -283,7 +283,7 @@ function pcvCho(target){
     const imgRename = target.dataset.imgrename
 
 
-   console.log(pcvCho)
+console.log(pcvCho)
     fetch("/pcvCho?memberNo=" + memberNo + "&imgPath=" + imgPath + "&imgRename=" + imgRename) 
     .then(response => response.text()) 
     .then(() => {
@@ -297,3 +297,5 @@ function pcvCho(target){
     document.getElementById("homeLogo").src = imgPath+imgRename;
     document.getElementById("cv-set").style.display = "none";
 };   
+
+
