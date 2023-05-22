@@ -82,11 +82,19 @@
 	</select>
 	
 	<!-- boardNo 게시글 삭제 시 해당 게시글의 댓글 모두 삭제 -->
-	<update id="deleteReplyAll">
+	<update id="deleteAll">
 		UPDATE "REPLY"
 		SET		REPLY_DELETE = 'Y'
 		WHERE 	BOARD_NO = ${boardNo}
 	</update>
+	
+	<!-- 특정 게시글 댓글 개수 확인 -->
+	<select id="count" resultType="_int">			
+		SELECT  COUNT(*)
+		FROM   "REPLY"
+		WHERE   BOARD_NO = ${boardNo}
+		        AND REPLY_DELETE = 'N'
+	</select>
 	
 	<!-- 댓글 삭제(대댓글도 삭제) -->
 	<update id="delete">			

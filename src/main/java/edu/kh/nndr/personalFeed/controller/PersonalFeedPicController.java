@@ -25,7 +25,7 @@ public class PersonalFeedPicController {
 	public String personalFeedPic( Model model, @PathVariable("no") int no) {
 		MemberInfo infoMember = service.personalMember(no);
 		model.addAttribute("infoMember", infoMember); // request scope
-		List<Map<String, String>> imgSet = service.imgSet(no);
+		List<MemberInfo> imgSet = service.imgSet(no);
 		model.addAttribute("imgSet", imgSet);
 		return "personalFeed/personalFeedPic";
 	}

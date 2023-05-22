@@ -2,9 +2,12 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
     <link rel="stylesheet" href="/resources/css/personalFeed/personalFeed.css">
+        <link rel="stylesheet" href="/resources/css/mainFeed/main.css">
+    <link rel="stylesheet" href="/resources/css/mainFeed/feed.css">
     
     <%-- <div class="flex-container"> --%>
-        <div class="main-container1">
+    <div id="memberInfo" data-senderMemberNo = "${loginMember.memberNo}" data-reciverMemberNo = "${infoMember.memberNo}"></div>
+        <div class="main-container1" >
             <c:if test="${infoMember.memberNo eq loginMember.memberNo}" > <%-- 일치 ㅇ--%>
                 <c:if test="${empty infoMember.infoBack}" >
                     <div id="backChg"><img src="/resources/images/topMenu/페이지 시작화면.gif" alt="로고"id="backLogo" ></div>
@@ -44,7 +47,7 @@
                         </c:if>
                     </c:if>    
                 </div>
-                <h2 class="name">${infoMember.memberName}</h2>
+                <h2 class="perName">${infoMember.memberName}</h2>
                 <div class="main1-2">
                     <div class="myname2">
                         <c:if test="${infoMember.memberNo ne loginMember.memberNo}" > 
@@ -152,7 +155,7 @@
             </p>
         </div>
     </div>
-
-
+<script src="https://cdn.jsdelivr.net/npm/sockjs-client@1/dist/sockjs.min.js"></script>
 <script src="/resources/js/personalFeed/personalFeed.js"></script>
 <script src="/resources/js/personalFeed/personalFeedHeader.js"></script>
+<script src="/resources/js/alram/alram.js"></script>

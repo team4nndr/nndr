@@ -224,6 +224,9 @@ main {
     background-color: #ffffff;
     border-radius: 50%;
 }
+.pulsnav:hover{
+    background-color: #EBEDF0;
+}
 .pulsnav>img{
     width: 25px;
     height: 25px;
@@ -234,30 +237,21 @@ main {
     position: relative;
     left: 271px;
     width: 240px;
-    height: 100px;
+    height: 40px;
     border: black solid 1px;
     background-color: #ffffff;
     display: none;
     top: -26px;
 }
 
-.noProfile{
-    display: flex;
-    align-items: center;
-    height: 50%;
-    cursor: pointer;
-}
 .noFriend{
     display: flex;
     align-items: center;
-    height: 50%;
+    height: 100%;
     cursor: pointer;
 }
 
 .noFriend:hover {
-    background-color: #EBEDF0;
-}
-.noProfile:hover {
     background-color: #EBEDF0;
 }
 
@@ -270,25 +264,25 @@ main {
 
 /* 검색창 드롭다운 영역 */
 
-.searchFrBox > label {
+#searchFrBox > label {
     margin-top: 22px;
-    width: 200px;
+    width: 300px;
 }
 
-.nndr-suggestions {
-    margin-top: 22px;
+.frsearch {
+    margin-top: 5px;
 }
 
-.nndr-suggestions > div {
+.frsearch > div {
     padding: 5px;
-    
     cursor: pointer;
     background-color: #f0f2f5;
     z-index: 999;
+    position: relative;
     /* background-color: white; */
 }
 
-.nndr-suggestions_pannel > div:hover {
+.searchList > div:hover {
     
     height: 30px;
     background-color: rgb(207, 204, 204);

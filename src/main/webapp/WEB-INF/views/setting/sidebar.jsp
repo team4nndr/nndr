@@ -31,6 +31,12 @@
                 <span>의견 보내기</span>
             </a>
         </li>
+        <li>
+            <a href="/setting/delete">
+                <img src="/resources/images/setting/delete.png" alt="회원 탈퇴" style="width: 30px;">
+                <span>회원 탈퇴</span>
+            </a>
+        </li>
     </ul>
 </section>
 
@@ -43,3 +49,5 @@
         
     };
 </script>
+
+<jsp:include page="/WEB-INF/views/common/footer.jsp"/>

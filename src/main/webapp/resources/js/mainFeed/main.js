@@ -179,17 +179,10 @@ const feedHiddenList = document.querySelectorAll(".feedContain");
 
 
 detailBtnList.forEach(detailBtn => {
-    feedHiddenList.forEach(feedHidden=>{
-    
-        detailBtn.addEventListener("click", e => {
-            e.stopPropagation();
-            feedHidden.classList.toggle("hidden");
-        });
-
-        feedHidden.addEventListener("click", e => {
-            e.stopPropagation();
-        });
-    })
+    detailBtn.addEventListener("click", e => {
+        e.stopPropagation();
+        e.currentTarget.children[0].classList.toggle("hidden");
+    });
 })
 
 /* 

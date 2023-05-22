@@ -118,6 +118,18 @@ public class friendController {
 		
 		return  service.friendListsearch(map);
 	}
-	
+	//친구 홈거절 눌렀을 때 
+		@GetMapping(value="/all/nobt")
+		@ResponseBody
+		public int friendDelete3(int friendNo) {
+			return service.friendDelete(friendNo);
+		}
+		
+//		모든친구 친구목록 비동기 처리
+		@GetMapping(value = "/all/birequest",  produces="application/json; charset=UTF-8")
+		@ResponseBody
+		public List<Friend> friendAll(@SessionAttribute("loginMember") Member member ) {
+			return  service.friendListAll(member.getMemberNo());
+		}
 	
 }

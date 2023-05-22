@@ -50,7 +50,7 @@ function addTextareaEvent(textarea) {
         }
     });
     textarea.addEventListener('keyup', e => {
-        if (e.keyCode == 13 && !e.shiftKey) {
+        if (e.keyCode == 13 && !e.shiftKey && e.target.matches(":focus")) {
             e.preventDefault();
             e.target.nextElementSibling.click();
         }
@@ -80,7 +80,7 @@ function submitReply(boardNo, parentReplyNo, btn) {
             replyContent = replyContent.replace('@' + obj.name, '<a class="mention-mark" href="/personalFeed/' + obj.memberNo + '">' + obj.name + '</a>');
         }
     }
- 
+
     const data = {
         "boardNo" : boardNo,
         "replyContent" : replyContent,
