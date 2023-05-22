@@ -46,7 +46,7 @@
                         </c:if>
                     </c:if>    
                 </div>
-                <h2 class="name">${infoMember.memberName}</h2>
+                <h2 class="perName">${infoMember.memberName}</h2>
                 <div class="main1-2">
                     <div class="myname2">
                         <c:if test="${infoMember.memberNo ne loginMember.memberNo}" > 

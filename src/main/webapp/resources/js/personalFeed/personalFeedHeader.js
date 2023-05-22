@@ -218,51 +218,55 @@ function cvCho(target){
 
 
 
+if(document.getElementById("uploadback") != null){
+    document.getElementById("uploadback").addEventListener("click", () => {
+        const personalCanFriend = new Array(perAddFriend.dataset.seno, perAddFriend.dataset.reno);
+        fetch("/personalCanFriend?personalCanFriend="+personalCanFriend)  
+        .then(response => response.text()) 
+        .then(() => {
+        }) 
+        .catch (e => { console.log(e)}); 
+        perAddFriend.innerText ="친구 추가";
+        perAddFriend.classList.remove('friendAdd');
+        return;
+    })
+}
 
-document.getElementById("uploadback").addEventListener("click", () => {
-    const personalCanFriend = new Array(perAddFriend.dataset.seno, perAddFriend.dataset.reno);
-    fetch("/personalCanFriend?personalCanFriend="+personalCanFriend)  
-    .then(response => response.text()) 
-    .then(() => {
-    }) 
-    .catch (e => { console.log(e)}); 
-    perAddFriend.innerText ="친구 추가";
-    perAddFriend.classList.remove('friendAdd');
-    return;
-})
-document.getElementById("delback").addEventListener("click", () => {
-    const memberNo = document.getElementById("delback").dataset.no; 
-    fetch("/delback?memberNo="+memberNo)  
-    .then(response => response.text()) 
-    .then(() => {}) 
-    .catch (e => { console.log(e)}); 
-    document.getElementById("backLogo").src = "/resources/images/topMenu/페이지 시작화면.gif";
-    document.getElementById("cv-set").style.display = "none";
-    console.log("asd");
-    return;
-})
+if(document.getElementById("uploadback") != null){
+    document.getElementById("uploadback").addEventListener("click", () => {
+        const memberNo = document.getElementById("delback").dataset.no; 
+        fetch("/delback?memberNo="+memberNo)  
+        .then(response => response.text()) 
+        .then(() => {}) 
+        .catch (e => { console.log(e)}); 
+        document.getElementById("backLogo").src = "/resources/images/topMenu/페이지 시작화면.gif";
+        document.getElementById("cv-set").style.display = "none";
+        console.log("asd");
+        return;
+    })
+}
 
-
-
-document.getElementById("backPlus").addEventListener("click", () => {
-    if(document.getElementById("cv-set").style.display == "none") {
-        document.getElementById("cv-set").style.display = "block";
-        document.getElementById("all").style.display = "block";
-        return
-    }
-    if(document.getElementById("cv-set").style.display == "") {
-        document.getElementById("cv-set").style.display = "block";
-        document.getElementById("all").style.display = "block";
-        
-        return
-    }
-})
-
-document.getElementById("all").addEventListener("click", () =>{
-    document.getElementById("cv-set").style.display = "none";
-    document.getElementById("all").style.display = "none";
-})
-    
+if(document.getElementById("backPlus") != null){
+    document.getElementById("backPlus").addEventListener("click", () => {
+        if(document.getElementById("cv-set").style.display == "none") {
+            document.getElementById("cv-set").style.display = "block";
+            document.getElementById("all").style.display = "block";
+            return
+        }
+        if(document.getElementById("cv-set").style.display == "") {
+            document.getElementById("cv-set").style.display = "block";
+            document.getElementById("all").style.display = "block";
+            
+            return
+        }
+    })
+}
+if(document.getElementById("all") != null){
+    document.getElementById("all").addEventListener("click", () =>{
+        document.getElementById("cv-set").style.display = "none";
+        document.getElementById("all").style.display = "none";
+    })
+}
 //프로필 변경
 // 배경화면 수정
 Array.from( document.getElementsByClassName("profi")).forEach((target) => target.addEventListener("click", function(){ 

@@ -99,6 +99,10 @@ button{
     height: 42px;
 }
 
+.perName{
+    width: 75%;
+}
+
 #homeLogo{
     position : relative;
     width: 160px;
