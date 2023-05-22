@@ -113,6 +113,25 @@ public class MemberInfoDAO {
 	}
 
 
+	/** 멤버 설정 조회
+	 * @param no
+	 * @return
+	 */
+	public Member personalInfo(int no) {
+		return sqlSession.selectOne("memberMapper.selectMember", no);
+	}
+
+
+	public int personalDel(Map<String, String> delMap) {
+		return sqlSession.delete("personalMapper.personalDel", delMap);
+	}
+
+
+	public int personalAccept(Map<String, String> acceptMap) {
+		return sqlSession.update("personalMapper.personalAccept", acceptMap);
+	}
+
+
 
 
 

@@ -45,4 +45,11 @@ public interface ReplyService {
 	 * @return result
 	 */
 	int update(Reply reply);
+	
+	/**
+	 * 댓글 갯수 조회
+	 * @param boardNo
+	 * @return count
+	 */
+	public int count(int boardNo);
 }

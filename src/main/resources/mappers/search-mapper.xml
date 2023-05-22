@@ -26,14 +26,14 @@
 		WHERE HASHTAG_KEYWORD LIKE '${hashtagKeyword}%'
 	</select>
 
-	<select id="friendNameList" resultMap="friend_rm">
-		SELECT MEMBER_NAME 
+<!-- 	<select id="friendNameList" resultMap="friend_rm">
+		SELECT MEMBER_NAME, MEMBER_NO
 		FROM FRIEND JOIN MEMBER ON FRIEND.FRIEND_SENDER = MEMBER.MEMBER_NO 
 		WHERE FRIEND_FL = 'Y' 
 		AND MEMBER_NO != #{memberNo}
 		AND MEMBER_NAME LIKE '%${fName}%'
 		ORDER BY MEMBER_NAME DESC
-	</select>
+	</select> -->
 
 
 	<!-- 친구 목록 불러오기 -->

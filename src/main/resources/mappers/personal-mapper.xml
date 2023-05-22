@@ -103,7 +103,7 @@
 	</resultMap>
 
 	<select id="personalMember" resultMap="memberInfo_rm">
-		SELECT * FROM "MEMBER" M LEFT JOIN "MEMBER_INFO" D ON (M.MEMBER_NO=D.MEMBER_NO) WHERE M.MEMBER_NO= #{no}
+		SELECT * FROM "MEMBER" M LEFT JOIN "MEMBER_INFO" D ON (M.MEMBER_NO=D.MEMBER_NO) WHERE M.MEMBER_NO= #{no} AND (MEMBER_CODE = 'N')
 	</select>
 	
 	<update id="infoIntro">
@@ -141,16 +141,16 @@
 	
 	
 	<select id="imgSet" resultMap="memberInfo_rm">
-		SELECT BOARD_NO, IMG_PATH, IMG_RENAME, UPLOAD_DATE FROM "IMAGE" LEFT JOIN "BOARD" USING(BOARD_NO) LEFT JOIN "MEMBER" USING(MEMBER_NO) WHERE MEMBER_NO = #{memberNo} AND ROWNUM<![CDATA[<]]>=3
+		SELECT MEMBER_NO, BOARD_NO, IMG_PATH, IMG_RENAME, UPLOAD_DATE FROM "IMAGE" LEFT JOIN "BOARD" USING(BOARD_NO) LEFT JOIN "MEMBER" USING(MEMBER_NO) WHERE MEMBER_NO = #{memberNo} AND ROWNUM<![CDATA[<]]>=3
 	</select>
 	
 	
 	<insert id="personalAdd">
-		INSERT INTO FRIEND VALUES(101, ${friendSender}, ${friendReciver}, DEFAULT)
+		INSERT INTO FRIEND VALUES(SEQ_FRIEND_NO.NEXTVAL, ${friendSender}, ${friendReciver}, DEFAULT)
 	</insert>
 	
 	<select id="perFriend" resultMap="personalFriend_rm">
-		SELECT * FROM FRIEND WHERE FRIEND_SENDER = ${friendSender} AND FRIEND_RECIVER=${friendReciver}
+		SELECT * FROM FRIEND WHERE (FRIEND_SENDER = ${friendSender} AND FRIEND_RECIVER=${friendReciver}) OR (FRIEND_SENDER = ${friendReciver} AND FRIEND_RECIVER=${friendSender})
 	</select>
 	
 	<delete id="personalCan">
@@ -194,6 +194,13 @@
 		ORDER BY IMG_ORDER DESC
 	
 	</select>
+	
+	<delete id="personalDel">
+		DELETE FROM FRIEND WHERE (FRIEND_SENDER = ${friendSender} AND FRIEND_RECIVER=${friendReciver}) OR (FRIEND_SENDER = ${friendReciver} AND FRIEND_RECIVER=${friendSender})
+	</delete>
+	<update id="personalAccept">
+		UPDATE FRIEND SET FRIEND_FL = 'Y' WHERE FRIEND_SENDER = ${friendReciver} AND FRIEND_RECIVER = ${friendSender}
+	</update>
 	
 	
 	<!--  이미지 수정 

@@ -19,7 +19,7 @@ public interface SearchService {
 	 * @param map
 	 * @return list
 	 */
-	List<Friend> friendNameList(Map<String, Object> map);
+	public List<Member> friendNameList(Map<String, Object> map);
 
 	
 	

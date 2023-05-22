@@ -5,19 +5,6 @@ const suggestion_pannel = document.querySelector(".nndr-suggestions_pannel");
 // 검색 버튼
 const searchBtn = document.getElementById("nndrSearchBtn");
 
-// 자동완성 데이터 초기 설정(친구 이름 검색 시)
-// let s_arr = [
-//     { name: "최팀장님", },
-//     { name: "장과장님" },
-//     { name: "조대리님" },
-//     { name: "정사원" },
-//     { name: "박사원" },
-//     { name: "이사원" },
-
-// ];
-
-
-
 // input 태그 이벤트
 search.addEventListener("input", e => {
 
@@ -66,8 +53,10 @@ search.addEventListener("input", e => {
     
                         div.onclick = () => {
                             const query = input_value.replace("%23", "#");
-                            query = div.innerHTML;
+                            // query = div.innerHTML;
                             suggestion_pannel.innerHTML = "";
+
+                            
                             return;
                         };
                     }
@@ -89,26 +78,46 @@ search.addEventListener("input", e => {
             if(friendNameList.length == 0){
                 const div = document.createElement("div");
                 div.classList.add("result");
-                div.innerText = "일치하는 태그가 없습니다.";
+                div.innerText = "일치하는 친구가 없습니다.";
                 suggestion_pannel.appendChild(div);
             }
 
             for(let names of friendNameList) {
+                if(names.memberNo == loginMemberNo) continue;
+
                 const div = document.createElement("div");
                 div.classList.add("result");
                 div.setAttribute("names", names.memberNo);
+                
+                const img = document.createElement("img");
+                if(names.profileImage != null){
+                    img.setAttribute("src", names.profileImage);
+                }else{
+                    img.setAttribute("src", "/resources/images/common/user-dafault.png");
+                }
 
                 if(fName.toLowerCase().startsWith(fName.toLowerCase())) {
                         
                     let div = document.createElement("div");
+                    div.classList.add("search-content");
+
+                    let p = document.createElement("p");
+                    p.classList.add("search-fName");
+
+                    let img = document.createElement("img");
+                    img.classList.add("memberProfileImage");
+                    
                     const fName = input_value;
-                    div.innerHTML = fName;
+                    p.innerHTML = fName;
+                    div.append(p);
+                    div.prepend(img);
                     suggestion_pannel.appendChild(div);
 
                     div.onclick = () => {
                         const fName = input_value;
-                        fName = div.innerHTML;
+                        // fName = div.innerHTML;
                         suggestion_pannel.innerHTML = "";
+                        location.href = "/personalFeed/" + names.memberNo;
                         return;
                     };
                 }
@@ -116,36 +125,12 @@ search.addEventListener("input", e => {
         });
 
     }
-    // } else {
-    //     if (input_value.startsWith(input_value) && input_value.trim().length > 1) {
-    //         console.log(input_value);
-    //         const friend = input_value
-    //         fetch("/mainFeed/freindNameList?friend=" + friend)
-    //             .then(resp => resp.json())
-    //             .then(friendNameList => {
-    
-    //                 console.log(friendNameList);
-    
-    //                 if (friend.toLowerCase().startsWith(friend.toLowerCase())) {
-    //                     let div = document.createElement("div");
-    //                     div.innerHTML = friend;
-    //                     suggestion_pannel.appendChild(div);
-    
-    //                     div.onclick = () => {
-    //                         input_value = div.innerHTML;
-    //                         suggestion_pannel.innerHTML = "";
-    //                         return;
-    //                     };
-    
-    //                 }
-    
-    //             })
-    //     }
+
+    if(input_value.length > 1) {}
     
     if (input_value == "") {
         suggestion_pannel.innerHTML = "";
     }
-        
 
 });
 
@@ -156,37 +141,9 @@ search.addEventListener("input", e => {
 
 
 
-// // 드롭다운 아이콘 구현
-// var dropdowns = document.getElementById("nndrBellDropdown");
-
-// const dropBtn1 = document.getElementById("nndrDropBtn1");
-// const dropBtn2 = document.getElementById("nndrDropBtn2");
-// const bellDropdown = document.getElementById("nndrBellDropdown");
-// const myDropdown = document.getElementById("nndrMyDropdown");
-// const thumsUp = document.getElementById("thumsUp");
-// const nndrOptionAlarm = document.getElementById("nndrOptionAlarm");
-// const nndrOptionAlarmContent = document.getElementById("nndrOptionAlarmContent");
-
-// function bell() {
-//     document.getElementById("nndrBellDropdown").classList.toggle("nndr-show");
 
 
-// }
 
-// window.onclick = function (e) {
-//     if (e.target.matches('.nndrDropBtn1')) {
-//         var dropdowns = document.getElementById("nndrBellDropdown");
-//         var i;
-//         for (i = 0; i < dropdowns.length; i++) {
-//             var openDropdown = dropdowns[i];
-//             if (openDropdown.classList.contains('nndr-show')) {
-//                 openDropdown.classList.remove('nndr-show');
-//             }
-//         }
-//     }
-
-
-// }
 
 // 알림 드롭다운 관련 요소
 const nndrDropBtn1 = document.getElementById("nndrDropBtn1"); // 알림 버튼
