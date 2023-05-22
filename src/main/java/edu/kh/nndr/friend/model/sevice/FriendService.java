@@ -37,4 +37,5 @@ public interface FriendService {
 	 */
 	List<Friend> friendListsearch(Map<String, Object> map);
 
+
 }

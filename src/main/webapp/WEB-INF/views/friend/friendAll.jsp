@@ -35,27 +35,32 @@
             </div>
             <div class="hr2"> <!-- 줄 -->
             </div>
-            <div id="friendRQBox">
-                <span id="friendRQ">친구 ${friendCount}명</span>
-            </div>
-            <c:forEach  var="allfriend" items="${friendListAll}">
-            <div class="frtopdiv">
-                <img class="proimg" src="/resources/images/friend/143086968_2856368904622192_1959732218791162458_n.png" alt="">
-                <div class="frbox"> <!--이름 + 확인,삭제-->
-                    <div class="namecount"><!--이름-->
-                        <div class="friendAll">
-                        <span class="friendName">${allfriend.memberName}</span>
-                        <span class="pulsnav"><img src="/resources/images/friend/free-icon-three-dots-6941941.png" alt="">
-                            </span>
-                                </div>
-                            <div class="frmenu"> 
-                                <div class="noProfile">${allfriend.memberName}님의 프로필 차단</div>
-                                <div class="noFriend">${allfriend.memberName}님과 친구 관계 끊기</div>
-                            </div>
-                    </div>
+            <div id="friendRQBoxCount">
+                <div id="friendRQBox">
+                    <span id="friendRQ">친구 ${friendCount}명</span>
                 </div>
             </div>
+            <div id="friendAllList">
+            <c:forEach  var="allfriend" items="${friendListAll}">
+                <div class="frtopdiv">
+                    <img class="proimg" src="/resources/images/friend/143086968_2856368904622192_1959732218791162458_n.png" alt="">
+                    <div class="frbox"> <!--이름 + 확인,삭제-->
+                        <div class="namecount"><!--이름-->
+                            <div class="friendAll">
+                            <span class="friendName">${allfriend.memberName}</span>
+                            <span class="pulsnav"><img src="/resources/images/friend/free-icon-three-dots-6941941.png" alt="">
+                                </span>
+                                    </div>
+                                <div class="frmenu"> 
+                                    <%-- <div class="noProfile">${allfriend.memberName}님의 프로필 차단</div> --%>
+                                    <div class="noFriend" onclick="refuse(${allfriend.friendNo})">${allfriend.memberName}님과 친구 관계 끊기</div>
+                                    <%-- <button class="noFriend" onclick="refuse(${friendRQ.friendNo})" >${allfriend.memberName}님과 친구 관계 끊기</button> --%>
+                                </div>
+                        </div>
+                    </div>
+                </div>
             </c:forEach>
+            </div>
         </div>
         <div id="mainfrbox"> <!--메인 피드-->
             <div id="mainbox">
