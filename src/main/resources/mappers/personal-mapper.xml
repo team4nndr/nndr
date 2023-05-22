@@ -150,7 +150,7 @@
 	
 	
 	<insert id="personalAdd">
-		INSERT INTO FRIEND VALUES(101, ${friendSender}, ${friendReciver}, DEFAULT)
+		INSERT INTO FRIEND VALUES(SEQ_FRIEND_NO.NEXTVAL, ${friendSender}, ${friendReciver}, DEFAULT)
 	</insert>
 	
 	<select id="perFriend" resultMap="personalFriend_rm">

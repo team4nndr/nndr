@@ -44,11 +44,10 @@ public class PersonalFeedController {
 	public String personalFeed(@RequestHeader(value="referer", required=false) String referer, Model model, @SessionAttribute("loginMember") Member loginMember, @PathVariable("no") int no, RedirectAttributes ra) {
 		MemberInfo infoMember = service.personalMember(no);
 		if(infoMember == null) {
-			String message = "없는 회원이거나 탈퇴한 회원입니다.";
+			String message = "없는 회원이거나 접근이 제한된 회원입니다.";
 			ra.addFlashAttribute("message",message);
 			String path ="redirect:";
-			path+= referer;
-			
+			path += referer;
 			return path;
 		}
 		model.addAttribute("infoMember", infoMember); // request scope
@@ -56,7 +55,7 @@ public class PersonalFeedController {
 		Map<String, Object> HobbyMap = service.selectHobbyList(no); 
 		model.addAttribute("HobbyMap", HobbyMap);
 		
-		List<MemberInfo> imgSet = service.imgSet(no);
+		List<Map<String, String>> imgSet = service.imgSet(no);
 		model.addAttribute("imgSet", imgSet);
 		
 		Map<String, Object> friendche = new HashMap<>();

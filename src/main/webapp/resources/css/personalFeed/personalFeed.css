@@ -99,6 +99,10 @@ button{
     height: 42px;
 }
 
+.perName{
+    width: 75%;
+}
+
 #homeLogo{
     position : relative;
     width: 160px;
@@ -251,7 +255,7 @@ button{
     
 }
 .so{
-    padding: 20px 0 0 15px;
+    padding: 20px 0 20px 15px;
     text-align: left;
     background-color: white;
     border-radius: 15px;
