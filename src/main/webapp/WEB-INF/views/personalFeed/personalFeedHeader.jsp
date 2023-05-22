@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="/resources/css/mainFeed/feed.css">
     
     <%-- <div class="flex-container"> --%>
-    <div id="memberInfo" data-senderMemberNo = "${loginMember.memberNo}" data-reciverMemberNo = "${infoMember.memberNo}"></div>
+    <div id="memberInfo" data-sender = "${loginMember.memberNo}" data-profile = "${infoMember.infoProfilePath}${infoMember.infoProfile}" data-href = "${infoMember.memberNo}" data-reciver = "${infoMember.memberNo}"></div>
         <div class="main-container1" >
             <c:if test="${infoMember.memberNo eq loginMember.memberNo}" > <%-- 일치 ㅇ--%>
                 <c:if test="${empty infoMember.infoBack}" >
