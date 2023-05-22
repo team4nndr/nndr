@@ -5,12 +5,14 @@
     font-weight: normal;
     font-style: normal;
 }
+
 * {
     font-family: 'NotoSansKR';
     box-sizing: border-box;
     padding: 0;
     margin: 0;
 }
+
 /********************************************************************/
 
 * {
@@ -28,10 +30,10 @@
     background-color: white;
     /* position: relative; */
     position: sticky;
-    top:0;
-    left:0;
+    top: 0;
+    left: 0;
     background-color: white;
-    z-index:999;
+    z-index: 999;
 }
 
 /* 홈 로고 영역 */
@@ -40,13 +42,13 @@
     display: grid;
 }
 
-.nndr-home-logo > a{
+.nndr-home-logo>a {
     height: 56px;
     padding-left: 100px;
     position: absolute;
 }
 
-.nndr-home-logo > a > img {
+.nndr-home-logo>a>img {
     width: 200px;
     height: 56px;
     object-fit: cover;
@@ -58,7 +60,7 @@
     display: flex;
     justify-content: center;
     padding: 6px;
-    padding-left: 470px;
+    padding-left: 280px;
     /* border: 1px solid black; */
     height: 50px;
     width: 1120px;
@@ -93,7 +95,7 @@
     display: grid;
     align-items: center;
 
-    padding-left: 25px;
+    padding-left: 28px;
     border-radius: 20px;
 }
 
@@ -105,481 +107,463 @@
     background-image: url(/resources/images/topMenu/topSearch.png);
     background-repeat: no-repeat;
     background-position: left;
-    background-size: 16px;
+    background-size: 21px;
+    margin-left: 5px;
 
-}
-
-/* 검색창 드롭다운 영역 */
-
-.nndr-search-area > div {
-    margin-top: 22px;
-    width: 200px;
-}
-
-.nndr-suggestions {
-    margin-top: 22px;
-}
-
-.nndr-suggestions > div {
-    padding: 5px;
-    height: 56px;
-    border-radius: 5px;
-    cursor: pointer;
-    background-color: #f0f2f5;
-    z-index: 999;
-    /* background-color: white; */
-    display: flex;
-    
-    
-}
-
-.nndr-suggestions_pannel > img {
-    
-}
-
-
-.nndr-suggestions_pannel > div:hover {
-    height: 56px;
-    box-shadow: #a4a6aa;
-    border-radius: 7px;
-    height: 30px;
-    background-color: rgb(207, 204, 204);
-    z-index: 999;
-    /* background-color: white; */
-}
-
-/* 홈버튼, 친구버튼 영역 */
-.nndr-top-menu {
-    height: 56px;
-    border-bottom: 1px solid #ccc;
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
-    margin-right: 152px;
-}
-
-.nndr-top-menu ul {
-    display: flex;
-    flex-direction: row;
-    align-content: center;
-}
-
-.nndr-menu li {
-    list-style: none;
-    display: flex;
-    flex-direction: row;
-}
-
-.nndr-top-menu .nndr-menu > li a {
-    display: flex;
-    padding: 3px;
-    height: 45px;
-    width: 105px;
-    justify-content: center;
-}
-
-/* 상단 Dropdown button 영역 */
-#nndrDropdownBox {
-    border-bottom: 1px solid #ccc;
-    display: flex;
-    flex-direction: row;
-    height: 56px;
-    justify-content: center;
-    align-items: center;
-}
-
-
-
-#nndrDropdown2 {
-    position: relative;
-    display: inline-block;
-}
-
-
-.nndr-dropdown-content1 a {
-    color: black;
-    padding: 12px 16px;
-    text-decoration: none;
-    display: block;
-    /* width: 400px; */
-    height: 49px;
-}
-
-.nndr-dropdown-content2 a {
-    color: black;
-    padding: 12px 16px;
-    text-decoration: none;
-    display: block;
-    width: 300px;
-}
-
-/* #nndrDropBtn1>img { */
-#nndrImage3 {
-
-    height: 40px;
-    padding: 3px;
-
-    filter: invert(61%) sepia(5%) saturate(3719%) hue-rotate(150deg) brightness(101%) contrast(83%);
-    cursor: pointer;
-    border: none;
-    outline: none;
-}
-
-
-
-#nndrMainFeedBtn>#nndrDropBtn1,
-#nndrDropBtn1:focus {
-    border: none;
-    background-color: white;
-    width: 50px;
-    display: flex;
-    justify-content: center;
-}
-
-#nndrImage2 {
-    filter: invert(61%) sepia(5%) saturate(3719%) hue-rotate(150deg) brightness(101%) contrast(83%);
-}
-
-#nndrDropBtn2>img {
-    height: 47px;
-    padding: 3px;
-    cursor: pointer;
-    filter: invert(61%) sepia(5%) saturate(3719%) hue-rotate(150deg) brightness(101%) contrast(83%);
-}
-
-#nndrDropBtn2 {
-    width: 50px;
-}
-
-#nndrDropBtn2,
-#nndrDropBtn2:focus {
-    border: none;
-    background-color: white;
-    width: 50px;
-    display: flex;
-    justify-content: center;
-}
-
-/* 알람 드롭다운 메뉴 */
-.nndr-dropdown-menu, #nndrMyDropdown {
-    margin-top: 15px;
-    z-index: 9999;
-    background-color: white;
-}
-
-#nndrBellDropdown {
-    width: 450px;
-    /* margin-top: 10px; */
-    /* z-index: 9999; */
-    /* background-color: white; */
-}
-
-/* 
-#nndrBellDropdown > .nndr-dropdown-content1 {
-    display: flex;
-    flex-direction: column;
-    position: absolute;
-    background-color: #ccc;
-    
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
-    padding: 0px 10px 10px 10px;
-
-} */
-
-
-/* #nndrMyDropdown > .nndr-dropdown-content2 {
-    display: flex;
-    flex-direction: column;
-    position: absolute;
-    background-color: #ccc;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
-} */
-
-
-
-/* 상단바 admin 아이콘 */
-.nndrAdminSetting{
-    height: 56px;
-    border-bottom: 1px solid #ccc;
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
-    margin-right: 152px;
+    -webkit-user-drag: none;
+    -khtml-user-drag: none;
+    -moz-user-drag: none;
+    -o-user-drag: none;
     user-select: none;
 }
 
-#nndrAdminImg{
-    height: 40px;
-    padding: 3px;
-}
+    /* 검색창 드롭다운 영역 */
 
-/* 상단바 아이콘 hover */
-#nndrHomeBtn>.nndrMainFeedBtn{
-    width: 50px;
-}
+    .nndr-search-area>div {
+        margin-top: 22px;
+        width: 200px;
+    }
 
-#nndrFriendBtn>.nndrMainFeedBtn {
-    width: 50px;
-}
+    .nndr-suggestions {
+        margin-top: 22px;
+    }
 
-.nndr-top-menu > .nndr-menu>li:nth-child(1)>.nndrMainFeedBtn:hover {
-    background-color: #ccc;
-    border-radius: 5px;
-    width: 50px;
-}
+    .nndr-suggestions>div {
+        padding: 5px;
+        height: 56px;
+        border-radius: 5px;
+        cursor: pointer;
+        background-color: white;
+        box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.5);
+        z-index: 999;
+        /* background-color: white; */
+        display: flex;
+    }
 
-.nndr-top-menu>.nndr-menu>li:nth-child(2)>.nndrMainFeedBtn:hover {
-    background-color: #ccc;
-    border-radius: 5px;
-    width: 50px;
-}
+    /* 친구 검색시 친구유저 닉네임 */
+    #nndrSearchBox>div.nndr-suggestions.nndr-suggestions_pannel>div>p {
+        padding: 10px 0 0 10px;
+    }
 
-#nndrDropBtn1:hover {
-    background-color: #ccc;
-    border-radius: 5px;
-    width: 50px;
-}
+    /*  */
+    /* 친구 검색 시 프로필 이미지 */
+    #nndrSearchBox>div.nndr-suggestions.nndr-suggestions_pannel>div>img {
+        height: 40px;
+        width: 40px;
+        border-radius: 50px;
+        margin-top: 4px;
+    }
 
-#nndrDropBtn2:hover {
-    background-color: #ccc;
-    border-radius: 5px;
-    width: 50px;
-    cursor: pointer;
-}
 
-/* .nndr-dropdown-content1 a:hover {
+    .nndr-suggestions_pannel>div:hover {
+        height: 56px;
+        box-shadow: #a4a6aa;
+        border-radius: 7px;
+        background-color: rgb(207, 204, 204);
+        z-index: 999;
+        /* background-color: white; */
+    }
+
+    /* 홈버튼, 친구버튼 영역 */
+    .nndr-top-menu {
+        height: 56px;
+        border-bottom: 1px solid #ccc;
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        margin-right: 80px;
+    }
+
+    .nndr-top-menu ul {
+        display: flex;
+        flex-direction: row;
+        align-content: center;
+    }
+
+    .nndr-menu li {
+        list-style: none;
+        display: flex;
+        flex-direction: row;
+    }
+
+    .nndr-top-menu .nndr-menu>li a {
+        display: flex;
+        padding: 3px;
+        height: 45px;
+        width: 105px;
+        justify-content: center;
+    }
+
+    /* 상단 Dropdown button 영역 */
+    #nndrDropdownBox {
+        border-bottom: 1px solid #ccc;
+        display: flex;
+        flex-direction: row;
+        height: 56px;
+        justify-content: center;
+        align-items: center;
+    }
+
+
+
+    #nndrDropdown2 {
+        position: relative;
+        display: inline-block;
+    }
+
+
+    .nndr-dropdown-content1 a {
+        color: black;
+        padding: 12px 16px;
+        text-decoration: none;
+        display: block;
+        /* width: 400px; */
+        height: 49px;
+    }
+
+    .nndr-dropdown-content2 a {
+        color: black;
+        padding: 12px 16px;
+        text-decoration: none;
+        display: block;
+        width: 300px;
+    }
+
+    /* #nndrDropBtn1>img { */
+    #nndrImage3 {
+        height: 40px;
+        padding: 3px;
+
+        filter: invert(61%) sepia(5%) saturate(3719%) hue-rotate(150deg) brightness(101%) contrast(83%);
+        cursor: pointer;
+        border: none;
+        outline: none;
+    }
+
+    #nndrMainFeedBtn>#nndrDropBtn1,
+    #nndrDropBtn1:focus {
+        border: none;
+        background-color: white;
+        width: 50px;
+        display: flex;
+        justify-content: center;
+    }
+
+    #nndrImage2 {
+        filter: invert(61%) sepia(5%) saturate(3719%) hue-rotate(150deg) brightness(101%) contrast(83%);
+    }
+
+    #nndrDropBtn2>img {
+        width: 80%;
+        height: 85%;
+    }
+
+    #nndrDropBtn2,
+    #nndrDropBtn2:focus {
+        border: none;
+
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    /* 알람 드롭다운 메뉴 */
+    .nndr-dropdown-menu,
+    #nndrMyDropdown {
+        margin-top: 15px;
+        z-index: 9999;
+        background-color: white;
+    }
+
+    #nndrBellDropdown {
+        width: 450px;
+        /* margin-top: 10px; */
+        /* z-index: 9999; */
+        /* background-color: white; */
+    }
+
+    /* 상단바 admin 아이콘 */
+    .nndrAdminSetting {
+        height: 56px;
+        border-bottom: 1px solid #ccc;
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        margin-right: 152px;
+        user-select: none;
+    }
+
+    #nndrAdminImg {
+        height: 40px;
+        padding: 3px;
+    }
+
+    /* 상단바 아이콘 hover */
+    #nndrHomeBtn>.nndrMainFeedBtn {
+        width: 50px;
+    }
+
+    #nndrFriendBtn>.nndrMainFeedBtn {
+        width: 50px;
+    }
+
+    .nndr-top-menu>.nndr-menu>li:nth-child(1)>.nndrMainFeedBtn:hover {
+        background-color: #ccc;
+        border-radius: 5px;
+        width: 50px;
+    }
+
+    .nndr-top-menu>.nndr-menu>li:nth-child(2)>.nndrMainFeedBtn:hover {
+        background-color: #ccc;
+        border-radius: 5px;
+        width: 50px;
+    }
+
+    #nndrDropBtn1:hover {
+        background-color: #ccc;
+        border-radius: 5px;
+        width: 50px;
+    }
+
+    #nndrDropBtn2:hover {
+        background-color: #ccc;
+        border-radius: 5px;
+        width: 50px;
+        cursor: pointer;
+    }
+
+    /* .nndr-dropdown-content1 a:hover {
     background-color: #f1f1f1;
 
 } */
 
-.nndr-dropdown-content2 a:hover {
-    background-color: #f1f1f1;
-}
+    .nndr-dropdown-content2 a:hover {
+        background-color: #f1f1f1;
+    }
 
-.nndr-show {
-    display: block;
-}
-
-
-/* 알림창 내부 옵션 관련 스타일 */
-#nndrAlarm {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 5px;
-}
+    .nndr-show {
+        display: block;
+    }
 
 
-#nndrAlarm div:nth-child(1){
-    font-size: 25px;
-    font-weight: bold;
-    margin: 10px 0px 10px 6px;
-}
-
-#nndrAlarm div:nth-child(2)>image{
-    width: 30px;
-    height: 30px;
-}
+    /* 알림창 내부 옵션 관련 스타일 */
+    #nndrAlarm {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 5px;
+    }
 
 
-#nndrOptionAlarm{
-    width: 30px;
-    height: 30px;
-    cursor: pointer;
-}
+    #nndrAlarm div:nth-child(1) {
+        font-size: 25px;
+        font-weight: bold;
+        margin: 10px 0px 10px 6px;
+    }
 
-#nndrOptionAlarm > img {
-    width: 30px;
-    height: 30px;
-    pointer-events: none;
-    user-select: none;
-}
-
-#nndrOptionAlarm:hover {
-    border-radius: 50px;
-    background-color: #ccc;
-}
-
-/* 알람 옵션 내용 (모두 읽은 상태로 표시 및 알림 설정) */
-#nndrOptionAlarmContent {
-    font-size: 15px;
-    display: block;
-    position: absolute; right: 15px; top: 15px;
-    width: 200px;
-    height: 100px;
-    background-color: white;
-    border: 1px solid black;
-    right: 30px;
-    bottom: 20px;
-}
-#nndrOptionAlarmContent > a:hover {
-    background-color: #eee;
-    transition-duration: 0.2s;
-    cursor: pointer;
-}
-
-/* 알람 읽음,읽지 않음 표시 */
-.nndrAlarmRead{
-    display: flex;
-    margin-left: 10px;
-}
-
-.nndrAllAlarm{
-    margin: 0px 10px 0px 10px ;
-    width: 80px;
-    height: 30px;
-    background-color: #ccc;
-    cursor: pointer;
-    border-radius: 15px;
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.nndrAllAlarm:hover{
-    color: white;
-    background-color: dodgerblue;
-    
-}
-
-.nndrAlarmNotRead{
-    width: 120px;
-    height: 30px;
-    background-color: #ccc;
-    cursor: pointer;
-    border-radius: 15px;
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    #nndrAlarm div:nth-child(2)>image {
+        width: 30px;
+        height: 30px;
+    }
 
 
-}
+    #nndrOptionAlarm {
+        width: 30px;
+        height: 30px;
+        cursor: pointer;
+    }
 
-.nndrAlarmNotRead:hover{
-    color: white;
-    background-color: lightcoral;
-}
+    #nndrOptionAlarm>img {
+        width: 30px;
+        height: 30px;
+        pointer-events: none;
+        user-select: none;
+    }
+
+    #nndrOptionAlarm:hover {
+        border-radius: 50px;
+        background-color: #ccc;
+    }
+
+    /* 알람 옵션 내용 (모두 읽은 상태로 표시 및 알림 설정) */
+    #nndrOptionAlarmContent {
+        font-size: 15px;
+        display: block;
+        position: absolute;
+        right: 15px;
+        top: 15px;
+        width: 200px;
+        height: 100px;
+        background-color: white;
+        border: 1px solid black;
+        right: 30px;
+        bottom: 20px;
+    }
+
+    #nndrOptionAlarmContent>a:hover {
+        background-color: #eee;
+        transition-duration: 0.2s;
+        cursor: pointer;
+    }
+
+    /* 알람 읽음,읽지 않음 표시 */
+    .nndrAlarmRead {
+        display: flex;
+        margin-left: 10px;
+    }
+
+    .nndrAllAlarm {
+        margin: 0px 10px 0px 10px;
+        width: 80px;
+        height: 30px;
+        background-color: #ccc;
+        cursor: pointer;
+        border-radius: 15px;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .nndrAllAlarm:hover {
+        color: white;
+        background-color: dodgerblue;
+
+    }
+
+    .nndrAlarmNotRead {
+        width: 120px;
+        height: 30px;
+        background-color: #ccc;
+        cursor: pointer;
+        border-radius: 15px;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
 
 
-/* 알람 내용 표시 관련 회원 프로필 이미지 및 내용 */
-.nndrAddContainer{
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    height: 100%;
-    background-color: red;
-}
+    }
 
-.nndrAddAlarm{
-    margin-top: 10px;
-    display: flex;
-    
-    align-items: center;
-}
-
-.nndrAlarmContent{
-    display: flex;
-    margin-top: 5px;
-}
-
-.nndrAddAlarm a:nth-child(1){
-    width: 40px;
-    
-}
-
-.topMyProfile{
-    width: 30px;
-    height: 30px;
-}
-.topMyProfile:hover{
-    background-color: #cacaca;
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-}
-
-/* 알람 삭제 태그 */
-.nndr-top-alarm-delete{
-    display: flex;
-    align-items: center;
-    position: absolute;
-    right: 10px;
-    /* align-self: flex-end; */
-    /* margin-right: 10px; */
-    cursor: pointer;
-}
-.nndr-top-alarm-delete:hover{
-    color: red;
-    font-weight: bold;
-}
+    .nndrAlarmNotRead:hover {
+        color: white;
+        background-color: lightcoral;
+    }
 
 
+    /* 알람 내용 표시 관련 회원 프로필 이미지 및 내용 */
+    .nndrAddContainer {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        height: 100%;
+        background-color: red;
+    }
 
-/* 드롭다운 공통 */
-.nndr-dropdown-menu {
-    position: absolute;
-    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.5);
-    top  : 40px;
-    right: 5px;
-    border-radius: 15px;
-}
-.nndr-dropdown-button {
-    cursor: pointer;
-    width: 50px;
-    height: 45px;
-}
-.nndr-dropdown-button:hover {
-    background-color: #ccc;
-    border-radius: 5px;
-}
+    .nndrAddAlarm {
+        margin-top: 10px;
+        display: flex;
+
+        align-items: center;
+    }
+
+    .nndrAlarmContent {
+        display: flex;
+        margin-top: 5px;
+    }
+
+    .nndrAddAlarm a:nth-child(1) {
+        width: 40px;
+
+    }
+
+    .topMyProfile {
+        width: 30px;
+        height: 30px;
+    }
+
+    .topMyProfile:hover {
+        background-color: #cacaca;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+    }
+
+    /* 알람 삭제 태그 */
+    .nndr-top-alarm-delete {
+        display: flex;
+        align-items: center;
+        position: absolute;
+        right: 10px;
+        /* align-self: flex-end; */
+        /* margin-right: 10px; */
+        cursor: pointer;
+    }
+
+    .nndr-top-alarm-delete:hover {
+        color: red;
+        font-weight: bold;
+    }
 
 
 
+    /* 드롭다운 공통 */
+    .nndr-dropdown-menu {
+        position: absolute;
+        box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.5);
+        top: 40px;
+        right: 5px;
+        border-radius: 15px;
+    }
 
+    .nndr-dropdown-button {
+        cursor: pointer;
+        width: 50px;
+        height: 45px;
+    }
 
+    .nndr-dropdown-button:hover {
+        background-color: #ccc;
+        border-radius: 5px;
+    }
 
+    /* 내정보 드롭다운 메뉴 */
+    #nndrMyDropdown a:first-child {
+        border-radius: 15px 15px 0 0;
+    }
 
-/* 내정보 드롭다운 메뉴 */
-#nndrMyDropdown a:first-child { border-radius: 15px 15px 0 0; }
-#nndrMyDropdown a:last-child { border-radius: 0 0 15px 15px; }
-#nndrImage4 {
-    pointer-events: none;
-    user-select: none;
-    background: none;
-}
-/* #nndrDropBtn2 {
-    cursor: pointer;
-    width: 50px;
-} */
-/* #nndrDropBtn2:hover {
-    background-color: #ccc;
-    border-radius: 5px;
-} */
+    #nndrMyDropdown a:last-child {
+        border-radius: 0 0 15px 15px;
+    }
 
-/* 알림 - dropdown */
-#nndrDropdown1 {
-    position: relative;
-    flex-direction: column;
-}
-#nndrImage3 {
-    pointer-events: none;
-    user-select: none;
-    background: none;
-}
-#nndrDropBtn1 {
-    /* cursor: pointer;
-    width: 50px;
-    height: 45px; */
+    #nndrImage4 {
+        pointer-events: none;
+        user-select: none;
+        background: none;
+    }
 
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-/* #nndrDropBtn1:hover {
-    background-color: #ccc;
-    border-radius: 5px;
-} */
+    /* 알림 - dropdown */
+    #nndrDropdown1 {
+        position: relative;
+        flex-direction: column;
+    }
 
-/* 윈도우 창 띄웠다 지웠다 */
-.hidden { display: none !important; }
+    #nndrImage3 {
+        pointer-events: none;
+        user-select: none;
+        background: none;
+        width: 49px;
+        height: 47px;
+    }
+
+    #nndrDropBtn1 {
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    /* 윈도우 창 띄웠다 지웠다 */
+    .hidden {
+        display: none !important;
+    }

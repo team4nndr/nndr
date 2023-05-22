@@ -34,6 +34,7 @@ search.addEventListener("input", e => {
                     const div = document.createElement("div");
                     div.classList.add("result");
                     div.innerText = "일치하는 태그가 없습니다.";
+                    div.style = "padding-top: 15px;"
                     suggestion_pannel.appendChild(div);
                 }
                 
@@ -49,6 +50,7 @@ search.addEventListener("input", e => {
                         let div = document.createElement("div");
                         const query = input_value.replace("%23", "#");
                         div.innerHTML = query;
+                        div.style = "padding-top: 15px;"
                         suggestion_pannel.appendChild(div);
     
                         div.onclick = () => {
@@ -78,7 +80,8 @@ search.addEventListener("input", e => {
             if(friendNameList.length == 0){
                 const div = document.createElement("div");
                 div.classList.add("result");
-                div.innerText = "일치하는 친구가 없습니다.";
+                div.innerText = "일치하는 검색어가 없습니다.";
+                div.style = "padding-top: 15px;"
                 suggestion_pannel.appendChild(div);
             }
 
@@ -90,22 +93,18 @@ search.addEventListener("input", e => {
                 div.setAttribute("names", names.memberNo);
                 
                 const img = document.createElement("img");
-                if(names.profileImage != null){
-                    img.setAttribute("src", names.profileImage);
-                }else{
-                    img.setAttribute("src", "/resources/images/common/user-dafault.png");
-                }
-
+                
                 if(fName.toLowerCase().startsWith(fName.toLowerCase())) {
-                        
+                    
                     let div = document.createElement("div");
                     div.classList.add("search-content");
-
+                    
                     let p = document.createElement("p");
                     p.classList.add("search-fName");
-
+                    
                     let img = document.createElement("img");
                     img.classList.add("memberProfileImage");
+                    
                     
                     const fName = input_value;
                     p.innerHTML = fName;
@@ -113,10 +112,16 @@ search.addEventListener("input", e => {
                     div.prepend(img);
                     suggestion_pannel.appendChild(div);
 
+                    if(names.profileImage != null){
+                        img.setAttribute("src", names.profileImage);
+                    }else{
+                        img.setAttribute("src", "/resources/images/common/user-default.png");
+                    }
+
                     div.onclick = () => {
                         const fName = input_value;
                         // fName = div.innerHTML;
-                        suggestion_pannel.innerHTML = "";
+                        // suggestion_pannel.innerHTML = "";
                         location.href = "/personalFeed/" + names.memberNo;
                         return;
                     };
@@ -133,16 +138,6 @@ search.addEventListener("input", e => {
     }
 
 });
-
-
-
-
-
-
-
-
-
-
 
 
 // 알림 드롭다운 관련 요소

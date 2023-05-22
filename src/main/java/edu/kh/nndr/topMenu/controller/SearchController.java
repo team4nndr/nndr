@@ -36,11 +36,12 @@ public class SearchController {
     @GetMapping(value="/mainFeed/friendNameList", produces="application/json; charset=UTF-8")
     @ResponseBody
     public List<Member> friendNameList(@RequestParam("fName") String fName, @SessionAttribute("loginMember") Member loginMember){
+
     	Map<String, Object> map = new HashMap<>();
     	map.put("memberNo", loginMember.getMemberNo());
     	map.put("query", fName);
     	
-    	List<Member> list = service.friendNameList(map);
+    	System.out.println(map);
     	
     	return service.friendNameList(map);
     }
@@ -50,8 +51,6 @@ public class SearchController {
 //	public String 
 //	
 //
-    
-
 
 }
 
