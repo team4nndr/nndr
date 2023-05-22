@@ -74,6 +74,6 @@ public class ReplyDAO {
 	 * @return count
 	 */
 	public int count(int boardNo) {
-		return sqlSession.delete("replyMapper.count", boardNo);
+		return sqlSession.selectOne("replyMapper.count", boardNo);
 	}
 }

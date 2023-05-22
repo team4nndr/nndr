@@ -89,7 +89,7 @@
 	</update>
 	
 	<!-- 특정 게시글 댓글 개수 확인 -->
-	<select id="count">			
+	<select id="count" resultType="_int">			
 		SELECT  COUNT(*)
 		FROM   "REPLY"
 		WHERE   BOARD_NO = ${boardNo}
