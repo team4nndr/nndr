@@ -16,6 +16,7 @@
     <link rel="stylesheet" href="/resources/css/mainFeed/reply.css">
     <link rel="stylesheet" href="/resources/css/mainFeed/feed.css">
     <link rel="shortcut icon" href="#" />
+    
 </head>
 <body>
 <div id="all"></div>
@@ -174,7 +175,6 @@
             <%-- 피드 작성 + 피드 목록 --%>
             <%-- 피드 작성 + 피드 목록 --%>
             <%-- 피드 작성 + 피드 목록 --%>
-                    <section class="mainView">
         
                         <div class="feed-list">
 
@@ -221,7 +221,6 @@
                         </div>
                         
 
-                    </section>
                 </div>
             </div>
         </div>
@@ -229,5 +228,7 @@
     <script src="/resources/js/personalFeed/personalFeed.js"></script>
     <script src="/resources/js/mainFeed/main.js"></script>
     <script src="/resources/js/mainFeed/reply.js"></script>
+    <jsp:include page="/WEB-INF/views/common/footer.jsp"/>
+                        
 </body>
 </html>
