@@ -67,4 +67,13 @@ public class ReplyDAO {
 	public int update(Reply reply) {
 		return sqlSession.update("replyMapper.update", reply);
 	}
+
+	/**
+	 * 댓글 갯수 조회
+	 * @param boardNo
+	 * @return count
+	 */
+	public int count(int boardNo) {
+		return sqlSession.delete("replyMapper.count", boardNo);
+	}
 }

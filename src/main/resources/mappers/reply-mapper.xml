@@ -88,6 +88,14 @@
 		WHERE 	BOARD_NO = ${boardNo}
 	</update>
 	
+	<!-- 특정 게시글 댓글 개수 확인 -->
+	<select id="count">			
+		SELECT  COUNT(*)
+		FROM   "REPLY"
+		WHERE   BOARD_NO = ${boardNo}
+		        AND REPLY_DELETE = 'N'
+	</select>
+	
 	<!-- 댓글 삭제(대댓글도 삭제) -->
 	<update id="delete">			
 		UPDATE "REPLY"
