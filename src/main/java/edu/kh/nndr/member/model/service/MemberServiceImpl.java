@@ -18,21 +18,46 @@ public class MemberServiceImpl implements MemberService {
 	@Autowired
 	private MemberDAO dao;
 	
+	@Autowired
+	private BCryptPasswordEncoder bcrypt;
+	
 	@Override
 	public Member test() {
 		return dao.test();
 	}
 
-	// 로그인(임시)
+	// 로그인
 	@Override
 	public Member login(Map<String, Object> map) {
-		return dao.login(map);
+		
+		Member loginMember =  dao.login(map); //DB의 정보를 담기위해 Member객체 생성
+		
+		if(map != null) { 
+			
+			if(bcrypt.matches((String)map.get("memberPw"), loginMember.getMemberPw())){ 
+				
+				// 비밀번호를 유지하지 않기 위해서 로그인 정보에서 제거
+				loginMember.setMemberPw(null); 
+				
+			}else { // 다를 경우
+				loginMember = null; // 로그인 실패처럼 만듦
+				
+			}
+			
+		}
+		
+		return loginMember;
+		
 	}
 	
 	// 회원 가입 서비스
 	@Transactional(rollbackFor = {Exception.class})
 	@Override
 	public int signUp(Member inputMember) {
+		
+		// 비밀번호를 BCrypt를 이용하여 암호화 후 다시 inputMember에 세팅
+		String encPw = bcrypt.encode(inputMember.getMemberPw());
+		inputMember.setMemberPw(encPw);
 		
 		// DAO 호출
 		// 실패하면 0 성공하면 회원번호

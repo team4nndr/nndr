@@ -2,6 +2,8 @@ package edu.kh.nndr.main.controller;
 
 import java.util.Map;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -27,6 +29,14 @@ public class EmailController {
         return service.signUp(email, "회원 가입");
         
     }
+    // 비밀번호 찾기 이메일 찾기
+    @GetMapping("/findEmail")
+    @ResponseBody
+    public int findEmail(String email) {
+    	
+    	return service.signUp(email, "내 계정 찾기");
+    	
+    }
     
     // 이메일 인증(회원 가입)
     @GetMapping("/checkAuthKey")
@@ -36,6 +46,18 @@ public class EmailController {
     	System.out.println(paramMap); // {inputKey=wc3rxG, email=knbdh@nate.com} 인증번호 담겨서
         
         return service.checkAuthKey(paramMap);
+    }
+    
+    // 이메일 인증(비밀번호 찾기)
+    @GetMapping("/findCheck")
+    @ResponseBody
+    public int findCheck(@RequestParam Map<String, Object> paramMap,HttpSession session) {
+    	
+    	System.out.println(paramMap);
+    	
+    	session.setAttribute("findEmail", paramMap.get("email"));
+    	
+    	return service.findCheck(paramMap);
     }
     
 }

@@ -19,5 +19,12 @@
 		WHERE EMAIL = #{email}
 		AND CODE = #{inputKey}
 	</select>
-
+	
+	<select id="findCheck" resultType="int">
+		SELECT COUNT(*) FROM "AUTH_KEY"
+		WHERE EMAIL = #{email}
+		AND CODE = #{inputKey}
+	</select>
+	
+	
 </mapper>

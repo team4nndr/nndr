@@ -32,19 +32,23 @@
             <div class="found2">
                 
                 <div class="margin">비밀번호를 입력하시오.</div>
-                    <form action="#" method="POST" name="inputEmail">
-                        <input type="password" class="inputText" placeholder="비밀번호 입력"></form> 
+
+                    <form action="changePw" method="POST" name="inputEmail" id="changePwFrm">
+
+                        <input type="password" class="inputText" id="newPw" name="newPw" maxlength="30" placeholder="새 비밀번호 입력"> 
+
                 <div class="line2"></div>
 
                 <div>
-                    <form action="#" method="POST" name="certification">
-                        <input type="password" class="inputText" placeholder="새 비밀번호 입력"></form>
+                    <input type="password" class="inputText" id="newPwConfirm" maxlength="30" placeholder="새 비밀번호 확인">
                 </div>
 
                 <div class="cancelBox">
                     <a class="cancel">취소</a>
-                        <button type="button" class="buttonBtn">확인</button>
+                    <button type="submit" class="buttonBtn">확인</button>
                 </div>
+
+                </form>
             </div>
         </div>
     </div>
@@ -57,6 +61,7 @@
 
 
     <script src="/resources/js/main/forgetPw.js"></script>
+    <script src="/resources/js/main/newPw.js"></script>
 
 </body>
 </html>

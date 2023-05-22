@@ -54,12 +54,11 @@
                     <form action="#" method="POST" name="certification">
                         <input type="email" id="inputText" class="inputText" placeholder="이메일 인증 입력">
                     </form>
-
                     <button id="checkAuthKeyBtn" type="button">인증하기</button>
                 </div>
                 <div class="cancelBox">
-                    <a class="cancel" href="/main/forgetPw/newPw">취소</a>
-                    <button type="button" class="buttonBtn" id="buttonBtn">검색</button>
+                    <a class="cancel" >취소</a>
+                    <button type="button" class="buttonBtn" id="buttonBtn">확인</button>
                 </div>
             </div>
         </div>

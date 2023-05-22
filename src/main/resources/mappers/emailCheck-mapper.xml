@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="emailCheckMapper">
 	
-	<!-- 이메일 확인 (비밀번호 바꾸기) -->	
+	<!-- 이메일 확인 (비밀번호 바꾸기 탭) -->	
 	<select id="emailCheck" resultType="int">
 		SELECT COUNT(*)  
 		FROM "MEMBER"
@@ -16,11 +16,30 @@
 		WHERE MEMBER_EMAIL = #{inputEmail}
 	</select>
 	
-	<!-- 이메일 유효성 (비밀번호 바꾸기)-->
+	<!-- 이메일 유효성 (비밀번호 바꾸기 탭)-->
 	<select id="emailDup" resultType="int">
 		SELECT COUNT(*)  
 		FROM "MEMBER"
 		WHERE MEMBER_EMAIL = #{emailDup}
 	</select>
+	
+	<!-- 비밀번호 조회 -->
+	<select id="selectEncPw" resultType="String">
+		SELECT MEMBER_PW FROM "MEMBER" 		
+		WHERE MEMBER_NO = #{memberNo}
+	</select>
+	
+	<update id="changePw">
+		UPDATE "MEMBER"
+		SET MEMBER_PW = #{memberPw}
+		WHERE MEMBER_NO = #{memberNo}
+	</update>
+	
+	<update id="changePw_find">
+		UPDATE "MEMBER"
+		SET MEMBER_PW = #{memberPw}
+		WHERE MEMBER_EMAIL = #{memberEmail}
+		AND DISABLE_DATE IS NULL  
+	</update>
 	
 </mapper>
