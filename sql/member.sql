@@ -144,20 +144,20 @@ COMMIT;
 
 -- MEMBER 샘플 데이터 삽입
 BEGIN
-   FOR I IN 1..100 LOOP
+   FOR I IN 1..10 LOOP
       INSERT INTO "MEMBER" 
       VALUES(
       	SEQ_MEMBER_NO.NEXTVAL, 	-- 회원번호
-		'user@mail.com', 		-- 이메일
-		'pass', 				-- 비밀번호
-		'테스트유저',	 			-- 이름
-		'01033330303',			-- 전화번호
+		'user' || SEQ_MEMBER_NO.CURRVAL || '@mail.com', 		-- 이메일
+		'pass' || SEQ_MEMBER_NO.CURRVAL, 						-- 비밀번호
+		'테스트유저' || SEQ_MEMBER_NO.CURRVAL,	 					-- 이름
+		'010' || CEIL(DBMS_RANDOM.VALUE(1000,9999)) || CEIL(DBMS_RANDOM.VALUE(1000,9999)),	-- 전화번호
 		DEFAULT, 				-- 계정상태(N:정상(기본), B:비활성, D:탈퇴)
 		DEFAULT, 				-- 가입일(기본:SYSDATE)
 		NULL, 					-- 비활성화일
 		NULL, 					-- 탈퇴일
 		DEFAULT, 				-- 친구요청(N:OFF, Y:ON(기본))
-		DEFAULT, 				-- 개인피드설정(N:OFF, Y:ON(기본))
+		DEFAULT, 				-- 개인피드설정(A:모두(기본), F:친구만, M:나만)
 		DEFAULT, 				-- 친구요청알림(N:OFF, Y:ON(기본))
 		DEFAULT, 				-- 친구신청수락알림(N:OFF, Y:ON(기본))
 		DEFAULT, 				-- 태그알림(N:OFF, Y:ON(기본))
@@ -170,6 +170,37 @@ BEGIN
 END;
 
 COMMIT;
+
+
+INSERT INTO "MEMBER" 
+      VALUES(
+      	SEQ_MEMBER_NO.NEXTVAL, 	-- 회원번호
+		'user' || SEQ_MEMBER_NO.CURRVAL || '@mail.com', 		-- 이메일
+		'pass' || SEQ_MEMBER_NO.CURRVAL, 						-- 비밀번호
+		'테스트유저' || SEQ_MEMBER_NO.CURRVAL,	 					-- 이름
+		'010' || CEIL(DBMS_RANDOM.VALUE(1000,9999)) || CEIL(DBMS_RANDOM.VALUE(1000,9999)),	-- 전화번호
+		DEFAULT, 				-- 계정상태(N:정상(기본), B:비활성, D:탈퇴)
+		DEFAULT, 				-- 가입일(기본:SYSDATE)
+		NULL, 					-- 비활성화일
+		NULL, 					-- 탈퇴일
+		DEFAULT, 				-- 친구요청(N:OFF, Y:ON(기본))
+		DEFAULT, 				-- 개인피드설정(A:모두(기본), F:친구만, M:나만)
+		DEFAULT, 				-- 친구요청알림(N:OFF, Y:ON(기본))
+		DEFAULT, 				-- 친구신청수락알림(N:OFF, Y:ON(기본))
+		DEFAULT, 				-- 태그알림(N:OFF, Y:ON(기본))
+		DEFAULT, 				-- 게시글댓글알림(N:OFF, Y:ON(기본))
+		DEFAULT, 				-- 게시글좋아요알림(N:OFF, Y:ON(기본))
+		DEFAULT, 				-- 게시글공유알림(N:OFF, Y:ON(기본))
+		DEFAULT					-- 개인피드갱신알림(N:OFF, Y:ON(기본))
+      );
+     
+     SELECT * FROM "MEMBER" ORDER BY MEMBER_NO DESC;
+    
+    DELETE FROM "MEMBER" WHERE MEMBER_NO BETWEEN 7 AND 306;
+   DELETE FROM "MEMBER_INFO" WHERE MEMBER_NO BETWEEN 7 AND 306;
+DELETE FROM "FRIEND" WHERE FRIEND_SENDER BETWEEN 7 AND 306;
+DELETE FROM "FRIEND" WHERE FRIEND_RECIVER BETWEEN 7 AND 306;
+DELETE FROM "REPLY" WHERE MEMBER_NO BETWEEN 7 AND 306;
 
 ----------------------------------------------------------------------------------------
 
