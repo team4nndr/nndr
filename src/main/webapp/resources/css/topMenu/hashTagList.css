@@ -1,0 +1,199 @@
+/***************************폰트 설정*********************************/
+@font-face {
+    font-family: 'NotoSansKR';
+    src: url('/resources/fonts/NotoSansKR-Regular.otf');
+    font-weight: normal;
+    font-style: normal;
+}
+* {
+    font-family: 'NotoSansKR';
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+/********************************************************************/
+
+
+/* 섹션 안 나누기  */
+#cArea-1>section:nth-child(1){
+    width: 15%;
+    height: 100%;
+}
+#cArea-1>section:nth-child(2){
+    width: 85%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+
+}
+
+/*  로고를 넣는거 */
+#cArea-1>section:first-child{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+/* 로고 크기 */
+#myLogo{
+    width: 37px;
+    height: auto;
+}
+
+/*  이름 색깔바꾸기 */
+.change {
+    font-weight: bold;
+    color: black;
+}
+
+
+/* 이미지 */
+.boardImg1 img{
+    max-width: 150px;
+    max-height: 90%;
+}
+.img-box1{
+    display: grid;
+    grid-template-columns: repeat(3,100px);
+    grid-auto-rows: 100px;
+    overflow: auto;
+    grid-column-gap: 35px;
+    grid-row-gap : 5px;
+    min-height: 370px;
+} */
+
+#cArea-2{
+    height: 30%;
+    width: 100%;
+    background-color: white;
+    border-top: 2px solid lightgray;
+    
+}
+
+#cArea-2 > ul {
+    display: flex;
+    list-style: none;
+    height: 100%;
+    justify-content: space-around;
+    flex-direction: center;
+    align-items: center;
+
+}
+
+
+
+#cArea-2 button{
+    text-decoration: none;
+    color: black;
+    font-size: 18px;
+    font-weight: bold;
+
+    display: block;
+    text-align: center;
+    width: 130px;
+    height: 36px;
+    border-radius: 6px;
+    border: none;
+
+    background: #eee;
+
+    cursor: pointer;
+    margin: 10px;
+}
+#cArea-2 button:hover{
+    background-color:  #4A6EA9;
+}
+
+/* .centerArea-1 fieldset {
+    width: 100%;
+    border: 2px solid #455ba8;
+    padding: 2px;
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+} */
+
+#query {
+    width:100% ; 
+    border: none;
+    outline: none;
+    font-size: 18px;
+    font-weight: bold;
+    padding: 10px;
+}
+
+#more {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#cBot>section:first-child{
+    
+    width: 10%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+#cBot>section:last-child{
+    width: 90%;
+    border: 1px solid #455ba8;
+    border: 2px solid #455ba8;
+    padding: 2px;
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+}
+
+
+/********************************************************************/
+
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin:0;
+}
+
+body { background-color: #F0F2F5; }
+
+hr {
+    border: none;
+    height: 1px;
+    background-color: #ccc;
+    margin: 0 16px;
+}
+
+#mainFeedGridContainer {
+    height: 100%;
+    display: flex;
+}
+
+/*  가운데 (피드가 보여질 부분) */
+.mainView { 
+    padding: 0 360px;
+    flex-grow: 1;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/********************************************************************/
+
+/* 해시태그관련 키워드 입력 창 */
+
+.hashtag-keyword-box{
+    width: 100%;
+    height: 62px;
+    background-color: white;
+    display: flex;
+    align-items: center;
+}
+
+#hashtag-keyword{
+
+}

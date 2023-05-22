@@ -10,7 +10,7 @@
             </div>
 
             <div class="nndr-search-area">
-                <form action="#" method="GET">
+                <form action="/hashTagList" method="GET">
                     <fieldset id="nndrSearchBox">
                         <div>
                             <input type="search" class="nndr-input" name="query" id="nndrQuery" autocomplete="off"

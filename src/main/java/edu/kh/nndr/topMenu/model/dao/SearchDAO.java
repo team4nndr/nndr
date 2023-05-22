@@ -31,8 +31,8 @@ public class SearchDAO {
 	 * @param query
 	 * @return list
 	 */
-	public List<Friend> friendNameList(Map<String, Object> map) {
-		return sqlSession.selectList("searchMapper.friendNameList", map);
+	public List<Member> friendNameList(Map<String, Object> map) {
+		return sqlSession.selectList("memberMapper.friendListSearchByName", map);
 	}
 	
 
