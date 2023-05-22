@@ -7,7 +7,7 @@
     
     <%-- <div class="flex-container"> --%>
     <div id="memberInfo" data-sender = "${loginMember.memberNo}" data-profile = "${infoMember.infoProfilePath}${infoMember.infoProfile}" data-href = "${infoMember.memberNo}" data-reciver = "${infoMember.memberNo}"></div>
-        <div class="main-container1" >
+        <div class="main-container1" >${infoMember.infoProfilePath}${infoMember.infoProfile}
             <c:if test="${infoMember.memberNo eq loginMember.memberNo}" > <%-- 일치 ㅇ--%>
                 <c:if test="${empty infoMember.infoBack}" >
                     <div id="backChg"><img src="/resources/images/topMenu/페이지 시작화면.gif" alt="로고"id="backLogo" ></div>

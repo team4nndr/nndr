@@ -17,8 +17,10 @@ const sendAlram=()=>{
 	const senderProfile = document.getElementById("memberInfo").dataset.profile;
 	const senderHref = document.getElementById("memberInfo").dataset.href;
 	const reciverMemberNo = document.getElementById("memberInfo").dataset.reciver;
-	
-		
+	if(senderProfile === undefined){
+		senderProfile="/resources/images/common/user-deafult.png";
+
+	}
 	const friendButton = document.getElementById("perAddFriend").innerText;
 	var obj = {
 		"senderMemberNo": senderMemberNo,
@@ -42,31 +44,37 @@ alramSock.onmessage = function(e) {
 	// 메소드를 통해 전달받은 객체값을 JSON객체로 변환해서 obj 변수에 저장.
 	const alram = JSON.parse(e.data);
 	const perAddFriend = document.getElementById("perAddFriend");
-	console.log(alram);
 	if(alram.friendButton=="친구 추가"){
-		perAddFriend.innerText ="친구 추가";
-		perAddFriend.classList.remove('friendAdd');
-		perAddFriend.classList.remove('friendAccept')
-		perAddFriend.classList.remove('friendDel');
-		perAddFriend.classList.add('noFriend')
+		if(perAddFriend!=null){
+			perAddFriend.innerText ="친구 추가";
+			perAddFriend.classList.remove('friendAdd');
+			perAddFriend.classList.remove('friendAccept')
+			perAddFriend.classList.remove('friendDel');
+			perAddFriend.classList.add('noFriend')
+		}
 		return;
 	}
 	if(alram.friendButton== "친구 끊기"){ //수락
-		perAddFriend.innerText ="친구 끊기";
-		perAddFriend.classList.remove('friendAccept');
-		perAddFriend.classList.add('friendDel')
+		if(perAddFriend!=null){
+			perAddFriend.innerText ="친구 끊기";
+			perAddFriend.classList.remove('friendAccept');
+			perAddFriend.classList.add('friendDel')
+		}
 		document.getElementById("nndrImage3").src = "/resources/images/topMenu/페이지 시작화면.gif";
-		alram(alram.senderProfile, alram.memberNo, "친구가 되었습니다.")
+		alramType(alram.senderMemberNo, alram.senderProfile, "친구가 되었습니다.")
 		return;
 	}
 	if(alram.friendButton=="신청 취소" ){ 
-		perAddFriend.innerText ="친구 수락";
-		perAddFriend.classList.remove('noFriend');
-		perAddFriend.classList.add('friendAccept')
+		if(perAddFriend!=null){
+			perAddFriend.innerText ="친구 수락";
+			perAddFriend.classList.remove('noFriend');
+			perAddFriend.classList.add('friendAccept')
+		}
 		document.getElementById("nndrImage3").src = "/resources/images/topMenu/페이지 시작화면.gif";
-		alram(alram.senderProfile, alram.memberNo, "친구 요청이 들어왔습니다.")
+		alramType(alram.senderMemberNo, alram.senderProfile, "친구 요청이 들어왔습니다.")
 		return;
 	}
+	alert("123")
 }
 
 // 문서 로딩 완료 후 수행할 기능
@@ -81,21 +89,23 @@ document.addEventListener("DOMContentLoaded", ()=>{
 });
 
 
-function alram(sender, senderSrc, what){
+function alramType(no, profile, what){
+	console.log(no)
 	let nndrAddAlarm = document.createElement("div");
     nndrAddAlarm.classList.add("nndrAddAlarm");
 
     let nndrAddAlarmProfile = document.createElement("a");
     nndrAddAlarmProfile.classList.add("nndrAddAlarmProfile");
-    nndrAddAlarmProfile.href = sender;
+    nndrAddAlarmProfile.href = "/personalFeed/"+no;
 
     let nndrAddAlarmContent = document.createElement("a");
     nndrAddAlarmContent.classList.add("nndrAddAlarmContent");
-    nndrAddAlarmContent.href = sender;
+    nndrAddAlarmContent.href = "/personalFeed/"+no;
 
     let topMyProfile = document.createElement("img");
     topMyProfile.classList.add("topMyProfile");
-    topMyProfile.src = senderSrc;
+    topMyProfile.src = profile;
+ 
 
 
     let nndrAlarmContent = document.createElement("p");
