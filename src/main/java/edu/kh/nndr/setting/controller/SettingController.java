@@ -58,6 +58,12 @@ public class SettingController {
 		return "setting/feedback";
 	}
 	
+	@GetMapping("/delete")
+	public String delete() {
+		return "setting/delete";
+	}
+	
+	// 회원 의견 전송
 	@PostMapping("/feedback")
 	@ResponseBody
 	public int feedback(@RequestBody Feedback feedback) {

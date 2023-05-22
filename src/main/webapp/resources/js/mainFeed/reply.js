@@ -80,7 +80,7 @@ function submitReply(boardNo, parentReplyNo, btn) {
             replyContent = replyContent.replace('@' + obj.name, '<a class="mention-mark" href="/personalFeed/' + obj.memberNo + '">' + obj.name + '</a>');
         }
     }
- 
+
     const data = {
         "boardNo" : boardNo,
         "replyContent" : replyContent,

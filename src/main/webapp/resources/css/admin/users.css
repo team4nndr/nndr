@@ -62,8 +62,8 @@
 }
 
 
-.user-no { width: 15%; }
-.user-name { width: 15%; }
+.user-no { width: 10%; }
+.user-name { width: 20%; }
 .email { width: 40%; }
 .regist-date { width: 15%; }
 .account { width: 15%; }
