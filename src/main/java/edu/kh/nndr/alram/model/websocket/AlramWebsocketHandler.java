@@ -20,6 +20,8 @@ import com.google.gson.Gson;
 
 import edu.kh.nndr.alram.model.dto.Alram;
 import edu.kh.nndr.alram.model.service.AlramServiceImpl;
+import edu.kh.nndr.member.model.dto.Member;
+import edu.kh.nndr.member.model.dto.MemberInfo;
 
 
 public class AlramWebsocketHandler extends TextWebSocketHandler {
@@ -67,27 +69,28 @@ public class AlramWebsocketHandler extends TextWebSocketHandler {
         
         // DB 삽입 서비스 호출
 //        int result = service.insertMessage(alram);
-        
+//        
 //        if(result > 0 ) {
 //            
 //            SimpleDateFormat sdf = new SimpleDateFormat("yyyy.MM.dd hh:mm");
 //            alram.setSendTime(sdf.format(new Date()) );
 //            
 //            // 전역변수로 선언된 sessions에는 접속중인 모든 회원의 세션 정보가 담겨 있음
-//            for(WebSocketSession s : sessions) {
-//                // WebSocketSession은 HttpSession의 속성을 가로채서 똑같이 가지고 있기 때문에
-//                // 회원 정보를 나타내는 loginMember도 가지고 있음.
-//                
-//                // 로그인된 회원 정보 중 회원 번호 얻어오기
-//                int loginMemberNo = ((Member)s.getAttributes().get("loginMember")).getMemberNo();
-//                logger.debug("loginMemberNo : " + loginMemberNo);
-//                
-//                // 로그인 상태인 회원 중 targetNo가 일티하는 회원에게 메세지 전달
-//                if(loginMemberNo == msg.getTargetNo() || loginMemberNo == msg.getSenderNo()) {
-//                    
-//                    s.sendMessage(new TextMessage(new Gson().toJson(msg)));
-//                }
-//            }
+            for(WebSocketSession s : sessions) {
+                // WebSocketSession은 HttpSession의 속성을 가로채서 똑같이 가지고 있기 때문에
+                // 회원 정보를 나타내는 loginMember도 가지고 있음.
+                
+                // 로그인된 회원 정보 중 회원 번호 얻어오기
+                int loginMemberNo = ((Member)s.getAttributes().get("loginMember")).getMemberNo();
+                logger.debug("loginMemberNo : " + loginMemberNo);
+                
+//                 로그인 상태인 회원 중 targetNo가 일티하는 회원에게 메세지 전달
+                System.out.println(loginMemberNo);
+                if(loginMemberNo == alram.getReciverMemberNo()) {
+                	System.out.println(loginMemberNo);
+                    s.sendMessage(new TextMessage(new Gson().toJson(alram)));
+                }
+            }
 //        }
     }
     
