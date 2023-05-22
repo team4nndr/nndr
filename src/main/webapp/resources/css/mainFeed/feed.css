@@ -120,13 +120,13 @@ img.wirter-profile-image {
     font-weight: light;
 }
 
-.feed-head-info > a {
+.feed-head-info > .name {
     display:flex;
     justify-content: left;
     align-items: center;
     text-decoration: none;
 }
-.feed-head-info > a:hover {
+.feed-head-info > .name:hover {
     text-decoration: underline;
 }
 
