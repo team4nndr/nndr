@@ -46,7 +46,7 @@
                     <img class="proimg" src="/resources/images/friend/143086968_2856368904622192_1959732218791162458_n.png" alt="">
                     <div class="frbox"> <!--이름 + 확인,삭제-->
                         <div class="namecount"><!--이름-->
-                            <div class="friendAll">
+                            <div class="friendAll" onclick="friendPage(${allfriend.friendSender})">
                             <span class="friendName">${allfriend.memberName}</span>
                             <span class="pulsnav"><img src="/resources/images/friend/free-icon-three-dots-6941941.png" alt="">
                                 </span>

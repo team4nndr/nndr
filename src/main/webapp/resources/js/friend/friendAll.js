@@ -80,6 +80,7 @@ searchfr.addEventListener("input", (e) => {
                             var query = searchfr;
                             query = div.innerHTML;
                             frsearch.innerHTML = "";
+                            location.href= "/personalFeed/" +fr.friendSender;
                             return;
                         };
                     }
@@ -132,6 +133,7 @@ function friendList() {
                 namecount.classList.add("namecount");
                 const friendAll = document.createElement("div");
                 friendAll.classList.add("friendAll");
+                
                 const frmenu2 = document.createElement("div");
                 frmenu2.classList.add("frmenu");
                 frmenu2.setAttribute("style", "display: none");
@@ -212,11 +214,6 @@ function registerEventHandlers() {
     }
 }
 
-const friendAllList = document.getElementById("friendAllList");
-const mainBox = document.getElementById("mainbox");
-
-friendAllList.addEventListener("click", (e) => {
-    if (e.target.classList.contains("frtopdiv")) {
-        mainBox.style.display = "none";
-    }
-});
+function friendPage(memberNo) {
+    location.href= "/personalFeed/" + memberNo;
+}
