@@ -1,3 +1,53 @@
 body { background-color: #F0F2F5; }
 #sidebar > ul > li:nth-child(5) > a { background-color: #eee; }
 #sidebar { background-color: white; }
+
+.delete-container {
+    margin-left: 360px;
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.delete-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.delete-btn.reverse {
+    padding: 0;
+    margin: 10px 0;
+}
+
+.delete-section p {
+    font-size: 1.2rem;
+    margin: 10px 0;
+    font-weight: bold;
+}
+
+.content-box {
+    padding: 50px 0;
+}
+
+#deletePasswdInput {
+    border : 1px solid #eee;
+    border-radius: 4px;
+    background-color: #f4f4f4;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 5px 5px;
+}
+
+#deletePasswdInput > input {
+    border: none;
+    background-color: #f4f4f4;
+    font-size: 1rem;
+    width: 300px;
+
+}
+#deletePasswdInput > input:focus {
+    outline: none;
+}

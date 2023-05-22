@@ -71,7 +71,7 @@ public class MemberInfoDAO {
 	}
 
 
-	public List<Map<String, String>> imgSet(int no) {
+	public List<MemberInfo> imgSet(int no) {
 		return sqlSession.selectList("personalMapper.imgSet", no);
 	}
 

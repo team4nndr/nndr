@@ -41,13 +41,13 @@ public class SettingServiceImpl implements SettingService {
 	// 현재 비밀번호 일치여부 확인
 	@Override
 	public boolean checkPasswd(Member member) {
+		// TODO 암호화 로직 추가
 		return member.getMemberPw().equals(dao.checkPasswd(member));
 	}
 
 	// 환경설정 변경
 	@Override
 	public int changeSetting(Map<String, Object> paramMap, Member loginMember) {
-
 		paramMap.put("memberNo", loginMember.getMemberNo());
 		return dao.changeSetting(paramMap);
 	}

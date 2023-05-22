@@ -56,9 +56,9 @@ public class PersonalFeedController {
 		Map<String, Object> HobbyMap = service.selectHobbyList(no); 
 		model.addAttribute("HobbyMap", HobbyMap);
 		
-//		List<Map<String, String>> imgSet = service.imgSet(no);
-//		model.addAttribute("imgSet", imgSet);
-//		
+		List<MemberInfo> imgSet = service.imgSet(no);
+		model.addAttribute("imgSet", imgSet);
+		
 		Map<String, Object> friendche = new HashMap<>();
 		friendche.put("friendSender", loginMember.getMemberNo());
 		friendche.put("friendReciver", no);
