@@ -13,20 +13,6 @@
 		<result property="memberNo" column="MEMBER_NO" />
 		<result property="memberName" column="MEMBER_NAME" />
 	</resultMap>
-	
-	<!-- 친구요청 조회 -->
-	<select id="friendRqList" resultMap="friend_rm">
-		SELECT FRIEND_NO,
-		FRIEND_SENDER,
-		MEMBER_NAME
-		FROM FRIEND
-		JOIN MEMBER ON
-		FRIEND.FRIEND_SENDER = MEMBER.MEMBER_NO
-		WHERE FRIEND_FL = 'N'
-		AND
-		FRIEND_RECIVER = #{memberNo}
-		ORDER BY FRIEND_NO DESC
-	</select>
 
 	<!-- 친구수락 -->
 	<update id="friendUpdate">
@@ -43,7 +29,7 @@
 	</delete>
 	
 	<!-- 친구 목록 조회 -->
-	<select id="friendListAll" resultMap="friend_rm">
+<!-- 	<select id="friendListAll" resultMap="friend_rm">
 		SELECT FRIEND_NO,
 		FRIEND_SENDER,
 		MEMBER_NAME
@@ -54,7 +40,7 @@
 		AND
 		FRIEND_RECIVER = #{memberNo}
 		ORDER BY FRIEND_NO DESC
-	</select>
+	</select> -->
 	
 	<!-- 친구 검색 -->
 	<select id="friendListsearch" resultMap="friend_rm">

@@ -30,7 +30,10 @@
 		<!-- join MemberInfo -->
 		<result property="profileImage" column="INFO_IMG" />
 		<result property="infoGender" column="INFO_GENDER" />
-		<result property="infoResidence" column="INFO_RESIDENCE" />		
+		<result property="infoResidence" column="INFO_RESIDENCE" />
+		
+		<!-- join Friend -->
+		<result property="friendNo" column="FRIEND_NO" />
 	</resultMap>
 	
 	<!-- 로그인(임시) -->
@@ -228,8 +231,8 @@
 		  AND MEMBER_NAME LIKE '%${query}%'
 	</select>
 	
-	<!-- 내 친구 목록 : Member 반환 -->
-	<select id="friendListMember" resultMap="member_rm">
+	<!-- 내 친구 이름 검색(친구탭) : Member 반환 -->
+	<select id="friendListSearchByNameInFriend" resultMap="member_rm">
 		SELECT MEMBER_NO, MEMBER_NAME, INFO_PROFILEPATH||INFO_PROFILE INFO_IMG, MEMBER_CODE
 		FROM (
 				SELECT
@@ -244,7 +247,41 @@
 		JOIN "MEMBER" USING(MEMBER_NO)
 		LEFT JOIN "MEMBER_INFO" USING(MEMBER_NO)
 		WHERE MEMBER_CODE='N'
+		  AND MEMBER_NAME LIKE '%${query}%'
 	</select>
 	
+	<!-- 내 친구 목록 : Member 반환 -->
+	<select id="friendListMember" resultMap="member_rm">
+		SELECT MEMBER_NO, MEMBER_NAME, INFO_PROFILEPATH||INFO_PROFILE INFO_IMG, MEMBER_CODE, FRIEND_NO
+		FROM (
+				SELECT FRIEND_NO,
+					CASE
+						WHEN FRIEND_SENDER = #{memberNo} THEN FRIEND_RECIVER
+						WHEN FRIEND_RECIVER = #{memberNo} THEN FRIEND_SENDER
+					END MEMBER_NO
+				FROM 	 FRIEND
+				WHERE   (FRIEND_SENDER = #{memberNo} OR FRIEND_RECIVER = #{memberNo})
+				         AND FRIEND_FL = 'Y'
+			) MY_FRIEND
+		JOIN "MEMBER" USING(MEMBER_NO)
+		LEFT JOIN "MEMBER_INFO" USING(MEMBER_NO)
+		WHERE MEMBER_CODE='N'
+	</select>
 	
+	<!-- 친구요청 조회 -->
+	<select id="friendRqList" resultMap="member_rm">
+		SELECT 	FRIEND_NO,
+				MEMBER_NO,
+				MEMBER_NAME,
+				INFO_PROFILEPATH||INFO_PROFILE INFO_IMG,
+				MEMBER_CODE
+		FROM 	FRIEND
+				JOIN MEMBER ON FRIEND.FRIEND_SENDER = MEMBER.MEMBER_NO
+				LEFT JOIN "MEMBER_INFO" USING(MEMBER_NO)
+		WHERE 	FRIEND_FL = 'N'
+				AND FRIEND_RECIVER = #{memberNo}
+				AND MEMBER_CODE = 'N'
+		ORDER BY FRIEND_NO DESC
+	</select>
+
 </mapper>

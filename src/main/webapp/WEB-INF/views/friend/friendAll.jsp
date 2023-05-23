@@ -41,23 +41,23 @@
                 </div>
             </div>
             <div id="friendAllList">
-            <c:forEach  var="allfriend" items="${friendListAll}">
+            <c:forEach  var="friend" items="${friendList}">
                 <div class="frtopdiv">
-                    <img class="proimg" src="/resources/images/friend/143086968_2856368904622192_1959732218791162458_n.png" alt="">
-                    <div class="frbox"> <!--이름 + 확인,삭제-->
+                    <c:if test="${empty friend.profileImage}" >
+                        <img class="proimg" src="/resources/images/common/user-default.png" alt="">
+                    </c:if>
+                    <c:if test="${not empty friend.profileImage}" >
+                        <img class="proimg" src="${friend.profileImage}" alt="">
+                    </c:if>
                         <div class="namecount"><!--이름-->
-                            <div class="friendAll" onclick="friendPage(${allfriend.friendSender})">
-                            <span class="friendName">${allfriend.memberName}</span>
-                            <span class="pulsnav"><img src="/resources/images/friend/free-icon-three-dots-6941941.png" alt="">
-                                </span>
-                                    </div>
-                                <div class="frmenu"> 
-                                    <%-- <div class="noProfile">${allfriend.memberName}님의 프로필 차단</div> --%>
-                                    <div class="noFriend" onclick="refuse(${allfriend.friendNo})">${allfriend.memberName}님과 친구 관계 끊기</div>
-                                    <%-- <button class="noFriend" onclick="refuse(${friendRQ.friendNo})" >${allfriend.memberName}님과 친구 관계 끊기</button> --%>
-                                </div>
+                            <div class="friendAll" onclick="friendPage(${friend.memberNo})">
+                                <span class="friendName">${friend.memberName}</span>
+                                <span class="pulsnav"><img src="/resources/images/friend/free-icon-three-dots-6941941.png" alt=""></span>
+                            </div>
+                            <div class="frmenu"> 
+                                <div class="noFriend" onclick="refuse(${friend.friendNo})">${friend.memberName}님과 친구 관계 끊기</div>
+                            </div>
                         </div>
-                    </div>
                 </div>
             </c:forEach>
             </div>
@@ -65,7 +65,7 @@
         <div id="mainfrbox"> <!--메인 피드-->
             <div id="mainbox">
                 <img id="imgmain" src="/resources/images/friend/null_states_people_gray_wash.svg" alt="">
-                <span id="maintext">프로필을 미리 볼 사람의 이름을 선택하세요.</span>
+                <span id="maintext">프로필을 볼 사람의 이름을 선택하세요.</span>
             </div>
         </div>
     </div>

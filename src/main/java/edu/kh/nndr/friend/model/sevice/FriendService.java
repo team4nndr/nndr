@@ -12,7 +12,7 @@ public interface FriendService {
 	 * @param memberNo
 	 * @return
 	 */
-	List<Friend> friendRqList(int memberNo);
+	List<Member> friendRqList(int memberNo);
 
 	/** 친구 수락 버튼 
 	 * @param friendNo
@@ -26,21 +26,33 @@ public interface FriendService {
 	 */
 	int friendDelete(int friendNo);
 
-	/** 모든 친구 목록 조회
-	 * @param memberNo
-	 * @return List<Friend>
-	 */
-	List<Friend> friendListAll(int memberNo);
+//	/** 모든 친구 목록 조회
+//	 * @param memberNo
+//	 * @return List<Friend>
+//	 */
+//	List<Friend> friendListAll(int memberNo);
 
 	/** 친구 검색
 	 * @param map
 	 * @return
 	 */
-	List<Friend> friendListsearch(Map<String, Object> map);
+	List<Member> friendListsearch(Map<String, Object> map);
 	
 	/** 로그인 시 현재 친구 목록 조회
 	 * @param map
 	 * @return List<Member> friendList
 	 */
 	public List<Member> friendListMember(int memberNo);
+
+//	/** 친구 추천 확인 버튼
+//	 * @param memberNo
+//	 * @return
+//	 */
+//	int friendaddition(int memberNo);
+ 
+//	/** 친구 추천 목록 조회 
+//	 * @param memberNo
+//	 * @return
+//	 */
+//	List<Member> friendSuggestion(int memberNo);
 }

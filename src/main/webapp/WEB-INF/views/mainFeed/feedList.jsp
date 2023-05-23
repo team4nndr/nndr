@@ -6,7 +6,7 @@
 <link rel="stylesheet" href="/resources/css/mainFeed/mention.css">
 
 <script> 
-    const loginMemberNo = "${loginMember.memberNo}";
+    // const loginMemberNo = "${loginMember.memberNo}";
     const profileImage = "${loginMember.profileImage}";
 </script>
     <%-- 피드 목록 --%>
