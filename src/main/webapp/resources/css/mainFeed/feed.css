@@ -299,6 +299,13 @@ img.wirter-profile-image {
     width: 26px;
     padding: 11px 4px;
 }
+.like i {
+    height: 40px;
+    width: 26px;
+    padding: 11px 0px;
+}
+
+
 
 /* 요소 숨기기 */
 .hidden { display: none !important; }

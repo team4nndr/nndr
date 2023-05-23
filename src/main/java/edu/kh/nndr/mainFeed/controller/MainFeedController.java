@@ -2,7 +2,10 @@ package edu.kh.nndr.mainFeed.controller;
 
 import java.io.IOException;
 import java.util.List;
+import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,6 +14,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -166,9 +170,81 @@ public class MainFeedController {
 		return "redirect:/mainFeed";	
 	}
 	
+	/** 수정시 게시번호에 맞는 게시글 하나 불러오기
+	 * @param boardNo
+	 * @return
+	 */
 	@GetMapping(value="/mainFeed/selectOne", produces="application/json; charset=UTF-8")
 	@ResponseBody
 	public Board selectOne(int boardNo) {
 		return service.selectOne(boardNo);
 	}
+	
+	
+//	@GetMapping("/mainFeed/like")
+//	public Board feedLike(int boardNo,Model model
+//			,@SessionAttribute(value="loginMember",required=false) Member loginMember
+//			) {
+//		
+//		Board board = service.selectOne(boardNo);
+//		if(board !=null) {
+//			if(loginMember !=null) { // 로그인 상태인 경우
+//				
+//				// 회원번호를 map에 추가
+//				board.setMemberNo(loginMember.getMemberNo());
+//				
+//				// 좋아요 여부 확인 서비스 호출 
+//				int result = service.feedLikeCheck(board);
+//				
+//				// 누른적이 있다면
+//				if(result>0) model.addAttribute("likeCheck","on");
+//				
+//				
+//			}
+//			
+//		}
+//		
+//		
+//		return board;
+//	}
+//	
+//	
+//	@PostMapping("/mainFeed/like")
+//	@ResponseBody // 반환되는 값이 비동기 요청한 곳으로 돌아가게 한다
+//	public int like(@RequestBody Map<String, Integer> paramMap) {
+//		System.out.println(paramMap);
+//		
+//		
+//		return service.like(paramMap);
+//	}
+	
+	// 좋아요 처리 
+		@PostMapping("/mainFeed/like")
+		@ResponseBody
+		public int feedLike( Model model
+				,@SessionAttribute(value="loginMember",required=false) Member loginMember
+				// 세션에서 loginMember를 얻어오는데 없으면 null 있으면 회원정보 저장
+				,Board board
+				,@RequestBody Map<String, Integer> paramMap) {
+			
+				
+//				board.setMemberNo(loginMember.getMemberNo());
+//				
+//				int result = service.feedLikeCheck(board);
+//				System.out.println(result);
+//				if(result>0) {
+//					model.addAttribute("likeCheck");
+//				}
+				
+			
+			
+			System.out.println(paramMap);
+			
+			
+			return service.like(paramMap);
+		}
+	
+	
+
+	
 }
