@@ -99,3 +99,7 @@ function friendList() {
         .catch(err => console.log(err));
 
 }
+
+function friendPage(memberNo) {
+    location.href= "/personalFeed/" + memberNo;
+}
