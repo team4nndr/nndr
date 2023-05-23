@@ -22,6 +22,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import edu.kh.nndr.member.model.dto.Member;
 import edu.kh.nndr.member.model.dto.MemberInfo;
+import edu.kh.nndr.member.model.dto.PersonalFriend;
 import edu.kh.nndr.member.model.service.MemberInfoService;
 import edu.kh.nndr.member.model.service.MemberService;
 
@@ -32,9 +33,14 @@ public class PersonalFeedInfoController {
 	MemberInfoService service;
 
 	@GetMapping("/personalFeedInfo/{no:[0-9]+}")
-	public String personalFeedInfo( Model model, @PathVariable("no") int no) {
+	public String personalFeedInfo( Model model, @PathVariable("no") int no, @SessionAttribute("loginMember") Member loginMember) {
 		MemberInfo infoMember = service.personalMember(no);
 		model.addAttribute("infoMember", infoMember); // request scope
+		Map<String, Object> friendche = new HashMap<>();
+		friendche.put("friendSender", loginMember.getMemberNo());
+		friendche.put("friendReciver", no);
+		PersonalFriend friendcheck = service.friendChecking(friendche);
+		model.addAttribute("friendcheck", friendcheck);
 		return "personalFeed/personalFeedInfo";
 	}
 
