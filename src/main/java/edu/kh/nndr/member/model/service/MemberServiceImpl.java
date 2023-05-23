@@ -20,17 +20,14 @@ public class MemberServiceImpl implements MemberService {
 	
 	@Autowired
 	private BCryptPasswordEncoder bcrypt;
-	
-	@Override
-	public Member test() {
-		return dao.test();
-	}
 
 	// 로그인
 	@Override
 	public Member login(Map<String, Object> map) {
 		
-		Member loginMember =  dao.login(map); //DB의 정보를 담기위해 Member객체 생성
+		Member loginMember = dao.login(map); //DB의 정보를 담기위해 Member객체 생성
+		
+		System.out.println(bcrypt.encode((String)map.get("memberPw")));
 		
 		if(map != null) { 
 			
