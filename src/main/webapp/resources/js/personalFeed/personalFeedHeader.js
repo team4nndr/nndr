@@ -299,3 +299,39 @@ console.log(pcvCho)
 };   
 
 
+
+const sendFriendAlram=()=>{
+	const senderMemberNo = document.getElementById("memberInfo").dataset.sender;
+	const senderProfile = document.getElementById("memberInfo").dataset.profile;
+	const senderName = document.getElementById("memberInfo").dataset.sendername;
+	const memberNo = document.getElementById("memberInfo").dataset.reciver;
+	const content = document.getElementById("perAddFriend").innerText;
+
+
+    var obj = {
+        "profileImage": senderProfile,
+        "link": "/personalFeed/" + senderMemberNo,
+        "message" : senderName+"님이 친구 신청을 하셨습니다."
+    }
+
+	var alram = {
+		"memberNo": memberNo,
+        "alarmContent" : makeAlarm(obj),
+        "content" : content
+	}
+
+	// JSON.stringify() : 자바스크립트 객체를 JSON 문자열로 변환
+    console.log(alram);
+	alramSock.send(JSON.stringify(alram));
+}
+
+
+if(document.getElementById("perAddFriend") != null){
+    document.getElementById("perAddFriend").addEventListener("click", sendFriendAlram)
+}
+
+
+
+
+
+

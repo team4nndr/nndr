@@ -9,13 +9,10 @@ import lombok.ToString;
 @Getter
 @Setter
 @ToString
-public class Alram {
-	int senderMemberNo;
-	String senderProfile;
-	String senderHref;
-	int reciverMemberNo;
-	String content;
-	String friendButton;
+public class Alarm {
+	int memberNo;
+	String alarmContent;
 	
+	String content;	
 
 }

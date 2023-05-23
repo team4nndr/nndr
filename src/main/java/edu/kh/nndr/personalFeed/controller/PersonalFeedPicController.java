@@ -25,7 +25,7 @@ public class PersonalFeedPicController {
 	MemberInfoService service;
 
 	@GetMapping("/personalFeedPic/{no}")
-	public String personalFeedPic( Model model, @PathVariable("no") int no, @SessionAttribute("loginMember") Member loginMember) {
+	public String personalFeedPic( Model model,@SessionAttribute("loginMember") Member loginMember, @PathVariable("no") int no) {
 		MemberInfo infoMember = service.personalMember(no);
 		model.addAttribute("infoMember", infoMember); // request scope
 		List<MemberInfo> imgSet = service.imgSet(no);
@@ -35,6 +35,9 @@ public class PersonalFeedPicController {
 		friendche.put("friendReciver", no);
 		PersonalFriend friendcheck = service.friendChecking(friendche);
 		model.addAttribute("friendcheck", friendcheck);
+		
+		Member personalInfo = service.personalInfo(no);
+		model.addAttribute("personalInfo", personalInfo);
 		return "personalFeed/personalFeedPic";
 	}
 }
