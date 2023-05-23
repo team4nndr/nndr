@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import edu.kh.nndr.friend.model.dao.FriendDAO;
 import edu.kh.nndr.friend.model.dto.Friend;
+import edu.kh.nndr.member.model.dto.Member;
 
 @Service
 public class FriendServiceImpl implements FriendService{
@@ -44,6 +45,13 @@ public class FriendServiceImpl implements FriendService{
 	public List<Friend> friendListsearch(Map<String, Object> map) {
 		return dao.friendListsearch(map);
 	}
+	
+	// 로그인 시 친구목록 조회
+	@Override
+	public List<Member> friendListMember(int memberNo) {
+		return dao.friendListMember(memberNo);
+	}
+
 
 
 

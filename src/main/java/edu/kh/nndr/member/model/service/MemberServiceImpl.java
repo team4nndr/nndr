@@ -27,8 +27,6 @@ public class MemberServiceImpl implements MemberService {
 		
 		Member loginMember = dao.login(map); //DB의 정보를 담기위해 Member객체 생성
 		
-		System.out.println(bcrypt.encode((String)map.get("memberPw")));
-		
 		if(map != null) { 
 			
 			if(bcrypt.matches((String)map.get("memberPw"), loginMember.getMemberPw())){ 
