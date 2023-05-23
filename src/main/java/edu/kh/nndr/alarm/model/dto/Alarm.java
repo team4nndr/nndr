@@ -1,4 +1,4 @@
-package edu.kh.nndr.alram.model.dto;
+package edu.kh.nndr.alarm.model.dto;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;

@@ -28,7 +28,7 @@
 	
 	<!-- websocket handler -->
 	
-	<beans:bean id="AlramWebsocketHandler" class="edu.kh.nndr.alram.model.websocket.AlarmWebsocketHandler"/>
+	<beans:bean id="AlramWebsocketHandler" class="edu.kh.nndr.alarm.model.websocket.AlarmWebsocketHandler"/>
 	<websocket:handlers>
 		<!-- websocket 매핑 주소 -->
 		<websocket:mapping handler="AlramWebsocketHandler" path="/alramSock"/>
