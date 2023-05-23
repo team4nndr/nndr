@@ -177,7 +177,9 @@
     position: relative;
     width: 462px;
     height: 52px;
-    border-radius: 8px;
+    border-radius: 7px;
+    padding: 0 10px;
+    border: 1px solid #ccc;
 }
 
 .inputText:hover{
@@ -188,12 +190,16 @@
 .cancel{
     width: 70px;
     height: 36px;
+    cursor: pointer;
 }
+
+
 
 .buttonBtn{
     width: 70px;
     height: 38px;
     margin-bottom: 10px;
+    cursor: pointer;
 }
 
 footer{
@@ -212,3 +218,18 @@ footer span{
   padding: 0 10px;
 }
 
+/* footer location 이동 */
+#mainPageGo{
+    cursor: pointer;
+}
+
+#mainPageGo:hover{
+    text-decoration: underline;
+}
+#loginGo{
+    cursor: pointer;
+}
+
+#loginGo:hover{
+    text-decoration: underline;
+}

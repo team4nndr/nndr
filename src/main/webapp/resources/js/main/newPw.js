@@ -36,3 +36,24 @@ if (changePwFrm != null) { // 비밀번호 변경 페이지인 경우
 
     });
 }
+
+// 의견 전송 완료 후 창 닫으면 설정 > 일반 화면으로 이동
+var cancel = document.getElementById('cancel');
+if(cancel != null) {
+    cancel.addEventListener('click', () => {
+        location.href = "/main/forgetPw";
+    });
+}
+
+// footer의 메인페이지 이동 
+var mainPageGo = document.getElementById('mainPageGo');
+var loginGo   = document.getElementById('loginGo');
+
+mainPageGo.addEventListener('click', () => {
+    location.href = "/";
+});
+
+loginGo.addEventListener('click', () => {
+    location.href = "/";
+});
+

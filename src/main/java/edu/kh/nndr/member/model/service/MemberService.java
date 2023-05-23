@@ -13,7 +13,7 @@ import edu.kh.nndr.member.model.dto.Member;
 public interface MemberService {
 
 	/**
-	 * 로그인(임시)
+	 * 로그인
 	 * @param map
 	 * @return member
 	 */

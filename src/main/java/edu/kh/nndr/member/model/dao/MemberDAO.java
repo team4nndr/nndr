@@ -23,7 +23,7 @@ public class MemberDAO {
 		return sqlSession.selectOne("memberMapper.test");
 	}
 
-	// 로그인(임시)
+	// 로그인
 	public Member login(Map<String, Object> map) {
 		return sqlSession.selectOne("memberMapper.login", map);
 	}
