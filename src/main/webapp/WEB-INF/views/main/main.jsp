@@ -26,13 +26,13 @@
 
         <form action="/login" method="POST">
             <input type="text" name="memberEmail" value="user01@mail.com">
-            <input type="text" name="memberPw" value="pass01">
+            <input type="text" name="memberPw" value="0">
             <button id="user">일반유저 로그인<br>(user01@mail.com)</button>
         </form>
 
         <form action="/login" method="POST">
             <input type="text" name="memberEmail" value="user04@mail.com">
-            <input type="text" name="memberPw" value="pass04">
+            <input type="text" name="memberPw" value="0">
             <button id="user">일반유저 로그인<br>(user04@mail.com)</button>
         </form>
     </div>

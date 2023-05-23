@@ -21,6 +21,21 @@ public class Util {
 			
 			return content;
 		}
+		
+		public static String XSSHandlingReply(String content) {
+
+			// 멘션 데이터일 경우 변환 안함
+			if(!content.contains("mention-mark")) {
+				content = content.replaceAll("<","&lt;");
+				content = content.replaceAll(">","&gt;");
+				content = content.replaceAll("\"","&quot;");
+			}
+			
+			content = content.replaceAll("&","&amp;");
+			 
+			return content;
+		}
+		
 		// 파일명 변경 메소드
 		public static String fileRename(String originFileName) {
 			SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMddHHmmss");
@@ -29,7 +44,6 @@ public class Util {
 			int ranNum = (int) (Math.random() * 100000); // 5자리 랜덤 숫자 생성
 
 			String str = "_" + String.format("%05d", ranNum);
-
 			String ext = originFileName.substring(originFileName.lastIndexOf("."));
 
 			return date + str + ext;

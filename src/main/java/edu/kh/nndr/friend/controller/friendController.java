@@ -65,7 +65,6 @@ public class friendController {
 	}
 
 	// 수락 눌렀을 때
-
 	@GetMapping(value = "/request/yesbt")
 	@ResponseBody
 	public int friendUpdate(int friendNo) {
@@ -80,7 +79,6 @@ public class friendController {
 	}
 
 	// 친구 홈수락 눌렀을 때
-
 	@GetMapping(value = "/friend/yesbt")
 	@ResponseBody
 	public int friendUpdate2(int friendNo) {

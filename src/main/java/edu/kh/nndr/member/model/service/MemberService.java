@@ -11,8 +11,6 @@ import edu.kh.nndr.member.model.dto.Member;
 // 3. Spring AOP 사용
 //    -> AOP는 Spring-proxy를 이용해서 동작하는데, 이 때 Service 인터페이스가 필요
 public interface MemberService {
-	
-	Member test();
 
 	/**
 	 * 로그인

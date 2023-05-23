@@ -63,7 +63,7 @@ function addTextareaEvent(textarea) {
 // 댓글 textaread에 위 함수 적용
 for(let i=0; i<replyTextareas.length; i++) {
     addTextareaEvent(replyTextareas[i]);
-}
+} 
 
 // 댓글 제출 ajax
 function submitReply(boardNo, parentReplyNo, btn) {
@@ -73,13 +73,8 @@ function submitReply(boardNo, parentReplyNo, btn) {
     const textarea = document.querySelector('.reply-textarea[no="' + boardNo + '"]');
     let replyContent = textarea.value;
     
-    // 태그 문자열에 HTML 처리
-    for(let obj of mentionData) {
-        if(obj.name.length == 0) continue;
-        while( replyContent.includes('@' + obj.name) ) {
-            replyContent = replyContent.replace('@' + obj.name, '<a class="mention-mark" href="/personalFeed/' + obj.memberNo + '">' + obj.name + '</a>');
-        }
-    }
+    // 멘션 문자열에 HTML 처리
+    function convertMention()
 
     const data = {
         "boardNo" : boardNo,
@@ -277,17 +272,30 @@ function showUpdateForm(boardNo, replyNo, btn) {
     // 원본 댓글 숨기기
     const origin = btn.parentElement.parentElement.parentElement;
     origin.classList.add('hidden');
-
+    
+    // 멘션 데이터 보존
+    const div = document.createElement('div');
+    div.innerHTML = origin.querySelector('.reply-content').innerHTML;
+    const markList = div.querySelectorAll('.mention-mark');
+    for(let mark of markList) {
+        const mention = mark.innerText;
+        const no = mark.getAttribute('no');
+        mentionData.push( { "name": mention, "no": no });
+        console.log(mentionData);
+        div.innerHTML = div.innerHTML.replace(mark.outerHTML, '@'+mention);
+    }
+    origin.querySelector('.reply-content').innerText = div.innerHTML;
+    
     const reForm = document.createElement('section');
     reForm.classList.add('reply-write');
     reForm.classList.add('reply-container');
     reForm.classList.add('reply-update');
     if(origin.classList.contains('re-reply')) reForm.classList.add('re-reply');
-
+    
     const form = document.createElement('div');
     form.classList.add('reply');
     if(origin.classList.contains('re-reply')) form.classList.add('re-reply');
-
+    
     const img = document.createElement('img');
     if(profileImage != null) {
         img.setAttribute('src', profileImage);
@@ -295,7 +303,7 @@ function showUpdateForm(boardNo, replyNo, btn) {
         img.setAttribute('src', "/resources/images/common/user-default.png");
     }
     img.classList.add('reply-profile-image');
-
+    
     const body = document.createElement('div');
     body.classList.add('reply-body');
     
@@ -364,8 +372,16 @@ function updateReply(boardNo, replyNo, btn) {
     if( btn != null && !btn.classList.contains('enable') ) return;
     
     const textarea = document.querySelector('.reply-textarea[no="' + boardNo + '"]');
-    const replyContent = textarea.value;
+    let replyContent = textarea.value;
     
+    // 태그 문자열에 HTML 처리
+    for(let obj of mentionData) {
+        if(obj.name.length == 0) continue;
+        while( replyContent.includes('@' + obj.name) ) {
+            replyContent = replyContent.replace('@' + obj.name, "<a class='mention-mark' href='/personalFeed/" + obj.memberNo + "' no='" + obj.memberNo + "'>" + obj.name + "</a>");
+        }
+    }
+
     const data = {
         "replyNo" : replyNo,
         "replyContent" : replyContent

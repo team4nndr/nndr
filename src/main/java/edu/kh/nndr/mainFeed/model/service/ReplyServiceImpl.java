@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import edu.kh.nndr.common.utility.Util;
 import edu.kh.nndr.mainFeed.model.dao.ReplyDAO;
 import edu.kh.nndr.mainFeed.model.dto.Reply;
 
@@ -17,6 +18,7 @@ public class ReplyServiceImpl implements ReplyService {
 	// 댓글 등록
 	@Override
 	public int submit(Reply reply) {
+		reply.setReplyContent(Util.XSSHandlingReply(reply.getReplyContent())); // XSS 방지 처리
 		return dao.submit(reply);
 	}
 	
@@ -50,6 +52,7 @@ public class ReplyServiceImpl implements ReplyService {
 	// 댓글 수정
 	@Override
 	public int update(Reply reply) {
+		reply.setReplyContent(Util.XSSHandlingReply(reply.getReplyContent())); // XSS 방지 처리
 		return dao.update(reply);
 	}
 	

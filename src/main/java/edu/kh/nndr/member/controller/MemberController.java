@@ -1,6 +1,7 @@
 package edu.kh.nndr.member.controller;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.Cookie;
@@ -13,15 +14,18 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import edu.kh.nndr.friend.model.sevice.FriendService;
 import edu.kh.nndr.member.model.dto.Member;
 import edu.kh.nndr.member.model.service.MemberService;
 
-@SessionAttributes({ "loginMember" })
+@SessionAttributes({"loginMember", "friendList"})
 @Controller
 public class MemberController {
 
 	@Autowired
 	private MemberService service;
+	@Autowired
+	private FriendService friendService;
 
 	// 로그인 기능 
 	@PostMapping("/login")
@@ -37,17 +41,20 @@ public class MemberController {
 		
 		// 로그인 성공
 		if(loginMember != null) {
-			path += "mainFeed";
+
+			// 세션 데이터 설정
+			model.addAttribute("loginMember", loginMember); // 로그인 유저 정보
+			List<Member> friendList = friendService.friendListMember(loginMember.getMemberNo());
+			model.addAttribute("friendList", friendList); // 현재 친구 목록
 			
-			model.addAttribute("loginMember", loginMember); // loginMember가 결정됨
-			
-			Cookie cookie = new Cookie("map",loginMember.getMemberEmail());
+			Cookie cookie = new Cookie("map", loginMember.getMemberEmail());
 			
 			if(loginMember != null) {
 				cookie.setMaxAge(60*60*24*30);
 			} 
 			cookie.setPath("/");
 			resp.addCookie(cookie);
+			path += "mainFeed";
 		
 		// 로그인 실패
 		} else {

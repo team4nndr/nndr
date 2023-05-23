@@ -5,7 +5,7 @@
 
 // 로그인이 되어 있을 경우에만
 // /chattingSock 이라는 요청 주소로 통신할 수 있는  WebSocket 객체 생성
-let alramSock= new SockJS("/alramSock");;
+let alramSock= new SockJS("/alramSock");
 
 // if(loginMemberNo != ""){
 // 	chattingSock = new SockJS("/chattingSock");
@@ -74,7 +74,6 @@ alramSock.onmessage = function(e) {
 		alramType(alram.senderMemberNo, alram.senderProfile, "친구 요청이 들어왔습니다.")
 		return;
 	}
-	alert("123")
 }
 
 // 문서 로딩 완료 후 수행할 기능
@@ -105,7 +104,7 @@ function alramType(no, profile, what){
     let topMyProfile = document.createElement("img");
     topMyProfile.classList.add("topMyProfile");
     topMyProfile.src = profile;
- 
+
 
 
     let nndrAlarmContent = document.createElement("p");

@@ -29,7 +29,7 @@ import edu.kh.nndr.member.model.dto.PersonalFriend;
 import edu.kh.nndr.member.model.service.MemberInfoService;
 
 
-@SessionAttributes("loginMember")
+@SessionAttributes({"loginMember", "friend"})
 @Controller
 public class PersonalFeedController {
 	

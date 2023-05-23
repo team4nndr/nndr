@@ -26,13 +26,13 @@
     border-bottom: 1px solid #ccc;
     height: 56px;
     display: grid;
-    grid-template-columns: 0.2fr 1.8fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr;
     background-color: white;
-    /* position: relative; */
+    justify-content: space-between;
     position: sticky;
     top: 0;
     left: 0;
-    background-color: white;
+    
     z-index: 999;
 }
 
@@ -60,7 +60,6 @@
     display: flex;
     justify-content: center;
     padding: 6px;
-    padding-left: 280px;
     /* border: 1px solid black; */
     height: 50px;
     width: 1120px;
