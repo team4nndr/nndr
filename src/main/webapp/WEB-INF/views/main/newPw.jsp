@@ -18,9 +18,9 @@
             </a>
         </div>
                 <div >
-                    <form action="#" method="post" class="forgetPwLogin" >
-                        <div><input type="text" placeholder="이메일" class="main-top-inputBox"></div>
-                        <div><input type="password" placeholder="비밀번호" class="main-top-inputBox"></div>
+                    <form action="/login" method="post" class="forgetPwLogin" >
+                        <div><input type="text" name="memberEmail" placeholder="이메일" class="main-top-inputBox"></div>
+                        <div><input type="password" name="memberPw" placeholder="비밀번호" class="main-top-inputBox"></div>
                         <div><button type="submit" class="submit">로그인</button></div>
                         <a href="#" class="main-forget-account">계정을 잊으셨나요?</a>
                     </form>
@@ -44,7 +44,7 @@
                 </div>
 
                 <div class="cancelBox">
-                    <a class="cancel">취소</a>
+                    <button type="button" id="cancel" a class="cancel">취소</button>
                     <button type="submit" class="buttonBtn">확인</button>
                 </div>
 

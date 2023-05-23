@@ -15,7 +15,7 @@ public interface MemberService {
 	Member test();
 
 	/**
-	 * 로그인(임시)
+	 * 로그인
 	 * @param map
 	 * @return member
 	 */

@@ -18,12 +18,13 @@
             </a>
         </div>
                 <div >
-                    <form action="#" method="post" class="forgetPwLogin" >
+                    <form action="/login" method="post" class="forgetPwLogin" >
                         <div>
-                            <input type="text" placeholder="이메일" class="main-top-inputBox">
+                        <%-- name 값을 입력해야지 파라미터 값이 넘어감 --%>
+                            <input type="text" name="memberEmail" placeholder="이메일" class="main-top-inputBox">
                         </div>
                         <div>
-                            <input type="password" placeholder="비밀번호" class="main-top-inputBox">
+                            <input type="password" name="memberPw" placeholder="비밀번호" class="main-top-inputBox">
                         </div>
                         <div>
                             <button type="submit" class="submit">로그인</button>
@@ -57,7 +58,7 @@
                     <button id="checkAuthKeyBtn" type="button">인증하기</button>
                 </div>
                 <div class="cancelBox">
-                    <a class="cancel" >취소</a>
+                    <button type="button" id="cancel" a class="cancel" >취소</button>
                     <button type="button" class="buttonBtn" id="buttonBtn">확인</button>
                 </div>
             </div>
@@ -65,8 +66,8 @@
     </div>
 
     <footer>
-        <span>가입하기</span>
-        <span>로그인</span>
+        <span id="mainPageGo">가입하기</span>
+        <span id="loginGo">로그인</span>
     </footer>
 
 

@@ -188,9 +188,7 @@
     border-radius: 8px;
     padding: 0 10px;
     border: 1px solid #ccc;
-
     margin-bottom: 10px;
-    
 }
 
 .inputText:focus{
@@ -221,7 +219,9 @@
 .cancel{
     width: 70px;
     height: 36px;
+    cursor: pointer;
 }
+
 
 .buttonBtn{
     width: 70px;
@@ -275,4 +275,19 @@ footer span{
 
 .emailCheck{
     display: none;
+}
+
+#mainPageGo{
+    cursor: pointer;
+}
+
+#mainPageGo:hover{
+    text-decoration: underline;
+}
+#loginGo{
+    cursor: pointer;
+}
+
+#loginGo:hover{
+    text-decoration: underline;
 }

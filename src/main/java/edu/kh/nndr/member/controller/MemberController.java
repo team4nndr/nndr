@@ -39,7 +39,7 @@ public class MemberController {
 		if(loginMember != null) {
 			path += "mainFeed";
 			
-			model.addAttribute("loginMember", loginMember);
+			model.addAttribute("loginMember", loginMember); // loginMember가 결정됨
 			
 			Cookie cookie = new Cookie("map",loginMember.getMemberEmail());
 			
@@ -51,6 +51,7 @@ public class MemberController {
 		
 		// 로그인 실패
 		} else {
+			
 			ra.addFlashAttribute("message", "아이디 또는 비밀번호를 확인해 주세요.");
 		}
 	

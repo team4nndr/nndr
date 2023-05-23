@@ -10,16 +10,19 @@
 		WHERE EMAIL = #{email}
 	</update>
 	
+	<!-- 이메일 인증번호 받기 -->
 	<insert id="insertAuthKey">
 		INSERT INTO "AUTH_KEY" VALUES(SEQ_AUTH_KEY_NO.NEXTVAL, #{authKey}, #{email}, DEFAULT)
 	</insert>
 	
+	<!-- 이메일 인증하기 (회원 가입) -->
 	<select id="checkAuthKey" resultType="int">
 		SELECT COUNT(*) FROM "AUTH_KEY"
 		WHERE EMAIL = #{email}
 		AND CODE = #{inputKey}
 	</select>
 	
+	<!-- 비밀번호 찾기 이메일 인증 -->
 	<select id="findCheck" resultType="int">
 		SELECT COUNT(*) FROM "AUTH_KEY"
 		WHERE EMAIL = #{email}
