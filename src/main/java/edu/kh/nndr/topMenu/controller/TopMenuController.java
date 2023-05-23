@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
 
 import edu.kh.nndr.alram.model.dto.Alram;
+import edu.kh.nndr.member.model.dto.Member;
 import edu.kh.nndr.topMenu.service.TopMenuService;
 
 @SessionAttributes({"loginMember"})
@@ -35,8 +36,8 @@ public class TopMenuController {
 	
 	// 알람 목록 조회
 	@GetMapping("/personalFeed/{memberNo}")
-	public List<Alram> alramList (Alram alram ,@PathVariable("memberNo") int memberNo) {
-		return service.alramList(alram);
+	public List<Alram> alramList (@SessionAttribute("loginMember") Member member ,@PathVariable("memberNo") int memberNo) {
+		return service.alramList(member.getMemberNo());
 	}
 }
 

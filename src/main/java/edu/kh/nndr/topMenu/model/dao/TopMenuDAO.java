@@ -13,8 +13,8 @@ public class TopMenuDAO {
 	
 	private SqlSessionTemplate sqlSession;
 
-	public List<Alram> alramList(Alram alram) {
-		return sqlSession.selectList("alramMapper.alramList", alram);
+	public List<Alram> alramList(int memberNo) {
+		return sqlSession.selectList("alramMapper.alramList", memberNo);
 	}
 
 }

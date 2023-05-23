@@ -14,9 +14,12 @@ public class TopMenuServiceImpl implements TopMenuService{
 	@Autowired
 	private TopMenuDAO dao;
 
+
+	// 알람 목록 조회
 	@Override
-	public List<Alram> alramList(Alram alram) {
-		return dao.alramList(alram);
+	public List<Alram> alramList(int memberNo) {
+		
+		return dao.alramList(memberNo);
 	}
 	
 

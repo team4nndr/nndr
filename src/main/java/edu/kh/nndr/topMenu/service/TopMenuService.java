@@ -10,6 +10,7 @@ public interface TopMenuService {
 	 * @param alram
 	 * @return list
 	 */
-	List<Alram> alramList(Alram alram);
+
+	List<Alram> alramList(int memberNo);
 
 }
