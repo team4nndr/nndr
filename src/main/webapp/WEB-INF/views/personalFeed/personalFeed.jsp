@@ -241,7 +241,7 @@
         </div>
         
     <script src="/resources/js/personalFeed/personalFeed.js"></script>
-    <script src="/resources/js/mainFeed/main.js"></script>
+    <%-- <script src="/resources/js/mainFeed/main.js"></script> --%>
     <script src="/resources/js/mainFeed/reply.js"></script>
     <jsp:include page="/WEB-INF/views/common/footer.jsp"/>
                         

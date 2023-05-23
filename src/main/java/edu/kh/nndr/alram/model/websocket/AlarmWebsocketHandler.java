@@ -19,19 +19,19 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 //import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.gson.Gson;
 
-import edu.kh.nndr.alram.model.dto.Alram;
-import edu.kh.nndr.alram.model.service.AlramServiceImpl;
+import edu.kh.nndr.alram.model.dto.Alarm;
+import edu.kh.nndr.alram.model.service.AlarmService;
+import edu.kh.nndr.alram.model.service.AlarmServiceImpl;
 import edu.kh.nndr.member.model.dto.Member;
 import edu.kh.nndr.member.model.dto.MemberInfo;
 
-@SessionAttributes({"loginMember", "friendList"})
-public class AlramWebsocketHandler extends TextWebSocketHandler {
+public class AlarmWebsocketHandler extends TextWebSocketHandler {
 
-    private Logger logger = LoggerFactory.getLogger(AlramWebsocketHandler.class);
+    private Logger logger = LoggerFactory.getLogger(AlarmWebsocketHandler.class);
     
     
     @Autowired
-    private AlramServiceImpl service;
+    private AlarmService service;
    
     
     // WebSocketSession : 클라이언트 - 서버간 전이중통신을 담당하는 객체 (JDBC Connection과 유사)
@@ -64,19 +64,20 @@ public class AlramWebsocketHandler extends TextWebSocketHandler {
         // JSON String -> VO Object
         ObjectMapper objectMapper = new ObjectMapper();
         
-        Alram alram = objectMapper.readValue( message.getPayload(), Alram.class);
+        Alarm alarm = objectMapper.readValue( message.getPayload(), Alarm.class);
         // Message 객체 확인
-        System.out.println(alram); 
+        System.out.println(alarm);  
         
         // DB 삽입 서비스 호출
-//        int result = service.insertMessage(alram);
-//        
+        
+        int result = service.insertAlarm(alarm);
+        
 //        if(result > 0 ) {
 //            
 //            SimpleDateFormat sdf = new SimpleDateFormat("yyyy.MM.dd hh:mm");
 //            alram.setSendTime(sdf.format(new Date()) );
 //            
-//            // 전역변수로 선언된 sessions에는 접속중인 모든 회원의 세션 정보가 담겨 있음
+            // 전역변수로 선언된 sessions에는 접속중인 모든 회원의 세션 정보가 담겨 있음
             for(WebSocketSession s : sessions) {
                 // WebSocketSession은 HttpSession의 속성을 가로채서 똑같이 가지고 있기 때문에
                 // 회원 정보를 나타내는 loginMember도 가지고 있음.
@@ -87,9 +88,9 @@ public class AlramWebsocketHandler extends TextWebSocketHandler {
                 
 //                 로그인 상태인 회원 중 targetNo가 일티하는 회원에게 메세지 전달
                 System.out.println(loginMemberNo);
-                if(loginMemberNo == alram.getReciverMemberNo()) {
+                if(loginMemberNo == alarm.getMemberNo()) {
                 	System.out.println(loginMemberNo);
-                    s.sendMessage(new TextMessage(new Gson().toJson(alram)));
+                    s.sendMessage(new TextMessage(new Gson().toJson(alarm)));
                 }
             }
 //        }

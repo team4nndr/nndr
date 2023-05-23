@@ -29,7 +29,7 @@ import edu.kh.nndr.member.model.dto.PersonalFriend;
 import edu.kh.nndr.member.model.service.MemberInfoService;
 
 
-@SessionAttributes({"loginMember", "friend"})
+@SessionAttributes("loginMember")
 @Controller
 public class PersonalFeedController {
 	
@@ -50,6 +50,7 @@ public class PersonalFeedController {
 			path += referer;
 			return path;
 		}
+		
 		model.addAttribute("infoMember", infoMember); // request scope
 
 		Map<String, Object> HobbyMap = service.selectHobbyList(no); 
