@@ -68,19 +68,8 @@
                             <div class="nndrAllAlarm">모든 알림</div>
                             <div class="nndrAlarmNotRead">읽지 않은 알림</div>
                         </div>
-
                         <div id="nndrAddContainer">
-                            <!-- <div class="nndrAddAlarm">
-                                <a href="/댓글,좋아요,게시물 업로드 등 해당 회원 프로필 이동 페이지" class="nndrAddAlarmProfile">
-                                    <img src="/resources/images/topMenu/topMyProfile.png" class="topMyProfile">
-                                </a>
-                                <a href="/알람내용으로 이동할 페이지" class="nndrAddAlarmContent">
-                                    <p class="nndrAlarmContent">알림 내용</p>
-                                </a>
-                                <div class="nndr-top-alarm-delete">&times;</div>
-                            </div> -->
                         </div>
-                        <button id="thumsUp">좋아여</button>
                     </div>
                 </div>
 
