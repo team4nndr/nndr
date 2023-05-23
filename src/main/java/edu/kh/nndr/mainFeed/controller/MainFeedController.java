@@ -145,8 +145,7 @@ public class MainFeedController {
 		
 		
 		board.setMemberNo(loginMember.getMemberNo());
-		System.out.println(board.getBoardNo());
-		System.out.println(board.getBoardText());
+
 		
 		
 		String webPath = "/resources/images/mainFeed/";

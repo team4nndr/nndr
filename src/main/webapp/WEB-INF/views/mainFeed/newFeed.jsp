@@ -44,7 +44,7 @@
             </section>
             </div>
 
-            <input type="hidden" name="boardNo" id="hiddenBoardNo">
+            <input type="hidden" name="boardNo" id="hiddenBoardNo" value="0">
 
 
             <section id="modalContent">
