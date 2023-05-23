@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Map;
 
 import edu.kh.nndr.friend.model.dto.Friend;
+import edu.kh.nndr.member.model.dto.Member;
 
 public interface FriendService {
 
@@ -27,7 +28,7 @@ public interface FriendService {
 
 	/** 모든 친구 목록 조회
 	 * @param memberNo
-	 * @return
+	 * @return List<Friend>
 	 */
 	List<Friend> friendListAll(int memberNo);
 
@@ -36,6 +37,10 @@ public interface FriendService {
 	 * @return
 	 */
 	List<Friend> friendListsearch(Map<String, Object> map);
-
-
+	
+	/** 로그인 시 현재 친구 목록 조회
+	 * @param map
+	 * @return List<Member> friendList
+	 */
+	public List<Member> friendListMember(int memberNo);
 }

@@ -228,5 +228,23 @@
 		  AND MEMBER_NAME LIKE '%${query}%'
 	</select>
 	
+	<!-- 내 친구 목록 : Member 반환 -->
+	<select id="friendListMember" resultMap="member_rm">
+		SELECT MEMBER_NO, MEMBER_NAME, INFO_PROFILEPATH||INFO_PROFILE INFO_IMG, MEMBER_CODE
+		FROM (
+				SELECT
+					CASE
+						WHEN FRIEND_SENDER = #{memberNo} THEN FRIEND_RECIVER
+						WHEN FRIEND_RECIVER = #{memberNo} THEN FRIEND_SENDER
+					END MEMBER_NO
+				FROM 	 FRIEND
+				WHERE   (FRIEND_SENDER = #{memberNo} OR FRIEND_RECIVER = #{memberNo})
+				         AND FRIEND_FL = 'Y'
+			) MY_FRIEND
+		JOIN "MEMBER" USING(MEMBER_NO)
+		LEFT JOIN "MEMBER_INFO" USING(MEMBER_NO)
+		WHERE MEMBER_CODE='N'
+	</select>
+	
 	
 </mapper>
