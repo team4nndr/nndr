@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import edu.kh.nndr.friend.model.dto.Friend;
+import edu.kh.nndr.member.model.dto.Member;
 
 @Repository
 public class FriendDAO {
@@ -57,6 +58,15 @@ public class FriendDAO {
 
 	public List<Friend> friendListsearch(Map<String, Object> map) {
 		return sqlSession.selectList("friendMapper.friendListsearch", map);
+	}
+
+	/**
+	 * 로그인 시 친구 목록 조회
+	 * @param memberNo
+	 * @return firendList
+	 */
+	public List<Member> friendListMember(int memberNo) {
+		return sqlSession.selectList("memberMapper.friendListMember", memberNo);
 	}
 
 }

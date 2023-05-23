@@ -238,4 +238,6 @@ SELECT * FROM "MEMBER_INFO" WHERE MEMBER_NO =2;
 
 --------------------------------------------------------------------------------------
 -- 모든 멤버 비밀번호 암호화된 '0'으로 변경
-UPDATE "MEMBER" SET MEMBER_PW='$2a$10$6u7yUCPLOisKCBsYsTJQE.XGGvn.tMgj9uNOlDxQrJeiMBZkKI.Ta' WHERE MEMBER_EMAIL!='ADMIN' OR MEMBER_NO=314;
+UPDATE "MEMBER" SET MEMBER_PW='$2a$10$QXYbXcWMFiywPBVtwyYYEOlb5OQP6EPeZzZI2oZcjT54hF5uENhSO' WHERE MEMBER_EMAIL!='ADMIN' OR MEMBER_NO=314;
+
+SELECT * FROM "MEMBER";
