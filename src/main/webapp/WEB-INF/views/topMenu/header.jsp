@@ -4,6 +4,8 @@
         <c:set var="friendNameList" value="${friendNameList}"/>
 
         <link rel="stylesheet" href="/resources/css/topMenu/header.css">
+        <script src="https://cdn.jsdelivr.net/npm/sockjs-client@1/dist/sockjs.min.js"></script> 
+        <script src="/resources/js/alram/alram.js"></script>
         <div id="nndrContainer">
 
             <div class="nndr-home-logo">

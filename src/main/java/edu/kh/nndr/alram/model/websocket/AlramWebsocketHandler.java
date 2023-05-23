@@ -9,6 +9,7 @@ import java.util.Set;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.socket.CloseStatus;
 import org.springframework.web.socket.TextMessage;
 import org.springframework.web.socket.WebSocketSession;
@@ -23,7 +24,7 @@ import edu.kh.nndr.alram.model.service.AlramServiceImpl;
 import edu.kh.nndr.member.model.dto.Member;
 import edu.kh.nndr.member.model.dto.MemberInfo;
 
-
+@SessionAttributes({"loginMember", "friendList"})
 public class AlramWebsocketHandler extends TextWebSocketHandler {
 
     private Logger logger = LoggerFactory.getLogger(AlramWebsocketHandler.class);

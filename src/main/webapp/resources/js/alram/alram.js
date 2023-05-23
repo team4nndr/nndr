@@ -74,7 +74,6 @@ alramSock.onmessage = function(e) {
 		alramType(alram.senderMemberNo, alram.senderProfile, "친구 요청이 들어왔습니다.")
 		return;
 	}
-	alert("123")
 }
 
 // 문서 로딩 완료 후 수행할 기능
