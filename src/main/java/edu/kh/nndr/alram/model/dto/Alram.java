@@ -10,12 +10,16 @@ import lombok.ToString;
 @Setter
 @ToString
 public class Alram {
+	
+	int alramNo;
+
 	int senderMemberNo;
 	String senderProfile;
 	String senderHref;
 	int reciverMemberNo;
 	String content;
 	String friendButton;
+	
 	
 
 }

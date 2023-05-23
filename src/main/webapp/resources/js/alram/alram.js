@@ -104,7 +104,7 @@ function alramType(no, profile, what){
     let topMyProfile = document.createElement("img");
     topMyProfile.classList.add("topMyProfile");
     topMyProfile.src = profile;
- 
+
 
 
     let nndrAlarmContent = document.createElement("p");
