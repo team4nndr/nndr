@@ -17,7 +17,7 @@
     <typeAlias type="edu.kh.nndr.member.model.dto.MemberInfo" alias="MemberInfo" />
     <typeAlias type="edu.kh.nndr.member.model.dto.MemberHobby" alias="MemberHobby" />
     <typeAlias type="edu.kh.nndr.member.model.dto.PersonalFriend" alias="PersonalFriend" />
-    <typeAlias type="edu.kh.nndr.member.model.dto.Alarm" alias="alarmMapper" />
+    <typeAlias type="edu.kh.nndr.alarm.model.dto.Alarm" alias="Alarm" />
     <typeAlias type="edu.kh.nndr.admin.model.dto.Feedback" alias="Feedback" />
     <typeAlias type="edu.kh.nndr.friend.model.dto.Friend" alias="Friend" />
     <typeAlias type="edu.kh.nndr.mainFeed.model.dto.Hashtag" alias="Hashtag"/>

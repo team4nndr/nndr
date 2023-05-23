@@ -2,7 +2,7 @@
     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
         <c:set var="tagList" value="${tagList}"/>
         <c:set var="friendNameList" value="${friendNameList}"/>
-
+        <c:set var="alarmList" value="${alarmList}"/>
         <link rel="stylesheet" href="/resources/css/topMenu/header.css">
 
         <script src="https://cdn.jsdelivr.net/npm/sockjs-client@1/dist/sockjs.min.js"></script>
@@ -60,6 +60,7 @@
                         <img src="/resources/images/topMenu/topAlarm.png" id="nndrImage3">
                     </div>
 
+                
                     <!-- 알림 버튼 클릭 시 하위 메뉴 -->
                     <div id="nndrBellDropdown" class="nndr-dropdown-content1 nndr-dropdown-menu hidden">
                         <div id="nndrAlarm">
@@ -77,8 +78,11 @@
                             <div class="nndrAlarmNotRead">읽지 않은 알림</div>
                         </div>
                         <div id="nndrAddContainer">
-                            <c:forEach items="" var="">
-                            </c:forEach>
+                        <c:choose>
+                            <c:when test="${empty alarmList}" >
+                                <div>알람이 없습니다.</div>
+                            </c:when>
+                        </c:choose>
                         </div>
                     </div>
                 </div>
