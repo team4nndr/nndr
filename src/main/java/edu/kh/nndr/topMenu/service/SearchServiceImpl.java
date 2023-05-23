@@ -31,7 +31,7 @@ public class SearchServiceImpl implements SearchService{
 	 * 일치하는 친구이름 검색어 조회
 	 */
 	@Override
-	public List<Friend> friendNameList(Map<String, Object> map) {
+	public List<Member> friendNameList(Map<String, Object> map) {
 		return dao.friendNameList(map);
 	}
 

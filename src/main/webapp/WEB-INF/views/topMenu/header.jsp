@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
         <c:set var="tagList" value="${tagList}"/>
+        <c:set var="friendNameList" value="${friendNameList}"/>
 
         <link rel="stylesheet" href="/resources/css/topMenu/header.css">
         <div id="nndrContainer">
@@ -10,15 +11,16 @@
             </div>
 
             <div class="nndr-search-area">
-                <form action="#" method="GET">
+                <form action="/hashTagList" method="GET">
                     <fieldset id="nndrSearchBox">
                         <div>
                             <input type="search" class="nndr-input" name="query" id="nndrQuery" autocomplete="off"
                                 placeholder="N-NDR 검색">
                             <button type="submit" id="nndrSearchBtn"></button>
 
-                            <!-- 검색어 저장 영역 -->
                         </div>
+
+                        <!-- 검색어 추천 영역 -->
                         <div class="nndr-suggestions nndr-suggestions_pannel">
                         </div>
                     </fieldset>
@@ -49,16 +51,6 @@
                     <div id="nndrDropBtn1" class="nndr-dropdown-button">
                         <img src="/resources/images/topMenu/topAlarm.png" id="nndrImage3">
                     </div>
-
-                    <!-- <div> 
-                    <div class="porfileRac">
-                        <a href="#" class="Boardprofile"></a>
-                    </div>
-                    <div>
-                        <a href="#">김핑퐁</a>
-                        <p>게시글 정보 입니다. (회원 소개글 들어가도 됨)</p>
-                    </div>
-                    </div> -->
 
                     <!-- 알림 버튼 클릭 시 하위 메뉴 -->
                     <div id="nndrBellDropdown" class="nndr-dropdown-content1 nndr-dropdown-menu hidden">
@@ -95,8 +87,14 @@
 
                 <!-- 내정보 버튼 -->
                 <div id="nndrDropdown2" class="nndr-dropdown-container">
+
                     <div id="nndrDropBtn2" class="nndr-dropdown-button">
-                        <img src="/resources/images/topMenu/topMyInfo.png" id="nndrImage4">
+                    <c:if test="${empty loginMember.profileImage}">
+                        <img src="/resources/images/common/user-default.png" class="reply-profile-image">
+                    </c:if>
+                    <c:if test="${not empty loginMember.profileImage}">
+                        <img class="reply-profile-image" src="${loginMember.profileImage}">
+                    </c:if>
                     </div>
 
                     <!-- 내정보 버튼 클릭 시 하위 메뉴 -->
@@ -123,6 +121,10 @@
 
         <script>
             
+
+            
+            
+        
         </script>
 
         <script src="/resources/js/topMenu/header.js"></script>

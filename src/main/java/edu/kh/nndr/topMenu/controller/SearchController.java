@@ -35,14 +35,25 @@ public class SearchController {
 	// 일치하는 친구 이름 목록 조회(검색)
     @GetMapping(value="/mainFeed/friendNameList", produces="application/json; charset=UTF-8")
     @ResponseBody
-    public List<Friend> friendNameList(@RequestParam("fName") String fName, @SessionAttribute("loginMember") Member loginMember){
+    public List<Member> friendNameList(@RequestParam("fName") String fName, @SessionAttribute("loginMember") Member loginMember){
+
     	Map<String, Object> map = new HashMap<>();
     	map.put("memberNo", loginMember.getMemberNo());
-    	map.put("fName", fName);
+    	map.put("query", fName);
     	
     	System.out.println(map);
+    	
     	return service.friendNameList(map);
     }
-	
+    
+    // 해시태그 관련 키워드가 포함된 게시글 조회
+//	@GetMapping("/personalFeed/${fName}")
+//	public String 
+//	
+//
 
 }
+
+
+
+
