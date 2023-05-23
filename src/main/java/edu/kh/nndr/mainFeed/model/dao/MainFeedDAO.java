@@ -90,8 +90,12 @@ public class MainFeedDAO {
 	
 	// 게시글 수정 (1개)이미지 삽입 
 	public int imgInsert(Image img) {
-		// TODO Auto-generated method stub
+		
 		return sqlSession.insert("mainFeedMapper.imgInsert",img);
+	}
+
+	public Board selectOne(int boardNo) {
+		return sqlSession.selectOne("mainFeedMapper.selectOne", boardNo);
 	}
 	
 	

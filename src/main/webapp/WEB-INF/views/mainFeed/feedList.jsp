@@ -38,7 +38,7 @@
                 <c:if test="${board.memberNo eq loginMember.memberNo}" >
                     <div class="feed-more detailBtn">
                         <div class="feedContain hidden">
-                            <button type="submit" class="feedUpdate" data="${board.boardNo}" >게시물 수정</button>
+                            <button type="submit" class="feedUpdate" id="feedInfo" data="${board.boardNo}" >게시물 수정</button>
                             <button type="submit" class="feedDelete" data="${board.boardNo}">게시물 삭제</button>
                         </div>
                     </div>

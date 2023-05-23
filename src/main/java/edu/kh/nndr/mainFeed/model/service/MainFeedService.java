@@ -40,6 +40,10 @@ public interface MainFeedService {
 			throws IllegalStateException, IOException;
 
 
+
+	Board selectOne(int boardNo);
+
+
 	
 
 
