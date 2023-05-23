@@ -4,6 +4,13 @@
         <c:set var="friendNameList" value="${friendNameList}"/>
 
         <link rel="stylesheet" href="/resources/css/topMenu/header.css">
+        <script src="https://cdn.jsdelivr.net/npm/sockjs-client@1/dist/sockjs.min.js"></script>
+        <script>
+            let alramSock= new SockJS("/alramSock");;
+        </script>
+        
+        <script src="/resources/js/alarm/alarm.js"></script>
+        
         <div id="nndrContainer">
 
             <div class="nndr-home-logo">
@@ -69,6 +76,8 @@
                             <div class="nndrAlarmNotRead">읽지 않은 알림</div>
                         </div>
                         <div id="nndrAddContainer">
+                            <c:forEach items="" var="">
+                            </c:forEach>
                         </div>
                     </div>
                 </div>
@@ -79,7 +88,7 @@
 
                     <div id="nndrDropBtn2" class="nndr-dropdown-button">
                     <c:if test="${empty loginMember.profileImage}">
-                        <img src="/resources/images/common/user-default.png" class="reply-profile-image">
+                        <img src="/resources/images/common/user-default.png" class="reply-profile-image" id="nndrImage4">
                     </c:if>
                     <c:if test="${not empty loginMember.profileImage}">
                         <img class="reply-profile-image" src="${loginMember.profileImage}">
@@ -108,12 +117,6 @@
             </div>
         </div>
 
-        <script>
-            
-
-            
-            
-        
-        </script>
+        <script src="/resources/js/topMenu/"></script>
 
         <script src="/resources/js/topMenu/header.js"></script>
