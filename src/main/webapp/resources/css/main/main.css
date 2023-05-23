@@ -38,7 +38,7 @@
 
 .frame{
   display: flex;
-  flex-direction: column;
+  flex-direction: column;  /* 세로로 바뀜 */
   align-items: center;
   justify-content: center;
 }

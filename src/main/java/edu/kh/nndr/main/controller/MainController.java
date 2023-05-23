@@ -1,15 +1,23 @@
 package edu.kh.nndr.main.controller;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.SessionAttribute;
+import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import edu.kh.nndr.main.service.MainService;
+import edu.kh.nndr.member.model.dto.Member;
 
+@SessionAttributes({"loginMember"})
 @Controller
 public class MainController {
 
@@ -58,6 +66,43 @@ public class MainController {
 		
 		
 		return service.emailDup(emailDup);
+	}
+	
+	// 비밀번호 변경
+	@PostMapping("/main/forgetPw/changePw")
+	public String changePw(@RequestParam("newPw") String newPw 
+						,@SessionAttribute(value="loginMember",required = false) Member loginMember
+						,RedirectAttributes ra, HttpSession session
+			) {
+		
+		int result = 0;
+		
+		if(loginMember !=null) {
+			int memberNo = loginMember.getMemberNo();
+			
+			result = service.changePw(newPw,memberNo); // 로그인 했을 때 비번 변경
+		}else {
+			String findEmail = (String)session.getAttribute("findEmail");
+			
+			result = service.changePw(newPw,findEmail); // 이메일 모를 때 비번 변경
+			
+		}
+		
+		
+		String path = "redirect:";
+		String message = null;
+		
+		if(result>0) {
+			message = "비밀번호가 변경되었습니다.";
+			path += "/";
+		}else {
+			message = "현재 비밀번호가 일치하지 않습니다.";
+			path += "newPw";
+		}
+		
+		ra.addFlashAttribute("message",message);
+		
+		return path;
 	}
 	
 	

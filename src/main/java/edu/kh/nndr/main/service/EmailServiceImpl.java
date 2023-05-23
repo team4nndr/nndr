@@ -24,7 +24,7 @@ public class EmailServiceImpl implements EmailService {
     private JavaMailSender mailSender;
     
     private String fromEmail = "ejck@gmail.com";
-    private String fromUsername = "세미프로젝트";
+    private String fromUsername = "nddr";
 
     @Override
     public String createAuthKey() {
@@ -67,14 +67,14 @@ public class EmailServiceImpl implements EmailService {
             MimeMessage mail = mailSender.createMimeMessage();
             
             // 제목
-            String subject = "[Board Project]"+title+" 인증코드";
+            String subject = "[nndr]"+title+" 인증코드";
             
             // 문자 인코딩
             String charset = "UTF-8";
             
             // 메일 내용
             String mailContent 
-                = "<p>Board Project "+title+" 인증코드입니다.</p>"
+                = "<p>nndr "+title+" 인증코드입니다.</p>"
                 + "<h3 style='color:blue'>" + authKey + "</h3>";
             
             
@@ -116,5 +116,11 @@ public class EmailServiceImpl implements EmailService {
 	@Override
 	public int checkAuthKey(Map<String, Object> paramMap) {
 		return dao.checkAuthKey(paramMap);
+	}
+
+	@Override
+	public int findCheck(Map<String, Object> paramMap) {
+		
+		return dao.findCheck(paramMap);
 	}
 }

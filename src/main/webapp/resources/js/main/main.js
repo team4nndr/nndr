@@ -180,7 +180,6 @@ memberTel.addEventListener("input", () => {
 
 // 인증번호 발송
 const sendAuthKeyBtn = document.getElementById("sendAuthKeyBtn");
-const authKeyMessage = document.getElementById("authKeyMessage");
 let authTimer;
 let authMin = 4;
 let authSec = 59;
@@ -217,8 +216,6 @@ sendAuthKeyBtn.addEventListener("click", function(){
         alert("인증번호가 발송 되었습니다.");
 
         
-        authKeyMessage.innerText = "05:00";
-        authKeyMessage.classList.remove("confirm");
 
         authTimer = window.setInterval(()=>{
 

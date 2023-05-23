@@ -209,6 +209,7 @@
     cursor: pointer;
     width: 100px;
     height: 25px;
+    margin-right: 361px; 
 }
 
 #sendAuthKeyBtn:hover{
@@ -249,23 +250,26 @@ footer span{
     border: 1px solid #8c8686;
     cursor: pointer;
     border-radius: 5px;
-    margin-right: 373px;
-    
 }
     
 #sendAutoKeyBtn:hover{
     background-color: #ccc;
     border-radius: 5px;
 }
-    
+
+/* 인증하기 버튼 */
 #checkAuthKeyBtn{
-    border: 1px solid #8c8686;
+    background-color: #b2afaf;
+    border: none;
+    border-radius: 7px;
     cursor: pointer;
-    border-radius: 5px;
+    width: 100px;
+    height: 25px;
+ 
 }
     
 #checkAuthKeyBtn:hover{
-    background-color: #ccc;
+    background-color: #9c9595;
     border-radius: 5px;
 }
 

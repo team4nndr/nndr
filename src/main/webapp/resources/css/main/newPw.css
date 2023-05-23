@@ -147,6 +147,13 @@
     margin-bottom: 7px;
 }
 
+/* 비밀번호 입력, 확인 Form 태그 */
+#changePwFrm{
+    display: flex;
+    flex-direction: column;
+    align-items: center
+}
+
 /* 취소 위 라인줄 */
 .line2{
     border-top: 1px solid #4444;

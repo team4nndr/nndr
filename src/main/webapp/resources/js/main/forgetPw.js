@@ -1,9 +1,10 @@
 const emailCheck = document.getElementById("emailCheck");
-const buttonBtn = document.getElementById("buttonBtn");
+
 const forgetFail = document.getElementById("forgetFail");
 const certification = document.getElementById("certification");
+const sendAuthKeyBtn = document.getElementById("sendAuthKeyBtn");
 
-buttonBtn.addEventListener("click", ()=>{
+sendAuthKeyBtn.addEventListener("click", ()=>{
 
     fetch('/main/emailCheck?email='+emailCheck.value)
     .then(resp => resp.text()) // json 아닌 이유는 결과값이 하나이기 때문 
@@ -71,7 +72,7 @@ emailCheck.addEventListener("input", ()=>{
 
 
 // 인증번호 발송
-const sendAuthKeyBtn = document.getElementById("sendAuthKeyBtn");
+
 let authTimer;
 let authMin = 4;
 let authSec = 59;
@@ -85,78 +86,76 @@ sendAuthKeyBtn.addEventListener("click", function(){
 
     checkObj.authKey = false;
 
-    if(checkObj.emailCheck){ // 중복이 아닌 이메일인 경우
+   
 
 
-        /* fetch() API 방식 ajax */
-        fetch("/sendEmail/signUp?email="+emailCheck.value)
-        .then(resp => resp.text())
-        .then(result => {
-            if(result > 0){
-                console.log("인증 번호가 발송되었습니다.")
-                tempEmail = emailCheck.value;
-            }else{
-                console.log("인증번호 발송 실패")
-            }
-        })
-        .catch(err => {
-            console.log("이메일 발송 중 에러 발생");
-            console.log(err);
-        });
+    /* fetch() API 방식 ajax */
+    fetch("/sendEmail/findEmail?email="+emailCheck.value)
+    .then(resp => resp.text())
+    .then(result => {
+        if(result > 0){
+            console.log("인증 번호가 발송되었습니다.")
+            tempEmail = emailCheck.value;
+        }else{
+            console.log("인증번호 발송 실패")
+        }
+    })
+    .catch(err => {
+        console.log("이메일 발송 중 에러 발생");
+        console.log(err);
+    });
+    
+
+    alert("인증번호가 발송 되었습니다.");
+
+    
+
+    authTimer = window.setInterval(()=>{
+
         
+        // 남은 시간이 0분 0초인 경우
+        if(authMin == 0 && authSec == 0){
+            checkObj.authKey = false;
+            clearInterval(authTimer);
+            return;
+        }
 
-        alert("인증번호가 발송 되었습니다.");
-
-        
-
-        authTimer = window.setInterval(()=>{
-
-            
-            // 남은 시간이 0분 0초인 경우
-            if(authMin == 0 && authSec == 0){
-                checkObj.authKey = false;
-                clearInterval(authTimer);
-                return;
-            }
-
-            // 0초인 경우
-            if(authSec == 0){
-                authSec = 60;
-                authMin--;
-            }
+        // 0초인 경우
+        if(authSec == 0){
+            authSec = 60;
+            authMin--;
+        }
 
 
-            authSec--; // 1초 감소
+        authSec--; // 1초 감소
 
-        }, 1000)
+    }, 1000)
 
-    } else{
-        alert("중복되지 않은 이메일을 작성해주세요.");
-        emailCheck.focus();
-    }
+
 
 });
 
 
 // 인증 확인
-const authKey = document.getElementById("authKey");
+const inputText = document.getElementById("inputText");
 const checkAuthKeyBtn = document.getElementById("checkAuthKeyBtn");
 
 checkAuthKeyBtn.addEventListener("click", function(){
 
     if(authMin > 0 || authSec > 0){ // 시간 제한이 지나지 않은 경우에만 인증번호 검사 진행
         /* fetch API */
-        const obj = {"inputKey":authKey.value, "email":tempEmail} 
+        const obj = {"inputKey":inputText.value, "email":tempEmail} 
         const query = new URLSearchParams(obj).toString()
         // 파라미터가 많을 때 쿼리스트링을 쓰는 방법 : URLSearchParams toString 으로 반환 => inputKey=123456&email=user01 
 
-        fetch("/sendEmail/checkAuthKey?" + query)
+        fetch("/sendEmail/findCheck?" + query)
         .then(resp => resp.text())
         .then(result => {
             if(result > 0){
                 clearInterval(authTimer); // 시간가는거 멈추는 코드
                 checkAuthKeyBtn.style.backgroundColor = "rgba(142, 179, 234, 0.617)";
                 checkObj.authKey = true; // 인증되면
+                location.href="/main/forgetPw/newPw";
 
             } else{
                 alert("인증번호가 일치하지 않습니다.")
@@ -172,6 +171,9 @@ checkAuthKeyBtn.addEventListener("click", function(){
     }
 
 });
+
+
+
 
 
 
