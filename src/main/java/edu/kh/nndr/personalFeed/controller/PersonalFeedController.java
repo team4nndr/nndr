@@ -21,6 +21,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import edu.kh.nndr.mainFeed.model.dto.Board;
 import edu.kh.nndr.mainFeed.model.dto.Reply;
+import edu.kh.nndr.mainFeed.model.service.MainFeedService;
 import edu.kh.nndr.mainFeed.model.service.ReplyService;
 import edu.kh.nndr.member.model.dto.Member;
 import edu.kh.nndr.member.model.dto.MemberHobby;
@@ -35,6 +36,8 @@ public class PersonalFeedController {
 	
 	@Autowired
 	MemberInfoService service;
+	@Autowired
+	MainFeedService mainService;
 
 	@Autowired
 	private ReplyService replyService;
@@ -75,6 +78,24 @@ public class PersonalFeedController {
 			board.setReplyList(list);
 		}
 		model.addAttribute("boardList", boardList);
+		
+		////////////////////////////
+		//personalBoardList
+		List<Board> personalFeedList = mainService.personalFeedList(no);
+		
+		// 조회한 게시글에 달린 댓글 조회
+		for(Board board : personalFeedList) {
+		List<Reply> personalReply = replyService.replyList(board.getBoardNo());
+		board.setReplyList(personalReply);
+		}
+		
+		
+		
+		model.addAttribute("personalFeedList", personalFeedList);
+		
+		////////////////////////////      
+		////////////////////////////
+		
 		return "personalFeed/personalFeed";
 	}
 	
