@@ -5,7 +5,7 @@
 
 	<resultMap type="Alarm" id="alarm_rm">
 		<id property="memberNo" column="MEMBER_NO" />
-		<id property="alarmContent" column="ALARM_CONTENT" />
+		<id property="alarmContent" column="AaLRM_CONTENT" />
 	</resultMap>
 	
 

@@ -77,8 +77,6 @@
                             <div class="nndrAlarmNotRead">읽지 않은 알림</div>
                         </div>
                         <div id="nndrAddContainer">
-                            <c:forEach items="" var="">
-                            </c:forEach>
                         </div>
                     </div>
                 </div>

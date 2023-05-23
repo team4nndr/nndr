@@ -2,7 +2,7 @@ package edu.kh.nndr.topMenu.service;
 
 import java.util.List;
 
-import edu.kh.nndr.alram.model.dto.Alram;
+import edu.kh.nndr.alarm.dto.Alarm;
 
 public interface TopMenuService {
 
@@ -10,6 +10,6 @@ public interface TopMenuService {
 	 * @param alram
 	 * @return list
 	 */
-	List<Alram> alramList(Alram alram);
+	List<Alarm> alarmList(Alarm alarm);
 
 }
