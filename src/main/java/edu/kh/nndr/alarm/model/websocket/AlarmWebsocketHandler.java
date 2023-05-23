@@ -1,4 +1,4 @@
-package edu.kh.nndr.alram.model.websocket;
+package edu.kh.nndr.alarm.model.websocket;
 
 import java.text.SimpleDateFormat;
 import java.util.Collections;
@@ -19,9 +19,9 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 //import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.gson.Gson;
 
-import edu.kh.nndr.alram.model.dto.Alarm;
-import edu.kh.nndr.alram.model.service.AlarmService;
-import edu.kh.nndr.alram.model.service.AlarmServiceImpl;
+import edu.kh.nndr.alarm.model.dto.Alarm;
+import edu.kh.nndr.alarm.model.service.AlarmService;
+import edu.kh.nndr.alarm.model.service.AlarmServiceImpl;
 import edu.kh.nndr.member.model.dto.Member;
 import edu.kh.nndr.member.model.dto.MemberInfo;
 
