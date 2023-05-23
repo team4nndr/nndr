@@ -23,12 +23,16 @@ public class Util {
 		}
 		
 		public static String XSSHandlingReply(String content) {
+
+			// 멘션 데이터일 경우 변환 안함
+			if(!content.contains("mention-mark")) {
+				content = content.replaceAll("<","&lt;");
+				content = content.replaceAll(">","&gt;");
+				content = content.replaceAll("\"","&quot;");
+			}
 			
 			content = content.replaceAll("&","&amp;");
-			content = content.replaceAll("<","&lt;");
-			content = content.replaceAll(">","&gt;");
-			content = content.replaceAll("\"","&quot;");
-			
+			 
 			return content;
 		}
 		

@@ -19,6 +19,22 @@ function getMentionData() {
     .catch(e => console.log(e));
 }
 
+// 멘션 문자열에 HTML 처리
+function convertMention() {
+    for(let obj of mentionData) {
+        if(obj.name.length == 0) continue;
+        while( replyContent.includes('@' + obj.name) ) {
+            const mark = document.createElement('a');
+            mark.classList.add('mention-mark');
+            mark.href = '/personalFeed/' + obj.memberNo;
+            mark.setAttribute('no', obj.memberNo);
+            mark.innerText = obj.name;
+    
+            replyContent = replyContent.replace('@' + obj.name, mark.outerHTML);
+        }
+    }
+}
+
 // 멘션 리스트 생성
 function makeMentionList(list) {
     const container = document.createElement('ul');
