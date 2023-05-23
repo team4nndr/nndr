@@ -23,14 +23,16 @@
                             <img src="/resources/images/common/user-default.png" class="wirter-profile-image">
                         </c:if>
                         <c:if test="${not empty board.profileImage}">
-                            <img class="wirter-profile-image" src="${board.profileImage}">
+                            <a href="/personalFeed/${board.memberNo}">
+                                <img class="wirter-profile-image" src="${board.profileImage}">
+                            </a>
                         </c:if>
                     </a>
                     
                     <!-- 이름, 시간 -->
                     <div class="feed-head-info">
                         <a href="/personalFeed/${board.memberNo}" class="name change">${board.memberName}</a>
-                        <a href="#" class="date change">${board.uploadDate}</a>
+                        <a class="date change">${board.uploadDate}</a>
                     </div>
                 </div>
                 
@@ -89,7 +91,9 @@
                             <img src="/resources/images/common/user-default.png" class="reply-profile-image">
                         </c:if>
                         <c:if test="${not empty reply.profileImage}">
-                            <img class="reply-profile-image" src="${reply.profileImage}">
+                            <a href="/personalFeed/${reply.memberNo}">
+                                <img class="reply-profile-image" src="${reply.profileImage}">
+                            </a>
                         </c:if>
                         <div class="reply-body">
                             <div class="reply-bubble">

@@ -142,6 +142,8 @@ function printReplyList(boardNo) {
             img.classList.add('reply-profile-image');
             if( re.profileImage != null ){
                 img.setAttribute("src", re.profileImage);
+                img.addEventListener('click', () => location.href = "/personalFeed/" + re.memberNo);
+                img.classList.add('pointer');
             } else { // 없을 경우 기본이미지
                 img.setAttribute("src", "/resources/images/common/user-default.png");
             }
