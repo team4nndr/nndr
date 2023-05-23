@@ -78,6 +78,7 @@
     <div id="modal">
         <section id="insert">
             <div id="remove">
+                <%-- 컴퓨터 언어의 X --%>
                 &times;
             </div>
             <form action="/" method="post" name="signUpFrm" id="signUpFrm">

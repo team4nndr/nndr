@@ -44,3 +44,16 @@ if(cancel != null) {
         location.href = "/main/forgetPw";
     });
 }
+
+// footer의 메인페이지 이동 
+var mainPageGo = document.getElementById('mainPageGo');
+var loginGo   = document.getElementById('loginGo');
+
+mainPageGo.addEventListener('click', () => {
+    location.href = "/";
+});
+
+loginGo.addEventListener('click', () => {
+    location.href = "/";
+});
+

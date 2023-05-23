@@ -55,8 +55,8 @@
 
     <footer>
         <span>한국어</span>
-        <span>가입하기</span>
-        <span>로그인</span>
+        <span id="mainPageGo">가입하기</span>
+        <span id="loginGo">로그인</span>
     </footer>
 
 

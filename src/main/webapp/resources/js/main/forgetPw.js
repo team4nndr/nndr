@@ -181,8 +181,8 @@ if(cancel != null) {
 }
 
 // footer의 메인페이지 이동 
-const mainPageGo = document.getElementById('mainPageGo');
-const loginGo   = document.getElementById('loginGo');
+var mainPageGo = document.getElementById('mainPageGo');
+var loginGo   = document.getElementById('loginGo');
 
 mainPageGo.addEventListener('click', () => {
     location.href = "/";

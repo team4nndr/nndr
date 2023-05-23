@@ -218,3 +218,18 @@ footer span{
   padding: 0 10px;
 }
 
+/* footer location 이동 */
+#mainPageGo{
+    cursor: pointer;
+}
+
+#mainPageGo:hover{
+    text-decoration: underline;
+}
+#loginGo{
+    cursor: pointer;
+}
+
+#loginGo:hover{
+    text-decoration: underline;
+}
