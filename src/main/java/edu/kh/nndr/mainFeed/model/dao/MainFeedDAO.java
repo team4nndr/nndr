@@ -34,9 +34,9 @@ public class MainFeedDAO {
 	/** 게시글 확인
 	 * @return
 	 */
-	public List<Board> feedList() {
+	public List<Board> feedList(int memberNo) {
 		
-		return sqlSession.selectList("mainFeedMapper.feedList");
+		return sqlSession.selectList("mainFeedMapper.feedList",memberNo);
 	}
 
 	public int feedInsert(Board board) {
@@ -100,9 +100,9 @@ public class MainFeedDAO {
 	
 
 	// 좋아요 체크
-	public int feedLikeCheck(Board board) {
+	public int feedLikeCheck(Member memberNo) {
 		
-		return sqlSession.selectOne("mainFeedMapper.feedLikeCheck",board);
+		return sqlSession.selectOne("mainFeedMapper.feedLikeCheck",memberNo);
 	}
 
 	// 좋아요 추가 

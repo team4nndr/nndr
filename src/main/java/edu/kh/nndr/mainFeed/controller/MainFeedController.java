@@ -46,19 +46,21 @@ public class MainFeedController {
 	 * @return
 	 */
 	@GetMapping("/mainFeed")
-	public String feedList(Model model
+	public String feedList(Model model,@SessionAttribute("loginMember") Member loginMember
 			) {
 		
-		List<Board> boardList = service.feedList();
+		List<Board> boardList = service.feedList(loginMember.getMemberNo());
 		
 		// 조회한 게시글에 달린 댓글 조회
 		for(Board board : boardList) {
 			List<Reply> list = replyService.replyList(board.getBoardNo());
 			board.setReplyList(list);
+			
+			
 		}
 		
-		
-		
+	
+	
 		model.addAttribute("boardList", boardList);
 		
 		return "mainFeed/mainFeed";	
