@@ -11,6 +11,8 @@ if (document.getElementById("perAddFriend") != null) {
             .catch (e => { console.log(e)}); 
             perAddFriend.innerText ="친구 추가";
             perAddFriend.classList.remove('friendAdd');
+			perAddFriend.classList.remove('friendAccept')
+			perAddFriend.classList.remove('friendDel');
             perAddFriend.classList.add('noFriend')
             return;
         }
@@ -23,6 +25,8 @@ if (document.getElementById("perAddFriend") != null) {
             .catch (e => { console.log(e)}); 
             perAddFriend.innerText ="친구 추가";
             perAddFriend.classList.remove('friendDel');
+			perAddFriend.classList.remove('friendAdd')
+			perAddFriend.classList.remove('friendAccept');
             perAddFriend.classList.add('noFriend')
             return;
         }
@@ -34,7 +38,9 @@ if (document.getElementById("perAddFriend") != null) {
             }) 
             .catch (e => { console.log(e)}); 
             perAddFriend.innerText ="친구 끊기";
-            perAddFriend.classList.remove('friendAccept');
+            perAddFriend.classList.remove('friendAdd');
+			perAddFriend.classList.remove('noFriend')
+			perAddFriend.classList.remove('friendAccept');
             perAddFriend.classList.add('friendDel')
             return;
         }
@@ -52,6 +58,8 @@ if (document.getElementById("perAddFriend") != null) {
         }
     })
 }
+
+
 
 
 
@@ -214,26 +222,27 @@ function cvCho(target){
     document.getElementById("cv-set").style.display = "none";
     document.getElementById("back-modal").style.display="none";
     document.getElementById("back-modali").style.display="none";
+
 };   
 
 
 
-if(document.getElementById("uploadback") != null){
-    document.getElementById("uploadback").addEventListener("click", () => {
-        const personalCanFriend = new Array(perAddFriend.dataset.seno, perAddFriend.dataset.reno);
-        fetch("/personalCanFriend?personalCanFriend="+personalCanFriend)  
-        .then(response => response.text()) 
-        .then(() => {
-        }) 
-        .catch (e => { console.log(e)}); 
-        perAddFriend.innerText ="친구 추가";
-        perAddFriend.classList.remove('friendAdd');
-        return;
-    })
-}
+// if(document.getElementById("uploadback") != null){
+//     document.getElementById("uploadback").addEventListener("click", () => {
+//         const personalCanFriend = new Array(perAddFriend.dataset.seno, perAddFriend.dataset.reno);
+//         fetch("/personalCanFriend?personalCanFriend="+personalCanFriend)  
+//         .then(response => response.text()) 
+//         .then(() => {
+//         }) 
+//         .catch (e => { console.log(e)}); 
+//         perAddFriend.innerText ="친구 추가";
+//         perAddFriend.classList.remove('friendAdd');
+//         return;
+//     })
+// }
 
-if(document.getElementById("uploadback") != null){
-    document.getElementById("uploadback").addEventListener("click", () => {
+if(document.getElementById("delback") != null){
+    document.getElementById("delback").addEventListener("click", () => {
         const memberNo = document.getElementById("delback").dataset.no; 
         fetch("/delback?memberNo="+memberNo)  
         .then(response => response.text()) 
@@ -241,12 +250,12 @@ if(document.getElementById("uploadback") != null){
         .catch (e => { console.log(e)}); 
         document.getElementById("backLogo").src = "/resources/images/topMenu/페이지 시작화면.gif";
         document.getElementById("cv-set").style.display = "none";
-        console.log("asd");
         return;
     })
 }
 
 if(document.getElementById("backPlus") != null){
+    
     document.getElementById("backPlus").addEventListener("click", () => {
         if(document.getElementById("cv-set").style.display == "none") {
             document.getElementById("cv-set").style.display = "block";
@@ -293,14 +302,14 @@ console.log(pcvCho)
     document.getElementById("profile-modali").style.display="none";
 
     
-    document.getElementById("nndrImage4").src = imgPath+imgRename;
+    // document.getElementById("nndrImage4").src = imgPath+imgRename;
     document.getElementById("homeLogo").src = imgPath+imgRename;
     document.getElementById("cv-set").style.display = "none";
 };   
 
 
 
-const sendFriendalarm=()=>{
+const sendFriendAlram=()=>{
 	const senderMemberNo = document.getElementById("memberInfo").dataset.sender;
 	const senderProfile = document.getElementById("memberInfo").dataset.profile;
 	const senderName = document.getElementById("memberInfo").dataset.sendername;
@@ -308,27 +317,27 @@ const sendFriendalarm=()=>{
 	const content = document.getElementById("perAddFriend").innerText;
 
 
+    if(document.getElementById("perAddFriend") != null){
+        document.getElementById("perAddFriend").addEventListener("click", sendFriendAlram)
+    }
     var obj = {
         "profileImage": senderProfile,
         "link": "/personalFeed/" + senderMemberNo,
         "message" : senderName+"님이 친구 신청을 하셨습니다."
     }
 
-	var alarm = {
+	var alram = {
 		"memberNo": memberNo,
         "alarmContent" : makeAlarm(obj),
         "content" : content
 	}
 
 	// JSON.stringify() : 자바스크립트 객체를 JSON 문자열로 변환
-    console.log(alarm);
-	alarmSock.send(JSON.stringify(alarm));
+    console.log(alram);
+	alramSock.send(JSON.stringify(alram));
 }
 
 
-if(document.getElementById("perAddFriend") != null){
-    document.getElementById("perAddFriend").addEventListener("click", sendFriendalarm)
-}
 
 
 
