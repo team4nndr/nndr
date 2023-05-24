@@ -33,7 +33,7 @@ public interface SettingService {
 	 * @param member
 	 * @return true / false
 	 */
-	boolean checkPasswd(Member member);
+//	boolean checkPasswd(Member member);
 
 	/**
 	 * 환경설정 변경
@@ -42,5 +42,12 @@ public interface SettingService {
 	 * @return result
 	 */
 	int changeSetting(Map<String, Object> paramMap, Member loginMember);
+
+	/**
+	 * 현재 비밀번호 확인
+	 * @param member
+	 * @return memberPw
+	 */
+	String getPasswd(Member member);
 
 }

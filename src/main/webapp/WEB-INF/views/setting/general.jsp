@@ -64,7 +64,7 @@
                                 <input id="newPwConfirm" class="mod-input" type="password" />
                             </span>
                         </div>
-                        <a href="#">비밀번호를 잊으셨나요?</a>
+                        <a href="/main/forgetPw">비밀번호를 잊으셨나요?</a>
                     </div>
 
                     <div class="mod-button submit">변경 내용 저장</div>

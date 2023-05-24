@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -33,6 +34,8 @@ public class SettingController {
 	private SettingService service;
 	@Autowired
 	private UserManageService userService;
+	@Autowired
+	private BCryptPasswordEncoder bcrypt;
 	
 	
 	@GetMapping("")
@@ -90,30 +93,20 @@ public class SettingController {
 		return service.changeMemberInfo(loginMember);
 	}
 	
-	// 현재 비밀번호 일치여부 확인
-	@PostMapping("/checkPasswd")
-	@ResponseBody
-	public boolean checkPasswd(
-			@RequestBody String curPasswd,
-			@SessionAttribute("loginMember") Member loginMember) {
-		
-		Member member = new Member();
-		member.setMemberNo(loginMember.getMemberNo());
-		member.setMemberPw(curPasswd);
-		
-		return service.checkPasswd(member);
-	}
-	
 	// 비밀번호 변경
 	@PostMapping("/change/passwd")
 	@ResponseBody
 	public int changeMemberPasswd(
-			@RequestBody String passwd,
+			@RequestBody Map<String, String> paramMap,
 			@SessionAttribute("loginMember") Member loginMember) {
+		
+		if( !bcrypt.matches(paramMap.get("curPw"), service.getPasswd(loginMember)) ) {
+			return 0;
+		}
 		
 		Member member = new Member();
 		member.setMemberNo(loginMember.getMemberNo());
-		member.setMemberPw(passwd);
+		member.setMemberPw(bcrypt.encode(paramMap.get("newPw")));
 		
 		return service.changeMemberPasswd(member);
 	}
@@ -158,7 +151,7 @@ public class SettingController {
 		member.setMemberPw(passwd);
 		member.setMemberNo(loginMember.getMemberNo());
 		
-		if( !service.checkPasswd(member) ) {
+		if( !bcrypt.encode(loginMember.getMemberPw()).equals(service.getPasswd(member)) ) {
 			ra.addFlashAttribute("message", "비밀번호가 일치하지 않습니다.");
 			return "redirect:" + referer;
 		}

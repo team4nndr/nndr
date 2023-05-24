@@ -126,7 +126,7 @@
 	</update>
 	
 	<!-- 현재 비밀번호 조회 -->
-	<select id="checkPasswd" resultType="string">
+	<select id="getPasswd" resultType="string">
 		SELECT 	MEMBER_PW
 		FROM   "MEMBER"
 		WHERE 	MEMBER_NO = #{memberNo}
