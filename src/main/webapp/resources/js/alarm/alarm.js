@@ -1,21 +1,22 @@
-let alramSock;
-if(alramSock != ""){
-	alramSock = new SockJS("/alramSock");
+let alarmSock;
+if(alarmSock != ""){
+	alarmSock = new SockJS("/alarmSock");
 }
 
-// WebSocket 객체 chattingSock이 서버로 부터 메세지를 통지 받으면 자동으로 실행될 콜백 함수
-alramSock.onmessage = function(e) {
-	const alram = JSON.parse(e.data);
+// WebSocket 객체가 서버로 부터 메세지를 통지 받으면 자동으로 실행될 콜백 함수
+alarmSock.onmessage = function(e) {
+	const alarm = JSON.parse(e.data);
+	console.log(alarm);
 	
 	// 상단바 알람 출력
 	const alarmList = document.getElementById('nndrAddContainer');
 	const div = document.createElement('div');
-	div.innerHTML = alram.alarmContent;
+	div.innerHTML = alarm.alarmContent;
 	alarmList.prepend(div);
 
 	// 개인피드 친구추가 버튼 관련 동작
 	const perAddFriend = document.getElementById("perAddFriend");
-	if(alram.content=="친구 추가"){
+	if(alarm.content=="친구 추가"){
 		if(perAddFriend!=null){
 			perAddFriend.innerText ="친구 추가";
 			perAddFriend.classList.remove('friendAdd');
@@ -25,7 +26,7 @@ alramSock.onmessage = function(e) {
 		}
 		return;
 	}
-	if(alram.content=="친구 수락"){
+	if(alarm.content=="친구 수락"){
 		if(perAddFriend!=null){
 			perAddFriend.innerText ="친구 끊기";
 			perAddFriend.classList.remove('friendAdd');
@@ -35,7 +36,7 @@ alramSock.onmessage = function(e) {
 		}
 		return;
 	}
-	if(alram.content== "친구 끊기"){ //수락
+	if(alarm.content== "친구 끊기"){ //수락
 		if(perAddFriend!=null){
 			perAddFriend.innerText ="친구 끊기";
 			perAddFriend.classList.remove('friendDel');
@@ -44,10 +45,10 @@ alramSock.onmessage = function(e) {
 			perAddFriend.classList.add('noFriend')
 		}
 		document.getElementById("nndrImage3").src = "/resources/images/topMenu/페이지 시작화면.gif";
-		// alramType(alram.senderMemberNo, alram.senderProfile, "친구가 되었습니다.")
+		// alarmType(alarm.senderMemberNo, alarm.senderProfile, "친구가 되었습니다.")
 		return;
 	}
-	if(alram.content=="신청 취소" ){ 
+	if(alarm.content=="신청 취소" ){ 
 		if(perAddFriend!=null){
 			perAddFriend.innerText ="친구 수락";
 			perAddFriend.classList.remove('noFriend');
@@ -56,7 +57,7 @@ alramSock.onmessage = function(e) {
 			perAddFriend.classList.add('friendAccept')
 		}
 		document.getElementById("nndrImage3").src = "/resources/images/topMenu/페이지 시작화면.gif";
-		// alramType(alram.senderMemberNo, alram.senderProfile, "친구 요청이 들어왔습니다.")
+		// alarmType(alarm.senderMemberNo, alarm.senderProfile, "친구 요청이 들어왔습니다.")
 		return;
 	}
 }
@@ -91,9 +92,6 @@ function makeAlarm(obj) {
 	nndrAddAlarm.prepend(nndrAddAlarmProfile);
 	nndrAddAlarm.append(nndrAddAlarmContent);
 	nndrAddAlarm.append(x);
-
-	nndrAddAlarmProfile.append(topMyProfile);
-	nndrAddAlarmContent.append(nndrAlarmContent);
 
 	return nndrAddAlarm.outerHTML;
 };

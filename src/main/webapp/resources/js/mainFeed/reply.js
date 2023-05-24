@@ -66,7 +66,7 @@ for(let i=0; i<replyTextareas.length; i++) {
 } 
 
 // 댓글 제출시 글 작성자에게 알림 발송
-function sendReplyAlram(boardNo) { 
+function sendReplyalarm(boardNo) { 
     const memberNo = document.querySelector('.reply-container.board' + boardNo)
     .parentElement.querySelector('.feed-head-info > a')
     .getAttribute('href').split('/')[2];
@@ -80,12 +80,12 @@ function sendReplyAlram(boardNo) {
         "message": loginMemberName + "님이 게시글에 댓글을 달았습니다."
     }
 
-	var alram = {
+	var alarm = {
 		"memberNo": memberNo,
         "alarmContent" : makeAlarm(obj),
 	}
     
-	alramSock.send(JSON.stringify(alram));
+	alarmSock.send(JSON.stringify(alarm));
 }
 
 // 댓글 제출 ajax
@@ -111,7 +111,7 @@ function submitReply(boardNo, parentReplyNo, btn) {
     .then(result => {
         if(result > 0) {
             printReplyList(boardNo);
-            sendReplyAlram(boardNo); // 알림 발송
+            sendReplyalarm(boardNo); // 알림 발송
             textarea.value = "";
         } else {
             alert('댓글 작성 실패');
