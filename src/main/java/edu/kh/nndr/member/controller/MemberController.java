@@ -14,9 +14,11 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import edu.kh.nndr.alarm.model.dto.Alarm;
 import edu.kh.nndr.friend.model.sevice.FriendService;
 import edu.kh.nndr.member.model.dto.Member;
 import edu.kh.nndr.member.model.service.MemberService;
+import edu.kh.nndr.topMenu.service.TopMenuService;
 
 @SessionAttributes({"loginMember", "friendList"})
 @Controller
@@ -26,6 +28,8 @@ public class MemberController {
 	private MemberService service;
 	@Autowired
 	private FriendService friendService;
+	@Autowired
+	private TopMenuService topMenuService;
 
 	// 로그인 기능 
 	@PostMapping("/login")
@@ -46,6 +50,8 @@ public class MemberController {
 			model.addAttribute("loginMember", loginMember); // 로그인 유저 정보
 			List<Member> friendList = friendService.friendListMember(loginMember.getMemberNo());
 			model.addAttribute("friendList", friendList); // 현재 친구 목록
+			List<Alarm> alarmList = topMenuService.alarmList(loginMember.getMemberNo());
+			model.addAttribute("alarmList",alarmList); // 현재 알람 목록
 			
 			Cookie cookie = new Cookie("map", loginMember.getMemberEmail());
 			

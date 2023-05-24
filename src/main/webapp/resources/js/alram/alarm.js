@@ -81,6 +81,7 @@ const alram = document.getElementById("perAddFriend")
 // });
 
 
+
 function alramType(no, profile, what){
 	console.log(no)
 	let nndrAddAlarm = document.createElement("div");
