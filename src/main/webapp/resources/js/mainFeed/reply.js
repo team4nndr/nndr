@@ -397,7 +397,7 @@ function updateReply(boardNo, replyNo, btn) {
 const sendReplyAlram = reply => {
     var obj = {
         "profileImage": profileImage,
-        "link": "/mainFeed/feed/" + senderMemberNo,
+        "link": "/personalFeed/" + senderMemberNo,
         "message" : reply.memberName + "님이 게시글에 댓글을 달았습니다."
     }
 

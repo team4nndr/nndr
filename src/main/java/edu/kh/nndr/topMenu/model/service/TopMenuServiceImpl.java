@@ -1,4 +1,4 @@
-package edu.kh.nndr.topMenu.service;
+package edu.kh.nndr.topMenu.model.service;
 
 import java.util.List;
 

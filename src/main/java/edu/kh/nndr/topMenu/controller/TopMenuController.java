@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
 import edu.kh.nndr.alarm.model.dto.Alarm;
 import edu.kh.nndr.member.model.dto.Member;
+import edu.kh.nndr.topMenu.model.service.TopMenuService;
 
 @SessionAttributes({"loginMember","alarmList"})
 @Controller

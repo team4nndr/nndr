@@ -19,9 +19,9 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 //import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.gson.Gson;
 
-import edu.kh.nndr.alarm.dto.Alarm;
-import edu.kh.nndr.alarm.service.AlarmService;
-import edu.kh.nndr.alarm.service.AlarmServiceImpl;
+import edu.kh.nndr.alarm.model.dto.Alarm;
+import edu.kh.nndr.alarm.model.service.AlarmService;
+import edu.kh.nndr.alarm.model.service.AlarmServiceImpl;
 import edu.kh.nndr.member.model.dto.Member;
 import edu.kh.nndr.member.model.dto.MemberInfo;
 
