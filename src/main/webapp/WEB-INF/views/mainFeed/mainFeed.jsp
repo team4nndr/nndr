@@ -23,7 +23,7 @@
         <%-- Grid 1 : 사이드바(왼쪽) --%>
         <jsp:include page="/WEB-INF/views/mainFeed/sidebarL.jsp"/>
         
-        <!-- Grid 2 : 중심 내용  -->
+        <!-- Grid 2 : 중심 내용  -->    
         <section class="mainView">
         
             <%-- 피드 작성 + 피드 목록 --%>

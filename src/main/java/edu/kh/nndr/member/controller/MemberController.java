@@ -58,6 +58,7 @@ public class MemberController {
 		
 		// 로그인 실패
 		} else {
+			
 			ra.addFlashAttribute("message", "아이디 또는 비밀번호를 확인해 주세요.");
 		}
 	

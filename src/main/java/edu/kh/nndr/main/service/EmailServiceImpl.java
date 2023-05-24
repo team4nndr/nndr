@@ -112,12 +112,14 @@ public class EmailServiceImpl implements EmailService {
 
         return result;
     }
-
+    
+    // 회원 가입 이메일 인증
 	@Override
 	public int checkAuthKey(Map<String, Object> paramMap) {
 		return dao.checkAuthKey(paramMap);
 	}
-
+	
+	// 비밀번호 찾기 이메일 인증
 	@Override
 	public int findCheck(Map<String, Object> paramMap) {
 		

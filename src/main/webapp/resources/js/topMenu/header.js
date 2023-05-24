@@ -173,58 +173,6 @@ nndrOptionAlarmContent.addEventListener("click", e => {
 });
 
 
-/* 알림내용 추가하기 */
-// const nndrAddAlarm = document.getElementsByClassName("nndrAddAlarm");
-// const nndrAddAlarmContent = document.getElementsByClassName("nndrAddAlarmContent");
-// const nndrTopAlarmDelete = document.getElementsByClassName("nndrBottomAlarmDelete");
-// const nndrAddAlarmProfile = document.getElementsByClassName("nndrAddnndrAddAlarmProfile");
-// const nndrAddContainer = document.getElementById("nndrAddContainer");
-
-
-// thumsUp.addEventListener("click", () => {
-
-//     const nndrAddAlarm = document.createElement("div");
-//     nndrAddAlarm.classList.add("nndrAddAlarm");
-
-//     const nndrAddAlarmProfile = document.createElement("a");
-//     nndrAddAlarmProfile.classList.add("nndrAddAlarmProfile");
-//     nndrAddAlarmProfile.href = "#";
-
-//     const nndrAddAlarmContent = document.createElement("a");
-//     nndrAddAlarmContent.classList.add("nndrAddAlarmContent");
-//     nndrAddAlarmContent.href = "#";
-
-//     const topMyProfile = document.createElement("img");
-//     topMyProfile.classList.add("topMyProfile");
-//     topMyProfile.src = "/resources/images/topMenu/topMyProfile.png";
-
-
-//     const nndrAlarmContent = document.createElement("p");
-//     nndrAlarmContent.classList.add("nndrAlarmContent");
-//     nndrAlarmContent.innerHTML = "알림내용";
-
-//     const x = document.createElement('div');
-//     x.classList.add('nndr-top-alarm-delete');
-//     x.innerHTML = '&times;';
-
-//     nndrAddContainer.append(nndrAddAlarm);
-
-//     nndrAddAlarm.prepend(nndrAddAlarmProfile);
-//     nndrAddAlarm.append(nndrAddAlarmContent);
-//     nndrAddAlarm.append(x);
-
-//     nndrAddAlarmProfile.append(topMyProfile);
-//     nndrAddAlarmContent.append(nndrAlarmContent);
-
-//     /* 알람 삭제 하기 */
-
-//     x.addEventListener('click', (e) => {
-
-//         console.log(e.target.parentElement);
-//         e.target.parentElement.remove();
-
-//     });
-// });
 
 // 드롭다운 외부 클릭 시 드롭다운 메뉴 닫기
 document.addEventListener('click', e => {

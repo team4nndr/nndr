@@ -24,7 +24,7 @@ public class PersonalFeedFriendController {
 	MemberInfoService service;
 
 	@GetMapping("/personalFeedFriend/{no}")
-	public String personalFeedFriend( Model model, @PathVariable("no") int no, @SessionAttribute("loginMember") Member loginMember) {
+	public String personalFeedFriend( Model model,@SessionAttribute("loginMember") Member loginMember, @PathVariable("no") int no) {
 		MemberInfo infoMember = service.personalMember(no);
 		model.addAttribute("infoMember", infoMember); // request scope
 		Map<String, Object> friendche = new HashMap<>();
@@ -33,6 +33,8 @@ public class PersonalFeedFriendController {
 		PersonalFriend friendcheck = service.friendChecking(friendche);
 		model.addAttribute("friendcheck", friendcheck);
 		
+		Member personalInfo = service.personalInfo(no);
+		model.addAttribute("personalInfo", personalInfo);
 		return "personalFeed/personalFeedFriend";
 	}
 }

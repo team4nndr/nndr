@@ -29,7 +29,7 @@ public class EmailController {
         return service.signUp(email, "회원 가입");
         
     }
-    // 비밀번호 찾기 이메일 찾기
+    // 비밀번호 찾기 -> 이메일 찾기
     @GetMapping("/findEmail")
     @ResponseBody
     public int findEmail(String email) {

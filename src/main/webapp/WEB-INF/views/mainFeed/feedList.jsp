@@ -5,13 +5,12 @@
 <link rel="stylesheet" href="/resources/css/mainFeed/reply.css">
 <link rel="stylesheet" href="/resources/css/mainFeed/mention.css">
 
-<script> 
-    // const loginMemberNo = "${loginMember.memberNo}";
-    const profileImage = "${loginMember.profileImage}";
-</script>
+<script src="https://kit.fontawesome.com/f7459b8054.js" crossorigin="anonymous"></script>
+
     <%-- 피드 목록 --%>
     <c:forEach items="${boardList}" var="board">
         <div class="feed">
+
 
             <!-- 피드 상단  -->
             <section class="feed-head">
@@ -66,12 +65,25 @@
                     </c:if>
                 </c:if>
             </div>
-
             <hr class="feed-hr">
+            
 
             <!--  나의 게시물 좋아요, 댓글달기, 공유하기 -->
             <section class="like">
-                <div><img src="/resources/images/mainFeed/mainLike.png">좋아요</div>
+            <%-- 좋아요 누른적이 없거나 로그인이 안되었을 때 --%>
+                    <div>
+                        <c:if test="${board.boardCount == 0}">
+                        <i class="fa-regular fa-thumbs-up fa-bounce boardLike" id="boardLike" data="${board.boardNo}"></i>
+                        </c:if>
+
+                        <%-- 로그인이 되어있고 나의 게시물에 좋아요를 누른적이 있을 때  --%>
+                        <c:if test="${board.boardCount == 1}" >
+                        <i class="fa-solid fa-thumbs-up boardLike" id="boardLike" data="${board.boardNo}"></i>
+                        </c:if>
+                
+        
+                <%-- <img src="/resources/images/mainFeed/mainLike.png"> --%>
+                좋아요</div>   
                 <div onclick="replyFocus(${board.boardNo})"><img src="/resources/images/mainFeed/mainReply.png">댓글 달기</div>
                 <div><img src="/resources/images/mainFeed/mainNext.png">공유하기</div>
             </section>
