@@ -20,7 +20,8 @@ function getMentionData() {
 }
 
 // 멘션 문자열에 HTML 처리
-function convertMention() {
+function convertMention(originReply) {
+    let replyContent = originReply;
     for(let obj of mentionData) {
         if(obj.name.length == 0) continue;
         while( replyContent.includes('@' + obj.name) ) {
@@ -33,6 +34,7 @@ function convertMention() {
             replyContent = replyContent.replace('@' + obj.name, mark.outerHTML);
         }
     }
+    return replyContent;
 }
 
 // 멘션 리스트 생성
