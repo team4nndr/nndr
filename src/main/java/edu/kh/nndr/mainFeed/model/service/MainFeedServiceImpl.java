@@ -114,8 +114,6 @@ public class MainFeedServiceImpl implements MainFeedService {
 					
 		
 			
-			
-			
 		} 
 			
 			
@@ -234,7 +232,43 @@ public class MainFeedServiceImpl implements MainFeedService {
 	}
 	
 	
+	@Override
+	public int feedLikeCheck(Board board) {
+		
+		return dao.feedLikeCheck(board);
+	}
+
 	
+	@Override
+	public int like(Map<String, Integer> paramMap) {
+
+		int result = 0;
+		
+		if(paramMap.get("check")==0) { // 좋아요 상태 X
+			// CONTENT_LIKE테이블 insert
+			result = dao.insertLike(paramMap);
+			
+		}else {
+			// CONTENT_Like 테이블 DELETE 
+			result = dao.deleteLike(paramMap);
+			
+		}
+		if(result == 0) {return -1;}
+		
+		// 현재 좋아요 개수 확인 
+		int count = dao.countContentLike(paramMap.get("boardNo")); 
+		
+		return count;
+		
+	}
+	
+	 /** 개인피드 게시글 확인 임플
+    *
+    */
+   @Override
+   public List<Board> personalFeedList(int no) {
+      return dao.personalFeedList(no);
+   }
 	
 	
 	

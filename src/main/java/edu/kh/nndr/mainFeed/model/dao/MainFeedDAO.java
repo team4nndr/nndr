@@ -98,5 +98,40 @@ public class MainFeedDAO {
 		return sqlSession.selectOne("mainFeedMapper.selectOne", boardNo);
 	}
 	
+
+	// 좋아요 체크
+	public int feedLikeCheck(Board board) {
+		
+		return sqlSession.selectOne("mainFeedMapper.feedLikeCheck",board);
+	}
+
+	// 좋아요 추가 
+	public int insertLike(Map<String, Integer> paramMap) {
+		
+		return sqlSession.insert("mainFeedMapper.insertLike",paramMap);
+	}
+	
+	// 좋아요 삭제 
+	public int deleteLike(Map<String, Integer> paramMap) {
+		
+		return sqlSession.delete("mainFeedMapper.deleteLike",paramMap);
+	}
+
+	// 현재 좋아요의 개수 
+	public int countContentLike(Integer boardNo) {
+		
+		
+		return sqlSession.selectOne("mainFeedMapper.countContentLike",boardNo);
+	}
+	
+	   /** 개인피드 게시글 확인 다오
+	    * @param no
+	    * @return
+	    */
+	   public List<Board> personalFeedList(int no) {
+	      return sqlSession.selectList("mainFeedMapper.personalFeedList",(no));
+	   }
+	
+	
 	
 }

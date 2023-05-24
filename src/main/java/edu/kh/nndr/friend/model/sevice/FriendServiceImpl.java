@@ -18,7 +18,7 @@ public class FriendServiceImpl implements FriendService{
 	private FriendDAO dao;
 
 	@Override
-	public List<Friend> friendRqList(int memberNo) {
+	public List<Member> friendRqList(int memberNo) {
 		return dao.friendRqList(memberNo);
 	}
 
@@ -35,14 +35,14 @@ public class FriendServiceImpl implements FriendService{
 	}
 
 	
-//	모든친구 목록 조회
-	@Override
-	public List<Friend> friendListAll(int memberNo) {
-		return dao.friendListAll(memberNo);
-	}
+////	모든친구 목록 조회
+//	@Override
+//	public List<Friend> friendListAll(int memberNo) {
+//		return dao.friendListAll(memberNo);
+//	}
 
 	@Override
-	public List<Friend> friendListsearch(Map<String, Object> map) {
+	public List<Member> friendListsearch(Map<String, Object> map) {
 		return dao.friendListsearch(map);
 	}
 	
@@ -51,6 +51,21 @@ public class FriendServiceImpl implements FriendService{
 	public List<Member> friendListMember(int memberNo) {
 		return dao.friendListMember(memberNo);
 	}
+	
+	
+	// 친구 추천 확인 버튼
+//	@Override
+//	public int friendaddition(int memberNo) {
+//		return dao.friendaddition(memberNo);
+//	}
+
+	
+	
+////	친구 추천 목록조회 
+//	@Override
+//	public List<Member> friendSuggestion(int memberNo) {
+//		return dao.friendSuggestion(memberNo);
+//	}
 
 
 

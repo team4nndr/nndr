@@ -5,12 +5,13 @@
         <c:set var="alarmList" value="${alarmList}"/>
         <link rel="stylesheet" href="/resources/css/topMenu/header.css">
 
-        <script src="https://cdn.jsdelivr.net/npm/sockjs-client@1/dist/sockjs.min.js"></script>
         <script>
-            let alramSock= new SockJS("/alramSock");;
+          const loginMemberNo = "${loginMember.memberNo}";
+          const profileImage = "${loginMember.profileImage}";
+          let alramSock= new SockJS("/alramSock");
         </script>
-        
-        <script src="/resources/js/alarm/alarm.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/sockjs-client@1/dist/sockjs.min.js"></script> 
+        <script src="/resources/js/alram/alram.js"></script>
 
         <div id="nndrContainer">
 

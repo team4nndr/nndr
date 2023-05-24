@@ -71,10 +71,7 @@ function submitReply(boardNo, parentReplyNo, btn) {
     if( btn != null && !btn.classList.contains('enable') ) return;
 
     const textarea = document.querySelector('.reply-textarea[no="' + boardNo + '"]');
-    let replyContent = textarea.value;
-    
-    // 멘션 문자열에 HTML 처리
-    function convertMention()
+    const replyContent = convertMention(textarea.value); // 멘션 문자열에 HTML 처리
 
     const data = {
         "boardNo" : boardNo,
@@ -372,16 +369,8 @@ function updateReply(boardNo, replyNo, btn) {
     if( btn != null && !btn.classList.contains('enable') ) return;
     
     const textarea = document.querySelector('.reply-textarea[no="' + boardNo + '"]');
-    let replyContent = textarea.value;
+    let replyContent = convertMention(textarea.value); // 멘션 문자열에 HTML 처리
     
-    // 태그 문자열에 HTML 처리
-    for(let obj of mentionData) {
-        if(obj.name.length == 0) continue;
-        while( replyContent.includes('@' + obj.name) ) {
-            replyContent = replyContent.replace('@' + obj.name, "<a class='mention-mark' href='/personalFeed/" + obj.memberNo + "' no='" + obj.memberNo + "'>" + obj.name + "</a>");
-        }
-    }
-
     const data = {
         "replyNo" : replyNo,
         "replyContent" : replyContent
@@ -402,4 +391,23 @@ function updateReply(boardNo, replyNo, btn) {
         }
     })
     .catch(e => console.log(e));
+}
+
+// 댓글 제출시 글 작성자에게 알림 발송
+const sendReplyAlram = reply => {
+    var obj = {
+        "profileImage": profileImage,
+        "link": "/mainFeed/feed/" + senderMemberNo,
+        "message" : reply.memberName + "님이 게시글에 댓글을 달았습니다."
+    }
+
+	var alram = {
+		"memberNo": memberNo,
+        "alarmContent" : makeAlarm(obj),
+        "content" : content
+	}
+
+	// JSON.stringify() : 자바스크립트 객체를 JSON 문자열로 변환
+    console.log(alram);
+	alramSock.send(JSON.stringify(alram));
 }

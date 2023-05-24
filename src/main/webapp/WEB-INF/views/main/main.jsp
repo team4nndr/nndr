@@ -20,7 +20,7 @@
     <div class="temp">
         <form action="/login" method="POST">
             <input type="text" name="memberEmail" value="admin">
-            <input type="text" name="memberPw" value="admin">
+            <input type="text" name="memberPw" value="1q2w3e4r">
             <button id="admin">관리자 로그인</button>
         </form>
 

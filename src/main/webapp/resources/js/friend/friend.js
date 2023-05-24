@@ -48,8 +48,8 @@ function friendList() {
                 const tbox = document.createElement("div");
                 tbox.classList.add("tbox");
                 const pick = document.createElement("img");
-                pick.setAttribute("src", "/resources/images/friend/143086968_2856368904622192_1959732218791162458_n.png");
-                pick.classList.add("pick");
+                pick.classList.add("proimg");
+                pick.setAttribute("src", (f.profileImage !== null && f.profileImage !== '') ? f.profileImage : "/resources/images/common/user-default.png");
                 const boxname = document.createElement("div");
                 boxname.classList.add("boxname");
                 const namebar = document.createElement("div");

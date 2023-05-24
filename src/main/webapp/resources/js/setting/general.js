@@ -72,43 +72,28 @@ pwSubmitBtn.addEventListener('click', e => {
         return;
     }
 
-    // 현재 비밀번호 체크
-    fetch("/setting/checkPasswd", {
+    // 비밀번호 수정
+    fetch("/setting/change/passwd", {
         method : "POST",
         headers : {"Content-Type" : "application/json"},
-        body : currentPw.value
+        body : JSON.stringify({ "curPw" : currentPw.value, "newPw" : newPw.value })
     })
     .then(resp => resp.text())
     .then(result => {
-        if(result == "false") {
-            alert("현재 비밀번호가 일치하지 않습니다.");
+        if(result > 0) { // 화면 최신화
+            passwd.classList.add('hidden');
+            passwd.previousElementSibling.classList.remove('hidden');
+            alert("정상적으로 수정되었습니다.");
         } else {
-
-            // 비밀번호 수정
-            fetch("/setting/change/passwd", {
-                method : "POST",
-                headers : {"Content-Type" : "application/json"},
-                body : newPw.value
-            })
-            .then(resp => resp.text())
-            .then(result => {
-                if(result > 0) { // 화면 최신화
-                    passwd.classList.add('hidden');
-                    passwd.previousElementSibling.classList.remove('hidden');
-                    alert("정상적으로 수정되었습니다.");
-                }else{
-                    alert("수정 실패");
-                }
-            })
-            .catch(e => console.log(e));
-
-            // 수정 완료 후 수정 화면 닫기 + input 내용 삭제
-            document.querySelector('.row.mod.passwd').classList.add('hidden');
-            document.querySelector('.row.passwd').classList.remove('hidden');
-            currentPw.value = newPw.value = newPwConfirm.value = "";
+            alert("현재 비밀번호가 일치하지 않습니다.");
         }
     })
     .catch(e => console.log(e));
+
+    // 수정 완료 후 수정 화면 닫기 + input 내용 삭제
+    document.querySelector('.row.mod.passwd').classList.add('hidden');
+    document.querySelector('.row.passwd').classList.remove('hidden');
+    currentPw.value = newPw.value = newPwConfirm.value = "";
 });
 
 // 닫기버튼 클릭 시 input 내용 삭제

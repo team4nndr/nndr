@@ -1,10 +1,10 @@
-package edu.kh.nndr.alarm.model.service;
+package edu.kh.nndr.alarm.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import edu.kh.nndr.alarm.model.dao.AlarmDAO;
-import edu.kh.nndr.alarm.model.dto.Alarm;
+import edu.kh.nndr.alarm.dao.AlarmDAO;
+import edu.kh.nndr.alarm.dto.Alarm;
 
 @Service
 public class AlarmServiceImpl implements AlarmService {

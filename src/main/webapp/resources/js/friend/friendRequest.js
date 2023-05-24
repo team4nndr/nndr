@@ -46,12 +46,13 @@ function friendList() {
                 const div1 = document.createElement("div");
                 div1.classList.add("frtopdiv");
                 const img1 = document.createElement("img");
-                img1.setAttribute("src", "/resources/images/friend/143086968_2856368904622192_1959732218791162458_n.png");
                 img1.classList.add("proimg");
+                img1.setAttribute("src", (f.profileImage !== null && f.profileImage !== '') ? f.profileImage : "/resources/images/common/user-default.png");
                 const frboxdiv = document.createElement("div");
                 frboxdiv.classList.add("frbox");
                 const nameCountdiv = document.createElement("div");
                 nameCountdiv.classList.add("namecount");
+                nameCountdiv.setAttribute("onclick", "friendPage(" + f.memberNo + ")");
                 const span1 = document.createElement("span");
                 span1.classList.add("freindName");
                 span1.innerText = f.memberName;
@@ -94,6 +95,7 @@ function friendList() {
 
             // // 새로운 친구 목록을 기존 목록에 추가
             // friendListElement.innerHTML = newFriendListHTML;
+
         })
 
         .catch(err => console.log(err));

@@ -1,7 +1,6 @@
 package edu.kh.nndr.topMenu.service;
 
 import java.util.List;
-
 import edu.kh.nndr.alarm.model.dto.Alarm;
 
 public interface TopMenuService {
@@ -11,5 +10,4 @@ public interface TopMenuService {
 	 * @return list
 	 */
 	List<Alarm> alarmList(int memberNo);
-
 }

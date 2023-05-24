@@ -4,7 +4,6 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import edu.kh.nndr.alarm.model.dto.Alarm;
 import edu.kh.nndr.topMenu.model.dao.TopMenuDAO;
 
@@ -22,6 +21,4 @@ public class TopMenuServiceImpl implements TopMenuService{
 		List<Alarm> alarmList = dao.alarmList(memberNo);
 		return alarmList;
 	}
-	
-
 }

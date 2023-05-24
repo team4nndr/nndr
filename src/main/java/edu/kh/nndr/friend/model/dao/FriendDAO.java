@@ -22,8 +22,8 @@ public class FriendDAO {
 	 * @param memberNo
 	 * @return
 	 */
-	public List<Friend> friendRqList(int memberNo) {
-		return sqlSession.selectList("friendMapper.friendRqList", memberNo);
+	public List<Member> friendRqList(int memberNo) {
+		return sqlSession.selectList("memberMapper.friendRqList", memberNo);
 	}
 
 	/**
@@ -56,8 +56,13 @@ public class FriendDAO {
 		return sqlSession.selectList("friendMapper.friendListAll", memberNo);
 	}
 
-	public List<Friend> friendListsearch(Map<String, Object> map) {
-		return sqlSession.selectList("friendMapper.friendListsearch", map);
+	/**
+	 * 친구 검색 결과 조회
+	 * @param map
+	 * @return
+	 */
+	public List<Member> friendListsearch(Map<String, Object> map) {
+		return sqlSession.selectList("memberMapper.friendListSearchByNameInFriend", map);
 	}
 
 	/**
@@ -68,5 +73,21 @@ public class FriendDAO {
 	public List<Member> friendListMember(int memberNo) {
 		return sqlSession.selectList("memberMapper.friendListMember", memberNo);
 	}
+
+//	/** 친구 추천 확인 버튼
+//	 * @param memberNo
+//	 * @return
+//	 */
+//	public int friendaddition(int memberNo) {
+//		return sqlSession.insert("friendMapper.friendaddition", memberNo);
+//	}
+
+//	/** 친구 추천 목록 조회
+//	 * @param memberNo
+//	 * @return
+//	 */
+//	public List<Member> friendSuggestion(int memberNo) {
+//		return sqlSession.selectList("memberMapper.friendSuggestion", memberNo);
+//	}
 
 }

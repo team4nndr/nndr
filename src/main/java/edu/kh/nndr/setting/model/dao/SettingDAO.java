@@ -52,20 +52,20 @@ public class SettingDAO {
 	}
 
 	/**
-	 * 현재 비밀번호 조회
-	 * @param member
-	 * @return curPasswd
-	 */
-	public String checkPasswd(Member member) {
-		return sqlSession.selectOne("memberMapper.checkPasswd", member);
-	}
-
-	/**
 	 * 환경설정 세팅값 변경
 	 * @param paramMap
 	 * @return result
 	 */
 	public int changeSetting(Map<String, Object> paramMap) {
 		return sqlSession.update("memberMapper.changeSetting", paramMap);
+	}
+
+	/**
+	 * 현재 비밀번호 조회
+	 * @param member
+	 * @return curPasswd
+	 */
+	public String getPasswd(Member member) {
+		return sqlSession.selectOne("memberMapper.getPasswd", member);
 	}
 }
