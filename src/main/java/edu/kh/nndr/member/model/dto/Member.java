@@ -34,7 +34,10 @@ public class Member {
 	private String infoGender;
 	private String infoResidence;
 	private String infoBirth; // 생일 추가
-	
+	private String infoCollege;
+	private String infoHigh;
+	private String infoMiddle; 
+	private String infoElementary; 
 	// FRIEND
 	private int friendNo;
 }

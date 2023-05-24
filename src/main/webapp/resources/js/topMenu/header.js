@@ -76,7 +76,6 @@ search.addEventListener("input", e => {
             console.log(friendNameList);
             suggestion_pannel.innerHTML = "";
 
-
             if(friendNameList.length == 0){
                 const div = document.createElement("div");
                 div.classList.add("result");
