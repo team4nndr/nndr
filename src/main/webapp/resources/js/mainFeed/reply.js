@@ -65,9 +65,32 @@ for(let i=0; i<replyTextareas.length; i++) {
     addTextareaEvent(replyTextareas[i]);
 } 
 
+// 댓글 제출시 글 작성자에게 알림 발송
+function sendReplyAlram(boardNo) { 
+    const memberNo = document.querySelector('.reply-container.board' + boardNo)
+    .parentElement.querySelector('.feed-head-info > a')
+    .getAttribute('href').split('/')[2];
+
+    // 자기 게시글일 경우 알람 발송 안함
+    if(memberNo == loginMemberNo) return;
+
+    var obj = {
+        "profileImage": profileImage,
+        "link": "/personalFeed/" + loginMemberNo,
+        "message": loginMemberName + "님이 게시글에 댓글을 달았습니다."
+    }
+
+	var alram = {
+		"memberNo": memberNo,
+        "alarmContent" : makeAlarm(obj),
+	}
+    
+	alramSock.send(JSON.stringify(alram));
+}
+
 // 댓글 제출 ajax
 function submitReply(boardNo, parentReplyNo, btn) {
-    
+
     if( btn != null && !btn.classList.contains('enable') ) return;
 
     const textarea = document.querySelector('.reply-textarea[no="' + boardNo + '"]');
@@ -88,6 +111,7 @@ function submitReply(boardNo, parentReplyNo, btn) {
     .then(result => {
         if(result > 0) {
             printReplyList(boardNo);
+            sendReplyAlram(boardNo); // 알림 발송
             textarea.value = "";
         } else {
             alert('댓글 작성 실패');
@@ -391,23 +415,4 @@ function updateReply(boardNo, replyNo, btn) {
         }
     })
     .catch(e => console.log(e));
-}
-
-// 댓글 제출시 글 작성자에게 알림 발송
-const sendReplyAlram = reply => {
-    var obj = {
-        "profileImage": profileImage,
-        "link": "/personalFeed/" + senderMemberNo,
-        "message" : reply.memberName + "님이 게시글에 댓글을 달았습니다."
-    }
-
-	var alram = {
-		"memberNo": memberNo,
-        "alarmContent" : makeAlarm(obj),
-        "content" : content
-	}
-
-	// JSON.stringify() : 자바스크립트 객체를 JSON 문자열로 변환
-    console.log(alram);
-	alramSock.send(JSON.stringify(alram));
 }

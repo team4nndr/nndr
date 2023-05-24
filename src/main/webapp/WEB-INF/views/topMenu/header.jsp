@@ -7,11 +7,11 @@
 
         <script>
             const loginMemberNo = "${loginMember.memberNo}";
+            const loginMemberName = "${loginMember.memberName}";
             const profileImage = "${loginMember.profileImage}";
-            let alramSock= new SockJS("/alramSock");
         </script>
         <script src="https://cdn.jsdelivr.net/npm/sockjs-client@1/dist/sockjs.min.js"></script> 
-        <script src="/resources/js/alram/alram.js"></script>
+        <script src="/resources/js/alarm/alarm.js"></script>
 
 
         <div id="nndrContainer">
@@ -80,10 +80,9 @@
                             <div class="nndrAlarmNotRead">읽지 않은 알림</div>
                         </div>
                         <div id="nndrAddContainer">
-                        <c:forEach items="${alarmList}" var="alarm">
-                            ${alarm.alarmContent}
-                        </c:forEach>
-                                
+                            <c:forEach items="${alarmList}" var="alarm">
+                                ${alarm.alarmContent}
+                            </c:forEach>
                         </div>
                     </div>
                 </div>
@@ -122,7 +121,5 @@
                 
             </div>
         </div>
-
-        <script src="/resources/js/topMenu/"></script>
 
         <script src="/resources/js/topMenu/header.js"></script>
