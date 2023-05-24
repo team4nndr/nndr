@@ -71,6 +71,7 @@
             <!--  나의 게시물 좋아요, 댓글달기, 공유하기 -->
             <section class="like">
             <%-- 좋아요 누른적이 없거나 로그인이 안되었을 때 --%>
+                    
                     <div>
                         <c:if test="${board.boardCount == 0}">
                         <i class="fa-regular fa-thumbs-up boardLike" id="boardLike" data="${board.boardNo}"></i>
@@ -84,6 +85,7 @@
         
                 <%-- <img src="/resources/images/mainFeed/mainLike.png"> --%>
                 좋아요</div>   
+                
                 <div onclick="replyFocus(${board.boardNo})"><img src="/resources/images/mainFeed/mainReply.png">댓글 달기</div>
                 <div><img src="/resources/images/mainFeed/mainNext.png">공유하기</div>
             </section>
