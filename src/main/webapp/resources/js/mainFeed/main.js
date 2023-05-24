@@ -118,59 +118,7 @@ if (imgBtn != null) {
 //     })
 
 
-//     // 게시글 등록 JS
-// // 미리보기 관련 요소 모두 얻어오기
 
-// // img 5개
-// const preview = document.getElementsByClassName("preview"); 
-// // file 5개
-// const inputImage = document.getElementsByClassName("inputImage");
-
-// // x버튼 5개
-// const deleteImage = document.getElementsByClassName("delete-image");
-
-// for(let i =0; i < inputImage.length; i++){
-
-//     // 파일이 선택 되거나 선택 후 취소 되었을 때
-//     inputImage[i].addEventListener("change", e => {
-
-//         const file = e.target.files[0];
-
-//          // 선택된 파일의 데이터
-//         if(file != undefined){
-
-//         const reader = new FileReader(); // 파일을 읽는 객체
-//             reader.readAsDataURL(file);
-//             // 지정된 파일을 읽은 후 result 변수에 URL형식으로 저장
-
-//             reader.onload = e=>{ // 파일을 다 읽은 후 수행
-//                 preview[i].setAttribute("src",e.target.result);
-//             }
-
-//         }else{ // 선택후 취소 되었을 떄
-
-//             preview[i].removeAttribute("src");
-
-//         }
-
-//         // 미리보기 삭제 버튼(X버튼)
-//         deleteImage[i].addEventListener("click", ()=>{
-//             if(preview[i].getAttribute("src")!=""){
-
-//                 // 미리보기 삭제
-//                 preview[i].removeAttribute("src");
-
-//                 // input type="file" 태그의 value 삭제
-//                 inputImage[i].value="";
-
-//             };
-
-//         })
-
-//     });
-
-
-// }
 
 
 // 컨텐츠가 비었을때
@@ -377,7 +325,10 @@ for (let i = 0; i < inputImage1.length; i++) {
 // 좋아요 !
 // 좋아요 버튼이 클릭 되었을 때!
 const boardLikeList = document.querySelectorAll(".boardLike");
+
 //const boardLikeList = document.getElementById("boardLike");
+
+
 
 
 
@@ -426,7 +377,8 @@ const boardLikeList = document.querySelectorAll(".boardLike");
                         // 현재 게시글의 좋아요 수를 화면에 출력
                         // e.target.nextElementSibling.innerText=count;
         
-                        
+                        // 알람
+                        sendLikeAlram(data.boardNo);
         
                     }) // 파싱된 데이터를 받아서 처리하는 코드 작성
                     .catch(err => {
@@ -437,6 +389,28 @@ const boardLikeList = document.querySelectorAll(".boardLike");
             });
         };
 
-const likeBtnList = document.querySelectorAll(".likeBtn");
+        
 
 
+// 좋아요 클릭시 글 작성자에게 알림 발송
+function sendLikeAlram(boardNo) { 
+    const memberNo = document.querySelector('.reply-container.board' + boardNo)
+    .parentElement.querySelector('.feed-head-info > a')
+    .getAttribute('href').split('/')[2];
+
+    // 자기 게시글일 경우 알람 발송 안함
+    if(memberNo == loginMemberNo) return;
+
+    var obj = {
+        "profileImage": profileImage,
+        "link": "/personalFeed/" + loginMemberNo,
+        "message": loginMemberName + "님이 게시글에 좋아요를 눌렀습니다."
+    }
+
+	var alram = {
+		"memberNo": memberNo,
+        "alarmContent" : makeAlarm(obj),
+	}
+    
+	alramSock.send(JSON.stringify(alram));
+}

@@ -17,7 +17,7 @@ public interface MainFeedService {
 	 * @param boardNo
 	 * @return
 	 */
-	List<Board> feedList();
+	List<Board> feedList(int memberNo);
 	
 	
 
@@ -45,7 +45,7 @@ public interface MainFeedService {
 	Board selectOne(int boardNo);
 
 
-	int feedLikeCheck(Board board);
+	int feedLikeCheck(Member memberNo);
 
 
 
@@ -57,6 +57,10 @@ public interface MainFeedService {
     * @return
     */
    List<Board> personalFeedList(int no);
+
+
+
+
 
 	
 	

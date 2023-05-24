@@ -70,14 +70,13 @@
 
             <!--  나의 게시물 좋아요, 댓글달기, 공유하기 -->
             <section class="like">
-            <%-- 좋아요 누른적이 없거나 로그인이 안되었을 때 --%>
-                    
-                    <div>
+            
+                    <div class="likeBtn">
                         <c:if test="${board.boardCount == 0}">
                         <i class="fa-regular fa-thumbs-up boardLike" id="boardLike" data="${board.boardNo}"></i>
                         </c:if>
 
-                        <%-- 로그인이 되어있고 나의 게시물에 좋아요를 누른적이 있을 때  --%>
+                        <%-- board.boardCount == 1 --%>
                         <c:if test="${board.boardCount == 1}" >
                         <i class="fa-solid fa-thumbs-up boardLike" id="boardLike" data="${board.boardNo}"></i>
                         </c:if>
