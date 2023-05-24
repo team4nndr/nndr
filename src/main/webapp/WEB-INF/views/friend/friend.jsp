@@ -31,22 +31,28 @@
             <div class="topdiv">
                 <div class="topfr">친구요청</div>
                 <div id="friendContent">
-                <c:forEach  var="reciver" items="${friendList}">
-                    <div class="friendbax">
-                        <!-- pick = img로  -->
-                        <div class="tbox"> <img class="pick"
-                                src="/resources/images/friend/143086968_2856368904622192_1959732218791162458_n.png" alt="">
-                        </div>
-                        <div class="boxname">
-                            <div class="namebar"><span class="frName">${reciver.memberName}</span></div>
-                            <div class="btnbox"><button class="checkYes" onclick="accept(${reciver.friendNo})">확인</button></div>
-                            <div class="btnbox"><button class="checkNo"  onclick="refuse(${reciver.friendNo})">삭제</button></div>
-                        </div>
+                        <c:forEach  var="reciver" items="${friendReqList}">
+                            <div class="friendbax">
+                                <!-- pick = img로  -->
+                                <div class="tbox"> 
+                                    <c:if test="${empty friend.profileImage}" >
+                                        <img class="proimg" src="/resources/images/common/user-default.png" alt="">
+                                    </c:if>
+                                    <c:if test="${not empty friend.profileImage}" >
+                                        <img class="proimg" src="${friend.profileImage}" alt="">
+                                    </c:if>
+                                </div>
+                                <div class="boxname">
+                                    <div class="namebar"><span class="frName">${reciver.memberName}</span></div>
+                                    <div class="btnbox"><button class="checkYes" onclick="accept(${reciver.friendNo})">확인</button></div>
+                                    <div class="btnbox"><button class="checkNo"  onclick="refuse(${reciver.friendNo})">삭제</button></div>
+                                </div>
+                            </div>
+                        </c:forEach>
                     </div>
-                    </c:forEach>
                 </div>
             </div>
-        </div>
+        
     </main>
     <script src="/resources/js/friend/friend.js"></script>
 </body>

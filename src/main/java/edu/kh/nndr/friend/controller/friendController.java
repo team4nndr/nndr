@@ -33,22 +33,39 @@ public class friendController {
 	// 친구 홈 요청 목록 조회
 	@RequestMapping("")
 	public String friend(@SessionAttribute("loginMember") Member member, Model model) {
-		List<Friend> friendList = service.friendRqList(member.getMemberNo());
-		model.addAttribute("friendList", friendList);
+		List<Member> friendReqList = service.friendRqList(member.getMemberNo());
+		model.addAttribute("friendReqList", friendReqList);
 		return "friend/friend";
 	}
 
+	//친구 추천 목록
 	@RequestMapping("/recom") // + 주소
 	public String friendrecom() {
 		return "friend/friendRecom"; // 파일경로
 	}
+	
+	
+	//친구 추천 목록 조회
+//	@RequestMapping("/recom") // + 주소
+//	public String friendrecom(@SessionAttribute("loginMember") Member member, Model model) {
+//		List<Member> friendSuggestion = service.friendSuggestion(member.getMemberNo());
+//		model.addAttribute("friendSuggestion", friendSuggestion);
+//		return "friend/friendRecom"; // 파일경로
+//	}
+	
+	// 친구 추천 수락 눌렀을 때
+//	@GetMapping(value = "/recom/yesbt")
+//	@ResponseBody
+//	public int friendaddition(int memberNo) {
+//		return service.friendaddition(memberNo);
+//	}
 
 	// 친구 요청 목록조회
 	@RequestMapping("/request") // + 주소
 	public String friendrequest(@SessionAttribute("loginMember") Member member, Model model) {
-		List<Friend> friendList = service.friendRqList(member.getMemberNo());
-		int friendCount = friendList.size();
-		model.addAttribute("friendList", friendList);
+		List<Member> friendReqList = service.friendRqList(member.getMemberNo());
+		int friendCount = friendReqList.size();
+		model.addAttribute("friendReqList", friendReqList);
 		model.addAttribute("friendCount", friendCount);
 		return "friend/friendRequest"; // 파일경로
 
@@ -57,9 +74,9 @@ public class friendController {
 	// 모든 친구 목록 조회
 	@RequestMapping("/all") // + 주소
 	public String friendall(@SessionAttribute("loginMember") Member member, Model model) {
-		List<Friend> friendListAll = service.friendListAll(member.getMemberNo());
-		int friendCount = friendListAll.size();
-		model.addAttribute("friendListAll", friendListAll);
+		List<Member> friendList = service.friendListMember(member.getMemberNo());
+		int friendCount = friendList.size();
+		model.addAttribute("friendList", friendList);
 		model.addAttribute("friendCount", friendCount);
 		return "friend/friendAll"; // 파일경로
 	}
@@ -95,21 +112,21 @@ public class friendController {
 //	친구목록 비동기 처리
 	@GetMapping(value = "/request/birequest", produces = "application/json; charset=UTF-8")
 	@ResponseBody
-	public List<Friend> friendRequestRejoin(@SessionAttribute("loginMember") Member member) {
+	public List<Member> friendRequestRejoin(@SessionAttribute("loginMember") Member member) {
 		return service.friendRqList(member.getMemberNo());
 	}
 
 //	친구홈 친구목록 비동기 처리
 	@GetMapping(value = "/friend/birequest", produces = "application/json; charset=UTF-8")
 	@ResponseBody
-	public List<Friend> friendRequestRejoin2(@SessionAttribute("loginMember") Member member) {
+	public List<Member> friendRequestRejoin2(@SessionAttribute("loginMember") Member member) {
 		return service.friendRqList(member.getMemberNo());
 	}
 
 //	친구 목록 검색
 	@GetMapping(value = "/all/ser", produces = "application/json; charset=UTF-8")
 	@ResponseBody
-	public List<Friend> friendsearch(@RequestParam("query") String query,
+	public List<Member> friendsearch(@RequestParam("query") String query,
 			@SessionAttribute("loginMember") Member member) {
 		Map<String, Object> map = new HashMap<>();
 
@@ -129,8 +146,8 @@ public class friendController {
 //		모든친구 친구목록 비동기 처리
 	@GetMapping(value = "/all/birequest", produces = "application/json; charset=UTF-8")
 	@ResponseBody
-	public List<Friend> friendAll(@SessionAttribute("loginMember") Member member) {
-		return service.friendListAll(member.getMemberNo());
+	public List<Member> friendAll(@SessionAttribute("loginMember") Member member) {
+		return service.friendListMember(member.getMemberNo());
 	}
 
 }

@@ -7,11 +7,6 @@
 
 <script src="https://kit.fontawesome.com/f7459b8054.js" crossorigin="anonymous"></script>
 
-<script> 
-    ${boardList[0].boardCount}
-    const loginMemberNo = "${loginMember.memberNo}";
-    const profileImage = "${loginMember.profileImage}";
-</script>
     <%-- 피드 목록 --%>
     <c:forEach items="${boardList}" var="board">
         <div class="feed">

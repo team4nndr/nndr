@@ -42,9 +42,22 @@ const searchfr = document.getElementById("searchfr");
 
 
 
+// 친구검색
+// query : 검색어
+function searchFriend(query) {
+    fetch("/friend/all/ser?query=" + query)
+    .then(resp => resp.json())
+    .then(friendList => {
+
+        // console.log(friendList);
+        frsearch.innerHTML = "";
+
+        showFriendList(friendList)
+    });
+}
+
+
 searchfr.addEventListener("input", (e) => {
-
-
     const query = e.target.value.trim();
 
     if (query.length > 0) {
@@ -73,15 +86,12 @@ searchfr.addEventListener("input", (e) => {
 
                         let div = document.createElement("div");
                         const query = searchfr;
-                        div.innerHTML = query.value;
+                        div.innerHTML = fr.memberName;
                         frsearch.appendChild(div);
 
                         div.onclick = () => {
-                            var query = searchfr;
-                            query = div.innerHTML;
-                            frsearch.innerHTML = "";
-                            location.href= "/personalFeed/" +fr.friendSender;
-                            return;
+                            // 검색 결과 리스트 출력
+                            searchFriend(query.value);
                         };
                     }
                 }
@@ -91,7 +101,6 @@ searchfr.addEventListener("input", (e) => {
     if (query == "") {
         frsearch.innerHTML = "";
     }
-
 })
 
 /* 삭제 눌렀을 때 */
@@ -109,69 +118,91 @@ function refuse(friendNo) {
         .catch(err => console.log(err));
 }
 
+// 친구 목록 화면 뿌리기
+function showFriendList(list) {
+
+    const friendListElement = document.getElementById("friendAllList");
+    const friendListElement2 = document.getElementById("friendRQBoxCount");
+
+    friendListElement.innerHTML = "";
+    friendListElement2.innerHTML = ""; //친구요청 갯수 제거
+
+    for (let f of list) {
+        if(f.memberNo == loginMemberNo) continue;
+
+        const friendAllList = document.createElement("div");
+        friendAllList.classList.add("frtopdiv");
+
+        const img1 = document.createElement("img");
+        img1.classList.add("proimg");
+        img1.setAttribute("src", (f.profileImage !== null && f.profileImage !== '') ? f.profileImage : "/resources/images/common/user-default.png");
+
+        const frbox = document.createElement("div");
+        frbox.classList.add("frbox");
+
+        const namecount = document.createElement("div");
+        namecount.classList.add("namecount");
+
+        const friendAll = document.createElement("div");
+        friendAll.classList.add("friendAll");
+        friendAll.setAttribute("onclick", "friendPage(" + f.memberNo + ")");
+
+        const frmenu2 = document.createElement("div");
+        frmenu2.classList.add("frmenu");
+        frmenu2.setAttribute("style", "display: none");
+
+        const friendName = document.createElement("span");
+        friendName.classList.add("friendName");
+        friendName.innerText = f.memberName;
+
+        const pulsnav2 = document.createElement("span");
+        pulsnav2.classList.add("pulsnav");
+        pulsnav2.setAttribute("style", "background-color: rgb(255, 255, 255)");
+
+        const img2 = document.createElement("img");
+        img2.setAttribute("src", "/resources/images/friend/free-icon-three-dots-6941941.png");
+
+        const noFriend = document.createElement("div");
+        noFriend.classList.add("noFriend");
+        noFriend.setAttribute("onclick", "refuse(" + f.friendNo + ")");
+        noFriend.innerText = f.memberName + "님과 친구 관계 끊기";
+
+        friendAllList.append(img1, frbox);
+        frbox.append(namecount);
+        namecount.append(friendAll, frmenu2);
+        friendAll.append(friendName, pulsnav2);
+        pulsnav2.append(img2);
+        frmenu2.append(noFriend);
+
+        friendListElement.append(friendAllList);
+    }
+
+    const friendRQBox = document.createElement("div")
+    friendRQBox.id = "friendRQBox";
+    const friendRQ = document.createElement("span");
+    friendRQ.id = "friendRQ";
+    friendRQ.innerHTML = "친구 " + list.length + "명";
+
+    friendRQBox.append(friendRQ);
+
+    friendListElement2.append(friendRQBox);
+
+    // 이벤트 핸들러 등록
+    registerEventHandlers();
+}
+
+
 //친구 목록 비동기 표시 
 function friendList() {
     fetch("/friend/all/birequest")
         .then(resp => resp.json())
         .then(result => {
-            console.log(result)
-            const friendListElement = document.getElementById("friendAllList");
-            const friendListElement2 = document.getElementById("friendRQBoxCount");
-
-            friendListElement.innerHTML = "";
-            friendListElement2.innerHTML = ""; //친구요청 갯수 제거
-
-            for (let f of result) {
-                const friendAllList = document.createElement("div");
-                friendAllList.classList.add("frtopdiv");
-                const img1 = document.createElement("img");
-                img1.classList.add("proimg");
-                img1.setAttribute("src", "/resources/images/friend/143086968_2856368904622192_1959732218791162458_n.png");
-                const frbox = document.createElement("div");
-                frbox.classList.add("frbox");
-                const namecount = document.createElement("div");
-                namecount.classList.add("namecount");
-                const friendAll = document.createElement("div");
-                friendAll.classList.add("friendAll");
-                
-                const frmenu2 = document.createElement("div");
-                frmenu2.classList.add("frmenu");
-                frmenu2.setAttribute("style", "display: none");
-                const friendName = document.createElement("span");
-                friendName.classList.add("friendName");
-                friendName.innerText = f.memberName;
-                const pulsnav2 = document.createElement("span");
-                pulsnav2.classList.add("pulsnav");
-                pulsnav2.setAttribute("style", "background-color: rgb(255, 255, 255)");
-                const img2 = document.createElement("img");
-                img2.setAttribute("src", "/resources/images/friend/free-icon-three-dots-6941941.png");
-                const noFriend = document.createElement("div");
-                noFriend.classList.add("noFriend");
-                noFriend.setAttribute("onclick", "refuse(" + f.friendNo + ")");
-                noFriend.innerText = f.memberName + "님과 친구 관계 끊기";
-
-                friendAllList.append(img1, frbox);
-                frbox.append(namecount);
-                namecount.append(friendAll, frmenu2);
-                friendAll.append(friendName, pulsnav2);
-                pulsnav2.append(img2);
-                frmenu2.append(noFriend);
-
-                friendListElement.append(friendAllList);
-            }
-
-            const friendRQBox = document.createElement("div")
-            friendRQBox.id = "friendRQBox";
-            const friendRQ = document.createElement("span");
-            friendRQ.id = "friendRQ";
-            friendRQ.innerHTML = "친구 " + result.length + "명";
-
-            friendRQBox.append(friendRQ);
-
-            friendListElement2.append(friendRQBox);
-
-            // 이벤트 핸들러 등록
-            registerEventHandlers();
+            // console.log(result)
+            
+            showFriendList(result);
+        
+            
+            
         })
         .catch(err => console.log(err));
 }
