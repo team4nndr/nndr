@@ -232,7 +232,7 @@
                             <%-- <c:if test="${personalInfo.setFriendReq eq 'Y'}"> --%>
                             <%-- 피드 목록 --%>
 
-                            <jsp:include page="/WEB-INF/views/mainFeed/feedList.jsp"/>
+                            <jsp:include page="/WEB-INF/views/personalFeed/perFeedList.jsp"/>
                         </div>
                         
 
