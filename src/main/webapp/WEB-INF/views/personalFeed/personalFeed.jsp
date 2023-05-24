@@ -34,13 +34,31 @@
                         <h4>&nbsp;&nbsp; 알 수도 있는 사람</h4>
                     </div>
                     <div class="item1-3">
-                        <div class="who">
-                            <div class="who-pic">사진1zz</div>
-                            <div class="who-name">&nbsp;&nbsp;<strong>이름</strong></div>
-                            <div class="add-friend">
-                                <li><button class="add-friend2" href="">친구 추가</button></li>
-                            </div>
-                        </div>
+                        <c:forEach items="${friendList}" var="i" begin="0" end="2">
+                            <c:if test="${empty i.profileImage}">
+                                <div class="who">
+                                    <a href="/personalFeed/${i.memberNo}">
+                                        <div class="who-pic"><img class="who-pic" src="/resources/images/common/user-default.png" alt="로고"></div>
+                                        <div class="who-name">${i.memberName}</div>
+                                    </a>
+                                    <div class="add-friend">
+                                        <li><button class="add-friend2" id="addf" data-seNo="${loginMember.memberNo}" data-reNo="${i.memberNo}">친구 추가</button></li>
+                                    </div>
+                                </div>
+                            </c:if>
+                            <c:if test="${not empty i.profileImage}">
+                                <div class="who">
+                                    <a href="/personalFeed/${i.memberNo}">
+                                        <div class="who-pic"><img class="who-pic" src="${i.profileImage}" alt="로고"></div>
+                                        <div class="who-name">${i.memberName}</div>
+                                    </a>
+                                    <div class="add-friend">
+                                        <li><button class="add-friend2" id="addf" data-seNo="${loginMember.memberNo}" data-reNo="${i.memberNo}">친구 추가</button></li>
+                                    </div>
+                                </div>
+                            </c:if>
+                        </c:forEach>
+                        
                     </div>
                     <p class="controller">
                         <span class="prev">&lang;</span>  
@@ -162,8 +180,14 @@
                         <a class="my-info" href="/personalFeedFriend/${infoMember.memberNo}">모든 친구 보기</a>
                     </div>
                         <div class="main-imset">
-                            <c:forEach items="${imgSet}" var="i">
-                                <div id="main-im3"><img src="${i}" alt="로고" class="main-im"></div>
+                            <c:forEach items="${friendList}" var="i" begin="0" end="2">
+                                    <c:if test="${empty i.profileImage}">
+                                        <a href="/personalFeed/${i.memberNo}" id="main-im3"><img src="/resources/images/common/user-default.png" alt="로고" class="main-im"></a>
+                                    </c:if>
+                                    <c:if test="${not empty i.profileImage}">
+                                        <a href="/personalFeed/${i.memberNo}" id="main-im3"><img src="${i.profileImage}" alt="로고" class="main-im"></a>
+                                    </c:if>
+                                
                             </c:forEach>
                             <div class="something"></div>
                         </div>
@@ -189,7 +213,7 @@
                                     </c:if>
                                     <p id="newFeedBtn">${loginMember.memberName}님, 무슨 생각을 하고 계신가요?</p>
                                     <%-- 피드 작성 모달 --%>
-                                    <jsp:include page="/WEB-INF/views/mainFeed/newFeed.jsp"/>
+                                    <jsp:include page="/WEB-INF/views/personalFeed/pernewFeed.jsp"/>
                                 </div>
                             </c:if>
                             <c:if test="${infoMember.memberNo ne loginMember.memberNo}"> <%-- 본인 x --%>
@@ -203,7 +227,7 @@
                                         </c:if>
                                         <p id="newFeedBtn">${loginMember.memberName}님, 무슨 생각을 하고 계신가요?</p>
                                         <%-- 피드 작성 모달 --%>
-                                        <jsp:include page="/WEB-INF/views/mainFeed/newFeed.jsp"/>
+                                        <jsp:include page="/WEB-INF/views/personalFeed/pernewFeed.jsp"/>
                                     </div>
                                 </c:if>    
                                 <c:if test="${infoMember.setFeedAuthority eq 'F'}">
@@ -217,7 +241,7 @@
                                             </c:if>
                                             <p id="newFeedBtn">${loginMember.memberName}님, 무슨 생각을 하고 계신가요?</p>
                                             <%-- 피드 작성 모달 --%>
-                                            <jsp:include page="/WEB-INF/views/mainFeed/newFeed.jsp"/>
+                                            <jsp:include page="/WEB-INF/views/personalFeed/pernewFeed.jsp"/>
                                         </div>
                                     </c:if>    
                                 </c:if>    
@@ -232,7 +256,7 @@
                             <%-- <c:if test="${personalInfo.setFriendReq eq 'Y'}"> --%>
                             <%-- 피드 목록 --%>
 
-                            <jsp:include page="/WEB-INF/views/personalFeed/perFeedList.jsp"/>
+                            <jsp:include page="/WEB-INF/views/mainFeed/feedList.jsp"/>
                         </div>
                         
 
@@ -241,7 +265,7 @@
         </div>
         
     <script src="/resources/js/personalFeed/personalFeed.js"></script>
-    <%-- <script src="/resources/js/mainFeed/main.js"></script> --%>
+    <script src="/resources/js/mainFeed/main.js"></script>
     <script src="/resources/js/mainFeed/reply.js"></script>
     <jsp:include page="/WEB-INF/views/common/footer.jsp"/>
                         

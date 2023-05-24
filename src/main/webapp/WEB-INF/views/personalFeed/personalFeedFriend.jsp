@@ -29,20 +29,24 @@
                             <div id="na"><h2>친구</h2></div>
                             <div id="imBtn"><button class="info-2-1">친구추가</button></div>
                         </div>
-                        <div id="imgset">
-                            <div><img src="../images/cats/cat2.jpg" alt="" class="im"></div>
-                            <div><img src="../images/cats/cat2.jpg" alt="" class="im"></div>
-                            <div><img src="../images/cats/cat2.jpg" alt="" class="im"></div>
-                            <div><img src="../images/cats/cat2.jpg" alt="" class="im"></div>
-                            <div><img src="../images/cats/cat2.jpg" alt="" class="im"></div>
-                            <div><img src="../images/cats/cat2.jpg" alt="" class="im"></div>
-                            <div><img src="../images/cats/cat2.jpg" alt="" class="im"></div>
-                            <div><img src="../images/cats/cat2.jpg" alt="" class="im"></div>
-                            <div><img src="../images/cats/cat2.jpg" alt="" class="im"></div>
-                            <div><img src="../images/cats/cat2.jpg" alt="" class="im"></div>
-                            <div><img src="../images/cats/cat2.jpg" alt="" class="im"></div>
-                            <div><img src="../images/cats/cat2.jpg" alt="" class="im"></div>
-                        </div>
+                            <c:forEach items="${friendList}" var="i" begin="0" end="2">
+                                <c:if test="${empty i.profileImage}">
+                                    <a href="/personalFeed/${i.memberNo}">
+                                        <div class="who">
+                                            <div class="who-pic"><img class="who-pic" src="/resources/images/common/user-default.png" alt="로고"></div>
+                                            <div class="who-name">${i.memberName}</div>
+                                        </div>
+                                    </a>
+                                </c:if>
+                                <c:if test="${not empty i.profileImage}">
+                                    <a href="/personalFeed/${i.memberNo}">
+                                        <div class="who">
+                                            <div class="who-pic"><img class="who-pic" src="${i.profileImage}" alt="로고"></div>
+                                            <div class="who-name">${i.memberName}</div>
+                                        </div>
+                                    </a>
+                                </c:if>
+                            </c:forEach>
                     </div>
                 </div>
             

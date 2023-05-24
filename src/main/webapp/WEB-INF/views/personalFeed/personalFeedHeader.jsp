@@ -88,7 +88,7 @@
                                     <div id="backPlus" class ="plo"> 커버 사진 추가</div>
                                     <div id="cv-set">
                                         <div class ="cv" id="choback" data-no="${loginMember.memberNo}">이미지 선택</div>
-                                        <div class ="cv" id="uploadback" data-no="${loginMember.memberNo}">이미지 업로드</div>
+                                        <%-- <div class ="cv" id="uploadback" data-no="${loginMember.memberNo}">이미지 업로드</div> --%>
                                         <div class ="cv" id="delback" data-no="${loginMember.memberNo}">이미지 삭제</div>
                                     </div>
                                 </c:if>

@@ -1,5 +1,6 @@
 package edu.kh.nndr.personalFeed.controller;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -8,17 +9,25 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestHeader;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttribute;
 import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import edu.kh.nndr.alarm.model.dto.Alarm;
+import edu.kh.nndr.alarm.model.service.AlarmService;
+import edu.kh.nndr.friend.model.sevice.FriendService;
 import edu.kh.nndr.mainFeed.model.dto.Board;
 import edu.kh.nndr.mainFeed.model.dto.Reply;
 import edu.kh.nndr.mainFeed.model.service.MainFeedService;
@@ -38,9 +47,14 @@ public class PersonalFeedController {
 	MemberInfoService service;
 	@Autowired
 	MainFeedService mainService;
+	@Autowired
+	FriendService friendService;
 
 	@Autowired
 	private ReplyService replyService;
+	
+	@Autowired
+    private AlarmService alarmService;
 
 
 	@GetMapping("/personalFeed/{no:[0-9]+}")
@@ -72,29 +86,31 @@ public class PersonalFeedController {
 		model.addAttribute("personalInfo", personalInfo);
 		
 		
-		List<Board> boardList = service.personalfeedList(no);
-		for(Board board : boardList) {
-			List<Reply> list = replyService.replyList(board.getBoardNo());
-			board.setReplyList(list);
-		}
-		model.addAttribute("boardList", boardList);
-		
-		////////////////////////////
+
 		//personalBoardList
-		List<Board> personalFeedList = mainService.personalFeedList(no);
+		List<Board> boardList = mainService.personalFeedList(no);
 		
 		// 조회한 게시글에 달린 댓글 조회
-		for(Board board : personalFeedList) {
-		List<Reply> personalReply = replyService.replyList(board.getBoardNo());
-		board.setReplyList(personalReply);
-		}
-		
-		
-		
-		model.addAttribute("personalFeedList", personalFeedList);
+		for(Board board : boardList) {
+			List<Reply> personalReply = replyService.replyList(board.getBoardNo());
+			board.setReplyList(personalReply);
+		}	
+		model.addAttribute("boardList", boardList);
 		
 		////////////////////////////      
-		////////////////////////////
+		
+		List<Member> friendList = friendService.friendListMember(no);
+		int friendCount = friendList.size();
+		model.addAttribute("friendList", friendList);
+		model.addAttribute("friendCount", friendCount);
+		System.out.println(friendList);
+		
+		
+		
+		
+		
+		
+		
 		
 		return "personalFeed/personalFeed";
 	}
@@ -110,6 +126,49 @@ public class PersonalFeedController {
 		path += referer;
 		return path;
 	}
+	
+	@PostMapping("/personalFeed/insertContent")
+	public String feedInsert(Board board, @RequestHeader(value = "referer") String referer
+			, @SessionAttribute("loginMember") Member loginMember
+			, @RequestParam(value="images",required=false) List<MultipartFile> images
+			, RedirectAttributes ra
+			,HttpSession session)throws IllegalStateException, IOException {
+		
+			
+			// 로그인한 회원 번호를 얻어와 board에 세팅
+			board.setMemberNo(loginMember.getMemberNo());
+			
+			String path = "redirect:";
+			path += referer;
+			// 업로드된 이미지 서버에 실제로 저장되는 경로
+			// +웹에서 요청시 이미지를 볼 수 있는 경로
+			String webPath = "/resources/images/mainFeed/";
+			String filePath = session.getServletContext().getRealPath(webPath);
+			
+			// 게시글 삽입 서비스 호출 후 삽입된 게시글 번호 반환 
+			
+			int boardNo = mainService.feedInsert(board,images,webPath,filePath);
+		
+			String message = null;
+			
+			if(boardNo > 0) {// 성공시
+				message = "게시글이 등록 되었습니다";
+				
+			}else {// 실패시
+				message = "게시글 등록 실패.......";
+			}
+			
+//			ra.addFlashAttribute("message",message);
+//			Alarm alarm = null;
+//			alarm.setAlarmContent("내 피드에 게시글이 작성되었습니다.");
+//			alarm.setAlarmContent("내 피드에 게시글이 작성되었습니다.");
+//			alarm.setAlarmContent("내 피드에 게시글이 작성되었습니다.");
+//			alarmService.insert(alarm);
+		
+		return path;
+	}
+	
+	
 	
 	@GetMapping(value = "/inputhobby", produces = "application/text; charset=UTF-8")
 	@ResponseBody
