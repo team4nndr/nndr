@@ -26,233 +26,287 @@
 		<result property="setAlarmLike" column="SET_AL_LIKE" />
 		<result property="setAlarmShare" column="SET_AL_SHARE" />
 		<result property="setAlarmFeed" column="SET_AL_FEED" />
-		
+
 		<!-- join MemberInfo -->
 		<result property="profileImage" column="INFO_IMG" />
 		<result property="infoGender" column="INFO_GENDER" />
 		<result property="infoResidence" column="INFO_RESIDENCE" />
-		
+		<result property="infoCollege" column="INFO_COLLEGE" />
+		<result property="infoHigh" column="INFO_HIGH" />
+		<result property="infoMiddle" column="INFO_MIDDLE" />
+		<result property="infoElementary" column="INFO_ELEMENTARY" />
+
 		<!-- join Friend -->
 		<result property="friendNo" column="FRIEND_NO" />
 	</resultMap>
-	
+
 	<!-- 로그인 -->
 	<select id="login" resultMap="member_rm">
-		SELECT MEMBER_NO, MEMBER_EMAIL, MEMBER_PW, MEMBER_NAME, MEMBER_TEL, MEMBER_CODE, 
-			TO_CHAR(DISABLE_DATE, 'YYYY-MM-DD HH24:MI:SS') DISABLE_DATE, 
-			TO_CHAR(DELETE_DATE, 'YYYY-MM-DD HH24:MI:SS') DELETE_DATE,
-			TO_CHAR(ENROLL_DATE, 'YYYY-MM-DD HH24:MI:SS') ENROLL_DATE,
-			SET_FRIEND_REQ, SET_FEED_AUTH, SET_AL_FRIEND_REQ, SET_AL_REQ_ACCEPT, SET_AL_TAG, 
-			SET_AL_REPLY, SET_AL_LIKE, SET_AL_SHARE, SET_AL_FEED,
-			INFO_PROFILEPATH||INFO_PROFILE INFO_IMG, INFO_GENDER, INFO_RESIDENCE
+		SELECT MEMBER_NO, MEMBER_EMAIL,
+		MEMBER_PW, MEMBER_NAME, MEMBER_TEL, MEMBER_CODE,
+		TO_CHAR(DISABLE_DATE,
+		'YYYY-MM-DD HH24:MI:SS') DISABLE_DATE,
+		TO_CHAR(DELETE_DATE, 'YYYY-MM-DD
+		HH24:MI:SS') DELETE_DATE,
+		TO_CHAR(ENROLL_DATE, 'YYYY-MM-DD HH24:MI:SS')
+		ENROLL_DATE,
+		SET_FRIEND_REQ, SET_FEED_AUTH, SET_AL_FRIEND_REQ,
+		SET_AL_REQ_ACCEPT, SET_AL_TAG,
+		SET_AL_REPLY, SET_AL_LIKE, SET_AL_SHARE,
+		SET_AL_FEED,
+		INFO_PROFILEPATH||INFO_PROFILE INFO_IMG, INFO_GENDER,
+		INFO_RESIDENCE, INFO_COLLEGE, INFO_HIGH, INFO_MIDDLE, INFO_ELEMENTARY
 		FROM "MEMBER"
-			  LEFT JOIN "MEMBER_INFO" USING(MEMBER_NO)
-	    WHERE MEMBER_EMAIL = #{memberEmail}
-	          AND MEMBER_CODE != 'B' AND MEMBER_CODE != 'D'
+		LEFT JOIN "MEMBER_INFO" USING(MEMBER_NO)
+		WHERE
+		MEMBER_EMAIL = #{memberEmail}
+		AND MEMBER_CODE != 'B' AND MEMBER_CODE !=
+		'D'
 	</select>
-	
+
 	<!-- 유저 수 조회 -->
 	<select id="getMemberCount" resultType="_int">
-		SELECT COUNT(*) FROM "MEMBER" WHERE MEMBER_CODE != 'A'
+		SELECT COUNT(*) FROM
+		"MEMBER" WHERE MEMBER_CODE != 'A'
 	</select>
-	
+
 	<!-- 모든(비활성, 탈퇴유저 포함 / 관리자 제외) 유저 목록 조회 -->
 	<select id="selectMemberList" resultMap="member_rm">
-		SELECT MEMBER_NO, MEMBER_NAME, MEMBER_EMAIL, MEMBER_CODE,
-			TO_CHAR(ENROLL_DATE, 'YYYY-MM-DD') ENROLL_DATE, INFO_PROFILEPATH||INFO_PROFILE INFO_IMG
+		SELECT MEMBER_NO,
+		MEMBER_NAME, MEMBER_EMAIL, MEMBER_CODE,
+		TO_CHAR(ENROLL_DATE,
+		'YYYY-MM-DD') ENROLL_DATE, INFO_PROFILEPATH||INFO_PROFILE INFO_IMG
 		FROM "MEMBER"
-			  LEFT JOIN "MEMBER_INFO" USING(MEMBER_NO)
-		WHERE MEMBER_CODE != 'A'
-		ORDER BY MEMBER_NO DESC
+		LEFT JOIN "MEMBER_INFO" USING(MEMBER_NO)
+		WHERE MEMBER_CODE
+		!= 'A'
+		ORDER BY
+		MEMBER_NO DESC
 	</select>
-	
+
 	<!-- 유저 정보 조회 -->
 	<select id="selectMember" resultMap="member_rm">
-		SELECT MEMBER_NO, MEMBER_EMAIL, MEMBER_NAME, MEMBER_TEL, MEMBER_CODE, 
-			TO_CHAR(DISABLE_DATE, 'YYYY-MM-DD HH24:MI:SS') DISABLE_DATE, 
-			TO_CHAR(DELETE_DATE, 'YYYY-MM-DD HH24:MI:SS') DELETE_DATE,
-			TO_CHAR(ENROLL_DATE, 'YYYY-MM-DD') ENROLL_DATE,
-			SET_FRIEND_REQ, SET_FEED_AUTH, SET_AL_FRIEND_REQ, SET_AL_REQ_ACCEPT, SET_AL_TAG,
-			SET_AL_REPLY, SET_AL_LIKE, SET_AL_SHARE, SET_AL_FEED,
-			INFO_PROFILEPATH||INFO_PROFILE INFO_IMG, INFO_GENDER, INFO_RESIDENCE
+		SELECT MEMBER_NO,
+		MEMBER_EMAIL, MEMBER_NAME, MEMBER_TEL, MEMBER_CODE,
+		TO_CHAR(DISABLE_DATE, 'YYYY-MM-DD HH24:MI:SS') DISABLE_DATE,
+		TO_CHAR(DELETE_DATE, 'YYYY-MM-DD HH24:MI:SS') DELETE_DATE,
+		TO_CHAR(ENROLL_DATE, 'YYYY-MM-DD') ENROLL_DATE,
+		SET_FRIEND_REQ,
+		SET_FEED_AUTH, SET_AL_FRIEND_REQ, SET_AL_REQ_ACCEPT, SET_AL_TAG,
+		SET_AL_REPLY, SET_AL_LIKE, SET_AL_SHARE, SET_AL_FEED,
+		INFO_PROFILEPATH||INFO_PROFILE INFO_IMG, INFO_GENDER, INFO_RESIDENCE
 		FROM "MEMBER"
-			  LEFT JOIN "MEMBER_INFO" USING(MEMBER_NO)
-	    WHERE MEMBER_NO = #{memberNo}
+		LEFT JOIN "MEMBER_INFO" USING(MEMBER_NO)
+		WHERE MEMBER_NO =
+		#{memberNo}
 	</select>
-	
+
 	<!-- 유저 비활성화 -->
 	<update id="disableMember">
 		UPDATE "MEMBER"
-		SET		MEMBER_CODE = 'B',
-				DISABLE_DATE = SYSDATE
-		WHERE	MEMBER_NO = #{memberNo}
+		SET MEMBER_CODE = 'B',
+		DISABLE_DATE =
+		SYSDATE
+		WHERE MEMBER_NO = #{memberNo}
 	</update>
-	
+
 	<!-- 계정 정상화 (비활성 해제, 탈퇴 유저 복구) -->
 	<update id="enableMember">
 		UPDATE "MEMBER"
-		SET		MEMBER_CODE = 'N'
-		WHERE	MEMBER_NO = #{memberNo}
+		SET MEMBER_CODE = 'N'
+		WHERE MEMBER_NO =
+		#{memberNo}
 	</update>
-	
+
 	<!-- 계정 삭제 -->
 	<update id="deleteMember">
 		UPDATE "MEMBER"
-		SET		MEMBER_CODE = 'D',
-				DELETE_DATE = SYSDATE
-		WHERE	MEMBER_NO = #{memberNo}
+		SET MEMBER_CODE = 'D',
+		DELETE_DATE =
+		SYSDATE
+		WHERE MEMBER_NO = #{memberNo}
 	</update>
-	
+
 	<!-- 회원정보 수정(설정 페이지) : MEMBER 테이블 -->
 	<update id="changeMemberInfoAtMember">
 		UPDATE "MEMBER"
-		SET		MEMBER_TEL = #{memberTel}
-		WHERE	MEMBER_NO = #{memberNo}
+		SET MEMBER_TEL = #{memberTel}
+		WHERE
+		MEMBER_NO = #{memberNo}
 	</update>
-	
+
 	<!-- 회원정보 수정(설정 페이지) : MEMBER_INFO 테이블 -->
 	<update id="changeMemberInfoAtMemberInfo">
 		UPDATE "MEMBER_INFO"
-		SET		INFO_GENDER = #{infoGender},
-				INFO_RESIDENCE = #{infoResidence}
-		WHERE	MEMBER_NO = #{memberNo}
+		SET INFO_GENDER = #{infoGender},
+		INFO_RESIDENCE = #{infoResidence}
+		WHERE MEMBER_NO = #{memberNo}
 	</update>
-	
+
 	<!-- 회원 비밀번호 수정 -->
 	<update id="changeMemberPasswd">
 		UPDATE "MEMBER"
-		SET		MEMBER_PW = #{memberPw}
-		WHERE	MEMBER_NO = #{memberNo}
+		SET MEMBER_PW = #{memberPw}
+		WHERE
+		MEMBER_NO = #{memberNo}
 	</update>
-	
+
 	<!-- 현재 비밀번호 조회 -->
 	<select id="getPasswd" resultType="string">
-		SELECT 	MEMBER_PW
-		FROM   "MEMBER"
-		WHERE 	MEMBER_NO = #{memberNo}
+		SELECT MEMBER_PW
+		FROM "MEMBER"
+		WHERE MEMBER_NO = #{memberNo}
 	</select>
-		
+
 	<!-- 회원 가입 -->
 	<insert id="signUp" useGeneratedKeys="true">
-	
-		<selectKey order="BEFORE" resultType="_int" keyProperty="memberNo">
+
+		<selectKey order="BEFORE" resultType="_int"
+			keyProperty="memberNo">
 			SELECT SEQ_MEMBER_NO.NEXTVAL FROM DUAL
 		</selectKey>
-	
+
 		INSERT INTO "MEMBER"
-		VALUES(#{memberNo}    
+		VALUES(#{memberNo}
 		, #{memberEmail}
 		, #{memberPw}
-		, #{memberName}
+		,
+		#{memberName}
 		, #{memberTel}
-		,DEFAULT, SYSDATE,NULL, NULL,DEFAULT,DEFAULT,DEFAULT
+		,DEFAULT,
+		SYSDATE,NULL,
+		NULL,DEFAULT,DEFAULT,DEFAULT
 		,DEFAULT,DEFAULT,DEFAULT,DEFAULT,DEFAULT,DEFAULT)
-	</insert>	
-	
+	</insert>
+
 	<!-- 회원 가입 추가 -->
 	<insert id="signUpPlus">
-		INSERT INTO	"MEMBER_INFO"(MEMBER_NO,INFO_GENDER,INFO_BIRTH)
-		VALUES (#{memberNo}, #{infoGender},#{infoBirth})
+		INSERT INTO
+		"MEMBER_INFO"(MEMBER_NO,INFO_GENDER,INFO_BIRTH)
+		VALUES (#{memberNo},
+		#{infoGender},#{infoBirth})
 	</insert>
 
 	<!-- 검색 유저 수 조회 -->
 	<select id="getMemberSearchCount" resultType="_int">
-		SELECT 	 COUNT(*)
-		FROM 	"MEMBER"
-		WHERE	 MEMBER_CODE != 'A'
-		<if test="query != null">
-				 AND (MEMBER_EMAIL LIKE '%${query}%'
-			     OR MEMBER_NAME LIKE '%${query}%')
-        </if>
-	    <choose>
-        	<when test='op == "정상"'>
-	        	AND MEMBER_CODE='N'
-        	</when>
-        	<when test='op == "비활성화"'>
-	        	AND MEMBER_CODE='B'
-        	</when>
-        	<when test='op == "탈퇴"'>
-	        	AND MEMBER_CODE='D'
-        	</when>
-        </choose>
-	</select>
-	
-	<!-- 검색 유저 목록 조회 -->
-	<select id="selectMemberSearchList" resultMap="member_rm">
-		SELECT MEMBER_NO, MEMBER_NAME, MEMBER_EMAIL, MEMBER_CODE, MEMBER_TEL, 
-			TO_CHAR(DISABLE_DATE, 'YYYY-MM-DD HH24:MI:SS') DISABLE_DATE, 
-			TO_CHAR(DELETE_DATE, 'YYYY-MM-DD HH24:MI:SS') DELETE_DATE,
-			TO_CHAR(ENROLL_DATE, 'YYYY-MM-DD') ENROLL_DATE, INFO_PROFILEPATH||INFO_PROFILE INFO_IMG
+		SELECT COUNT(*)
 		FROM "MEMBER"
-			  LEFT JOIN "MEMBER_INFO" USING(MEMBER_NO)
 		WHERE MEMBER_CODE != 'A'
 		<if test="query != null">
-				 AND (MEMBER_EMAIL LIKE '%${query}%'
-			     OR MEMBER_NAME LIKE '%${query}%')
-        </if>
-	    <choose>
-        	<when test='op == "정상"'>
-	        	AND MEMBER_CODE='N'
-        	</when>
-        	<when test='op == "비활성화"'>
-	        	AND MEMBER_CODE='B'
-        	</when>
-        	<when test='op == "탈퇴"'>
-	        	AND MEMBER_CODE='D'
-        	</when>
-        </choose>
+			AND (MEMBER_EMAIL LIKE '%${query}%'
+			OR MEMBER_NAME LIKE
+			'%${query}%')
+		</if>
+		<choose>
+			<when test='op == "정상"'>
+				AND MEMBER_CODE='N'
+			</when>
+			<when test='op == "비활성화"'>
+				AND MEMBER_CODE='B'
+			</when>
+			<when test='op == "탈퇴"'>
+				AND MEMBER_CODE='D'
+			</when>
+		</choose>
+	</select>
+
+	<!-- 검색 유저 목록 조회 -->
+	<select id="selectMemberSearchList" resultMap="member_rm">
+		SELECT MEMBER_NO, MEMBER_NAME, MEMBER_EMAIL, MEMBER_CODE, MEMBER_TEL,
+		TO_CHAR(DISABLE_DATE, 'YYYY-MM-DD HH24:MI:SS') DISABLE_DATE,
+		TO_CHAR(DELETE_DATE, 'YYYY-MM-DD HH24:MI:SS') DELETE_DATE,
+		TO_CHAR(ENROLL_DATE, 'YYYY-MM-DD') ENROLL_DATE,
+		INFO_PROFILEPATH||INFO_PROFILE INFO_IMG
+		FROM "MEMBER"
+		LEFT JOIN
+		"MEMBER_INFO" USING(MEMBER_NO)
+		WHERE MEMBER_CODE != 'A'
+		<if test="query != null">
+			AND (MEMBER_EMAIL LIKE '%${query}%'
+			OR MEMBER_NAME LIKE
+			'%${query}%')
+		</if>
+		<choose>
+			<when test='op == "정상"'>
+				AND MEMBER_CODE='N'
+			</when>
+			<when test='op == "비활성화"'>
+				AND MEMBER_CODE='B'
+			</when>
+			<when test='op == "탈퇴"'>
+				AND MEMBER_CODE='D'
+			</when>
+		</choose>
 		ORDER BY MEMBER_NO DESC
 	</select>
-	
+
 	<!-- 환경설정 세팅값 변경 -->
 	<update id="changeSetting">
-		UPDATE	"MEMBER"
-		SET		 ${key} = #{value}
-		WHERE 	 MEMBER_NO = #{memberNo}
+		UPDATE "MEMBER"
+		SET ${key} = #{value}
+		WHERE MEMBER_NO =
+		#{memberNo}
 	</update>
-	
+
 	<!-- 내 친구 이름 검색 : Member 반환 -->
 	<select id="friendListSearchByName" resultMap="member_rm">
-		SELECT MEMBER_NO, MEMBER_NAME, INFO_PROFILEPATH||INFO_PROFILE INFO_IMG, MEMBER_CODE
-		FROM (
-				SELECT
-					CASE
-						WHEN FRIEND_SENDER = #{memberNo} THEN FRIEND_RECIVER
-						WHEN FRIEND_RECIVER = #{memberNo} THEN FRIEND_SENDER
-					END MEMBER_NO
-				FROM 	 FRIEND
-				WHERE   (FRIEND_SENDER = #{memberNo} OR FRIEND_RECIVER = #{memberNo})
-				         AND FRIEND_FL = 'Y'
-				UNION SELECT #{memberNo} FROM DUAL
-			) MY_FRIEND
+		SELECT MEMBER_NO,
+		MEMBER_NAME, INFO_PROFILEPATH||INFO_PROFILE INFO_IMG, MEMBER_CODE
+		FROM
+		(
+		SELECT
+		CASE
+		WHEN FRIEND_SENDER = #{memberNo} THEN FRIEND_RECIVER
+		WHEN
+		FRIEND_RECIVER = #{memberNo} THEN FRIEND_SENDER
+		END MEMBER_NO
+		FROM
+		FRIEND
+		WHERE (FRIEND_SENDER = #{memberNo} OR FRIEND_RECIVER =
+		#{memberNo})
+		AND FRIEND_FL = 'Y'
+		UNION SELECT #{memberNo} FROM DUAL
+		)
+		MY_FRIEND
 		JOIN "MEMBER" USING(MEMBER_NO)
-		LEFT JOIN "MEMBER_INFO" USING(MEMBER_NO)
+		LEFT JOIN "MEMBER_INFO"
+		USING(MEMBER_NO)
 		WHERE MEMBER_CODE='N'
-		  AND MEMBER_NAME LIKE '%${query}%'
+		AND MEMBER_NAME LIKE '%${query}%'
 	</select>
-	
+
 	<!-- 내 친구 이름 검색(친구탭) : Member 반환 -->
-	<select id="friendListSearchByNameInFriend" resultMap="member_rm">
-		SELECT MEMBER_NO, MEMBER_NAME, INFO_PROFILEPATH||INFO_PROFILE INFO_IMG, MEMBER_CODE
+	<select id="friendListSearchByNameInFriend"
+		resultMap="member_rm">
+		SELECT MEMBER_NO, MEMBER_NAME,
+		INFO_PROFILEPATH||INFO_PROFILE INFO_IMG, MEMBER_CODE
 		FROM (
-				SELECT
-					CASE
-						WHEN FRIEND_SENDER = #{memberNo} THEN FRIEND_RECIVER
-						WHEN FRIEND_RECIVER = #{memberNo} THEN FRIEND_SENDER
-					END MEMBER_NO
-				FROM 	 FRIEND
-				WHERE   (FRIEND_SENDER = #{memberNo} OR FRIEND_RECIVER = #{memberNo})
-				         AND FRIEND_FL = 'Y'
-			) MY_FRIEND
-		JOIN "MEMBER" USING(MEMBER_NO)
-		LEFT JOIN "MEMBER_INFO" USING(MEMBER_NO)
-		WHERE MEMBER_CODE='N'
-		  AND MEMBER_NAME LIKE '%${query}%'
+		SELECT
+		CASE
+		WHEN FRIEND_SENDER = #{memberNo} THEN FRIEND_RECIVER
+		WHEN
+		FRIEND_RECIVER = #{memberNo} THEN FRIEND_SENDER
+		END MEMBER_NO
+		FROM
+		FRIEND
+		WHERE (FRIEND_SENDER = #{memberNo} OR FRIEND_RECIVER =
+		#{memberNo})
+		AND FRIEND_FL = 'Y'
+		) MY_FRIEND
+		JOIN "MEMBER"
+		USING(MEMBER_NO)
+		LEFT JOIN "MEMBER_INFO"
+		USING(MEMBER_NO)
+		WHERE
+		MEMBER_CODE='N'
+		AND MEMBER_NAME LIKE '%${query}%'
 	</select>
-	
+
 	<!-- 내 친구 목록 : Member 반환 -->
 	<select id="friendListMember" resultMap="member_rm">
-		SELECT MEMBER_NO, MEMBER_NAME, INFO_PROFILEPATH||INFO_PROFILE INFO_IMG, MEMBER_CODE, FRIEND_NO
+		SELECT MEMBER_NO,
+		MEMBER_NAME, INFO_PROFILEPATH||INFO_PROFILE INFO_IMG, MEMBER_CODE,
+		FRIEND_NO
 		FROM (
 				SELECT FRIEND_NO,
 					CASE 
@@ -264,24 +318,42 @@
 				         AND FRIEND_FL = 'Y'
 			) MY_FRIEND
 		JOIN "MEMBER" USING(MEMBER_NO)
-		LEFT JOIN "MEMBER_INFO" USING(MEMBER_NO)
+		LEFT JOIN "MEMBER_INFO"
+		USING(MEMBER_NO)
 		WHERE MEMBER_CODE='N'
 	</select>
-	
+
 	<!-- 친구요청 조회 -->
 	<select id="friendRqList" resultMap="member_rm">
-		SELECT 	FRIEND_NO,
-				MEMBER_NO,
-				MEMBER_NAME,
-				INFO_PROFILEPATH||INFO_PROFILE INFO_IMG,
-				MEMBER_CODE
-		FROM 	FRIEND
-				JOIN MEMBER ON FRIEND.FRIEND_SENDER = MEMBER.MEMBER_NO
-				LEFT JOIN "MEMBER_INFO" USING(MEMBER_NO)
-		WHERE 	FRIEND_FL = 'N'
-				AND FRIEND_RECIVER = #{memberNo}
-				AND MEMBER_CODE = 'N'
+		SELECT FRIEND_NO,
+		MEMBER_NO,
+		MEMBER_NAME,
+		INFO_PROFILEPATH||INFO_PROFILE INFO_IMG,
+		MEMBER_CODE
+		FROM
+		FRIEND
+		JOIN MEMBER ON FRIEND.FRIEND_SENDER = MEMBER.MEMBER_NO
+		LEFT JOIN
+		"MEMBER_INFO" USING(MEMBER_NO)
+		WHERE FRIEND_FL = 'N'
+		AND FRIEND_RECIVER
+		= #{memberNo}
+		AND MEMBER_CODE = 'N'
 		ORDER BY FRIEND_NO DESC
 	</select>
 
+	<!-- 친구 추천 -->
+	<select id="friendSuggestion" resultMap="member_rm">
+	  SELECT MEMBER_NO,MEMBER_NAME 
+	    FROM MEMBER 
+	    JOIN MEMBER_INFO USING(MEMBER_NO)
+	    WHERE INFO_COLLEGE = #{infoCollege}
+	    AND MEMBER_NO != #{memberNo}
+	    AND MEMBER_NO NOT IN 
+	    (SELECT FRIEND_SENDER
+	    FROM FRIEND f
+	    WHERE FRIEND_RECIVER = #{memberNo} OR FRIEND_SENDER = #{memberNo}
+	    )
+
+	</select>
 </mapper>

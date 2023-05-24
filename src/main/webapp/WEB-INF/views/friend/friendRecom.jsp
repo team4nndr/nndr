@@ -33,20 +33,27 @@
                         <span id="friendRQ">알 수도 있는 사람</span>
                     </div>
                 </div>
+                <div id="friendSuggestionList">
                 <c:forEach var="fs" items="${friendSuggestion}" >
                 <div class="frtopdiv">
-                    <img class="proimg" src="/resources/images/friend/143086968_2856368904622192_1959732218791162458_n.png" alt="">
+                    <c:if test="${empty friend.profileImage}" >
+                        <img class="proimg" src="/resources/images/common/user-default.png" alt="">
+                    </c:if>
+                    <c:if test="${not empty friend.profileImage}" >
+                        <img class="proimg" src="${friend.profileImage}" alt="">
+                    </c:if>
                     <div class="frbox"> <!--이름 + 확인,삭제-->
-                        <div class="namecount"><!--이름, 함께 아는친구-->
-                            <span class="freindName">${fs.memberName}</span>
+                        <div class="namecount" ><!--이름, 함께 아는친구-->
+                            <span class="freindName" onclick="friendPage(${fs.memberNo})">${fs.memberName}</span>
                         <div class="boxbtn"> <!--확인, 삭제 -->
                             <button class="yesbtn" onclick="accept(${fs.memberNo})">확인</button>
-                            <button class="nobtn">삭제</button>
+                            <button class="nobtn" onclick="exit">삭제</button>
                             </div>
                         </div>
                     </div>
                 </div>
                 </c:forEach>
+              </div>
                 <%-- <div class="frtopdiv">
                     <img class="proimg" src="/resources/images/friend/143086968_2856368904622192_1959732218791162458_n.png" alt="">
                     <div class="frbox"> <!--이름 + 확인,삭제-->
