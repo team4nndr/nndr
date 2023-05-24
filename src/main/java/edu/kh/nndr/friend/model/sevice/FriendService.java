@@ -42,6 +42,8 @@ public interface FriendService {
 	 * @param map
 	 * @return List<Member> friendList
 	 */
+	public List<Member> friendListMember(int memberNo);
+
 
 //	/** 친구 추천 확인 버튼
 //	 * @param memberNo
