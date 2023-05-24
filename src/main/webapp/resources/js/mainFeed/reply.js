@@ -83,6 +83,7 @@ function sendReplyalarm(boardNo) {
 	var alarm = {
 		"memberNo": memberNo,
         "alarmContent" : makeAlarm(obj),
+        "type": "REPLY"
 	}
     
 	alarmSock.send(JSON.stringify(alarm));
@@ -111,7 +112,7 @@ function submitReply(boardNo, parentReplyNo, btn) {
     .then(result => {
         if(result > 0) {
             printReplyList(boardNo);
-            sendReplyalarm(boardNo); // 알림 발송
+            sendReplyalarm(boardNo); // 피드 작성자에게 알림 발송
             textarea.value = "";
         } else {
             alert('댓글 작성 실패');
@@ -409,6 +410,7 @@ function updateReply(boardNo, replyNo, btn) {
     .then(result => {
         if(result > 0) {
             printReplyList(boardNo);
+            sendMentionAlarm(boardNo); // 멘션 대상자에게 알림 발송
             textarea.value = "";
         } else {
             alert('댓글 수정 실패');
