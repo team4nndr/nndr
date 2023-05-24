@@ -1,7 +1,7 @@
 const AT = { pos: -1 };
-const mentionData = new Array();
+let mentionData = [];
 
-// 친구 데이터
+// 친구 목록 실시간 생성
 function getMentionData() {
     
     const textarea = this.parentElement.parentElement.querySelector('textarea');
@@ -32,8 +32,7 @@ function convertMention(originReply) {
             mark.innerText = obj.name;
     
             replyContent = replyContent.replace('@' + obj.name, mark.outerHTML);
-        }
-    }
+        }    }
     return replyContent;
 }
 
@@ -114,6 +113,7 @@ function addMentionEvent(textarea) {
     });
 }
 
+// 멘션 리스트 닫기
 function closeMentionContainer(textarea) {
     const container = document.querySelector('.mention-container');
     if(container != null) {
@@ -123,4 +123,31 @@ function closeMentionContainer(textarea) {
     if(AT.pos == -1) { // 새로운 '@' 없음
         textarea.removeEventListener('keyup', getMentionData);
     }
+}
+
+// 댓글 제출시 멘션 대상에게 알림 발송
+function sendMentionAlarm(boardNo) { 
+    // TODO: 알림 클릭 시 멘션된 게시글로 이동(boardNo)
+    
+    var obj = {
+        "profileImage": profileImage,
+        "link": "/personalFeed/" + loginMemberNo,
+        "message": loginMemberName + "님이 회원님을 언급했습니다."
+    }
+
+    mentionData.forEach( mention => {
+
+        // 자기 자신을 태그한 경우 알람 발송 안함
+        if(mention.memberNo == loginMemberNo) return;
+
+        var alarm = {
+            "memberNo": mention.memberNo,
+            "alarmContent" : makeAlarm(obj),
+            "type": "MENTION"
+        };
+        
+        alarmSock.send(JSON.stringify(alarm));
+    });
+
+    mentionData = [];
 }
