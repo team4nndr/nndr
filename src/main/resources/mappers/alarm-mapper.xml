@@ -3,8 +3,11 @@
 <mapper namespace="alarmMapper">
 
 	<resultMap type="Alarm" id="alarm_rm">
-		<id property="memberNo" column="MEMBER_NO" />
+		<result property="alarmNo" column="ALARM_NO" />
 		<result property="alarmContent" column="ALARM_CONTENT" />
+		<result property="alarmDate" column="ALARM_DATE" />
+		<result property="alarmFl" column="ALARM_FL" />
+		<result property="memberNo" column="MEMBER_NO" />
 	</resultMap>
 
 	<!-- 알람 목록 조회 -->
@@ -14,4 +17,19 @@
 		WHERE ALARM_FL = 'N'
 		AND MEMBER_NO = #{memberNo}
 	</select>
+	
+	<!-- DB에 알람 내용 저장 -->
+	<insert id="insert">
+		<selectKey order="BEFORE" resultType="_int" keyProperty="alarmNo">
+			SELECT SEQ_ALARM_NO.NEXTVAL FROM DUAL
+		</selectKey>
+		INSERT
+		INTO 	"ALARM"
+		VALUES(	#{alarmNo}, 
+				#{alarmContent},
+				SYSDATE, 
+				DEFAULT, 
+				#{memberNo}
+		)
+	</insert>
 </mapper>

@@ -1,27 +1,19 @@
-
-// ----------------------------------------------------------------------------------------------------------------
-
-// sockjs를 이용한 WebSocket 구현
-
-// 로그인이 되어 있을 경우에만
-// /chattingSock 이라는 요청 주소로 통신할 수 있는  WebSocket 객체 생성
-
-
-// if(loginMemberNo != ""){
-// 	chattingSock = new SockJS("/chattingSock");
-// }
-
-// 채팅 입력
-
+let alramSock;
+if(alramSock != ""){
+	alramSock = new SockJS("/alramSock");
+}
 
 // WebSocket 객체 chattingSock이 서버로 부터 메세지를 통지 받으면 자동으로 실행될 콜백 함수
 alramSock.onmessage = function(e) {
 	const alram = JSON.parse(e.data);
-	// 메소드를 통해 전달받은 객체값을 JSON객체로 변환해서 obj 변수에 저장.
 	
-	const alarmList = document.getElementById('alarmList');
-	alarmList.prepend(alram.alarmContent);
+	// 상단바 알람 출력
+	const alarmList = document.getElementById('nndrAddContainer');
+	const div = document.createElement('div');
+	div.innerHTML = alram.alarmContent;
+	alarmList.prepend(div);
 
+	// 개인피드 친구추가 버튼 관련 동작
 	const perAddFriend = document.getElementById("perAddFriend");
 	if(alram.content=="친구 추가"){
 		if(perAddFriend!=null){
@@ -69,59 +61,8 @@ alramSock.onmessage = function(e) {
 	}
 }
 
-const alram = document.getElementById("perAddFriend")
-// 문서 로딩 완료 후 수행할 기능
-// document.addEventListener("DOMContentLoaded", ()=>{
-	
-	// 채팅방 목록에 클릭 이벤트 추가
-
-	// 보내기 버튼에 이벤트 추가
-
-
-	
-// });
-
-
-
-// function alramType(no, profile, what){
-// 	console.log(no)
-// 	let nndrAddAlarm = document.createElement("div");
-//     nndrAddAlarm.classList.add("nndrAddAlarm");
-
-//     let nndrAddAlarmProfile = document.createElement("a");
-//     nndrAddAlarmProfile.classList.add("nndrAddAlarmProfile");
-//     nndrAddAlarmProfile.href = "/personalFeed/"+no;
-
-//     let nndrAddAlarmContent = document.createElement("a");
-//     nndrAddAlarmContent.classList.add("nndrAddAlarmContent");
-//     nndrAddAlarmContent.href = "/personalFeed/"+no;
-
-//     let topMyProfile = document.createElement("img");
-//     topMyProfile.classList.add("topMyProfile");
-//     topMyProfile.src = profile;
-
-//     let nndrAlarmContent = document.createElement("p");
-//     nndrAlarmContent.classList.add("nndrAlarmContent");
-//     nndrAlarmContent.innerHTML = what;
-
-//     const x = document.createElement('div');
-//     x.classList.add('nndr-top-alarm-delete');
-//     x.innerHTML = '&times;';
-
-//     nndrAddContainer.append(nndrAddAlarm);
-
-//     nndrAddAlarm.prepend(nndrAddAlarmProfile);
-//     nndrAddAlarm.append(nndrAddAlarmContent);
-//     nndrAddAlarm.append(x);
-
-//     nndrAddAlarmProfile.append(topMyProfile);
-//     nndrAddAlarmContent.append(nndrAlarmContent);
-// };
-
-// 알람 발송할 떄 사용
+// 알람 발송용 함수
 function makeAlarm(obj) {
-	// 보낸사람 아이디, 보낸사람 프로필사진, 보낸사람 이름
-	// console.log(no)
 	let nndrAddAlarm = document.createElement("div");
 	nndrAddAlarm.classList.add("nndrAddAlarm");
 
