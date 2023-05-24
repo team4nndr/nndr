@@ -8,11 +8,11 @@ if (changePwFrm != null) { // 비밀번호 변경 페이지인 경우
 
     changePwFrm.addEventListener("submit", e => {
 
-        // 현재 비밀번호 미작성 시
-        if (currentPw.value.trim() == "") {
-            alert("현재 비밀번호를 입력해주세요");
+        //  비밀번호 미작성 시
+        if (newPw.value.trim() == "") {
+            alert("비밀번호를 입력해주세요");
             e.preventDefault();
-            currentPw.focus();
+            newPw.focus();
             return;
         }
         // 비번 유효성 검사 
@@ -20,6 +20,7 @@ if (changePwFrm != null) { // 비밀번호 변경 페이지인 경우
 
         if (!regEx.test(newPw.value)) {
             alert("비밀번호가 유효하지 않습니다");
+            newPw.style.border = "2px solid red";
             e.preventDefault();
             newPw.focus();
             return;
@@ -29,6 +30,7 @@ if (changePwFrm != null) { // 비밀번호 변경 페이지인 경우
         // 비번 == 비번 확인
         if (newPw.value != newPwConfirm.value) {
             alert("비밀번호가 일치하지 않습니다");
+            newPwConfirm.style.border = "2px solid red";
             e.preventDefault();
             newPwConfirm.focus();
             return;

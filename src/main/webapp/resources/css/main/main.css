@@ -197,11 +197,9 @@
   height: 21px;
   display: flex;
   align-items: center;
-  border-right: 1px solid #4c4c4c;
-  padding-right: 10px;
 
 }
-.main-bottom > div:nth-child(2){
+/* .main-bottom > div:nth-child(2){
   color: #4c4c4c;
   font-weight: bold;
   padding : 0 10px;
@@ -209,13 +207,13 @@
   display: flex;
   align-items: center;
   border-right: 1px solid #4c4c4c;
-}
-.main-bottom > div:nth-child(3){
+} */
+/* .main-bottom > div:nth-child(3){
   color: #4c4c4c;
   font-weight: bold;
   padding-left: 10px;
   
-}
+} */
 
 
 .main-bottom > div > a {
@@ -252,9 +250,6 @@
 } */
 
 
-/* 메세지 색상 지정 */
-.confirm{ border : 1px solid green; }
-.error{ border : 1px solid red; }
 
 #insert2 > p{
   display: flex;
@@ -413,28 +408,98 @@ input::-webkit-inner-spin-button {
   box-shadow: 5px 3px 8px 1px  #CCC}
 
 #sendAuthKeyBtn{
-  border: 1px solid #8c8686;
+  width: 90px;
+  height: 21px;
+  border: 1px solid #c5c4c4;
   cursor: pointer;
   border-radius: 5px;
+  border: none;
+  background-color: rgb(164, 167, 171);
   
 }
 
 #sendAuthKeyBtn:hover{
-  background-color: #ccc;
+  background-color: #8c8686; 
   border-radius: 5px;
+  box-shadow: 5px 3px 8px 1px  #979797;
+  color: white;
 }
 
 
 #checkAuthKeyBtn{
+  width: 90px;
+  height: 21px;
   border: 1px solid #8c8686;
   cursor: pointer;
   border-radius: 5px;
+  border: none;
+  background-color:rgb(164, 167, 171);
 }
 
 #checkAuthKeyBtn:hover{
-  background-color: #ccc;
+  background-color: #8c8686;
   border-radius: 5px;
+  box-shadow: 5px 3px 8px 1px  #979797;
+  color: white;
 }
+
+/* 느낌표 제거 */ 
+.hidden {
+  display: none !important;
+}
+
+#bangWarn1 > img{
+  width: 25px;
+  height: 23px;
+  z-index: 1000;
+  position: absolute;
+  background-color: #e4cac2;
+  margin-top: 3px;
+  right: 108px;
+}
+
+#bangWarn3>img{
+  width: 25px;
+  height: 23px;
+  z-index: 1000;
+  position: absolute;
+  background-color: #e4cac2;
+  margin-top: 3px;
+  right: 108px;
+  display: none;
+}
+#bangWarn4>img{
+  width: 25px;
+  height: 23px;
+  z-index: 1000;
+  position: absolute;
+  background-color: #e4cac2;
+  margin-top: 3px;
+  right: 108px;
+  display: none;
+}
+#bangWarn5>img{
+  width: 25px;
+  height: 23px;
+  z-index: 1000;
+  position: absolute;
+  background-color: #e4cac2;
+  margin-top: 3px;
+  right: 108px;
+  display: none;
+}
+#bangWarn6>img{
+  width: 25px;
+  height: 23px;
+  z-index: 1000;
+  position: absolute;
+  background-color: #e4cac2;
+  margin-top: 3px;
+  right: 108px;
+  display: none;
+}
+
+
 
 
 

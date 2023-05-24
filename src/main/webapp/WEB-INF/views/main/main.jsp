@@ -66,12 +66,6 @@
                 <div>
                 <a href="#">로그인</a> 
                 </div>
-                <div>
-                <a href="#">친구</a> 
-                </div>
-                <div>
-                <a href="#">1:1 문의</a> 
-                </div>
         </footer>
     </div>
 
@@ -90,26 +84,32 @@
                 </div>
                 <div id="box1">
                     <div class="box">
-                        <input type="text" name="memberName" placeholder="이름">
+                        <input type="text" id="memberName" name="memberName" placeholder="이름">
                     </div>
+                    <%-- id는 하나만 입력 가능 --%>
                     <div class="box">
+                        <div id="bangWarn1" class="hidden"><img src="/resources/images/topMenu/회원 가입 느낌표.png" alt=""></div>
                         <input type="email" name="memberEmail" id="memberEmail" placeholder="이메일"
                                 maxlength="30" autocomplete="off">
 
                         <button id="sendAuthKeyBtn" type="button">인증번호 받기</button>
                     <div class="box">
+                        <div id="bangWarn3" class="hidden"><img src="/resources/images/topMenu/회원 가입 느낌표.png" alt=""></div>
                         <input type="text" name="authKey" id="authKey" placeholder="인증번호 입력" maxlength="6" autocomplete="off" >
                     
                         <button id="checkAuthKeyBtn" type="button">인증하기</button>
                     </div>
                     <div class="box">
+                        <div id="bangWarn4" class="hidden"><img src="/resources/images/topMenu/회원 가입 느낌표.png" alt=""></div>
                         <input type="password" name="memberPw" id="memberPw" placeholder="비밀번호" maxlength="20">
                     </div>
                     <div class="box">
+                        <div id="bangWarn5" class="hidden"><img src="/resources/images/topMenu/회원 가입 느낌표.png" alt=""></div>
                         <input type="password" name="memberPwConfirm" id="memberPwConfirm" placeholder="비밀번호 확인" maxlength="20">
                     </div>
                     <div class="box">
-                        <input type="number" placeholder="(- 없이 숫자만 입력)" id="memberTel" maxlength="11">
+                        <div id="bangWarn6" class="hidden"><img src="/resources/images/topMenu/회원 가입 느낌표.png" alt=""></div>
+                        <input type="text" placeholder="(- 없이 숫자만 입력)" id="memberTel" maxlength="11">
                     </div>
                     <div class="bir" name="memberBirth">
                         생일
