@@ -9,10 +9,10 @@
             const loginMemberNo = "${loginMember.memberNo}";
             const loginMemberName = "${loginMember.memberName}";
             const profileImage = "${loginMember.profileImage}";
-
         </script>
         <script src="https://cdn.jsdelivr.net/npm/sockjs-client@1/dist/sockjs.min.js"></script> 
         <script src="/resources/js/alarm/alarm.js"></script>
+
 
         <div id="nndrContainer">
 

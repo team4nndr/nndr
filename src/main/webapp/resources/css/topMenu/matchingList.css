@@ -192,6 +192,7 @@ hr {
     background-color: white;
     display: flex;
     align-items: center;
+    border: 1px solid black;
 }
 
 #hashtag-keyword{

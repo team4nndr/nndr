@@ -32,6 +32,13 @@ public class MainController {
 	}
 	
 	
+	// 검색시, 일치하는 게시글 목록 출력 임시 화면 (삭제 예정)
+	@RequestMapping("/matching") // 실제로 보는 주소창
+	public String tempForward() {
+		return "topMenu/matchingList"; // jsp 폴더 안에 있는 jsp 파일 경로
+	}
+	
+	
 	@GetMapping("/main/forgetPw")
 	public String forgetPw() {
 		return "main/forgetPw";
