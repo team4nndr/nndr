@@ -209,15 +209,16 @@ var currentIdx = 0; //현재 슬라이드 index
 var slideCount = slideImg.length; // 슬라이드 개수
 var prev = document.querySelector('.prev'); //이전 버튼
 var next = document.querySelector('.next'); //다음 버튼
-var slideWidth = 202; //한개의 슬라이드 넓이
+var slideWidth = 222; //한개의 슬라이드 넓이
 var slideMargin = 20; //슬라이드간의 margin 값
 
 //전체 슬라이드 컨테이너 넓이 설정
 // slides.style.width = (slideWidth + slideMargin) * slideCount + 'px';
 
 function moveSlide(num) {
+    
     let slideNum = 0;
-    slideNum  = -num * 800;
+    slideNum  = -num * 235;
     slides.style.left = slideNum+ 'px';
     currentIdx = num;
 }
@@ -233,11 +234,13 @@ if(prev !=null){
 ;
 if (next != null) {
     next.addEventListener('click', function () {
+        console.log(currentIdx)
+        console.log(slideCount)
         /* 마지막 슬라이드로 표시 됐을때는 
         다음 버튼 눌러도 아무런 반응 없게 하기 위해
         currentIdx !==slideCount - 1 일때만 
         moveSlide 함수 불러옴 */
-        if (currentIdx !== slideCount - 1) {
+        if (currentIdx+5 < slideCount) {
             moveSlide(currentIdx + 1);
         }
     });
@@ -265,4 +268,52 @@ if (document.getElementById("hobby-no") != null) {
     })
 }
 
+Array.from( document.getElementsByClassName("add-friend2")).forEach((target) => target.addEventListener("click", function(){ 
+    friendPlus(target); 
+})
+)
 
+function friendPlus(target) {
+    const personalAddFriend = new Array(target.dataset.seno, target.dataset.reno);
+    console.log(personalAddFriend)
+    fetch("/personalAddFriend?personalAddFriend="+personalAddFriend)  
+    .then(response => response.text()) 
+    .then(() => {
+    }) 
+    .catch (e => { console.log(e)}); 
+
+    target.parentNode.parentNode.parentNode.remove()
+    slideCount -=1
+}
+
+// 게시글 제출 ajax
+function submitReply(boardNo, parentReplyNo, btn) {
+
+    if( btn != null && !btn.classList.contains('enable') ) return;
+
+    const textarea = document.querySelector('.reply-textarea[no="' + boardNo + '"]');
+    const replyContent = convertMention(textarea.value); // 멘션 문자열에 HTML 처리
+
+    const data = {
+        "boardNo" : boardNo,
+        "replyContent" : replyContent,
+        "parentReplyNo" : parentReplyNo
+    };
+
+    fetch("/reply/submit", {
+        method : "POST",
+        headers : {"Content-Type" : "application/json"},
+        body : JSON.stringify(data)
+    })
+    .then(resp => resp.text())
+    .then(result => {
+        if(result > 0) {
+            printReplyList(boardNo);
+            sendReplyAlram(boardNo); // 알림 발송
+            textarea.value = "";
+        } else {
+            alert('댓글 작성 실패');
+        }
+    })
+    .catch(e => console.log(e));
+}
