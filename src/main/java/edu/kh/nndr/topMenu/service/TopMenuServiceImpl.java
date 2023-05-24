@@ -16,11 +16,10 @@ public class TopMenuServiceImpl implements TopMenuService{
 
 
 	// 알람 목록 조회
+
 	@Override
 	public List<Alarm> alarmList(int memberNo) {
-		System.out.println(memberNo);
 		List<Alarm> alarmList = dao.alarmList(memberNo);
-		System.out.println(alarmList);
 		return alarmList;
 	}
 	

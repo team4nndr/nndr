@@ -20,7 +20,7 @@ import edu.kh.nndr.member.model.dto.Member;
 import edu.kh.nndr.member.model.service.MemberService;
 import edu.kh.nndr.topMenu.service.TopMenuService;
 
-@SessionAttributes({"loginMember", "friendList", "alarmList"})
+@SessionAttributes({"loginMember", "friendList"})
 @Controller
 public class MemberController {
 
@@ -51,9 +51,7 @@ public class MemberController {
 			List<Member> friendList = friendService.friendListMember(loginMember.getMemberNo());
 			model.addAttribute("friendList", friendList); // 현재 친구 목록
 			List<Alarm> alarmList = topMenuService.alarmList(loginMember.getMemberNo());
-			model.addAttribute("alarmList", alarmList); // 현재 알람 목록
-			
-			System.out.println("*****" + alarmList);
+			model.addAttribute("alarmList",alarmList); // 현재 알람 목록
 			
 			Cookie cookie = new Cookie("map", loginMember.getMemberEmail());
 			
