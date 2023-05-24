@@ -11,6 +11,9 @@ alramSock.onmessage = function(e) {
 	const alarmList = document.getElementById('nndrAddContainer');
 	const div = document.createElement('div');
 	div.innerHTML = alram.alarmContent;
+	div.querySelector('.alarm-delete').addEventListener('click', e => {
+		div.remove();
+	});
 	alarmList.prepend(div);
 
 	// 개인피드 친구추가 버튼 관련 동작
@@ -86,12 +89,13 @@ function makeAlarm(obj) {
 	x.classList.add('nndr-top-alarm-delete');
 	x.innerHTML = '&times;';
 
-	nndrAddContainer.append(nndrAddAlarm);
+	// nndrAddContainer.append(nndrAddAlarm);
 
 	nndrAddAlarm.prepend(nndrAddAlarmProfile);
 	nndrAddAlarm.append(nndrAddAlarmContent);
+	nndrAddAlarm.classList.add('alarm-delete');
 	nndrAddAlarm.append(x);
-
+	
 	nndrAddAlarmProfile.append(topMyProfile);
 	nndrAddAlarmContent.append(nndrAlarmContent);
 
