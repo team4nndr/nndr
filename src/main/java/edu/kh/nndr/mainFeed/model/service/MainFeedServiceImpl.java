@@ -262,7 +262,13 @@ public class MainFeedServiceImpl implements MainFeedService {
 		
 	}
 	
-	
+	 /** 개인피드 게시글 확인 임플
+    *
+    */
+   @Override
+   public List<Board> personalFeedList(int no) {
+      return dao.personalFeedList(no);
+   }
 	
 	
 	

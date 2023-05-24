@@ -124,6 +124,14 @@ public class MainFeedDAO {
 		return sqlSession.selectOne("mainFeedMapper.countContentLike",boardNo);
 	}
 	
+	   /** 개인피드 게시글 확인 다오
+	    * @param no
+	    * @return
+	    */
+	   public List<Board> personalFeedList(int no) {
+	      return sqlSession.selectList("mainFeedMapper.personalFeedList",(no));
+	   }
+	
 	
 	
 }
