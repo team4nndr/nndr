@@ -51,7 +51,12 @@ public interface MainFeedService {
 
 	int like(Map<String, Integer> paramMap);
 	
-
+	
+	/** 개인피드 게시글 인
+    * @param no
+    * @return
+    */
+   List<Board> personalFeedList(int no);
 
 	
 	

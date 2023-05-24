@@ -73,7 +73,7 @@
             <%-- 좋아요 누른적이 없거나 로그인이 안되었을 때 --%>
                     <div>
                         <c:if test="${board.boardCount == 0}">
-                        <i class="fa-regular fa-thumbs-up fa-bounce boardLike" id="boardLike" data="${board.boardNo}"></i>
+                        <i class="fa-regular fa-thumbs-up boardLike" id="boardLike" data="${board.boardNo}"></i>
                         </c:if>
 
                         <%-- 로그인이 되어있고 나의 게시물에 좋아요를 누른적이 있을 때  --%>
