@@ -212,6 +212,8 @@
 
 #sendAuthKeyBtn:hover{
     background-color: #9c9595;
+    box-shadow: 5px 3px 8px 1px  #979797;
+    color: white;
 }
 
 
@@ -255,6 +257,8 @@ footer span{
 #sendAutoKeyBtn:hover{
     background-color: #ccc;
     border-radius: 5px;
+    box-shadow: 5px 3px 8px 1px  #979797;
+    color: white;
 }
 
 /* 인증하기 버튼 */

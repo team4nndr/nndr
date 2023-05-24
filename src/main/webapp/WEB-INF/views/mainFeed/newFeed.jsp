@@ -120,7 +120,7 @@
 
         <!-- <%-- </fieldset> --%> -->
             <%-- 기존 이미지가 있다가 삭제된 이미지의 순서 기록 --%>
-            <input type="hidden" name="deleteList" value="">
+            <input type="hidden" name="deleteList" value="0">
 
     </form>
     

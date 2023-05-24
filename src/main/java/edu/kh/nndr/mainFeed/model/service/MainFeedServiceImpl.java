@@ -30,9 +30,9 @@ public class MainFeedServiceImpl implements MainFeedService {
 	
 	// 게시글 확인
 	@Override
-	public List<Board> feedList() {
+	public List<Board> feedList(int memberNo) {
 		
-		return dao.feedList();
+		return dao.feedList(memberNo);
 	}
 
 	
@@ -233,9 +233,9 @@ public class MainFeedServiceImpl implements MainFeedService {
 	
 	
 	@Override
-	public int feedLikeCheck(Board board) {
+	public int feedLikeCheck(Member memberNo) {
 		
-		return dao.feedLikeCheck(board);
+		return dao.feedLikeCheck(memberNo);
 	}
 
 	

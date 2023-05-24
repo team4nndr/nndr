@@ -41,7 +41,7 @@
 		SELECT ROWNUM, b.*
 		FROM (SELECT BOARD_NO, MEMBER_NAME,BOARD_TEXT,MEMBER_NO, INFO_PROFILEPATH||INFO_PROFILE INFO_IMG,
 				(SELECT COUNT(*) FROM "CONTENT_LIKE" l
-				WHERE l.BOARD_NO = b.BOARD_NO) CONTENT_LIKE,
+				WHERE l.BOARD_NO = b.BOARD_NO AND l.MEMBER_NO = #{memberNo}) CONTENT_LIKE,
 		<![CDATA[
 		CASE  
 			WHEN SYSDATE - UPLOAD_DATE < 1/24/60
@@ -58,6 +58,7 @@
 		ORDER BY BOARD_NO DESC) b
 		WHERE ROWNUM <= 20
 		]]>
+		
 	</select>
 	
 	<select id="selectImageList" resultMap="image_rm">
@@ -171,7 +172,6 @@ FROM DUAL
 		SELECT COUNT(*) FROM "CONTENT_LIKE"
 		WHERE BOARD_NO = #{boardNo}
 		AND MEMBER_NO = #{memberNo}
-	
 	</select>
 	
 	<!-- 좋아요 추가   -->
