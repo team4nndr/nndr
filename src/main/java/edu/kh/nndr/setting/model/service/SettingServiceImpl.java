@@ -34,15 +34,7 @@ public class SettingServiceImpl implements SettingService {
 	@Override
 	@Transactional(rollbackFor = Exception.class)
 	public int changeMemberPasswd(Member member) {
-		// TODO 암호화 로직 추가
 		return dao.changeMemberPasswd(member);
-	}
-
-	// 현재 비밀번호 일치여부 확인
-	@Override
-	public boolean checkPasswd(Member member) {
-		// TODO 암호화 로직 추가
-		return member.getMemberPw().equals(dao.checkPasswd(member));
 	}
 
 	// 환경설정 변경
@@ -50,5 +42,11 @@ public class SettingServiceImpl implements SettingService {
 	public int changeSetting(Map<String, Object> paramMap, Member loginMember) {
 		paramMap.put("memberNo", loginMember.getMemberNo());
 		return dao.changeSetting(paramMap);
+	}
+
+	// 현재 비밀번호 조회
+	@Override
+	public String getPasswd(Member member) {
+		return dao.getPasswd(member);
 	}
 }
