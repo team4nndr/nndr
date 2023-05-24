@@ -21,7 +21,6 @@ public class AlarmWebsocketHandler extends TextWebSocketHandler {
     
     @Autowired
     private AlarmService service;
-    
     private Set<WebSocketSession> sessions  = Collections.synchronizedSet(new HashSet<WebSocketSession>());
 
     @Override
@@ -37,12 +36,13 @@ public class AlarmWebsocketHandler extends TextWebSocketHandler {
         // DB에 저장 -> 실패 시 함수 종료 (전달X)
         if(service.insert(alarm) == 0) return ;
         
-        // 상대방에게 전달
+        // 상대방에게 전달(1:1)
         for(WebSocketSession s : sessions) {
             int loginMemberNo = ((Member)s.getAttributes().get("loginMember")).getMemberNo();
             
             if(loginMemberNo == alarm.getMemberNo()) {
                 s.sendMessage(new TextMessage(new Gson().toJson(alarm)));
+                break;
             }
         }
     }

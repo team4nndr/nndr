@@ -300,7 +300,7 @@ console.log(pcvCho)
 
 
 
-const sendFriendAlram=()=>{
+const sendFriendalarm=()=>{
 	const senderMemberNo = document.getElementById("memberInfo").dataset.sender;
 	const senderProfile = document.getElementById("memberInfo").dataset.profile;
 	const senderName = document.getElementById("memberInfo").dataset.sendername;
@@ -314,20 +314,20 @@ const sendFriendAlram=()=>{
         "message" : senderName+"님이 친구 신청을 하셨습니다."
     }
 
-	var alram = {
+	var alarm = {
 		"memberNo": memberNo,
         "alarmContent" : makeAlarm(obj),
         "content" : content
 	}
 
 	// JSON.stringify() : 자바스크립트 객체를 JSON 문자열로 변환
-    console.log(alram);
-	alramSock.send(JSON.stringify(alram));
+    console.log(alarm);
+	alarmSock.send(JSON.stringify(alarm));
 }
 
 
 if(document.getElementById("perAddFriend") != null){
-    document.getElementById("perAddFriend").addEventListener("click", sendFriendAlram)
+    document.getElementById("perAddFriend").addEventListener("click", sendFriendalarm)
 }
 
 
