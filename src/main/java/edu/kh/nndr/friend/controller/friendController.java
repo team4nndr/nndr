@@ -38,17 +38,17 @@ public class friendController {
 		return "friend/friend";
 	}
 
-	//친구 추천 목록
-	@RequestMapping("/recom") // + 주소
-	public String friendrecom() {
-		return "friend/friendRecom"; // 파일경로
-	}
+//	//친구 추천 목록
+//	@RequestMapping("/recom") // + 주소
+//	public String friendrecom() {
+//		return "friend/friendRecom"; // 파일경로
+//	}
 	
 	
-	//친구 추천 목록 조회
+//	친구 추천 목록 조회
 //	@RequestMapping("/recom") // + 주소
 //	public String friendrecom(@SessionAttribute("loginMember") Member member, Model model) {
-//		List<Member> friendSuggestion = service.friendSuggestion(member.getMemberNo());
+//		List<Member> friendSuggestion = service.friendSuggestion(member.getMemberNo(), member.getInfoHigh(),member.getInfoCollege(), member.getInfoMiddle(), member.getInfoElementary());
 //		model.addAttribute("friendSuggestion", friendSuggestion);
 //		return "friend/friendRecom"; // 파일경로
 //	}
