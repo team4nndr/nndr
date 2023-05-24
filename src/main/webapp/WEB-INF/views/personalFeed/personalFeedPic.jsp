@@ -27,11 +27,15 @@
                 <div class="imset">
                     <div  class="imop">
                         <div id="na"><h2>사진</h2></div>
-                        <div id="imBtn"><button class="info-2-1">사진추가</button></div>
+                        <%-- <div id="imBtn"><button class="info-2-1">사진추가</button></div> --%>
                     </div>
                     <div id="imgset">
-                            <c:forEach items="${imgSet}" var="i">
+                            <c:forEach items="${imgSet}" var="i" begin ="0" end="15">
+
+
                                 <div><img src="${i.imgPath}${i.imgRename}" alt="" class="im" data-boardNo = "${i.boardNo}"></div>
+                            
+                            
                             </c:forEach>
                         
                     </div>
