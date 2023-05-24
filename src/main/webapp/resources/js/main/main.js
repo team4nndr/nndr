@@ -36,6 +36,8 @@ const checkObj = {
 // 이메일 유효성 검사
 const memberEmail = document.getElementById("memberEmail");
 
+const bangWarn1 = document.getElementById("bangWarn1");
+
 // 이메일이 입력될 때 마다
 memberEmail.addEventListener("input", ()=>{
 
@@ -43,42 +45,53 @@ memberEmail.addEventListener("input", ()=>{
     if(memberEmail.value.trim().length == 0) {
         memberEmail.value = ""; // 띄어쓰기 입력 막기
 
-        memberEmail.style.backgroundColor = "red"; // 테두리 색깔 변경
+        // memberEmail.style.backgroundColor = "#e4cac2"; // 배경색 색깔 변경
 
         checkObj.memberEmail = false // 빈칸 == 유효 X
         return; 
     }
-
-
+    
+    
     const regEx = /^[A-Za-z\d\-\_]{4,}@[가-힣\w\-\_]+(\.\w+){1,3}$/;
-
-    if(regEx.test(memberEmail.value)){
+    
+    if( regEx.test(memberEmail.value) ){
+        
         fetch('/main/email?inputEmail='+memberEmail.value)
         .then(response => response.text())
         .then(result => {
-          //  console.log(result);
-
-            if(result == 0){
-                memberEmail.style.backgroundColor = "red";
+            //  console.log(result);
+            
+            if(result == 0){ // 중복 없으면 0 
+                memberEmail.style.backgroundColor = "rgba(142, 179, 234, 0.617)";
                 checkObj.memberEmail = true;
-            }else{
-                memberEmail.style.backgroundColor = "lightblue";
+                bangWarn1.classList.add('hidden');
+                
+                
+            }else{  // 중복 있으면 0(X)
+                memberEmail.style.backgroundColor = "#e4cac2";
                 checkObj.memberEmail = false;
+                bangWarn1.classList.remove('hidden');
             }
-
+            
         })
 
         .catch(err =>console.log(err)); // 예외 처리
         
     } else {
-        memberEmail.style.backgroundColor = "red";
+        memberEmail.style.backgroundColor = "#e4cac2";
         checkObj.memberEmail = false
+        bangWarn1.classList.remove('hidden');
     }
 });
+
+
+
 
 // 비밀번호/ 비밀번호 확인 유효성 검사
 const memberPw = document.getElementById("memberPw");
 const memberPwConfirm = document.getElementById("memberPwConfirm");
+const bangWarn4 = document.getElementById("bangWarn4");
+const bangWarn5 = document.getElementById("bangWarn5");
 
 memberPw.addEventListener("input", ()=>{
 
@@ -86,7 +99,10 @@ memberPw.addEventListener("input", ()=>{
     if(memberPw.value.trim().length == 0) {
         memberPw.value = ""; 
 
-        memberPw.style.backgroundColor = "red";
+        bangWarn4.classList.remove("hidden"); 
+        bangWarn5.classList.remove("hidden"); 
+        
+        // memberPw.style.backgroundColor = "#e4cac2";
         checkObj.memberPw = false;
         return;
     }
@@ -96,28 +112,34 @@ memberPw.addEventListener("input", ()=>{
     if(regEx.test(memberPw.value)){
 
         checkObj.memberPw = true;
-
+        
         // 비밀번호가 유효하게 작성된 상태에서
         // 비밀번호확인이 입력되지 않았을 때 
         if(memberPwConfirm.value.trim().length = 0){
-
-            memberPwConfirm.style.backgroundColor = "red";
+            
+            bangWarn5.classList.remove('hidden');
+            memberPwConfirm.style.backgroundColor = "#e4cac2";
         } else{
 
             if(memberPw.value == memberPwConfirm.value){
-                memberPw.style.backgroundColor = "lightblue";
+                memberPw.style.backgroundColor = "rgba(142, 179, 234, 0.617)";
                 checkObj.memberPwConfirm = true;
+                bangWarn4.classList.add('hidden');
+                bangWarn5.classList.add('hidden');
 
             }else {
-                memberPw.style.backgroundColor = "red";
+                memberPw.style.backgroundColor = "rgba(142, 179, 234, 0.617)";
                 checkObj.memberPwConfirm = false;
+                bangWarn4.classList.add('hidden');
             }
 
         }
  
     } else {
-        memberPw.style.backgroundColor = "red";
+        memberPw.style.backgroundColor = "#e4cac2";
         checkObj.memberPw = false;
+        bangWarn4.classList.remove('hidden');
+
     }
 
 });
@@ -125,36 +147,41 @@ memberPw.addEventListener("input", ()=>{
 // 비밀번호 확인 유효성 검사
 memberPwConfirm.addEventListener('input', () => {
 
+    
     if (checkObj.memberPw) { // 비밀번호가 유효하게 작성된 경우에
-
+        
         // 비밀번호 == 비밀번호 확인 (같을 경우)
         if (memberPw.value == memberPwConfirm.value) {
-            memberPw.style.backgroundColor = "lightblue";
-            memberPwConfirm.style.backgroundColor = "lightblue";
+            memberPw.style.backgroundColor = "rgba(142, 179, 234, 0.617)";
+            memberPwConfirm.style.backgroundColor = "rgba(142, 179, 234, 0.617)";
             checkObj.memberPwConfirm = true;
+            bangWarn4.classList.add('hidden');
+            bangWarn5.classList.add('hidden');
 
 
         } else {// 다를 경우
-            memberPw.style.backgroundColor = "red";
-            memberPwConfirm.style.backgroundColor = "red";
+            memberPw.style.backgroundColor = "#e4cac2";
+            memberPwConfirm.style.backgroundColor = "#e4cac2";
             checkObj.memberPwConfirm = false;
+            bangWarn5.classList.remove('hidden');
         }
 
     } else { // 비번이 유효하지 않은 경우
         checkObj.memberPwConfirm = false;
-
     }
 
 });
 
 // 전화번호 유효성 검사
 const memberTel = document.getElementById("memberTel");
+const bangWarn6 = document.getElementById("bangWarn6");
+
 
 // 전화번호가 입력 되었을 때
 memberTel.addEventListener("input", () => {
 
     if (memberTel.value.trim().length == 0) {
-        memberTel.style.backgroundColor ="red";
+        // memberTel.style.backgroundColor ="#e4cac2";
         checkObj.memberTel = false;
         memberTel.value = ""; // 빈칸 방지
         return;
@@ -165,11 +192,13 @@ memberTel.addEventListener("input", () => {
 
     // if(regEx.test(문자열))
     if (regEx.test(memberTel.value)) { // 유효
-        memberTel.style.backgroundColor ="lightblue";
+        memberTel.style.backgroundColor ="rgba(142, 179, 234, 0.617)";
         checkObj.memberTel = true;
+        bangWarn6.classList.add('hidden');
 
     } else {//무효
-        memberTel.style.backgroundColor = "red";
+        memberTel.style.backgroundColor = "#e4cac2";
+        bangWarn6.classList.remove('hidden');
         checkObj.memberTel = false;
     }
 
@@ -264,12 +293,12 @@ checkAuthKeyBtn.addEventListener("click", function(){
         .then(result => {
             if(result > 0){
                 clearInterval(authTimer); // 시간가는거 멈추는 코드
-                checkAuthKeyBtn.style.backgroundColor = "lightblue";
+                checkAuthKeyBtn.style.backgroundColor = "rgba(142, 179, 234, 0.617)";
                 checkObj.authKey = true; // 인증되면
 
             } else{
                 alert("인증번호가 일치하지 않습니다.")
-                checkAuthKeyBtn.style.backgroundColor = "red";
+                checkAuthKeyBtn.style.backgroundColor = "#e4cac2";
                 checkObj.authKey = false;
             }
         })

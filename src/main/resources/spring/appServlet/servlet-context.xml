@@ -28,10 +28,10 @@
 	
 	<!-- websocket handler -->
 	
-	<beans:bean id="AlramWebsocketHandler" class="edu.kh.nndr.alarm.websocket.AlarmWebsocketHandler"/>
+	<beans:bean id="AlarmWebsocketHandler" class="edu.kh.nndr.alarm.websocket.AlarmWebsocketHandler"/>
 	<websocket:handlers>
 		<!-- websocket 매핑 주소 -->
-		<websocket:mapping handler="AlramWebsocketHandler" path="/alramSock"/>
+		<websocket:mapping handler="AlarmWebsocketHandler" path="/alarmSock"/>
 		
 		<websocket:handshake-interceptors> 
 			<!-- interceptor : http통신에서 request, response를 가로채는 역할

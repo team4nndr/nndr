@@ -241,19 +241,18 @@ button{
     border-radius: 5px;
     border: 1px solid #dadada;
 }
+
+
 .who-pic{   
-    height: 70%;
+   
+    height: 220px;
+    width: 210px;
     background-color: #ccc;
     border-top-left-radius: 5px;
     border-top-right-radius: 5px;
     
 }
-.who-name{
-    height: 10%;
-    padding-top: 10px;
-    background-color: white;
-    
-}
+
 .so{
     padding: 20px 0 20px 15px;
     text-align: left;
@@ -647,6 +646,7 @@ button{
     font-weight: bold;
     font-size: 18px;
     margin: 10px 0;
+    text-decoration: none;
 }
 
 
@@ -849,11 +849,9 @@ button{
   
   /* 슬라이드들 옆으로 정렬 */
   .item1-3 div:not(:last-child){
-    float: left;
   }
   
   .item1-3 div{
-    float: left;
   }
   .controller span{
     position:absolute;
@@ -944,6 +942,15 @@ button{
     transition: all .4s;
     pointer-events: visible;
 }
+/*             --------------------------             */
+.who-name{
+    text-decoration-line: none;
+    font-size: 20px;
+    padding-top: 10px;
+    background-color: white;
+    text-align: center;
+}
+/*             --------------------------             */
 .profi{
     display: flex;
     height: 265px;
@@ -993,7 +1000,7 @@ button{
     display: block;
     width: 144px;
     height: 42px;
-    background-color: blue;
+    background-color: #c7e4f7;
     border-radius: 5px;
     text-align: center;
     padding: 11px 0;

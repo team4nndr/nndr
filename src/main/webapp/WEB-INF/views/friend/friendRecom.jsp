@@ -53,7 +53,7 @@
                     </div>
                 </div>
                 </c:forEach>
-                </div>
+              </div>
                 <%-- <div class="frtopdiv">
                     <img class="proimg" src="/resources/images/friend/143086968_2856368904622192_1959732218791162458_n.png" alt="">
                     <div class="frbox"> <!--이름 + 확인,삭제-->

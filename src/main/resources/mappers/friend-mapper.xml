@@ -51,10 +51,9 @@
       AND MEMBER_NAME LIKE '%${query}%'
       ORDER BY MEMBER_NAME DESC
 	</select>
-	
-	<!-- 친구추천 수락 -->
+
+	<!-- 친구 추천 확인 -->
 	<insert id="friendaddition">
-	INSERT INTO FRIEND VALUES(SEQ_FRIEND_NO.NEXTVAL, #{memberNo}, #{friendReciver}, DEFAULT)
+	INSERT INTO "FRIEND" VALUES(SEQ_FRIEND_NO.NEXTVAL,#{memberNo},#{memberNo}, DEFAULT);
 	</insert>
-	
 </mapper>

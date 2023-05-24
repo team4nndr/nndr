@@ -38,13 +38,6 @@ public interface FriendService {
 	 */
 	public List<Member> friendListMember(int memberNo);
 
-	/** 친구 추천
-	 * @param params
-	 * @return
-	 */
-	List<Member> friendSuggestion(Map<String, Object> params);
-
-
 //	/** 친구 추천 확인 버튼
 //	 * @param memberNo
 //	 * @return
