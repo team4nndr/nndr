@@ -32,4 +32,9 @@
 				#{memberNo}
 		)
 	</insert>
+	
+	<!-- 알람 수신 설정 여부 조회 -->
+	<select id="checkAlarmSetting" resultType="string">
+		SELECT ${column} FROM "MEMBER" WHERE MEMBER_NO = ${memberNo}
+	</select>
 </mapper>

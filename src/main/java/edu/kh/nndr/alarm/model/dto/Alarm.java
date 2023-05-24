@@ -10,9 +10,32 @@ import lombok.ToString;
 @Setter
 @ToString
 public class Alarm {
-	int alarmNo;
-	String alarmContent;
-	String alarmDate;
-	String alarmFl;
-	int memberNo;
+	private int alarmNo;
+	private String alarmContent;
+	private String alarmDate;
+	private String alarmFl;
+	private int memberNo;
+	
+	private String type;
+	
+	// 알람 종류
+	public enum Type { 
+        FRIEND_REQ("SET_AL_FRIEND_REQ"), 	
+        FRIEND_ACCEPT("SET_AL_REQ_ACCEPT"), 
+        MENTION("SET_AL_TAG"), 					
+        REPLY("SET_AL_REPLY"), 				
+        LIKE("SET_AL_LIKE"), 				
+        SHARE("SET_AL_SHARE"),   			
+        FEED("SET_AL_FEED");
+		
+		final private String column;
+		
+        Type(String column) {
+        	this.column = column;
+        }
+        
+        public String column() {
+        	return column;
+        }
+    }
 }
