@@ -317,3 +317,19 @@ function submitReply(boardNo, parentReplyNo, btn) {
     })
     .catch(e => console.log(e));
 }
+
+
+// 더보기 옵션
+
+function detectBottom() {
+    var scrollTop = $(window).scrollTop();
+    var innerHeight = $(window).innerHeight();
+    var scrollHeight = $('body').prop('scrollHeight');
+    if (scrollTop + innerHeight >= scrollHeight) {
+        console.log("asd")
+        return true;
+    } else {
+        console.log("dsa")
+        return false;
+    }
+}
