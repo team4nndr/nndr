@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import edu.kh.nndr.friend.model.dto.Friend;
 import edu.kh.nndr.mainFeed.model.dto.Hashtag;
 import edu.kh.nndr.member.model.dto.Member;
-import edu.kh.nndr.topMenu.service.SearchService;
+import edu.kh.nndr.topMenu.model.service.SearchService;
 
 
 @Controller
