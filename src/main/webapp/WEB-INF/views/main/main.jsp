@@ -88,7 +88,7 @@
                     </div>
                     <%-- id는 하나만 입력 가능 --%>
                     <div class="box">
-                        <div id="bangWarn1" class="hidden"><img src="/resources/images/topMenu/회원 가입 느낌표.png" alt=""></div>
+                        <div id="bangWarn1" class="hidden"><img src="/resources/images/topMenu/회원 가입 느낌표.png" ></div>
                         <input type="email" name="memberEmail" id="memberEmail" placeholder="이메일"
                                 maxlength="30" autocomplete="off">
 

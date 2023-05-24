@@ -50,26 +50,27 @@ memberEmail.addEventListener("input", ()=>{
         checkObj.memberEmail = false // 빈칸 == 유효 X
         return; 
     }
-
-
+    
+    
     const regEx = /^[A-Za-z\d\-\_]{4,}@[가-힣\w\-\_]+(\.\w+){1,3}$/;
-
+    
     if( regEx.test(memberEmail.value) ){
-        bangWarn1.classList.add('hidden');
-
+        
         fetch('/main/email?inputEmail='+memberEmail.value)
         .then(response => response.text())
         .then(result => {
-          //  console.log(result);
-          
+            //  console.log(result);
+            
             if(result == 0){ // 중복 없으면 0 
                 memberEmail.style.backgroundColor = "rgba(142, 179, 234, 0.617)";
                 checkObj.memberEmail = true;
+                bangWarn1.classList.add('hidden');
                 
                 
             }else{  // 중복 있으면 0(X)
                 memberEmail.style.backgroundColor = "#e4cac2";
                 checkObj.memberEmail = false;
+                bangWarn1.classList.remove('hidden');
             }
             
         })
@@ -116,7 +117,7 @@ memberPw.addEventListener("input", ()=>{
         // 비밀번호확인이 입력되지 않았을 때 
         if(memberPwConfirm.value.trim().length = 0){
             
-            bangWarn4.classList.add('hidden');
+            bangWarn5.classList.remove('hidden');
             memberPwConfirm.style.backgroundColor = "#e4cac2";
         } else{
 
@@ -124,11 +125,12 @@ memberPw.addEventListener("input", ()=>{
                 memberPw.style.backgroundColor = "rgba(142, 179, 234, 0.617)";
                 checkObj.memberPwConfirm = true;
                 bangWarn4.classList.add('hidden');
+                bangWarn5.classList.add('hidden');
 
             }else {
-                memberPw.style.backgroundColor = "#e4cac2";
+                memberPw.style.backgroundColor = "rgba(142, 179, 234, 0.617)";
                 checkObj.memberPwConfirm = false;
-                bangWarn4.classList.remove('hidden');
+                bangWarn4.classList.add('hidden');
             }
 
         }
@@ -161,7 +163,6 @@ memberPwConfirm.addEventListener('input', () => {
             memberPw.style.backgroundColor = "#e4cac2";
             memberPwConfirm.style.backgroundColor = "#e4cac2";
             checkObj.memberPwConfirm = false;
-            bangWarn4.classList.remove('hidden');
             bangWarn5.classList.remove('hidden');
         }
 
