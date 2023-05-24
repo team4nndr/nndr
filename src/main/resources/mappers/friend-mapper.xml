@@ -52,4 +52,9 @@
       ORDER BY MEMBER_NAME DESC
 	</select>
 	
+	<!-- 친구추천 수락 -->
+	<insert id="friendaddition">
+	INSERT INTO FRIEND VALUES(SEQ_FRIEND_NO.NEXTVAL, #{memberNo}, #{friendReciver}, DEFAULT)
+	</insert>
+	
 </mapper>
