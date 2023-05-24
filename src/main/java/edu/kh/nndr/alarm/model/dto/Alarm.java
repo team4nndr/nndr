@@ -12,7 +12,5 @@ import lombok.ToString;
 public class Alarm {
 	int memberNo;
 	String alarmContent;
-	
 	String content;	
-
 }

@@ -20,8 +20,14 @@
 // WebSocket 객체 chattingSock이 서버로 부터 메세지를 통지 받으면 자동으로 실행될 콜백 함수
 alramSock.onmessage = function(e) {
 	// 메소드를 통해 전달받은 객체값을 JSON객체로 변환해서 obj 변수에 저장.
-	
 	const alram = JSON.parse(e.data);
+
+	// 알람 메시지 추가
+	// const div = document.createElement('div');
+	// div.innerHTML = alram.alarmContent;
+	document.getElementById('nndrAddContainer').prepend(alram.alarmContent);
+
+	// 친구 추가 버튼
 	const perAddFriend = document.getElementById("perAddFriend");
 	if(alram.content=="친구 추가"){
 		if(perAddFriend!=null){
@@ -52,7 +58,7 @@ alramSock.onmessage = function(e) {
 			perAddFriend.classList.add('noFriend')
 		}
 		document.getElementById("nndrImage3").src = "/resources/images/topMenu/페이지 시작화면.gif";
-		alramType(alram.senderMemberNo, alram.senderProfile, "친구가 되었습니다.")
+		// alramType(alram.senderMemberNo, alram.senderProfile, "친구가 되었습니다.")
 		return;
 	}
 	if(alram.content=="신청 취소" ){ 
@@ -63,8 +69,9 @@ alramSock.onmessage = function(e) {
 			perAddFriend.classList.remove('friendDel');
 			perAddFriend.classList.add('friendAccept')
 		}
+
 		document.getElementById("nndrImage3").src = "/resources/images/topMenu/페이지 시작화면.gif";
-		alramType(alram.senderMemberNo, alram.senderProfile, "친구 요청이 들어왔습니다.")
+		// alramType(alram.senderMemberNo, alram.senderProfile, "친구 요청이 들어왔습니다.")
 		return;
 	}
 }
@@ -80,42 +87,44 @@ const alram = document.getElementById("perAddFriend")
 	
 // });
 
+function addAlarm() {
 
+}
 
-function alramType(no, profile, what){
-	console.log(no)
-	let nndrAddAlarm = document.createElement("div");
-    nndrAddAlarm.classList.add("nndrAddAlarm");
+// function alramType(no, profile, what){
+// 	console.log(no)
+// 	let nndrAddAlarm = document.createElement("div");
+//     nndrAddAlarm.classList.add("nndrAddAlarm");
 
-    let nndrAddAlarmProfile = document.createElement("a");
-    nndrAddAlarmProfile.classList.add("nndrAddAlarmProfile");
-    nndrAddAlarmProfile.href = "/personalFeed/"+no;
+//     let nndrAddAlarmProfile = document.createElement("a");
+//     nndrAddAlarmProfile.classList.add("nndrAddAlarmProfile");
+//     nndrAddAlarmProfile.href = "/personalFeed/"+no;
 
-    let nndrAddAlarmContent = document.createElement("a");
-    nndrAddAlarmContent.classList.add("nndrAddAlarmContent");
-    nndrAddAlarmContent.href = "/personalFeed/"+no;
+//     let nndrAddAlarmContent = document.createElement("a");
+//     nndrAddAlarmContent.classList.add("nndrAddAlarmContent");
+//     nndrAddAlarmContent.href = "/personalFeed/"+no;
 
-    let topMyProfile = document.createElement("img");
-    topMyProfile.classList.add("topMyProfile");
-    topMyProfile.src = profile;
+//     let topMyProfile = document.createElement("img");
+//     topMyProfile.classList.add("topMyProfile");
+//     topMyProfile.src = profile;
 
-    let nndrAlarmContent = document.createElement("p");
-    nndrAlarmContent.classList.add("nndrAlarmContent");
-    nndrAlarmContent.innerHTML = what;
+//     let nndrAlarmContent = document.createElement("p");
+//     nndrAlarmContent.classList.add("nndrAlarmContent");
+//     nndrAlarmContent.innerHTML = what;
 
-    const x = document.createElement('div');
-    x.classList.add('nndr-top-alarm-delete');
-    x.innerHTML = '&times;';
+//     const x = document.createElement('div');
+//     x.classList.add('nndr-top-alarm-delete');
+//     x.innerHTML = '&times;';
 
-    nndrAddContainer.append(nndrAddAlarm);
+//     nndrAddContainer.append(nndrAddAlarm);
 
-    nndrAddAlarm.prepend(nndrAddAlarmProfile);
-    nndrAddAlarm.append(nndrAddAlarmContent);
-    nndrAddAlarm.append(x);
+//     nndrAddAlarm.prepend(nndrAddAlarmProfile);
+//     nndrAddAlarm.append(nndrAddAlarmContent);
+//     nndrAddAlarm.append(x);
 
-    nndrAddAlarmProfile.append(topMyProfile);
-    nndrAddAlarmContent.append(nndrAlarmContent);
-};
+//     nndrAddAlarmProfile.append(topMyProfile);
+//     nndrAddAlarmContent.append(nndrAlarmContent);
+// };
 
 // 알람 발송할 떄 사용
 function makeAlarm(obj) {
@@ -155,3 +164,18 @@ function makeAlarm(obj) {
 
 	return nndrAddAlarm.outerHTML;
 };
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
