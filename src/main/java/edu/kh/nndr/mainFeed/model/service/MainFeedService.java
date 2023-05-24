@@ -2,6 +2,7 @@ package edu.kh.nndr.mainFeed.model.service;
 
 import java.io.IOException;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.web.multipart.MultipartFile;
 
@@ -44,6 +45,11 @@ public interface MainFeedService {
 	Board selectOne(int boardNo);
 
 
+	int feedLikeCheck(Board board);
+
+
+
+	int like(Map<String, Integer> paramMap);
 	
 
 

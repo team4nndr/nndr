@@ -10,7 +10,7 @@
 		<!-- DB의 일반 컬럼들 -->
 		<result property="boardText" column="BOARD_TEXT" />
 		<result property="uploadDate" column="UPLOAD_DATE" />
-		<result property="contentLike" column="CONTENT_LIKE" />
+		<result property="boardCount" column="CONTENT_LIKE" />
 		<result property="delete" column="DELETE" />
 		<result property="updateDate" column="UPDATE_DATE" />
 		<result property="disableDate" column="DISABLE_DATE" />
@@ -39,6 +39,8 @@
 	<!-- 게시글 확인 -->
 	<select id="feedList" resultMap="board_rm">
 		SELECT BOARD_NO, MEMBER_NAME,BOARD_TEXT,MEMBER_NO, INFO_PROFILEPATH||INFO_PROFILE INFO_IMG,
+				(SELECT COUNT(*) FROM "CONTENT_LIKE" l
+				WHERE l.BOARD_NO = b.BOARD_NO) CONTENT_LIKE,
 		<![CDATA[
 		CASE  
 			WHEN SYSDATE - UPLOAD_DATE < 1/24/60
@@ -161,4 +163,32 @@ FROM DUAL
 		AND BOARD_NO = #{boardNo}
 		ORDER BY BOARD_NO DESC
 	</select>
+	
+		<!-- 좋아요 체크 -->
+	<select id="feedLikeCheck" parameterType="int" resultType="int">
+		SELECT COUNT(*) FROM "CONTENT_LIKE"
+		WHERE BOARD_NO = #{boardNo}
+		AND MEMBER_NO = #{memberNo}
+	
+	</select>
+	
+	<!-- 좋아요 추가   -->
+	
+		<insert id="insertLike">
+		INSERT INTO "CONTENT_LIKE" VALUES(#{boardNo},#{memberNo})
+	
+	</insert>
+	<!--좋아요 삭제  --> 
+	<delete id="deleteLike">
+		DELETE FROM "CONTENT_LIKE" 
+		WHERE BOARD_NO=#{boardNo}
+		AND MEMBER_NO= #{memberNo}
+	</delete>
+	
+	<!--  좋아요 카운 -->
+	<select id="countContentLike" resultType="int">
+		SELECT COUNT(*) FROM "CONTENT_LIKE" WHERE BOARD_NO = #{boardNo}
+	</select>
+	
+	
 </mapper>
