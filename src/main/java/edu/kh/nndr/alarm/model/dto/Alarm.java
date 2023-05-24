@@ -10,9 +10,9 @@ import lombok.ToString;
 @Setter
 @ToString
 public class Alarm {
-	int memberNo;
+	int alarmNo;
 	String alarmContent;
-	
-	String content;	
-
+	String alarmDate;
+	String alarmFl;
+	int memberNo;
 }

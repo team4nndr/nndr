@@ -19,6 +19,13 @@ public class AlarmServiceImpl implements AlarmService {
 	}
 
 
+	// DB에 알람 내용 저장
+	@Override
+	public int insert(Alarm alarm) {
+		return dao.insert(alarm);
+	}
+
+
 
 	
 }

@@ -15,4 +15,13 @@ public class AlarmDAO {
 		return sqlSession.insert("alarmMapper.friendAlarm", alarm);
 	}
 
+	/**
+	 * DB에 알람 내용 저장
+	 * @param alarm
+	 * @return result
+	 */
+	public int insert(Alarm alarm) {
+		return sqlSession.insert("alarmMapper.insert", alarm);
+	}
+
 }
