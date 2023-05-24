@@ -79,11 +79,10 @@
                             <div class="nndrAlarmNotRead">읽지 않은 알림</div>
                         </div>
                         <div id="nndrAddContainer">
-                        <c:choose>
-                            <c:when test="${empty alarmList}" >
-                                <div>알람이 없습니다.</div>
-                            </c:when>
-                        </c:choose>
+                        <c:forEach items="${alarmList}" var="alarm">
+                            ${alarm.alarmContent}
+                        </c:forEach>
+                                
                         </div>
                     </div>
                 </div>

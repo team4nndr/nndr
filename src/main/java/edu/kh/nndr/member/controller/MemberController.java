@@ -20,7 +20,7 @@ import edu.kh.nndr.member.model.dto.Member;
 import edu.kh.nndr.member.model.service.MemberService;
 import edu.kh.nndr.topMenu.service.TopMenuService;
 
-@SessionAttributes({"loginMember", "friendList"})
+@SessionAttributes({"loginMember", "friendList","alarmList"})
 @Controller
 public class MemberController {
 
