@@ -35,16 +35,20 @@ public class AlarmWebsocketHandler extends TextWebSocketHandler {
     protected void handleTextMessage(WebSocketSession session, TextMessage message) throws Exception {
         ObjectMapper objectMapper = new ObjectMapper();
         Alarm alarm = objectMapper.readValue(message.getPayload(), Alarm.class);
-        
-        // 상대방 알람 수신여부 확인
-        Map<String, Object> map = new HashMap<>();
-        map.put("memberNo", alarm.getMemberNo());
-        map.put("column", Alarm.Type.valueOf(alarm.getType()).column()); // DB 컬럼명
-        if( !service.checkAlarmSetting(map) ) return; // 해당 알림 수신거부 상태일 시 함수 종류
-        
-        // DB에 저장 -> 실패 시 함수 종료 (전달X)
-        if(service.insert(alarm) == 0) return ;
-        
+        System.out.println(alarm.getContent());
+        // 친구신청을 제외한 알람발송일 경우에만 DB 삽입
+    	if( !alarm.getType().equals("PASS") ) {
+    		
+    		// 상대방 알람 수신여부 확인
+    		Map<String, Object> map = new HashMap<>();
+    		map.put("memberNo", alarm.getMemberNo());
+    		map.put("column", Alarm.Type.valueOf(alarm.getType()).column()); // DB 컬럼명
+    		if( !service.checkAlarmSetting(map) ) return; // 해당 알림 수신거부 상태일 시 함수 종류     
+    		
+    		// DB에 저장 -> 실패 시 함수 종료 (전달X)
+    		if( service.insert(alarm) == 0 ) return ; 
+    	}
+    	System.out.println(alarm);
         // 상대방에게 전달(1:1)
         for(WebSocketSession s : sessions) {
             int loginMemberNo = ((Member)s.getAttributes().get("loginMember")).getMemberNo();

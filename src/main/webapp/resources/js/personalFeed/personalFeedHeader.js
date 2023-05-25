@@ -1,3 +1,66 @@
+
+// 친구신청 버튼 변경 
+const sendFriendReq = () => {
+    const senderMemberNo = document.getElementById("memberInfo").dataset.sender;
+    const senderProfile = document.getElementById("memberInfo").dataset.profile;
+    const senderName = document.getElementById("memberInfo").dataset.sendername;
+    const memberNo = document.getElementById("memberInfo").dataset.reciver;
+    const content = document.getElementById("perAddFriend").innerText;
+    console.log(content)
+    var req = {
+        "memberNo": memberNo,
+        "content" : content,
+        "type" : "PASS"
+    }
+    
+    alarmSock.send(JSON.stringify(req));
+}
+
+// 친구신청 알람 발송
+function sendFriendAlarm() {
+    const senderMemberNo = document.getElementById("memberInfo").dataset.sender;
+    const senderProfile = document.getElementById("memberInfo").dataset.profile;
+    const senderName = document.getElementById("memberInfo").dataset.sendername;
+    const memberNo = document.getElementById("memberInfo").dataset.reciver;
+    const content = document.getElementById("perAddFriend").innerText;
+    console.log(content)
+    var obj = {
+        "profileImage": senderProfile,
+        "link": "/personalFeed/" + senderMemberNo,
+        "message" : senderName+"님이 친구 신청을 하셨습니다."
+    }
+    
+	var alarm = {
+		"memberNo": memberNo,
+        "alarmContent" : makeAlarm(obj),
+        "type" : "FRIEND_ACCEPT"
+    }
+
+	// JSON.stringify() : 자바스크립트 객체를 JSON 문자열로 변환
+    console.log(alarm);
+	alarmSock.send(JSON.stringify(alarm));
+}
+
+// 친구 됨 알람 발송
+function sendFriendAcceptAlarm() {
+    var obj = {
+        "profileImage": profileImage,
+        "link": "/personalFeed/" + loginMemberNo,
+        "message" : senderName+"님과 친구가 되었습니다."
+    }
+
+	var alarm = {
+		"memberNo": memberNo,
+        "alarmContent" : makeAlarm(obj),
+        "type" : "FRIEND_ACCEPT"
+    }
+
+	// JSON.stringify() : 자바스크립트 객체를 JSON 문자열로 변환
+    console.log(alarm);
+	alarmSock.send(JSON.stringify(alarm));
+}
+
+
 if (document.getElementById("perAddFriend") != null) {
     const perAddFriend = document.getElementById("perAddFriend");
     perAddFriend.addEventListener("click", e => {
@@ -41,7 +104,8 @@ if (document.getElementById("perAddFriend") != null) {
             perAddFriend.classList.remove('friendAdd');
 			perAddFriend.classList.remove('noFriend')
 			perAddFriend.classList.remove('friendAccept');
-            perAddFriend.classList.add('friendDel')
+            perAddFriend.classList.add('friendDel');
+            sendFriendAcceptAlarm();
             return;
         }
         if(perAddFriend.classList.contains('noFriend')){ 
@@ -54,6 +118,7 @@ if (document.getElementById("perAddFriend") != null) {
             perAddFriend.innerText ="신청 취소";
             perAddFriend.classList.remove('noFriend');
             perAddFriend.classList.add('friendAdd')
+            sendFriendAlarm(); // 친구신청 알람 발송
             return;
         }
     })
@@ -307,37 +372,9 @@ console.log(pcvCho)
     document.getElementById("cv-set").style.display = "none";
 };   
 
-
-
-const sendFriendAlram=()=>{
-	const senderMemberNo = document.getElementById("memberInfo").dataset.sender;
-	const senderProfile = document.getElementById("memberInfo").dataset.profile;
-	const senderName = document.getElementById("memberInfo").dataset.sendername;
-	const memberNo = document.getElementById("memberInfo").dataset.reciver;
-	const content = document.getElementById("perAddFriend").innerText;
-
-
-    if(document.getElementById("perAddFriend") != null){
-        document.getElementById("perAddFriend").addEventListener("click", sendFriendAlram)
-    }
-    var obj = {
-        "profileImage": senderProfile,
-        "link": "/personalFeed/" + senderMemberNo,
-        "message" : senderName+"님이 친구 신청을 하셨습니다."
-    }
-
-	var alram = {
-		"memberNo": memberNo,
-        "alarmContent" : makeAlarm(obj),
-        "content" : content
-	}
-
-	// JSON.stringify() : 자바스크립트 객체를 JSON 문자열로 변환
-    console.log(alram);
-	alramSock.send(JSON.stringify(alram));
+if(document.getElementById("perAddFriend") != null){
+    document.getElementById("perAddFriend").addEventListener("click", sendFriendReq)
 }
-
-
 
 
 

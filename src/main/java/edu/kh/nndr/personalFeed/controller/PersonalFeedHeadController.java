@@ -47,7 +47,6 @@ public class PersonalFeedHeadController {
 		friendche.put("friendSender", personalAddFriend[0]);
 		friendche.put("friendReciver", personalAddFriend[1]);
 		PersonalFriend friendcheck = service.friendChecking(friendche);
-		System.out.println("추가");
 		if(friendcheck != null) {
 			String message = "이미 친구 상태이거나 신청 중인 회원입니다.";
 			ra.addFlashAttribute("message",message);
