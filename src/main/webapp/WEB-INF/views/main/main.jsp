@@ -118,8 +118,6 @@
                         </a>
                     </div>
                     <span id="date">
-                        <c:forEach items="${InfoBirth}" var="birth">
-                        </c:forEach>
                         <select aria-label="연도" id="birthday" title="연도" name="InfoBirth">
                             <option value="2023" selected="1">2023</option>
                             <option value="2022">2022</option>
@@ -208,14 +206,14 @@
                         성별
                     </div>
                     <span id="choose">
-                        <label class="gender1" for="gen">여성</label>
-                        <input type="radio" name="gen">
+                        <label class="gender1" for="gen" >여성</label>
+                        <input type="radio" name="InfoGender" value="여">
 
-                        <label for="gender2">남성</label>
-                        <input type="radio" name="gen">
+                        <label for="gender2" >남성</label>
+                        <input type="radio" name="InfoGender" value="남">
 
-                        <label for="gender3">선택 없음</label>
-                        <input type="radio" name="gen">
+                        <label for="gender3" >선택 없음</label>
+                        <input type="radio" name="InfoGender" value="없음">
 
                     </span>
 
