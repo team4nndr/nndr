@@ -34,7 +34,7 @@
                         <h4>&nbsp;&nbsp; 알 수도 있는 사람</h4>
                     </div>
                     <div class="item1-3">
-                        <c:forEach items="${friendSuggestion}" var="i" begin="0" end="2">
+                        <c:forEach items="${friendSuggestion}" var="i" begin="0" end="1000">
                             <c:if test="${empty i.profileImage}">
                                 <div class="who">
                                     <a href="/personalFeed/${i.memberNo}" class="aTag">
