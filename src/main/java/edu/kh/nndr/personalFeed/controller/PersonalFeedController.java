@@ -138,17 +138,20 @@ public class PersonalFeedController {
 		return path;
 	}
 	
-	@PostMapping("/personalFeed/insertContent")
-	public String feedInsert(Board board, @RequestHeader(value = "referer") String referer
+	@PostMapping("/personalFeed/perInsertContent")
+	public String perInsertContent(Board board, @RequestHeader(value = "referer") String referer
 			, @SessionAttribute("loginMember") Member loginMember
 			, @RequestParam(value="images",required=false) List<MultipartFile> images
 			, RedirectAttributes ra
 			,HttpSession session)throws IllegalStateException, IOException {
+			String[] subInfo = referer.split("/");
 		
+			int oth = Integer.parseInt(subInfo[4]); 
+			System.out.println(subInfo[4]);
 			
 			// 로그인한 회원 번호를 얻어와 board에 세팅
 			board.setMemberNo(loginMember.getMemberNo());
-			
+			board.setOthermemNo(Integer.parseInt(subInfo[4]));
 			String path = "redirect:";
 			path += referer;
 			// 업로드된 이미지 서버에 실제로 저장되는 경로
@@ -161,14 +164,6 @@ public class PersonalFeedController {
 			int boardNo = mainService.feedInsert(board,images,webPath,filePath);
 		
 			String message = null;
-			
-			if(boardNo > 0) {// 성공시
-				message = "게시글이 등록 되었습니다";
-				
-			}else {// 실패시
-				message = "게시글 등록 실패.......";
-			}
-			
 //			ra.addFlashAttribute("message",message);
 //			Alarm alarm = null;
 //			alarm.setAlarmContent("내 피드에 게시글이 작성되었습니다.");

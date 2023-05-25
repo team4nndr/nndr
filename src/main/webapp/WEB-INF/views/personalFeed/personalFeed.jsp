@@ -151,9 +151,9 @@
                                     <label class="hobby-overlay" for="add-hobby"></label>
                                 </div>
                             </c:if>
-                                <c:if test="${infoMember.memberNo eq loginMember.memberNo}" > 
+                                <%-- <c:if test="${infoMember.memberNo eq loginMember.memberNo}" > 
                                 <button class="intro-1" href="">대표 사진 추가</button>
-                            </c:if>
+                            </c:if> --%>
                         <br>
                         </div>
                     </div>

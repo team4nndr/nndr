@@ -20,6 +20,8 @@ public class Board {
 	private int boardCount;
 	private String delete;
 	private String updateDate;
+	private int othermemNo;
+	
 	
 	// 서브쿼리
 	private int commentCount; // 댓글 수 

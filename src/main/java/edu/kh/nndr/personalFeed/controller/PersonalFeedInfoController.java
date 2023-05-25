@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.SessionAttribute;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import edu.kh.nndr.main.service.MainService;
 import edu.kh.nndr.member.model.dto.Member;
 import edu.kh.nndr.member.model.dto.MemberInfo;
 import edu.kh.nndr.member.model.dto.PersonalFriend;
@@ -30,7 +31,9 @@ import edu.kh.nndr.member.model.service.MemberService;
 public class PersonalFeedInfoController {
 	
 	@Autowired
-	MemberInfoService service;
+	private MemberInfoService service;
+	@Autowired
+	private MemberService memberService;
 
 	@GetMapping("/personalFeedInfo/{no:[0-9]+}")
 	public String personalFeedInfo( Model model, @SessionAttribute("loginMember") Member loginMember,@PathVariable("no") int no) {
@@ -73,20 +76,41 @@ public class PersonalFeedInfoController {
 	public String inputhobby(String info, @SessionAttribute("loginMember") Member loginMember) { // 쿼리 스트링에 담겨있는 파라미터
 		String[] subInfo = info.split("§");
 		System.out.println(subInfo[0]);
-		System.out.println(subInfo[1]);
+		String nl ;
+		System.out.println();
 		Map<String, Object> infoMap = new HashMap<>();
-		infoMap.put("whatHobby", subInfo[0]);
-		infoMap.put("hobby", subInfo[1]);
-		infoMap.put("memberNo", loginMember.getMemberNo());
-		// return 리다이렉트 / 포워드; -> 새로운 화면이 보임(동기식)
-//			return 데이터; -> 데이터를 요청한 곳으로 반환(비동기식)
-		int result = service.infoInput(infoMap);
-		if(result>0) {
-			System.out.println("바뀜");
+		if(subInfo.length== 1) {
+			System.out.println("널값");
+			nl="";
+			infoMap.put("whatHobby", subInfo[0]);
+			infoMap.put("hobby", nl);
+			infoMap.put("memberNo", loginMember.getMemberNo());
+			int result = service.infoInput(infoMap);
 			
 		}else {
-			System.out.println("ss");
+			infoMap.put("whatHobby", subInfo[0]);
+			nl=subInfo[1];
+			infoMap.put("hobby", subInfo[1]);
+			infoMap.put("memberNo", loginMember.getMemberNo());
+			int result = service.infoInput(infoMap);
 		}
+		
+		switch(subInfo[0]) {
+			case "INFO_ELEMENTARY":
+				loginMember.setInfoElementary(nl);
+				break;
+			case "INFO_MIDDLE":
+				loginMember.setInfoMiddle(nl);
+				break;
+			case "INFO_HIGH":
+				loginMember.setInfoHigh(nl);
+				break;
+			case "INFO_COLLEGE":
+				loginMember.setInfoCollege(nl);
+				break;
+		}
+		
+		
 
 		return null;
 

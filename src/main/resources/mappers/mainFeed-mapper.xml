@@ -12,6 +12,7 @@
 		<result property="uploadDate" column="UPLOAD_DATE" />
 		<result property="delete" column="DELETE" />
 		<result property="updateDate" column="UPDATE_DATE" />
+		<result property="othermemNo" column="OTHERMEM_NO" />
 		<result property="disableDate" column="DISABLE_DATE" />
 		<result property="likeCount" column="LIKE_COUNT" />
 		<result property="boardCount" column="LIKE_CHECK" />
@@ -81,7 +82,7 @@
        	VALUES( #{boardNo},
               #{boardText},
               DEFAULT, DEFAULT, DEFAULT,
-              #{memberNo} ,NULL,#{memberNo}
+              #{memberNo} ,NULL,#{othermemNo}
               )
 	
 	</insert>
