@@ -25,15 +25,15 @@ function sendFriendAlarm() {
     const content = document.getElementById("perAddFriend").innerText;
     console.log(content)
     var obj = {
-        "profileImage": senderProfile,
-        "link": "/personalFeed/" + senderMemberNo,
-        "message" : senderName+"님이 친구 신청을 하셨습니다."
+        "profileImage": profileImage,
+        "link": "/personalFeed/" + loginMemberNo,
+        "message" : loginMemberName+"님이 친구 신청을 하셨습니다."
     }
     
 	var alarm = {
 		"memberNo": memberNo,
         "alarmContent" : makeAlarm(obj),
-        "type" : "FRIEND_ACCEPT"
+        "type" : "FRIEND_REQ"
     }
 
 	// JSON.stringify() : 자바스크립트 객체를 JSON 문자열로 변환
