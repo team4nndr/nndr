@@ -27,9 +27,9 @@
                     
                     <!-- 이름, 시간 -->
                     <div class="feed-head-info">
-                        <%-- <c:if test="${board.memberNo eq infoMember.memberNo}">
+                        <c:if test="${board.memberNo eq infoMember.memberNo}">
                             <a href="/personalFeed/${board.memberNo}" class="name change">${board.memberName}</a>
-                        </c:if> --%>
+                        </c:if>
                         <c:if test="${board.memberNo ne infoMember.memberNo}">
                             <a href="/personalFeed/${board.memberNo}" class="name change">${board.memberName} ▷▷ ${infoMember.memberName}</a> 
                         </c:if>
