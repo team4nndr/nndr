@@ -326,11 +326,6 @@ for (let i = 0; i < inputImage1.length; i++) {
 // 좋아요 버튼이 클릭 되었을 때!
 const boardLikeList = document.querySelectorAll(".boardLike");
 
-//const boardLikeList = document.getElementById("boardLike");
-
-
-
-
 
         
         for (let boardLike of boardLikeList) {
@@ -340,8 +335,8 @@ const boardLikeList = document.querySelectorAll(".boardLike");
         
         
         
-                let check; // 기존에 좋아요가 X(빈하트) : 00
-                // 좋아요 O : 1(꽉찬하트) 
+                let check; // 기존에 좋아요가 X(빈 손가락) : 00
+                // 좋아요 O : 1(색칠해짐) 
         
                 // contains("클래스명") : 클래스가 있으면 true, 없으면 false
                 if (e.target.classList.contains("fa-regular")) { // 빈하트
@@ -375,8 +370,10 @@ const boardLikeList = document.querySelectorAll(".boardLike");
                         e.target.classList.toggle("fa-solid");
                         
                         // 현재 게시글의 좋아요 수를 화면에 출력
-                        // e.target.nextElementSibling.innerText=count;
-        
+                        //e.target.nextElementSibling.innerText=count;
+                        e.target.parentElement.parentElement.previousSibling.previousSibling.firstElementChild.innerText=count;
+                        //e.target.parentElement.parentElement.
+                        //console.log(e.target.parentElement.parentElement.parentElement.previousSibling.previousSibling.firstElementChild.innerText=count);
                         // 알람
                         sendLikeAlram(data.boardNo);
         
@@ -410,7 +407,9 @@ function sendLikeAlram(boardNo) {
 	var alram = {
 		"memberNo": memberNo,
         "alarmContent" : makeAlarm(obj),
-	}
+        "type": "LIKE"
+    }
+	
     
 	alramSock.send(JSON.stringify(alram));
 }

@@ -100,9 +100,9 @@ public class MainFeedDAO {
 	
 
 	// 좋아요 체크
-	public int feedLikeCheck(Member memberNo) {
+	public int feedLikeCheck(Map<String, Object> map) {
 		
-		return sqlSession.selectOne("mainFeedMapper.feedLikeCheck",memberNo);
+		return sqlSession.selectOne("mainFeedMapper.feedLikeCheck",map);
 	}
 
 	// 좋아요 추가 

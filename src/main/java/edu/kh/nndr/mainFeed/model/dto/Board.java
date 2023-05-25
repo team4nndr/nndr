@@ -23,7 +23,7 @@ public class Board {
 	
 	// 서브쿼리
 	private int commentCount; // 댓글 수 
-	private int likeCount;
+	private int likeCount; // 좋아요 수
 	private String memberName;
     
 	// 이미지 리스트
