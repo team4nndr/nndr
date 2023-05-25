@@ -1,5 +1,5 @@
 const AT = { pos: -1 };
-let mentionData = [];
+let mentionData = []; // 실시간 멘션 대상자
 
 // 친구 목록 실시간 생성
 function getMentionData() {

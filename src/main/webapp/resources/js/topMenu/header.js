@@ -76,7 +76,6 @@ search.addEventListener("input", e => {
             console.log(friendNameList);
             suggestion_pannel.innerHTML = "";
 
-
             if(friendNameList.length == 0){
                 const div = document.createElement("div");
                 div.classList.add("result");
@@ -106,7 +105,7 @@ search.addEventListener("input", e => {
                     img.classList.add("memberProfileImage");
                     
                     
-                    const fName = input_value;
+                    const fName = names.memberName;
                     p.innerHTML = fName;
                     div.append(p);
                     div.prepend(img);

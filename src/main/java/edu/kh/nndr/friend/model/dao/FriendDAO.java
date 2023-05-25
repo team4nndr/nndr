@@ -58,6 +58,7 @@ public class FriendDAO {
 
 	/**
 	 * 친구 검색 결과 조회
+	 * 
 	 * @param map
 	 * @return
 	 */
@@ -67,6 +68,7 @@ public class FriendDAO {
 
 	/**
 	 * 로그인 시 친구 목록 조회
+	 * 
 	 * @param memberNo
 	 * @return firendList
 	 */
@@ -74,20 +76,24 @@ public class FriendDAO {
 		return sqlSession.selectList("memberMapper.friendListMember", memberNo);
 	}
 
-//	/** 친구 추천 확인 버튼
-//	 * @param memberNo
-//	 * @return
-//	 */
-//	public int friendaddition(int memberNo) {
-//		return sqlSession.insert("friendMapper.friendaddition", memberNo);
-//	}
+	/**
+	 * 친구 추천
+	 * 
+	 * @param params
+	 * @return
+	 */
+	public List<Member> friendSuggestion(Map<String, Object> params) {
+		return sqlSession.selectList("memberMapper.friendSuggestion", params);
+	}
 
-//	/** 친구 추천 목록 조회
-//	 * @param memberNo
-//	 * @return
-//	 */
-//	public List<Member> friendSuggestion(int memberNo) {
-//		return sqlSession.selectList("memberMapper.friendSuggestion", memberNo);
-//	}
+	/**
+	 * 친구 추천 확인 버튼
+	 * 
+	 * @param memberNo
+	 * @return
+	 */
+	public int friendaddition(int memberNo) {
+		return sqlSession.insert("friendMapper.friendaddition", memberNo);
+	}
 
 }
