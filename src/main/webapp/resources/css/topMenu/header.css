@@ -121,10 +121,17 @@
     .nndr-search-area>div {
         margin-top: 22px;
         width: 200px;
+        height: 56px;
+        padding-top: 2px;
     }
 
     .nndr-suggestions {
         margin-top: 22px;
+        height: 300px;
+        overflow: auto;
+        border-radius: 7px;
+        /* box-shadow: 0px 8px 15px 0px rgba(0, 0, 0, 0.5); */
+
     }
 
     .nndr-suggestions>div {
@@ -133,9 +140,9 @@
         border-radius: 5px;
         cursor: pointer;
         background-color: white;
-        box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.5);
+        box-shadow: 0px 8px 15px 0px rgba(0, 0, 0, 0.5);
         z-index: 999;
-        /* background-color: white; */
+        background-color: white;
         display: flex;
     }
 
@@ -277,9 +284,9 @@
 
     #nndrBellDropdown {
         width: 450px;
-        /* margin-top: 10px; */
-        /* z-index: 9999; */
-        /* background-color: white; */
+        padding-bottom: 5px;
+        /* height: 300px;
+        overflow: auto; */
     }
 
     /* 상단바 admin 아이콘 */
@@ -394,21 +401,26 @@
         width: 200px;
         height: 100px;
         background-color: white;
-        border: 1px solid black;
+        /* border: 1px solid black; */
+        box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.5);
+        border-radius: 15px;
         right: 30px;
         bottom: 20px;
     }
+    
 
     #nndrOptionAlarmContent>a:hover {
         background-color: #eee;
         transition-duration: 0.2s;
         cursor: pointer;
+        border-radius: 10px;
     }
 
     /* 알람 읽음,읽지 않음 표시 */
     .nndrAlarmRead {
         display: flex;
         margin-left: 10px;
+        margin-bottom: 10px;
     }
 
     .nndrAllAlarm {
@@ -451,13 +463,15 @@
 
 
     /* 알람 내용 표시 관련 회원 프로필 이미지 및 내용 */
-    .nndrAddContainer {
+    #nndrAddContainer {
         display: flex;
         flex-direction: column;
         width: 100%;
-        height: 100%;
-        background-color: red;
+        height: 300px;
+        overflow: auto;
     }
+
+
     
     .nndrAddAlarm {
         display: flex;
@@ -548,6 +562,14 @@
         flex-direction: column;
     }
 
+    /* 알람 이미지 */
+    #nndrDropBtn1 {
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
     #nndrImage3 {
         pointer-events: none;
         user-select: none;
@@ -556,12 +578,16 @@
         height: 47px;
     }
 
-    #nndrDropBtn1 {
-
-        display: flex;
-        align-items: center;
-        justify-content: center;
+    #alarmMark{
+        position: absolute;
+        width: 12px;
+        height: 12px;
+        right: 10px;
+        top: 6px;
+        filter: invert(15%) sepia(100%) saturate(7002%) hue-rotate(358deg) brightness(92%) contrast(107%);
+        display: none;
     }
+
 
     /* 윈도우 창 띄웠다 지웠다 */
     .hidden {

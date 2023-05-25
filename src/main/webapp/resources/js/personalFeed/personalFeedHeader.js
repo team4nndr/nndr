@@ -277,7 +277,7 @@ function cvCho(target){
     const imgRename = target.dataset.imgrename
 
 
-   console.log(cvCho)
+    console.log(cvCho)
     fetch("/cvCho?memberNo=" + memberNo + "&imgPath=" + imgPath + "&imgRename=" + imgRename) 
     .then(response => response.text()) 
     .then(() => {
