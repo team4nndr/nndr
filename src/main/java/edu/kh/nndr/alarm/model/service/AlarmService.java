@@ -21,4 +21,17 @@ public interface AlarmService {
 	 */
 	public boolean checkAlarmSetting(Map<String, Object> map);
 
+	/** 알람 넘버 확인(최신순)
+	 * @return
+	 */
+	public Alarm checkAlarmNo();
+
+	/** 알람 삭제
+	 * @param alarmDel
+	 * @return
+	 */
+	public int alarmDel(String alarmDel);
+
+	
+	
 }

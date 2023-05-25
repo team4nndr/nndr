@@ -196,3 +196,22 @@ document.addEventListener('click', e => {
 
     const modal = document.getElementById('nndrDropdown1');
 }); 
+
+
+Array.from( document.getElementsByClassName("nndr-top-alarm-delete")).forEach((target) => target.addEventListener("click", function(){ 
+    alarmDel(target); 
+})
+)
+function alarmDel(target){	
+    const alarmDel = (target.parentElement.previousElementSibling).dataset.alarmno
+    target.parentElement.previousElementSibling.remove()
+    target.parentElement.remove()
+    console.log(alarmDel)
+    //알람 삭제
+    fetch("/alarmDel?alarmDel="+alarmDel)  
+    .then(response => response.text()) 
+    .then(() => {
+    }) 
+    .catch (e => { console.log(e)}); 
+
+};   

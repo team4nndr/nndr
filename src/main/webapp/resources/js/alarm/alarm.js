@@ -3,11 +3,6 @@ if(alarmSock != ""){
 	alarmSock = new SockJS("/alarmSock");
 }
 
-// DB에서 가져온 알람 이벤트 추가
-const alarms = document.querySelectorAll('.nndr-top-alarm-delete');
-for(let al of alarms) {
-	al.addEventListener("click", e => e.target.parentElement.remove());
-}
 
 // WebSocket 객체가 서버로 부터 메세지를 통지 받으면 자동으로 실행될 콜백 함수
 alarmSock.onmessage = function(e) {

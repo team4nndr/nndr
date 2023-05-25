@@ -48,7 +48,9 @@ public class AlarmWebsocketHandler extends TextWebSocketHandler {
     		// DB에 저장 -> 실패 시 함수 종료 (전달X)
     		if( service.insert(alarm) == 0 ) return ; 
     	}
-    	System.out.println(alarm);
+    	Alarm no = service.checkAlarmNo();
+    	alarm.setAlarmNo(no.getAlarmNo());
+    	System.out.println(no.getAlarmNo());
         // 상대방에게 전달(1:1)
         for(WebSocketSession s : sessions) {
             int loginMemberNo = ((Member)s.getAttributes().get("loginMember")).getMemberNo();

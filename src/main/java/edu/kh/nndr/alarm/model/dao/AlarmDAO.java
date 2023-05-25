@@ -35,4 +35,15 @@ public class AlarmDAO {
 		return sqlSession.selectOne("alarmMapper.checkAlarmSetting", map);
 	}
 
+	/** 알람 넘버 체크
+	 * @return
+	 */
+	public Alarm checkAlarmNo() {
+		return sqlSession.selectOne("alarmMapper.checkAlarmNo");
+	}
+
+	public int alarmDel(String alarmDel) {
+		return sqlSession.update("alarmMapper.alarmDel", alarmDel);
+	}
+
 }

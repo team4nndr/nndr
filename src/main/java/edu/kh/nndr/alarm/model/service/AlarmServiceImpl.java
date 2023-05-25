@@ -8,6 +8,10 @@ import org.springframework.stereotype.Service;
 import edu.kh.nndr.alarm.model.dao.AlarmDAO;
 import edu.kh.nndr.alarm.model.dto.Alarm;
 
+/**
+ * @author user1
+ *
+ */
 @Service
 public class AlarmServiceImpl implements AlarmService {
 
@@ -35,6 +39,22 @@ public class AlarmServiceImpl implements AlarmService {
 	}
 
 
+	/** 알람 번호 확인
+	 *
+	 */
+	@Override
+	public Alarm checkAlarmNo() {
+		return dao.checkAlarmNo();
+	}
+
+
+	@Override
+	public int alarmDel(String alarmDel) {
+		return dao.alarmDel(alarmDel);
+	}
+
+
+	
 
 	
 }

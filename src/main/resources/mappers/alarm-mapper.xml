@@ -12,7 +12,7 @@
 
 	<!-- 알람 목록 조회 -->
 	<select id="alarmList" resultMap="alarm_rm">
-		SELECT ALARM_CONTENT
+		SELECT ALARM_CONTENT, ALARM_NO
 		FROM "ALARM"
 		WHERE ALARM_FL = 'N'
 		AND MEMBER_NO = #{memberNo}
@@ -37,4 +37,15 @@
 	<select id="checkAlarmSetting" resultType="string">
 		SELECT ${column} FROM "MEMBER" WHERE MEMBER_NO = ${memberNo}
 	</select>
+
+
+	<!-- 알람 넘버 조회 -->
+	<select id="checkAlarmNo" resultMap="alarm_rm">
+		SELECT ALARM_NO FROM "ALARM" <![CDATA[WHERE ROWNUM <= 1]]> ORDER BY ALARM_NO DESC
+	</select>
+
+	<!-- 알람 삭제 -->
+	<update id="alarmDel">
+		UPDATE "ALARM" SET ALARM_FL='Y' WHERE ALARM_NO = ${alarmDel}
+	</update>
 </mapper>
