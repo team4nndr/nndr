@@ -34,6 +34,4 @@ public class SearchDAO {
 	public List<Member> friendNameList(Map<String, Object> map) {
 		return sqlSession.selectList("memberMapper.searchMember", map);
 	}
-	
-
 }
