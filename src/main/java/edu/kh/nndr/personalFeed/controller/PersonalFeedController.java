@@ -104,6 +104,18 @@ public class PersonalFeedController {
 		model.addAttribute("friendCount", friendCount);
 		System.out.println(friendList);
 		
+		//친구 추천 목록
+		Map<String, Object> params = new HashMap<>();
+	    params.put("memberNo", loginMember.getMemberNo());
+	    params.put("infoHigh", loginMember.getInfoHigh());
+	    params.put("infoCollege", loginMember.getInfoCollege());
+	    params.put("infoMiddle", loginMember.getInfoMiddle());
+	    params.put("infoElementary", loginMember.getInfoElementary());
+
+//	    List<Member> friendSuggestion = friendService.friendSuggestion(params);
+//	    model.addAttribute("friendSuggestion", friendSuggestion);
+
+		
 		
 		
 		

@@ -69,7 +69,7 @@
                     <div id="nndrOptionAlarm">
                         <img src="/resources/images/topMenu/optionAlarm.png">
                         <div id="nndrOptionAlarmContent" class="hidden">
-                            <a href="#">모두 읽은 상태로 표시</a>
+                            <a id="delAllAlarm">모두 읽은 상태로 표시</a>
                             <a href="/setting/alarm">알림설정</a>
                         </div>
                     </div>

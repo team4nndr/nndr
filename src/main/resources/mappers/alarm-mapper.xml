@@ -45,8 +45,13 @@
 		SELECT ALARM_NO FROM "ALARM" <![CDATA[WHERE ROWNUM <= 1]]> ORDER BY ALARM_NO DESC
 	</select>
 
-	<!-- 알람 삭제 -->
+	<!-- 알람 모두 삭제 -->
 	<update id="alarmDel">
 		UPDATE "ALARM" SET ALARM_FL='Y' WHERE ALARM_NO = ${alarmDel}
+	</update>
+	
+	<!-- 알람 삭제 -->
+	<update id="alarmAllDel">
+		UPDATE "ALARM" SET ALARM_FL='Y' WHERE MEMBER_NO = ${memberNo}
 	</update>
 </mapper>
