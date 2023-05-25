@@ -50,7 +50,7 @@
         </section>
 
         <%-- Grid 3 : 사이드바(오른쪽) --%>
-        <jsp:include page="/WEB-INF/views/mainFeed/sidebarR.jsp"/>
+        <%-- <jsp:include page="/WEB-INF/views/mainFeed/sidebarR.jsp"/> --%>
 
     </main>
 

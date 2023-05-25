@@ -61,9 +61,9 @@ alarmSock.onmessage = function(e) {
 	const div = document.createElement('div');
 	div.innerHTML = alarm.alarmContent;
 	alarmList.prepend(div.firstChild);
-		document.querySelector('.nndr-top-alarm-delete').addEventListener('click', e => e.target.parentElement.remove());
-	const mark = document.getElementById("alarmMark");
+	document.querySelector('.nndr-top-alarm-delete').addEventListener('click', e => e.target.parentElement.remove());
 	
+	const mark = document.getElementById("alarmMark");
 	mark.style.display = 'block';
 
 	}
