@@ -598,3 +598,16 @@
 .top-profile-image {
     border-radius: 50px;
 }
+
+/* 관리자버튼 */
+#nndrAdminSetting {
+    cursor: pointer;
+}
+#nndrAdminSetting:hover {
+    background-color: #ccc;
+    border-radius: 5px;
+}
+#nndrAdminSetting img {
+    width: 50px;
+    height: 45px;
+}

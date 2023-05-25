@@ -110,9 +110,9 @@
             
         <%-- </div> --%>
         <!-- 관리자 아이콘 -->
-        <div name="nndrAdminSetting">
+        <div id="nndrAdminSetting">
         <c:if test="${loginMember.memberCode == 'A'}" >
-            <a href="/admin" name="nndrAdminLink">
+            <a href="/admin" name="nndrAdminLink" class="nndrMainFeedBtn">
                 <img src="/resources/images/topMenu/topSetting.png" id="nndrAdminImg">
             </a>
         </c:if>
