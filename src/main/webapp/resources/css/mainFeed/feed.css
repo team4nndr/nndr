@@ -310,10 +310,15 @@ img.wirter-profile-image {
     width: 100%;
     height: 44px;
     padding: 0 16px;
-
+    align-items: center;
+    padding-left: 25px;
     display: flex;
 }
 
+.likeCount img {
+    height: 42px;
+    padding: 11px 4px;
+}
 
 
 /* 요소 숨기기 */
