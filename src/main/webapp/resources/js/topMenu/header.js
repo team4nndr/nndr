@@ -12,15 +12,13 @@ search.addEventListener("input", e => {
     const input_value = e.target.value.trim();
 
 
-    // 입력된 값이 없을 때
-    if (input_value.length === 0) {
-        suggestion_pannel.innerHTML = "";
-        return;
-    }
 
 
     // #으로 시작하는 검색어인 경우
+
+
     if (input_value.startsWith("#") && input_value.length > 1) {
+        suggestion_pannel.style.display = "block";
         console.log(input_value);
         var query = input_value.replace("#", "%23");
         fetch("/mainFeed/getTags?query=" + query)
@@ -66,7 +64,7 @@ search.addEventListener("input", e => {
             });
 
     } else {
-
+        suggestion_pannel.style.display = "block";
         console.log(input_value);
         var fName = input_value;
         fetch("/mainFeed/friendNameList?fName=" + fName)
@@ -137,7 +135,14 @@ search.addEventListener("input", e => {
 
     }
 
-    if (input_value.length > 1) { }
+    // 입력된 값이 없을 때
+    if (input_value.length === 0) {
+        suggestion_pannel.innerHTML = "";
+        suggestion_pannel.style.display = "none";
+
+        return;
+    }
+    // if (input_value.length > 1) { }
 
     if (input_value == "") {
         suggestion_pannel.innerHTML = "";
@@ -178,6 +183,12 @@ nndrOptionAlarmContent.addEventListener("click", e => {
     e.stopPropagation();
 });
 
+const mark = document.getElementById("alarmMark");
+const btn1 = document.getElementById("nndrDropBtn1");
+
+btn1.addEventListener("click",() => {
+	mark.style.display = "none";
+});
 
 
 // 드롭다운 외부 클릭 시 드롭다운 메뉴 닫기
@@ -202,23 +213,23 @@ document.addEventListener('click', e => {
     }
 
     const modal = document.getElementById('nndrDropdown1');
-}); 
+});
 
 
-Array.from( document.getElementsByClassName("nndr-top-alarm-delete")).forEach((target) => target.addEventListener("click", function(){ 
-    alarmDel(target); 
+Array.from(document.getElementsByClassName("nndr-top-alarm-delete")).forEach((target) => target.addEventListener("click", function () {
+    alarmDel(target);
 })
 )
-function alarmDel(target){	
+function alarmDel(target) {
     const alarmDel = (target.parentElement.previousElementSibling).dataset.alarmno
     target.parentElement.previousElementSibling.remove()
     target.parentElement.remove()
     console.log(alarmDel)
     //알람 삭제
-    fetch("/alarmDel?alarmDel="+alarmDel)  
-    .then(response => response.text()) 
-    .then(() => {
-    }) 
-    .catch (e => { console.log(e)}); 
+    fetch("/alarmDel?alarmDel=" + alarmDel)
+        .then(response => response.text())
+        .then(() => {
+        })
+        .catch(e => { console.log(e) });
 
 };   
