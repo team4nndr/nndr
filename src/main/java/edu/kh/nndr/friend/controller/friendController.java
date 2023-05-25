@@ -45,20 +45,20 @@ public class friendController {
 //	}
 
 	// 친구 추천
-	@RequestMapping("/recom")
-	public String friendrecom(@SessionAttribute("loginMember") Member member, Model model) {
-		Map<String, Object> params = new HashMap<>();
-		params.put("memberNo", member.getMemberNo());
-//		params.put("infoHigh", member.getInfoHigh());
-		params.put("infoCollege", member.getInfoCollege());
-//		params.put("infoMiddle", member.getInfoMiddle());
-//		params.put("infoElementary", member.getInfoElementary());
-
-		List<Member> friendSuggestion = service.friendSuggestion(params);
-		model.addAttribute("friendSuggestion", friendSuggestion);
-		System.out.println(friendSuggestion);
-		return "friend/friendRecom";
-	}
+//	@RequestMapping("/recom")
+//	public String friendrecom(@SessionAttribute("loginMember") Member member, Model model) {
+//		Map<String, Object> params = new HashMap<>();
+//		params.put("memberNo", member.getMemberNo());
+////		params.put("infoHigh", member.getInfoHigh());
+//		params.put("infoCollege", member.getInfoCollege());
+////		params.put("infoMiddle", member.getInfoMiddle());
+////		params.put("infoElementary", member.getInfoElementary());
+//
+////		List<Member> friendSuggestion = service.friendSuggestion(params);
+////		model.addAttribute("friendSuggestion", friendSuggestion);
+////		System.out.println(friendSuggestion);
+////		return "friend/friendRecom";
+//	}
 
 //	친구추천 비동기 처리
 //	@GetMapping(value = "/recom/birequest", produces = "application/json; charset=UTF-8")
