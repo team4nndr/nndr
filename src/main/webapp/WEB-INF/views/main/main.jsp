@@ -154,7 +154,7 @@
                             <option value="1991">1991</option>
                             <option value="1990">1990</option>
                         </select>
-                        <select aria-label="월" id="month" title="월" name="infoBirth">
+                        <select aria-label="월" id="month" title="월" name="InfoBirth">
                             <option value="1">1월</option>
                             <option value="2">2월</option>
                             <option value="3">3월</option>
@@ -168,7 +168,7 @@
                             <option value="11">11월</option>
                             <option value="12">12월</option>
                         </select>
-                        <select aria-label="일" name="birthday_day" id="day" title="일" class="9405" name="infoBirth">
+                        <select aria-label="일" id="day" title="일" class="9405" name="InfoBirth">
                             <option value="1">1일</option>
                             <option value="2">2일</option>
                             <option value="3">3일</option>

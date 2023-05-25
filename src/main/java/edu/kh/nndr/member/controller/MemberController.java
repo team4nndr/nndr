@@ -87,7 +87,9 @@ public class MemberController {
 		}else {
 			String addr = String.join("-", InfoBirth);
 			inputMember.setInfoBirth(addr);
+			System.out.println(addr);
 		}
+		
 		
 
 		
