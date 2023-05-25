@@ -21,7 +21,7 @@
           <img class="back" src="/resources/images/friend/—Pngtree—vector back icon_4187319.png" alt="">
         </a>
         <div class="frmidbox">
-          <div><span><a class="backfriend" href="#">친구</a></span></div>
+          <div><span class="backfriend">친구</span></div>
           <div>
             <h1 class="friendpuls">친구 요청</h1>
           </div>
