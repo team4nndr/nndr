@@ -94,7 +94,7 @@
   padding: 0 10px;
 }
 .login input:hover{
-  border-width: 2px;
+  border-width: 0.5px;
   border-color : rgb(105 156 233);
 }
 
@@ -129,6 +129,7 @@
 .pwCheck{
   text-decoration: none;
   color: rgba(36, 34, 34, 0.733);
+  background-color: white;
 }
 
 .pwCheck:hover{
