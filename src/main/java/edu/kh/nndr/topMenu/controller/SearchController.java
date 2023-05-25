@@ -46,6 +46,8 @@ public class SearchController {
     	return service.friendNameList(map);
     }
     
+    
+    
     // 해시태그 관련 키워드가 포함된 게시글 조회
     // @GetMapping("/personalFeed/${fName}")
     // public String 
