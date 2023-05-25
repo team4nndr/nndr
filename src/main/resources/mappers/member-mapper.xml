@@ -184,7 +184,7 @@
 		INSERT INTO
 		"MEMBER_INFO"(MEMBER_NO,INFO_GENDER,INFO_BIRTH)
 		VALUES (#{memberNo},
-		#{infoGender},#{infoBirth})
+		#{infoGender},TO_DATE(#{infoBirth},'YYYY-MM-DD'))
 	</insert>
 
 	<!-- 검색 유저 수 조회 -->

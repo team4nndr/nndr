@@ -118,7 +118,9 @@
                         </a>
                     </div>
                     <span id="date">
-                        <select aria-label="연도" id="birthday" title="연도">
+                        <c:forEach items="${InfoBirth}" var="birth">
+                        </c:forEach>
+                        <select aria-label="연도" id="birthday" title="연도" name="InfoBirth">
                             <option value="2023" selected="1">2023</option>
                             <option value="2022">2022</option>
                             <option value="2021">2021</option>
@@ -154,7 +156,7 @@
                             <option value="1991">1991</option>
                             <option value="1990">1990</option>
                         </select>
-                        <select aria-label="월" id="month" title="월">
+                        <select aria-label="월" id="month" title="월" name="infoBirth">
                             <option value="1">1월</option>
                             <option value="2">2월</option>
                             <option value="3">3월</option>
@@ -168,7 +170,7 @@
                             <option value="11">11월</option>
                             <option value="12">12월</option>
                         </select>
-                        <select aria-label="일" name="birthday_day" id="day" title="일" class="9405">
+                        <select aria-label="일" name="birthday_day" id="day" title="일" class="9405" name="infoBirth">
                             <option value="1">1일</option>
                             <option value="2">2일</option>
                             <option value="3">3일</option>
