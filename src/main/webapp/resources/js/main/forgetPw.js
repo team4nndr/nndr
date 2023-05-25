@@ -89,7 +89,7 @@ sendAuthKeyBtn.addEventListener("click", function(){
 
     checkObj.authKey = false;
 
-   
+    if(checkObj.emailCheck){
 
 
     /* fetch() API 방식 ajax */
@@ -132,8 +132,12 @@ sendAuthKeyBtn.addEventListener("click", function(){
 
         authSec--; // 1초 감소
 
-    }, 1000)
-
+        }, 1000)
+    
+    } else{
+        alert("중복되지 않은 이메일을 작성해주세요.");
+        emailCheck.focus();
+    }
 
 
 });
