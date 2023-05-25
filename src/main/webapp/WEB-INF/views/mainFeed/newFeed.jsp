@@ -39,15 +39,7 @@
             <section>
             <span><a href="/personalFeed/${loginMember.memberNo}" class="change">${loginMember.memberName}</a></span>
             </section>
-
-
-            <%-- <section>
-            <li><!-- 없애야해 -->
-                <a href="#" class="change">현재 시간</a>
-            </li> 
-            </section> --%>
-
-
+            
             </section>
             </div>
 
@@ -56,7 +48,7 @@
 
             <section id="modalContent">
             <textarea placeholder="${loginMember.memberName}님은 무슨 생각을 하고 계신가요?"
-            name="boardText"></textarea>
+            name="boardText" class="board-textarea"></textarea>
             </section>
             
             <section id="modalImg">
