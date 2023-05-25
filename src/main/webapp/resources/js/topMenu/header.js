@@ -105,7 +105,7 @@ search.addEventListener("input", e => {
                     img.classList.add("memberProfileImage");
                     
                     
-                    const fName = input_value;
+                    const fName = names.memberName;
                     p.innerHTML = fName;
                     div.append(p);
                     div.prepend(img);

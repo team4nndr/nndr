@@ -16,6 +16,7 @@
 		FROM "ALARM"
 		WHERE ALARM_FL = 'N'
 		AND MEMBER_NO = #{memberNo}
+		ORDER BY ALARM_NO DESC
 	</select>
 	
 	<!-- DB에 알람 내용 저장 -->
