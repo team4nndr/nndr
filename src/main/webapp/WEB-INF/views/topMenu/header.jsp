@@ -9,7 +9,7 @@
 <script>
     const loginMemberNo = "${loginMember.memberNo}";
     const loginMemberName = "${loginMember.memberName}";
-    const profileImage = "${loginMember.profileImage}";
+    let profileImage = "${loginMember.profileImage}";
 </script>
 <script src="https://cdn.jsdelivr.net/npm/sockjs-client@1/dist/sockjs.min.js"></script> 
 
