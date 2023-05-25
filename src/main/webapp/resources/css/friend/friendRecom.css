@@ -110,6 +110,7 @@ main {
     height: 83px;
     display: flex;
     margin-left: 15px;
+    cursor: pointer;
 }
 
 /* 프사 */
@@ -117,6 +118,7 @@ main {
     width: 60px;
     height: 60px;
     border-radius: 50%;
+    margin: 9px 0px;
 }
 
 /* 프사외. */

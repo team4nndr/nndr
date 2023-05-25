@@ -21,7 +21,13 @@
             <div>
             <section id="modal-my1">
                 <a href="/personalFeed/${loginMember.memberNo}">
-                <img src="/resources/images/mainFeed/mainMy.png" alt="로고" id="myLogo">
+                    <c:if test="${empty loginMember.profileImage}">
+                        <img src="/resources/images/common/user-default.png" class="profile-image">
+                    </c:if>
+                    
+                    <c:if test="${not empty loginMember.profileImage}">
+                        <img src="${loginMember.profileImage}" class="profile-image" >
+                    </c:if>
                 </a>
             </section>
 
@@ -31,13 +37,6 @@
 
             <section>
             <span><a href="/personalFeed/${loginMember.memberNo}" class="change">${loginMember.memberName}</a></span>
-            </section>
-
-
-            <section>
-            <li><!-- 없애야해 -->
-                <a href="#" class="change">현재 시간</a>
-            </li> 
             </section>
 
 

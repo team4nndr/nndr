@@ -19,7 +19,7 @@
 
                 <a href="/friend"><img class="back" src="/resources/images/friend/—Pngtree—vector back icon_4187319.png" alt=""></a>
                 <div class="frmidbox">
-                    <div><span><a class="backfriend" href="#">친구</a></span></div>
+                    <div><span class="backfriend">친구</span></div>
                     <div>
                         <h1 class="friendpuls">친구 추천</h1>
                     </div>
@@ -36,95 +36,31 @@
                 <div id="friendSuggestionList">
                 <c:forEach var="fs" items="${friendSuggestion}" >
                 <div class="frtopdiv">
-                    <c:if test="${empty friend.profileImage}" >
+                    <c:if test="${empty fs.profileImage}" >
                         <img class="proimg" src="/resources/images/common/user-default.png" alt="">
                     </c:if>
-                    <c:if test="${not empty friend.profileImage}" >
-                        <img class="proimg" src="${friend.profileImage}" alt="">
+                    <c:if test="${not empty fs.profileImage}" >
+                        <img class="proimg" src="${fs.profileImage}" alt="">
                     </c:if>
                     <div class="frbox"> <!--이름 + 확인,삭제-->
                         <div class="namecount" ><!--이름, 함께 아는친구-->
                             <span class="freindName" onclick="friendPage(${fs.memberNo})">${fs.memberName}</span>
-                        <div class="boxbtn"> <!--확인, 삭제 -->
-                            <button class="yesbtn" onclick="accept(${fs.memberNo})">확인</button>
-                            <button class="nobtn" onclick="exit">삭제</button>
+                            <div class="boxbtn"> <!--확인, 삭제 -->
+                                <button class="yesbtn" onclick="accept(${fs.memberNo})">확인</button>
+                                <button class="nobtn" onclick="hideParentDiv(this, ${fs.memberNo})">삭제</button>
                             </div>
                         </div>
                     </div>
                 </div>
                 </c:forEach>
-              </div>
-                <%-- <div class="frtopdiv">
-                    <img class="proimg" src="/resources/images/friend/143086968_2856368904622192_1959732218791162458_n.png" alt="">
-                    <div class="frbox"> <!--이름 + 확인,삭제-->
-                        <div class="namecount"><!--이름, 함께 아는친구-->
-                            <span class="freindName">정용화</span>
-                        
-                        <div class="boxbtn"> <!--확인, 삭제 -->
-                            <button class="yesbtn">확인</button>
-                            <button class="nobtn">삭제</button>
-                            </div>
-                        </div>
-                    </div>
                 </div>
-                <div class="frtopdiv">
-                    <img class="proimg" src="/resources/images/friend/143086968_2856368904622192_1959732218791162458_n.png" alt="">
-                    <div class="frbox"> <!--이름 + 확인,삭제-->
-                        <div class="namecount"><!--이름, 함께 아는친구-->
-                            <span class="freindName">정용화</span>
-                        
-                        <div class="boxbtn"> <!--확인, 삭제 -->
-                            <button class="yesbtn">확인</button>
-                            <button class="nobtn">삭제</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="frtopdiv">
-                    <img class="proimg" src="/resources/images/friend/143086968_2856368904622192_1959732218791162458_n.png" alt="">
-                    <div class="frbox"> <!--이름 + 확인,삭제-->
-                        <div class="namecount"><!--이름, 함께 아는친구-->
-                            <span class="freindName">정용화</span>
-                        
-                        <div class="boxbtn"> <!--확인, 삭제 -->
-                            <button class="yesbtn">확인</button>
-                            <button class="nobtn">삭제</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="frtopdiv">
-                    <img class="proimg" src="/resources/images/friend/143086968_2856368904622192_1959732218791162458_n.png" alt="">
-                    <div class="frbox"> <!--이름 + 확인,삭제-->
-                        <div class="namecount"><!--이름, 함께 아는친구-->
-                            <span class="freindName">정용화</span>
-                        
-                        <div class="boxbtn"> <!--확인, 삭제 -->
-                            <button class="yesbtn">확인</button>
-                            <button class="nobtn">삭제</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="frtopdiv">
-                    <img class="proimg" src="/resources/images/friend/143086968_2856368904622192_1959732218791162458_n.png" alt="">
-                    <div class="frbox"> <!--이름 + 확인,삭제-->
-                        <div class="namecount"><!--이름, 함께 아는친구-->
-                            <span class="freindName">정용화</span>
-                        
-                        <div class="boxbtn"> <!--확인, 삭제 -->
-                            <button class="yesbtn">확인</button>
-                            <button class="nobtn">삭제</button>
-                            </div>
-                        </div>
-                    </div>
-                </div> --%>
+            
             </div>
         </div>
         <div id="mainfrbox"> <!--메인 피드-->
             <div id="mainbox">
                 <img id="imgmain" src="/resources/images/friend/null_states_people_gray_wash.svg" alt="">
-                <span id="maintext">프로필을 미리 볼 사람의 이름을 선택하세요.</span>
+                <span id="maintext">프로필을 볼 사람의 이름을 선택하세요.</span>
             </div>
         </div>
     </div>

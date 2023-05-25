@@ -92,8 +92,8 @@ public class FriendDAO {
 	 * @param memberNo
 	 * @return
 	 */
-	public int friendaddition(int memberNo) {
-		return sqlSession.insert("friendMapper.friendaddition", memberNo);
+	public int friendaddition(Map<String, Object> map) {
+		return sqlSession.insert("friendMapper.friendaddition",map);
 	}
 
 }

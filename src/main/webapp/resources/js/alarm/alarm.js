@@ -96,3 +96,11 @@ function makeAlarm(obj) {
 	return nndrAddAlarm.outerHTML;
 };
 
+document.getElementById("delAllAlarm").addEventListener("click", () => {
+	fetch("/delAllAlarm")  
+    .then(response => response.text()) 
+    .then(() => {
+    }) 
+    .catch (e => { console.log(e)}); 
+
+})

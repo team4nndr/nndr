@@ -85,7 +85,7 @@ function friendList() {
             friendRQBox.id = "friendRQBox";
             const friendRQ = document.createElement("span");
             friendRQ.id = "friendRQ";
-            friendRQ.innerHTML = "친구 요청" +result.length + "개";
+            friendRQ.innerHTML = "친구 요청 " +result.length + "개";
 
             friendRQBox.append(friendRQ);
 

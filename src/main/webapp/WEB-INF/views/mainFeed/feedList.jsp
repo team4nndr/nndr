@@ -68,11 +68,13 @@
             <hr class="feed-hr">
 
             <%-- 좋아요 카운트 --%>
+            <%-- <c:if test="${board.boardCount == 1}" >
             <section class="likeCount">
-                        <span>${board.likeCount}</span> 
+                <img src="/resources/images/mainFeed/countLike.png">${board.likeCount}
             </section>
 
             <hr class="feed-hr">
+            </c:if> --%>
             
 
             <!--  나의 게시물 좋아요, 댓글달기, 공유하기 -->

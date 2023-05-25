@@ -12,8 +12,6 @@ function accept(memberNo) {
         })
         .catch(err => console.log(err));
 }
-
-
 function friendList() {
     fetch("/friend/recom/birequest")
         .then(resp => resp.json())
@@ -22,7 +20,6 @@ function friendList() {
             const friendListElement = document.getElementById("friendSuggestionList"); // 화면에서 친구 목록을 표시하는 요소 선택
 
             friendListElement.innerHTML=""; //친구추천리스트 초기화
-
 
             for(let f of result){
                 const frtopdiv = document.createElement("div");
@@ -35,6 +32,7 @@ function friendList() {
                 const namecount = document.createElement("div");
                 namecount.classList.add("namecount");
                 const freindName = document.createElement("span");
+                freindName.innerText = f.memberName;
                 freindName.classList.add("freindName");
                 freindName.setAttribute("onclick", "friendPage(" + f.memberNo + ")");
                 const boxbtn = document.createElement("div");
@@ -46,7 +44,7 @@ function friendList() {
                 const nobtn = document.createElement("button");
                 nobtn.classList.add("nobtn");
                 nobtn.innerText = "삭제";
-                nobtn.setAttribute("onclick", "exit");
+                nobtn.setAttribute("onclick", "exit(" + f.memberNo + ")" );
                 frtopdiv.append(proimg,frbox);
 
                 frbox.append(namecount);
@@ -65,10 +63,15 @@ function friendList() {
         .catch(err => console.log(err));
 
 }
-function exit(){
-    var button = document.querySelector('.nobtn');
-    button.style.display = 'none';
-}
+function hideParentDiv(button, memberNo) {
+    // 버튼의 부모 div 요소 가져오기
+    var parentDiv = button.parentNode.parentNode.parentNode.parentNode;
+
+    // 부모 div 요소 숨기기
+    parentDiv.style.display = 'none';
+
+    // 선택적: 일정 시간(예: 3초)이 지난 후에 div를 다시 표시하려면 setTimeout 함수를 사용할 수 있습니다.
+        }
 
 function friendPage(memberNo) {
     location.href= "/personalFeed/" + memberNo;

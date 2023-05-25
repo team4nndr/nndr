@@ -54,6 +54,12 @@ public class AlarmServiceImpl implements AlarmService {
 	}
 
 
+	@Override
+	public int alarmAllDel(int memberNo) {
+		return dao.alarmAllDel(memberNo);
+	}
+
+	
 	
 
 	

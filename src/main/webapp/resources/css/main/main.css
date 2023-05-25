@@ -458,6 +458,16 @@ input::-webkit-inner-spin-button {
   right: 108px;
 }
 
+#bangWarn2 > img{
+  width: 25px;
+  height: 23px;
+  z-index: 1000;
+  position: absolute;
+  background-color: #f5f6f7;
+  margin-top: 3px;
+  right: 108px;
+}
+
 #bangWarn3>img{
   width: 25px;
   height: 23px;
