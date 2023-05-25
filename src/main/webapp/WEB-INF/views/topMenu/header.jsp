@@ -80,7 +80,7 @@
                 </div>
                 <div id="nndrAddContainer">
                     <c:forEach items="${alarmList}" var="alarm">
-                        ${alarm.alarmContent}
+                        <div data-alarmNo="${alarm.alarmNo}"></div>${alarm.alarmContent}
                     </c:forEach>
                 </div>
             </div>

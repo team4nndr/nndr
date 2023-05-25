@@ -333,3 +333,27 @@ function detectBottom() {
         return false;
     }
 }
+Array.from( document.getElementsByClassName("nndr-top")).forEach((target) => target.addEventListener("click", function(){ 
+    jsSearch(target); 
+})
+)
+function jsSearch(target){		
+    const infoText = document.getElementsByClassName("infoText");
+    const hobbyl = document.getElementById("what-hobby")
+    document.getElementById("info-modal").style.display="block";
+    document.getElementById("info-modali").style.display="block";
+    document.getElementById("whatHobby").innerText=(target.innerText).substring(4);
+    document.getElementById("hobby-input").value = "";
+    const infozz = document.getElementsByClassName("infom");
+    
+    
+    a=target.dataset.map;
+    for(var i = 0; i<infozz.length; i++){
+        for(var j=0; j<infozz[i].childElementCount*2+1; j++){
+            if(target.innerText==infozz[i].childNodes[j].innerText){
+                b.push(infoText[i].childNodes[j]);
+            }
+        }
+    }
+    
+};   
