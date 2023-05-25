@@ -74,9 +74,11 @@ public class MemberController {
 	
 	// 회원 가입 진행
 	@PostMapping("/")
-	public String signUp(Member inputMember,String[] InfoBirth, RedirectAttributes ra) {
+	public String signUp(Member inputMember, String[] InfoBirth ,RedirectAttributes ra) {
 		
-		// String[] InfoBirth : input name="InfoBirth" 3개가 저장된 배열
+		// String[] InfoBirth : input name="InfoBirth" 3개가 저장된 배열 / 생일
+		// String[] InfoGen : input name="InfoGen" 3개가 저장된 배열 / 성별
+		
 		
 		// 만약 생일을 입력하지 않은 경우(,,) null로 변경 
 		if(inputMember.getInfoBirth().equals(",,")) {
@@ -85,7 +87,11 @@ public class MemberController {
 		}else {
 			String addr = String.join("-", InfoBirth);
 			inputMember.setInfoBirth(addr);
+			System.out.println(addr);
 		}
+		
+		
+
 		
 		
 		String path = "redirect:/";
