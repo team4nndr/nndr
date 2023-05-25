@@ -312,7 +312,7 @@ const boardLikeBtnList = document.querySelectorAll(".likeBtn");
         
                     .then(resp => resp.text()) // 응답 객체를 필요한 형태로 파싱
                     .then(count => {
-                        console.log("count:" + count);
+                        // console.log("count:" + count);
         
                         if (count == -1) { // insert or delete 실패시 
                             console.log("좋아요 처리 실패");
@@ -330,7 +330,7 @@ const boardLikeBtnList = document.querySelectorAll(".likeBtn");
                         // console.log(e.target.parentElement.parentElement.);
 
                         // 알람
-                        sendLikeAlram(data.boardNo);
+                        sendLikeAlarm(data.boardNo);
         
                     }) // 파싱된 데이터를 받아서 처리하는 코드 작성
                     .catch(err => {
@@ -345,7 +345,7 @@ const boardLikeBtnList = document.querySelectorAll(".likeBtn");
 
 
 // 좋아요 클릭시 글 작성자에게 알림 발송
-function sendLikeAlram(boardNo) { 
+function sendLikeAlarm(boardNo) { 
     const memberNo = document.querySelector('.reply-container.board' + boardNo)
     .parentElement.querySelector('.feed-head-info > a')
     .getAttribute('href').split('/')[2];
@@ -359,12 +359,12 @@ function sendLikeAlram(boardNo) {
         "message": loginMemberName + "님이 게시글에 좋아요를 눌렀습니다."
     }
 
-	var alram = {
+	var alarm = {
 		"memberNo": memberNo,
         "alarmContent" : makeAlarm(obj),
         "type": "LIKE"
     }
 	
     
-	alramSock.send(JSON.stringify(alram));
+	alarmSock.send(JSON.stringify(alarm));
 }

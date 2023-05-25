@@ -66,7 +66,7 @@ for(let i=0; i<replyTextareas.length; i++) {
 } 
 
 // 댓글 제출시 글 작성자에게 알림 발송
-function sendReplyalarm(boardNo) { 
+function sendReplyAlarm(boardNo) { 
     const memberNo = document.querySelector('.reply-container.board' + boardNo)
     .parentElement.querySelector('.feed-head-info > a')
     .getAttribute('href').split('/')[2];
@@ -112,7 +112,7 @@ function submitReply(boardNo, parentReplyNo, btn) {
     .then(result => {
         if(result > 0) {
             printReplyList(boardNo);
-            sendReplyalarm(boardNo); // 피드 작성자에게 알림 발송
+            sendReplyAlarm(boardNo); // 피드 작성자에게 알림 발송
             sendMentionAlarm(boardNo); // 멘션 대상자에게 알림 발송
             textarea.value = "";
         } else {
@@ -410,6 +410,7 @@ function updateReply(boardNo, replyNo, btn) {
     .then(result => {
         if(result > 0) {
             printReplyList(boardNo);
+            sendReplyAlarm(boardNo); // 피드 작성자에게 알림 발송
             sendMentionAlarm(boardNo); // 멘션 대상자에게 알림 발송
             textarea.value = "";
         } else {
