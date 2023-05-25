@@ -3,8 +3,10 @@ const emailCheck = document.getElementById("emailCheck");
 const forgetFail = document.getElementById("forgetFail");
 const certification = document.getElementById("certification");
 const sendAuthKeyBtn = document.getElementById("sendAuthKeyBtn");
+const buttonBtn = document.getElementById("buttonBtn");
 
-sendAuthKeyBtn.addEventListener("click", ()=>{
+
+buttonBtn.addEventListener("click", ()=>{
 
     fetch('/main/emailCheck?email='+emailCheck.value)
     .then(resp => resp.text()) // json 아닌 이유는 결과값이 하나이기 때문 
@@ -14,9 +16,10 @@ sendAuthKeyBtn.addEventListener("click", ()=>{
         if(result == 0 ){
             forgetFail.style.display = "block";
             certification.style.display = "none";
+            sendAuthKeyBtn.style.display = "none";
         }else{
             forgetFail.style.display = "none";
-
+            sendAuthKeyBtn.style.display = "block";
             certification.style.display = "block";
         }
         
