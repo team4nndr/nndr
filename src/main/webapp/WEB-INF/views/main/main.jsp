@@ -15,29 +15,6 @@
 </head>
 
 <body>
-
-    <%-- 간편 로그인 기능(추후 삭제 예정) --%>
-    <div class="temp">
-        <form action="/login" method="POST">
-            <input type="text" name="memberEmail" value="admin">
-            <input type="text" name="memberPw" value="1q2w3e4r">
-            <button id="admin">관리자 로그인</button>
-        </form>
-
-        <form action="/login" method="POST">
-            <input type="text" name="memberEmail" value="user01@mail.com">
-            <input type="text" name="memberPw" value="0">
-            <button id="user">일반유저 로그인<br>(user01@mail.com)</button>
-        </form>
-
-        <form action="/login" method="POST">
-            <input type="text" name="memberEmail" value="user04@mail.com">
-            <input type="text" name="memberPw" value="0">
-            <button id="user">일반유저 로그인<br>(user04@mail.com)</button>
-        </form>
-    </div>
-    <%-- 위 코드는 추후 삭제 예정 --%>
-
     <div id="top">
         <div class="init">
             <div class="frame">
