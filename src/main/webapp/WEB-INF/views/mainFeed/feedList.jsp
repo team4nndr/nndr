@@ -82,12 +82,12 @@
             
                     <div class="likeBtn">
                         <c:if test="${board.boardCount == 0}">
-                        <i class="fa-regular fa-thumbs-up boardLike" id="boardLike" data="${board.boardNo}"></i>
+                        <i class="fa-regular fa-thumbs-up boardLike" data="${board.boardNo}"></i>
                         </c:if>
 
                         <%-- board.boardCount == 1 --%>
                         <c:if test="${board.boardCount == 1}" >
-                        <i class="fa-solid fa-thumbs-up boardLike" id="boardLike" data="${board.boardNo}"></i>
+                        <i class="fa-solid fa-thumbs-up boardLike" data="${board.boardNo}"></i>
                         </c:if>
                 
         

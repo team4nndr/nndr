@@ -323,3 +323,15 @@ img.wirter-profile-image {
 
 /* 요소 숨기기 */
 .hidden { display: none !important; }
+
+/* 좋아요 */
+.boardLike{
+    font-size: 1.5em;
+    color: #4A6EA9;
+    cursor: pointer;
+}
+
+/* 좋아요 */
+.like-area{
+    margin-right: 30px;
+}
