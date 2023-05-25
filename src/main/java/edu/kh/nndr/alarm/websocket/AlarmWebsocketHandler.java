@@ -35,7 +35,7 @@ public class AlarmWebsocketHandler extends TextWebSocketHandler {
     protected void handleTextMessage(WebSocketSession session, TextMessage message) throws Exception {
         ObjectMapper objectMapper = new ObjectMapper();
         Alarm alarm = objectMapper.readValue(message.getPayload(), Alarm.class);
-        System.out.println(alarm.getContent());
+        
         // 친구신청을 제외한 알람발송일 경우에만 DB 삽입
     	if( !alarm.getType().equals("PASS") ) {
     		
@@ -48,9 +48,11 @@ public class AlarmWebsocketHandler extends TextWebSocketHandler {
     		// DB에 저장 -> 실패 시 함수 종료 (전달X)
     		if( service.insert(alarm) == 0 ) return ; 
     	}
+    	
+    	// 알람 번호 추가
     	Alarm no = service.checkAlarmNo();
     	alarm.setAlarmNo(no.getAlarmNo());
-    	System.out.println(no.getAlarmNo());
+    	
         // 상대방에게 전달(1:1)
         for(WebSocketSession s : sessions) {
             int loginMemberNo = ((Member)s.getAttributes().get("loginMember")).getMemberNo();

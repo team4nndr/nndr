@@ -77,7 +77,7 @@ function makeAlarm(obj) {
 	
 	let topMyProfile = document.createElement("img");
 	topMyProfile.classList.add("topMyProfile");
-	topMyProfile.src = obj.profileImage;
+	topMyProfile.src = obj.profileImage.trim().length == 0 ? "/resources/images/common/user-default.png" : obj.profileImage;
 
 	let nndrAlarmContent = document.createElement("p");
 	nndrAlarmContent.classList.add("nndrAlarmContent");
