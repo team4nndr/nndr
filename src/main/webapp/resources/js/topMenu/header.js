@@ -8,11 +8,8 @@ const searchBtn = document.getElementById("nndrSearchBtn");
 // input 태그 이벤트
 search.addEventListener("input", e => {
 
-    // e.target.preventDefault();
+   
     const input_value = e.target.value.trim();
-
-
-
 
     // #으로 시작하는 검색어인 경우
 
@@ -64,6 +61,7 @@ search.addEventListener("input", e => {
             });
 
     } else {
+
         suggestion_pannel.style.display = "block";
         console.log(input_value);
         var fName = input_value;
@@ -122,7 +120,8 @@ search.addEventListener("input", e => {
                         }
 
 
-                        div.onclick = () => {
+                        div.onclick = (e) => {
+                            // e.target.preventDefault();
                             const fName = input_value;
                             // fName = div.innerHTML;
                             // suggestion_pannel.innerHTML = "";
@@ -132,6 +131,7 @@ search.addEventListener("input", e => {
                     }
                 }
             });
+            // e.target.preventDefault();
 
     }
 
@@ -148,6 +148,8 @@ search.addEventListener("input", e => {
         suggestion_pannel.innerHTML = "";
     }
 
+
+    
 });
 
 

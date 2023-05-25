@@ -7,7 +7,7 @@
     <ul>
         <li>
             <a href="/mainFeed">
-                <img src="/resources/images/mainFeed/mainHome.png">
+                <img src="/resources/images/topMenu/topHome.png">
                 <span>홈</span>
             </a>
         </li>
@@ -24,7 +24,7 @@
         </li>
         <li>
             <a href="/friend">
-                <img src="/resources/images/mainFeed/mainFriends.png">
+                <img src="/resources/images/topMenu/topFriend.png">
                 <span>친구</span>
             </a>
         </li>
