@@ -21,6 +21,10 @@ import edu.kh.nndr.mainFeed.model.exception.ImageDeleteException;
 import edu.kh.nndr.mainFeed.model.exception.FileUploadException;
 
 
+/**
+ * @author user1
+ *
+ */
 @Service
 public class MainFeedServiceImpl implements MainFeedService {
 
@@ -269,8 +273,10 @@ public class MainFeedServiceImpl implements MainFeedService {
    public List<Board> personalFeedList(int no) {
       return dao.personalFeedList(no);
    }
+
+
 	
-	
+   
 	
        
 

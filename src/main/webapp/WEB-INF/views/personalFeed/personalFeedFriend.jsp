@@ -39,7 +39,7 @@
                                     </a>
                                 </c:if>
                                 <c:if test="${not empty i.profileImage}">
-                                    <a href="/personalFeed/${i.memberNo}"   class="aTag">
+                                    <a href="/personalFeed/${i.memberNo}"  class="aTag">
                                         <div class="who">
                                             <div class="who-pic"><img class="who-pic" src="${i.profileImage}" alt="로고"></div>
                                             <div class="who-name">${i.memberName}</div>

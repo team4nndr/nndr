@@ -100,6 +100,7 @@ public class MainFeedController {
 		
 			// 로그인한 회원 번호를 얻어와 board에 세팅
 			board.setMemberNo(loginMember.getMemberNo());
+			board.setOthermemNo(loginMember.getMemberNo());
 			
 			// 업로드된 이미지 서버에 실제로 저장되는 경로
 			// +웹에서 요청시 이미지를 볼 수 있는 경로
