@@ -4,6 +4,8 @@ if(alarmSock != ""){
 }
 
 
+
+
 // WebSocket 객체가 서버로 부터 메세지를 통지 받으면 자동으로 실행될 콜백 함수
 alarmSock.onmessage = function(e) {
 	const alarm = JSON.parse(e.data);
@@ -60,7 +62,11 @@ alarmSock.onmessage = function(e) {
 	div.innerHTML = alarm.alarmContent;
 	alarmList.prepend(div.firstChild);
 		document.querySelector('.nndr-top-alarm-delete').addEventListener('click', e => e.target.parentElement.remove());
-}
+	const mark = document.getElementById("alarmMark");
+	
+	mark.style.display = 'block';
+
+	}
 
 function makeAlarm(obj) {
 	let nndrAddAlarm = document.createElement("div");

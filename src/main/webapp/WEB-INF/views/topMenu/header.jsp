@@ -59,7 +59,7 @@
         <div id="nndrDropdown1" class="nndr-dropdown-container">
             <div id="nndrDropBtn1" class="nndr-dropdown-button">
                 <img src="/resources/images/topMenu/topAlarm.png" id="nndrImage3">
-                <img src="/resources/images/topMenu/alarmMark.png" id="alarmMark">
+                <img src="/resources/images/topMenu/alarmMark.png" id="alarmMark" >
             </div>
 
         

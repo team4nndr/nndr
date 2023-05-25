@@ -7,9 +7,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>설정</title>
     <link rel="stylesheet" href="/resources/css/admin/admin.css">
+    <link rel="stylesheet" href="/resources/css/topMenu/header.css">
     <link rel="stylesheet" href="/resources/css/setting/setting.css">
     <link rel="stylesheet" href="/resources/css/setting/alarm.css">
     <script src="https://kit.fontawesome.com/9c2aaccfe5.js" crossorigin="anonymous"></script>
+    <c:set var="alarmList" value="${alarmList}"/>
 </head>
 <body>
     <%-- 상단바 메뉴 --%>
@@ -82,5 +84,6 @@
     </main>
 
     <script src="/resources/js/setting/setting.js"></script>
+    <script src="/resources/js/topMenu/header.js"></script>
 </body>
 </html>
