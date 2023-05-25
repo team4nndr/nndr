@@ -371,9 +371,10 @@ const boardLikeList = document.querySelectorAll(".boardLike");
                         
                         // 현재 게시글의 좋아요 수를 화면에 출력
                         //e.target.nextElementSibling.innerText=count;
-                        e.target.parentElement.parentElement.previousSibling.previousSibling.firstElementChild.innerText=count;
+                        //e.target.parentElement.parentElement.previousSibling.previousSibling.firstElementChild.innerText=count;
                         //e.target.parentElement.parentElement.
-                        //console.log(e.target.parentElement.parentElement.parentElement.previousSibling.previousSibling.firstElementChild.innerText=count);
+                        // console.log(e.target.parentElement.parentElement.);
+
                         // 알람
                         sendLikeAlram(data.boardNo);
         
