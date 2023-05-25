@@ -8,14 +8,17 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttribute;
 import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.bind.support.SessionStatus;
 
 import edu.kh.nndr.alarm.model.dto.Alarm;
 import edu.kh.nndr.alarm.model.service.AlarmService;
 import edu.kh.nndr.friend.model.dto.Friend;
+import edu.kh.nndr.mainFeed.model.dto.Board;
 import edu.kh.nndr.mainFeed.model.dto.Hashtag;
 import edu.kh.nndr.member.model.dto.Member;
 import edu.kh.nndr.topMenu.model.service.SearchService;
@@ -32,13 +35,27 @@ public class SearchController {
 	private AlarmService alarmService;
 	@Autowired
 	private TopMenuService TopMenuService;
+	
 	// 일치하는 해시태그 목록 조회(검색)
-	@GetMapping(value="/mainFeed/getTags", produces="application/json; charset=UTF-8")
+	@GetMapping(value="/mainFeed/boardList", produces="application/json; charset=UTF-8")
 	@ResponseBody
-	public List<Hashtag> getTags(@RequestParam("query") String query){
+	public List<Board> matchingList(@RequestParam("query") String query  ){
 		System.out.println("query : " + query);
-		return service.getTags(query);
+		
+		return service.matchingList(query);
 	}
+	
+	@GetMapping(value="/matchingList/{query}", produces="application/json; charset=UTF-8")
+	public String boardList(@PathVariable("query") String query, Model model ) {
+		System.out.println(query);
+		
+		List<Board> boardList = service.matchingList(query);
+		
+		model.addAttribute("boardList",boardList);
+		
+		return "topMenu/matchingList";
+	}
+	
 	
 	// 일치하는 친구 이름 목록 조회(검색)
     @GetMapping(value="/mainFeed/friendNameList", produces="application/json; charset=UTF-8")
@@ -53,8 +70,6 @@ public class SearchController {
     	
     	return service.friendNameList(map);
     }
-    
-    
     
     // 알람 삭제
     
@@ -79,6 +94,10 @@ public class SearchController {
     	
     	return "";
     }
+    
+
+    
+    
 
 }
 
