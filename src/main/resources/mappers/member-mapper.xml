@@ -344,15 +344,19 @@
 
 	<!-- 친구 추천 -->
 	<select id="friendSuggestion" resultMap="member_rm">
-	  SELECT MEMBER_NO,MEMBER_NAME 
+	  SELECT MEMBER_NO,MEMBER_NAME, INFO_PROFILEPATH||INFO_PROFILE INFO_IMG
 	    FROM MEMBER 
 	    JOIN MEMBER_INFO USING(MEMBER_NO)
-	    WHERE INFO_COLLEGE = #{infoCollege}
+	    WHERE (INFO_COLLEGE = #{infoCollege} OR INFO_HIGH = #{infoHigh} OR INFO_MIDDLE = #{infoMiddel} OR INFO_ELEMENTARY = #{infoElementary} )
 	    AND MEMBER_NO != #{memberNo}
 	    AND MEMBER_NO NOT IN 
 	    (SELECT FRIEND_SENDER
 	    FROM FRIEND f
-	    WHERE FRIEND_RECIVER = #{memberNo} OR FRIEND_SENDER = #{memberNo}
+	    WHERE FRIEND_RECIVER = #{memberNo}
+	    UNION
+	    SELECT FRIEND_RECIVER
+	    FROM FRIEND
+	    WHERE FRIEND_SENDER =  #{memberNo}
 	    )
 
 	</select>

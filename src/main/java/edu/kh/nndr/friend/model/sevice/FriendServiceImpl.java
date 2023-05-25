@@ -57,23 +57,11 @@ public class FriendServiceImpl implements FriendService{
 	public List<Member> friendSuggestion(Map<String, Object> params) {
 		return dao.friendSuggestion(params);
 	}
+
+@Override
+public int friendaddition(Map<String, Object> map) {
+	return dao.friendaddition(map);
+}
 	
 	
-	// 친구 추천 확인 버튼
-	@Override
-	public int friendaddition(int memberNo) {
-		return dao.friendaddition(memberNo);
-	}
-
-	
-	
-////	친구 추천 목록조회 
-//	@Override
-//	public List<Member> friendSuggestion(int memberNo) {
-//		return dao.friendSuggestion(memberNo);
-//	}
-
-
-
-
 }

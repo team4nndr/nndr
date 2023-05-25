@@ -10,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -17,10 +18,13 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttribute;
 import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import edu.kh.nndr.friend.model.dto.Friend;
 import edu.kh.nndr.friend.model.sevice.FriendService;
 import edu.kh.nndr.member.model.dto.Member;
+import edu.kh.nndr.member.model.dto.PersonalFriend;
+import edu.kh.nndr.member.model.service.MemberInfoService;
 
 @SessionAttributes({ "loginMember" })
 @Controller
@@ -29,6 +33,7 @@ public class friendController {
 
 	@Autowired
 	private FriendService service;
+	
 
 	// 친구 홈 요청 목록 조회
 	@RequestMapping("")
@@ -38,47 +43,45 @@ public class friendController {
 		return "friend/friend";
 	}
 
-//	//친구 추천 목록
-//	@RequestMapping("/recom") // + 주소
-//	public String friendrecom() {
-//		return "friend/friendRecom"; // 파일경로
-//	}
 
 	// 친구 추천
 	@RequestMapping("/recom")
 	public String friendrecom(@SessionAttribute("loginMember") Member member, Model model) {
 		Map<String, Object> params = new HashMap<>();
 		params.put("memberNo", member.getMemberNo());
-//		params.put("infoHigh", member.getInfoHigh());
+		params.put("infoHigh", member.getInfoHigh());
 		params.put("infoCollege", member.getInfoCollege());
-//		params.put("infoMiddle", member.getInfoMiddle());
-//		params.put("infoElementary", member.getInfoElementary());
+		params.put("infoMiddle", member.getInfoMiddle());
+		params.put("infoElementary", member.getInfoElementary());
 
 		List<Member> friendSuggestion = service.friendSuggestion(params);
 		model.addAttribute("friendSuggestion", friendSuggestion);
-		System.out.println(friendSuggestion);
 		return "friend/friendRecom";
 	}
 
 //	친구추천 비동기 처리
-//	@GetMapping(value = "/recom/birequest", produces = "application/json; charset=UTF-8")
-//	@ResponseBody
-//	public List<Member> friendrecom2(@SessionAttribute("loginMember") Member member, Model model) {
-//		Map<String, Object> params = new HashMap<>();
-//		params.put("memberNo", member.getMemberNo());
-//		params.put("infoHigh", member.getInfoHigh());
-//		params.put("infoCollege", member.getInfoCollege());
-//		params.put("infoMiddle", member.getInfoMiddle());
-//		params.put("infoElementary", member.getInfoElementary());
-//		return service.friendSuggestion(params);
-//	}
+	@GetMapping(value = "/recom/birequest", produces = "application/json; charset=UTF-8")
+	@ResponseBody
+	public List<Member> friendrecom2(@SessionAttribute("loginMember") Member member, Model model) {
+		Map<String, Object> params = new HashMap<>();
+		params.put("memberNo", member.getMemberNo());
+		params.put("infoHigh", member.getInfoHigh());
+		params.put("infoCollege", member.getInfoCollege());
+		params.put("infoMiddle", member.getInfoMiddle());
+		params.put("infoElementary", member.getInfoElementary());
+		return service.friendSuggestion(params);
+	}
 
 //	 친구 추천 수락 눌렀을 때
 	@GetMapping(value = "/recom/yesbt")
 	@ResponseBody
-	public int friendaddition(int memberNo) {
-		return service.friendaddition(memberNo);
+	public int frRecom(@RequestParam int memberNo, @SessionAttribute("loginMember") Member loginMember) {
+	    Map<String, Object> map = new HashMap<>();
+	    map.put("memberNo", memberNo);
+	    map.put("senderMemberNo", loginMember.getMemberNo());
+	    return service.friendaddition(map);
 	}
+	
 
 	// 친구 요청 목록조회
 	@RequestMapping("/request") // + 주소
@@ -158,7 +161,7 @@ public class friendController {
 
 	// 친구 홈거절 눌렀을 때
 	@GetMapping(value = "/all/nobt")
-	@ResponseBody
+	@ResponseBody	
 	public int friendDelete3(int friendNo) {
 		return service.friendDelete(friendNo);
 	}
