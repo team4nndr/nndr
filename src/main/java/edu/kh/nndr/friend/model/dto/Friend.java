@@ -1,5 +1,7 @@
 package edu.kh.nndr.friend.model.dto;
 
+import java.io.Serializable;
+
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -8,7 +10,7 @@ import lombok.ToString;
 @Getter
 @Setter
 @ToString
-public class Friend {
+public class Friend implements Serializable {
 	
 	private int friendNo;
 	private int friendSender;
