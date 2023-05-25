@@ -56,9 +56,7 @@ public class SearchController {
     
     
     
-    // 해시태그 관련 키워드가 포함된 게시글 조회
-    // @GetMapping("/personalFeed/${fName}")
-    // public String 
+    // 알람 삭제
     
     @GetMapping(value = "/alarmDel", produces = "application/text; charset=UTF-8")
 	@ResponseBody
@@ -67,6 +65,17 @@ public class SearchController {
     	int result = alarmService.alarmDel(alarmDel);
     	List<Alarm> alarmList = TopMenuService.alarmList(loginMember.getMemberNo());
 		model.addAttribute("alarmList",alarmList); // 현재 알람 목록
+    	
+    	return "";
+    }
+    // 알람 모두 삭제
+    
+    @GetMapping(value = "/delAllAlarm", produces = "application/text; charset=UTF-8")
+    @ResponseBody
+    public String delAllAlarm(Model model, @SessionAttribute("loginMember") Member loginMember) {
+    	int result = alarmService.alarmAllDel(loginMember.getMemberNo());
+    	List<Alarm> alarmList = TopMenuService.alarmList(loginMember.getMemberNo());
+    	model.addAttribute("alarmList",alarmList); // 현재 알람 목록
     	
     	return "";
     }

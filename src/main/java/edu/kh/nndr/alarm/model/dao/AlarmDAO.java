@@ -46,4 +46,8 @@ public class AlarmDAO {
 		return sqlSession.update("alarmMapper.alarmDel", alarmDel);
 	}
 
+	public int alarmAllDel(int memberNo) {
+		return sqlSession.update("alarmMapper.alarmAllDel", memberNo);
+	}
+
 }

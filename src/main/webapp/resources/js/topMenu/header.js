@@ -222,3 +222,16 @@ function alarmDel(target){
     .catch (e => { console.log(e)}); 
 
 };   
+
+
+document.getElementById("delAllAlarm").addEventListener("click", () => {
+	fetch("/delAllAlarm")  
+    .then(response => response.text()) 
+    .then(() => {
+    }) 
+    .catch (e => { console.log(e)}); 
+    document.getElementById("nndrAddContainer").innerHTML = "";
+
+
+
+})

@@ -32,6 +32,12 @@ public interface AlarmService {
 	 */
 	public int alarmDel(String alarmDel);
 
+	/** 알람 모두 삭제
+	 * @param i
+	 * @return
+	 */
+	public int alarmAllDel(int i);
+
 	
 	
 }
