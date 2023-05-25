@@ -2,6 +2,15 @@
 // document.getElementById("info-modal").style.display="block";
 // document.getElementById("info-modali").style.display="block";
 
+
+// 피드 작성 시 멘션 데이터 생성
+// addMentionEvent(document.querySelector(".board-textarea")); // 피드 작성 멘션이벤트 추가 
+// document.getElementById('boardWriteFrm').addEventListener('submit', e => {
+//     e.preventDefault();
+//     e.target.querySelector('textarea').value = convertMention(e.target.querySelector('textarea').value);
+//     e.target.submit();
+// });
+
 /* 모달창 확인 */
 const newFeedBtn = document.getElementById("newFeedBtn");
 if (newFeedBtn != null) {
@@ -60,66 +69,6 @@ if (imgBtn != null) {
 
     });
 }
-
-
-// 일단 해보고 수정해보자
-// 플러스 버튼을 눌렀을 때 이미지 창 생성
-// const addImg = document.getElementById("plusLogo");
-// var result = 0;
-
-
-
-
-//     addImg.addEventListener("click",()=>{
-
-//         const imgBox = document.getElementById("imgBox1");
-//         const num = document.getElementById("num");
-//         let a = 1;
-//         if(result <4){
-
-//             const div = document.createElement("div");
-//             const label = document.createElement("label");
-//             const img = document.createElement("img"); // label 자식 요소추가
-//             const input = document.createElement("input");
-//             const span = document.createElement("span");
-
-
-
-
-//             label.setAttribute("for","img1")
-//             input.setAttribute("type","file","name","images","id","img+'a++'","accept","image/*")
-
-
-
-//             div.classList.add("boardImg");
-//             img.classList.add("preview");
-//             input.classList.add("inputImage");
-//             span.classList.add("delete-image");
-//             span.innerHTML = "&times;";
-
-//             label.append(img);
-
-//             div.prepend(label);
-//             div.append(input);
-//             div.append(span);
-
-//             num.after(div);
-//         }
-//         result++;
-//         if(document.getElementsByClassName("boardImg").length>5){
-//             alert("5개까지 추가할 수 있습니다");
-//         return;
-//         }
-
-
-
-
-
-//     })
-
-
-
-
 
 // 컨텐츠가 비었을때
 const boardWriteFrm = document.querySelector("#submitBtn");
