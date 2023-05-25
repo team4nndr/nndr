@@ -34,7 +34,7 @@
                         <h4>&nbsp;&nbsp; 알 수도 있는 사람</h4>
                     </div>
                     <div class="item1-3">
-                        <c:forEach items="${friendSuggestion}" var="i" begin="0" end="1000">
+                        <c:forEach items="${friendSuggestion}" var="i" begin="0" end="2">
                             <c:if test="${empty i.profileImage}">
                                 <div class="who">
                                     <a href="/personalFeed/${i.memberNo}" class="aTag">
@@ -111,8 +111,8 @@
                                 <h3 id=zzs>관심있는 취미</h3>
                                 <div id="dhho" style="display:none">
                                     <c:forEach items="${hobbyList}" var="hobby">${hobby.hobby}　</c:forEach>
-                                </div>
                                 <div id="myhho">
+                                </div>
                                     <c:if test="${not empty perHobbyList}" >
                                         <c:forEach items="${perHobbyList}" var="hobby">${hobby.hobby}　</c:forEach>
                                     </c:if>
@@ -131,8 +131,10 @@
                                                         <c:set var="ch"  value="checked"/>
                                                     </c:if>
                                                 </c:forEach>
-                                                <input class="hobby-check" type="checkbox" name="hobbychecked" id="${hobby.hobby}" ${ch}>
-                                                <label for="${hobby.hobby}">${hobby.hobby}</label> 
+                                                <div>
+                                                    <input class="hobby-check" type="checkbox" name="hobbychecked" id="${hobby.hobby}" ${ch}>
+                                                    <label for="${hobby.hobby}">${hobby.hobby}</label> 
+                                                </div>
                                                 <c:remove var="ch" />
                                             </c:forEach>
                                         </div>
