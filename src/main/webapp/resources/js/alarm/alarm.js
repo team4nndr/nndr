@@ -61,10 +61,10 @@ alarmSock.onmessage = function(e) {
 	const div = document.createElement('div');
 	div.innerHTML = alarm.alarmContent;
 	alarmList.prepend(div.firstChild);
-	document.querySelector('.nndr-top-alarm-delete').addEventListener('click', e => e.target.parentElement.remove());
+		document.querySelector('.nndr-top-alarm-delete').addEventListener('click', e => e.target.parentElement.remove());
 	
-	const mark = document.getElementById("alarmMark");
-	mark.style.display = 'block';
+		const mark = document.getElementById("alarmMark");
+		mark.style.display = 'block';
 
 	}
 
@@ -94,7 +94,7 @@ function makeAlarm(obj) {
 	nndrAddAlarm.append(x);
 
 	return nndrAddAlarm.outerHTML;
-};
+}; 
 
 document.getElementById("delAllAlarm").addEventListener("click", () => {
 	fetch("/delAllAlarm")  
@@ -104,3 +104,4 @@ document.getElementById("delAllAlarm").addEventListener("click", () => {
     .catch (e => { console.log(e)}); 
 
 })
+
