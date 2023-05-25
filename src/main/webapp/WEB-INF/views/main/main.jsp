@@ -84,6 +84,7 @@
                 </div>
                 <div id="box1">
                     <div class="box">
+                        <div id="bangWarn2" class="hidden"><img src="/resources/images/topMenu/회원 가입 느낌표.png" ></div>
                         <input type="text" id="memberName" name="memberName" placeholder="이름">
                     </div>
                     <%-- id는 하나만 입력 가능 --%>

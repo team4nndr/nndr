@@ -89,7 +89,7 @@ sendAuthKeyBtn.addEventListener("click", function(){
 
     checkObj.authKey = false;
 
-    if(checkObj.emailCheck){
+    if(checkObj.emailCheck){ // 중복이 아닌 이메일인 경우
 
 
     /* fetch() API 방식 ajax */
