@@ -8,60 +8,105 @@ const searchBtn = document.getElementById("nndrSearchBtn");
 // input 태그 이벤트
 search.addEventListener("input", e => {
 
-   
     const input_value = e.target.value.trim();
 
     // #으로 시작하는 검색어인 경우
 
+    // if (input_value.startsWith("#") && input_value.length > 1 || input_value.startsWith("")&& input_value.length > 1) {
+    //     suggestion_pannel.style.display = "block";
+    //     console.log(input_value);
+    //     var query = input_value.replace("#", "%23");
+    //     fetch("/mainFeed/getTags?query=" + query)
+    //         .then(resp => resp.json())
+    //         .then(tagList => {
 
-    if (input_value.startsWith("#") && input_value.length > 1) {
+    //             console.log(tagList);
+    //             suggestion_pannel.innerHTML = ""; // 이전 검색 결과 비우기
+
+    //             if (tagList.length == 0) {
+    //                 const div = document.createElement("div");
+    //                 div.classList.add("result");
+    //                 div.innerText = "일치하는 태그가 없습니다.";
+    //                 div.style = "padding-top: 15px;"
+    //                 suggestion_pannel.appendChild(div);
+    //             }
+
+    //             for (let tags of tagList) {
+    //                 const div = document.createElement("div");
+    //                 div.classList.add("result");
+    //                 div.setAttribute("hashTags", tags.hashtagKeyword);
+
+    //                 if (query.toLowerCase().startsWith(query.toLowerCase())) {
+
+    //                     let div = document.createElement("div");
+    //                     const query = input_value.replace("%23", "#");
+    //                     div.innerHTML = query;
+    //                     div.style = "padding-top: 15px;"
+    //                     suggestion_pannel.appendChild(div);
+
+    //                     div.onclick = () => {
+    //                         const query = input_value.replace("%23", "#");
+    //                         // query = div.innerHTML;
+    //                         suggestion_pannel.innerHTML = "";
+    //                         location.href = "/matching/" + tags.hashtagKeyword ;
+    //                         return;
+
+                    
+    //                     };
+    //                 }
+    //             }
+    //         });
+
+    // 검색어와 일치하는 게시글 불러오기
+
+    if (input_value.startsWith("") && input_value.length > 1) {
         suggestion_pannel.style.display = "block";
-        console.log(input_value);
-        var query = input_value.replace("#", "%23");
-        fetch("/mainFeed/getTags?query=" + query)
+        // console.log(input_value);
+        var query = input_value;
+        fetch("/mainFeed/boardList?query=" + query)
             .then(resp => resp.json())
-            .then(tagList => {
+            .then(boardList => {
 
-                console.log(tagList);
+                console.log(boardList);
                 suggestion_pannel.innerHTML = ""; // 이전 검색 결과 비우기
 
-                if (tagList.length == 0) {
+                if (boardList.length == 0) {
                     const div = document.createElement("div");
                     div.classList.add("result");
-                    div.innerText = "일치하는 태그가 없습니다.";
+                    div.innerText = "일치하는 검색 결과가 없습니다.";
                     div.style = "padding-top: 15px;"
                     suggestion_pannel.appendChild(div);
                 }
 
-
-                for (let tags of tagList) {
+                for (let board of boardList) {
                     const div = document.createElement("div");
                     div.classList.add("result");
-                    div.setAttribute("hashTags", tags.hashtagKeyword);
-
+                    div.setAttribute("matching", board.boardText);
 
                     if (query.toLowerCase().startsWith(query.toLowerCase())) {
 
                         let div = document.createElement("div");
-                        const query = input_value.replace("%23", "#");
-                        div.innerHTML = query;
+                        const query = input_value;
                         div.style = "padding-top: 15px;"
+                        
                         suggestion_pannel.appendChild(div);
 
-                        div.onclick = () => {
-                            const query = input_value.replace("%23", "#");
+                        div.onclick = e => {
+                            const query = input_value;
                             // query = div.innerHTML;
                             suggestion_pannel.innerHTML = "";
-
+                            location.href = "/matchingList/" + query;
 
                             return;
+                    
                         };
                     }
                 }
             });
 
-    } else {
 
+        } else {
+// 일반 검색어 (멤버 검색)
         suggestion_pannel.style.display = "block";
         console.log(input_value);
         var fName = input_value;
@@ -100,13 +145,7 @@ search.addEventListener("input", e => {
                         let img = document.createElement("img");
                         img.classList.add("memberProfileImage");
 
-                        // if (friendNameList.length > 10) {
-                        //     div.style.overflow = "auto";
-                        //     suggestion_pannel.style.height = "100%";
-                        //     return;
-                        // }
-
-
+                    
                         const fName = names.memberName;
                         p.innerHTML = fName;
                         div.append(p);
@@ -142,8 +181,7 @@ search.addEventListener("input", e => {
 
         return;
     }
-    // if (input_value.length > 1) { }
-
+    
     if (input_value == "") {
         suggestion_pannel.innerHTML = "";
     }
