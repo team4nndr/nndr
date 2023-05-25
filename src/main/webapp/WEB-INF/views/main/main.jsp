@@ -110,7 +110,7 @@
                     </div>
                     <div class="box">
                         <div id="bangWarn6" class="hidden"><img src="/resources/images/topMenu/회원 가입 느낌표.png" alt=""></div>
-                        <input type="text" placeholder="(- 없이 숫자만 입력)" id="memberTel" maxlength="11">
+                        <input type="text" name="memberTel" placeholder="(- 없이 숫자만 입력)" id="memberTel" maxlength="11">
                     </div>
                     <div class="bir" name="memberBirth">
                         생일
