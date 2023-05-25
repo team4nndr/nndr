@@ -22,6 +22,20 @@ remove.addEventListener("click", function () {
     modal.style.display = "none";
 });
 
+// 이름 느낌표 표시 
+const memberName = document.getElementById("memberName");
+const bangWarn2 = document.getElementById("bangWarn2");
+
+memberName.addEventListener("mousemove", () => {
+    if (memberName.value.trim().length == 0) {
+
+        bangWarn2.classList.remove("hidden");
+    } else{
+        bangWarn2.classList.add("hidden");
+    }
+});
+
+
 
 // 유효성 검사 진행 여부 확인용 객체
 const checkObj = {
