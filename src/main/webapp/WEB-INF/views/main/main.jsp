@@ -47,7 +47,7 @@
                 </div>
                 <div class="authentication">
                     <form class="login" action="/login" method="POST">
-                        <input name="memberEmail" type="text" placeholder="이메일 또는 전화번호" required><br><br>
+                        <input name="memberEmail" type="text" placeholder="이메일" required><br><br>
                         <input name="memberPw" type="password" placeholder="비밀번호" required><br><br>
                         <button type="submit" class="submit2">로그인</button><br>
                         <br>
@@ -84,6 +84,7 @@
                 </div>
                 <div id="box1">
                     <div class="box">
+                        <div id="bangWarn2" class="hidden"><img src="/resources/images/topMenu/회원 가입 느낌표.png" ></div>
                         <input type="text" id="memberName" name="memberName" placeholder="이름">
                     </div>
                     <%-- id는 하나만 입력 가능 --%>

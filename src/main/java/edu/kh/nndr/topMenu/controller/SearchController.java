@@ -6,24 +6,32 @@ import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttribute;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
+import edu.kh.nndr.alarm.model.dto.Alarm;
+import edu.kh.nndr.alarm.model.service.AlarmService;
 import edu.kh.nndr.friend.model.dto.Friend;
 import edu.kh.nndr.mainFeed.model.dto.Hashtag;
 import edu.kh.nndr.member.model.dto.Member;
 import edu.kh.nndr.topMenu.model.service.SearchService;
+import edu.kh.nndr.topMenu.model.service.TopMenuService;
 
 
 @Controller
-@SessionAttributes({"loginMember"})
+@SessionAttributes({"loginMember", "alarmList"})
 public class SearchController {
 	
 	@Autowired
 	private SearchService service;
+	@Autowired
+	private AlarmService alarmService;
+	@Autowired
+	private TopMenuService TopMenuService;
 	// 일치하는 해시태그 목록 조회(검색)
 	@GetMapping(value="/mainFeed/getTags", produces="application/json; charset=UTF-8")
 	@ResponseBody
@@ -46,9 +54,22 @@ public class SearchController {
     	return service.friendNameList(map);
     }
     
+    
+    
     // 해시태그 관련 키워드가 포함된 게시글 조회
     // @GetMapping("/personalFeed/${fName}")
     // public String 
+    
+    @GetMapping(value = "/alarmDel", produces = "application/text; charset=UTF-8")
+	@ResponseBody
+	public String alarmDel(String alarmDel, Model model, @SessionAttribute("loginMember") Member loginMember) {
+    	System.out.println(alarmDel);
+    	int result = alarmService.alarmDel(alarmDel);
+    	List<Alarm> alarmList = TopMenuService.alarmList(loginMember.getMemberNo());
+		model.addAttribute("alarmList",alarmList); // 현재 알람 목록
+    	
+    	return "";
+    }
 
 }
 

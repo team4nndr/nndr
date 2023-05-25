@@ -303,7 +303,6 @@ function showUpdateForm(boardNo, replyNo, btn) {
         const mention = mark.innerText;
         const no = mark.getAttribute('no');
         mentionData.push( { "name": mention, "no": no });
-        console.log(mentionData);
         div.innerHTML = div.innerHTML.replace(mark.outerHTML, '@'+mention);
     }
     origin.querySelector('.reply-content').innerText = div.innerHTML;

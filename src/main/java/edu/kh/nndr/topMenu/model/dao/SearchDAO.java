@@ -27,13 +27,11 @@ public class SearchDAO {
 	}
 
 
-	/** 일치하는 친구이름 검색어 조회
+	/** 이름이 일치하는 회원 조회
 	 * @param query
 	 * @return list
 	 */
 	public List<Member> friendNameList(Map<String, Object> map) {
-		return sqlSession.selectList("memberMapper.friendListSearchByName", map);
+		return sqlSession.selectList("memberMapper.searchMember", map);
 	}
-	
-
 }

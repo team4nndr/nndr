@@ -1,6 +1,7 @@
 package edu.kh.nndr.mainFeed.controller;
 
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -47,9 +48,23 @@ public class MainFeedController {
 	 */
 	@GetMapping("/mainFeed")
 	public String feedList(Model model,@SessionAttribute("loginMember") Member loginMember
-			) {
+			, Board brd) {
 		
 		List<Board> boardList = service.feedList(loginMember.getMemberNo());
+		
+
+		
+		Map<String,Object> map = new HashMap<String, Object>();
+		
+			map.put("boardNo",brd.getBoardNo());
+			map.put("memberNo", loginMember.getMemberNo());
+		
+			int result = service.feedLikeCheck(map);
+			
+			if(result > 0 ) {
+				model.addAttribute("likeCheck","on");
+			}
+			
 		
 		// 조회한 게시글에 달린 댓글 조회
 		for(Board board : boardList) {
@@ -60,7 +75,7 @@ public class MainFeedController {
 		}
 		
 	
-	
+		
 		model.addAttribute("boardList", boardList);
 		
 		return "mainFeed/mainFeed";	

@@ -16,6 +16,7 @@ public class Alarm {
 	private String alarmFl;
 	private int memberNo;
 	
+	private String content;
 	private String type;
 	
 	// 알람 종류

@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="/resources/css/mainFeed/sidebar.css">
     <link rel="stylesheet" href="/resources/css/mainFeed/main.css">
     <link rel="stylesheet" href="/resources/css/mainFeed/feed.css">
+    <link rel="stylesheet" href="/resources/css/topMenu/matchingList.css">
 
 </head>
 <body>
@@ -28,14 +29,12 @@
         
             <%-- 해시태그 연관 검색어 입력 시 태그 내용 입력된 부분--%>
             <div class="hashtag-keyword-box">
-                <%-- 피드 작성 --%>
-                <div id="hashtag-keyword">
-                </div>
-                
-                <%-- 피드 목록 --%>
-                <jsp:include page="/WEB-INF/views/mainFeed/feedList.jsp"/>
+                <span>이멧</span>
             </div>
 
+            <div class="matching-HashtagFeed">
+                <%-- 일치하는 피드 목록 --%>
+            </div>
         </section>
 
         <%-- Grid 3 : 사이드바(오른쪽) --%>

@@ -239,6 +239,14 @@
 		</choose>
 		ORDER BY MEMBER_NO DESC
 	</select>
+	
+	<!-- 모든 유저 검색 -->
+	<select id="searchMember" resultMap="member_rm">
+		SELECT MEMBER_NO, MEMBER_NAME, MEMBER_CODE, INFO_PROFILEPATH||INFO_PROFILE INFO_IMG
+		FROM "MEMBER" LEFT JOIN "MEMBER_INFO" USING(MEMBER_NO)
+		WHERE MEMBER_CODE = 'N' AND MEMBER_NAME LIKE '%${query}%'
+		ORDER BY MEMBER_NO
+	</select>
 
 	<!-- 환경설정 세팅값 변경 -->
 	<update id="changeSetting">

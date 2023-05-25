@@ -59,6 +59,7 @@
         <div id="nndrDropdown1" class="nndr-dropdown-container">
             <div id="nndrDropBtn1" class="nndr-dropdown-button">
                 <img src="/resources/images/topMenu/topAlarm.png" id="nndrImage3">
+                <img src="/resources/images/topMenu/alarmMark.png" id="alarmMark">
             </div>
 
         
@@ -80,7 +81,7 @@
                 </div>
                 <div id="nndrAddContainer">
                     <c:forEach items="${alarmList}" var="alarm">
-                        ${alarm.alarmContent}
+                        <div data-alarmNo="${alarm.alarmNo}"></div>${alarm.alarmContent}
                     </c:forEach>
                 </div>
             </div>

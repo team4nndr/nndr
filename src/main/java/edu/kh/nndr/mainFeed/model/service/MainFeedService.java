@@ -45,7 +45,7 @@ public interface MainFeedService {
 	Board selectOne(int boardNo);
 
 
-	int feedLikeCheck(Member memberNo);
+	int feedLikeCheck(Map<String, Object> map);
 
 
 
