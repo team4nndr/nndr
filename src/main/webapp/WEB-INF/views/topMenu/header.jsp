@@ -93,10 +93,10 @@
 
             <div id="nndrDropBtn2" class="nndr-dropdown-button">
             <c:if test="${empty loginMember.profileImage}">
-                <img src="/resources/images/common/user-default.png" class="reply-profile-image" id="nndrImage4">
+                <img src="/resources/images/common/user-default.png" class="top-profile-image" id="nndrImage4">
             </c:if>
             <c:if test="${not empty loginMember.profileImage}">
-                <img class="reply-profile-image" src="${loginMember.profileImage}">
+                <img class="top-profile-image" src="${loginMember.profileImage}">
             </c:if>
             </div>
 

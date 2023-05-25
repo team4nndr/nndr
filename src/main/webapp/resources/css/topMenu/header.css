@@ -593,3 +593,8 @@
     .hidden {
         display: none !important;
     }
+
+/* 상단바 프로필 이미지 */
+.top-profile-image {
+    border-radius: 50px;
+}
