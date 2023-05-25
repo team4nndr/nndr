@@ -17,23 +17,18 @@ const sendFriendReq = () => {
 }
 
 // 친구신청 알람 발송
-function sendFriendAlarm() {
-    const senderMemberNo = document.getElementById("memberInfo").dataset.sender;
-    const senderProfile = document.getElementById("memberInfo").dataset.profile;
-    const senderName = document.getElementById("memberInfo").dataset.sendername;
-    const memberNo = document.getElementById("memberInfo").dataset.reciver;
-    const content = document.getElementById("perAddFriend").innerText;
-    console.log(content)
+function sendFriendAlarm(memberNo) {
+    
     var obj = {
-        "profileImage": senderProfile,
-        "link": "/personalFeed/" + senderMemberNo,
-        "message" : senderName+"님이 친구 신청을 하셨습니다."
+        "profileImage": profileImage,
+        "link": "/personalFeed/" + loginMemberNo,
+        "message" : loginMemberName+"님이 친구 신청을 하셨습니다."
     }
     
 	var alarm = {
 		"memberNo": memberNo,
         "alarmContent" : makeAlarm(obj),
-        "type" : "FRIEND_ACCEPT"
+        "type" : "FRIEND_REQ"
     }
 
 	// JSON.stringify() : 자바스크립트 객체를 JSON 문자열로 변환
@@ -42,7 +37,7 @@ function sendFriendAlarm() {
 }
 
 // 친구 됨 알람 발송
-function sendFriendAcceptAlarm() {
+function sendFriendAcceptAlarm(memberNo) {
     var obj = {
         "profileImage": profileImage,
         "link": "/personalFeed/" + loginMemberNo,
@@ -56,7 +51,7 @@ function sendFriendAcceptAlarm() {
     }
 
 	// JSON.stringify() : 자바스크립트 객체를 JSON 문자열로 변환
-    console.log(alarm);
+    // console.log(alarm);
 	alarmSock.send(JSON.stringify(alarm));
 }
 
@@ -105,7 +100,10 @@ if (document.getElementById("perAddFriend") != null) {
 			perAddFriend.classList.remove('noFriend')
 			perAddFriend.classList.remove('friendAccept');
             perAddFriend.classList.add('friendDel');
-            sendFriendAcceptAlarm();
+
+            // 친구신청 알람 발송
+            const memberNo = document.getElementById("memberInfo").dataset.reciver;
+            sendFriendAcceptAlarm(memberNo);
             return;
         }
         if(perAddFriend.classList.contains('noFriend')){ 
@@ -118,7 +116,10 @@ if (document.getElementById("perAddFriend") != null) {
             perAddFriend.innerText ="신청 취소";
             perAddFriend.classList.remove('noFriend');
             perAddFriend.classList.add('friendAdd')
-            sendFriendAlarm(); // 친구신청 알람 발송
+
+             // 친구신청 알람 발송
+            const memberNo = document.getElementById("memberInfo").dataset.reciver;
+            sendFriendAlarm(memberNo);
             return;
         }
     })
@@ -205,9 +206,6 @@ if (pnext != null) {
 }
 
 
-
-
-
    // 슬라이드
 
 if (document.getElementById("choback") != null) {
@@ -271,7 +269,6 @@ Array.from( document.getElementsByClassName("backi")).forEach((target) => target
 )
 
 function cvCho(target){		
-    // const cvCho = new Map([["boardNo", target.dataset.memberno],["imgPath", target.dataset.imgpath],["imgRename", target.dataset.imgrename]]);
     const memberNo = target.dataset.memberno;
     const imgPath = target.dataset.imgpath
     const imgRename = target.dataset.imgrename
@@ -289,22 +286,6 @@ function cvCho(target){
     document.getElementById("back-modali").style.display="none";
 
 };   
-
-
-
-// if(document.getElementById("uploadback") != null){
-//     document.getElementById("uploadback").addEventListener("click", () => {
-//         const personalCanFriend = new Array(perAddFriend.dataset.seno, perAddFriend.dataset.reno);
-//         fetch("/personalCanFriend?personalCanFriend="+personalCanFriend)  
-//         .then(response => response.text()) 
-//         .then(() => {
-//         }) 
-//         .catch (e => { console.log(e)}); 
-//         perAddFriend.innerText ="친구 추가";
-//         perAddFriend.classList.remove('friendAdd');
-//         return;
-//     })
-// }
 
 if(document.getElementById("delback") != null){
     document.getElementById("delback").addEventListener("click", () => {
@@ -355,6 +336,9 @@ function pcvCho(target){
     const memberNo = target.dataset.memberno;
     const imgPath = target.dataset.imgpath
     const imgRename = target.dataset.imgrename
+
+    // 프로필사진 변경 시 전역변수 동기화
+    profileImage = imgPath + imgRename;
 
 
 console.log(pcvCho)

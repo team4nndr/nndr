@@ -32,7 +32,8 @@ function convertMention(originReply) {
             mark.innerText = obj.name;
     
             replyContent = replyContent.replace('@' + obj.name, mark.outerHTML);
-        }    }
+        }    
+    }
     return replyContent;
 }
 

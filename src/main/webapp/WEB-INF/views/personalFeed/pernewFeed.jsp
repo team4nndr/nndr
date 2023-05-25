@@ -2,22 +2,20 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <section>
-        <form action="insertContent" method="post" id="boardWriteFrm" enctype="multipart/form-data">
+        <form action="perInsertContent" method="post" id="boardWriteFrm" enctype="multipart/form-data">
 
             <%-- 모달 --%>
             <div id="myContent"></div> 
             <div id="myContent-modal">
             
             <section id="modalTop">
-            <span class="title">게시물 만들기</span>
+            <span class="title">게시물 만들기</span>${infoMember.memberNo}
 
             
             <button type="button" class="close cancelBtn" id="cancelBtn"></button>
             
 
             </section>
-
-
             <div>
             <section id="modal-my1">
                 <a href="/personalFeed/${loginMember.memberNo}">
@@ -36,7 +34,7 @@
             <section id="modal-my2"> 
 
             <section>
-            <span><a href="/personalFeed/${loginMember.memberNo}" class="change">${loginMember.memberName}</a></span>
+                <span><a href="/personalFeed/${loginMember.memberNo}" class="change">${loginMember.memberName}</a></span>
             </section>
 
 

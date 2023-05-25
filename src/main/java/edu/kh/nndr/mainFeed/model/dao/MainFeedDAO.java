@@ -7,6 +7,7 @@ import java.util.Map;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+import org.springframework.web.multipart.MultipartFile;
 
 import edu.kh.nndr.mainFeed.model.dto.Board;
 import edu.kh.nndr.mainFeed.model.dto.Image;
@@ -130,7 +131,7 @@ public class MainFeedDAO {
 	    */
 	   public List<Board> personalFeedList(int no) {
 	      return sqlSession.selectList("mainFeedMapper.personalFeedList",(no));
-	   }
+	}
 	
 	
 	

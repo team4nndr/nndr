@@ -113,6 +113,7 @@ function submitReply(boardNo, parentReplyNo, btn) {
         if(result > 0) {
             printReplyList(boardNo);
             sendReplyalarm(boardNo); // 피드 작성자에게 알림 발송
+            sendMentionAlarm(boardNo); // 멘션 대상자에게 알림 발송
             textarea.value = "";
         } else {
             alert('댓글 작성 실패');
