@@ -66,6 +66,13 @@
                 </c:if>
             </div>
             <hr class="feed-hr">
+
+            <%-- 좋아요 카운트 --%>
+            <section class="likeCount">
+                        <span>${board.likeCount}</span> 
+            </section>
+
+            <hr class="feed-hr">
             
 
             <!--  나의 게시물 좋아요, 댓글달기, 공유하기 -->

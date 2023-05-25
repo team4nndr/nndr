@@ -233,9 +233,9 @@ public class MainFeedServiceImpl implements MainFeedService {
 	
 	
 	@Override
-	public int feedLikeCheck(Member memberNo) {
+	public int feedLikeCheck(Map<String, Object> map) {
 		
-		return dao.feedLikeCheck(memberNo);
+		return dao.feedLikeCheck(map);
 	}
 
 	
