@@ -34,10 +34,10 @@
                         <h4>&nbsp;&nbsp; 알 수도 있는 사람</h4>
                     </div>
                     <div class="item1-3">
-                        <c:forEach items="${friendList}" var="i" begin="0" end="2">
+                        <c:forEach items="${friendSuggestion}" var="i" begin="0" end="2">
                             <c:if test="${empty i.profileImage}">
                                 <div class="who">
-                                    <a href="/personalFeed/${i.memberNo}">
+                                    <a href="/personalFeed/${i.memberNo}" class="aTag">
                                         <div class="who-pic"><img class="who-pic" src="/resources/images/common/user-default.png" alt="로고"></div>
                                         <div class="who-name">${i.memberName}</div>
                                     </a>
@@ -48,7 +48,7 @@
                             </c:if>
                             <c:if test="${not empty i.profileImage}">
                                 <div class="who">
-                                    <a href="/personalFeed/${i.memberNo}">
+                                    <a href="/personalFeed/${i.memberNo}"  class="aTag">
                                         <div class="who-pic"><img class="who-pic" src="${i.profileImage}" alt="로고"></div>
                                         <div class="who-name">${i.memberName}</div>
                                     </a>
