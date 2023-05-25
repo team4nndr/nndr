@@ -10,128 +10,135 @@ search.addEventListener("input", e => {
 
     // e.target.preventDefault();
     const input_value = e.target.value.trim();
-    
+
 
     // 입력된 값이 없을 때
-    if(input_value.length === 0) {
+    if (input_value.length === 0) {
         suggestion_pannel.innerHTML = "";
         return;
     }
 
-    
+
     // #으로 시작하는 검색어인 경우
     if (input_value.startsWith("#") && input_value.length > 1) {
         console.log(input_value);
         var query = input_value.replace("#", "%23");
         fetch("/mainFeed/getTags?query=" + query)
-        .then(resp => resp.json())
-        .then(tagList => {
-    
+            .then(resp => resp.json())
+            .then(tagList => {
+
                 console.log(tagList);
                 suggestion_pannel.innerHTML = ""; // 이전 검색 결과 비우기
-                
-                if(tagList.length == 0){
+
+                if (tagList.length == 0) {
                     const div = document.createElement("div");
                     div.classList.add("result");
                     div.innerText = "일치하는 태그가 없습니다.";
                     div.style = "padding-top: 15px;"
                     suggestion_pannel.appendChild(div);
                 }
-                
-                
-                for(let tags of tagList) {
+
+
+                for (let tags of tagList) {
                     const div = document.createElement("div");
                     div.classList.add("result");
                     div.setAttribute("hashTags", tags.hashtagKeyword);
 
 
-                    if(query.toLowerCase().startsWith(query.toLowerCase())) {
-                        
+                    if (query.toLowerCase().startsWith(query.toLowerCase())) {
+
                         let div = document.createElement("div");
                         const query = input_value.replace("%23", "#");
                         div.innerHTML = query;
                         div.style = "padding-top: 15px;"
                         suggestion_pannel.appendChild(div);
-    
+
                         div.onclick = () => {
                             const query = input_value.replace("%23", "#");
                             // query = div.innerHTML;
                             suggestion_pannel.innerHTML = "";
 
-                            
+
                             return;
                         };
                     }
                 }
-        });
+            });
 
-    }  else {
+    } else {
 
         console.log(input_value);
         var fName = input_value;
         fetch("/mainFeed/friendNameList?fName=" + fName)
-        .then(resp => resp.json())
-        .then(friendNameList => {
+            .then(resp => resp.json())
+            .then(friendNameList => {
 
-            console.log(friendNameList);
-            suggestion_pannel.innerHTML = "";
+                console.log(friendNameList);
+                suggestion_pannel.innerHTML = "";
 
-            if(friendNameList.length == 0){
-                const div = document.createElement("div");
-                div.classList.add("result");
-                div.innerText = "일치하는 검색어가 없습니다.";
-                div.style = "padding-top: 15px;"
-                suggestion_pannel.appendChild(div);
-            }
-
-            for(let names of friendNameList) {
-                if(names.memberNo == loginMemberNo) continue;
-
-                const div = document.createElement("div");
-                div.classList.add("result");
-                div.setAttribute("names", names.memberNo);
-                
-                const img = document.createElement("img");
-                
-                if(fName.toLowerCase().startsWith(fName.toLowerCase())) {
-                    
-                    let div = document.createElement("div");
-                    div.classList.add("search-content");
-                    
-                    let p = document.createElement("p");
-                    p.classList.add("search-fName");
-                    
-                    let img = document.createElement("img");
-                    img.classList.add("memberProfileImage");
-                    
-                    
-                    const fName = names.memberName;
-                    p.innerHTML = fName;
-                    div.append(p);
-                    div.prepend(img);
+                if (friendNameList.length == 0) {
+                    const div = document.createElement("div");
+                    div.classList.add("result");
+                    div.innerText = "일치하는 검색어가 없습니다.";
+                    div.style = "padding-top: 15px;"
                     suggestion_pannel.appendChild(div);
-
-                    if(names.profileImage != null){
-                        img.setAttribute("src", names.profileImage);
-                    }else{
-                        img.setAttribute("src", "/resources/images/common/user-default.png");
-                    }
-
-                    div.onclick = () => {
-                        const fName = input_value;
-                        // fName = div.innerHTML;
-                        // suggestion_pannel.innerHTML = "";
-                        location.href = "/personalFeed/" + names.memberNo;
-                        return;
-                    };
                 }
-            }
-        });
+
+                for (let names of friendNameList) {
+                    if (names.memberNo == loginMemberNo) continue;
+
+                    const div = document.createElement("div");
+                    div.classList.add("result");
+                    div.setAttribute("names", names.memberNo);
+
+                    const img = document.createElement("img");
+
+                    if (fName.toLowerCase().startsWith(fName.toLowerCase())) {
+
+                        let div = document.createElement("div");
+                        div.classList.add("search-content");
+
+                        let p = document.createElement("p");
+                        p.classList.add("search-fName");
+
+                        let img = document.createElement("img");
+                        img.classList.add("memberProfileImage");
+
+                        // if (friendNameList.length > 10) {
+                        //     div.style.overflow = "auto";
+                        //     suggestion_pannel.style.height = "100%";
+                        //     return;
+                        // }
+
+
+                        const fName = names.memberName;
+                        p.innerHTML = fName;
+                        div.append(p);
+                        div.prepend(img);
+                        suggestion_pannel.appendChild(div);
+
+                        if (names.profileImage != null) {
+                            img.setAttribute("src", names.profileImage);
+                        } else {
+                            img.setAttribute("src", "/resources/images/common/user-default.png");
+                        }
+
+
+                        div.onclick = () => {
+                            const fName = input_value;
+                            // fName = div.innerHTML;
+                            // suggestion_pannel.innerHTML = "";
+                            location.href = "/personalFeed/" + names.memberNo;
+                            return;
+                        };
+                    }
+                }
+            });
 
     }
 
-    if(input_value.length > 1) {}
-    
+    if (input_value.length > 1) { }
+
     if (input_value == "") {
         suggestion_pannel.innerHTML = "";
     }
