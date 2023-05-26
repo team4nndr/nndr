@@ -152,40 +152,8 @@
                         <button class="info-2-1" type="button" data-map="INFO_SNS">(+) 소셜 링크 추가</button>
                         <button class="info-2-1" type="button" data-map="INFO_LANG">(+) 언어 추가</button>
                         <button class="info-2-1" type="button" data-map="INFO_GENDER">(+) 성별 추가</button>
-                        <button class="info-2-1" type="button" data-map="INFO_BIRTH">(+) 생일 추가</button>
+                        <%-- <button class="info-2-1" type="button" data-map="INFO_BIRTH">(+) 생일 추가</button> --%>
                     </div>
-                </div>
-                <div class="info-experience-5">
-                    <h2>가족 및 결혼/연애 상태</h2>
-                    <div class="infoText">
-                        <div id="info_romantic">
-                            <div >연애/결혼 분류
-                                <div href="#">연애/결혼 상대방</div>
-                                <div>연애/결혼 시작일</div>
-                            </div>
-                            <div id="info_fam">
-                                <a href="#">가족 이름</a>-<div>가족 관계</div>
-                            </div>
-                        </div>
-                    </div>
-                    <br>
-                    <div id="info-input">
-                        <form action="">
-                            <textarea name="" id="intro-text" cols="50" rows="3"></textarea><br>
-                            <div id="texta"></div>
-                            <div id="public">
-                                <div>&nbsp;전체 공개</div>
-                                <div id="btn-set">
-                                <button class="in-btn" id="intro-can" type="button" onclick="infoCan()">취소</button>
-                                <button class="in-btn" id="intro-save" type="button" >저장</button>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-                    <div class="infom">
-                        <button class="romantic" type="button" data-map="ROMANTIC_YN">(+) 결혼/연애 상태 추가</button>
-                        <button class="info-2-1" type="button" data-map="">(+) 가족 추가</button>
-                    </div>  
                 </div>
                 <div class="info-experience-6">
                     <h2>자세한 내 소개</h2>

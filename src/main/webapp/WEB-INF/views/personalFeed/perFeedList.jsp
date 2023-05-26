@@ -5,6 +5,8 @@
 <link rel="stylesheet" href="/resources/css/mainFeed/reply.css">
 <link rel="stylesheet" href="/resources/css/mainFeed/mention.css">
 
+<script src="https://kit.fontawesome.com/f7459b8054.js" crossorigin="anonymous"></script>
+
     <%-- 피드 목록 --%>
     <c:forEach items="${boardList}" var="board">
         <div class="feed">
@@ -72,13 +74,26 @@
 
             <!--  나의 게시물 좋아요, 댓글달기, 공유하기 -->
             <section class="like">
-                <div><img src="/resources/images/mainFeed/mainLike.png">좋아요</div>
+            
+                    <div class="likeBtn">
+                        <c:if test="${board.boardCount == 0}">
+                        <i class="fa-regular fa-thumbs-up boardLike" data="${board.boardNo}"></i>
+                        </c:if>
+
+                        <%-- board.boardCount == 1 --%>
+                        <c:if test="${board.boardCount == 1}" >
+                        <i class="fa-solid fa-thumbs-up boardLike" data="${board.boardNo}"></i>
+                        </c:if>
+                
+        
+                <%-- <img src="/resources/images/mainFeed/mainLike.png"> --%>
+                좋아요</div>   
+                
                 <div onclick="replyFocus(${board.boardNo})"><img src="/resources/images/mainFeed/mainReply.png">댓글 달기</div>
-                <div><img src="/resources/images/mainFeed/mainNext.png">공유하기</div>
+                <%-- <div><img src="/resources/images/mainFeed/mainNext.png">공유하기</div> --%>
             </section>
 
             <hr class="feed-hr">
-
             <!-- 댓글 목록  -->
             <section class="reply-container board${board.boardNo}">
                 <c:forEach items="${board.replyList}" var="reply">
