@@ -17,7 +17,8 @@
 .reply-profile-image {
     height: 32px;
     width: 32px;
-    border-radius: 50px;   
+    border-radius: 50px;
+    pointer-events: none;
 }
 
 /* 댓글 목록 */
@@ -40,6 +41,11 @@
 .reply-name {
     font-size: 0.8rem;
     font-weight: bold;
+    text-decoration: none;
+    color: black;
+}
+.reply-name:hover {
+    text-decoration: underline;
 }
 .reply-content {
     font-size: 0.9rem;

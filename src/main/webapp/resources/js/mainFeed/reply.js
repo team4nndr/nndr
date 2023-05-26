@@ -174,9 +174,10 @@ function printReplyList(boardNo) {
             const bubble = document.createElement('div');
             bubble.classList.add('reply-bubble');
 
-            const name = document.createElement('p');
+            const name = document.createElement('a');
             name.classList.add('reply-name');
             name.innerText = re.memberName;
+            name.href = "/personalFeed/" + re.memberNo;
 
             const content = document.createElement('p');
             content.classList.add('reply-content');
