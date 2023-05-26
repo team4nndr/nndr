@@ -351,7 +351,7 @@ console.log(pcvCho)
     document.getElementById("profile-modali").style.display="none";
 
     
-    // document.getElementById("nndrImage4").src = imgPath+imgRename;
+    document.getElementById("nndrImage4").src = imgPath+imgRename;
     document.getElementById("homeLogo").src = imgPath+imgRename;
     document.getElementById("cv-set").style.display = "none";
 };   
