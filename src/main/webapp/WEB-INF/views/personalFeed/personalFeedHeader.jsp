@@ -66,7 +66,7 @@
                                     </c:if>
                                 </c:if>
                                 <c:if test="${empty friendcheck}">
-                                    <div class ="storypuls noFriend" id="c"data-seNo="${loginMember.memberNo}" data-reNo="${infoMember.memberNo}">친구 추가</div>
+                                    <div class ="storypuls noFriend" id="perAddFriend"data-seNo="${loginMember.memberNo}" data-reNo="${infoMember.memberNo}">친구 추가</div>
                                 </c:if>
                             </c:if>
                             <c:if test="${personalInfo.setFriendReq eq 'N'}">
