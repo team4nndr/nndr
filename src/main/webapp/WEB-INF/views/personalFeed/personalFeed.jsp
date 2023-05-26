@@ -111,11 +111,9 @@
                                 <h3 id=zzs>관심있는 취미</h3>
                                 <div id="dhho" style="display:none">
                                     <c:forEach items="${hobbyList}" var="hobby">${hobby.hobby}　</c:forEach>
-                                <div id="myhho">
                                 </div>
-                                    <c:if test="${not empty perHobbyList}" >
-                                        <c:forEach items="${perHobbyList}" var="hobby">${hobby.hobby}　</c:forEach>
-                                    </c:if>
+                                <div id="myhho">
+                                    <c:forEach items="${perHobbyList}" var="hobby">${hobby.hobby}　</c:forEach>
                                 </div>
                             </div>
                             <c:if test="${infoMember.memberNo eq loginMember.memberNo}" > 
