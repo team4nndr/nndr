@@ -55,11 +55,10 @@ public class AlarmWebsocketHandler extends TextWebSocketHandler {
     	
         // 상대방에게 전달(1:1)
         for(WebSocketSession s : sessions) {
-            int loginMemberNo = ((Member)s.getAttributes().get("loginMember")).getMemberNo();
-            ((List<Alarm>)s.getAttributes().get("alarmList")).add(alarm);
-            
+            int loginMemberNo = ((Member)s.getAttributes().get("loginMember")).getMemberNo();            
             if(loginMemberNo == alarm.getMemberNo()) {
                 s.sendMessage(new TextMessage(new Gson().toJson(alarm)));
+                ((List<Alarm>)s.getAttributes().get("alarmList")).add(alarm);
                 break;
             }
         }
