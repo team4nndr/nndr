@@ -4,10 +4,15 @@
 const openBtn = document.getElementById('openBtn');
 
 // 닫기 버튼
-const closeBtn = document.getElementById('closeBtn');
+const remove = document.getElementById('remove');
 
 // modal 창
 const modal = document.getElementById('modal');
+
+// input 태그 
+const inputList = document.getElementsByTagName("input");
+
+
 
 // nav 요소
 // const nav = document.querySelector('nav');
@@ -20,6 +25,18 @@ openBtn.addEventListener("click", () => {
 // 닫기 버튼을 누르면 nav의 display가 none으로 변경
 remove.addEventListener("click", function () {
     modal.style.display = "none";
+    for(let input of inputList) {
+        input.value = "";
+    }
+
+    document.getElementById("birthday").value = "selected";
+    document.getElementById("month").value = "selected";
+    document.getElementById("day").value = "selected";
+    var radio = document.querySelector('input[type=radio][name=InfoGender]:checked');
+    radio.checked = false;
+   
+
+    return;
 });
 
 // 이름 느낌표 표시 
@@ -86,6 +103,8 @@ memberEmail.addEventListener("input", ()=>{
                 checkObj.memberEmail = false;
                 bangWarn1.classList.remove('hidden');
             }
+
+            
             
         })
 
@@ -96,6 +115,8 @@ memberEmail.addEventListener("input", ()=>{
         checkObj.memberEmail = false
         bangWarn1.classList.remove('hidden');
     }
+
+
 });
 
 

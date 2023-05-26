@@ -89,7 +89,7 @@ sendAuthKeyBtn.addEventListener("click", function(){
 
     checkObj.authKey = false;
 
-    if(checkObj.emailCheck){ // 중복이 아닌 이메일인 경우
+    if(!checkObj.emailCheck){ // 비밀찾기의 이메일등록 되어있다면
 
 
     /* fetch() API 방식 ajax */
@@ -134,10 +134,7 @@ sendAuthKeyBtn.addEventListener("click", function(){
 
         }, 1000)
     
-    } else{
-        alert("중복되지 않은 이메일을 작성해주세요.");
-        emailCheck.focus();
-    }
+    } 
 
 
 });
