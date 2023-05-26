@@ -119,7 +119,7 @@
                         </c:if>
                         <div class="reply-body">
                             <div class="reply-bubble">
-                                <p class="reply-name">${reply.memberName}</p>
+                                <a class="reply-name" href="/personalFeed/${reply.memberNo}">${reply.memberName}</a>
                                 <p class="reply-content">${reply.replyContent}</p>
                             </div>
                             <div class="reply-footer">
