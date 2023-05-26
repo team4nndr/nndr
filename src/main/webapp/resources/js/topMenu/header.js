@@ -87,6 +87,7 @@ search.addEventListener("input", e => {
 
                         let div = document.createElement("div");
                         const query = input_value;
+                        div.innerHTML = board.boardText;
                         div.style = "padding-top: 15px;"
                         
                         suggestion_pannel.appendChild(div);
@@ -98,7 +99,6 @@ search.addEventListener("input", e => {
                             location.href = "/matchingList/" + query;
 
                             return;
-                    
                         };
                     }
                 }
@@ -106,7 +106,7 @@ search.addEventListener("input", e => {
 
 
         } else {
-// 일반 검색어 (멤버 검색)
+        // 일반 검색어 (멤버 검색)
         suggestion_pannel.style.display = "block";
         console.log(input_value);
         var fName = input_value;
