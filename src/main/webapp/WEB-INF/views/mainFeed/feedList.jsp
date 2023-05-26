@@ -95,7 +95,7 @@
                 좋아요</div>   
                 
                 <div onclick="replyFocus(${board.boardNo})"><img src="/resources/images/mainFeed/mainReply.png">댓글 달기</div>
-                <div><img src="/resources/images/mainFeed/mainNext.png">공유하기</div>
+                <%-- <div><img src="/resources/images/mainFeed/mainNext.png">공유하기</div> --%>
             </section>
 
             <hr class="feed-hr">

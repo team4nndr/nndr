@@ -28,12 +28,12 @@
                 <span>친구</span>
             </a>
         </li>
-        <li>
+        <%-- <li>
             <a href="#">
                 <img src="/resources/images/mainFeed/archive.png">
                 <span>내가 저장한 피드</span>
             </a>
-        </li>
+        </li> --%>
         <hr class="sidebar-hr">
         <li>
             <a href="https://github.com/team4nndr/nndr">
