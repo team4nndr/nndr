@@ -295,9 +295,16 @@ CREATE SEQUENCE SEQ_HOBBY_NO NOCACHE;
 SELECT * FROM 'MEMBER' WHERE MEMBER_EMAIL ='peter9217@naver.com'; 
 SELECT * FROM MEMBER WHERE MEMBER_ ='peter9217@naver.com'; 
 
+SELECT * FROM "MEMBER";
 SELECT * FROM "MEMBER_HOBBY";
 SELECT  MEMBER_NO, DISTINCT(HOBBY) FROM MEMBER_HOBBY WHERE MEMBER_NO =2;
-INSERT INTO "MEMBER_HOBBY" VALUES(SEQ_HOBBY_NO.NEXTVAL, 1, '보드게임');INSERT INTO "MEMBER_HOBBY" VALUES(SEQ_HOBBY_NO.NEXTVAL, 2, '족구');
+INSERT INTO "MEMBER_HOBBY" VALUES(SEQ_HOBBY_NO.NEXTVAL, 1, '보드게임');
+
+
+INSERT INTO "MEMBER_HOBBY" VALUES(SEQ_HOBBY_NO.NEXTVAL, 4, '여행');
+
+INSERT INTO "MEMBER_HOBBY" (MEMBER_NO)
+VALUES (SEQ_MEMBER_NO.CURRVAL);
 
 
 BEGIN
@@ -343,6 +350,34 @@ INSERT INTO
 	WHEN (SELECT SET_AL_FRIEND_REQ FROM "MEMBER" m WHERE MEMBER_NO = 2)='Y' THEN 
 		INTO  VALUES (SEQ_ALARM_NO.NEXTVAL, 'content', DEFAULT, DEFAULT, 2);
 ;
+
+
+INSERT INTO "MEMBER" 
+VALUES(
+	SEQ_MEMBER_NO.NEXTVAL, 	-- 회원번호
+	'pertest2@naver.com', 					-- 이메일
+	'$2a$10$DOTDled.2j4/7uWiWgsxGOBFSaLXaHGFpQdbJqFKIl3XWl84sMevG', 			-- 비밀번호
+	'장반석',	 					-- 이름
+	'01072610107',						-- 전화번호
+	DEFAULT, 				-- 계정상태(N:정상(기본), B:비활성, D:탈퇴)
+	DEFAULT, 				-- 가입일(기본:SYSDATE)
+	NULL, 					-- 비활성화일
+	NULL, 					-- 탈퇴일
+	DEFAULT, 				-- 친구요청(N:OFF, Y:ON(기본))
+	DEFAULT, 				-- 개인피드설정(A:모두(기본), F:친구만, M:나만)
+	DEFAULT, 				-- 친구요청알림(N:OFF, Y:ON(기본))
+	DEFAULT, 				-- 친구신청수락알림(N:OFF, Y:ON(기본))
+	DEFAULT, 				-- 태그알림(N:OFF, Y:ON(기본))
+	DEFAULT, 				-- 게시글댓글알림(N:OFF, Y:ON(기본))
+	DEFAULT, 				-- 게시글좋아요알림(N:OFF, Y:ON(기본))
+	DEFAULT, 				-- 게시글공유알림(N:OFF, Y:ON(기본))
+	DEFAULT					-- 개인피드갱신알림(N:OFF, Y:ON(기본))
+);
+
+
+INSERT INTO "MEMBER_INFO" (MEMBER_NO)
+VALUES (SEQ_MEMBER_NO.CURRVAL);
+
 
 
 

@@ -4,6 +4,7 @@
 
 <link rel="stylesheet" href="/resources/css/mainFeed/reply.css">
 <link rel="stylesheet" href="/resources/css/mainFeed/mention.css">
+<link rel="stylesheet" href="/resources/css/personalFeed/perFeedList.css">
 
 <script src="https://kit.fontawesome.com/f7459b8054.js" crossorigin="anonymous"></script>
 
@@ -33,7 +34,7 @@
                             <a href="/personalFeed/${board.memberNo}" class="name change">${board.memberName}</a>
                         </c:if>
                         <c:if test="${board.memberNo ne infoMember.memberNo}">
-                            <a href="/personalFeed/${board.memberNo}" class="name change">${board.memberName} ▷▷ ${infoMember.memberName}</a> 
+                            <div><a class="perFeedList" href="/personalFeed/${board.memberNo}" class="name change">${board.memberName}</a>  ▷▷ <a class="perFeedList" href="/personalFeed/${infoMember.memberNo}">${infoMember.memberName}</a> </div>
                         </c:if>
                         <a class="date change">${board.uploadDate}</a>
                     </div>
