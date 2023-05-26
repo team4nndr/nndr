@@ -246,12 +246,12 @@ function showReplyForm(boardNo, replyNo, btn) {
     form.classList.add('re-reply');
 
     const img = document.createElement('img');
-    if(profileImage != null) {
-        img.setAttribute('src', profileImage);
-    } else {
-        img.setAttribute('src', "/resources/images/common/user-default.png");
-    }
     img.classList.add('reply-profile-image');
+    if(profileImage == null || profileImage.trim().length == 0) {
+        img.setAttribute('src', '/resources/images/common/user-default.png');
+    } else {
+        img.setAttribute('src', profileImage);
+    }
 
     const div1 = document.createElement('div');
     div1.classList.add('reply-body');
@@ -319,10 +319,10 @@ function showUpdateForm(boardNo, replyNo, btn) {
     if(origin.classList.contains('re-reply')) form.classList.add('re-reply');
     
     const img = document.createElement('img');
-    if(profileImage != null) {
-        img.setAttribute('src', profileImage);
+    if(profileImage == null || profileImage.trim().length == 0) {
+        img.setAttribute('src', '/resources/images/common/user-default.png');
     } else {
-        img.setAttribute('src', "/resources/images/common/user-default.png");
+        img.setAttribute('src', profileImage);
     }
     img.classList.add('reply-profile-image');
     
