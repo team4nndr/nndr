@@ -95,7 +95,7 @@
                 <img src="/resources/images/common/user-default.png" class="top-profile-image" id="nndrImage4">
             </c:if>
             <c:if test="${not empty loginMember.profileImage}">
-                <img class="top-profile-image" src="${loginMember.profileImage}">
+                <img class="top-profile-image" id="nndrImage4" src="${loginMember.profileImage}">
             </c:if>
             </div>
 
