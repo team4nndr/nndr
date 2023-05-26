@@ -59,7 +59,7 @@ search.addEventListener("input", e => {
 
     // 검색어와 일치하는 게시글 불러오기
 
-    if (input_value.startsWith("") && input_value.length > 1) {
+    if (input_value.length > 1) {
         suggestion_pannel.style.display = "block";
         // console.log(input_value);
         var query = input_value;
