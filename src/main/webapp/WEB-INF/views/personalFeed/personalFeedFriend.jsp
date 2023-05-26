@@ -29,7 +29,7 @@
                             <div id="na"><h2>친구</h2></div>
                             <div id="imBtn"><a class="info-2-1  aTag" href="/friend/recom">친구추가</a></div>
                         </div>
-                            <c:forEach items="${friendList}" var="i" begin="0" end="2">
+                            <c:forEach items="${friendList}" var="i">
                                 <c:if test="${empty i.profileImage}">
                                     <a href="/personalFeed/${i.memberNo}"  class="aTag">
                                         <div class="who">
