@@ -59,119 +59,118 @@ search.addEventListener("input", e => {
 
     // 검색어와 일치하는 게시글 불러오기
 
-    if (input_value.length >  2) {
+    // 멤버 검색
+    if (input_value.startsWith("@") && input_value.length >= 2) {  
+
+        suggestion_pannel.style.display = "block";
+        var fName = input_value.substring(1);
+        console.log("친구검색: " + fName);
+        fetch("/mainFeed/friendNameList?fName=" + fName)
+        .then(resp => resp.json())
+        .then(friendNameList => {
+
+            console.log(friendNameList);
+            suggestion_pannel.innerHTML = "";
+
+            if (friendNameList.length == 0) {
+                const div = document.createElement("div");
+                div.classList.add("result");
+                div.innerText = "일치하는 검색어가 없습니다.";
+                div.style = "padding-top: 15px;"
+                suggestion_pannel.appendChild(div);
+            }
+
+            for (let names of friendNameList) {
+                if (names.memberNo == loginMemberNo) continue;
+
+                const div = document.createElement("div");
+                div.classList.add("result");
+                div.setAttribute("names", names.memberNo);
+
+                const img = document.createElement("img");
+
+                if (fName.toLowerCase().startsWith(fName.toLowerCase())) {
+
+                    let div = document.createElement("div");
+                    div.classList.add("search-content");
+
+                    let p = document.createElement("p");
+                    p.classList.add("search-fName");
+
+                    let img = document.createElement("img");
+                    img.classList.add("memberProfileImage");
+
+                
+                    const fName = names.memberName;
+                    p.innerHTML = fName;
+                    div.append(p);
+                    div.prepend(img);
+                    suggestion_pannel.appendChild(div);
+
+                    if (names.profileImage != null) {
+                        img.setAttribute("src", names.profileImage);
+                    } else {
+                        img.setAttribute("src", "/resources/images/common/user-default.png");
+                    }
+
+
+                    div.onclick = (e) => {
+                        // e.target.preventDefault();
+                        const fName = input_value;
+                        // fName = div.innerHTML;
+                        // suggestion_pannel.innerHTML = "";
+                        location.href = "/personalFeed/" + names.memberNo;
+                        return;
+                    };
+                }
+            }
+        });
+                    
+    // 일반 게시글 검색
+    } else {
         suggestion_pannel.style.display = "block";
         // console.log(input_value);
         var query = input_value;
         fetch("/mainFeed/boardList?query=" + query)
-            .then(resp => resp.json())
-            .then(boardList => {
+        .then(resp => resp.json())
+        .then(boardList => {
 
-                console.log(boardList);
-                suggestion_pannel.innerHTML = ""; // 이전 검색 결과 비우기
+            console.log(boardList);
+            suggestion_pannel.innerHTML = ""; // 이전 검색 결과 비우기
 
-                if (boardList.length == 0) {
-                    const div = document.createElement("div");
-                    div.classList.add("result");
-                    div.innerText = "일치하는 검색 결과가 없습니다.";
+            if (boardList.length == 0) {
+                const div = document.createElement("div");
+                div.classList.add("result");
+                div.innerText = "일치하는 검색 결과가 없습니다.";
+                div.style = "padding-top: 15px;"
+                suggestion_pannel.appendChild(div);
+            }
+
+            for (let board of boardList) {
+                const div = document.createElement("div");
+                div.classList.add("result");
+                div.setAttribute("matching", board.boardText);
+
+                if (query.toLowerCase().startsWith(query.toLowerCase())) {
+
+                    let div = document.createElement("div");
+                    const query = input_value;
+                    div.innerHTML = board.boardText;
                     div.style = "padding-top: 15px;"
-                    suggestion_pannel.appendChild(div);
-                }
-
-                for (let board of boardList) {
-                    const div = document.createElement("div");
-                    div.classList.add("result");
-                    div.setAttribute("matching", board.boardText);
-
-                    if (query.toLowerCase().startsWith(query.toLowerCase())) {
-
-                        let div = document.createElement("div");
-                        const query = input_value;
-                        div.innerHTML = board.boardText;
-                        div.style = "padding-top: 15px;"
-                        
-                        suggestion_pannel.appendChild(div);
-
-                        div.onclick = e => {
-                            const query = input_value;
-                            // query = div.innerHTML;
-                            suggestion_pannel.innerHTML = "";
-                            location.href = "/matchingList/" + query;
-
-                            return;
-                        };
-                    }
-                }
-            });
-
-
-        } else {
-        // 일반 검색어 (멤버 검색)
-        suggestion_pannel.style.display = "block";
-        console.log(input_value);
-        var fName = input_value;
-        fetch("/mainFeed/friendNameList?fName=" + fName)
-            .then(resp => resp.json())
-            .then(friendNameList => {
-
-                console.log(friendNameList);
-                suggestion_pannel.innerHTML = "";
-
-                if (friendNameList.length == 0) {
-                    const div = document.createElement("div");
-                    div.classList.add("result");
-                    div.innerText = "일치하는 검색어가 없습니다.";
-                    div.style = "padding-top: 15px;"
-                    suggestion_pannel.appendChild(div);
-                }
-
-                for (let names of friendNameList) {
-                    if (names.memberNo == loginMemberNo) continue;
-
-                    const div = document.createElement("div");
-                    div.classList.add("result");
-                    div.setAttribute("names", names.memberNo);
-
-                    const img = document.createElement("img");
-
-                    if (fName.toLowerCase().startsWith(fName.toLowerCase())) {
-
-                        let div = document.createElement("div");
-                        div.classList.add("search-content");
-
-                        let p = document.createElement("p");
-                        p.classList.add("search-fName");
-
-                        let img = document.createElement("img");
-                        img.classList.add("memberProfileImage");
-
                     
-                        const fName = names.memberName;
-                        p.innerHTML = fName;
-                        div.append(p);
-                        div.prepend(img);
-                        suggestion_pannel.appendChild(div);
+                    suggestion_pannel.appendChild(div);
 
-                        if (names.profileImage != null) {
-                            img.setAttribute("src", names.profileImage);
-                        } else {
-                            img.setAttribute("src", "/resources/images/common/user-default.png");
-                        }
+                    div.onclick = e => {
+                        const query = input_value;
+                        // query = div.innerHTML;
+                        suggestion_pannel.innerHTML = "";
+                        location.href = "/matchingList/" + query;
 
-
-                        div.onclick = (e) => {
-                            // e.target.preventDefault();
-                            const fName = input_value;
-                            // fName = div.innerHTML;
-                            // suggestion_pannel.innerHTML = "";
-                            location.href = "/personalFeed/" + names.memberNo;
-                            return;
-                        };
-                    }
+                        return;
+                    };
                 }
-            });
-            // e.target.preventDefault();
-
+            }
+        });
     }
 
     // 입력된 값이 없을 때
