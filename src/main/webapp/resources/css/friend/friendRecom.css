@@ -159,8 +159,8 @@ main {
     width: 280px;
 }
 .yesbtn {
-    width: 124px;
-    height: 36px;
+    width: 220px;
+    height: 34px;
     border-radius: 8px;
     background-color: #1B74E4;
     border: 0px;
@@ -171,7 +171,7 @@ main {
     margin-right: 10px;
 }
 
-.nobtn {
+/* .nobtn {
     width: 124px;
     height: 36px;
     border: 0px;
@@ -180,7 +180,7 @@ main {
     font-weight: bold;
     font-size: 16px;
     background-color: #E4E6EB;
-}
+} */
 
 .yesbtn:hover {
     background-color: #0e62d7;

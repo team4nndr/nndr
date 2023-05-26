@@ -39,18 +39,15 @@ function friendList() {
                 boxbtn.classList.add("boxbtn");
                 const yesbtn = document.createElement("button");
                 yesbtn.classList.add("yesbtn");
-                yesbtn.innerText = "확인";
-                yesbtn.setAttribute("onclick", "accept(" + f.friendNo + ")" );
-                const nobtn = document.createElement("button");
-                nobtn.classList.add("nobtn");
-                nobtn.innerText = "삭제";
-                nobtn.setAttribute("onclick", "exit(" + f.memberNo + ")" );
+                yesbtn.innerText = "친구 신청 보내기";
+                yesbtn.setAttribute("onclick", "accept(" + f.memberNo + ")" );
+
                 frtopdiv.append(proimg,frbox);
 
                 frbox.append(namecount);
                 
                 namecount.append(freindName,boxbtn);
-                boxbtn.append(yesbtn,nobtn);
+                boxbtn.append(yesbtn);
 
         
                 friendListElement.append(frtopdiv);
@@ -63,15 +60,14 @@ function friendList() {
         .catch(err => console.log(err));
 
 }
-function hideParentDiv(button, memberNo) {
-    // 버튼의 부모 div 요소 가져오기
-    var parentDiv = button.parentNode.parentNode.parentNode.parentNode;
+// function hideParentDiv(button, memberNo) {
+//     // 버튼의 부모 div 요소 가져오기
+//     var parentDiv = button.parentNode.parentNode.parentNode.parentNode;
 
-    // 부모 div 요소 숨기기
-    parentDiv.style.display = 'none';
-
-    // 선택적: 일정 시간(예: 3초)이 지난 후에 div를 다시 표시하려면 setTimeout 함수를 사용할 수 있습니다.
-        }
+//     // 부모 div 요소 숨기기
+//     // parentDiv.style.display = 'none';
+//     parentDiv.remove();
+//     }
 
 function friendPage(memberNo) {
     location.href= "/personalFeed/" + memberNo;
