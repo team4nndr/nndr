@@ -67,8 +67,6 @@ public class PersonalFeedController {
 			return path;
 		}
 		
-		model.addAttribute("infoMember", infoMember); // request scope
-
 		System.out.println(infoMember);
 		Map<String, Object> HobbyMap = service.selectHobbyList(no); 
 		model.addAttribute("HobbyMap", HobbyMap);

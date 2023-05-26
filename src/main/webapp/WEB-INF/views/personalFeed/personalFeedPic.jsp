@@ -30,7 +30,7 @@
                         <%-- <div id="imBtn"><button class="info-2-1">사진추가</button></div> --%>
                     </div>
                     <div id="imgset">
-                            <c:forEach items="${imgSet}" var="i" begin ="0" end="15">
+                            <c:forEach items="${imgSet}" var="i">
 
 
                                 <div><img src="${i.imgPath}${i.imgRename}" alt="" class="im" data-boardNo = "${i.boardNo}"></div>
