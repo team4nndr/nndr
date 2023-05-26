@@ -89,7 +89,7 @@ sendAuthKeyBtn.addEventListener("click", function(){
 
     checkObj.authKey = false;
 
-    if(!checkObj.emailCheck){ // 비밀찾기의 이메일등록 되어있다면
+    if(checkObj.emailCheck){ // 비밀찾기의 이메일등록 되어있다면
 
 
     /* fetch() API 방식 ajax */

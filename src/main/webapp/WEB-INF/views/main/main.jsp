@@ -70,11 +70,12 @@
                         <input type="email"  name="memberEmail" id="memberEmail" placeholder="이메일"
                                 maxlength="30" autocomplete="off">
 
-                        <button id="sendAuthKeyBtn" >인증번호 받기</button>
+                        <button type="button" id="sendAuthKeyBtn" >인증번호 받기</button>
                     <div class="box">
                         <div id="bangWarn3" class="hidden"><img src="/resources/images/topMenu/회원 가입 느낌표.png" alt=""></div>
                         <input type="text" name="authKey" id="authKey" placeholder="인증번호 입력" maxlength="6" autocomplete="off" >
-                    
+
+                        <%-- button의 기본 타입은 submit이기 때문에 type을 지정안하면 바로 제출해보리는 오류 발생 --%>
                         <button id="checkAuthKeyBtn" type="button">인증하기</button>
                     <div class="box">
                         <div id="bangWarn4" class="hidden"><img src="/resources/images/topMenu/회원 가입 느낌표.png" alt=""></div>
@@ -181,7 +182,13 @@
                     <div class="gender" name="memberGen">
                         성별
                     </div>
-                    <%-- radio 선택지는 하나 --%>
+                    <%-- radio 선택지는 하나
+                    
+                    
+                    
+                    ㅂ
+                    
+                     --%>
                     <span id="choose">
                         <label class="gender1" for="gen" >여성</label>
                         <input type="radio" name="InfoGender" value="여">
