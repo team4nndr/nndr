@@ -67,7 +67,8 @@ public class PersonalFeedController {
 			return path;
 		}
 		
-		System.out.println(infoMember);
+		model.addAttribute("infoMember", infoMember); // request scope
+
 		Map<String, Object> HobbyMap = service.selectHobbyList(no); 
 		model.addAttribute("HobbyMap", HobbyMap);
 		
@@ -82,6 +83,7 @@ public class PersonalFeedController {
 		
 		Member personalInfo = service.personalInfo(no);
 		model.addAttribute("personalInfo", personalInfo);
+		
 		
 
 		//personalBoardList
@@ -100,6 +102,7 @@ public class PersonalFeedController {
 		int friendCount = friendList.size();
 		model.addAttribute("friendList", friendList);
 		model.addAttribute("friendCount", friendCount);
+		System.out.println(friendList);
 		
 		//친구 추천 목록
 		Map<String, Object> params = new HashMap<>();
@@ -144,6 +147,7 @@ public class PersonalFeedController {
 			String[] subInfo = referer.split("/");
 		
 			int oth = Integer.parseInt(subInfo[4]); 
+			System.out.println(subInfo[4]);
 			
 			// 로그인한 회원 번호를 얻어와 board에 세팅
 			board.setMemberNo(loginMember.getMemberNo());
