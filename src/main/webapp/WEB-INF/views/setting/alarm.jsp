@@ -63,12 +63,12 @@
                         <div class="circle"></div>
                     </div>
                 </div>
-                <div class="content-list hover">
+                <%-- <div class="content-list hover">
                     회원님의 게시글이 공유되었을 때 알림 받기
                     <div class='toggle <c:if test="${loginMember.setAlarmShare eq 'Y'}" >checked</c:if>' key="SET_AL_SHARE">
                         <div class="circle"></div>
                     </div>
-                </div>
+                </div> --%>
             </div>
             <div class="content-box">
                 <div class="title">내 피드</div>
