@@ -62,21 +62,20 @@
                 <div id="box1">
                     <div class="box">
                         <div id="bangWarn2" class="hidden"><img src="/resources/images/topMenu/회원 가입 느낌표.png" ></div>
-                        <input type="text" id="memberName" name="memberName" placeholder="이름">
+                        <input type="text"  id="memberName" name="memberName" placeholder="이름">
                     </div>
                     <%-- id는 하나만 입력 가능 --%>
                     <div class="box">
                         <div id="bangWarn1" class="hidden"><img src="/resources/images/topMenu/회원 가입 느낌표.png" ></div>
-                        <input type="email" name="memberEmail" id="memberEmail" placeholder="이메일"
+                        <input type="email"  name="memberEmail" id="memberEmail" placeholder="이메일"
                                 maxlength="30" autocomplete="off">
 
-                        <button id="sendAuthKeyBtn" type="button">인증번호 받기</button>
+                        <button id="sendAuthKeyBtn" >인증번호 받기</button>
                     <div class="box">
                         <div id="bangWarn3" class="hidden"><img src="/resources/images/topMenu/회원 가입 느낌표.png" alt=""></div>
                         <input type="text" name="authKey" id="authKey" placeholder="인증번호 입력" maxlength="6" autocomplete="off" >
                     
                         <button id="checkAuthKeyBtn" type="button">인증하기</button>
-                    </div>
                     <div class="box">
                         <div id="bangWarn4" class="hidden"><img src="/resources/images/topMenu/회원 가입 느낌표.png" alt=""></div>
                         <input type="password" name="memberPw" id="memberPw" placeholder="비밀번호" maxlength="20">
@@ -94,9 +93,9 @@
                         <a href="_58ms mlm" id="birthday-help" href="#" role="button">
                         </a>
                     </div>
-                    <span id="date">
-                        <select aria-label="연도" id="birthday" title="연도" name="InfoBirth">
-                            <option value="2023" selected="1">2023</option>
+                    <span id="date" >
+                        <select aria-label="연도" id="birthday" title="연도" name="InfoBirth" >
+                            <option value="2023">2023</option>
                             <option value="2022">2022</option>
                             <option value="2021">2021</option>
                             <option value="2020">2020</option>
@@ -182,6 +181,7 @@
                     <div class="gender" name="memberGen">
                         성별
                     </div>
+                    <%-- radio 선택지는 하나 --%>
                     <span id="choose">
                         <label class="gender1" for="gen" >여성</label>
                         <input type="radio" name="InfoGender" value="여">
