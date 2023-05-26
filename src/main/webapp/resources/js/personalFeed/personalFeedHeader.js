@@ -102,7 +102,7 @@ if (document.getElementById("perAddFriend") != null) {
             perAddFriend.classList.add('friendDel');
 
             // 친구신청 알람 발송
-            const memberNo = document.getElementById("memberInfo").dataset.reciver;
+            const memberNo = document.getElementById("perAddFriend").dataset.reno;
             sendFriendAcceptAlarm(memberNo);
             return;
         }
@@ -118,7 +118,7 @@ if (document.getElementById("perAddFriend") != null) {
             perAddFriend.classList.add('friendAdd')
 
              // 친구신청 알람 발송
-            const memberNo = document.getElementById("memberInfo").dataset.reciver;
+            const memberNo = document.getElementById("perAddFriend").dataset.reno;
             sendFriendAlarm(memberNo);
             return;
         }

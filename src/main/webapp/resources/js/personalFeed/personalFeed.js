@@ -1,6 +1,6 @@
 function info(num){
     const infoList = document.getElementById("main-info").children;
-    for(var n=0; n<7; n++){
+    for(var n=0; n<6; n++){
     infoList[n].style.display = "none";
     }
     switch (num) {
