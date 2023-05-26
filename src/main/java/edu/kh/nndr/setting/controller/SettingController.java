@@ -147,16 +147,16 @@ public class SettingController {
 			SessionStatus status) {
 
 		// 비밀번호 확인
-		Member member = new Member();
-		member.setMemberPw(passwd);
-		member.setMemberNo(loginMember.getMemberNo());
+//		Member member = new Member();
+//		member.setMemberPw(passwd);
+//		member.setMemberNo(loginMember.getMemberNo());
 		
-		if( !bcrypt.encode(loginMember.getMemberPw()).equals(service.getPasswd(member)) ) {
+		if( !bcrypt.matches(passwd, service.getPasswd(loginMember)) ) {
 			ra.addFlashAttribute("message", "비밀번호가 일치하지 않습니다.");
 			return "redirect:" + referer;
 		}
 		
-		userService.deleteMember(member.getMemberNo());
+		userService.deleteMember(loginMember.getMemberNo());
 		ra.addFlashAttribute("message", "탈퇴되었습니다.");
 		status.setComplete();
 		
