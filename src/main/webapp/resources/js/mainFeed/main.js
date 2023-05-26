@@ -71,22 +71,30 @@ if (imgBtn != null) {
 }
 
 // 컨텐츠가 비었을때
-// const boardWriteFrm = document.querySelector("#submitBtn");
-// const boardContent = document.querySelector("[name='boardText']");
+const boardWriteFrm = document.querySelector("#boardWriteFrm");
 
-// boardWriteFrm.addEventListener("submit", e => {
-//     if (boardContent.value.trim().length == 0) {
+boardWriteFrm.addEventListener("submit", e => {
+    const boardContent = document.querySelector("[name='boardText']");
+    const imgList = document.querySelectorAll(".inputImage")
+    e.preventDefault();
+    for(let img of imgList){
+
+        if (boardContent.value.trim().length == 0 && img.value.size == 0) {
+    
+    
+            alert("내용을 입력해주세요")
+            boardContent.value = "";
+            boardContent.focus();
+        
+        } else {
+            e.target.submit();
+        }
+    }
+
+    
 
 
-//         alert("내용을 입력해주세요")
-//         boardContent.value = "";
-//         boardContent.focus();
-//         e.preventDefault();
-//     }
-//     return;
-
-
-// });
+});
 
 // 게시글 더보기 버튼 
 
