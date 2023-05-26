@@ -46,8 +46,7 @@
                         <div class="namecount" ><!--이름, 함께 아는친구-->
                             <span class="freindName" onclick="friendPage(${fs.memberNo})">${fs.memberName}</span>
                             <div class="boxbtn"> <!--확인, 삭제 -->
-                                <button class="yesbtn" onclick="accept(${fs.memberNo})">확인</button>
-                                <button class="nobtn" onclick="hideParentDiv(this, ${fs.memberNo})">삭제</button>
+                                <button class="yesbtn" onclick="accept(${fs.memberNo})">친구 신청 보내기 </button>
                             </div>
                         </div>
                     </div>
