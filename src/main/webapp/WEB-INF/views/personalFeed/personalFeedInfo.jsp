@@ -154,7 +154,6 @@
                             <div class="infom">
                                 <button class="info-2-1" type="button" data-map="INFO_SNS">(+) 소셜 링크 추가</button>
                                 <button class="info-2-1" type="button" data-map="INFO_LANG">(+) 언어 추가</button>
-                                <button class="info-2-1" type="button" data-map="INFO_GENDER">(+) 성별 추가</button>
                             </div>
                         </c:if>
                     </div>

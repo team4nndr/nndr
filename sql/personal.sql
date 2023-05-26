@@ -355,10 +355,10 @@ INSERT INTO
 INSERT INTO "MEMBER" 
 VALUES(
 	SEQ_MEMBER_NO.NEXTVAL, 	-- 회원번호
-	'pertest2@naver.com', 					-- 이메일
+	'pertest3@naver.com', 					-- 이메일
 	'$2a$10$DOTDled.2j4/7uWiWgsxGOBFSaLXaHGFpQdbJqFKIl3XWl84sMevG', 			-- 비밀번호
-	'장반석',	 					-- 이름
-	'01072610107',						-- 전화번호
+	'남시온',	 					-- 이름
+	'01012127589',						-- 전화번호
 	DEFAULT, 				-- 계정상태(N:정상(기본), B:비활성, D:탈퇴)
 	DEFAULT, 				-- 가입일(기본:SYSDATE)
 	NULL, 					-- 비활성화일
