@@ -76,8 +76,7 @@
                     </div>
                 </div>
                 <div class="nndrAlarmRead">
-                    <div class="nndrAllAlarm">모든 알림</div>
-                    <div class="nndrAlarmNotRead">읽지 않은 알림</div>
+                    
                 </div>
                 <div id="nndrAddContainer">
                     <c:forEach items="${alarmList}" var="alarm">
