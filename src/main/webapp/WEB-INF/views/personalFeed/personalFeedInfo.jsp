@@ -24,6 +24,7 @@
         <div class="main-container2">
             <div class="item1-1"></div>
             <div class="info">
+            
                 <div class="info-1">
                     <a class="info-li" href="#" >정보 </a>
                     <button class="info-lia" onclick="info(0)"> 개요</button>
@@ -57,6 +58,7 @@
                             </div>
                         </form>
                     </div>
+                    <c:if test="${infoMember.memberNo eq loginMember.memberNo}" >
                     <div class="infom">
                         <button class="info-2-1" type="button" data-map="INFO_JOB">(+) 직장 추가</button>
                         <button class="info-2-1" type="button" data-map="INFO_COLLEGE">(+) 대학교 추가</button>
@@ -64,6 +66,7 @@
                         <button class="info-2-1" type="button" data-map="INFO_RESIDENCE">(+) 거주지 추가</button>
                         <button class="info-2-1" type="button" data-map="INFO_BIRTHPLACE">(+) 출신지 추가</button>
                     </div>
+                    </c:if>
                 </div>
                 <div class="info-experience-2">
                     <h2>경력 및 학력</h2>
@@ -88,116 +91,126 @@
                             </div>
                         </form>
                     </div>
-                    <div class="infom">
-                        <button class="info-2-1" type="button" data-map="INFO_JOB">(+) 직장 추가</button>
-                        <button class="info-2-1" type="button" data-map="INFO_COLLEGE">(+) 대학교 추가</button>
-                        <button class="info-2-1" type="button" data-map="INFO_HIGH">(+) 고등학교 추가</button>
-                        <button class="info-2-1" type="button" data-map="INFO_MIDDLE">(+) 중학교 추가</button>
-                        <button class="info-2-1" type="button" data-map="INFO_ELEMENTARY">(+) 초등학교 추가</button>
+                    <c:if test="${infoMember.memberNo eq loginMember.memberNo}" > 
+                        <div class="infom">
+                            <button class="info-2-1" type="button" data-map="INFO_JOB">(+) 직장 추가</button>
+                            <button class="info-2-1" type="button" data-map="INFO_COLLEGE">(+) 대학교 추가</button>
+                            <button class="info-2-1" type="button" data-map="INFO_HIGH">(+) 고등학교 추가</button>
+                            <button class="info-2-1" type="button" data-map="INFO_MIDDLE">(+) 중학교 추가</button>
+                            <button class="info-2-1" type="button" data-map="INFO_ELEMENTARY">(+) 초등학교 추가</button>
+                        </div>
+                    </c:if>
                     </div>
-                </div>
-                <div class="info-experience-3">
+                    <div class="info-experience-3">
 
-                    <h2>이전 거주지</h2>
-                    <div class="infoText">
-                        <div id="info_residence">${infoMember.infoResidence}</div>
-                        <div id="info_birth">${infoMember.infoBirthplace}</div>
-                    </div>
-                    <br>
-                    <div id="info-input">
-                        <form action="">
-                            <textarea name="" id="intro-text" cols="50" rows="3"></textarea><br>
-                            <div id="texta"></div>
-                            <div id="public">
-                                <div>&nbsp;전체 공개</div>
-                                <div id="btn-set">
-                                <button class="in-btn" id="intro-can" type="button" onclick="infoCan()">취소</button>
-                                <button class="in-btn" id="intro-save" type="button" >저장</button>
+                        <h2>이전 거주지</h2>
+                        <div class="infoText">
+                            <div id="info_residence">${infoMember.infoResidence}</div>
+                            <div id="info_birth">${infoMember.infoBirthplace}</div>
+                        </div>
+                        <br>
+                        <div id="info-input">
+                            <form action="">
+                                <textarea name="" id="intro-text" cols="50" rows="3"></textarea><br>
+                                <div id="texta"></div>
+                                <div id="public">
+                                    <div>&nbsp;전체 공개</div>
+                                    <div id="btn-set">
+                                    <button class="in-btn" id="intro-can" type="button" onclick="infoCan()">취소</button>
+                                    <button class="in-btn" id="intro-save" type="button" >저장</button>
+                                    </div>
                                 </div>
-                            </div>
-                        </form>
+                            </form>
+                        </div>
+                        <c:if test="${infoMember.memberNo eq loginMember.memberNo}" > 
+                        <div class="infom">
+                            <button class="info-2-1" type="button" data-map="INFO_RESIDENCE">(+) 거주지 추가</button>
+                            <button class="info-2-1" type="button" data-map="INFO_BIRTHPLACE">(+) 출신지 추가</button>
+                        </div>
+                        </c:if>
                     </div>
-                    <div class="infom">
-                        <button class="info-2-1" type="button" data-map="INFO_RESIDENCE">(+) 거주지 추가</button>
-                        <button class="info-2-1" type="button" data-map="INFO_BIRTHPLACE">(+) 출신지 추가</button>
+                    <div class="info-experience-4">
+                        <h2>연락처 및 기본 정보</h2>
+                        <div class="infoText">
+                            <div id="info_sns">${infoMember.infoSns}</div>
+                            <div id="info_lang">${infoMember.infoLang}</div>
+                            <div id="info_gender">${infoMember.infoGender}</div>
+                        </div>
+                        <br>
+                        <div id="info-input">
+                            <form action="">
+                                <textarea name="" id="intro-text" cols="50" rows="3"></textarea><br>
+                                <div id="texta"></div>
+                                <div id="public">
+                                    <div>&nbsp;전체 공개</div>
+                                    <div id="btn-set">
+                                    <button class="in-btn" id="intro-can" type="button" onclick="infoCan()">취소</button>
+                                    <button class="in-btn" id="intro-save" type="button" >저장</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        <c:if test="${infoMember.memberNo eq loginMember.memberNo}" > 
+                            <div class="infom">
+                                <button class="info-2-1" type="button" data-map="INFO_SNS">(+) 소셜 링크 추가</button>
+                                <button class="info-2-1" type="button" data-map="INFO_LANG">(+) 언어 추가</button>
+                                <button class="info-2-1" type="button" data-map="INFO_GENDER">(+) 성별 추가</button>
+                            </div>
+                        </c:if>
+                    </div>
+                    <div class="info-experience-5">
+                        <h2>자세한 내 소개</h2>
+                        <div class="infoText">
+                            <div id="info-intro">${infoMember.infoIntro}</div>
+                            <div id="info-nick">${infoMember.infoNick}</div>
+                            <div id="info-text">${infoMember.infoText} </div>
+                        </div>
+                        <br>
+                        <div id="info-input">
+                            <form action="">
+                                <textarea name="" id="intro-text" cols="50" rows="3"></textarea><br>
+                                <div id="texta"></div>
+                                <div id="public">
+                                    <div>&nbsp;전체 공개</div>
+                                    <div id="btn-set">
+                                    <button class="in-btn" id="intro-can" type="button" onclick="infoCan()">취소</button>
+                                    <button class="in-btn" id="intro-save" type="button" >저장</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        <c:if test="${infoMember.memberNo eq loginMember.memberNo}" > 
+                            <div class="infom">
+                                <button class="info-2-1" type="button" data-map="INFO_INTRO">(+) 내 소개 추가</button>
+                                <button class="info-2-1" type="button" data-map="INFO_NICK">(+) 별명 추가</button>
+                                <button class="info-2-1" type="button" data-map="INFO_TEXT">(+) 좋아하는 문구 추가</button>
+                            </div>
+                        </c:if>
+                    </div>
+                    <div class="info-experience-6">
+                        <h2>이벤트</h2>
+                            <div>이벤트 날짜</div><br>
+                            <div>내용</div><br>
+                        <br>
+                        <div id="info-input">
+                            <form action="">
+                                <textarea name="" id="intro-text" cols="50" rows="3"></textarea><br>
+                                <div id="texta"></div>
+                                <div id="public">
+                                    <div>&nbsp;전체 공개</div>
+                                    <div id="btn-set">
+                                    <button class="in-btn" id="intro-can" type="button" onclick="infoCan()">취소</button>
+                                    <button class="in-btn" id="intro-save" type="button" >저장</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        <c:if test="${infoMember.memberNo eq loginMember.memberNo}" > 
+                            <div class="info-2-1">(+) 중요 이벤트 추가</div>
+                        </c:if>
+                    <div class="info-experience-7">
                     </div>
                 </div>
-                <div class="info-experience-4">
-                    <h2>연락처 및 기본 정보</h2>
-                    <div class="infoText">
-                        <div id="info_sns">${infoMember.infoSns}</div>
-                        <div id="info_lang">${infoMember.infoLang}</div>
-                        <div id="info_gender">${infoMember.infoGender}</div>
-                    </div>
-                    <br>
-                    <div id="info-input">
-                        <form action="">
-                            <textarea name="" id="intro-text" cols="50" rows="3"></textarea><br>
-                            <div id="texta"></div>
-                            <div id="public">
-                                <div>&nbsp;전체 공개</div>
-                                <div id="btn-set">
-                                <button class="in-btn" id="intro-can" type="button" onclick="infoCan()">취소</button>
-                                <button class="in-btn" id="intro-save" type="button" >저장</button>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-                    <div class="infom">
-                        <button class="info-2-1" type="button" data-map="INFO_SNS">(+) 소셜 링크 추가</button>
-                        <button class="info-2-1" type="button" data-map="INFO_LANG">(+) 언어 추가</button>
-                        <button class="info-2-1" type="button" data-map="INFO_GENDER">(+) 성별 추가</button>
-                    </div>
-                </div>
-                <div class="info-experience-5">
-                    <h2>자세한 내 소개</h2>
-                    <div class="infoText">
-                        <div id="info-intro">${infoMember.infoIntro}</div>
-                        <div id="info-nick">${infoMember.infoNick}</div>
-                        <div id="info-text">${infoMember.infoText} </div>
-                    </div>
-                    <br>
-                    <div id="info-input">
-                        <form action="">
-                            <textarea name="" id="intro-text" cols="50" rows="3"></textarea><br>
-                            <div id="texta"></div>
-                            <div id="public">
-                                <div>&nbsp;전체 공개</div>
-                                <div id="btn-set">
-                                <button class="in-btn" id="intro-can" type="button" onclick="infoCan()">취소</button>
-                                <button class="in-btn" id="intro-save" type="button" >저장</button>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-                    <div class="infom">
-                        <button class="info-2-1" type="button" data-map="INFO_INTRO">(+) 내 소개 추가</button>
-                        <button class="info-2-1" type="button" data-map="INFO_NICK">(+) 별명 추가</button>
-                        <button class="info-2-1" type="button" data-map="INFO_TEXT">(+) 좋아하는 문구 추가</button>
-                    </div>
-                </div>
-                <div class="info-experience-6">
-                    <h2>이벤트</h2>
-                        <div>이벤트 날짜</div><br>
-                        <div>내용</div><br>
-                    <br>
-                    <div id="info-input">
-                        <form action="">
-                            <textarea name="" id="intro-text" cols="50" rows="3"></textarea><br>
-                            <div id="texta"></div>
-                            <div id="public">
-                                <div>&nbsp;전체 공개</div>
-                                <div id="btn-set">
-                                <button class="in-btn" id="intro-can" type="button" onclick="infoCan()">취소</button>
-                                <button class="in-btn" id="intro-save" type="button" >저장</button>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-                    <div class="info-2-1">(+) 중요 이벤트 추가</div>
-                <div class="info-experience-7">
-                </div>
-            </div>
             </div>
     </div>
     <div id="info-modal">
