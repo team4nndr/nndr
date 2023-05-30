@@ -29,6 +29,7 @@ main {
     height: 100%;
 }
 
+/* 사이드바 */
 .friendNav {
     background-color: white;
     border-right: 1px solid black;
@@ -62,13 +63,14 @@ main {
 
 }
 
-
+/* 매인 화면 */
 #friendContent {
     display: flex;
     flex-wrap: wrap;
 
 }
 
+/* 사이드바 이미지 */
 .friendimg {
     width: 30px;
     height: 30px;
@@ -94,6 +96,7 @@ main {
     background-color: #F2F3F5;
 }
 
+/* 친구목록  */
 .friendbax {
     width: 196.67px;
     height: 348.67px;
@@ -106,13 +109,13 @@ main {
     width: 194.67px;
     height: 194.67px;
 }
-
+/* 프로필이미지 */
 .proimg {
     width: 194.67px;
     height: 194.67px;
     border-radius: 10px 10px 0 0;
 }
-
+/* 이름및 확인 취소 */
 .boxname {
     width: 194.67px;
     height: 152px;
@@ -121,13 +124,14 @@ main {
 
 }
 
+
 .namebar {
     width: 170.67px;
     height: 50px;
     padding-top: 10px;
     padding-left: 10px;
 }
-
+/* 이름 */
 .frName {
     font-size: 18px;
 }
@@ -140,6 +144,7 @@ main {
     justify-content: center;
 }
 
+/* 버튼 박스  */
 .btnbox {
     justify-content: center;
     display: flex;
@@ -147,6 +152,7 @@ main {
     padding-right: 12px;
 }
 
+/* 확인 */
 .checkYes {
     width: 185px;
     height: 36px;
@@ -165,6 +171,7 @@ main {
     transform: scale(0.95);
 }
 
+/* 취소 */
 .checkNo {
     width: 185px;
     height: 36px;
@@ -182,13 +189,7 @@ main {
     transform: scale(0.95);
 }
 
-.together {
-    padding-top: 8px;
-    padding-left: 10px;
-    color: #65676b;
-    font-size: 15px;
-}
-
+/* 친구요청 */
 .topfr {
     width: 1560px;
     height: 26px;
@@ -196,7 +197,7 @@ main {
     font-size: 23px;
     color: #050505;
 }
-
+/* main div */
 .topdiv {
     width: 1560px;
     margin-left: 360px;
