@@ -24,6 +24,7 @@ public class PersonalFeedPicController {
 	@Autowired
 	MemberInfoService service;
 
+	// 개인피드 사진에 관련된 세션에 있는 정보 업데이트
 	@GetMapping("/personalFeedPic/{no}")
 	public String personalFeedPic( Model model,@SessionAttribute("loginMember") Member loginMember, @PathVariable("no") int no) {
 		MemberInfo infoMember = service.personalMember(no);

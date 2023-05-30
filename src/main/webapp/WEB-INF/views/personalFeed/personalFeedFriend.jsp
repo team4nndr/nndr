@@ -20,13 +20,14 @@
             border-bottom: 3px solid #56A8C5;
         }
     </style>
-    
+            <%-- 친구 목록 --%>
             <div class="main-container2">
                 <div class="item1-1"></div>
                 <div class="info">
                     <div class="imset">
                         <div  class="imop">
                             <div id="na"><h2>친구</h2></div>
+                            <%-- 친구 추가 버튼 --%>
                             <div id="imBtn"><a class="info-2-1  aTag" href="/friend/recom">친구추가</a></div>
                         </div>
                             <c:forEach items="${friendList}" var="i">

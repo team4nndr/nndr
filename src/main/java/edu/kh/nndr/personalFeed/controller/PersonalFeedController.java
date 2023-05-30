@@ -56,9 +56,11 @@ public class PersonalFeedController {
     private AlarmService alarmService;
 
 
+	// 개인피드 접속 시 세션에 있는 개인피드에 관련 정보 업데이트 
 	@GetMapping("/personalFeed/{no:[0-9]+}")
 	public String personalFeed(@RequestHeader(value="referer", required=false) String referer, Model model, @SessionAttribute("loginMember") Member loginMember, @PathVariable("no") int no, RedirectAttributes ra) {
 		MemberInfo infoMember = service.personalMember(no);
+		// 개인피드 멤버 중 없는 회원이거나 접근이 제한된 회원
 		if(infoMember == null) {
 			String message = "없는 회원이거나 접근이 제한된 회원입니다.";
 			ra.addFlashAttribute("message",message);
@@ -67,26 +69,28 @@ public class PersonalFeedController {
 			return path;
 		}
 		
+		
+		// 해당 페이지 유저
 		model.addAttribute("infoMember", infoMember); // request scope
 
+		// 취미
 		Map<String, Object> HobbyMap = service.selectHobbyList(no); 
 		model.addAttribute("HobbyMap", HobbyMap);
 		
+		// 사진
 		List<MemberInfo> imgSet = service.imgSet(no);
 		model.addAttribute("imgSet", imgSet);
 		
+		// 로그인 멤버와 친구인지 확인
 		Map<String, Object> friendche = new HashMap<>();
 		friendche.put("friendSender", loginMember.getMemberNo());
 		friendche.put("friendReciver", no);
 		PersonalFriend friendcheck = service.friendChecking(friendche);
 		model.addAttribute("friendcheck", friendcheck);
-		
 		Member personalInfo = service.personalInfo(no);
 		model.addAttribute("personalInfo", personalInfo);
 		
-		
-
-		//personalBoardList
+		// 게시글 조회
 		List<Board> boardList = mainService.personalFeedList(no);
 		
 		// 조회한 게시글에 달린 댓글 조회
@@ -97,7 +101,7 @@ public class PersonalFeedController {
 		model.addAttribute("boardList", boardList);
 		
 		////////////////////////////      
-		
+		// 친구 목록
 		List<Member> friendList = friendService.friendListMember(no);
 		int friendCount = friendList.size();
 		model.addAttribute("friendList", friendList);
@@ -111,21 +115,13 @@ public class PersonalFeedController {
 	    params.put("infoCollege", loginMember.getInfoCollege());
 	    params.put("infoMiddle", loginMember.getInfoMiddle());
 	    params.put("infoElementary", loginMember.getInfoElementary());
-
 	    List<Member> friendSuggestion = friendService.friendSuggestion(params);
 	    model.addAttribute("friendSuggestion", friendSuggestion);
-
-		
-		
-		
-		
-		
-		
-		
 		
 		return "personalFeed/personalFeed";
 	}
 	
+	// 개인피드 내 소개
 	@GetMapping("/personalFeed/infoIntro")
 	public String infoIntro(MemberInfo member, @SessionAttribute("loginMember") Member loginMember, @RequestHeader(value = "referer") String referer, RedirectAttributes ra) {
 		member.setMemberNo(loginMember.getMemberNo());
@@ -138,6 +134,7 @@ public class PersonalFeedController {
 		return path;
 	}
 	
+	// 개인피드 게시글 등록
 	@PostMapping("/personalFeed/perInsertContent")
 	public String perInsertContent(Board board, @RequestHeader(value = "referer") String referer
 			, @SessionAttribute("loginMember") Member loginMember
@@ -162,23 +159,16 @@ public class PersonalFeedController {
 			// 게시글 삽입 서비스 호출 후 삽입된 게시글 번호 반환 
 			
 			int boardNo = mainService.feedInsert(board,images,webPath,filePath);
-		
 			String message = null;
-//			ra.addFlashAttribute("message",message);
-//			Alarm alarm = null;
-//			alarm.setAlarmContent("내 피드에 게시글이 작성되었습니다.");
-//			alarm.setAlarmContent("내 피드에 게시글이 작성되었습니다.");
-//			alarm.setAlarmContent("내 피드에 게시글이 작성되었습니다.");
-//			alarmService.insert(alarm);
-		
 		return path;
 	}
 	
 	
-	
+	// 개인피드 취미 등록
 	@GetMapping(value = "/inputhobby", produces = "application/text; charset=UTF-8")
 	@ResponseBody
 	public String inputhobby(String[] hobbyArray, @SessionAttribute("loginMember") Member loginMember) { // 쿼리 스트링에 담겨있는 파라미터
+		// 취미 목록 불러오기
 		List<MemberHobby> myHobby = new ArrayList<MemberHobby>();
 		myHobby = service.myHobby(loginMember.getMemberNo());
 		Set<String> insertSet = new HashSet<String>(Arrays.asList(hobbyArray));
@@ -186,6 +176,7 @@ public class PersonalFeedController {
 		List<MemberHobby> deleteHobby = new ArrayList<MemberHobby>();
 		
 
+		// 취미 목록에서 제거할 취미 
 		for(MemberHobby i : myHobby) {
 			if(insertSet.contains(i.getHobby())) {
 				insertSet.remove(i.getHobby());
@@ -194,6 +185,8 @@ public class PersonalFeedController {
 				deleteHobby.add(de);
 			}
 		}
+		
+		// 취미 목록에서 추가할 취미
 		for(String i : insertSet) {
 			MemberHobby ad = new MemberHobby(0, loginMember.getMemberNo(), i);
 			insertHobby.add(ad);

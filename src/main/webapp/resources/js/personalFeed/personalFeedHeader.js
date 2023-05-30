@@ -55,12 +55,12 @@ function sendFriendAcceptAlarm(memberNo) {
 	alarmSock.send(JSON.stringify(alarm));
 }
 
-
+/* 친구 버튼 누를 시 동작 */
 if (document.getElementById("perAddFriend") != null) {
     const perAddFriend = document.getElementById("perAddFriend");
     perAddFriend.addEventListener("click", e => {
         
-        if(perAddFriend.classList.contains('friendAdd')){
+        if(perAddFriend.classList.contains('friendAdd')){ // 신청 취소
             const personalCanFriend = new Array(perAddFriend.dataset.seno, perAddFriend.dataset.reno);
             fetch("/personalCanFriend?personalCanFriend="+personalCanFriend)  
             .then(response => response.text()) 
@@ -74,7 +74,7 @@ if (document.getElementById("perAddFriend") != null) {
             perAddFriend.classList.add('noFriend')
             return;
         }
-        if(perAddFriend.classList.contains('friendDel')){
+        if(perAddFriend.classList.contains('friendDel')){ // 삭제
             const personalDelFriend = new Array(perAddFriend.dataset.seno, perAddFriend.dataset.reno);
             fetch("/personalDelFriend?personalDelFriend="+personalDelFriend)  
             .then(response => response.text()) 
@@ -106,7 +106,7 @@ if (document.getElementById("perAddFriend") != null) {
             sendFriendAcceptAlarm(memberNo);
             return;
         }
-        if(perAddFriend.classList.contains('noFriend')){ 
+        if(perAddFriend.classList.contains('noFriend')){  // 친구 신청
             const personalAddFriend = new Array(perAddFriend.dataset.seno, perAddFriend.dataset.reno);
             fetch("/personalAddFriend?personalAddFriend="+personalAddFriend)  
             .then(response => response.text()) 
@@ -128,7 +128,7 @@ if (document.getElementById("perAddFriend") != null) {
 
 
 
-
+/* 프로필 모달창 */
 if (document.getElementById("profileChg") != null) {
     document.getElementById("profileChg").addEventListener('click', () => {
         document.getElementById("profile-modal").style.display="block";
@@ -136,6 +136,7 @@ if (document.getElementById("profileChg") != null) {
     })
 }
 
+/* 프로필 변경 시도(로그인멤버 != 해당 유저)  */
 if (document.getElementById("notP") != null) {
     document.getElementById("notP").addEventListener('click', () => {
         alert("너 주인 아니잖아");
@@ -148,6 +149,7 @@ if (document.getElementById("notP") != null) {
 //     })
 // }
 
+/* 프로필 모달창 슬라이드 */
 if (document.getElementById("profile-modal") != null) {
     document.getElementById("profile-modal").addEventListener("click", () => {
         document.getElementById("profile-modal").style.display="none";
@@ -267,7 +269,7 @@ Array.from( document.getElementsByClassName("backi")).forEach((target) => target
     
     })
 )
-
+/* 배경화면 수정 이미지 선택 시 */
 function cvCho(target){		
     const memberNo = target.dataset.memberno;
     const imgPath = target.dataset.imgpath
@@ -286,7 +288,7 @@ function cvCho(target){
     document.getElementById("back-modali").style.display="none";
 
 };   
-
+/* 배경화면 삭제 */
 if(document.getElementById("delback") != null){
     document.getElementById("delback").addEventListener("click", () => {
         const memberNo = document.getElementById("delback").dataset.no; 
@@ -299,7 +301,7 @@ if(document.getElementById("delback") != null){
         return;
     })
 }
-
+/* 배경화면 모달창 끄기 */
 if(document.getElementById("backPlus") != null){
     
     document.getElementById("backPlus").addEventListener("click", () => {
@@ -316,6 +318,7 @@ if(document.getElementById("backPlus") != null){
         }
     })
 }
+// 모든 모달창 끄기
 if(document.getElementById("all") != null){
     document.getElementById("all").addEventListener("click", () =>{
         document.getElementById("cv-set").style.display = "none";
@@ -331,6 +334,7 @@ Array.from( document.getElementsByClassName("profi")).forEach((target) => target
     })
 )
 
+/* 프로필 선택 */
 function pcvCho(target){		
     // const cvCho = new Map([["boardNo", target.dataset.memberno],["imgPath", target.dataset.imgpath],["imgRename", target.dataset.imgrename]]);
     const memberNo = target.dataset.memberno;

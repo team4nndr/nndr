@@ -35,7 +35,7 @@ public class PersonalFeedHeadController {
 	MemberInfoService service;
 
 	
-	
+	// 친구 추가 버튼 관련
 	@GetMapping(value = "/personalAddFriend", produces = "application/text; charset=UTF-8")
 	@ResponseBody
 	public String personalAddFriend(String[] personalAddFriend, @SessionAttribute("loginMember") Member loginMember , RedirectAttributes ra) { // 쿼리 스트링에 담겨있는 파라미터
@@ -55,6 +55,8 @@ public class PersonalFeedHeadController {
 		int result = service.personalAdd(addMap);
 		return "";
 	}
+	
+	// 친구 삭제 버튼 관련
 	@GetMapping(value = "/personalDelFriend", produces = "application/text; charset=UTF-8")
 	@ResponseBody
 	public String personalDelFriend(String[] personalDelFriend, @SessionAttribute("loginMember") Member loginMember ) { // 쿼리 스트링에 담겨있는 파라미터
@@ -64,6 +66,8 @@ public class PersonalFeedHeadController {
 		int result = service.personalDel(delMap);
 		return "";
 	}
+	
+	// 친구 수락 버튼 관련
 	@GetMapping(value = "/personalAcceptFriend", produces = "application/text; charset=UTF-8")
 	@ResponseBody
 	public String personalAcceptFriend(String[] personalAcceptFriend, @SessionAttribute("loginMember") Member loginMember ) { // 쿼리 스트링에 담겨있는 파라미터
@@ -76,6 +80,7 @@ public class PersonalFeedHeadController {
 		return "";
 	}
 	
+	// 친구 신청 취소 관련
 	@GetMapping(value = "/personalCanFriend", produces = "application/text; charset=UTF-8")
 	@ResponseBody
 	public String personalCanFriend(String[] personalCanFriend, @SessionAttribute("loginMember") Member loginMember ) { // 쿼리 스트링에 담겨있는 파라미터
@@ -86,6 +91,7 @@ public class PersonalFeedHeadController {
 		return "";
 	}
 
+	// 배경화면 선택
 	@GetMapping(value = "/cvCho", produces = "application/text; charset=UTF-8")
 	@ResponseBody
 	public String cvCho(@RequestParam Map<String, Object> cvCho) { // 쿼리 스트링에 담겨있는 파라미터
@@ -93,6 +99,7 @@ public class PersonalFeedHeadController {
 		return "";
 	}
 	
+	// 배경화면 삭제
 	@GetMapping(value = "/delback", produces = "application/text; charset=UTF-8")
 	@ResponseBody
 	public String delback(@RequestParam int memberNo) { // 쿼리 스트링에 담겨있는 파라미터
@@ -100,6 +107,7 @@ public class PersonalFeedHeadController {
 		return "";
 	}
 	
+	// 프로필화면 선택
 	@GetMapping(value = "/pcvCho", produces = "application/text; charset=UTF-8")
 	@ResponseBody
 	public String pcvCho( Model model, @RequestParam Map<String, Object> pcvCho, @SessionAttribute("loginMember") Member loginMember) { // 쿼리 스트링에 담겨있는 파라미터

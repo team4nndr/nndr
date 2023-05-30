@@ -1,3 +1,4 @@
+/* 개인피드 정보탭 모달관련 */
 function info(num){
     const infoList = document.getElementById("main-info").children;
     for(var n=0; n<6; n++){
@@ -30,6 +31,7 @@ function info(num){
     }
 }
 
+/* 내 소개 */
 function infoMy(){
     const intro = document.getElementById("intro-my");
     const introArea = document.getElementById("input-intro");
@@ -38,6 +40,7 @@ function infoMy(){
     document.getElementById("intro-text").innerText = document.getElementById("intro-my").innerText
 }
 
+/* 내 소개 취소 */
 function infoCan(){
     const introArea = document.getElementById("input-intro");
     const intro = document.getElementById("intro-my");
@@ -45,6 +48,7 @@ function infoCan(){
     intro.style.display = "block";
 }
 
+/* 내 소개 글자 수 제한 */
 if(document.getElementById("intro-save")!=null){
     document.getElementById("intro-save").addEventListener("click", ()=>{
         if(document.getElementById("intro-text").value.length<100){
@@ -59,6 +63,7 @@ if(document.getElementById("intro-save")!=null){
     })
 }
 
+/* 내 소개 모달 내 글자 수 표시 */
 if (document.getElementById("info-modal") != null) {
     document.getElementById("intro-text").addEventListener("input", () => {
         const strLength = document.getElementById("intro-text").value.length
@@ -74,6 +79,7 @@ if (document.getElementById("info-modal") != null) {
 
 var a = "asd";
 var b = [];
+/* 개인피드 내 정보 수정 */
 Array.from( document.getElementsByClassName("info-2-1")).forEach((target) => target.addEventListener("click", function(){ 
     jsSearch(target); 
 })
@@ -99,7 +105,7 @@ function jsSearch(target){
     
 };   
 // document.getElementsByClassName("infom")[0].children[0]
-
+/* 개인피드 정보  저장*/
 if (document.getElementById("info-confirm") != null) {
     document.getElementById("info-confirm").addEventListener('click', () => {
         const i = document.getElementById("hobby-input").value;
@@ -110,7 +116,7 @@ if (document.getElementById("info-confirm") != null) {
 }
 
 
-
+/* 전달된 정보를 스프링으로 전달 */
 function inputInfo(i){
     const info = a+"§"+i;
     fetch("/inputInfo?info="+info)  // 지정된 주소로 GET방식 비동기 요청(ajax)
@@ -132,40 +138,43 @@ function inputInfo(i){
 
 
 
-
+/* 정보 모달창 끄기 */
 if(document.getElementById("info-modal")!=null){
     document.getElementById("info-modal").addEventListener("click", () => {
         document.getElementById("info-modal").style.display="none";
         document.getElementById("info-modali").style.display="none";
     })
 }
+/* 정보 모달창 끄기 */
 if (document.getElementById("info-cancel") != null) {
     document.getElementById("info-cancel").addEventListener("click", () => {
         document.getElementById("info-modal").style.display = "none";
         document.getElementById("info-modali").style.display = "none";
     })
 }
+/* 정보 모달창 끄기 */
 if (document.getElementById("info-confirm") != null) {
     document.getElementById("info-confirm").addEventListener("click", () => {
         document.getElementById("info-modal").style.display = "none";
         document.getElementById("info-modali").style.display = "none";
     })
 }
-
+/* 정보 모달창 끄기 */
 if(document.getElementById("hobby-checked") != null){
     document.getElementById("hobby-checked").addEventListener("click", () => {
         checkForm()
         document.getElementById("add-hobby").removeAttribute('checked');
     })
 }
+/* 정보 모달창 끄기 */
 if(document.getElementById("hobby-no") != null){
     document.getElementById("hobby-no").addEventListener("click", () => {
         document.getElementById("add-hobby").removeAttribute('checked');
     })
 }
+/* 취미 수정 */
 function checkForm() {
     var hobbyArray = new Array();
-
     document.getElementsByName("hobbychecked").forEach(element => {
         if (element.checked) {
             hobbyArray.push(element.id);
@@ -245,13 +254,14 @@ if (next != null) {
         }
     });
 }
+/* 모달창 끄기 */
 if (document.querySelector('.info-cancel') != null) {
     document.getElementById("info-cancel").addEventListener("click", () => {
         document.getElementById("info-modali").style.display = none;
     })
 }
 
-// var a = <c:out value="${perHobbyList}"/>;
+/* 취미 선택 표시 */
 if (document.getElementById("hobby-no") != null) {
     document.getElementById("hobby-no").addEventListener("click", () => {
         const mh = document.getElementById("myhho").innerText.trim().split('　');
@@ -267,12 +277,12 @@ if (document.getElementById("hobby-no") != null) {
         }
     })
 }
-
+/* 취미 선택 */
 Array.from( document.getElementsByClassName("add-friend2")).forEach((target) => target.addEventListener("click", function(){ 
     friendPlus(target); 
 })
 )
-
+/* 취미 스프링으로 전달 */
 function friendPlus(target) {
     const personalAddFriend = new Array(target.dataset.seno, target.dataset.reno);
     console.log(personalAddFriend)
@@ -321,39 +331,39 @@ function submitReply(boardNo, parentReplyNo, btn) {
 
 // 더보기 옵션
 
-function detectBottom() {
-    var scrollTop = $(window).scrollTop();
-    var innerHeight = $(window).innerHeight();
-    var scrollHeight = $('body').prop('scrollHeight');
-    if (scrollTop + innerHeight >= scrollHeight) {
-        console.log("asd")
-        return true;
-    } else {
-        console.log("dsa")
-        return false;
-    }
-}
-Array.from( document.getElementsByClassName("nndr-top")).forEach((target) => target.addEventListener("click", function(){ 
-    jsSearch(target); 
-})
-)
-function jsSearch(target){		
-    const infoText = document.getElementsByClassName("infoText");
-    const hobbyl = document.getElementById("what-hobby")
-    document.getElementById("info-modal").style.display="block";
-    document.getElementById("info-modali").style.display="block";
-    document.getElementById("whatHobby").innerText=(target.innerText).substring(4);
-    document.getElementById("hobby-input").value = "";
-    const infozz = document.getElementsByClassName("infom");
+// function detectBottom() {
+//     var scrollTop = $(window).scrollTop();
+//     var innerHeight = $(window).innerHeight();
+//     var scrollHeight = $('body').prop('scrollHeight');
+//     if (scrollTop + innerHeight >= scrollHeight) {
+//         console.log("asd")
+//         return true;
+//     } else {
+//         console.log("dsa")
+//         return false;
+//     }
+// }
+// Array.from( document.getElementsByClassName("nndr-top")).forEach((target) => target.addEventListener("click", function(){ 
+//     jsSearch(target); 
+// })
+// )
+// function jsSearch(target){		
+//     const infoText = document.getElementsByClassName("infoText");
+//     const hobbyl = document.getElementById("what-hobby")
+//     document.getElementById("info-modal").style.display="block";
+//     document.getElementById("info-modali").style.display="block";
+//     document.getElementById("whatHobby").innerText=(target.innerText).substring(4);
+//     document.getElementById("hobby-input").value = "";
+//     const infozz = document.getElementsByClassName("infom");
     
     
-    a=target.dataset.map;
-    for(var i = 0; i<infozz.length; i++){
-        for(var j=0; j<infozz[i].childElementCount*2+1; j++){
-            if(target.innerText==infozz[i].childNodes[j].innerText){
-                b.push(infoText[i].childNodes[j]);
-            }
-        }
-    }
+//     a=target.dataset.map;
+//     for(var i = 0; i<infozz.length; i++){
+//         for(var j=0; j<infozz[i].childElementCount*2+1; j++){
+//             if(target.innerText==infozz[i].childNodes[j].innerText){
+//                 b.push(infoText[i].childNodes[j]);
+//             }
+//         }
+//     }
     
-};   
+// };   

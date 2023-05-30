@@ -27,6 +27,7 @@
             border-bottom: 3px solid #56A8C5;
         }
     </style>
+    <%-- 알 수도 있는 사람 파트 --%>
         <div class="main-container2">
             <c:if test="${infoMember.memberNo eq loginMember.memberNo}" > 
                 <div id="fr-border">
@@ -34,7 +35,7 @@
                         <h4>&nbsp;&nbsp; 알 수도 있는 사람</h4>
                     </div>
                     <div class="item1-3">
-                        <c:forEach items="${friendSuggestion}" var="i">
+                        <c:forEach items="${friendSuggestion}" var="i"> <%-- 프로필 없을 때 --%>
                             <c:if test="${empty i.profileImage}">
                                 <div class="who">
                                     <a href="/personalFeed/${i.memberNo}" class="aTag">
@@ -46,7 +47,7 @@
                                     </div>
                                 </div>
                             </c:if>
-                            <c:if test="${not empty i.profileImage}">
+                            <c:if test="${not empty i.profileImage}"> <%-- 프로필 있을 때 --%>
                                 <div class="who">
                                     <a href="/personalFeed/${i.memberNo}"  class="aTag">
                                         <div class="who-pic"><img class="who-pic" src="${i.profileImage}" alt="로고"></div>
@@ -67,11 +68,14 @@
                 </div>
             </c:if>
             <div class=" item2-1">
+            <%-- 취미 부분 --%>
                 <div class=" item2-2">
+                    <%-- 내 소개 --%>
                     <div class="item2-2-1">
                         <div class="so"><h2>&nbsp;&nbsp;소개</h2></div>
                         <div>
                             <div id="intro-my">${infoMember.infoIntro}</div>
+                            <%-- 모달창 --%>
                             <div id="input-intro">
                                 <form action="infoIntro" method="get" >
                                     <textarea type="text" name="infoIntro" id="intro-text" cols="50" rows="3" ></textarea><br>
@@ -89,6 +93,7 @@
                                 <button class="intro-1" onclick="infoMy()">소개수정</button>
                             </c:if>
                         </div>
+                        <%-- 내 정보 조회 및 수정 --%>
                         <div id="intro-infom">
                             <div id="info-job">${infoMember.infoJob}</div>
                             <div id="info-college">${infoMember.infoCollege}</div>
@@ -107,6 +112,7 @@
                             <div class="intro-1"  id="info-link"><a id="info-link" href="/personalFeedInfo/${infoMember.memberNo}">상세정보 수정</a></div>
                         </c:if>
                         <div>
+                        <%-- 취미 --%>
                             <div id="intro-hobby">
                                 <h3 id=zzs>관심있는 취미</h3>
                                 <div id="dhho" style="display:none">
@@ -116,12 +122,14 @@
                                     <c:forEach items="${perHobbyList}" var="hobby">${hobby.hobby}　</c:forEach>
                                 </div>
                             </div>
+                            <%-- 취미 수정 버튼 --%>
                             <c:if test="${infoMember.memberNo eq loginMember.memberNo}" > 
                                 <div class="hobby-main hobby-center intro-1">
                                     <input type="checkbox" id="add-hobby">
                                     <label class="hobby-btn" id="login" for="add-hobby">취미 수정</label>
                                     <div class="hobby-box hobby-center">
                                         <h2>취미</h2>
+                                        <%-- 취미 모달창 --%>
                                         <div id="hobby-list">
                                             <c:forEach items="${hobbyList}" var="hobby">
                                                 <c:forEach items="${perHobbyList}" var="perHobby">
@@ -144,20 +152,17 @@
                                                 <label class="btn-sty"  for="add-hobby">닫기</label>
                                             </button>
                                         </div>
-                                        <%-- </form> --%>
                                     </div>
                                     <label class="hobby-overlay" for="add-hobby"></label>
                                 </div>
                             </c:if>
-                                <%-- <c:if test="${infoMember.memberNo eq loginMember.memberNo}" > 
-                                <button class="intro-1" href="">대표 사진 추가</button>
-                            </c:if> --%>
                         <br>
                         </div>
                     </div>
                 
                     <br>
                     <div class="item2-2-2">
+                    <%-- 사진 목록--%>
                         <div class="item2-2-2-1" >
                             <div class="so">
                                 <h3>&nbsp;&nbsp;사진</h3>
@@ -172,6 +177,7 @@
                         </div>
                     </div>
                     <br>
+                    <%-- 친구 목록 --%>
                     <div class="item2-2-2">
                         <div class="item2-2-2-1">
                         <div class="so">
@@ -195,13 +201,7 @@
                 </div>
                 <div class="item item2-3">
             <%-- 피드 작성 + 피드 목록 --%>
-            <%-- 피드 작성 + 피드 목록 --%>
-            <%-- 피드 작성 + 피드 목록 --%>
-            <%-- 피드 작성 + 피드 목록 --%>
-            <%-- 피드 작성 + 피드 목록 --%>
-        
                         <div class="feed-list">
-
                             <%-- 피드 작성 --%>
                             <c:if test="${infoMember.memberNo eq loginMember.memberNo}">  <%-- 본인 일 때 --%>
                                 <div id="newFeed">
@@ -247,19 +247,11 @@
                                 </c:if>    
                             </c:if>
 
-
-
-
-
-
-
                             <%-- <c:if test="${personalInfo.setFriendReq eq 'Y'}"> --%>
                             <%-- 피드 목록 --%>
 
                             <jsp:include page="/WEB-INF/views/personalFeed/perFeedList.jsp"/>
                         </div>
-                        
-
                 </div>
             </div>
         </div>
