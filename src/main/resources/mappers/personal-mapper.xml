@@ -53,6 +53,7 @@
 		<result property="boardNo" column="BOARD_NO" />
 		
 	</resultMap>
+	<!-- 친구 추가 관련 -->
 	<resultMap type="PersonalFriend" id="personalFriend_rm">
 		<id property="friendNo" column="FRIEND_NO" />
 		<result property="friendSender" column="FRIEND_SENDER" />
@@ -62,7 +63,7 @@
 		<result property="memberName" column="MEMBER_NAME" />
 	</resultMap>
 	
-	
+	<!-- 취미 관련 -->
 	<resultMap type="MemberHobby" id="memberHobby_rm">
 		<id property="memberNo" column="MEMBER_NO" />
 		<result property="hobbyNo" column="HOBBY_NO" />
@@ -92,7 +93,7 @@
 				ofType="Image"/>
 	
 	</resultMap>
-	
+	<!-- 게시판 사진 관련 -->	
 	<resultMap type="Image" id="image_rm">
 		<id property="imgNo" column="IMG_NO"/>
 		<result property="imgPath" column="IMG_PATH"/>
@@ -102,34 +103,39 @@
 		<result property="boardNo" column="BOARD_NO"/>
 	</resultMap>
 
+	<!-- 보고 있는 페이지 유저 정보 -->
 	<select id="personalMember" resultMap="memberInfo_rm">
 		SELECT * FROM "MEMBER" M LEFT JOIN "MEMBER_INFO" D ON (M.MEMBER_NO=D.MEMBER_NO) WHERE M.MEMBER_NO= #{no} AND (MEMBER_CODE = 'N')
 	</select>
 	
+	<!-- 내 소개 수정 -->
 	<update id="infoIntro">
 		UPDATE "MEMBER_INFO" SET INFO_INTRO=#{infoIntro} WHERE MEMBER_NO = #{memberNo}
 	</update>
 	
+	<!-- 취미 수정 -->
 	<update id="infoInput">
 		UPDATE "MEMBER_INFO" SET ${whatHobby} = #{hobby} WHERE MEMBER_NO = #{memberNo}
 	</update>
 	
+	<!-- 취미 리스트 -->
 	<select id="selectHobbyList" resultMap="memberHobby_rm">
 		SELECT DISTINCT(HOBBY) FROM "MEMBER_HOBBY" ORDER BY HOBBY
 	</select>
+	<!-- 개인 취미 리스트 -->
 	<select id="selectPerHobbyList" resultMap="memberHobby_rm">
 		SELECT DISTINCT(HOBBY) FROM "MEMBER_HOBBY" WHERE MEMBER_NO =#{memberNo} ORDER BY HOBBY
 	</select>
 	
 	
-
+	<!-- 취미 추가 -->
 	<insert id="insertHobby" parameterType="list">
 		INSERT INTO MEMBER_HOBBY (HOBBY_NO, MEMBER_NO, HOBBY)
 		<foreach collection="list" item="item" separator=" UNION ALL ">
     		SELECT GET_SEQ_HOBBY_NO(), #{item.memberNo}, #{item.hobby} FROM DUAL
     	</foreach>
 	</insert>
-
+	<!-- 취미 삭제 -->
 	<delete id="deleteHobby" parameterType="list">
 		DELETE FROM MEMBER_HOBBY
 		<where> 
@@ -139,7 +145,7 @@
     	</where>
 	</delete>
 	
-	
+	<!-- 이미지 관련 -->
 	<select id="imgSet" resultMap="memberInfo_rm">
 		SELECT 	   MEMBER_NO, BOARD_NO, IMG_PATH, IMG_RENAME, UPLOAD_DATE 
 		FROM   	  "IMAGE" 
@@ -148,31 +154,31 @@
 		WHERE MEMBER_NO = #{memberNo} ORDER BY UPLOAD_DATE DESC
 	</select>
 	
-	
+	<!-- 친구 추가 -->
 	<insert id="personalAdd">
 		INSERT INTO FRIEND VALUES(SEQ_FRIEND_NO.NEXTVAL, ${friendSender}, ${friendReciver}, DEFAULT)
 	</insert>
-	
+	<!-- 친구 목록 -->	
 	<select id="perFriend" resultMap="personalFriend_rm">
 		SELECT * FROM FRIEND WHERE (FRIEND_SENDER = ${friendSender} AND FRIEND_RECIVER=${friendReciver}) OR (FRIEND_SENDER = ${friendReciver} AND FRIEND_RECIVER=${friendSender})
 	</select>
-	
+	<!-- 친구 신청 취소 -->
 	<delete id="personalCan">
 		DELETE FROM "FRIEND" WHERE FRIEND_SENDER=${friendSender} AND FRIEND_RECIVER=${friendReciver}
 	</delete>
-
+	<!-- 배경화면 선택 -->
 	<update id="backImg">
 		UPDATE "MEMBER_INFO" SET INFO_BACK=#{imgRename}, INFO_BACKPATH=#{imgPath} WHERE MEMBER_NO = #{memberNo}
 	</update>
-	
+	<!-- 배경화면 삭제 -->
 	<update id="delBackImg">
 		UPDATE "MEMBER_INFO" SET INFO_BACK= null, INFO_BACKPATH= null WHERE MEMBER_NO = #{memberNo}
 	</update>
-
+	<!-- 프로필 선택 -->
 	<update id="proImg">
 		UPDATE "MEMBER_INFO" SET INFO_PROFILE=#{imgRename}, INFO_PROFILEPATH=#{imgPath} WHERE MEMBER_NO = #{memberNo}
 	</update>
-	
+	<!-- 게시글 리스트 -->
 	<select id="personalfeedList" resultMap="board_rm">
 		SELECT BOARD_NO, MEMBER_NAME,BOARD_TEXT,MEMBER_NO, INFO_PROFILEPATH||INFO_PROFILE INFO_IMG,
 		<![CDATA[
@@ -191,27 +197,20 @@
 		WHERE "DELETE" = 'N' AND OTHERMEM_NO = #{no} 
 		ORDER BY BOARD_NO DESC
 	</select>
-	
+	<!-- 이미지 리스트 -->
 	<select id="selectImageList" resultMap="image_rm">
 		SELECT * FROM "IMAGE"
 		WHERE BOARD_NO=#{boardNo}
 		ORDER BY IMG_ORDER DESC
-	
 	</select>
-	
+	<!-- 친구 삭제 -->	
 	<delete id="personalDel">
 		DELETE FROM FRIEND WHERE (FRIEND_SENDER = ${friendSender} AND FRIEND_RECIVER=${friendReciver}) OR (FRIEND_SENDER = ${friendReciver} AND FRIEND_RECIVER=${friendSender})
 	</delete>
+	<!-- 친구 수락 -->
 	<update id="personalAccept">
 		UPDATE FRIEND SET FRIEND_FL = 'Y' WHERE FRIEND_SENDER = ${friendReciver} AND FRIEND_RECIVER = ${friendSender}
 	</update>
-	
-	
-	<!--  이미지 수정 
-	<update id="updateProfileImage">
-		UPDATE "MEMBER_INFO" SET INFO_PROFILE = #{infoProfile} WHERE MEMBER_NO = #{memberNo}
-	</update> -->
-	
 	
 	
 </mapper>

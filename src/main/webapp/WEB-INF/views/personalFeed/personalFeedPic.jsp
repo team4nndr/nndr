@@ -23,19 +23,16 @@
     </header>
         <div class="main-container2">
             <div class="item1-1"></div>
+            <%-- 사진 묶음 --%>
             <div class="info">
                 <div class="imset">
                     <div  class="imop">
                         <div id="na"><h2>사진</h2></div>
-                        <%-- <div id="imBtn"><button class="info-2-1">사진추가</button></div> --%>
                     </div>
+                    <%-- 사진 리스트 전부 출력 --%>
                     <div id="imgset">
                             <c:forEach items="${imgSet}" var="i">
-
-
                                 <div><img src="${i.imgPath}${i.imgRename}" alt="" class="im" data-boardNo = "${i.boardNo}"></div>
-                            
-                            
                             </c:forEach>
                         
                     </div>

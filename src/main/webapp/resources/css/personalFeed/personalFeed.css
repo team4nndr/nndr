@@ -52,6 +52,7 @@ button{
     
 }   
 .main-container2{
+    z-index: 0;
     width: 100%;
     background-color: hsl(195, 15%, 90%);
     display: flex;

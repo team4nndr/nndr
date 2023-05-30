@@ -24,7 +24,7 @@
         <div class="main-container2">
             <div class="item1-1"></div>
             <div class="info">
-            
+            <%-- 정보 카테고리 --%>
                 <div class="info-1">
                     <a class="info-li" href="#" >정보 </a>
                     <button class="info-lia" onclick="info(0)"> 개요</button>
@@ -34,6 +34,7 @@
                     <button class="info-lia" onclick="info(4)"> 자세한 내 소개</button>
                 </div>
                 <div id="main-info">
+                <%-- 개요 --%>
                 <div class="info-experience-1">
                     <h2>개요</h2>
                     <div class="infoText">
@@ -45,6 +46,7 @@
                         <div id="info_romantic2">${infoMember.romanticYn}</div>
                     </div>
                     <br>
+                    <%-- 모달창 --%>
                     <div id="info-input">
                         <form action="">
                             <textarea name="" id="intro-text" cols="50" rows="3"></textarea><br>
@@ -59,6 +61,7 @@
                         </form>
                     </div>
                     <c:if test="${infoMember.memberNo eq loginMember.memberNo}" >
+                    <%-- 정보 버튼 --%>
                     <div class="infom">
                         <button class="info-2-1" type="button" data-map="INFO_JOB">(+) 직장 추가</button>
                         <button class="info-2-1" type="button" data-map="INFO_COLLEGE">(+) 대학교 추가</button>
@@ -68,6 +71,7 @@
                     </div>
                     </c:if>
                 </div>
+                <%-- 경력 및 학력 --%>
                 <div class="info-experience-2">
                     <h2>경력 및 학력</h2>
                     <div class="infoText">
@@ -78,6 +82,7 @@
                         <div id="info-elementary">${infoMember.infoElementary}</div>
                     </div>
                     <br>
+                    <%-- 모달 --%>
                     <div id="info-input">
                         <form action="">
                             <textarea name="" id="intro-text" cols="50" rows="3"></textarea><br>
@@ -91,6 +96,7 @@
                             </div>
                         </form>
                     </div>
+                    <%-- 정보 버튼 --%>
                     <c:if test="${infoMember.memberNo eq loginMember.memberNo}" > 
                         <div class="infom">
                             <button class="info-2-1" type="button" data-map="INFO_JOB">(+) 직장 추가</button>
@@ -101,14 +107,15 @@
                         </div>
                     </c:if>
                     </div>
+                    <%-- 이전 거주지 --%>
                     <div class="info-experience-3">
-
                         <h2>이전 거주지</h2>
                         <div class="infoText">
                             <div id="info_residence">${infoMember.infoResidence}</div>
                             <div id="info_birth">${infoMember.infoBirthplace}</div>
                         </div>
                         <br>
+                        <%-- 모달 --%>
                         <div id="info-input">
                             <form action="">
                                 <textarea name="" id="intro-text" cols="50" rows="3"></textarea><br>
@@ -122,6 +129,7 @@
                                 </div>
                             </form>
                         </div>
+                        <%-- 정보 버튼 --%>
                         <c:if test="${infoMember.memberNo eq loginMember.memberNo}" > 
                         <div class="infom">
                             <button class="info-2-1" type="button" data-map="INFO_RESIDENCE">(+) 거주지 추가</button>
@@ -129,6 +137,7 @@
                         </div>
                         </c:if>
                     </div>
+                    <%-- 연락처 및 기본 정보 --%>
                     <div class="info-experience-4">
                         <h2>연락처 및 기본 정보</h2>
                         <div class="infoText">
@@ -137,6 +146,7 @@
                             <div id="info_gender">${infoMember.infoGender}</div>
                         </div>
                         <br>
+                        <%-- 모달 --%>
                         <div id="info-input">
                             <form action="">
                                 <textarea name="" id="intro-text" cols="50" rows="3"></textarea><br>
@@ -150,6 +160,7 @@
                                 </div>
                             </form>
                         </div>
+                        <%-- 정보 버튼 --%>
                         <c:if test="${infoMember.memberNo eq loginMember.memberNo}" > 
                             <div class="infom">
                                 <button class="info-2-1" type="button" data-map="INFO_SNS">(+) 소셜 링크 추가</button>
@@ -157,6 +168,7 @@
                             </div>
                         </c:if>
                     </div>
+                    <%-- 자세한 내 소개 --%>
                     <div class="info-experience-5">
                         <h2>자세한 내 소개</h2>
                         <div class="infoText">
@@ -165,6 +177,7 @@
                             <div id="info-text">${infoMember.infoText} </div>
                         </div>
                         <br>
+                        <%-- 모달 --%>
                         <div id="info-input">
                             <form action="">
                                 <textarea name="" id="intro-text" cols="50" rows="3"></textarea><br>
@@ -178,6 +191,7 @@
                                 </div>
                             </form>
                         </div>
+                        <%-- 정보 버튼 --%>
                         <c:if test="${infoMember.memberNo eq loginMember.memberNo}" > 
                             <div class="infom">
                                 <button class="info-2-1" type="button" data-map="INFO_INTRO">(+) 내 소개 추가</button>
@@ -186,11 +200,13 @@
                             </div>
                         </c:if>
                     </div>
+                    <%-- 이벤트 --%>
                     <div class="info-experience-6">
                         <h2>이벤트</h2>
                             <div>이벤트 날짜</div><br>
                             <div>내용</div><br>
                         <br>
+                        <%-- 모달 --%>
                         <div id="info-input">
                             <form action="">
                                 <textarea name="" id="intro-text" cols="50" rows="3"></textarea><br>
@@ -215,7 +231,6 @@
     <div id="info-modal">
     </div>
         <div id="info-modali">
-            <%-- <form action="/personalFeedInfo/${no}" method="POST"> --%>
             <div id="what-hobby" ></div>
             <div type="text" id="whatHobby" name="whatHobby">
             <br>

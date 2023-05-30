@@ -35,11 +35,14 @@ public class PersonalFeedInfoController {
 	@Autowired
 	private MemberService memberService;
 
+	// 개인피드 정보 탭에 필요한 세션에 있는 정보 업데이트
 	@GetMapping("/personalFeedInfo/{no:[0-9]+}")
 	public String personalFeedInfo( Model model, @SessionAttribute("loginMember") Member loginMember,@PathVariable("no") int no) {
 		MemberInfo infoMember = service.personalMember(no);
+		// 세션에 있는 해당 유저 정보 업데이트 
 		model.addAttribute("infoMember", infoMember); // request scope
 		Map<String, Object> friendche = new HashMap<>();
+		// 친구 추가 관련
 		friendche.put("friendSender", loginMember.getMemberNo());
 		friendche.put("friendReciver", no);
 		PersonalFriend friendcheck = service.friendChecking(friendche);
@@ -49,28 +52,8 @@ public class PersonalFeedInfoController {
 		model.addAttribute("personalInfo", personalInfo);
 		return "personalFeed/personalFeedInfo";
 	}
-
-//	@PostMapping("/personalFeedInfo/{no:[0-9]+}")
-//	public String boardInsert(MemberInfo member // 커멘드 객체(필드에 파라미터 담겨있음!)
-//			, @RequestParam(value = "whatHobby", required = false) String whatHobby,
-//			@RequestParam(value = "hobbyInput", required = false) String hobbyInput,
-//			@SessionAttribute("loginMember") Member loginMember, @PathVariable("no") int no, RedirectAttributes ra,
-//			HttpSession session) throws IllegalStateException, IOException {
-//		System.out.println(whatHobby);
-//		System.out.println(hobbyInput);
-//
-//		// 파라미터 : 제목, 내용, 파일(0~5개)
-//		// 파일 저장 경로 : HttpSession
-//
-//		// 세션 : 로그인한 회원의 번호
-//		// 리다리렉트 시 데이터 전달 : RedirectAttributes
-//		// 작성 성공 시 이동할 게시판 코드 : @PathVariable("boardCode")
-//		// List<MultipartFile> images 업로드된 이미지가 없어도 list에 요소 MultipartFile 객체가 추가됨 단,
-//		// 업로드된 이미지가 없는 MultipartFile 객체는 파일 (size)가 0또는 파일명(getOriginalFileName())이
-//
-//		return null;
-//	}
 	
+	// 개인피드 정보 입력
 	@GetMapping(value = "/inputInfo", produces = "application/text; charset=UTF-8")
 	@ResponseBody
 	public String inputhobby(String info, @SessionAttribute("loginMember") Member loginMember) { // 쿼리 스트링에 담겨있는 파라미터
@@ -79,8 +62,8 @@ public class PersonalFeedInfoController {
 		String nl ;
 		System.out.println();
 		Map<String, Object> infoMap = new HashMap<>();
+		// 입력받은 정보를 바탕으로 DB 업데이트
 		if(subInfo.length== 1) {
-			System.out.println("널값");
 			nl="";
 			infoMap.put("whatHobby", subInfo[0]);
 			infoMap.put("hobby", nl);
@@ -94,7 +77,7 @@ public class PersonalFeedInfoController {
 			infoMap.put("memberNo", loginMember.getMemberNo());
 			int result = service.infoInput(infoMap);
 		}
-		
+		// 친구추천을 위한 로그인멤버 정보 업데이트
 		switch(subInfo[0]) {
 			case "INFO_ELEMENTARY":
 				loginMember.setInfoElementary(nl);
