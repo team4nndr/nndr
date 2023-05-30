@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+// 로그인 상태이면 로그인 화면 접근 불가
 @WebFilter (filterName = "loginStateFilter", urlPatterns = "/")
 public class LoginStateFilter implements Filter {
 

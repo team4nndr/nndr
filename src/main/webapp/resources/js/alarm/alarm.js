@@ -3,10 +3,6 @@ if(alarmSock != ""){
 	alarmSock = new SockJS("/alarmSock");
 }
 
-
-
-
-// WebSocket 객체가 서버로 부터 메세지를 통지 받으면 자동으로 실행될 콜백 함수
 alarmSock.onmessage = function(e) {
 	const alarm = JSON.parse(e.data);
 	
@@ -61,13 +57,14 @@ alarmSock.onmessage = function(e) {
 	const div = document.createElement('div');
 	div.innerHTML = alarm.alarmContent;
 	alarmList.prepend(div.firstChild);
-		document.querySelector('.nndr-top-alarm-delete').addEventListener('click', e => e.target.parentElement.remove());
-	
-		const mark = document.getElementById("alarmMark");
-		mark.style.display = 'block';
+	document.querySelector('.nndr-top-alarm-delete')
+		.addEventListener('click', e => e.target.parentElement.remove());
 
-	}
+	const mark = document.getElementById("alarmMark");
+	mark.style.display = 'block';
+}
 
+// 웹소켓으로 전송할 알람 요소 생성
 function makeAlarm(obj) {
 	let nndrAddAlarm = document.createElement("div");
 	nndrAddAlarm.classList.add("nndrAddAlarm");
@@ -77,7 +74,8 @@ function makeAlarm(obj) {
 	
 	let topMyProfile = document.createElement("img");
 	topMyProfile.classList.add("topMyProfile");
-	topMyProfile.src = obj.profileImage.trim().length == 0 ? "/resources/images/common/user-default.png" : obj.profileImage;
+	topMyProfile.src = obj.profileImage.trim().length == 0 ? 
+		"/resources/images/common/user-default.png" : obj.profileImage;
 
 	let nndrAlarmContent = document.createElement("p");
 	nndrAlarmContent.classList.add("nndrAlarmContent");
@@ -96,12 +94,11 @@ function makeAlarm(obj) {
 	return nndrAddAlarm.outerHTML;
 }; 
 
+// 모든 알람을 읽음으로 처리
 document.getElementById("delAllAlarm").addEventListener("click", () => {
 	fetch("/delAllAlarm")  
     .then(response => response.text()) 
-    .then(() => {
-    }) 
-    .catch (e => { console.log(e)}); 
-
+    .then(() => {}) 
+    .catch (e => console.log(e)); 
 })
 

@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+// 로그아웃 상태이면 로그인 화면으로
 @WebFilter (filterName = "loginFilter", 
 			urlPatterns = {"/mainFeed/*", "/setting/*", "/friend/*"})
 public class LoginFilter implements Filter {

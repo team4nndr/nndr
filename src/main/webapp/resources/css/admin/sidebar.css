@@ -1,6 +1,5 @@
 #sidebar {
     width: 360px;
-    /* height: 100vh; */
     height: inherit;
     box-shadow: 0px 0px 2px #bdbebd;
     padding : 10px;
@@ -25,7 +24,7 @@
 #sidebar > ul {
     display: flex;
     flex-direction: column;
-    list-style-type: none; /* li 태그 앞에 기호를 삭제 */
+    list-style-type: none;
     width: 100%;
 }
 #sidebar > ul > li > a {

@@ -1,9 +1,12 @@
 const modal = document.querySelector('.modal');
 const modalBody = document.querySelector('.modal-body');
 
+// 사용자 의견 입력 + 서버 전송
 const modalContent1 = document.getElementById('modalContent1');
-const modalContent2 = document.getElementById('modalContent2');
 const modalBottom1 = document.getElementById('modalBottom1');
+
+// 서버 전송 성공 시 결과 화면 출력
+const modalContent2 = document.getElementById('modalContent2');
 const modalBottom2 = document.getElementById('modalBottom2');
 
 // ESC 버튼 눌리면 메인 화면으로 이동
@@ -14,7 +17,7 @@ window.addEventListener("keyup", e => {
     }
 });
 
-// 전송버튼 클릭 시 DB에 데이터 전송 + 성공 시 두 번째 모달 창으로 이동
+// 전송버튼 클릭 시 DB에 데이터 전송 + 성공 시 결과 화면 출력
 const submitBtn = document.getElementById('submitBtn');
 submitBtn.addEventListener('click', () => {
 
@@ -30,7 +33,7 @@ submitBtn.addEventListener('click', () => {
     .then(resp => resp.text())
     .then(result => {
         if(result > 0){
-            // 의견 제출 성공 시 두번째 모달창 출력
+            // 의견 제출 성공 시 결과 화면 출력
             modalContent1.style.display = 'none';
             modalBottom1.style.display = 'none';
             modalContent2.style.display = 'flex';
@@ -53,7 +56,6 @@ if(feedbackContent != null) {
         }
     });
 }
-
 
 // 모달창 취소 버튼 기능 넣기
 const cancelBtns = document.getElementsByClassName('cancelBtn');

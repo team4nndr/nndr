@@ -5,7 +5,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
-@NoArgsConstructor // 기본 생성자
+@NoArgsConstructor
 @Getter
 @Setter
 @ToString
