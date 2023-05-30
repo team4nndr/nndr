@@ -24,8 +24,8 @@
                 </div>
                 <div class="authentication">
                     <form class="login" action="/login" method="POST">
-                        <input name="memberEmail" type="text" placeholder="이메일" required><br><br>
-                        <input name="memberPw" type="password" placeholder="비밀번호" required><br><br>
+                        <input name="memberEmail" type="text" placeholder="이메일" required autocomplete="off"><br><br>
+                        <input name="memberPw" type="password" placeholder="비밀번호" required autocomplete="off"><br><br>
                         <button type="submit" class="submit2">로그인</button><br>
                         <br>
                         <a href="main/forgetPw" class="pwCheck">비밀번호를 잊으셨나요?</a>

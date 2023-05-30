@@ -67,7 +67,7 @@ public class MainController {
 	}
 	
 	// 비밀번호를 잊으셨습니까 => 이메일 유효성 확인
-	@GetMapping("/main/emailDupilcation")
+	@GetMapping("/main/emailDuplication")
 	@ResponseBody
 	public int emailDup (@RequestParam ("emailDup") String emailDup) {
 		
