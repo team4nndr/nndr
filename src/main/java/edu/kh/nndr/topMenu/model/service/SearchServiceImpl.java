@@ -12,6 +12,10 @@ import edu.kh.nndr.mainFeed.model.dto.Hashtag;
 import edu.kh.nndr.member.model.dto.Member;
 import edu.kh.nndr.topMenu.model.dao.SearchDAO;
 
+/**
+ * @author 이예슬
+ *
+ */
 @Service
 
 public class SearchServiceImpl implements SearchService{
@@ -29,8 +33,6 @@ public class SearchServiceImpl implements SearchService{
 		return dao.friendNameList(map);
 	}
 
-
-
 	/**
 	 * 검색어와 일치하는 피드 가져오기
 	 */
@@ -40,10 +42,6 @@ public class SearchServiceImpl implements SearchService{
 		return dao.matchingList(query);
 	}
 
-	
-
-
-	
 
 }
 

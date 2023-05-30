@@ -12,6 +12,10 @@ import edu.kh.nndr.mainFeed.model.dto.Board;
 import edu.kh.nndr.mainFeed.model.dto.Hashtag;
 import edu.kh.nndr.member.model.dto.Member;
 
+/**
+ * @author 이예슬
+ *
+ */
 @Repository
 public class SearchDAO {
 	
@@ -28,7 +32,7 @@ public class SearchDAO {
 		return sqlSession.selectList("memberMapper.searchMember", map);
 	}
 
-	/** 해시태그 목록 조회 DAO
+	/** 검색어 입력 시, 검색어와 일치하는 목록 조회(게시글 목록)
 	 * @param query
 	 * @return list
 	 */

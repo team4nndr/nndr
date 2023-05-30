@@ -7,6 +7,10 @@ import org.springframework.stereotype.Service;
 import edu.kh.nndr.alarm.model.dto.Alarm;
 import edu.kh.nndr.topMenu.model.dao.TopMenuDAO;
 
+/**
+ * @author 이예슬
+ *
+ */
 @Service
 public class TopMenuServiceImpl implements TopMenuService{
 	
@@ -15,7 +19,6 @@ public class TopMenuServiceImpl implements TopMenuService{
 
 
 	// 알람 목록 조회
-
 	@Override
 	public List<Alarm> alarmList(int memberNo) {
 		List<Alarm> alarmList = dao.alarmList(memberNo);

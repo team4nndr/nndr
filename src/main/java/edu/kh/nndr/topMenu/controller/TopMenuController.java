@@ -19,12 +19,16 @@ import edu.kh.nndr.alarm.model.dto.Alarm;
 import edu.kh.nndr.member.model.dto.Member;
 import edu.kh.nndr.topMenu.model.service.TopMenuService;
 
+/**
+ * @author 이예슬
+ *
+ */
 @SessionAttributes({"loginMember","alarmList"})
 @Controller
 public class TopMenuController {
 	
 	@Autowired
-	private TopMenuService service;
+	private TopMenuService service; // 상단바 서비스 호출
 
 	// 로그아웃(세션 만료)
 	@GetMapping("/logout")

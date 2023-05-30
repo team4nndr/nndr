@@ -273,7 +273,7 @@ function alarmDel(target) {
 
 };   
 
-
+// 모든 알람 읽음 처리
 document.getElementById("delAllAlarm").addEventListener("click", () => {
 	fetch("/delAllAlarm")  
     .then(response => response.text()) 

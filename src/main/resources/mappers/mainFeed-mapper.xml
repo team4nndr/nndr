@@ -246,7 +246,7 @@
 	</select>
 
 
-	<!-- 검색어와 일치하는 게시글 목록 조회 -->
+	<!-- 검색어와 일치하는 게시글 목록 조회 (상단바검색어/이예슬)-->
 	<select id="matchingList" resultMap="board_rm">
 		SELECT BOARD_NO, MEMBER_NAME,BOARD_TEXT,MEMBER_NO,
 		INFO_PROFILEPATH||INFO_PROFILE INFO_IMG,

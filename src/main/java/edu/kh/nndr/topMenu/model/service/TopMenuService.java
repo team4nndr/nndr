@@ -3,6 +3,10 @@ package edu.kh.nndr.topMenu.model.service;
 import java.util.List;
 import edu.kh.nndr.alarm.model.dto.Alarm;
 
+/**
+ * @author 이예슬
+ *
+ */
 public interface TopMenuService {
 
 	/** 알람 목록 조회

@@ -19,6 +19,7 @@
         <a href="/mainFeed"><img src="/resources/images/topMenu/topLogo-01.png"></a>
     </div>
 
+    <%-- 검색어 입력 창 --%>
     <div class="nndr-search-area">
         <form  method="GET">
             <fieldset id="nndrSearchBox">
@@ -76,8 +77,9 @@
                     </div>
                 </div>
                 <div class="nndrAlarmRead">
-                    
                 </div>
+
+                <%-- 알람 목록 조회 --%>
                 <div id="nndrAddContainer">
                     <c:forEach items="${alarmList}" var="alarm">
                         <div data-alarmNo="${alarm.alarmNo}"></div>${alarm.alarmContent}

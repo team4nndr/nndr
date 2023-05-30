@@ -25,18 +25,22 @@ import edu.kh.nndr.topMenu.model.service.SearchService;
 import edu.kh.nndr.topMenu.model.service.TopMenuService;
 
 
+/**
+ * @author 이예슬
+ *
+ */
 @Controller
 @SessionAttributes({"loginMember", "alarmList"})
 public class SearchController {
 	
 	@Autowired
-	private SearchService service;
+	private SearchService service; //검색 서비스 호출
 	@Autowired
-	private AlarmService alarmService;
+	private AlarmService alarmService; //알람 서비스 호출
 	@Autowired
-	private TopMenuService TopMenuService;
+	private TopMenuService TopMenuService; //상단바 서비스 호출
 	
-	// 일치하는 해시태그 목록 조회(검색)
+	// 검색어 입력 시, 검색어와 일치하는 목록 조회(게시글 목록)
 	@GetMapping(value="/mainFeed/boardList", produces="application/json; charset=UTF-8")
 	@ResponseBody
 	public List<Board> matchingList(@RequestParam("query") String query  ){
@@ -45,6 +49,7 @@ public class SearchController {
 		return service.matchingList(query);
 	}
 	
+	// 검색어 입력 시, 게시글 목록을 보여주는 페이지 호출
 	@GetMapping(value="/matchingList/{query}", produces="application/json; charset=UTF-8")
 	public String boardList(@PathVariable("query") String query, Model model ) {
 		System.out.println(query);
@@ -72,7 +77,6 @@ public class SearchController {
     }
     
     // 알람 삭제
-    
     @GetMapping(value = "/alarmDel", produces = "application/text; charset=UTF-8")
 	@ResponseBody
 	public String alarmDel(String alarmDel, Model model, @SessionAttribute("loginMember") Member loginMember) {
@@ -83,8 +87,8 @@ public class SearchController {
     	
     	return "";
     }
-    // 알람 모두 삭제
     
+    // 알람 모두 삭제
     @GetMapping(value = "/delAllAlarm", produces = "application/text; charset=UTF-8")
     @ResponseBody
     public String delAllAlarm(Model model, @SessionAttribute("loginMember") Member loginMember) {
@@ -94,8 +98,6 @@ public class SearchController {
     	
     	return "";
     }
-    
-
     
     
 

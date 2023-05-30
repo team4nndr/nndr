@@ -15,6 +15,7 @@ public class TopMenuDAO {
 	@Autowired
 	private SqlSessionTemplate sqlSession;
   
+	// session에 있는 알람 리스트를 얻어와 화면에 출력
 	public List<Alarm> alarmList(int memberNo) {
 		return sqlSession.selectList("alarmMapper.alarmList", memberNo);
 	}

@@ -10,7 +10,7 @@
 		<result property="memberNo" column="MEMBER_NO" />
 	</resultMap>
 
-	<!-- 알람 목록 조회 -->
+	<!-- 알람 목록 조회(상단바) -->
 	<select id="alarmList" resultMap="alarm_rm">
 		SELECT ALARM_CONTENT, ALARM_NO
 		FROM "ALARM"
@@ -45,12 +45,12 @@
 		SELECT ALARM_NO FROM "ALARM" <![CDATA[WHERE ROWNUM <= 1]]> ORDER BY ALARM_NO DESC
 	</select>
 
-	<!-- 알람 모두 삭제 -->
+	<!-- 알람 모두 삭제 (상단바) -->
 	<update id="alarmDel">
 		UPDATE "ALARM" SET ALARM_FL='Y' WHERE ALARM_NO = ${alarmDel}
 	</update>
 	
-	<!-- 알람 삭제 -->
+	<!-- 알람 삭제 (상단바) -->
 	<update id="alarmAllDel">
 		UPDATE "ALARM" SET ALARM_FL='Y' WHERE MEMBER_NO = ${memberNo}
 	</update>

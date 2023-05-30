@@ -8,6 +8,10 @@ import edu.kh.nndr.mainFeed.model.dto.Board;
 import edu.kh.nndr.mainFeed.model.dto.Hashtag;
 import edu.kh.nndr.member.model.dto.Member;
 
+/**
+ * @author 이예슬
+ *
+ */
 public interface SearchService {
 
 

@@ -20,11 +20,6 @@
 
 
 
-	<select id="getTags" resultMap="tag_rm">
-		SELECT HASHTAG_KEYWORD
-		FROM HASHTAG
-		WHERE HASHTAG_KEYWORD LIKE '${hashtagKeyword}%'
-	</select>
 
 <!-- 	<select id="friendNameList" resultMap="friend_rm">
 		SELECT MEMBER_NAME, MEMBER_NO
