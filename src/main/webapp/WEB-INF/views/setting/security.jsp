@@ -38,7 +38,7 @@
 
                     <div class="dropdown">
                         <ul>
-                            <li class="button">
+                            <li class="button dropdown">
                                 <img src="/resources/images/setting/everyone.png" class="img">
                                 <span>모든 사람</span>
                                 <img class="mini" src="/resources/images/setting/triangle-down.png">

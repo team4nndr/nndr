@@ -146,11 +146,7 @@ public class SettingController {
 			RedirectAttributes ra,
 			SessionStatus status) {
 
-		// 비밀번호 확인
-//		Member member = new Member();
-//		member.setMemberPw(passwd);
-//		member.setMemberNo(loginMember.getMemberNo());
-		
+		// 현재 비밀번호 확인	
 		if( !bcrypt.matches(passwd, service.getPasswd(loginMember)) ) {
 			ra.addFlashAttribute("message", "비밀번호가 일치하지 않습니다.");
 			return "redirect:" + referer;

@@ -29,13 +29,6 @@ public interface SettingService {
 	int changeMemberPasswd(Member member);
 
 	/**
-	 * 현재 비밀번호 일치여부 확인
-	 * @param member
-	 * @return true / false
-	 */
-//	boolean checkPasswd(Member member);
-
-	/**
 	 * 환경설정 변경
 	 * @param paramMap
 	 * @param loginMember

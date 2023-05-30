@@ -50,7 +50,6 @@ public class SearchController {
 		System.out.println(query);
 		
 		List<Board> boardList = service.matchingList(query);
-		
 		model.addAttribute("boardList",boardList);
 		
 		return "topMenu/matchingList";
@@ -72,7 +71,6 @@ public class SearchController {
     }
     
     // 알람 삭제
-    
     @GetMapping(value = "/alarmDel", produces = "application/text; charset=UTF-8")
 	@ResponseBody
 	public String alarmDel(String alarmDel, Model model, @SessionAttribute("loginMember") Member loginMember) {
@@ -83,8 +81,8 @@ public class SearchController {
     	
     	return "";
     }
-    // 알람 모두 삭제
     
+    // 알람 모두 삭제
     @GetMapping(value = "/delAllAlarm", produces = "application/text; charset=UTF-8")
     @ResponseBody
     public String delAllAlarm(Model model, @SessionAttribute("loginMember") Member loginMember) {
@@ -94,13 +92,4 @@ public class SearchController {
     	
     	return "";
     }
-    
-
-    
-    
-
 }
-
-
-
-

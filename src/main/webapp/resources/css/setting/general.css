@@ -39,14 +39,6 @@
     display: none;
 }
 
-/* 설정 - 일반 - 수정 */
-/* .row > .mod {
-    position: absolute;
-    right: 20px;
-    color: #4A6EA9;
-    font-size: 13px;
-} */
-
 .row > .mod > span:hover {
     text-decoration: underline;
     cursor: pointer;
@@ -100,8 +92,6 @@ input.info-input { border: 1px solid #ccc; }
 .row.mod {
     background-color: #eee;
     align-items: center;
-    /* padding-top: 10px;
-    padding-bottom: 10px; */
     padding: 0;
     min-height: 59px;
     padding: 0 10px;
@@ -120,10 +110,7 @@ input.info-input { border: 1px solid #ccc; }
     border-radius: 2px;
     height: 30px;
     background-color: white;
-    /* position: absolute; */
-    /* padding: 0 10px; */
 }
-/* .input-wrapper {  } */
 .input-wrapper > input { 
     border: none; 
     font-size: 1rem;
@@ -154,12 +141,10 @@ input.info-input { border: 1px solid #ccc; }
 .mod-wrapper.gender label { margin-right: 20px; }
 
 /* 주소 수정 */
-/* .mod-wrapper.address { left: 68px; } */
 .input-wrapper.address { margin-left: 75px; }
 .input-wrapper.address > input { width: 570px; }
 
 /* 연락처 수정 */
-/* .mod-wrapper.tel {left: 52px; } */
 .input-wrapper.tel { margin-left: 60px; }
 .input-wrapper.tel > input { width: 230px; }
 .hidden { display: none; }

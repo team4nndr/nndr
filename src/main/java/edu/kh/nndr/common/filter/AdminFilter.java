@@ -13,6 +13,7 @@ import javax.servlet.http.HttpSession;
 
 import edu.kh.nndr.member.model.dto.Member;
 
+// 관리자가 아니면 메인페이지로 
 @WebFilter (filterName = "adminFilter", urlPatterns = "/admin/*")
 public class AdminFilter implements Filter {
 
@@ -23,7 +24,6 @@ public class AdminFilter implements Filter {
 		
 		HttpSession session = req.getSession();
 		
-		// 관리자가 아니면 메인페이지로 
 		Member loginMember = (Member)session.getAttribute("loginMember");
 		if( loginMember == null || !loginMember.getMemberCode().equals("A")) { 
 			resp.sendRedirect("/");
