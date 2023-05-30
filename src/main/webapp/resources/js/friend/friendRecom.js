@@ -1,3 +1,5 @@
+
+/* 확인버튼 눌렀을 때 */
 function accept(memberNo) {
 
     fetch("/friend/recom/yesbt?memberNo=" + memberNo)
@@ -12,6 +14,8 @@ function accept(memberNo) {
         })
         .catch(err => console.log(err));
 }
+
+/* 친구 리스트 비동기 처리 */
 function friendList() {
     fetch("/friend/recom/birequest")
         .then(resp => resp.json())
@@ -60,15 +64,8 @@ function friendList() {
         .catch(err => console.log(err));
 
 }
-// function hideParentDiv(button, memberNo) {
-//     // 버튼의 부모 div 요소 가져오기
-//     var parentDiv = button.parentNode.parentNode.parentNode.parentNode;
 
-//     // 부모 div 요소 숨기기
-//     // parentDiv.style.display = 'none';
-//     parentDiv.remove();
-//     }
-
+/* 이름클릭시 개인피드로 이동 */
 function friendPage(memberNo) {
     location.href= "/personalFeed/" + memberNo;
 }

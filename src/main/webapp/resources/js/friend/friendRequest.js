@@ -1,3 +1,4 @@
+/* 친구 요청 수락 */
 function accept(friendNo) {
 
 
@@ -102,6 +103,7 @@ function friendList() {
 
 }
 
+/* 친구 이름 클릭시 개인피드로 이동 */
 function friendPage(memberNo) {
     location.href= "/personalFeed/" + memberNo;
 }

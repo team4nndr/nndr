@@ -1,3 +1,4 @@
+/* 친구 수락을 눌렀을 때 */
 function accept(friendNo) {
 
 
