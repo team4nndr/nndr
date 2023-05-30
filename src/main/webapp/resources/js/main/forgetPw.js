@@ -53,7 +53,7 @@ emailCheck.addEventListener("input", ()=>{
         .then(response => response.text())   
         .then(result => {
             
-            if(result == 0){
+            if(result == 1){ //등록된 이메일이 0이면 중복 없을 때, 1이면 중복 있을 때
                 emailCheck.style.backgroundColor = "#e4cac2";
                 checkObj.emailCheck = true;
             }else{
