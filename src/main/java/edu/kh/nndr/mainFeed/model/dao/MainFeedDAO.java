@@ -24,8 +24,6 @@ public class MainFeedDAO {
 	 * @return
 	 */
 
-
-
 	public Board feedContent(int memberNo) {
 		
 		
@@ -95,6 +93,7 @@ public class MainFeedDAO {
 		return sqlSession.insert("mainFeedMapper.imgInsert",img);
 	}
 
+	// 게시글 수정을 위한 게시글 하나 확인
 	public Board selectOne(int boardNo) {
 		return sqlSession.selectOne("mainFeedMapper.selectOne", boardNo);
 	}

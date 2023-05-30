@@ -229,13 +229,13 @@ public class MainFeedServiceImpl implements MainFeedService {
 		return result;
 	}
 
-
+	// 게시글 수정을 위한 게시글 하나 확인
 	@Override
 	public Board selectOne(int boardNo) {
 		return dao.selectOne(boardNo);
 	}
 	
-	
+	// 좋아요 체크
 	@Override
 	public int feedLikeCheck(Map<String, Object> map) {
 		
@@ -243,6 +243,7 @@ public class MainFeedServiceImpl implements MainFeedService {
 	}
 
 	
+	// 좋아요 처리
 	@Override
 	public int like(Map<String, Integer> paramMap) {
 
