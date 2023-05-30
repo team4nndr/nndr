@@ -21,7 +21,7 @@
   }
 
 
-
+/* footer 제외한 전체 */
 #top{
   width: 100%;
   display: grid;
@@ -30,19 +30,21 @@
   height: 969px;
 }
 
+/* 로그인 및 이미지 전체 */
 .init{
   width: 60%;
   margin: 0 auto;
   margin-top: 200px;
 } 
 
+/* 로그인을 둘러싸는 div */
 .frame{
   display: flex;
   flex-direction: column;  /* 세로로 바뀜 */
   align-items: center;
   justify-content: center;
 }
-
+/* 너나들 로고 */
 .main-home-logo{
   display: flex; 
   justify-content: center;
@@ -66,6 +68,7 @@
   margin-left: 20px;
 }
 
+/* frame 안에 있는 로그인  */
 .authentication{
   background-color: white;
   display: flex;
@@ -408,6 +411,7 @@ input::-webkit-inner-spin-button {
   background-color: rgb(105, 156, 233);
   box-shadow: 5px 3px 8px 1px  #CCC}
 
+/* 인증하기  */
 #sendAuthKeyBtn{
   width: 90px;
   height: 21px;
@@ -426,7 +430,7 @@ input::-webkit-inner-spin-button {
   color: white;
 }
 
-
+/* 인증번호 받기 */
 #checkAuthKeyBtn{
   width: 90px;
   height: 21px;
@@ -448,7 +452,7 @@ input::-webkit-inner-spin-button {
 .hidden {
   display: none !important;
 }
-
+/* 느낌표 */
 #bangWarn1 > img{
   width: 25px;
   height: 23px;
