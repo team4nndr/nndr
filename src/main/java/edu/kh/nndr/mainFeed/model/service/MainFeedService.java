@@ -32,27 +32,27 @@ public interface MainFeedService {
 			throws IllegalStateException, IOException;
 
 
-
+	// 게시글 삭제
 	int feedDelete(Board board);
 
 
-
+	// 게시글 수정 
 	int feedUpdate(Board board, List<MultipartFile> images, String webPath, String filePath, String deleteList)
 			throws IllegalStateException, IOException;
 
 
-
+	//  게시글 수정을 위한 게시글 하나 확인
 	Board selectOne(int boardNo);
 
-
+	// 좋아요 체크
 	int feedLikeCheck(Map<String, Object> map);
 
 
-
+	// 좋아요 처리 
 	int like(Map<String, Integer> paramMap);
 	
 	
-	/** 개인피드 게시글 인
+	/** 개인피드 게시글 
     * @param no
     * @return
     */

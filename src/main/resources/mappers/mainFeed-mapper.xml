@@ -67,6 +67,7 @@
 
 	</select>
 
+	<!--  이미지 리스트 -->
 	<select id="selectImageList" resultMap="image_rm">
 		SELECT * FROM "IMAGE"
 		WHERE BOARD_NO=#{boardNo}
@@ -93,7 +94,7 @@
 
 	</insert>
 
-
+	<!-- 이미지 삽입 -->
 	<insert id="insertImageList" parameterType="list">
 		INSERT INTO "IMAGE"
 		SELECT SEQ_IMG_NO.NEXTVAL, A.*
@@ -159,7 +160,7 @@
 	</insert>
 
 
-
+	<!--  수정을 위한 게시글 하나 -->
 	<select id="selectOne" resultMap="board_rm">
 		SELECT BOARD_NO, MEMBER_NAME,BOARD_TEXT,MEMBER_NO,
 		INFO_PROFILEPATH||INFO_PROFILE INFO_IMG,
