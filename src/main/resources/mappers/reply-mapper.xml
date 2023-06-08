@@ -99,7 +99,7 @@
 	<!-- 댓글 삭제(대댓글도 삭제) -->
 	<update id="delete">			
 		UPDATE "REPLY"
-		SET		REPLY_DELETE = 'Y'
+		SET	REPLY_DELETE = 'Y'
 		WHERE   REPLY_NO IN(
 			SELECT REPLY_NO FROM REPLY
 			START WITH REPLY_NO = #{replyNo}
