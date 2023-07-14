@@ -17,7 +17,7 @@
 		<!-- 자기 컴퓨터 (19C) -->
 		<!-- <property name="url" value="jdbc:oracle:thin:@localhost:1521:ORCL" /> -->
 		<!-- 학원 DB서버 -->
-		<property name="url" value="jdbc:oracle:thin:@115.90.212.22:10000:ORCL" />
+		<property name="url" value="jdbc:oracle:thin:@115.90.212.20:10000:ORCL" />
 		<property name="username" value="&quot;nndr&quot;" />
 		<property name="password" value="nndr123!" />
 
